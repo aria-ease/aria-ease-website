@@ -1,0 +1,28 @@
+.light-body .logo-span {
+    color: rgba(26, 26, 26);
+}
+.light-body .header-button {
+    background-color: transparent;
+    border: 0.2px solid rgba(27, 27, 27, 0.226);
+}
+.light-body .header-button:hover {
+    background: rgb(211, 211, 211);
+}
+.light-body .header-search-div {
+    background: #F2F6F9;
+}
+.light-body .header-search-div:hover {
+    border: 1px solid rgba(48, 48, 48);
+}
+.light-body .header-search-div:focus-within {
+    border: 1px solid rgba(48, 48, 48);
+}
+.light-body .header-search-div input {
+    color: rgb(73, 73, 73);
+}
+.light-body .hero-paragraph {
+    color: black;
+}
+.light-body .hero-examples-div {
+    background-color: rgba(110, 110, 110, 0.118);
+}

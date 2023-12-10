@@ -1,0 +1,31 @@
+.dark-body .logo-span {
+    color: white;
+}
+.dark-body .header-button {
+    background: rgba(48, 48, 48);
+    border: none;
+}
+.dark-body .header-button:hover {
+    border: 0.2px solid rgba(97, 97, 97, 1);
+}
+.dark-body .header-search-div {
+    background: rgba(48, 48, 48);
+}
+.dark-body .header-search-div:hover {
+    border: 1px solid rgba(225, 225, 225, 1);
+}
+.dark-body .header-search-div:focus-within {
+    border: 2px solid rgba(225, 225, 225, 1);
+}
+.dark-body .header-search-div {
+    border: 1px solid rgba(97, 97, 97, 1);
+}
+.dark-body .hero-heading {
+    color: white;
+}
+.dark-body .hero-paragraph {
+    color: rgba(161, 161, 170);
+}
+.dark-body .hero-examples-div {
+    background-color: rgba(196, 196, 196, 0.118);
+}
