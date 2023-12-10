@@ -21,7 +21,7 @@
     font-size: larger;
 }
 .header-button-icon {
-    color: grey;
+    color: grey !important;
     height: 18px;
     width: 18px;
 }
