@@ -21,7 +21,7 @@
     font-size: larger;
 }
 .header-button-icon {
-    color: grey !important;
+    color: rgba(128, 128, 128);
     height: 18px;
     width: 18px;
 }
@@ -50,7 +50,7 @@
     align-items: center;
     height: 32px;
     padding: 0px 8px 0px 8px;
-    transition: all 200ms ease-in;
+    transition: border 200ms ease-in;
 }
 .header-search-div input:focus {
     outline: none;
