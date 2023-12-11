@@ -232,3 +232,9 @@ a:focus {
 .slide-out-nav-outer-div > div:not(:nth-child(1)) {
     margin-top: 15px;
 }
+a {
+    padding: 2px;
+}
+.side-nav-link.active-nav-link {
+    text-decoration: underline !important;
+}
