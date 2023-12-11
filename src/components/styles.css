@@ -207,6 +207,7 @@ a:focus {
     border: none;
     background-color: rgba(242, 246, 249);
     height: 32px;
+    width: 32px;
 }
 .slide-out-side-nav-div {
     position: fixed;
