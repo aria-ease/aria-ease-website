@@ -16,7 +16,7 @@ const Header = ({darkMode, setDarkMode, showDropdownPage, setShowDropdownPage}) 
   return (
     <div className="header">
         <button className='header-menu-button center-flex' onClick={() => setShowDropdownPage(!showDropdownPage)}>
-            <img src={hamburgermenu} alt='Hamburger Menu Icon' style={{height: '24px', width: '24px'}}></img>
+            <img src={hamburgermenu} alt='Hamburger Menu Icon' style={{height: '20px', width: '24px'}}></img>
         </button>
         <Link to='/' className='header-logo-link'><span className="logo-span">aria-ease</span></Link>
         <div className='header-nav-link-div' id="header-nav-link-div">
