@@ -38,3 +38,7 @@
 .light-body .slide-out-side-nav-div {
     background: #F2F6F9;
 }
+.light-body .header-menu-button {
+    background-color: transparent;
+    border: 0.2px solid rgba(27, 27, 27, 0.226);
+}
