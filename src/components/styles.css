@@ -108,6 +108,9 @@ a:focus {
     .hero-examples-div {
         display: none;
     }
+    .hero-text-div {
+        padding-top: 50px;
+    }
 }
 #custom-menu {
     box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.05);
