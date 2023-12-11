@@ -24,7 +24,8 @@
     color: rgba(128, 128, 128);
 }
 .header-button-icon,
-#Sun, #Moon {
+#Sun, #Moon,
+.svgShape {
     height: 18px;
     width: 18px;
 }
