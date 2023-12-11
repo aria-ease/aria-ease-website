@@ -227,14 +227,17 @@ a:focus {
     flex-direction: column;
 }
 .slide-out-nav-outer-div p {
-    margin-bottom: 4px;
+    margin-bottom: 8px;
 }
 .slide-out-nav-outer-div > div:not(:nth-child(1)) {
-    margin-top: 15px;
+    margin-top: 20px;
 }
 a {
     padding: 2px;
 }
 .side-nav-link.active-nav-link {
     text-decoration: underline !important;
+}
+.slide-out-nav-outer-div .side-nav-link {
+    margin-top: 4px !important;
 }
