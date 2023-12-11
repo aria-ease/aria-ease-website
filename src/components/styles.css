@@ -26,8 +26,8 @@
 .header-button-icon,
 #Sun, #Moon,
 .svgShape {
-    height: 18px !important;
-    width: 18px !important;
+    height: 18px;
+    width: 18px;
 }
 .header-button {
     border-radius: 8px;
