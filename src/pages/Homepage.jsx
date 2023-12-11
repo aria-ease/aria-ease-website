@@ -8,6 +8,8 @@ import { useState } from "react"
 // eslint-disable-next-line react/prop-types
 const Homepage = ({darkMode, setDarkMode}) => {
   const[showDropdownPage, setShowDropdownPage] = useState(false);
+  const page = 'home'
+
   return (
     <div>
         <Header darkMode={darkMode} setDarkMode={setDarkMode} showDropdownPage={showDropdownPage} setShowDropdownPage={setShowDropdownPage}/>
@@ -32,7 +34,7 @@ const Homepage = ({darkMode, setDarkMode}) => {
         </div>
 
         <div className={`slide-out-side-nav-div ${showDropdownPage ? 'slide-in' : ''}`}>
-          <SlideOutNav/>
+          <SlideOutNav page={page}/>
         </div>
     </div>
   )
