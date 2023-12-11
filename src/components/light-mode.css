@@ -1,4 +1,5 @@
-.light-body .logo-span {
+.light-body .logo-span,
+.light-body .slide-nav-logo-span {
     color: rgba(26, 26, 26);
 }
 .light-body .header-button {
@@ -9,7 +10,7 @@
     background: rgb(211, 211, 211);
 }
 .light-body .header-search-div {
-    background: #F2F6F9;
+    background-color: rgba(225, 225, 225);
 }
 .light-body .header-search-div:hover {
     border: 1px solid rgba(48, 48, 48);
@@ -25,4 +26,15 @@
 }
 .light-body .hero-examples-div {
     background-color: rgba(110, 110, 110, 0.118);
+}
+.light-body .header-nav-link,
+.light-body .side-nav-link {
+    color: rgb(95, 95, 103);
+}
+.light-body .header-nav-link:hover,
+.light-body .active-nav-link {
+    color: rgb(79, 79, 79);
+}
+.light-body .slide-out-side-nav-div {
+    background: #F2F6F9;
 }

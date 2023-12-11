@@ -1,4 +1,5 @@
-.dark-body .logo-span {
+.dark-body .logo-span,
+.dark-body .slide-nav-logo-span {
     color: white;
 }
 .dark-body .header-button {
@@ -28,4 +29,21 @@
 }
 .dark-body .hero-examples-div {
     background-color: rgba(196, 196, 196, 0.118);
+}
+.dark-body .header-nav-link,
+.dark-body .side-nav-link {
+    color: rgb(190, 190, 191);
+}
+.dark-body .header-nav-link:hover,
+.dark-body .active-nav-link {
+    color: rgb(215, 215, 215);
+}
+.dark-body .side-body-div {
+    color: #a1a1aa;
+}
+.dark-body .slide-out-side-nav-div {
+    background-color: rgba(26, 26, 26);
+}
+.dark-body .slide-out-nav-outer-div p {
+    color: white;
 }

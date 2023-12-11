@@ -1,8 +1,11 @@
+.body-div {
+    transition: all 500ms ease-in-out;
+}
 .dark-body {
     background-color: rgba(26, 26, 26);
 }
 .light-body {
-    background-color: rgba(225, 225, 225);
+    background: #F2F6F9;
 }
 .dark-body,
 .light-body {
@@ -16,7 +19,8 @@
     justify-content: space-between;
     align-items: center;
 }
-.logo-span {
+.logo-span,
+.slide-nav-logo-span {
     font-weight: 700;
     font-size: larger;
 }
@@ -53,7 +57,7 @@
     align-items: center;
     height: 32px;
     padding: 0px 8px 0px 8px;
-    transition: border 200ms ease-in;
+    transition: all 200ms ease-in;
 }
 .header-search-div input:focus {
     outline: none;
@@ -74,13 +78,18 @@
     .hero-heading {
         font-size: 2.85rem;
     }
+    .header-menu-button {
+        display: none;
+    }
 }
 @media(max-width: 767px) {
     .header-search-div {
         width: 61.03%;
     }
-    .logo-span {
-        display: none;
+    .logo-span,
+    .header-nav-link-div,
+    .side-nav-div {
+        display: none !important;
     }
     .hero-heading {
         font-size: 1.85rem;
@@ -93,6 +102,7 @@ button:focus,
 a:focus {
     outline: 2px solid rgba(0, 91, 211, 1) !important;
     outline-offset: 1px;
+    border-radius: 8px;
 }
 .hero-heading {
     font-weight: 700;
@@ -169,4 +179,55 @@ a:focus {
 }
 .home-example-tab-one > button:not(:nth-child(1)) {
     margin-left: 4px;
+}
+.header-nav-link-div > .header-nav-link:not(:nth-child(1)) {
+    margin-left: 10px;
+} 
+.header-nav-link,
+.side-nav-link {
+    font-size: .975rem;
+    text-decoration: none;
+    font-weight: 400;
+}
+.side-nav-div {
+    overflow: auto;
+    display: flex;
+    flex-direction: column;
+}
+.side-body-div,
+.side-nav-div {
+    padding: 30px;
+}
+.header-logo-link,
+.slide-nav-logo-link {
+    text-decoration: none;
+}
+.header-menu-button {
+    border-radius: 8px;
+    border: none;
+    background-color: rgba(242, 246, 249);
+    height: 32px;
+}
+.slide-out-side-nav-div {
+    position: fixed;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    transition: left 0.5s ease-in-out;
+    z-index: 999;
+    top: 56px;
+    padding: 12px;
+}
+.slide-out-side-nav-div.slide-in {
+    left: 0;
+}
+.slide-out-nav-div {
+    display: flex;
+    flex-direction: column;
+}
+.slide-out-nav-outer-div p {
+    margin-bottom: 4px;
+}
+.slide-out-nav-outer-div > div:not(:nth-child(1)) {
+    margin-top: 15px;
 }
