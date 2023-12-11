@@ -20,7 +20,7 @@ const Header = ({darkMode, setDarkMode, showDropdownPage, setShowDropdownPage}) 
         </button>
         <Link to='/' className='header-logo-link'><span className="logo-span">aria-ease</span></Link>
         <div className='header-nav-link-div' id="header-nav-link-div">
-            <a href="/docs" target='blank' className='header-nav-link'>Documentation</a>
+            <Link to='/docs' className='header-nav-link'>Documentation</Link>
             <Link to='/examples/menu' className='header-nav-link'>Examples</Link>
             <Link to='https://github.com/Scriptkidd98/aria-ease' className='header-nav-link'>Github</Link>
         </div>
