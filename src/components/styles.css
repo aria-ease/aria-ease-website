@@ -18,6 +18,8 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: sticky;
+    top: 0;
 }
 .logo-span,
 .slide-nav-logo-span {
@@ -226,18 +228,21 @@ a:focus {
     display: flex;
     flex-direction: column;
 }
-.slide-out-nav-outer-div p {
-    margin-bottom: 8px;
-}
-.slide-out-nav-outer-div > div:not(:nth-child(1)) {
-    margin-top: 20px;
-}
 a {
     padding: 2px;
 }
 .side-nav-link.active-nav-link {
     text-decoration: underline !important;
 }
-.slide-out-nav-outer-div .side-nav-link {
-    margin-top: 4px !important;
+.slide-nav-links-section {
+    margin-top: 30px;
+}
+.slide-nav-links-section p {
+    margin-bottom: 12px;
+}
+.no-scroll {
+    position: fixed;
+}
+.slide-out-nav-outer-div {
+    overflow: auto;
 }

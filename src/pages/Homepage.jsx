@@ -3,18 +3,26 @@ import { Container, Row, Col } from "react-bootstrap"
 import HomeExampleMenu from "../components/menus/HomeExampleMenu"
 import HomeTabExampleOne from "../components/tabs/HomeTabExampleOne"
 import SlideOutNav from "../components/SlideOutNav"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 
 // eslint-disable-next-line react/prop-types
 const Homepage = ({darkMode, setDarkMode}) => {
   const[showDropdownPage, setShowDropdownPage] = useState(false);
   const page = 'home'
 
+  useEffect(() => {
+    if(showDropdownPage) {
+      document.querySelector('.page-body-div').classList.add('no-scroll')
+    } else {
+      document.querySelector('.page-body-div').classList.remove('no-scroll')
+    }
+  },[showDropdownPage])
+
   return (
     <div>
         <Header darkMode={darkMode} setDarkMode={setDarkMode} showDropdownPage={showDropdownPage} setShowDropdownPage={setShowDropdownPage}/>
 
-        <div>
+        <div className="page-body-div">
           <Container fluid>
             <Row>
               <Col xs={12} sm={12} md={12} lg={6}>
