@@ -25,7 +25,7 @@ const Examples = ({darkMode, setDarkMode}) => {
           <Container fluid>
             <Row>
               <SideNav page={page}/>
-              <Col xs={12} sm={12} md={8} lg={9}>
+              <Col xs={12} sm={12} md={9} lg={9}>
                 <div className='side-body-div'>
                   <span>Menu</span>
                 </div>

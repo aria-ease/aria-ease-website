@@ -24,12 +24,12 @@ const Documentation = ({darkMode, setDarkMode}) => {
           <Container fluid>
             <Row>
               <SideNav page={page}/>
-              <Col xs={12} sm={12} md={8} lg={9}>
+              <Col xs={12} sm={12} md={9} lg={9}>
                 <div className='side-body-div'>
                   <div className='side-body-sections-div'>
                     <h1 className='introduction-heading'>Introduction</h1>
                     <p>Utility package to add accessibility functionalities to your components.</p>
-                    <p>This is not a component library. The package simply provides you functions that take the components' identifiers (id and class name), and implements accessibility features like focus trapping, keyboard interactions, aria attributes update.</p>
+                    <p>This is not a component library. The package simply provides you functions that take the components' identifiers (id of the parent div, and class name of the interactive children items of the parent div), and implements accessibility features like focus trapping, keyboard interactions, aria attributes update.</p>
                   </div>
                   <div className='side-body-sections-div'>
                     <h1 className='introduction-heading'>Installation</h1>

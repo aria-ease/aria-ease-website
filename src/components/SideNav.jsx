@@ -10,7 +10,7 @@ const SideNav = ({page}) => {
     makeTabAccessible('side-nav-div', 'side-nav-link')
   })
   return (
-    <Col xs={0} sm={0} md={4} lg={3}>
+    <Col xs={0} sm={0} md={3} lg={3}>
       <div className='side-nav-div' id='side-nav-div'>
         <div className='side-nav-links-section'>
           <p>Getting Started</p>
