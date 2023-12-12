@@ -248,6 +248,7 @@ a {
 }
 .slide-out-nav-outer-div {
     overflow: auto;
+    padding-top: 12px;
 }
 .side-nav-links-section {
     display: flex;
