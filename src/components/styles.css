@@ -164,7 +164,7 @@ a:focus {
     line-height: 1.5rem;
     margin-top: 20px;
 }
-.home-example-tab-one {
+.home-body .home-example-tab-one {
     position: absolute;
     bottom: 32px;
 }
@@ -190,16 +190,12 @@ a:focus {
     overflow: auto;
     display: flex;
     flex-direction: column;
+    position: sticky;
+    top: 30px;
 }
 .side-body-div,
 .side-nav-div {
-    padding: 30px 0px;
-}
-.side-nav-div {
-    padding-left: 10px;
-}
-.side-body-div {
-    padding-right: 10px;
+    padding: 30px 10px 50px 10px;
 }
 .header-logo-link,
 .slide-nav-logo-link {
@@ -271,4 +267,15 @@ a {
 }
 .code-div {
     background-color: rgba(222, 222, 222, 0.506);
+    margin-top: 8px;
+}
+.features-function {
+    margin-right: 5px;
+}
+.feature-function-info-text {
+    margin-top: 20px;
+}
+.documentation-page .home-menu-example-trigger-button,
+.documentation-page .home-example-tab-one-item {
+    border: 0.2px solid rgba(27, 27, 27, 0.226);
 }

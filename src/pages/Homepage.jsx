@@ -19,7 +19,7 @@ const Homepage = ({darkMode, setDarkMode}) => {
   },[showDropdownPage])
 
   return (
-    <div>
+    <div className="home-body">
         <Header darkMode={darkMode} setDarkMode={setDarkMode} showDropdownPage={showDropdownPage} setShowDropdownPage={setShowDropdownPage}/>
 
         <div className="page-body-div">

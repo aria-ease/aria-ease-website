@@ -46,7 +46,8 @@
 }
 .dark-body .slide-out-nav-outer-div p,
 .dark-body .side-nav-div div p,
-.dark-body .introduction-heading  {
+.dark-body .introduction-heading,
+.dark-body .features-function  {
     color: white;
 }
 .dark-body code {
