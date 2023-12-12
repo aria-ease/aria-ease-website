@@ -86,7 +86,7 @@ const Documentation = ({darkMode, setDarkMode}) => {
                       <div className='code-div'>
                         <code>{tabCode}</code>
                       </div>
-                      <p>Call the function on page render, in order for the event listeners to be added as soon as the page loads.</p>
+                      <p style={{marginTop: '24px'}}>Call the function on page render, in order for the event listeners to be added as soon as the page loads.</p>
                     </>
                   </div>
                 </div>
