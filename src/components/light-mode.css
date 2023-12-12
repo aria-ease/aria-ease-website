@@ -42,3 +42,6 @@
     background-color: transparent;
     border: 0.2px solid rgba(27, 27, 27, 0.226);
 }
+.light-body code {
+    color: rgb(30, 30, 30);
+}

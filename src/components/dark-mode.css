@@ -44,6 +44,11 @@
 .dark-body .slide-out-side-nav-div {
     background-color: rgba(26, 26, 26);
 }
-.dark-body .slide-out-nav-outer-div p {
+.dark-body .slide-out-nav-outer-div p,
+.dark-body .side-nav-div div p,
+.dark-body .introduction-heading  {
     color: white;
+}
+.dark-body code {
+    color: rgba(250, 250, 250);
 }

@@ -26,7 +26,17 @@ const Documentation = ({darkMode, setDarkMode}) => {
               <SideNav page={page}/>
               <Col xs={12} sm={12} md={8} lg={9}>
                 <div className='side-body-div'>
-                  <span>Introduction</span>
+                  <div className='side-body-sections-div'>
+                    <h1 className='introduction-heading'>Introduction</h1>
+                    <p>Utility package to add accessibility functionalities to your components.</p>
+                    <p>This is not a component library. The package simply provides you functions that take the components' identifiers (id and class name), and implements accessibility features like focus trapping, keyboard interactions, aria attributes update.</p>
+                  </div>
+                  <div className='side-body-sections-div'>
+                    <h1 className='introduction-heading'>Installation</h1>
+                    <div className='code-div'>
+                      <code>npm install aria-ease</code>
+                    </div>
+                  </div>
                 </div>
               </Col>
             </Row>
