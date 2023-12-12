@@ -12,6 +12,16 @@ const Header = ({darkMode, setDarkMode, showDropdownPage, setShowDropdownPage}) 
         makeTabAccessible('header-buttons-grid-div', 'header-button')
         makeTabAccessible('header-nav-link-div', 'header-nav-link')
     }, [])
+
+    useEffect(() => {
+        if(darkMode) {
+            document.querySelector('.theme-mode-image').setAttribute('src', `${sunicon}`)
+            document.querySelector('.theme-mode-image').setAttribute('alt', 'Sun Icon')
+        } else {
+            document.querySelector('.theme-mode-image').setAttribute('src', `${moonicon}`)
+            document.querySelector('.theme-mode-image').setAttribute('alt', 'Moon Icon')
+        }
+    },[darkMode])
     
   return (
     <div className="header">
@@ -31,10 +41,7 @@ const Header = ({darkMode, setDarkMode, showDropdownPage, setShowDropdownPage}) 
         <div className='header-buttons-grid-div' id="header-buttons-grid-div">
             <a href="https://github.com/Scriptkidd98/aria-ease" className='header-button center-flex'><FaGithub className='header-button-icon'/></a>
             <button className='header-button center-flex' onClick={() => {setDarkMode(!darkMode)}} onKeyDown={(event) => event.preventDefault()}>
-                {darkMode ? 
-                    <img src={sunicon} alt='Sun Icon' id='Sun'></img> :
-                    <img src={moonicon} alt='Moon Icon' id='Moon'></img>
-                }
+                <img src={sunicon} alt='Sun Icon' id='Sun' className='theme-mode-image'></img>
             </button>
         </div>
     </div>
