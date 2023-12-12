@@ -1,11 +1,6 @@
-.body-div {
+.body-div,
+.header {
     transition: all 500ms ease-in-out;
-}
-.dark-body {
-    background-color: rgba(26, 26, 26);
-}
-.light-body {
-    background: #F2F6F9;
 }
 .dark-body,
 .light-body {

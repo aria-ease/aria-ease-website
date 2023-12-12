@@ -25,7 +25,7 @@
     color: black;
 }
 .light-body .hero-examples-div {
-    background-color: rgba(110, 110, 110, 0.118);
+    background-color: rgba(110, 110, 110, 0.185);
 }
 .light-body .header-nav-link,
 .light-body .side-nav-link {
@@ -44,4 +44,8 @@
 }
 .light-body code {
     color: rgb(30, 30, 30);
+}
+.light-body .header,
+.light-body {
+    background: #F2F6F9;
 }

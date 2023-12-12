@@ -52,3 +52,7 @@
 .dark-body code {
     color: rgba(250, 250, 250);
 }
+.dark-body,
+.dark-body .header {
+    background-color: rgba(26, 26, 26);
+}
