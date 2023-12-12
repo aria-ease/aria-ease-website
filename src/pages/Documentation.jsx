@@ -12,9 +12,9 @@ const Documentation = ({darkMode, setDarkMode}) => {
 
   useEffect(() => {
     if(showDropdownPage) {
-      document.querySelector('.page-body-div').classList.add('no-scroll')
+      document.querySelector('body').classList.add('no-scroll')
     } else {
-      document.querySelector('.page-body-div').classList.remove('no-scroll')
+      document.querySelector('body').classList.remove('no-scroll')
     }
   },[showDropdownPage])
   return (
