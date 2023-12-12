@@ -245,6 +245,7 @@ a {
 }
 .no-scroll {
     position: fixed;
+    overflow: hidden;
 }
 .slide-out-nav-outer-div {
     overflow: auto;
