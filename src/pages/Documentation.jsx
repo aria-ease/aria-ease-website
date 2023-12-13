@@ -80,7 +80,7 @@ const Documentation = ({darkMode, setDarkMode}) => {
                         <b className='features-function'>makeBlockAccessible:</b>
                         This function adds keyboard interactions accessibility to a block.
                       </p>
-                      <p>A block can be entire web page body, tabs, interactive sliders and carousels e.t.c. Basically any component that is permanently displayed, unlike a menu that toggles display, and has a list of related interractive children items.</p>
+                      <p>A block can be entire web page body, tabs, interactive sliders and carousels e.t.c. Basically any component that is permanently displayed, unlike a menu that toggles display, and has a list of interractive children items.</p>
                       <HomeTabExampleOne/> 
                       <p className='feature-function-info-text'>The function creates a focus trap within the block and focus can be navigated using the Arrow keys and Tab key. The Enter and Space keys &quot;click&quot; the interactive element (currently supports buttons, links, radios and checkboxes).</p>
                       <p>The function takes two string arguments; the id of the block div, and the class name of the block items children.</p>
