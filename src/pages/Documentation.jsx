@@ -87,6 +87,10 @@ const Documentation = ({darkMode, setDarkMode}) => {
                         <code>{tabCode}</code>
                       </div>
                       <p style={{marginTop: '24px'}}>Call the function on page render, in order for the event listeners to be added as soon as the page loads.</p>
+                      <p>The function can be used to add keyboard interactions functionalities to all the interactive elements on a web page by calling the function like below:</p>
+                      <div className='code-div'>
+                        <code>makeTabAccessible(id-of-page-div, class-name-given-to-all-the-interactive-elements-of-the-page)</code>
+                      </div>
                     </>
                   </div>
                 </div>
