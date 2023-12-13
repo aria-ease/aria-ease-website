@@ -1,13 +1,13 @@
 import { Col } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import { useEffect } from 'react'
-import { makeTabAccessible } from 'aria-ease'
+import { makeBlockAccessible } from 'aria-ease'
 
 
 // eslint-disable-next-line react/prop-types
 const SideNav = ({page}) => {
   useEffect(() => {
-    makeTabAccessible('side-nav-div', 'side-nav-link')
+    makeBlockAccessible('side-nav-div', 'side-nav-link')
   })
   return (
     <Col xs={0} sm={0} md={3} lg={3}>

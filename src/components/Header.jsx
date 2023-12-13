@@ -1,5 +1,5 @@
 import { FaGithub } from 'react-icons/fa'
-import { makeTabAccessible } from 'aria-ease'
+import { makeBlockAccessible } from 'aria-ease'
 import { useEffect } from 'react'
 import sunicon from '../assets/sun.png'
 import moonicon from '../assets/moon.png'
@@ -9,8 +9,8 @@ import hamburgermenu from '../assets/hamburger.png'
 // eslint-disable-next-line react/prop-types
 const Header = ({darkMode, setDarkMode, showDropdownPage, setShowDropdownPage}) => {
     useEffect(() => {
-        makeTabAccessible('header-buttons-grid-div', 'header-button')
-        makeTabAccessible('header-nav-link-div', 'header-nav-link')
+        makeBlockAccessible('header-buttons-grid-div', 'header-button')
+        makeBlockAccessible('header-nav-link-div', 'header-nav-link')
     }, [])
 
     useEffect(() => {

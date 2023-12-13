@@ -9,7 +9,7 @@ import HomeTabExampleOne from '../components/tabs/HomeTabExampleOne'
 const menuCode = `makeMenuAccessible('custom-menu', 'profile-menu-item')`
 const updateHideCode = `updateMenuTriggerAriaAttributes('display-button', 'Hide profile menu')`
 const updateDisplayCode = `updateMenuTriggerAriaAttributes('display-button', 'Display profile menu')`
-const tabCode = `makeTabAccessible('custom-tab', 'custom-tab-item')`
+const tabCode = `makeBlockAccessible('custom-tab', 'custom-tab-item')`
 
 // eslint-disable-next-line react/prop-types
 const Documentation = ({darkMode, setDarkMode}) => {
@@ -77,7 +77,7 @@ const Documentation = ({darkMode, setDarkMode}) => {
 
                     <>
                       <p style={{marginTop: '24px'}}>
-                        <b className='features-function'>makeTabAccessible:</b>
+                        <b className='features-function'>makeBlockAccessible:</b>
                         This function adds keyboard interactions accessibility to a block.
                       </p>
                       <p>A block can be entire web page body, tabs, interactive sliders and carousels e.t.c. Basically any component that is permanently displayed, unlike a menu that toggles display, and has a list of related interractive children items.</p>
@@ -90,7 +90,7 @@ const Documentation = ({darkMode, setDarkMode}) => {
                       <p style={{marginTop: '24px'}}>Call the function on page render, in order for the event listeners to be added as soon as the page loads.</p>
                       <p>The function can be used to add keyboard interactions functionalities to all the interactive elements on a web page by calling the function like below:</p>
                       <div className='code-div'>
-                        <code>makeTabAccessible(id-of-page-div, class-name-given-to-all-the-interactive-elements-of-the-page)</code>
+                        <code>makeBlockAccessible(id-of-page-div, class-name-given-to-all-the-interactive-elements-of-the-page)</code>
                       </div>
                     </>
                   </div>

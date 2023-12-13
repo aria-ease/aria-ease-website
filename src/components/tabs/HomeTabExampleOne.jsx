@@ -1,9 +1,9 @@
-import { makeTabAccessible } from "aria-ease"
+import { makeBlockAccessible } from "aria-ease"
 import { useEffect } from "react"
 
 const HomeTabExampleOne = () => {
     useEffect(() => {
-        makeTabAccessible('home-example-tab-one', 'home-example-tab-one-item')
+        makeBlockAccessible('home-example-tab-one', 'home-example-tab-one-item')
     })
   return (
     <div className="home-example-tab-one" id="home-example-tab-one">
