@@ -158,6 +158,11 @@ a:focus {
     border: none;
     padding: 2px 8px;
     font-size: smaller;
+    
+}
+.home-example-tab-one-item,
+.home-menu-example-trigger-button {
+    color: rgba(0, 0, 0) !important;
 }
 .hero-paragraph {
     font-size: 1.2rem;
