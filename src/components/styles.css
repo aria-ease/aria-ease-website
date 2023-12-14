@@ -95,11 +95,13 @@
 .header-search-div {
     border-radius: 8px;
 }
-button:focus,
-a:focus {
+@media(min-width: 992px) {
+    button:focus,
+    a:focus {
     outline: 2px solid rgba(0, 91, 211, 1) !important;
     outline-offset: 1px !important;
     border-radius: 8px !important;
+}
 }
 .hero-heading {
     font-weight: 700;
