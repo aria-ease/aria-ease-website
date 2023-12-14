@@ -28,7 +28,7 @@ const Homepage = ({darkMode, setDarkMode}) => {
               <Col xs={12} sm={12} md={12} lg={6}>
                 <div className="hero-text-div">
                   <h1 className="hero-heading">Add accessibility to your components.</h1>
-                  <p className="hero-paragraph">Out-of-the-box accessibility utility package that you can add to your components with a single function. Automate menu and tab focus trapping, keyboard interactions, aria attributes update, and more. Open source.</p>
+                  <p className="hero-paragraph">Out-of-the-box accessibility utility package that you can add to your components with a single function. Automate menu and block focus trapping, keyboard interactions, aria attributes update, and more. Open source.</p>
                 </div>
               </Col>
               <Col xs={0} sm={0} md={0} lg={6} style={{paddingRight: '0px'}}>
