@@ -284,3 +284,6 @@ a {
 .documentation-page .home-example-tab-one-item {
     border: 0.2px solid rgba(27, 27, 27, 0.226);
 }
+.body-div {
+    min-width: 100vw;
+}
