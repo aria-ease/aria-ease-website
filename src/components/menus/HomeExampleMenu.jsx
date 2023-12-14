@@ -1,4 +1,4 @@
-import { makeMenuAccessible, updateMenuTriggerAriaAttributes } from 'aria-ease'
+import { makeMenuAccessible, updateMenuTriggerAriaAttributes, cleanUpMenuEventListeners } from 'aria-ease'
 
 const HomeExampleMenu = () => {
     const toggleMenuDisplay = () => {
@@ -10,6 +10,7 @@ const HomeExampleMenu = () => {
         } else {
           menu.style.display = 'none'
           updateMenuTriggerAriaAttributes('display-button', 'Display profile menu')
+          cleanUpMenuEventListeners('custom-menu', 'profile-menu-item')
         }
       }
   return (
