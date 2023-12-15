@@ -10,6 +10,7 @@ const menuCode = `makeMenuAccessible('custom-menu', 'profile-menu-item')`
 const updateHideCode = `updateMenuTriggerAriaAttributes('display-button', 'Hide profile menu')`
 const updateDisplayCode = `updateMenuTriggerAriaAttributes('display-button', 'Display profile menu')`
 const tabCode = `makeBlockAccessible('custom-tab', 'custom-tab-item')`
+const cleanUpCode = `cleanUpMenuEventListeners('custom-menu', 'profile-menu-item')`
 
 // eslint-disable-next-line react/prop-types
 const Documentation = ({darkMode, setDarkMode}) => {
@@ -60,7 +61,7 @@ const Documentation = ({darkMode, setDarkMode}) => {
                     </>
 
                     <>
-                      <p>
+                      <p style={{marginTop: '80px'}}>
                         <b className='features-function'>updateMenuTriggerAriaAttributes:</b>
                         This function updates the aria attributes of the menu trigger button. The aria-pressed, aria-expanded and aria-label attributes of the trigger button are toggled based on the current visibility of the menu. 
                       </p>
@@ -76,7 +77,18 @@ const Documentation = ({darkMode, setDarkMode}) => {
                     </>
 
                     <>
-                      <p style={{marginTop: '24px'}}>
+                      <p style={{marginTop: '80px'}}>
+                        <b className='features-function'>cleanUpMenuEventListeners:</b>
+                        This function cleans up the event listeners attached to the children items of the menu, to prevent memory leaks.
+                      </p>
+                      <p>Call the function before the menu&#39;s display is toggled to false, or removed from the DOM. </p>
+                      <div className='code-div'>
+                        <code>{cleanUpCode}</code>
+                      </div>
+                    </>
+
+                    <>
+                      <p style={{marginTop: '80px'}}>
                         <b className='features-function'>makeBlockAccessible:</b>
                         This function adds keyboard interactions accessibility to a block.
                       </p>
