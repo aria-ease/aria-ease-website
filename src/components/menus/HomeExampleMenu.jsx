@@ -8,9 +8,9 @@ const HomeExampleMenu = () => {
           makeMenuAccessible('custom-menu', 'profile-menu-item');
           updateMenuTriggerAriaAttributes('display-button', 'Hide profile menu')
         } else {
+          cleanUpMenuEventListeners('custom-menu', 'profile-menu-item')
           menu.style.display = 'none'
           updateMenuTriggerAriaAttributes('display-button', 'Display profile menu')
-          cleanUpMenuEventListeners('custom-menu', 'profile-menu-item')
         }
       }
   return (
