@@ -65,11 +65,11 @@ const Documentation = ({darkMode, setDarkMode}) => {
                         This function updates the aria attributes of the menu trigger button. The aria-pressed, aria-expanded and aria-label attributes of the trigger button are toggled based on the current visibility of the menu. 
                       </p>
                       <p>The function takes two string arguments; the id of the trigger button, and the aria-label that will replace the current one in the DOM. The aria-pressed and aria-expanded attributes get toggle to either true or false.</p>
-                      <p>Call the function when the menu is displayed. It updates the aria label of the trigger button to indicate that the menu is open and the button will close it.</p>
+                      <p>Call the function as below when the menu is displayed. It updates the aria label of the trigger button to indicate that the menu is open and the button will close it.</p>
                       <div className='code-div'>
                         <code>{updateHideCode}</code>
                       </div>
-                      <p style={{marginTop: '24px'}}>Call the function when the menu is not displayed. It updates the aria label of the trigger button to indicate that the menu is closed and the button will open it.</p>
+                      <p style={{marginTop: '24px'}}>Call the function as below when the menu is not displayed. It updates the aria label of the trigger button to indicate that the menu is closed and the button will open it.</p>
                       <div className='code-div'>
                         <code>{updateDisplayCode}</code>
                       </div>
