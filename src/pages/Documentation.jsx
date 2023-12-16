@@ -42,7 +42,7 @@ const Documentation = ({darkMode, setDarkMode}) => {
                   <div className='side-body-sections-div'>
                     <h1 className='introduction-heading'>Introduction</h1>
                     <p>Utility package to add accessibility functionalities to your components.</p>
-                    <p>This is NOT a component library. The package simply provides you functions that take the components&#39; identifiers (id of the parent div, and class name of the interactive children items of the parent div), and implements accessibility features like focus trapping, keyboard interactions, aria attributes update.</p>
+                    <p>This is NOT a component library. The package simply provides you functions that take the components&#39; identifiers (ids, and class names of interactive elements), and implements accessibility features like focus trapping, keyboard interactions, aria attributes update.</p>
                   </div>
                   <div className='side-body-sections-div'>
                     <h1 className='introduction-heading'>Installation</h1>
