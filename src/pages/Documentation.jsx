@@ -29,7 +29,7 @@ const Documentation = ({darkMode, setDarkMode}) => {
   useEffect(() => {
     makeBlockAccessible('inner-body-div', 'block-interactive')
   },[])
-  
+
   return (
     <div id="inner-body-div">
         <Header darkMode={darkMode} setDarkMode={setDarkMode} showDropdownPage={showDropdownPage} setShowDropdownPage={setShowDropdownPage}/>
@@ -106,7 +106,7 @@ const Documentation = ({darkMode, setDarkMode}) => {
                         <code>{tabCode}</code>
                       </div>
                       <p style={{marginTop: '24px'}}>Call the function on page render, in order for the event listeners to be added as soon as the page loads.</p>
-                      <p>The function can be used to add keyboard interactions functionalities to all the interactive elements on a web page by calling the function like below:</p>
+                      <p>The function can be used to add keyboard interactions functionalities to all the interactive elements on a web page (check out the implementation example on this website) by calling the function like below:</p>
                       <div className='code-div'>
                         <code>makeBlockAccessible(id-of-page-div, class-name-given-to-all-the-interactive-elements-of-the-page)</code>
                       </div>
