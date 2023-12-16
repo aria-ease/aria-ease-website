@@ -27,7 +27,7 @@ const TabExamples = ({darkMode, setDarkMode}) => {
               <SideNav page={page}/>
               <Col xs={12} sm={12} md={9} lg={9}>
                   <div className='side-body-div'>
-                      <span>Tab</span>
+                      <span>Block</span>
                   </div>
               </Col>
             </Row>

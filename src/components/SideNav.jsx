@@ -15,7 +15,7 @@ const SideNav = ({page}) => {
         <div className='side-nav-links-section'>
           <p>Components</p>
           <Link to='/examples/menu' className={`side-nav-link ${(page === 'menu') ? 'active-nav-link' : ''} ${(window.innerWidth >= 992) ? 'block-interactive' : null}`}>Menu</Link>
-          <Link to='/examples/tab' className={`side-nav-link ${(page === 'tab') ? 'active-nav-link' : ''} ${(window.innerWidth >= 992) ? 'block-interactive' : null}`} style={{marginTop: '12px'}}>Tab</Link>
+          <Link to='/examples/block' className={`side-nav-link ${(page === 'tab') ? 'active-nav-link' : ''} ${(window.innerWidth >= 992) ? 'block-interactive' : null}`} style={{marginTop: '12px'}}>Block</Link>
         </div>
       </div>
     </Col>

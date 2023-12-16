@@ -14,7 +14,7 @@ const SlideOutNav = ({page}) => {
         <p>Components</p>
         <div className="slide-out-nav-div">
           <Link to='/examples/menu' className={`side-nav-link ${(page === 'menu') ? 'active-nav-link' : ''}`}>Menu</Link>
-          <Link to='/examples/tab' className={`side-nav-link ${(page === 'tab') ? 'active-nav-link' : ''}`} style={{marginTop: '12px'}}>Tab</Link>
+          <Link to='/examples/block' className={`side-nav-link ${(page === 'tab') ? 'active-nav-link' : ''}`} style={{marginTop: '12px'}}>Block</Link>
         </div>
       </div>
     </div>

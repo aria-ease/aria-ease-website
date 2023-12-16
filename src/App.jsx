@@ -19,7 +19,7 @@ const App = () => {
           <Route path="/" element={<Homepage darkMode={darkMode} setDarkMode={setDarkMode}/>}/>
           <Route path="/docs" element={<Documentation darkMode={darkMode} setDarkMode={setDarkMode}/>}/>
           <Route path="/examples/menu" element={<Examples darkMode={darkMode} setDarkMode={setDarkMode}/>}/>
-          <Route path="/examples/tab" element={<TabExamples darkMode={darkMode} setDarkMode={setDarkMode}/>}/>
+          <Route path="/examples/block" element={<TabExamples darkMode={darkMode} setDarkMode={setDarkMode}/>}/>
         </Routes>
       </Router>
     </div>
