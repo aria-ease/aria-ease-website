@@ -271,8 +271,7 @@ a {
     border-radius: 4px;
     padding: 2px 6px;
     display: inline-block;
-}
-.code-div {
+    max-width: 100%;
     background-color: rgba(222, 222, 222, 0.506);
     margin-top: 8px;
 }
