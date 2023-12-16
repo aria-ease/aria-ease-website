@@ -23,7 +23,7 @@ const HomeExampleMenu = () => {
         aria-expanded={false}
         aria-controls="custom-menu"
         aria-label="Display profile menu"
-        className='home-menu-example-trigger-button block-interactive'
+        className='home-menu-example-trigger-button'
       >
         Display Example Menu
       </button>

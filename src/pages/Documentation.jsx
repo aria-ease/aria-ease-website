@@ -5,7 +5,6 @@ import { useState, useEffect } from 'react'
 import SlideOutNav from '../components/SlideOutNav'
 import HomeExampleMenu from '../components/menus/HomeExampleMenu'
 import HomeTabExampleOne from '../components/tabs/HomeTabExampleOne'
-import { makeBlockAccessible } from 'aria-ease'
 
 const menuCode = `makeMenuAccessible('custom-menu', 'profile-menu-item')`
 const updateHideCode = `updateMenuTriggerAriaAttributes('display-button', 'Hide profile menu')`
@@ -25,13 +24,8 @@ const Documentation = ({darkMode, setDarkMode}) => {
       document.querySelector('body').classList.remove('no-scroll')
     }
   },[showDropdownPage])
-
-  useEffect(() => {
-    makeBlockAccessible('documentation-body-div', 'block-interactive')
-  })
-
   return (
-    <div id="documentation-body-div">
+    <div>
         <Header darkMode={darkMode} setDarkMode={setDarkMode} showDropdownPage={showDropdownPage} setShowDropdownPage={setShowDropdownPage}/>
         <div className='page-body-div documentation-page'>
           <Container fluid>
@@ -98,7 +92,7 @@ const Documentation = ({darkMode, setDarkMode}) => {
                         <b className='features-function'>makeBlockAccessible:</b>
                         This function adds keyboard interactions accessibility to a block.
                       </p>
-                      <p>A block can be entire web page body, tabs, interactive sliders and carousels e.t.c. Basically any component that is permanently displayed, unlike a menu that toggles display, and has a list of interractive children items.</p>
+                      <p>A block can be headers, tabs, entire web pages, interactive sliders and carousels e.t.c. Basically any component that is permanently displayed, unlike a menu that toggles display, and has a list of interractive children items.</p>
                       <HomeTabExampleOne/> 
                       <p className='feature-function-info-text'>The function creates a focus trap within the block and focus can be navigated using the Arrow keys and Tab key. The Enter and Space keys &quot;click&quot; the interactive element (currently supports buttons, links, radios and checkboxes).</p>
                       <p>The function takes two string arguments; the id of the block div, and the class name of the block items children.</p>
