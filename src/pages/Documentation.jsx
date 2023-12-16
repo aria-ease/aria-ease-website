@@ -59,7 +59,7 @@ const Documentation = ({darkMode, setDarkMode}) => {
                       </p>
                       <HomeExampleMenu/>
                       <p className='feature-function-info-text'>The function creates a focus trap within the menu and focus can be navigated using the Arrow keys and Tab key. The Escape key closes the menu and returns the focus back to the trigger button. The Enter and Space keys &quot;click&quot; the interactive element (currently supports buttons, links, radios and checkboxes).</p>
-                      <p>The function takes two string arguments; the id of the menu div, and the class name of the menu items children.</p>
+                      <p>The function takes two string arguments; the id of the menu div, and the class name of the children items of the menu.</p>
                       <div className='code-div'>
                         <code>{menuCode}</code>
                       </div>
