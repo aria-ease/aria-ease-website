@@ -117,8 +117,11 @@ const Documentation = ({darkMode, setDarkMode}) => {
             </Row>
           </Container>
         </div>
-        <div className={`slide-out-side-nav-div ${showDropdownPage ? 'slide-in' : ''}`}>
-          <SlideOutNav page={page}/>
+        
+        <div className={`slide-out-side-nav-outer-div ${showDropdownPage ? 'visible' : 'hidden'}`}>
+          <div className={`slide-out-side-nav-div ${showDropdownPage ? 'slide-in' : ''}`}>
+            <SlideOutNav page={page}/>
+          </div>
         </div>
     </div>
   )

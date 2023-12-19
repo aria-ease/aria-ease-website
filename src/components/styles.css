@@ -288,3 +288,10 @@ a {
 .body-div {
     min-width: 100vw;
 }
+.slide-out-side-nav-outer-div {
+    visibility: visible;
+    transition: visibility 500ms ease-out;
+}
+.slide-out-side-nav-outer-div.hidden {
+    visibility: hidden;
+}
