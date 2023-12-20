@@ -35,7 +35,7 @@ const Examples = ({darkMode, setDarkMode}) => {
         </div>
         
         <div className={`slide-out-side-nav-outer-div ${showDropdownPage ? 'visible' : 'hidden'}`}>
-          <div className={`slide-out-side-nav-div ${showDropdownPage ? 'slide-in' : ''}`}>
+          <div className={`slide-out-side-nav-div ${showDropdownPage ? 'slide-in' : null}`}>
             <SlideOutNav page={page}/>
           </div>
         </div>
