@@ -10,12 +10,12 @@ const SideNav = ({page}) => {
       <div className='side-nav-div' id='side-nav-div'>
         <div className='side-nav-links-section'>
           <p>Getting Started</p>
-          <Link to='/docs' aria-label='Navigate to the documentation page' className={`side-nav-link ${(page === 'documentation') ? 'active-nav-link' : null} ${(window.innerWidth >= 992) ? 'block-interactive' : null}`}>Introduction</Link>
+          <Link to='/docs' aria-label='Navigate to the documentation page' className={`side-nav-link ${(page === 'documentation') ? 'active-nav-link' : ''} ${(window.innerWidth >= 992) ? 'block-interactive' : ''}`}>Introduction</Link>
         </div>
         <div className='side-nav-links-section'>
           <p>Components</p>
-          <Link to='/examples/menu' aria-label="View menu example usage of package" className={`side-nav-link ${(page === 'menu') ? 'active-nav-link' : null} ${(window.innerWidth >= 992) ? 'block-interactive' : null}`}>Menu</Link>
-          <Link to='/examples/block' aria-label="View block example usage of package" className={`side-nav-link ${(page === 'tab') ? 'active-nav-link' : null} ${(window.innerWidth >= 992) ? 'block-interactive' : null}`} style={{marginTop: '12px'}}>Block</Link>
+          <Link to='/examples/menu' aria-label="View menu example usage of package" className={`side-nav-link ${(page === 'menu') ? 'active-nav-link' : ''} ${(window.innerWidth >= 992) ? 'block-interactive' : ''}`}>Menu</Link>
+          <Link to='/examples/block' aria-label="View block example usage of package" className={`side-nav-link ${(page === 'tab') ? 'active-nav-link' : ''} ${(window.innerWidth >= 992) ? 'block-interactive' : ''}`} style={{marginTop: '12px'}}>Block</Link>
         </div>
       </div>
     </Col>

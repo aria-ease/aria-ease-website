@@ -35,7 +35,7 @@ const TabExamples = ({darkMode, setDarkMode}) => {
         </div>
         
         <div className={`slide-out-side-nav-outer-div ${showDropdownPage ? 'visible' : 'hidden'}`}>
-          <div className={`slide-out-side-nav-div ${showDropdownPage ? 'slide-in' : null}`}>
+          <div className={`slide-out-side-nav-div ${showDropdownPage ? 'slide-in' : ''}`}>
             <SlideOutNav page={page}/>
           </div>
         </div>
