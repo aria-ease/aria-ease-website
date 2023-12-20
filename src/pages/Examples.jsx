@@ -27,7 +27,8 @@ const Examples = ({darkMode, setDarkMode}) => {
               <SideNav page={page}/>
               <Col xs={12} sm={12} md={9} lg={9}>
                 <div className='side-body-div'>
-                  <span>Menu</span>
+                  <h1 className='component-example-heading'>Menu</h1>
+            
                 </div>
               </Col>
             </Row>

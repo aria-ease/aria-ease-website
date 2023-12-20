@@ -249,6 +249,10 @@ a {
 .no-scroll {
     position: fixed !important;
     overflow: hidden !important;
+    top: 0px;
+    left: 0px; 
+    right: 0px;
+    bottom: 0px;
 }
 .slide-out-nav-outer-div {
     overflow: auto;
@@ -274,6 +278,7 @@ a {
     max-width: 100%;
     background-color: rgba(222, 222, 222, 0.506);
     margin-top: 8px;
+    overflow: auto;
 }
 .features-function {
     margin-right: 5px;
@@ -295,3 +300,39 @@ a {
 .slide-out-side-nav-outer-div.hidden {
     visibility: hidden;
 }
+.component-example-heading {
+    font-weight: 700;
+    letter-spacing: -.025em;
+    font-size: 2.25rem;
+    line-height: 2.5rem;
+    -webkit-font-smoothing: antialiased;
+}
+.block-example-page-div .code-div {
+    padding: 10px !important;
+}
+.example-each-ui-code-block-div {
+    margin-top: 24px;
+}
+.example-each-ui-code-block-div pre {
+    margin-top: 5px;
+}
+
+#customCheck input {
+    display: none;
+  }
+  .check-label {
+    cursor: pointer;
+  }
+  .completion-check-image {
+    display: none;
+  }
+  .completion-check-image.active {
+    display: block;
+  }
+  
+  .check-label:hover .completion-check-image.active circle {
+    stroke-dasharray: 0 0;
+  }
+  .check-label:focus {
+    outline-offset: 2px;
+  }
