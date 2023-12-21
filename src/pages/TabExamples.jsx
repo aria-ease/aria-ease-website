@@ -4,11 +4,10 @@ import SideNav from '../components/SideNav'
 import SlideOutNav from '../components/SlideOutNav'
 import { useState, useEffect } from 'react'
 import HomeTabExampleOne from '../components/tabs/HomeTabExampleOne'
-import CheckBoxBlock from '../components/tabs/CheckBoxBlock'
-import { makeBlockAccessible } from 'aria-ease'
+import TextInputBlock from '../components/tabs/TextInputBlock'
 
 
-const firstTabCode = `import { useEffect } from 'react'
+const firstBlockCode = `import { useEffect } from 'react'
 import { makeBlockAccessible } from "aria-ease"
 
 const App = () => {
@@ -30,6 +29,31 @@ const App = () => {
 
 export default App`
 
+const secondBlockCode = `import { makeBlockAccessible } from 'aria-ease'
+import { useEffect } from 'react'
+
+const TextInputBlock = () => {
+  useEffect(() => {
+    makeBlockAccessible('text-input-block-div', 'text-input-block-interactive')
+  })
+
+  return (
+    <div id="text-input-block-div">
+        <div className='each-text-input-block-div'>
+          <input type="text" placeholder='Name' className='text-input-block-interactive'></input>
+        </div>
+        <div className='each-text-input-block-div'>
+          <input type="text" placeholder='Email' className='text-input-block-interactive'></input>
+        </div>
+        <div className='each-text-input-block-div'>
+          <input type="text" placeholder='Phone' className='text-input-block-interactive'></input>
+        </div>
+    </div>
+  )
+}
+
+export default TextInputBlock`
+
 // eslint-disable-next-line react/prop-types
 const TabExamples = ({darkMode, setDarkMode}) => {
   const[showDropdownPage, setShowDropdownPage] = useState(false);
@@ -43,12 +67,9 @@ const TabExamples = ({darkMode, setDarkMode}) => {
       }
     },[showDropdownPage])
 
-    useEffect(() => {
-      makeBlockAccessible('checkbox-tab-div', 'checkbox-tab-items')
-    },[])
 
   return (
-    <div className='block-example-page-div'>
+    <div className='block-example-page-div' id="inner-body-div">
         <Header darkMode={darkMode} setDarkMode={setDarkMode} showDropdownPage={showDropdownPage} setShowDropdownPage={setShowDropdownPage}/>
         <div className='page-body-div'>
           <Container fluid>
@@ -60,19 +81,29 @@ const TabExamples = ({darkMode, setDarkMode}) => {
                       <span>A statically displayed component that has a list of related interractive children items e.g tabs, interactive sliders, carousels, and entire web page body.</span>
 
                       <div className='example-each-ui-code-block-div'>
+                        <h3 className=''>Tab Block</h3>
+                        <p>This creates a focus trap within the buttons tab block. The Arrow keys navigates the focus within the trap in a cycle. The Space and Enter keys &#34;clicks&#34; the interactive element. The Tab key exits the trap.</p>
                         <HomeTabExampleOne/>
                         <pre>
                           <div className='code-div'>
                             <code>
-                              {firstTabCode}
+                              {firstBlockCode}
                             </code>
                           </div>
                         </pre>
                       </div>
 
-                      <div id="checkbox-tab-div">
-                        
-                        
+                      <div className='example-each-ui-code-block-div'>
+                        <h3>Text Input Block</h3>
+                        <p>This creates a focus trap within the text input block. The Arrow keys navigates the focus within the trap in a cycle. The Tab key exits the trap.</p>
+                        <TextInputBlock/>
+                        <pre>
+                          <div className='code-div'>
+                            <code>
+                              {secondBlockCode}
+                            </code>
+                          </div>
+                        </pre>
                       </div>
                   </div>
               </Col>

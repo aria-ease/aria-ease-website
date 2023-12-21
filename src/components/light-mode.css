@@ -9,16 +9,20 @@
 .light-body .header-button:hover {
     background: rgb(211, 211, 211);
 }
-.light-body .header-search-div {
+.light-body .header-search-div,
+.light-body .each-text-input-block-div {
     background-color: rgba(225, 225, 225);
 }
-.light-body .header-search-div:hover {
+.light-body .header-search-div:hover,
+.light-body .each-text-input-block-div:hover {
     border: 1px solid rgba(48, 48, 48);
 }
-.light-body .header-search-div:focus-within {
+.light-body .header-search-div:focus-within,
+.light-body .each-text-input-block-div:focus-within {
     border: 1px solid rgba(48, 48, 48);
 }
-.light-body .header-search-div input {
+.light-body .header-search-div input,
+.light-body #text-input-block-div input {
     color: rgb(73, 73, 73);
 }
 .light-body .hero-paragraph {

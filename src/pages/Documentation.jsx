@@ -5,7 +5,6 @@ import { useState, useEffect } from 'react'
 import SlideOutNav from '../components/SlideOutNav'
 import HomeExampleMenu from '../components/menus/HomeExampleMenu'
 import HomeTabExampleOne from '../components/tabs/HomeTabExampleOne'
-import { makeBlockAccessible } from 'aria-ease'
 
 const menuCode = `makeMenuAccessible('custom-menu', 'profile-menu-item')`
 const updateHideCode = `updateMenuTriggerAriaAttributes('display-button', 'Hide profile menu')`
@@ -25,10 +24,6 @@ const Documentation = ({darkMode, setDarkMode}) => {
       document.querySelector('body').classList.remove('no-scroll')
     }
   },[showDropdownPage])
-
-  useEffect(() => {
-    makeBlockAccessible('inner-body-div', 'block-interactive')
-  },[])
 
   return (
     <div id="inner-body-div">

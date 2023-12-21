@@ -9,16 +9,20 @@
 .dark-body .header-button:hover {
     border: 0.2px solid rgba(97, 97, 97, 1);
 }
-.dark-body .header-search-div {
+.dark-body .header-search-div,
+.dark-body .each-text-input-block-div {
     background: rgba(48, 48, 48);
 }
-.dark-body .header-search-div:hover {
+.dark-body .header-search-div:hover,
+.dark-body .each-text-input-block-div:hover {
     border: 1px solid rgba(225, 225, 225, 1);
 }
-.dark-body .header-search-div:focus-within {
+.dark-body .header-search-div:focus-within,
+.dark-body .each-text-input-block-div:focus-within {
     border: 2px solid rgba(225, 225, 225, 1);
 }
-.dark-body .header-search-div {
+.dark-body .header-search-div,
+.dark-body .each-text-input-block-div {
     border: 1px solid rgba(97, 97, 97, 1);
 }
 .dark-body .hero-heading {
@@ -56,4 +60,7 @@
 .dark-body,
 .dark-body .header {
     background-color: rgba(26, 26, 26);
+}
+.dark-body .home-example-tab-one-item {
+    border: 0.2px solid rgba(27, 27, 27, 0.226);
 }

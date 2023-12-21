@@ -4,7 +4,6 @@ import HomeExampleMenu from "../components/menus/HomeExampleMenu"
 import HomeTabExampleOne from "../components/tabs/HomeTabExampleOne"
 import SlideOutNav from "../components/SlideOutNav"
 import { useState, useEffect } from "react"
-import { makeBlockAccessible } from "aria-ease"
 
 // eslint-disable-next-line react/prop-types
 const Homepage = ({darkMode, setDarkMode}) => {
@@ -18,10 +17,6 @@ const Homepage = ({darkMode, setDarkMode}) => {
       document.querySelector('body').classList.remove('no-scroll')
     }
   },[showDropdownPage])
-
-  useEffect(() => {
-    makeBlockAccessible('inner-body-div', 'block-interactive')
-  },[])
 
   return (
     <div className="home-body" id="inner-body-div">

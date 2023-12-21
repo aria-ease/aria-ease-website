@@ -19,7 +19,7 @@ const Examples = ({darkMode, setDarkMode}) => {
   },[showDropdownPage])
 
   return (
-    <div>
+    <div id="inner-body-div">
         <Header darkMode={darkMode} setDarkMode={setDarkMode} showDropdownPage={showDropdownPage} setShowDropdownPage={setShowDropdownPage}/>
         <div className='page-body-div'>
           <Container fluid>
