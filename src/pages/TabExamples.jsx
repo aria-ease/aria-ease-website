@@ -5,6 +5,7 @@ import SlideOutNav from '../components/SlideOutNav'
 import { useState, useEffect } from 'react'
 import HomeTabExampleOne from '../components/tabs/HomeTabExampleOne'
 import TextInputBlock from '../components/tabs/TextInputBlock'
+import { makeBlockAccessible } from 'aria-ease'
 
 
 const firstBlockCode = `import { useEffect } from 'react'
@@ -67,6 +68,9 @@ const TabExamples = ({darkMode, setDarkMode}) => {
       }
     },[showDropdownPage])
 
+    useEffect(() => {
+      makeBlockAccessible('inner-body-div', 'block-interactive')
+    },[])
 
   return (
     <div className='block-example-page-div' id="inner-body-div">

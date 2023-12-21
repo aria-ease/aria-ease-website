@@ -2,22 +2,18 @@ import './components/styles.css'
 import './components/dark-mode.css'
 import './components/light-mode.css'
 import 'bootstrap/dist/css/bootstrap.css'
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 import Homepage from "./pages/Homepage"
 import Documentation from './pages/Documentation'
 import Examples from './pages/Examples'
 import TabExamples from './pages/TabExamples'
-import { makeBlockAccessible } from 'aria-ease'
+
 
 
 const App = () => {
   const[darkMode, setDarkMode] = useState(true)
 
-  useEffect(() => {
-    makeBlockAccessible('inner-body-div', 'block-interactive')
-  },[])
-  
   return (
     <div className={`body-div ${darkMode ? 'dark-body' : 'light-body'}`}>
       <Router>

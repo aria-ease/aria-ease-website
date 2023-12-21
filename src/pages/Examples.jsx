@@ -3,6 +3,7 @@ import { Container, Row, Col } from 'react-bootstrap'
 import SideNav from '../components/SideNav'
 import SlideOutNav from '../components/SlideOutNav'
 import { useState, useEffect } from 'react'
+import { makeBlockAccessible } from 'aria-ease'
 
 
 // eslint-disable-next-line react/prop-types
@@ -17,6 +18,10 @@ const Examples = ({darkMode, setDarkMode}) => {
       document.querySelector('body').classList.remove('no-scroll')
     }
   },[showDropdownPage])
+
+  useEffect(() => {
+    makeBlockAccessible('inner-body-div', 'block-interactive')
+  },[])
 
   return (
     <div id="inner-body-div">
