@@ -321,32 +321,44 @@ a {
 }
 #customCheck input {
     display: none;
-  }
-  .check-label {
+}
+.check-label {
     cursor: pointer;
-  }
-  .completion-check-image {
+}
+.completion-check-image {
     display: none;
-  }
-  .completion-check-image.active {
+}
+.completion-check-image.active {
     display: block;
-  }
-  
-  .check-label:hover .completion-check-image.active circle {
+}
+.check-label:hover .completion-check-image.active circle {
     stroke-dasharray: 0 0;
-  }
-  .check-label:focus {
+}
+.check-label:focus {
     outline-offset: 2px;
-  }
-  #text-input-block-div {
+}
+#text-input-block-div {
     display: flex;
     flex-direction: column;
-  }
-  .each-text-input-block-div {
+}
+.each-text-input-block-div {
     border-radius: 8px;
     max-width: 480px;
     height: 32px;
     padding: 0px 8px 0px 8px;
     transition: all 200ms ease-in;
     margin: 5px 0px;
-  }
+}
+input:-webkit-autofill,
+textarea:-webkit-autofill,
+select:-webkit-autofill,
+input:-moz-autofill,
+textarea:-moz-autofill,
+select:-moz-autofill {
+  box-shadow: 0 0 0 1000px rgba(0, 0, 0, 0) inset !important;
+  -webkit-box-shadow: 0 0 0 1000px rgba(0, 0, 0, 0) inset !important;
+  background-color: transparent !important;
+}
+.text-input-block-interactive {
+    width: 100%;
+}
