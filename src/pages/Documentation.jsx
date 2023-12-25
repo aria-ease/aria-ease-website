@@ -27,7 +27,9 @@ const Documentation = ({darkMode, setDarkMode}) => {
   },[showDropdownPage])
 
   useEffect(() => {
-    makeBlockAccessible('inner-body-div', 'block-interactive')
+    const cleanUp = makeBlockAccessible('inner-body-div', 'block-interactive')
+
+    return cleanUp
   },[])
 
   return (

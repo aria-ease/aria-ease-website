@@ -1,7 +1,9 @@
 import { makeMenuAccessible, updateMenuTriggerAriaAttributes, cleanUpMenuEventListeners } from 'aria-ease'
 
 const HomeExampleMenu = () => {
-    const toggleMenuDisplay = () => {
+    const toggleMenuDisplay = (event) => {
+      if(event.key === 'Enter' || event.key === " ") {
+        event.preventDefault();
         const menu = document.querySelector('#custom-menu')
         if(getComputedStyle(menu).display === 'none') {
           menu.style.display = 'block'
@@ -13,6 +15,7 @@ const HomeExampleMenu = () => {
           updateMenuTriggerAriaAttributes('display-button', 'Display profile menu')
         }
       }
+    }
   return (
     <div>
       <button
@@ -24,6 +27,7 @@ const HomeExampleMenu = () => {
         aria-controls="custom-menu"
         aria-label="Display profile menu"
         className='home-menu-example-trigger-button block-interactive'
+        onKeyDown={toggleMenuDisplay}
       >
         Display Example Menu
       </button>

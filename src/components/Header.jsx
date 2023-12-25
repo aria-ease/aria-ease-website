@@ -34,7 +34,7 @@ const Header = ({darkMode, setDarkMode, showDropdownPage, setShowDropdownPage}) 
         </div>
         <div className='header-buttons-grid-div' id="header-buttons-grid-div">
             <a href="https://github.com/aria-ease/aria-ease" aria-label="Navigate to project's GitHub repository" className='header-button block-interactive center-flex'><FaGithub className='header-button-icon'/></a>
-            <button className='header-button block-interactive center-flex' onClick={() => {setDarkMode(!darkMode)}} onKeyDown={(event) => {if(event.key === 'Enter' || event.key === " ") {event.preventDefault()}}}>
+            <button className='header-button block-interactive center-flex' onClick={() => {setDarkMode(!darkMode)}} onKeyDown={(event) => {if(event.key === 'Enter' || event.key === " ") {setDarkMode(!darkMode)}}}>
                 <img src={sunicon} alt='Sun Icon' id='Sun' className='theme-mode-image'></img>
             </button>
         </div>
