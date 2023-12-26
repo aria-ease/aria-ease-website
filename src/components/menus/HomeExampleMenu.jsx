@@ -2,10 +2,7 @@ import { makeMenuAccessible, updateMenuTriggerAriaAttributes, cleanUpMenuEventLi
 
 const HomeExampleMenu = () => {
   const toggleMenuDisplay = (event) => {
-    if (
-      event.type === 'mousedown' ||
-      (event.type === 'keydown' && (event.key === 'Enter' || event.key === ' '))
-    ) {
+    if (event.type === 'mousedown' || (event.type === 'keydown' && (event.key === 'Enter' || event.key === ' '))) {
       event.preventDefault();
       const menu = document.querySelector('#custom-menu');
       if (getComputedStyle(menu).display === 'none') {
@@ -19,7 +16,7 @@ const HomeExampleMenu = () => {
       }
     }
   };
-  
+
   return (
     <div>
       <button
