@@ -2,7 +2,7 @@ import './components/styles.css'
 import './components/dark-mode.css'
 import './components/light-mode.css'
 import 'bootstrap/dist/css/bootstrap.css'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 import Homepage from "./pages/Homepage"
 import Documentation from './pages/Documentation'
@@ -13,6 +13,10 @@ import TabExamples from './pages/TabExamples'
 
 const App = () => {
   const[darkMode, setDarkMode] = useState(true)
+
+  useEffect(() => {
+    console.log(darkMode)
+  },[darkMode])
 
   return (
     <div className={`body-div ${darkMode ? 'dark-body' : 'light-body'}`}>
