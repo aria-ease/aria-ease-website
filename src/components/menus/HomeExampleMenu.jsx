@@ -1,21 +1,25 @@
 import { makeMenuAccessible, updateMenuTriggerAriaAttributes, cleanUpMenuEventListeners } from 'aria-ease'
 
 const HomeExampleMenu = () => {
-    const toggleMenuDisplay = (event) => {
-      if (event.type === 'mousedown' || event.key === 'Enter' || event.key === ' ') {
-        event.preventDefault();
-        const menu = document.querySelector('#custom-menu')
-        if(getComputedStyle(menu).display === 'none') {
-          menu.style.display = 'block'
-          makeMenuAccessible('custom-menu', 'profile-menu-item');
-          updateMenuTriggerAriaAttributes('display-button', 'Hide profile menu')
-        } else {
-          cleanUpMenuEventListeners('custom-menu', 'profile-menu-item')
-          menu.style.display = 'none'
-          updateMenuTriggerAriaAttributes('display-button', 'Display profile menu')
-        }
+  const toggleMenuDisplay = (event) => {
+    if (
+      event.type === 'mousedown' ||
+      (event.type === 'keydown' && (event.key === 'Enter' || event.key === ' '))
+    ) {
+      event.preventDefault();
+      const menu = document.querySelector('#custom-menu');
+      if (getComputedStyle(menu).display === 'none') {
+        menu.style.display = 'block';
+        makeMenuAccessible('custom-menu', 'profile-menu-item');
+        updateMenuTriggerAriaAttributes('display-button', 'Hide profile menu');
+      } else {
+        cleanUpMenuEventListeners('custom-menu', 'profile-menu-item');
+        menu.style.display = 'none';
+        updateMenuTriggerAriaAttributes('display-button', 'Display profile menu');
       }
     }
+  };
+  
   return (
     <div>
       <button
