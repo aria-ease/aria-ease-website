@@ -96,20 +96,16 @@
     }
 }
 @media(max-width: 991px) {
-    button:focus,
-    a:focus {
+    .profile-menu-item:focus {
         border: 2px solid rgba(0, 91, 211, 1);
-        border-radius: 8px;
         outline: none !important;
     }
 }
-@media(min-width: 992px) {
-    button:focus,
-    a:focus {
-        outline: 2px solid rgba(0, 91, 211, 1) !important;
-        outline-offset: 1px !important;
-        border-radius: 8px !important;
-    }
+button:focus,
+a:focus {
+    outline: 2px solid rgba(0, 91, 211, 1);
+    outline-offset: 1px;
+    border-radius: 8px;
 }
 .hero-heading {
     font-weight: 700;
