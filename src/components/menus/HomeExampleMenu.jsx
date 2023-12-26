@@ -4,16 +4,16 @@ const HomeExampleMenu = () => {
     const toggleMenuDisplay = (event) => {
       if(event.key === 'Enter' || event.key === " ") {
         event.preventDefault();
-        const menu = document.querySelector('#custom-menu')
-        if(getComputedStyle(menu).display === 'none') {
-          menu.style.display = 'block'
-          makeMenuAccessible('custom-menu', 'profile-menu-item');
-          updateMenuTriggerAriaAttributes('display-button', 'Hide profile menu')
-        } else {
-          cleanUpMenuEventListeners('custom-menu', 'profile-menu-item')
-          menu.style.display = 'none'
-          updateMenuTriggerAriaAttributes('display-button', 'Display profile menu')
-        }
+      }
+      const menu = document.querySelector('#custom-menu')
+      if(getComputedStyle(menu).display === 'none') {
+        menu.style.display = 'block'
+        makeMenuAccessible('custom-menu', 'profile-menu-item');
+        updateMenuTriggerAriaAttributes('display-button', 'Hide profile menu')
+      } else {
+        cleanUpMenuEventListeners('custom-menu', 'profile-menu-item')
+        menu.style.display = 'none'
+        updateMenuTriggerAriaAttributes('display-button', 'Display profile menu')
       }
     }
   return (
