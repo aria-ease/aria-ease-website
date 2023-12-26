@@ -2,9 +2,8 @@ import { makeMenuAccessible, updateMenuTriggerAriaAttributes, cleanUpMenuEventLi
 
 const HomeExampleMenu = () => {
     const toggleMenuDisplay = (event) => {
-      if(event.key === 'Enter' || event.key === " ") {
+      if (event.type === 'mousedown' || event.key === 'Enter' || event.key === ' ') {
         event.preventDefault();
-        event.stopPropagation();
         const menu = document.querySelector('#custom-menu')
         if(getComputedStyle(menu).display === 'none') {
           menu.style.display = 'block'
@@ -17,24 +16,11 @@ const HomeExampleMenu = () => {
         }
       }
     }
-
-    const clickMenuDisplay = () => {
-      const menu = document.querySelector('#custom-menu')
-        if(getComputedStyle(menu).display === 'none') {
-          menu.style.display = 'block'
-          makeMenuAccessible('custom-menu', 'profile-menu-item');
-          updateMenuTriggerAriaAttributes('display-button', 'Hide profile menu')
-        } else {
-          cleanUpMenuEventListeners('custom-menu', 'profile-menu-item')
-          menu.style.display = 'none'
-          updateMenuTriggerAriaAttributes('display-button', 'Display profile menu')
-        }
-    }
   return (
     <div>
       <button
         id="display-button"
-        onClick={clickMenuDisplay}
+        onMouseDown={toggleMenuDisplay}
         aria-haspopup={true}
         aria-pressed={false}
         aria-expanded={false}
