@@ -20,9 +20,9 @@ const Homepage = ({darkMode, setDarkMode}) => {
   },[showDropdownPage])
 
   useEffect(() => {
-    const cleanUp = makeBlockAccessible('inner-body-div', 'block-interactive')
+    makeBlockAccessible('inner-body-div', 'block-interactive')
 
-    return cleanUp
+    
   },[])
 
   return (
