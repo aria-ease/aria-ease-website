@@ -13,8 +13,9 @@ const SlideOutNav = ({page}) => {
       <div className="slide-nav-links-section">
         <p>Components</p>
         <div className="slide-out-nav-div">
-          <Link to='/examples/menu' aria-label="View menu example usage of package" className={`side-nav-link ${(page === 'menu') ? 'active-nav-link' : ''}`}>Menu</Link>
+          <Link to='/examples/accordion' aria-label="View accordion example usage of package" className={`side-nav-link ${(page === 'accordions') ? 'active-nav-link' : ''}`}>Accordion</Link>
           <Link to='/examples/block' aria-label="View block example usage of package" className={`side-nav-link ${(page === 'tab') ? 'active-nav-link' : ''}`} style={{marginTop: '12px'}}>Block</Link>
+          <Link to='/examples/menu' aria-label="View menu example usage of package" className={`side-nav-link ${(page === 'menu') ? 'active-nav-link' : ''}`} style={{marginTop: '12px'}}>Menu</Link>
         </div>
       </div>
     </div>
