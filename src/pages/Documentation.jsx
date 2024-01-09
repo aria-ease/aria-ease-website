@@ -13,6 +13,26 @@ const updateDisplayCode = `updateMenuTriggerAriaAttributes('display-button', 'Di
 const tabCode = `makeBlockAccessible('custom-tab', 'custom-tab-item')`
 const cleanUpCode = `cleanUpMenuEventListeners('custom-menu', 'profile-menu-item')`
 
+const accordionCode = `const[isAccordionShown, setIsAccordionShown] = useState([
+  {display: false, closedAriaLabel: 'Expand information on how to make appointment', openedAriaLabel: 'Collapse information on how to make appointment'},
+  {display: false, closedAriaLabel: 'Expand information on how to get copy of records', openedAriaLabel: 'Collapse information on how to get copy of records'},
+  {display: false, closedAriaLabel: 'Expand information on extra charge for copy of records', openedAriaLabel: 'Collapse information on extra charge for copy of records'}
+])
+
+const handleAccordionClick = (event, index) => {
+  if (event.type === 'mousedown' || (event.type === 'keydown' && (event.key === 'Enter' || event.key === ' '))) {
+    event.preventDefault();
+    setIsAccordionShown((prevStates) => {
+      const newStates = prevStates.map((state, i) => ({
+        ...state,
+        display: i === index ? !state.display : false,
+      }));
+      updateAccordionTriggerAriaAttributes(newStates, 'dropdown-button', index);
+      return newStates;
+    });
+  }
+};`
+
 // eslint-disable-next-line react/prop-types
 const Documentation = ({darkMode, setDarkMode}) => {
   const[showDropdownPage, setShowDropdownPage] = useState(false);
@@ -112,6 +132,24 @@ const Documentation = ({darkMode, setDarkMode}) => {
                       <div className='code-div'>
                         <code>makeBlockAccessible(id-of-page-div, class-name-given-to-all-the-interactive-elements-of-the-page)</code>
                       </div>
+                    </>
+
+                    <>
+                      <p style={{marginTop: '80px'}}>
+                        <b className='features-function'>updateAccordionTriggerAriaAttributes:</b>
+                        This function enables screen reader support for accordions.
+                      </p>
+                      <p>This feature helps visually impaired users to navigate interacting with the accordions, by informing the users about the current state, and purpose, of each of the accordion. The states are either expanded or not expanded.</p>
+                      <p>The function updates the aria-pressed, aria-expanded and aria-label attributes of the accordion toggle button.</p>
+                      <p>The function accepts 3 arguments; an array of objects with information about each accordion in the collection, a shared class of all the accordion triggers, and the index position of the currently clicked trigger relative to the main accordion container and other trigger buttons.</p>
+                      <pre>
+                          <div className='code-div'>
+                            <code>
+                              {accordionCode}
+                            </code>
+                          </div>
+                      </pre>
+                      <p>The updateAccordionTriggerAriaAttributes should be called with the new state after the display state for the corresponding accordion has been updated to true and the accordion content has become visible or added to the DOM.</p>
                     </>
                   </div>
                 </div>
