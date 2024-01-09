@@ -311,7 +311,7 @@ a {
     line-height: 2.5rem;
     -webkit-font-smoothing: antialiased;
 }
-.block-example-page-div .code-div {
+#inner-body-div .code-div {
     padding: 10px !important;
 }
 .example-each-ui-code-block-div {
@@ -365,4 +365,36 @@ select:-moz-autofill {
 }
 .text-input-block-interactive {
     width: 100%;
+}
+.accordion-example-page-div .side-body-div p {
+    margin-top: 20px;
+}
+
+.faq-each-div {
+    margin: 20px 0px 0px 0px;
+}
+.dropdown-icon-image {
+    float: right;
+    width: 15px;
+    height: 20px;
+}
+.dropdown-button {
+    border: 1px solid #0051ff7a;
+    border-radius: 10px;
+    background-color: white;
+    padding: 15px 20px;
+    width: 100%;
+}
+.faq-each-div p {
+    font-size: 14px;
+    font-weight: 400;
+    margin-top: 15px;
+}
+.dropdown-heading-text {
+    float: left;
+    font-size: 15px;
+    font-weight: 600;
+}
+.faq-div {
+    margin-bottom: 30px;
 }

@@ -25,7 +25,7 @@ const Header = ({darkMode, setDarkMode, showDropdownPage, setShowDropdownPage}) 
         <Link to='/' className='header-logo-link block-interactive' aria-label="Navigate to home page"><span className="logo-span">aria-ease</span></Link>
         <div className='header-nav-link-div' id="header-nav-link-div">
             <Link to='/docs' className='header-nav-link block-interactive' aria-label='Navigate to the documentation page'>Documentation</Link>
-            <Link to='/examples/menu' aria-label="View examples of package implementation" className='header-nav-link block-interactive'>Examples</Link>
+            <Link to='/examples/accordion' aria-label="View examples of package implementation" className='header-nav-link block-interactive'>Examples</Link>
             <Link to='https://github.com/aria-ease/aria-ease' aria-label="Navigate to project's GitHub repository" className='header-nav-link block-interactive'>Github</Link>
         </div>
         <div className="header-search-div">

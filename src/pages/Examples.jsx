@@ -4,6 +4,53 @@ import SideNav from '../components/SideNav'
 import SlideOutNav from '../components/SlideOutNav'
 import { useState, useEffect } from 'react'
 import { makeBlockAccessible } from 'aria-ease'
+import HomeExampleMenu from '../components/menus/HomeExampleMenu'
+
+
+const firstMenuCode = `import { makeMenuAccessible, updateMenuTriggerAriaAttributes, cleanUpMenuEventListeners } from 'aria-ease'
+
+const HomeExampleMenu = () => {
+  const toggleMenuDisplay = (event) => {
+    if (event.type === 'mousedown' || (event.type === 'keydown' && (event.key === 'Enter' || event.key === ' '))) {
+      event.preventDefault();
+      const menu = document.querySelector('#custom-menu');
+      if (getComputedStyle(menu).display === 'none') {
+        menu.style.display = 'block';
+        makeMenuAccessible('custom-menu', 'profile-menu-item');
+        updateMenuTriggerAriaAttributes('display-button', 'Hide profile menu');
+      } else {
+        cleanUpMenuEventListeners('custom-menu', 'profile-menu-item');
+        menu.style.display = 'none';
+        updateMenuTriggerAriaAttributes('display-button', 'Display profile menu');
+      }
+    }
+  };
+
+  return (
+    <div>
+      <button
+        id="display-button"
+        onMouseDown={toggleMenuDisplay}
+        aria-haspopup={true}
+        aria-pressed={false}
+        aria-expanded={false}
+        aria-controls="custom-menu"
+        aria-label="Display profile menu"
+        className='home-menu-example-trigger-button block-interactive'
+        onKeyDown={toggleMenuDisplay}
+      >
+        Display Example Menu
+      </button>
+      <div id="custom-menu" role="menu" aria-labelledby="display-button" style={{display: 'none', marginTop: '5px'}}>
+        <button role="menuitem" className="profile-menu-item" onClick={() => alert('Button clicked')}>One</button>
+        <button role="menuitem" className="profile-menu-item" onClick={() => alert('Button clicked')}>Two</button>
+        <button role="menuitem" className="profile-menu-item" onClick={() => alert('Button clicked')}>Three</button>
+      </div>
+    </div>
+  )
+}
+
+export default HomeExampleMenu`
 
 
 // eslint-disable-next-line react/prop-types
@@ -26,7 +73,7 @@ const Examples = ({darkMode, setDarkMode}) => {
   },[])
 
   return (
-    <div id="inner-body-div">
+    <div id="inner-body-div" className='menu-example-page-div'>
         <Header darkMode={darkMode} setDarkMode={setDarkMode} showDropdownPage={showDropdownPage} setShowDropdownPage={setShowDropdownPage}/>
         <div className='page-body-div'>
           <Container fluid>
@@ -34,8 +81,24 @@ const Examples = ({darkMode, setDarkMode}) => {
               <SideNav page={page}/>
               <Col xs={12} sm={12} md={9} lg={9}>
                 <div className='side-body-div'>
-                  <h1 className='component-example-heading'>Menu</h1>
-            
+                  <h1 className='component-example-heading'>Menus</h1>
+                  <span>A component that toggles display and has a list of interactive children items e.g dropdowns, menu navigations.</span>
+
+                  <div className='example-each-ui-code-block-div'>
+                    <h3 className=''>Buttons Menu</h3>
+                    <p>This creates a focus trap within the displayed menu. The Arrow keys navigates the focus within the trap in a cycle. The Space and Enter keys &#34;clicks&#34; the interactive element. The Escape key returns the focus back to the button that toggles the menu, which can then be clicked with the Enter or Space key to close the menu (provided keyboard interaction is added to the toggle button). The Tab key exits the trap.</p>
+                    <p>The toggle button has keyboard interaction support using the makeBlockAccessible function.</p>
+                    <HomeExampleMenu/>
+                    <pre>
+                      <div className='code-div'>
+                        <code>
+                          {firstMenuCode}
+                        </code>
+                      </div>
+                    </pre>
+                    <p>The onMouseDown and onKeyDown event handlers are used in place of the onClick event handler because the package uses a click() function to handle key press, which means if using the onClick event, two events are being acted upon, which leads to a conflict and irregular results.</p>
+                    <p>When you click on an element that has been enabled for keyboard interaction using the package, with the keyboard, on the package end a keydown event listens for key interactions and carries out a respective action based on the pressed key. Using the onClick event handler in the component carries out the same action which causes unexpected results, hence using onMouseDown and onKeyDown in the component.</p>
+                  </div>
                 </div>
               </Col>
             </Row>

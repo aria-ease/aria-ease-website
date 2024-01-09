@@ -8,6 +8,7 @@ import Homepage from "./pages/Homepage"
 import Documentation from './pages/Documentation'
 import Examples from './pages/Examples'
 import TabExamples from './pages/TabExamples'
+import Accordions from './pages/Accordions'
 
 
 
@@ -22,6 +23,7 @@ const App = () => {
           <Route path="/docs" element={<Documentation darkMode={darkMode} setDarkMode={setDarkMode}/>}/>
           <Route path="/examples/menu" element={<Examples darkMode={darkMode} setDarkMode={setDarkMode}/>}/>
           <Route path="/examples/block" element={<TabExamples darkMode={darkMode} setDarkMode={setDarkMode}/>}/>
+          <Route path="/examples/accordion" element={<Accordions darkMode={darkMode} setDarkMode={setDarkMode}/>}/>
         </Routes>
       </Router>
     </div>
