@@ -117,7 +117,7 @@ const Accordions = ({darkMode, setDarkMode}) => {
               <SideNav page={page}/>
               <Col xs={12} sm={12} md={9} lg={9}>
                 <div className='side-body-div'>
-                  <h1 className='component-example-heading'>Accordions</h1>
+                  <h1 className='component-example-heading'>Accordion</h1>
                   <span>A vertically stacked component that expands and collapses to reveal and hide content respectively. The difference between this and a menu is that a menu has a list interactive items, with the first item being focused when the menu is opened, while an accordion only contains non-interactive content.</span>
                   <p>If you have a component with a combination of both interactive and non-interactive elements, that requires the interactive elements to be keyboard interactive and focused, use a menu instead.</p>
                   <p>The updateAccordionTriggerAriaAttributes function enables screen reader support for the accordions. This feature helps visually impaired users to navigate interacting with the accordions, by informing the users about the current state, and purpose, of each of the accordion. The states are either expanded or not expanded. The function updates the aria-pressed, aria-expanded and aria-label attributes of the accordion toggle button.</p>
