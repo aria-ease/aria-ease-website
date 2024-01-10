@@ -81,7 +81,7 @@ const Examples = ({darkMode, setDarkMode}) => {
               <SideNav page={page}/>
               <Col xs={12} sm={12} md={9} lg={9}>
                 <div className='side-body-div'>
-                  <h1 className='component-example-heading'>Menus</h1>
+                  <h1 className='component-example-heading'>Menu</h1>
                   <span>A component that toggles display and has a list of interactive children items e.g dropdowns, menu navigations.</span>
 
                   <div className='example-each-ui-code-block-div'>

@@ -149,7 +149,7 @@ const Documentation = ({darkMode, setDarkMode}) => {
                             </code>
                           </div>
                       </pre>
-                      <p>The updateAccordionTriggerAriaAttributes should be called with the new state after the display state for the corresponding accordion has been updated to true and the accordion content has become visible or added to the DOM.</p>
+                      <p>The updateAccordionTriggerAriaAttributes should be called with the new state after the display state for the corresponding accordion has been updated to true/false and the accordion content has become  added to/removed from the DOM.</p>
                     </>
                   </div>
                 </div>
