@@ -7,7 +7,7 @@ const HomeExampleMenu = () => {
       const menu = document.querySelector('#custom-menu');
       if (getComputedStyle(menu).display === 'none') {
         menu.style.display = 'block';
-        makeMenuAccessible('custom-menu', 'profile-menu-item');
+        makeMenuAccessible('custom-menu', 'profile-menu-item', 'Display profile menu');
         updateMenuTriggerAriaAttributes('display-button', 'Hide profile menu');
       } else {
         cleanUpMenuEventListeners('custom-menu', 'profile-menu-item');
@@ -23,7 +23,7 @@ const HomeExampleMenu = () => {
         id="display-button"
         onMouseDown={toggleMenuDisplay}
         aria-haspopup={true}
-        aria-pressed={false}
+        role="button"
         aria-expanded={false}
         aria-controls="custom-menu"
         aria-label="Display profile menu"

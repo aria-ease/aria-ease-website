@@ -7,11 +7,32 @@ import HomeExampleMenu from '../components/menus/HomeExampleMenu'
 import HomeTabExampleOne from '../components/tabs/HomeTabExampleOne'
 import { makeBlockAccessible } from 'aria-ease'
 
-const menuCode = `makeMenuAccessible('custom-menu', 'profile-menu-item')`
+const menuCode = `makeMenuAccessible('custom-menu', 'profile-menu-item', 'Display profile menu')`
 const updateHideCode = `updateMenuTriggerAriaAttributes('display-button', 'Hide profile menu')`
 const updateDisplayCode = `updateMenuTriggerAriaAttributes('display-button', 'Display profile menu')`
 const tabCode = `makeBlockAccessible('custom-tab', 'custom-tab-item')`
 const cleanUpCode = `cleanUpMenuEventListeners('custom-menu', 'profile-menu-item')`
+
+const accordionCode = `const[isAccordionShown, setIsAccordionShown] = useState([
+  {display: false, closedAriaLabel: 'Expand information on how to make appointment', openedAriaLabel: 'Collapse information on how to make appointment'},
+  {display: false, closedAriaLabel: 'Expand information on how to get copy of records', openedAriaLabel: 'Collapse information on how to get copy of records'},
+  {display: false, closedAriaLabel: 'Expand information on extra charge for copy of records', openedAriaLabel: 'Collapse information on extra charge for copy of records'}
+])
+
+const handleAccordionClick = (event, index) => {
+  if (event.type === 'mousedown' || (event.type === 'keydown' && (event.key === 'Enter' || event.key === ' '))) {
+    event.preventDefault();
+    setIsAccordionShown((prevStates) => {
+      const newStates = prevStates.map((state, i) => ({
+        ...state,
+        display: i === index ? !state.display : false,
+      }));
+      updateAccordionTriggerAriaAttributes(newStates, 'dropdown-button', index);
+      return newStates;
+    });
+  }
+};`
+
 
 // eslint-disable-next-line react/prop-types
 const Documentation = ({darkMode, setDarkMode}) => {
@@ -61,7 +82,7 @@ const Documentation = ({darkMode, setDarkMode}) => {
                       </p>
                       <HomeExampleMenu/>
                       <p className='feature-function-info-text'>The function creates a focus trap within the menu and focus can be navigated using the Arrow keys and Tab key. The Escape key closes the menu and returns the focus back to the trigger button. The Enter and Space keys &quot;click&quot; the interactive element (currently supports buttons, links, radios and checkboxes).</p>
-                      <p>The function takes two string arguments; the id of the menu div, and the class name of the children items of the menu.</p>
+                      <p>The makeMenuAccessible function takes three string arguments; the id of the menu, the class name of the children item of the menu, and the aria-label for the closed/hidden state of the menu.</p>
                       <div className='code-div'>
                         <code>{menuCode}</code>
                       </div>
@@ -71,9 +92,9 @@ const Documentation = ({darkMode, setDarkMode}) => {
                     <>
                       <p style={{marginTop: '80px'}}>
                         <b className='features-function'>updateMenuTriggerAriaAttributes:</b>
-                        This function updates the aria attributes of the menu trigger button. The aria-pressed, aria-expanded and aria-label attributes of the trigger button are toggled based on the current visibility of the menu. 
+                        This function updates the aria attributes of the menu trigger button. The aria-expanded and aria-label attributes of the trigger button are updated based on the current visibility of the menu. 
                       </p>
-                      <p>The function takes two string arguments; the id of the trigger button, and the aria-label that will replace the current one in the DOM. The aria-pressed and aria-expanded attributes get toggle to either true or false.</p>
+                      <p>The function takes two string arguments; the id of the trigger button, and the aria-label that will replace the current one in the DOM. The aria-expanded attribute gets toggled to either true or false.</p>
                       <p>Call the function as below when the menu is displayed. It updates the aria label of the trigger button to indicate that the menu is open and the button will close it.</p>
                       <div className='code-div'>
                         <code>{updateHideCode}</code>
@@ -112,6 +133,24 @@ const Documentation = ({darkMode, setDarkMode}) => {
                       <div className='code-div'>
                         <code>makeBlockAccessible(id-of-page-div, class-name-given-to-all-the-interactive-elements-of-the-page)</code>
                       </div>
+                    </>
+
+                    <>
+                      <p style={{marginTop: '80px'}}>
+                        <b className='features-function'>updateAccordionTriggerAriaAttributes:</b>
+                        This function enables screen reader support for accordions.
+                      </p>
+                      <p>This feature helps visually impaired users to navigate interacting with the accordions, by informing the users about the current state, and purpose, of each of the accordion. The states are either expanded or not expanded.</p>
+                      <p>The function updates the aria-expanded and aria-label attributes of the accordion toggle button.</p>
+                      <p>The function accepts 3 arguments; an array of objects with information about each accordion in the collection, a shared class of all the accordion triggers, and the index position of the currently clicked trigger relative to the main accordion container and other trigger buttons.</p>
+                      <pre>
+                        <div className='code-div'>
+                          <code>
+                            {accordionCode}
+                          </code>
+                        </div>
+                      </pre>
+                      <p>The updateAccordionTriggerAriaAttributes should be called with the new state after the display state for the corresponding accordion has been updated to true/false and the accordion content has become  added to/removed from the DOM.</p>
                     </>
                   </div>
                 </div>
