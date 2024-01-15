@@ -6,7 +6,6 @@ import { useState, useEffect } from 'react'
 import { makeBlockAccessible } from 'aria-ease'
 import HomeExampleMenu from '../components/menus/HomeExampleMenu'
 
-
 const firstMenuCode = `import { makeMenuAccessible, updateMenuTriggerAriaAttributes, cleanUpMenuEventListeners } from 'aria-ease'
 
 const HomeExampleMenu = () => {
@@ -16,7 +15,7 @@ const HomeExampleMenu = () => {
       const menu = document.querySelector('#custom-menu');
       if (getComputedStyle(menu).display === 'none') {
         menu.style.display = 'block';
-        makeMenuAccessible('custom-menu', 'profile-menu-item');
+        makeMenuAccessible('custom-menu', 'profile-menu-item', 'Display profile menu');
         updateMenuTriggerAriaAttributes('display-button', 'Hide profile menu');
       } else {
         cleanUpMenuEventListeners('custom-menu', 'profile-menu-item');
@@ -32,7 +31,7 @@ const HomeExampleMenu = () => {
         id="display-button"
         onMouseDown={toggleMenuDisplay}
         aria-haspopup={true}
-        aria-pressed={false}
+        role="button"
         aria-expanded={false}
         aria-controls="custom-menu"
         aria-label="Display profile menu"
@@ -86,7 +85,7 @@ const Examples = ({darkMode, setDarkMode}) => {
 
                   <div className='example-each-ui-code-block-div'>
                     <h3 className=''>Buttons Menu</h3>
-                    <p>This creates a focus trap within the displayed menu. The Arrow keys navigates the focus within the trap in a cycle. The Space and Enter keys &#34;clicks&#34; the interactive element. The Escape key returns the focus back to the button that toggles the menu, which can then be clicked with the Enter or Space key to close the menu (provided keyboard interaction is added to the toggle button). The Tab key exits the trap.</p>
+                    <p>This creates a focus trap within the displayed menu. The Arrow keys navigates the focus within the trap in a cycle. The Space and Enter keys &#34;clicks&#34; the interactive element. The Escape key closes the menu, and returns the focus back to the button that toggles the menu. The Tab key exits the trap.</p>
                     <p>The toggle button has keyboard interaction support using the makeBlockAccessible function.</p>
                     <HomeExampleMenu/>
                     <pre>
@@ -97,7 +96,7 @@ const Examples = ({darkMode, setDarkMode}) => {
                       </div>
                     </pre>
                     <p>The onMouseDown and onKeyDown event handlers are used in place of the onClick event handler because the package uses a click() function to handle key press, which means if using the onClick event, two events are being acted upon, which leads to a conflict and irregular results.</p>
-                    <p>When you click on an element that has been enabled for keyboard interaction using the package, with the keyboard, on the package end a keydown event listens for key interactions and carries out a respective action based on the pressed key. Using the onClick event handler in the component carries out the same action which causes unexpected results, hence using onMouseDown and onKeyDown in the component.</p>
+                    <p>When you click on an element that has been enabled for keyboard interaction using the package, with the keyboard, on the package end a keydown event listens for key interactions and carries out a respective action based on the pressed key. Using the onClick event handler in the component carries out the same action which causes unexpected results, hence using onMouseDown and onKeyDown on the button to trigger it.</p>
                   </div>
                 </div>
               </Col>

@@ -35,7 +35,7 @@ const AccordionExample = () => {
   return (
     <div className='faq-div'>
       <div className='faq-each-div'>
-        <button id='make-an-appointment' className='dropdown-button block-interactive' onKeyDown={(event) => handleAccordionClick(event, 0)} onMouseDown={(event) => handleAccordionClick(event, 0)} aria-pressed={false} aria-expanded={false} aria-label='Expand information on how to make appointment'>
+        <button id='make-an-appointment' className='dropdown-button block-interactive' onKeyDown={(event) => handleAccordionClick(event, 0)} onMouseDown={(event) => handleAccordionClick(event, 0)} aria-expanded={false} aria-label='Expand information on how to make appointment'>
           <span className='dropdown-heading-text'>How do I make an appointment?</span>
           {isAccordionShown[0].display ? 
             <img src={openeddropdown} alt='Dropdown Icon' className='dropdown-icon-image'></img> :
@@ -51,7 +51,7 @@ const AccordionExample = () => {
       </div>
 
       <div className='faq-each-div'>
-        <button id='copy-of-record' className='dropdown-button block-interactive' onKeyDown={(event) => handleAccordionClick(event, 1)} onMouseDown={(event) => handleAccordionClick(event, 1)} aria-pressed={false} aria-expanded={false} aria-label='Expand information on how to get copy of records'>
+        <button id='copy-of-record' className='dropdown-button block-interactive' onKeyDown={(event) => handleAccordionClick(event, 1)} onMouseDown={(event) => handleAccordionClick(event, 1)} aria-expanded={false} aria-label='Expand information on how to get copy of records'>
           <span className='dropdown-heading-text'>How do I get a copy of my record?</span>
           {isAccordionShown[1].display ? 
             <img src={openeddropdown} alt='Dropdown Icon' className='dropdown-icon-image'></img> :
@@ -67,7 +67,7 @@ const AccordionExample = () => {
       </div>
 
       <div className='faq-each-div'>
-        <button id='extra-charge' className='dropdown-button block-interactive' onKeyDown={(event) => handleAccordionClick(event, 2)} onMouseDown={(event) => handleAccordionClick(event, 2)} aria-pressed={false} aria-expanded={false} aria-label='Expand information on extra charge for copy of record'>
+        <button id='extra-charge' className='dropdown-button block-interactive' onKeyDown={(event) => handleAccordionClick(event, 2)} onMouseDown={(event) => handleAccordionClick(event, 2)} aria-expanded={false} aria-label='Expand information on extra charge for copy of record'>
           <span className='dropdown-heading-text'>Is there a charge for extra copies?</span>
           {isAccordionShown[2].display ? 
             <img src={openeddropdown} alt='Dropdown Icon' className='dropdown-icon-image'></img> :
@@ -90,22 +90,22 @@ export default AccordionExample`
 
 // eslint-disable-next-line react/prop-types
 const Accordions = ({darkMode, setDarkMode}) => {
-    const page = 'accordions'
-    const[showDropdownPage, setShowDropdownPage] = useState(false);
+  const page = 'accordions'
+  const[showDropdownPage, setShowDropdownPage] = useState(false);
 
-    useEffect(() => {
-        if(showDropdownPage) {
-          document.querySelector('body').classList.add('no-scroll')
-        } else {
-          document.querySelector('body').classList.remove('no-scroll')
-        }
-    },[showDropdownPage])
+  useEffect(() => {
+    if(showDropdownPage) {
+      document.querySelector('body').classList.add('no-scroll')
+    } else {
+      document.querySelector('body').classList.remove('no-scroll')
+    }
+  },[showDropdownPage])
     
-    useEffect(() => {
-      const cleanUp = makeBlockAccessible('inner-body-div', 'block-interactive')
-    
-      return cleanUp
-    },[])
+  useEffect(() => {
+    const cleanUp = makeBlockAccessible('inner-body-div', 'block-interactive')
+
+    return cleanUp
+  },[])
 
   return (
     <div id="inner-body-div" className='accordion-example-page-div'>
@@ -120,7 +120,7 @@ const Accordions = ({darkMode, setDarkMode}) => {
                   <h1 className='component-example-heading'>Accordion</h1>
                   <span>A vertically stacked component that expands and collapses to reveal and hide content respectively. The difference between this and a menu is that a menu has a list interactive items, with the first item being focused when the menu is opened, while an accordion only contains non-interactive content.</span>
                   <p>If you have a component with a combination of both interactive and non-interactive elements, that requires the interactive elements to be keyboard interactive and focused, use a menu instead.</p>
-                  <p>The updateAccordionTriggerAriaAttributes function enables screen reader support for the accordions. This feature helps visually impaired users to navigate interacting with the accordions, by informing the users about the current state, and purpose, of each of the accordion. The states are either expanded or not expanded. The function updates the aria-pressed, aria-expanded and aria-label attributes of the accordion toggle button.</p>
+                  <p>The updateAccordionTriggerAriaAttributes function enables screen reader support for the accordions. This feature helps visually impaired users to navigate interacting with the accordions, by informing the users about the current state, and purpose, of each of the accordion. The states are either expanded or not expanded. The function updates the aria-expanded and aria-label attributes of the accordion toggle button.</p>
                   <p>The function accepts 3 arguments; an array of objects with information about each accordion in the collection, a shared class of all the accordion triggers, and the index position of the currently clicked trigger relative to the main accordion container and other trigger buttons.</p>
                   <p>The toggle buttons have keyboard interaction support using the makeBlockAccessible function.</p>
                   <AccordionExample/>
