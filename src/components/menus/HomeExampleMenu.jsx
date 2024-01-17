@@ -33,9 +33,9 @@ const HomeExampleMenu = () => {
         Display Example Menu
       </button>
       <div id="custom-menu" role="menu" aria-labelledby="display-button" style={{display: 'none', marginTop: '5px'}}>
-        <button role="menuitem" className="profile-menu-item" onClick={() => alert('Button clicked')}>One</button>
-        <button role="menuitem" className="profile-menu-item" onClick={() => alert('Button clicked')}>Two</button>
-        <button role="menuitem" className="profile-menu-item" onClick={() => alert('Button clicked')}>Three</button>
+        <button role="menuitem" className="profile-menu-item" onClick={() => alert('Button clicked')} aria-label='Go to page one'>One</button>
+        <button role="menuitem" className="profile-menu-item" onClick={() => alert('Button clicked')} aria-label='Go to page two'>Two</button>
+        <button role="menuitem" className="profile-menu-item" onClick={() => alert('Button clicked')} aria-label='Go to page three'>Three</button>
       </div>
     </div>
   )

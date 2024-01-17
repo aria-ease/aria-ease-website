@@ -69,9 +69,16 @@ const Documentation = ({darkMode, setDarkMode}) => {
                   </div>
                   <div className='side-body-sections-div'>
                     <h1 className='introduction-heading'>Installation</h1>
-                    <div className='code-div'>
-                      <code>npm install aria-ease</code>
-                    </div>
+                    <p>
+                      <div className='code-div'>
+                        <code>npm i aria-ease</code>
+                      </div>
+                    </p>
+                    <p>
+                      <div className='code-div'>
+                        <code>yarn add aria-ease</code>
+                      </div>
+                    </p>
                   </div>
                   <div className='side-body-sections-div'>
                     <h1 className='introduction-heading'>Features</h1>
