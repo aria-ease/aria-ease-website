@@ -397,3 +397,13 @@ select:-moz-autofill {
 .faq-div {
     margin-bottom: 30px;
 }
+#checkbox-div {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin: 20px 0px;
+}
+#checkbox-div .course-checkbox {
+    margin-left: 20px;
+}

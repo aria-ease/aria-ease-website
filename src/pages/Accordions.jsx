@@ -6,10 +6,11 @@ import SlideOutNav from '../components/SlideOutNav'
 import { makeBlockAccessible } from 'aria-ease'
 import AccordionExample from '../components/accordions/AccordionExample'
 
-const firstAccordionCode = `import { useState } from 'react'
-import openeddropdown from '../../assets/opened-dropdown.svg'
-import closeddropdown from '../../assets/closed-dropdown.svg'
-import { updateAccordionTriggerAriaAttributes } from 'aria-ease'
+const firstAccordionCode = `import { useState, useEffect } from 'react';
+import openeddropdown from '../../assets/opened-dropdown.svg';
+import closeddropdown from '../../assets/closed-dropdown.svg';
+import { makeBlockAccessible, updateAccordionTriggerAriaAttributes } from "aria-ease";
+
 
 const AccordionExample = () => {
   const[isAccordionShown, setIsAccordionShown] = useState([
@@ -17,6 +18,11 @@ const AccordionExample = () => {
     {display: false, closedAriaLabel: 'Expand information on how to get copy of records', openedAriaLabel: 'Collapse information on how to get copy of records'},
     {display: false, closedAriaLabel: 'Expand information on extra charge for copy of records', openedAriaLabel: 'Collapse information on extra charge for copy of records'}
   ])
+
+  useEffect(() => {
+    const accessibleBlock = makeBlockAccessible('faq-div', 'block-interactive');
+    return accessibleBlock;
+  },[])
 
   const handleAccordionClick = (event, index) => {
     if (event.type === 'mousedown' || (event.type === 'keydown' && (event.key === 'Enter' || event.key === ' '))) {
@@ -33,7 +39,7 @@ const AccordionExample = () => {
   };
       
   return (
-    <div className='faq-div'>
+    <div id='faq-div' className='faq-div'>
       <div className='faq-each-div'>
         <button id='make-an-appointment' className='dropdown-button block-interactive' onKeyDown={(event) => handleAccordionClick(event, 0)} onMouseDown={(event) => handleAccordionClick(event, 0)} aria-expanded={false} aria-label='Expand information on how to make appointment'>
           <span className='dropdown-heading-text'>How do I make an appointment?</span>
@@ -102,9 +108,8 @@ const Accordions = ({darkMode, setDarkMode}) => {
   },[showDropdownPage])
     
   useEffect(() => {
-    const cleanUp = makeBlockAccessible('inner-body-div', 'block-interactive')
-
-    return cleanUp
+    const accessibleBlock = makeBlockAccessible('inner-body-div', 'block-interactive');
+    return accessibleBlock;
   },[])
 
   return (
@@ -130,7 +135,7 @@ const Accordions = ({darkMode, setDarkMode}) => {
                           {firstAccordionCode}
                         </code>
                       </div>
-                    </pre>
+                  </pre>
                 </div>
               </Col>
             </Row>
