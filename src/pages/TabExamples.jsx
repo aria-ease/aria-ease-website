@@ -13,9 +13,8 @@ import { makeBlockAccessible } from "aria-ease"
 
 const App = () => {
   useEffect(() => {
-    const cleanUp = makeBlockAccessible('custom-tab', 'custom-tab-item')
-
-    return cleanUp
+    const accessibleBlock = makeBlockAccessible('custom-tab', 'custom-tab-item');
+    return accessibleBlock;
   },[])
 
   return (
@@ -37,9 +36,8 @@ import { useEffect } from 'react'
 
 const TextInputBlock = () => {
   useEffect(() => {
-    const cleanUp = makeBlockAccessible('text-input-block-div', 'text-input-block-interactive')
-
-    return cleanUp
+    const accessibleBlock = makeBlockAccessible('text-input-block-div', 'text-input-block-interactive');
+    return accessibleBlock;
   })
 
   return (
@@ -74,9 +72,8 @@ const TabExamples = ({darkMode, setDarkMode}) => {
     },[showDropdownPage])
 
     useEffect(() => {
-      const cleanUp = makeBlockAccessible('inner-body-div', 'block-interactive')
-  
-      return cleanUp
+      const accessibleBlock = makeBlockAccessible('inner-body-div', 'block-interactive');
+      return accessibleBlock;
     },[])
 
   return (

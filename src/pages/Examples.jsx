@@ -6,7 +6,8 @@ import { useState, useEffect } from 'react'
 import { makeBlockAccessible } from 'aria-ease'
 import HomeExampleMenu from '../components/menus/HomeExampleMenu'
 
-const firstMenuCode = `import { makeMenuAccessible, updateMenuTriggerAriaAttributes, cleanUpMenuEventListeners } from 'aria-ease'
+const firstMenuCode = `import { useEffect} from 'react'
+import { makeMenuAccessible, updateMenuTriggerAriaAttributes, cleanUpMenuEventListeners, makeBlockAccessible } from 'aria-ease'
 
 const HomeExampleMenu = () => {
   const toggleMenuDisplay = (event) => {
@@ -24,6 +25,11 @@ const HomeExampleMenu = () => {
       }
     }
   };
+
+  useEffect(() => {
+    const accessibleBlock = makeBlockAccessible('custom-menu', 'profile-menu-item');
+    return accessibleBlock;
+  })
 
   return (
     <div>
@@ -66,9 +72,8 @@ const Examples = ({darkMode, setDarkMode}) => {
   },[showDropdownPage])
 
   useEffect(() => {
-    const cleanUp = makeBlockAccessible('inner-body-div', 'block-interactive')
-
-    return cleanUp
+    const accessibleBlock = makeBlockAccessible('inner-body-div', 'block-interactive');
+    return accessibleBlock;
   },[])
 
   return (
