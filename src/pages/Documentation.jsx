@@ -7,7 +7,7 @@ import HomeExampleMenu from '../components/menus/HomeExampleMenu'
 import HomeTabExampleOne from '../components/tabs/HomeTabExampleOne'
 import { makeBlockAccessible } from 'aria-ease'
 
-const menuCode = `makeMenuAccessible('custom-menu', 'profile-menu-item', 'Display profile menu')`
+const menuCode = `makeMenuAccessible('custom-menu', 'profile-menu-item')`
 const updateHideCode = `updateMenuTriggerAriaAttributes('display-button', 'Hide profile menu')`
 const updateDisplayCode = `updateMenuTriggerAriaAttributes('display-button', 'Display profile menu')`
 const tabCode = `makeBlockAccessible('custom-tab', 'custom-tab-item')`
@@ -88,7 +88,7 @@ const Documentation = ({darkMode, setDarkMode}) => {
                       </p>
                       <HomeExampleMenu/>
                       <p className='feature-function-info-text'>The function creates a focus trap within the menu and focus can be navigated using the Arrow keys and Tab key. The Escape key closes the menu and returns the focus back to the trigger button. The Enter and Space keys &quot;click&quot; the interactive element (currently supports buttons, links, radios and checkboxes).</p>
-                      <p>The makeMenuAccessible function takes three string arguments; the id of the menu, the class name of the children item of the menu, and the aria-label for the closed/hidden state of the menu.</p>
+                      <p>The function takes two string arguments; the id of the menu div, and the class name of the menu items children.</p>
                       <div className='code-div'>
                         <code>{menuCode}</code>
                       </div>
