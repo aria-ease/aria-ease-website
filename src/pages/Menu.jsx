@@ -16,12 +16,12 @@ const HomeExampleMenu = () => {
       const menu = document.querySelector('#custom-menu');
       if (getComputedStyle(menu).display === 'none') {
         menu.style.display = 'block';
-        makeMenuAccessible('custom-menu', 'profile-menu-item', 'Display profile menu');
-        updateMenuTriggerAriaAttributes('display-button', 'Hide profile menu');
+        makeMenuAccessible('custom-menu', 'profile-menu-item');
+        updateMenuTriggerAriaAttributes('display-button', 'Close profile menu');
       } else {
         cleanUpMenuEventListeners('custom-menu', 'profile-menu-item');
         menu.style.display = 'none';
-        updateMenuTriggerAriaAttributes('display-button', 'Display profile menu');
+        updateMenuTriggerAriaAttributes('display-button', 'Open profile menu');
       }
     }
   };

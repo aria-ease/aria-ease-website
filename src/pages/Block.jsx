@@ -59,7 +59,7 @@ export default TextInputBlock`
 
 
 // eslint-disable-next-line react/prop-types
-const TabExamples = ({darkMode, setDarkMode}) => {
+const Block = ({darkMode, setDarkMode}) => {
   const[showDropdownPage, setShowDropdownPage] = useState(false);
     const page = 'tab'
 
@@ -128,4 +128,4 @@ const TabExamples = ({darkMode, setDarkMode}) => {
   )
 }
 
-export default TabExamples
+export default Block
