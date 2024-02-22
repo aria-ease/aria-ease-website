@@ -20,7 +20,7 @@ const AccordionExample = () => {
   ])
 
   useEffect(() => {
-    const accessibleBlock = makeBlockAccessible('faq-div', 'block-interactive');
+    const accessibleBlock = makeBlockAccessible('faq-div', 'faq-div-items');
     return accessibleBlock;
   },[])
 
@@ -41,7 +41,7 @@ const AccordionExample = () => {
   return (
     <div id='faq-div' className='faq-div'>
       <div className='faq-each-div'>
-        <button id='make-an-appointment' className='dropdown-button block-interactive' onKeyDown={(event) => handleAccordionClick(event, 0)} onMouseDown={(event) => handleAccordionClick(event, 0)} aria-expanded={false} aria-label='Expand information on how to make appointment'>
+        <button id='make-an-appointment' className='dropdown-button faq-div-items block-interactive' onKeyDown={(event) => handleAccordionClick(event, 0)} onMouseDown={(event) => handleAccordionClick(event, 0)} aria-expanded={false} aria-label='Expand information on how to make appointment'>
           <span className='dropdown-heading-text'>How do I make an appointment?</span>
           {isAccordionShown[0].display ? 
             <img src={openeddropdown} alt='Dropdown Icon' className='dropdown-icon-image'></img> :
@@ -57,7 +57,7 @@ const AccordionExample = () => {
       </div>
 
       <div className='faq-each-div'>
-        <button id='copy-of-record' className='dropdown-button block-interactive' onKeyDown={(event) => handleAccordionClick(event, 1)} onMouseDown={(event) => handleAccordionClick(event, 1)} aria-expanded={false} aria-label='Expand information on how to get copy of records'>
+        <button id='copy-of-record' className='dropdown-button faq-div-items block-interactive' onKeyDown={(event) => handleAccordionClick(event, 1)} onMouseDown={(event) => handleAccordionClick(event, 1)} aria-expanded={false} aria-label='Expand information on how to get copy of records'>
           <span className='dropdown-heading-text'>How do I get a copy of my record?</span>
           {isAccordionShown[1].display ? 
             <img src={openeddropdown} alt='Dropdown Icon' className='dropdown-icon-image'></img> :
@@ -73,7 +73,7 @@ const AccordionExample = () => {
       </div>
 
       <div className='faq-each-div'>
-        <button id='extra-charge' className='dropdown-button block-interactive' onKeyDown={(event) => handleAccordionClick(event, 2)} onMouseDown={(event) => handleAccordionClick(event, 2)} aria-expanded={false} aria-label='Expand information on extra charge for copy of record'>
+        <button id='extra-charge' className='dropdown-button faq-div-items block-interactive' onKeyDown={(event) => handleAccordionClick(event, 2)} onMouseDown={(event) => handleAccordionClick(event, 2)} aria-expanded={false} aria-label='Expand information on extra charge for copy of record'>
           <span className='dropdown-heading-text'>Is there a charge for extra copies?</span>
           {isAccordionShown[2].display ? 
             <img src={openeddropdown} alt='Dropdown Icon' className='dropdown-icon-image'></img> :

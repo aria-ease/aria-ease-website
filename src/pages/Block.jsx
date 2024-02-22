@@ -13,17 +13,17 @@ import { makeBlockAccessible } from "aria-ease"
 
 const App = () => {
   useEffect(() => {
-    const accessibleBlock = makeBlockAccessible('custom-tab', 'custom-tab-item');
+    const accessibleBlock = makeBlockAccessible('block-div', 'block-interactive-items');
     return accessibleBlock;
   },[])
 
   return (
     <div>
-      <div id="custom-tab">
-        <button className="custom-tab-item">One</button>
-        <button className="custom-tab-item">Two</button>
-        <button className="custom-tab-item">Three</button>
-        <button className="custom-tab-item">Four</button>
+      <div id="block-div">
+        <button className="block-interactive-items">One</button>
+        <button className="block-interactive-items">Two</button>
+        <button className="block-interactive-items">Three</button>
+        <button className="block-interactive-items">Four</button>
       </div>
     </div>
   )
@@ -36,20 +36,20 @@ import { useEffect } from 'react'
 
 const TextInputBlock = () => {
   useEffect(() => {
-    const accessibleBlock = makeBlockAccessible('text-input-block-div', 'text-input-block-interactive');
+    const accessibleBlock = makeBlockAccessible('text-input-block-div', 'text-input-block-items');
     return accessibleBlock;
   })
 
   return (
     <div id="text-input-block-div">
         <div className='each-text-input-block-div'>
-          <input type="text" placeholder='Name' className='text-input-block-interactive'></input>
+          <input type="text" placeholder='Name' className='text-input-block-items'></input>
         </div>
         <div className='each-text-input-block-div'>
-          <input type="text" placeholder='Email' className='text-input-block-interactive'></input>
+          <input type="text" placeholder='Email' className='text-input-block-items'></input>
         </div>
         <div className='each-text-input-block-div'>
-          <input type="text" placeholder='Phone' className='text-input-block-interactive'></input>
+          <input type="text" placeholder='Phone' className='text-input-block-items'></input>
         </div>
     </div>
   )
