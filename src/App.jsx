@@ -10,7 +10,10 @@ import Menu from './pages/Menu'
 import Block from './pages/Block'
 import Accordions from './pages/Accordions'
 import Checkbox from './pages/Checkbox'
+import { inject } from '@vercel/analytics';
+ 
 
+inject();
 
 
 const App = () => {
