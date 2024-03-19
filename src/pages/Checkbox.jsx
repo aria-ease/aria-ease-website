@@ -18,7 +18,7 @@ const CheckboxExample = () => {
     ])
 
     useEffect(() => {
-        const checkBoxAccessibility = makeBlockAccessible('checkbox-div', 'course-checkbox');
+        const checkBoxAccessibility = makeBlockAccessible('checkbox-div', 'course-checkboxes');
         return checkBoxAccessibility;
     })
 
@@ -31,7 +31,7 @@ const CheckboxExample = () => {
               ...state,
               checked: i === index ? !state.checked : state.checked,
             }));
-            updateCheckboxAriaAttributes(newStates, 'course-checkbox', index);
+            updateCheckboxAriaAttributes(newStates, 'course-checkboxes', index);
             return newStates;
           });
         };
@@ -48,17 +48,17 @@ const CheckboxExample = () => {
       <div id='checkbox-div'>
         <div>
           <label htmlFor='math'>Math:</label>
-          <input type='checkbox' name='math' id='math' className='course-checkbox block-interactive' onChange={(event) => handleCheck(event, 0)} onKeyDown={(event) => handleCheck(event, 0)} aria-checked={false} aria-label='Add Math to list of courses'></input>
+          <input type='checkbox' name='math' id='math' className='course-checkboxes block-interactive' onChange={(event) => handleCheck(event, 0)} onKeyDown={(event) => handleCheck(event, 0)} aria-checked={false} aria-label='Add Math to list of courses'></input>
         </div>
 
         <div>
           <label htmlFor='biology'>Biology:</label>
-          <input type='checkbox' name='biology' id='biology' className='course-checkbox block-interactive' onChange={(event) => handleCheck(event, 1)} onKeyDown={(event) => handleCheck(event, 1)} aria-checked={false} aria-label='Add Biology to list of courses'></input>
+          <input type='checkbox' name='biology' id='biology' className='course-checkboxes block-interactive' onChange={(event) => handleCheck(event, 1)} onKeyDown={(event) => handleCheck(event, 1)} aria-checked={false} aria-label='Add Biology to list of courses'></input>
         </div>
 
         <div>
           <label htmlFor='philosophy'>Philosophy:</label>
-          <input type='checkbox' name='philosophy' id='philosophy' className='course-checkbox block-interactive' onChange={(event) => handleCheck(event, 2)} onKeyDown={(event) => handleCheck(event, 2)} aria-checked={false} aria-label='Add Philosophy to list of courses'></input>
+          <input type='checkbox' name='philosophy' id='philosophy' className='course-checkboxes block-interactive' onChange={(event) => handleCheck(event, 2)} onKeyDown={(event) => handleCheck(event, 2)} aria-checked={false} aria-label='Add Philosophy to list of courses'></input>
         </div>
       </div>
     )
