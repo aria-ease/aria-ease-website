@@ -56,3 +56,9 @@
 .light-body .home-example-tab-one-item {
     border: 0.2px solid rgba(27, 27, 27, 0.226);
 }
+.light-body .home-example-tab-one-item {
+    color: rgba(0, 0, 0);
+}
+.light-body .home-menu-example-trigger-button {
+    border: 0.2px solid rgba(27, 27, 27, 0.226);
+}

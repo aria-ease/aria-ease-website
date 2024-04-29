@@ -61,6 +61,11 @@
 .dark-body .header {
     background-color: rgba(26, 26, 26);
 }
-.dark-body .home-example-tab-one-item {
-    border: 0.2px solid rgba(27, 27, 27, 0.226);
+.dark-body .home-example-tab-one-item,
+.dark-body .home-menu-example-trigger-button {
+    border: 0.2px solid rgba(208, 208, 208, 0.981);
+    color: rgba(208, 208, 208, 0.981);
+}
+.dark-body .profile-menu-item {
+    color: black;
 }
