@@ -1,12 +1,12 @@
 import { useState } from 'react';
-import { updateCheckboxAriaAttributes } from "aria-ease";
+import { updateGroupCheckboxesAriaAttributes } from "aria-ease";
 import '../styles.css';
 
 const CheckboxExample = () => {
     const[checkboxState, setCheckboxState] = useState([
-        {checked: false, uncheckedAriaLabel: 'Add Math to list of courses', checkedAriaLabel: 'Remove Math from list of courses'},
-        {checked: false, uncheckedAriaLabel: 'Add Biology to list of courses', checkedAriaLabel: 'Remove Biology from list of courses'},
-        {checked: false, uncheckedAriaLabel: 'Add Philosophy to list of courses', checkedAriaLabel: 'Remove Philosophy from list of courses'}
+      {checked: false, uncheckedAriaLabel: 'Add Math to list of courses', checkedAriaLabel: 'Remove Math from list of courses'},
+      {checked: false, uncheckedAriaLabel: 'Add Biology to list of courses', checkedAriaLabel: 'Remove Biology from list of courses'},
+      {checked: false, uncheckedAriaLabel: 'Add Philosophy to list of courses', checkedAriaLabel: 'Remove Philosophy from list of courses'}
     ])
 
     const handleCheck = (event, index) => {
@@ -18,7 +18,7 @@ const CheckboxExample = () => {
               ...state,
               checked: i === index ? !state.checked : state.checked,
             }));
-            updateCheckboxAriaAttributes(newStates, 'course-checkbox', index);
+            updateGroupCheckboxesAriaAttributes(newStates, 'course-checkbox', index);
             return newStates;
           });
         };

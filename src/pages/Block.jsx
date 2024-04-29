@@ -6,6 +6,7 @@ import { useState, useEffect } from 'react'
 import HomeTabExampleOne from '../components/tabs/HomeTabExampleOne'
 import TextInputBlock from '../components/tabs/TextInputBlock'
 import { makeBlockAccessible } from 'aria-ease'
+import { CodeBlock, atomOneDark } from 'react-code-blocks';
 
 
 const firstBlockCode = `import { useEffect } from 'react'
@@ -61,7 +62,7 @@ export default TextInputBlock`
 // eslint-disable-next-line react/prop-types
 const Block = ({darkMode, setDarkMode}) => {
   const[showDropdownPage, setShowDropdownPage] = useState(false);
-    const page = 'tab'
+  const page = 'tab'
 
     useEffect(() => {
       if(showDropdownPage) {
@@ -89,29 +90,29 @@ const Block = ({darkMode, setDarkMode}) => {
                       <span>A statically displayed component that has a list of related interractive children items e.g tabs, interactive sliders, carousels, and entire web page body.</span>
 
                       <div className='example-each-ui-code-block-div'>
-                        <h3 className=''>Tab Block</h3>
+                        <h5>Buttons Block</h5>
                         <p>This creates a focus trap within the buttons tab block. The Arrow keys navigates the focus within the trap in a cycle. The Space and Enter keys &#34;clicks&#34; the interactive element. The Tab key exits the trap.</p>
                         <HomeTabExampleOne/>
-                        <pre>
-                          <div className='code-div'>
-                            <code>
-                              {firstBlockCode}
-                            </code>
-                          </div>
-                        </pre>
+                        <CodeBlock
+                          text={firstBlockCode}
+                          language={'javascript'}
+                          showLineNumbers={false}
+                          theme={atomOneDark}
+                        />
                       </div>
 
                       <div className='example-each-ui-code-block-div'>
-                        <h3>Text Input Block</h3>
+                        <h5>Text Input Block</h5>
                         <p>This creates a focus trap within the text input block. The Arrow keys navigates the focus within the trap in a cycle. The Tab key exits the trap.</p>
                         <TextInputBlock/>
-                        <pre>
-                          <div className='code-div'>
-                            <code>
-                              {secondBlockCode}
-                            </code>
-                          </div>
-                        </pre>
+                        <div className='mt-2'>
+                          <CodeBlock
+                            text={secondBlockCode}
+                            language={'javascript'}
+                            showLineNumbers={false}
+                            theme={atomOneDark}
+                          />
+                        </div>
                       </div>
                   </div>
               </Col>

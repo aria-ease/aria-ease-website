@@ -18,7 +18,7 @@ const HomeExampleMenu = () => {
   };
 
   return (
-    <div>
+    <div className='mt-2 mb-3'>
       <button
         id="display-button"
         onMouseDown={toggleMenuDisplay}

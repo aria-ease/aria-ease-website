@@ -10,11 +10,12 @@ import Menu from './pages/Menu'
 import Block from './pages/Block'
 import Accordions from './pages/Accordions'
 import Checkbox from './pages/Checkbox'
+import Radio from './pages/Radio'
+import Toggle from './pages/Toggle'
 import { inject } from '@vercel/analytics';
  
 
 inject();
-
 
 const App = () => {
   const[darkMode, setDarkMode] = useState(true)
@@ -29,6 +30,8 @@ const App = () => {
           <Route path="/examples/block" element={<Block darkMode={darkMode} setDarkMode={setDarkMode}/>}/>
           <Route path="/examples/accordion" element={<Accordions darkMode={darkMode} setDarkMode={setDarkMode}/>}/>
           <Route path="/examples/checkbox" element={<Checkbox darkMode={darkMode} setDarkMode={setDarkMode}/>}/>
+          <Route path="/examples/radio" element={<Radio darkMode={darkMode} setDarkMode={setDarkMode}/>}/>
+          <Route path="/examples/toggle-button" element={<Toggle darkMode={darkMode} setDarkMode={setDarkMode}/>}/>
         </Routes>
       </Router>
     </div>
