@@ -1,11 +1,11 @@
-import Header from '../components/Header'
-import { Container, Row, Col } from 'react-bootstrap'
-import SideNav from '../components/SideNav'
-import { useState, useEffect } from 'react'
+import Header from '../components/Header';
+import { Container, Row, Col } from 'react-bootstrap';
+import SideNav from '../components/SideNav';
+import { useState, useEffect } from 'react';
 import SlideOutNav from '../components/SlideOutNav'
-import HomeExampleMenu from '../components/menus/HomeExampleMenu'
-import HomeTabExampleOne from '../components/tabs/HomeTabExampleOne'
-import { makeBlockAccessible } from 'aria-ease'
+import HomeExampleMenu from '../components/menus/HomeExampleMenu';
+import HomeTabExampleOne from '../components/tabs/HomeTabExampleOne';
+import { makeBlockAccessible } from 'aria-ease';
 import { CodeBlock, atomOneDark } from 'react-code-blocks';
 
 const menuCode = `makeMenuAccessible('custom-menu', 'profile-menu-item')`

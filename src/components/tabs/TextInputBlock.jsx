@@ -15,7 +15,7 @@ const TextInputBlock = () => {
           <input type="text" placeholder='Email' className='text-input-block-interactive'></input>
         </div>
         <div className='each-text-input-block-div'>
-          <input type="text" placeholder='Phone' className='text-input-block-interactive'></input>
+          <input type="tel" placeholder='Phone' className='text-input-block-interactive'></input>
         </div>
     </div>
   )
