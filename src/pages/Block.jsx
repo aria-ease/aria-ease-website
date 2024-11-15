@@ -6,7 +6,7 @@ import { useState, useEffect } from 'react'
 import HomeTabExampleOne from '../components/tabs/HomeTabExampleOne'
 import TextInputBlock from '../components/tabs/TextInputBlock'
 import { makeBlockAccessible } from 'aria-ease'
-import { CodeBlock, atomOneDark } from 'react-code-blocks';
+import { CopyBlock, atomOneDark, atomOneLight } from 'react-code-blocks';
 
 
 const firstBlockCode = `import { useEffect } from 'react'
@@ -93,11 +93,12 @@ const Block = ({darkMode, setDarkMode}) => {
                         <h5>Buttons Block</h5>
                         <p>This creates a focus trap within the buttons tab block. The Arrow keys navigates the focus within the trap in a cycle. The Space and Enter keys &#34;clicks&#34; the interactive element. The Tab key exits the trap.</p>
                         <HomeTabExampleOne/>
-                        <CodeBlock
+                        <CopyBlock
                           text={firstBlockCode}
                           language={'javascript'}
                           showLineNumbers={false}
-                          theme={atomOneDark}
+                          theme={darkMode ? atomOneDark : atomOneLight}
+                          codeBlock={true}
                         />
                       </div>
 
@@ -106,11 +107,12 @@ const Block = ({darkMode, setDarkMode}) => {
                         <p>This creates a focus trap within the text input block. The Arrow keys navigates the focus within the trap in a cycle. The Tab key exits the trap.</p>
                         <TextInputBlock/>
                         <div className='mt-2'>
-                          <CodeBlock
+                          <CopyBlock
                             text={secondBlockCode}
                             language={'javascript'}
                             showLineNumbers={false}
-                            theme={atomOneDark}
+                            theme={darkMode ? atomOneDark : atomOneLight}
+                            codeBlock={true}
                           />
                         </div>
                       </div>

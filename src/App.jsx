@@ -12,10 +12,24 @@ import Accordions from './pages/Accordions'
 import Checkbox from './pages/Checkbox'
 import Radio from './pages/Radio'
 import Toggle from './pages/Toggle'
-import { inject } from '@vercel/analytics';
+import firebase from "firebase/compat/app";
+import { getAnalytics } from "firebase/analytics";
  
 
-inject();
+const firebaseConfig = {
+  apiKey: "AIzaSyDdQrigZcoX9f016GXnL3IKHNpl2PYvUh4",
+  authDomain: "ariaease.firebaseapp.com",
+  projectId: "ariaease",
+  storageBucket: "ariaease.appspot.com",
+  messagingSenderId: "2526652663",
+  appId: "1:2526652663:web:dfc342e913a4cd73554bf2",
+  measurementId: "G-J2FNS4SBDN"
+};
+
+firebase.initializeApp(firebaseConfig);
+const app = firebase.initializeApp(firebaseConfig);
+getAnalytics(app);
+
 
 const App = () => {
   const[darkMode, setDarkMode] = useState(true)

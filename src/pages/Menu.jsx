@@ -5,7 +5,7 @@ import SlideOutNav from '../components/SlideOutNav'
 import { useState, useEffect } from 'react'
 import { makeBlockAccessible } from 'aria-ease'
 import HomeExampleMenu from '../components/menus/HomeExampleMenu'
-import { CodeBlock, atomOneDark } from 'react-code-blocks';
+import { CopyBlock, atomOneDark, atomOneLight } from 'react-code-blocks';
 
 
 const firstMenuCode = `import { useEffect} from 'react'
@@ -95,11 +95,12 @@ const Examples = ({darkMode, setDarkMode}) => {
                     <p>This creates a focus trap within the displayed menu. The Arrow keys navigates the focus within the trap in a cycle. The Space and Enter keys &#34;clicks&#34; the interactive element. The Escape key closes the menu, and returns the focus back to the button that toggles the menu. The Tab key exits the trap.</p>
                     <p>The toggle button has keyboard interaction support using the makeBlockAccessible function.</p>
                     <HomeExampleMenu/>
-                    <CodeBlock
+                    <CopyBlock
                       text={firstMenuCode}
                       language={'javascript'}
                       showLineNumbers={false}
-                      theme={atomOneDark}
+                      theme={darkMode ? atomOneDark : atomOneLight}
+                      codeBlock={true}
                     />
                     <p>The onMouseDown and onKeyDown event handlers are used in place of the onClick event handler because the package uses a click() function to handle key press, which means if using the onClick event, two events are being acted upon, which leads to a conflict and irregular results.</p>
                     <p>When you click on an element that has been enabled for keyboard interaction using the package, with the keyboard, on the package end a keydown event listens for key interactions and carries out a respective action based on the pressed key. Using the onClick event handler in the component carries out the same action which causes unexpected results, hence using onMouseDown and onKeyDown on the button to trigger it.</p>

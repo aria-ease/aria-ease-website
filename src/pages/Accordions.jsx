@@ -5,7 +5,8 @@ import SideNav from '../components/SideNav'
 import SlideOutNav from '../components/SlideOutNav'
 import { makeBlockAccessible } from 'aria-ease'
 import AccordionExample from '../components/accordions/AccordionExample';
-import { CodeBlock, atomOneDark } from 'react-code-blocks';
+import { CopyBlock, atomOneDark, atomOneLight } from 'react-code-blocks';
+
 
 const firstAccordionCode = `import { useState, useEffect } from 'react';
 import openeddropdown from '../../assets/opened-dropdown.svg';
@@ -113,6 +114,7 @@ const Accordions = ({darkMode, setDarkMode}) => {
     return accessibleBlock;
   },[])
 
+
   return (
     <div id="inner-body-div" className='accordion-example-page-div'>
         <Header darkMode={darkMode} setDarkMode={setDarkMode} showDropdownPage={showDropdownPage} setShowDropdownPage={setShowDropdownPage}/>
@@ -130,11 +132,12 @@ const Accordions = ({darkMode, setDarkMode}) => {
                   <p>The function accepts 3 arguments; an array of objects with information about each accordion in the collection, a shared class of all the accordion triggers, and the index position of the currently clicked trigger relative to the main accordion container and other trigger buttons.</p>
                   <p>The toggle buttons have keyboard interaction support using the makeBlockAccessible function.</p>
                   <AccordionExample/>
-                  <CodeBlock
+                  <CopyBlock
                     text={firstAccordionCode}
                     language={'javascript'}
                     showLineNumbers={false}
-                    theme={atomOneDark}
+                    theme={darkMode ? atomOneDark : atomOneLight}
+                    codeBlock={true}
                   />
                 </div>
               </Col>
