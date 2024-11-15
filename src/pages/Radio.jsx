@@ -4,7 +4,7 @@ import { makeBlockAccessible } from 'aria-ease';
 import SlideOutNav from '../components/SlideOutNav';
 import SideNav from '../components/SideNav';
 import { Container, Row, Col } from 'react-bootstrap';
-import { CodeBlock, atomOneDark } from 'react-code-blocks';
+import { CopyBlock, atomOneDark, atomOneLight } from 'react-code-blocks';
 
 
 // eslint-disable-next-line react/prop-types
@@ -91,35 +91,39 @@ const Radio = ({darkMode, setDarkMode}) => {
 
                     <div>
                       <p className='mb-2'>Let&#39;s begin by importing the fuction</p>
-                      <CodeBlock
+                      <CopyBlock
                         text={importGroupRadios}
                         language={'javascript'}
                         showLineNumbers={false}
-                        theme={atomOneDark}
+                        theme={darkMode ? atomOneDark : atomOneLight}
+                        codeBlock={true}
                       />
 
                       <p className='mb-2 mt-6'>Then we define the states for each radio in the collection sequentially (according to the order in which the radios elements are defined) in a states array</p>
-                      <CodeBlock
+                      <CopyBlock
                         text={groupStates}
                         language={'javascript'}
                         showLineNumbers={false}
-                        theme={atomOneDark}
+                        theme={darkMode ? atomOneDark : atomOneLight}
+                        codeBlock={true}
                       />
 
                       <p className='mb-2 mt-6'>And then we create a function to handle checking/unchecking of the radios. The function uses the index position of the current checked/unchecked radio to update the radio state in the states array. Hence radio elements and states have to be defined sequentially.</p>
-                      <CodeBlock
+                      <CopyBlock
                         text={handleRadioCheckFunction}
                         language={'javascript'}
                         showLineNumbers={false}
-                        theme={atomOneDark}
+                        theme={darkMode ? atomOneDark : atomOneLight}
+                        codeBlock={true}
                       />
 
                       <p className='mb-2 mt-6'>Lastly we create our radios components</p>
-                      <CodeBlock
+                      <CopyBlock
                         text={radiosComponent}
                         language={'javascript'}
                         showLineNumbers={false}
-                        theme={atomOneDark}
+                        theme={darkMode ? atomOneDark : atomOneLight}
+                        codeBlock={true}
                       />
                     </div>
                   </div>
@@ -132,27 +136,30 @@ const Radio = ({darkMode, setDarkMode}) => {
 
                     <div className='mt-6'>
                       <p className='mb-2'>Let&#39;s begin by importing the fuction</p>
-                      <CodeBlock
+                      <CopyBlock
                         text={singleImport}
                         language={'javascript'}
                         showLineNumbers={false}
-                        theme={atomOneDark}
+                        theme={darkMode ? atomOneDark : atomOneLight}
+                        codeBlock={true}
                       />
 
                       <p className='mb-2 mt-6'>And then we create a function to handle checking/unchecking of the radio</p>
-                      <CodeBlock
+                      <CopyBlock
                         text={checkSingleRadio}
                         language={'javascript'}
                         showLineNumbers={false}
-                        theme={atomOneDark}
+                        theme={darkMode ? atomOneDark : atomOneLight}
+                        codeBlock={true}
                       />
 
                       <p className='mb-2 mt-6'>Lastly we create our radio component</p>
-                      <CodeBlock
+                      <CopyBlock
                         text={singleRadio}
                         language={'javascript'}
                         showLineNumbers={false}
-                        theme={atomOneDark}
+                        theme={darkMode ? atomOneDark : atomOneLight}
+                        codeBlock={true}
                       />
                     </div>
                   </div>

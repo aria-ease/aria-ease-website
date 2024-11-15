@@ -5,7 +5,7 @@ import SlideOutNav from '../components/SlideOutNav';
 import SideNav from '../components/SideNav';
 import { Container, Row, Col } from 'react-bootstrap';
 import CheckboxExample from '../components/checkbox/CheckboxExample';
-import { CodeBlock, atomOneDark } from 'react-code-blocks';
+import { CopyBlock, atomOneDark, atomOneLight } from 'react-code-blocks';
 
 
 // eslint-disable-next-line react/prop-types
@@ -103,35 +103,39 @@ const Checkbox = ({darkMode, setDarkMode}) => {
                     <div><CheckboxExample/></div>
                     <div>
                       <p className='mb-2'>Let&#39;s begin by importing the fuction</p>
-                      <CodeBlock
+                      <CopyBlock
                         text={importGroupCheckboxes}
                         language={'javascript'}
                         showLineNumbers={false}
-                        theme={atomOneDark}
+                        theme={darkMode ? atomOneDark : atomOneLight}
+                        codeBlock={true}
                       />
 
                       <p className='mb-2 mt-6'>Then we define the states for each checkbox in the collection sequentially (according to the order in which the checkboxes elements are defined) in a states array</p>
-                      <CodeBlock
+                      <CopyBlock
                         text={groupStates}
                         language={'javascript'}
                         showLineNumbers={false}
-                        theme={atomOneDark}
+                        theme={darkMode ? atomOneDark : atomOneLight}
+                        codeBlock={true}
                       />
 
                       <p className='mb-2 mt-6'>And then we create a function to handle checking/unchecking of the checkboxes. The function uses the index position of the current checked/unchecked checkbox to update the checkbox state in the states array. Hence checkbox elements and states have to be defined sequentially.</p>
-                      <CodeBlock
+                      <CopyBlock
                         text={handleCheckFunction}
                         language={'javascript'}
                         showLineNumbers={false}
-                        theme={atomOneDark}
+                        theme={darkMode ? atomOneDark : atomOneLight}
+                        codeBlock={true}
                       />
 
                       <p className='mb-2 mt-6'>Lastly we create our checkboxes components</p>
-                      <CodeBlock
+                      <CopyBlock
                         text={checkboxesComponent}
                         language={'javascript'}
                         showLineNumbers={false}
-                        theme={atomOneDark}
+                        theme={darkMode ? atomOneDark : atomOneLight}
+                        codeBlock={true}
                       />
                     </div>
                   </div>
@@ -151,27 +155,30 @@ const Checkbox = ({darkMode, setDarkMode}) => {
 
                     <div className='mt-6'>
                       <p className='mb-2'>Let&#39;s begin by importing the fuction</p>
-                      <CodeBlock
+                      <CopyBlock
                         text={singleImport}
                         language={'javascript'}
                         showLineNumbers={false}
-                        theme={atomOneDark}
+                        theme={darkMode ? atomOneDark : atomOneLight}
+                        codeBlock={true}
                       />
 
                       <p className='mb-2 mt-6'>And then we create a function to handle checking/unchecking of the checkbox</p>
-                      <CodeBlock
+                      <CopyBlock
                         text={checkSingleBox}
                         language={'javascript'}
                         showLineNumbers={false}
-                        theme={atomOneDark}
+                        theme={darkMode ? atomOneDark : atomOneLight}
+                        codeBlock={true}
                       />
 
                       <p className='mb-2 mt-6'>Lastly we create our checkbox component</p>
-                      <CodeBlock
+                      <CopyBlock
                         text={singleBox}
                         language={'javascript'}
                         showLineNumbers={false}
-                        theme={atomOneDark}
+                        theme={darkMode ? atomOneDark : atomOneLight}
+                        codeBlock={true}
                       />
                     </div>
                   </div>

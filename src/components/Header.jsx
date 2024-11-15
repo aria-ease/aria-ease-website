@@ -4,6 +4,9 @@ import sunicon from '../assets/sun.png'
 import moonicon from '../assets/moon.png'
 import { Link } from 'react-router-dom'
 import hamburgermenu from '../assets/hamburger.png'
+import blacklogo from '../assets/black-logo.png'
+import whitelogo from '../assets/white-logo.png'
+
 
 // eslint-disable-next-line react/prop-types
 const Header = ({darkMode, setDarkMode, showDropdownPage, setShowDropdownPage}) => {
@@ -11,9 +14,11 @@ const Header = ({darkMode, setDarkMode, showDropdownPage, setShowDropdownPage}) 
         if(darkMode) {
             document.querySelector('.theme-mode-image').setAttribute('src', `${sunicon}`)
             document.querySelector('.theme-mode-image').setAttribute('alt', 'Sun Icon')
+            document.querySelector('.logo-img').setAttribute('src', `${whitelogo}`)
         } else {
             document.querySelector('.theme-mode-image').setAttribute('src', `${moonicon}`)
             document.querySelector('.theme-mode-image').setAttribute('alt', 'Moon Icon')
+            document.querySelector('.logo-img').setAttribute('src', `${blacklogo}`)
         }
     },[darkMode])
     
@@ -22,7 +27,7 @@ const Header = ({darkMode, setDarkMode, showDropdownPage, setShowDropdownPage}) 
         <button className='header-menu-button center-flex' onClick={() => setShowDropdownPage(!showDropdownPage)}>
             <img src={hamburgermenu} alt='Hamburger Menu Icon' style={{height: '20px', width: '24px'}}></img>
         </button>
-        <Link to='/' className='header-logo-link block-interactive' aria-label="Navigate to home page"><span className="logo-span">aria-ease</span></Link>
+        <Link to='/' className='header-logo-link block-interactive' aria-label="Navigate to home page"><img src={whitelogo} className="logo-img h-[30px] w-[30px]" alt="Aria Ease Logo"></img></Link>
         <div className='header-nav-link-div' id="header-nav-link-div">
             <Link to='/docs' className='header-nav-link block-interactive' aria-label='Navigate to the documentation page'>Documentation</Link>
             <Link to='/examples/accordion' aria-label="View examples of package implementation" className='header-nav-link block-interactive'>Examples</Link>

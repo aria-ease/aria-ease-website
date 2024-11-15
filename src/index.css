@@ -20,11 +20,13 @@ h4 {
 }
 
 @media (min-width: 1200px) {
-  h3 {
+  h3,
+  .get-started-ship {
     font-size: 1.75rem;
   }
 }
-h3 {
+h3,
+.get-started-ship {
   font-size: calc(1.3rem + 0.6vw);
 }
 h5 {

@@ -1,7 +1,3 @@
-.light-body .logo-span,
-.light-body .slide-nav-logo-span {
-    color: rgba(26, 26, 26);
-}
 .light-body .header-button {
     background-color: transparent;
     border: 0.2px solid rgba(27, 27, 27, 0.226);
@@ -61,4 +57,11 @@
 }
 .light-body .home-menu-example-trigger-button {
     border: 0.2px solid rgba(27, 27, 27, 0.226);
+}
+.light-body .home-discover-functions-button {
+    color: rgb(73, 73, 73);
+    background-color: rgba(225, 225, 225);
+    border: 0.2px solid rgba(27, 27, 27, 0.226);
+    padding: 8px 14px 8px 14px;
+    border-radius: 8px;
 }
