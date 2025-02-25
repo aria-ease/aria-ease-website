@@ -7,7 +7,7 @@
     background: rgb(75, 75, 75);
 }
 .dark-body .header-search-div,
-.dark-body .each-text-input-block-div {
+.dark-body .each-text-input-block-div {                
     background: rgba(48, 48, 48);
 }
 .dark-body .header-search-div:hover,
