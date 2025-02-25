@@ -17,9 +17,6 @@
     top: 0;
     z-index: 1000000000;
 }
-.header-button-icon {
-    color: rgba(128, 128, 128);
-}
 .header-button-icon,
 #Sun, #Moon {
     height: 20px;
@@ -272,7 +269,6 @@ a {
     padding: 2px 6px;
     display: inline-block;
     max-width: 100%;
-    background-color: rgba(222, 222, 222, 0.506);
     margin-top: 8px;
     overflow: auto;
 }

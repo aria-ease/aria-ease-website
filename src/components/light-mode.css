@@ -29,11 +29,12 @@
 }
 .light-body .header-nav-link,
 .light-body .side-nav-link {
-    color: rgb(95, 95, 103);
+    color: rgb(77, 77, 79);
 }
 .light-body .header-nav-link:hover,
-.light-body .active-nav-link {
-    color: rgb(79, 79, 79);
+.light-body .active-nav-link, 
+.light-body .side-nav-link:hover {
+    color: rgb(0, 0, 0);
 }
 .light-body .slide-out-side-nav-div {
     background: #F2F6F9;
@@ -44,6 +45,9 @@
 }
 .light-body code {
     color: rgb(30, 30, 30);
+}
+.light-body .code-div {
+    background-color: rgba(222, 222, 222, 0.506);
 }
 .light-body .header,
 .light-body {
@@ -64,4 +68,7 @@
     border: 0.2px solid rgba(27, 27, 27, 0.226);
     padding: 8px 14px 8px 14px;
     border-radius: 8px;
+}
+.light-body .header-button-icon {
+    color: rgb(77, 77, 79);
 }
