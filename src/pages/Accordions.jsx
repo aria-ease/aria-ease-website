@@ -4,12 +4,15 @@ import { Container, Row, Col } from 'react-bootstrap'
 import SideNav from '../components/SideNav'
 import SlideOutNav from '../components/SlideOutNav'
 import { makeBlockAccessible } from 'aria-ease'
-import AccordionExample from '../components/accordions/AccordionExample'
+import AccordionExample from '../components/accordions/AccordionExample';
+import { CopyBlock, atomOneDark, atomOneLight } from 'react-code-blocks';
 
-const firstAccordionCode = `import { useState } from 'react'
-import openeddropdown from '../../assets/opened-dropdown.svg'
-import closeddropdown from '../../assets/closed-dropdown.svg'
-import { updateAccordionTriggerAriaAttributes } from 'aria-ease'
+
+const firstAccordionCode = `import { useState, useEffect } from 'react';
+import openeddropdown from '../../assets/opened-dropdown.svg';
+import closeddropdown from '../../assets/closed-dropdown.svg';
+import { makeBlockAccessible, updateAccordionTriggerAriaAttributes } from "aria-ease";
+
 
 const AccordionExample = () => {
   const[isAccordionShown, setIsAccordionShown] = useState([
@@ -17,6 +20,11 @@ const AccordionExample = () => {
     {display: false, closedAriaLabel: 'Expand information on how to get copy of records', openedAriaLabel: 'Collapse information on how to get copy of records'},
     {display: false, closedAriaLabel: 'Expand information on extra charge for copy of records', openedAriaLabel: 'Collapse information on extra charge for copy of records'}
   ])
+
+  useEffect(() => {
+    const accessibleBlock = makeBlockAccessible('faq-div', 'faq-div-items');
+    return accessibleBlock;
+  },[])
 
   const handleAccordionClick = (event, index) => {
     if (event.type === 'mousedown' || (event.type === 'keydown' && (event.key === 'Enter' || event.key === ' '))) {
@@ -33,9 +41,9 @@ const AccordionExample = () => {
   };
       
   return (
-    <div className='faq-div'>
+    <div id='faq-div' className='faq-div'>
       <div className='faq-each-div'>
-        <button id='make-an-appointment' className='dropdown-button block-interactive' onKeyDown={(event) => handleAccordionClick(event, 0)} onMouseDown={(event) => handleAccordionClick(event, 0)} aria-expanded={false} aria-label='Expand information on how to make appointment'>
+        <button id='make-an-appointment' className='dropdown-button faq-div-items block-interactive' onKeyDown={(event) => handleAccordionClick(event, 0)} onMouseDown={(event) => handleAccordionClick(event, 0)} aria-expanded={false} aria-label='Expand information on how to make appointment'>
           <span className='dropdown-heading-text'>How do I make an appointment?</span>
           {isAccordionShown[0].display ? 
             <img src={openeddropdown} alt='Dropdown Icon' className='dropdown-icon-image'></img> :
@@ -51,7 +59,7 @@ const AccordionExample = () => {
       </div>
 
       <div className='faq-each-div'>
-        <button id='copy-of-record' className='dropdown-button block-interactive' onKeyDown={(event) => handleAccordionClick(event, 1)} onMouseDown={(event) => handleAccordionClick(event, 1)} aria-expanded={false} aria-label='Expand information on how to get copy of records'>
+        <button id='copy-of-record' className='dropdown-button faq-div-items block-interactive' onKeyDown={(event) => handleAccordionClick(event, 1)} onMouseDown={(event) => handleAccordionClick(event, 1)} aria-expanded={false} aria-label='Expand information on how to get copy of records'>
           <span className='dropdown-heading-text'>How do I get a copy of my record?</span>
           {isAccordionShown[1].display ? 
             <img src={openeddropdown} alt='Dropdown Icon' className='dropdown-icon-image'></img> :
@@ -67,7 +75,7 @@ const AccordionExample = () => {
       </div>
 
       <div className='faq-each-div'>
-        <button id='extra-charge' className='dropdown-button block-interactive' onKeyDown={(event) => handleAccordionClick(event, 2)} onMouseDown={(event) => handleAccordionClick(event, 2)} aria-expanded={false} aria-label='Expand information on extra charge for copy of record'>
+        <button id='extra-charge' className='dropdown-button faq-div-items block-interactive' onKeyDown={(event) => handleAccordionClick(event, 2)} onMouseDown={(event) => handleAccordionClick(event, 2)} aria-expanded={false} aria-label='Expand information on extra charge for copy of record'>
           <span className='dropdown-heading-text'>Is there a charge for extra copies?</span>
           {isAccordionShown[2].display ? 
             <img src={openeddropdown} alt='Dropdown Icon' className='dropdown-icon-image'></img> :
@@ -102,10 +110,10 @@ const Accordions = ({darkMode, setDarkMode}) => {
   },[showDropdownPage])
     
   useEffect(() => {
-    const cleanUp = makeBlockAccessible('inner-body-div', 'block-interactive')
-
-    return cleanUp
+    const accessibleBlock = makeBlockAccessible('inner-body-div', 'block-interactive');
+    return accessibleBlock;
   },[])
+
 
   return (
     <div id="inner-body-div" className='accordion-example-page-div'>
@@ -124,13 +132,13 @@ const Accordions = ({darkMode, setDarkMode}) => {
                   <p>The function accepts 3 arguments; an array of objects with information about each accordion in the collection, a shared class of all the accordion triggers, and the index position of the currently clicked trigger relative to the main accordion container and other trigger buttons.</p>
                   <p>The toggle buttons have keyboard interaction support using the makeBlockAccessible function.</p>
                   <AccordionExample/>
-                  <pre>
-                      <div className='code-div'>
-                        <code>
-                          {firstAccordionCode}
-                        </code>
-                      </div>
-                    </pre>
+                  <CopyBlock
+                    text={firstAccordionCode}
+                    language={'javascript'}
+                    showLineNumbers={false}
+                    theme={darkMode ? atomOneDark : atomOneLight}
+                    codeBlock={true}
+                  />
                 </div>
               </Col>
             </Row>

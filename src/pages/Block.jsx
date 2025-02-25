@@ -6,6 +6,7 @@ import { useState, useEffect } from 'react'
 import HomeTabExampleOne from '../components/tabs/HomeTabExampleOne'
 import TextInputBlock from '../components/tabs/TextInputBlock'
 import { makeBlockAccessible } from 'aria-ease'
+import { CopyBlock, atomOneDark, atomOneLight } from 'react-code-blocks';
 
 
 const firstBlockCode = `import { useEffect } from 'react'
@@ -13,18 +14,17 @@ import { makeBlockAccessible } from "aria-ease"
 
 const App = () => {
   useEffect(() => {
-    const cleanUp = makeBlockAccessible('custom-tab', 'custom-tab-item')
-
-    return cleanUp
+    const accessibleBlock = makeBlockAccessible('block-div', 'block-interactive-items');
+    return accessibleBlock;
   },[])
 
   return (
     <div>
-      <div id="custom-tab">
-        <button className="custom-tab-item">One</button>
-        <button className="custom-tab-item">Two</button>
-        <button className="custom-tab-item">Three</button>
-        <button className="custom-tab-item">Four</button>
+      <div id="block-div">
+        <button className="block-interactive-items">One</button>
+        <button className="block-interactive-items">Two</button>
+        <button className="block-interactive-items">Three</button>
+        <button className="block-interactive-items">Four</button>
       </div>
     </div>
   )
@@ -37,21 +37,20 @@ import { useEffect } from 'react'
 
 const TextInputBlock = () => {
   useEffect(() => {
-    const cleanUp = makeBlockAccessible('text-input-block-div', 'text-input-block-interactive')
-
-    return cleanUp
+    const accessibleBlock = makeBlockAccessible('text-input-block-div', 'text-input-block-items');
+    return accessibleBlock;
   })
 
   return (
     <div id="text-input-block-div">
         <div className='each-text-input-block-div'>
-          <input type="text" placeholder='Name' className='text-input-block-interactive'></input>
+          <input type="text" placeholder='Name' className='text-input-block-items'></input>
         </div>
         <div className='each-text-input-block-div'>
-          <input type="text" placeholder='Email' className='text-input-block-interactive'></input>
+          <input type="text" placeholder='Email' className='text-input-block-items'></input>
         </div>
         <div className='each-text-input-block-div'>
-          <input type="text" placeholder='Phone' className='text-input-block-interactive'></input>
+          <input type="text" placeholder='Phone' className='text-input-block-items'></input>
         </div>
     </div>
   )
@@ -61,9 +60,9 @@ export default TextInputBlock`
 
 
 // eslint-disable-next-line react/prop-types
-const TabExamples = ({darkMode, setDarkMode}) => {
+const Block = ({darkMode, setDarkMode}) => {
   const[showDropdownPage, setShowDropdownPage] = useState(false);
-    const page = 'tab'
+  const page = 'tab'
 
     useEffect(() => {
       if(showDropdownPage) {
@@ -74,9 +73,8 @@ const TabExamples = ({darkMode, setDarkMode}) => {
     },[showDropdownPage])
 
     useEffect(() => {
-      const cleanUp = makeBlockAccessible('inner-body-div', 'block-interactive')
-  
-      return cleanUp
+      const accessibleBlock = makeBlockAccessible('inner-body-div', 'block-interactive');
+      return accessibleBlock;
     },[])
 
   return (
@@ -92,29 +90,31 @@ const TabExamples = ({darkMode, setDarkMode}) => {
                       <span>A statically displayed component that has a list of related interractive children items e.g tabs, interactive sliders, carousels, and entire web page body.</span>
 
                       <div className='example-each-ui-code-block-div'>
-                        <h3 className=''>Tab Block</h3>
+                        <h5>Buttons Block</h5>
                         <p>This creates a focus trap within the buttons tab block. The Arrow keys navigates the focus within the trap in a cycle. The Space and Enter keys &#34;clicks&#34; the interactive element. The Tab key exits the trap.</p>
                         <HomeTabExampleOne/>
-                        <pre>
-                          <div className='code-div'>
-                            <code>
-                              {firstBlockCode}
-                            </code>
-                          </div>
-                        </pre>
+                        <CopyBlock
+                          text={firstBlockCode}
+                          language={'javascript'}
+                          showLineNumbers={false}
+                          theme={darkMode ? atomOneDark : atomOneLight}
+                          codeBlock={true}
+                        />
                       </div>
 
                       <div className='example-each-ui-code-block-div'>
-                        <h3>Text Input Block</h3>
+                        <h5>Text Input Block</h5>
                         <p>This creates a focus trap within the text input block. The Arrow keys navigates the focus within the trap in a cycle. The Tab key exits the trap.</p>
                         <TextInputBlock/>
-                        <pre>
-                          <div className='code-div'>
-                            <code>
-                              {secondBlockCode}
-                            </code>
-                          </div>
-                        </pre>
+                        <div className='mt-2'>
+                          <CopyBlock
+                            text={secondBlockCode}
+                            language={'javascript'}
+                            showLineNumbers={false}
+                            theme={darkMode ? atomOneDark : atomOneLight}
+                            codeBlock={true}
+                          />
+                        </div>
                       </div>
                   </div>
               </Col>
@@ -131,4 +131,4 @@ const TabExamples = ({darkMode, setDarkMode}) => {
   )
 }
 
-export default TabExamples
+export default Block

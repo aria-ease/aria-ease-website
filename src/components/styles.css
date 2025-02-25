@@ -15,11 +15,7 @@
     align-items: center;
     position: sticky;
     top: 0;
-}
-.logo-span,
-.slide-nav-logo-span {
-    font-weight: 700;
-    font-size: larger;
+    z-index: 1000000000;
 }
 .header-button-icon {
     color: rgba(128, 128, 128);
@@ -119,6 +115,7 @@ a:focus {
     border-radius: 0px 0px 0px 14px;
     height: 300px;
     position: relative;
+    z-index: 999;
 }
 @media(max-width: 991px) {
     .hero-examples-div {
@@ -164,11 +161,6 @@ a:focus {
     border: none;
     padding: 2px 8px;
     font-size: smaller;
-    
-}
-.home-example-tab-one-item,
-.home-menu-example-trigger-button {
-    color: rgba(0, 0, 0) !important;
 }
 .hero-paragraph {
     font-size: 1.2rem;
@@ -294,9 +286,7 @@ a {
 .documentation-page .home-example-tab-one-item {
     border: 0.2px solid rgba(27, 27, 27, 0.226);
 }
-.body-div {
-    min-width: 100vw;
-}
+
 .slide-out-side-nav-outer-div {
     visibility: visible;
     transition: visibility 500ms ease-out;
@@ -396,4 +386,22 @@ select:-moz-autofill {
 }
 .faq-div {
     margin-bottom: 30px;
+}
+#checkbox-div {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin: 20px 0px;
+}
+#checkbox-div .course-checkbox {
+    margin-left: 20px;
+}
+.homepage-above-fold-div,
+.home-get-started-div {
+    border-bottom: 0.1px solid rgb(85, 85, 85);
+}
+.home-discover-functions-button {
+    padding: 8px 14px 8px 14px;
+    border-radius: 8px;
 }
