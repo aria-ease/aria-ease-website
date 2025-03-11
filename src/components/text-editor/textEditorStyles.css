@@ -1,0 +1,54 @@
+.ProseMirror {
+    > * + * {
+        margin-top: 0.75em;
+    }
+  
+    h1 {
+        font-size: 2em;
+        font-weight: bold;
+    }
+  
+    h2 {
+        font-size: 1.5em;
+        font-weight: bold;
+    }
+  
+    h3 {
+        font-size: 1.25em;
+        font-weight: bold;
+    }
+  
+    p {
+        margin: 0.5em 0;
+    }
+  
+    ul, ol {
+        padding: 0 1rem;
+    }
+  
+    blockquote {
+        padding-left: 1rem;
+        border-left: 2px solid #ddd;
+        color: #666;
+    }
+  
+    code {
+      background-color: #f5f5f5;
+      padding: 0.2em 0.4em;
+      border-radius: 3px;
+    }
+  
+    a {
+      color: #2563eb !important;
+    }
+  }
+  .ProseMirror:focus {
+    outline: none;
+  }
+  .ProseMirror p.is-editor-empty:first-child::before {
+    color: #adb5bd;
+    content: attr(data-placeholder);
+    float: left;
+    height: 0;
+    pointer-events: none;
+  }

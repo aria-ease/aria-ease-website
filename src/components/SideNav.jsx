@@ -21,6 +21,10 @@ const SideNav = ({page}) => {
           <Link to='/examples/radio' aria-label="View radio examples" className={`side-nav-link ${(page === 'radio') ? 'active-nav-link' : ''} ${(window.innerWidth >= 992) ? 'block-interactive' : ''}`} style={{marginTop: '12px'}}>Radio</Link>
           <Link to='/examples/toggle-button' aria-label="View toggle button examples" className={`side-nav-link ${(page === 'toggle-button') ? 'active-nav-link' : ''} ${(window.innerWidth >= 992) ? 'block-interactive' : ''}`} style={{marginTop: '12px'}}>Toggle Button</Link>
         </div>
+        <div className='side-nav-links-section'>
+          <p>Resources</p>
+          <Link to="/blog/main" className={`side-nav-link ${(page === 'blog') ? 'active-nav-link' : ''} ${(window.innerWidth >= 992) ? 'block-interactive' : ''}`} aria-label='Navigate to blog articles page'>Blog</Link>
+        </div>
       </div>
     </Col>
   )

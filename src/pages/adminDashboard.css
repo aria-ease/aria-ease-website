@@ -1,0 +1,91 @@
+
+
+.create_blog_post_span {
+    font-size: 14px;
+    font-weight: 600;
+    line-height: 24px;
+    letter-spacing: -0.006em;
+}
+.blog_each_card_link {
+    background-color: transparent;
+    padding: 0px;
+    border: none;
+    border-radius: 8px;
+}
+.blog_each_card_link:focus {
+    outline: 2px solid rgba(0, 91, 211, 1);
+    outline-offset: 1px;
+}
+.blog_each_card_col {
+    margin-top: 30px;
+}
+.admin_dashboard_blog_posts_body_div {
+    width: 100%;
+    margin-top: 80px;
+    padding-bottom: 100px;
+}
+.admin_dashboard_blog_toolbar_div button {
+    margin-top: 20px;
+    border: none;
+    border-radius: 4px;
+    padding: 2px 20px;
+}
+.admin_dashboard_blog_toolbar_div > button:nth-child(3) {
+    margin-left: 10px;
+    color: red;
+}
+input,
+textarea {
+	width: 100%;
+}
+.blog_post_modal_form {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: space-between;
+}
+input,
+textarea {
+	margin-top: 30px;
+}
+button {
+	padding-top: 10px;
+    padding-bottom: 10px;
+    border: none;
+    background-color: rgb(27, 27, 47);
+    color: white;
+    border-radius: 5px;
+}
+.blog_post_modal_image_input_div {
+	width: 100%;
+}
+.blog_post_modal_image_input_div p {
+	white-space: nowrap;
+	margin-bottom: 0px;
+	margin-top: 40px;
+}
+.blog_post_modal_image_input_div input {
+	margin-top: 10px;
+}
+.blog_post_modal_form_label {
+	margin-top: 40px;
+}
+.blog_post_modal_blog_content_div {
+	display: flex;
+	justify-content: flex-start;
+	width: 100%;
+}
+.admin_dashboard_blog_toolbar_div .blog_card_text_div {
+    background-color: black;
+}
+.admin-edit {
+    border: 1px solid purple;
+}
+.admin-edit input {
+    border: 1px solid black;
+}
+.admin-edit button {
+    border: 1px solid black;
+    margin-left: 10px;
+    padding: 3px 15px;
+}

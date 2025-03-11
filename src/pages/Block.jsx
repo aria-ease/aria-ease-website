@@ -6,7 +6,7 @@ import { useState, useEffect } from 'react'
 import HomeTabExampleOne from '../components/tabs/HomeTabExampleOne'
 import TextInputBlock from '../components/tabs/TextInputBlock'
 import { makeBlockAccessible } from 'aria-ease'
-import { CopyBlock, atomOneDark, atomOneLight } from 'react-code-blocks';
+import CodeBlockDemo from '../components/CodeBlock';
 
 
 const firstBlockCode = `import { useEffect } from 'react'
@@ -65,14 +65,6 @@ const Block = ({darkMode, setDarkMode}) => {
   const page = 'tab'
 
     useEffect(() => {
-      if(showDropdownPage) {
-        document.querySelector('body').classList.add('no-scroll')
-      } else {
-        document.querySelector('body').classList.remove('no-scroll')
-      }
-    },[showDropdownPage])
-
-    useEffect(() => {
       const accessibleBlock = makeBlockAccessible('inner-body-div', 'block-interactive');
       return accessibleBlock;
     },[])
@@ -93,13 +85,7 @@ const Block = ({darkMode, setDarkMode}) => {
                         <h5>Buttons Block</h5>
                         <p>This creates a focus trap within the buttons tab block. The Arrow keys navigates the focus within the trap in a cycle. The Space and Enter keys &#34;clicks&#34; the interactive element. The Tab key exits the trap.</p>
                         <HomeTabExampleOne/>
-                        <CopyBlock
-                          text={firstBlockCode}
-                          language={'javascript'}
-                          showLineNumbers={false}
-                          theme={darkMode ? atomOneDark : atomOneLight}
-                          codeBlock={true}
-                        />
+                        <CodeBlockDemo code={firstBlockCode}/>
                       </div>
 
                       <div className='example-each-ui-code-block-div'>
@@ -107,13 +93,7 @@ const Block = ({darkMode, setDarkMode}) => {
                         <p>This creates a focus trap within the text input block. The Arrow keys navigates the focus within the trap in a cycle. The Tab key exits the trap.</p>
                         <TextInputBlock/>
                         <div className='mt-2'>
-                          <CopyBlock
-                            text={secondBlockCode}
-                            language={'javascript'}
-                            showLineNumbers={false}
-                            theme={darkMode ? atomOneDark : atomOneLight}
-                            codeBlock={true}
-                          />
+                          <CodeBlockDemo code={secondBlockCode}/>
                         </div>
                       </div>
                   </div>
@@ -122,11 +102,7 @@ const Block = ({darkMode, setDarkMode}) => {
           </Container>
         </div>
         
-        <div className={`slide-out-side-nav-outer-div ${showDropdownPage ? 'visible' : 'hidden'}`}>
-          <div className={`slide-out-side-nav-div ${showDropdownPage ? 'slide-in' : ''}`}>
-            <SlideOutNav page={page}/>
-          </div>
-        </div>
+        <SlideOutNav page={page} showDropdownPage={showDropdownPage}/>
     </div>
   )
 }

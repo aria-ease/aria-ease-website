@@ -4,21 +4,13 @@ import { makeBlockAccessible } from 'aria-ease';
 import SlideOutNav from '../components/SlideOutNav';
 import SideNav from '../components/SideNav';
 import { Container, Row, Col } from 'react-bootstrap';
-import { CopyBlock, atomOneDark, atomOneLight } from 'react-code-blocks';
+import CodeBlockDemo from '../components/CodeBlock';
 
 
 // eslint-disable-next-line react/prop-types
 const Toggle = ({darkMode, setDarkMode}) => {
     const page = 'toggle-button';
     const[showDropdownPage, setShowDropdownPage] = useState(false);
-
-  useEffect(() => {
-    if(showDropdownPage) {
-      document.querySelector('body').classList.add('no-scroll')
-    } else {
-      document.querySelector('body').classList.remove('no-scroll')
-    }
-  },[showDropdownPage])
     
   useEffect(() => {
     const accessibleBlock = makeBlockAccessible('inner-body-div', 'block-interactive');
@@ -91,40 +83,16 @@ const Toggle = ({darkMode, setDarkMode}) => {
 
                     <div>
                       <p className='mb-2'>Let&#39;s begin by importing the fuction</p>
-                      <CopyBlock
-                        text={importGroupToggles}
-                        language={'javascript'}
-                        showLineNumbers={false}
-                        theme={darkMode ? atomOneDark : atomOneLight}
-                        codeBlock={true}
-                      />
+                      <CodeBlockDemo code={importGroupToggles}/>
 
                       <p className='mb-2 mt-6'>Then we define the states for each toggle button in the collection sequentially (according to the order in which the toggle buttons elements are defined) in a states array</p>
-                      <CopyBlock
-                        text={groupStates}
-                        language={'javascript'}
-                        showLineNumbers={false}
-                        theme={darkMode ? atomOneDark : atomOneLight}
-                        codeBlock={true}
-                      />
+                      <CodeBlockDemo code={groupStates}/>
 
                       <p className='mb-2 mt-6'>And then we create a function to handle checking/unchecking of the toggle buttons. The function uses the index position of the current checked/unchecked toggle button to update the toggle button state in the states array. Hence toggle button elements and states have to be defined sequentially.</p>
-                      <CopyBlock
-                        text={handleTogglePressFunction}
-                        language={'javascript'}
-                        showLineNumbers={false}
-                        theme={darkMode ? atomOneDark : atomOneLight}
-                        codeBlock={true}
-                      />
+                      <CodeBlockDemo code={handleTogglePressFunction}/>
 
                       <p className='mb-2 mt-6'>Lastly we create our toggle buttons components</p>
-                      <CopyBlock
-                        text={togglesComponent}
-                        language={'javascript'}
-                        showLineNumbers={false}
-                        theme={darkMode ? atomOneDark : atomOneLight}
-                        codeBlock={true}
-                      />
+                      <CodeBlockDemo code={togglesComponent}/>
                     </div>
                   </div>
                   
@@ -136,31 +104,13 @@ const Toggle = ({darkMode, setDarkMode}) => {
 
                     <div className='mt-6'>
                       <p className='mb-2'>Let&#39;s begin by importing the fuction</p>
-                      <CopyBlock
-                        text={singleImport}
-                        language={'javascript'}
-                        showLineNumbers={false}
-                        theme={darkMode ? atomOneDark : atomOneLight}
-                        codeBlock={true}
-                      />
+                      <CodeBlockDemo code={singleImport}/>
 
                       <p className='mb-2 mt-6'>And then we create a function to handle checking/unchecking of the toggle button</p>
-                      <CopyBlock
-                        text={toggleSingleButton}
-                        language={'javascript'}
-                        showLineNumbers={false}
-                        theme={darkMode ? atomOneDark : atomOneLight}
-                        codeBlock={true}
-                      />
+                      <CodeBlockDemo code={toggleSingleButton}/>
 
                       <p className='mb-2 mt-6'>Lastly we create our radio component</p>
-                      <CopyBlock
-                        text={singleToggle}
-                        language={'javascript'}
-                        showLineNumbers={false}
-                        theme={darkMode ? atomOneDark : atomOneLight}
-                        codeBlock={true}
-                      />
+                      <CodeBlockDemo code={singleToggle}/>
                     </div>
                   </div>
                 </div>
@@ -169,11 +119,7 @@ const Toggle = ({darkMode, setDarkMode}) => {
           </Container>
         </div>
 
-        <div className={`slide-out-side-nav-outer-div ${showDropdownPage ? 'visible' : 'hidden'}`}>
-          <div className={`slide-out-side-nav-div ${showDropdownPage ? 'slide-in' : ''}`}>
-            <SlideOutNav page={page}/>
-          </div>
-        </div>
+        <SlideOutNav page={page} showDropdownPage={showDropdownPage}/>
     </div>
   )
 }

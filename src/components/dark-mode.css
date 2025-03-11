@@ -22,25 +22,39 @@
 .dark-body .each-text-input-block-div {
     border: 1px solid rgba(97, 97, 97, 1);
 }
-.dark-body .hero-heading {
+.dark-body .hero-heading,
+.dark-body .footer-heading-text,
+.dark-body .below-the-fold-container h2,
+.dark-body .below-the-fold-container h3,
+.dark-body .blog_single_article_title,
+.dark-body .blog_article_content,
+.dark-body .slide-nav-links-section p,
+.dark-body .test-text {
     color: white;
 }
 .dark-body .hero-paragraph,
 .dark-body .home-get-started-div p,
 .dark-body .home-get-started-div h3,
-.dark-body .footer-text {
-    color: rgba(161, 161, 170);
+.dark-body .version-text, 
+.dark-body .blog_article_date {
+    color: rgb(171, 171, 176);
 }
 .dark-body .hero-examples-div {
     background-color: rgba(196, 196, 196, 0.118);
 }
+.dark-body .blog_card_text_div {
+    background-color: white;
+    border-radius: 0px 0px 10px 10px;
+}
 .dark-body .header-nav-link,
-.dark-body .side-nav-link {
+.dark-body .side-nav-link,
+.dark-body .footer-nav-link {
     color: rgb(190, 190, 191);
 }
 .dark-body .header-nav-link:hover,
 .dark-body .active-nav-link,
-.dark-body .side-nav-link:hover {
+.dark-body .side-nav-link:hover,
+.dark-body .footer-nav-link:hover {
     color: rgb(255, 255, 255);
 }
 .dark-body .side-body-div {
@@ -58,9 +72,7 @@
 .dark-body .code-div {
     background-color: #282c34;
 }
-.dark-body code {
-    color: rgba(250, 250, 250);
-}
+
 .dark-body,
 .dark-body .header {
     background-color: rgba(0, 0, 0);
@@ -80,4 +92,7 @@
 }
 .dark-body .header-button-icon {
     color: rgb(190, 190, 191);
+}
+.dark-body .header-menu-button {
+    border: 1px solid rgb(85, 85, 85);
 }

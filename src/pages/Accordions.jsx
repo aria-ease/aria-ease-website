@@ -5,7 +5,7 @@ import SideNav from '../components/SideNav'
 import SlideOutNav from '../components/SlideOutNav'
 import { makeBlockAccessible } from 'aria-ease'
 import AccordionExample from '../components/accordions/AccordionExample';
-import { CopyBlock, atomOneDark, atomOneLight } from 'react-code-blocks';
+import CodeBlockDemo from '../components/CodeBlock';
 
 
 const firstAccordionCode = `import { useState, useEffect } from 'react';
@@ -100,14 +100,6 @@ export default AccordionExample`
 const Accordions = ({darkMode, setDarkMode}) => {
   const page = 'accordions'
   const[showDropdownPage, setShowDropdownPage] = useState(false);
-
-  useEffect(() => {
-    if(showDropdownPage) {
-      document.querySelector('body').classList.add('no-scroll')
-    } else {
-      document.querySelector('body').classList.remove('no-scroll')
-    }
-  },[showDropdownPage])
     
   useEffect(() => {
     const accessibleBlock = makeBlockAccessible('inner-body-div', 'block-interactive');
@@ -132,24 +124,14 @@ const Accordions = ({darkMode, setDarkMode}) => {
                   <p>The function accepts 3 arguments; an array of objects with information about each accordion in the collection, a shared class of all the accordion triggers, and the index position of the currently clicked trigger relative to the main accordion container and other trigger buttons.</p>
                   <p>The toggle buttons have keyboard interaction support using the makeBlockAccessible function.</p>
                   <AccordionExample/>
-                  <CopyBlock
-                    text={firstAccordionCode}
-                    language={'javascript'}
-                    showLineNumbers={false}
-                    theme={darkMode ? atomOneDark : atomOneLight}
-                    codeBlock={true}
-                  />
+                  <CodeBlockDemo code={firstAccordionCode}/>
                 </div>
               </Col>
             </Row>
           </Container>
         </div>
         
-        <div className={`slide-out-side-nav-outer-div ${showDropdownPage ? 'visible' : 'hidden'}`}>
-          <div className={`slide-out-side-nav-div ${showDropdownPage ? 'slide-in' : ''}`}>
-            <SlideOutNav page={page}/>
-          </div>
-        </div>
+        <SlideOutNav page={page} showDropdownPage={showDropdownPage}/>
     </div>
   )
 }

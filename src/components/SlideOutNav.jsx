@@ -1,11 +1,40 @@
-import { Link } from "react-router-dom"
+import { Link } from "react-router-dom";
+import { AnimatePresence, motion } from "framer-motion";
+import { useEffect } from "react";
 
 
 // eslint-disable-next-line react/prop-types
-const SlideOutNav = ({page}) => {
+const SlideOutNav = ({page, showDropdownPage}) => {
+  useEffect(() => {
+    if (showDropdownPage) {
+        document.body.style.overflow = 'hidden';
+    } else {
+        document.body.style.overflow = 'unset';
+    }
+    return () => {
+        document.body.style.overflow = 'unset';
+    };
+}, [showDropdownPage]);
+
   return (
-    <div className="slide-out-nav-outer-div">
-      <Link to='/' className={`side-nav-link ${(page === 'home') ? 'active-nav-link' : ''}`}>Home</Link>
+    <AnimatePresence>
+      {showDropdownPage && (
+        <>
+          <motion.div
+            className="slide-out-side-nav-outer-div"
+            initial={{ opacity: 1 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 1 }}
+            transition={{ duration: 0.3 }}
+          >
+            <motion.div
+              className="slide-out-side-nav-div"
+              initial={{ x: '-100%' }}
+              animate={{ x: 0 }}
+              exit={{ x: '-100%' }}
+              transition={{ stiffness: 300, damping: 30 }}
+            >
+              <Link to='/' className={`side-nav-link ${(page === 'home') ? 'active-nav-link' : ''}`}>Home</Link>
       <div className="slide-nav-links-section">
         <p>Documentation</p>
         <Link to='/docs' aria-label='Navigate to the documentation page' className={`side-nav-link ${(page === 'documentation') ? 'active-nav-link' : ''}`}>Introduction</Link>
@@ -21,7 +50,15 @@ const SlideOutNav = ({page}) => {
           <Link to='/examples/toggle-button' aria-label="View toggle button examples" className={`side-nav-link ${(page === 'toggle-button') ? 'active-nav-link' : ''} ${(window.innerWidth >= 992) ? 'block-interactive' : ''}`} style={{marginTop: '12px'}}>Toggle Button</Link>
         </div>
       </div>
-    </div>
+      <div className='slide-nav-links-section'>
+        <p>Resources</p>
+        <Link to="/blog/main" className={`side-nav-link ${(page === 'blog') ? 'active-nav-link' : ''}`} aria-label='Navigate to blog articles page' style={{marginTop: '12px'}}>Blog</Link>
+      </div>
+            </motion.div>
+          </motion.div>
+        </>
+      )}
+    </AnimatePresence>
   )
 }
 

@@ -14,6 +14,10 @@ import Radio from './pages/Radio'
 import Toggle from './pages/Toggle'
 import firebase from "firebase/compat/app";
 import { getAnalytics } from "firebase/analytics";
+import BlogMain from './pages/BlogMain';
+import BlogSingle from './pages/BlogSingle'
+import "firebase/compat/firestore";
+import Admin from './pages/Admin'
  
 
 const firebaseConfig = {
@@ -32,7 +36,7 @@ getAnalytics(app);
 
 
 const App = () => {
-  const[darkMode, setDarkMode] = useState(true)
+  const[darkMode, setDarkMode] = useState(true);
 
   return (
     <div className={`body-div ${darkMode ? 'dark-body' : 'light-body'}`}>
@@ -46,6 +50,9 @@ const App = () => {
           <Route path="/examples/checkbox" element={<Checkbox darkMode={darkMode} setDarkMode={setDarkMode}/>}/>
           <Route path="/examples/radio" element={<Radio darkMode={darkMode} setDarkMode={setDarkMode}/>}/>
           <Route path="/examples/toggle-button" element={<Toggle darkMode={darkMode} setDarkMode={setDarkMode}/>}/>
+          <Route path="/blog/main" element={<BlogMain darkMode={darkMode} setDarkMode={setDarkMode}/>}/>
+          <Route path="/blog/single" element={<BlogSingle darkMode={darkMode} setDarkMode={setDarkMode}/>}/>
+          <Route path="/clandestine/admin/" element={<Admin/>}/>
         </Routes>
       </Router>
     </div>
