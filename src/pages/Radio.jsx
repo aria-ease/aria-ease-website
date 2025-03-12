@@ -5,7 +5,7 @@ import SlideOutNav from '../components/SlideOutNav';
 import SideNav from '../components/SideNav';
 import { Container, Row, Col } from 'react-bootstrap';
 import CodeBlockDemo from '../components/CodeBlock';
-import ScrollTracker from '../components/scroller/scrollTracker';
+import ScrollTracker from '../components/ScrollTracker';
 
 
 // eslint-disable-next-line react/prop-types

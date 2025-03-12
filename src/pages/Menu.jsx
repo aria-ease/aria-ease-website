@@ -6,7 +6,7 @@ import { useState, useEffect } from 'react'
 import { makeBlockAccessible } from 'aria-ease'
 import HomeExampleMenu from '../components/menus/HomeExampleMenu'
 import CodeBlockDemo from '../components/CodeBlock';
-import ScrollTracker from '../components/scroller/scrollTracker'
+import ScrollTracker from '../components/ScrollTracker';
 
 
 const firstMenuCode = `import { useEffect} from 'react'

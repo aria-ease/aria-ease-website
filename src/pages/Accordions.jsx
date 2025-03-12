@@ -6,7 +6,7 @@ import SlideOutNav from '../components/SlideOutNav'
 import { makeBlockAccessible } from 'aria-ease'
 import AccordionExample from '../components/accordions/AccordionExample';
 import CodeBlockDemo from '../components/CodeBlock';
-import ScrollTracker from '../components/scroller/scrollTracker'
+import ScrollTracker from '../components/ScrollTracker';
 
 
 const firstAccordionCode = `import { useState, useEffect } from 'react';

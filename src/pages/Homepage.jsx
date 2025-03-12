@@ -9,7 +9,7 @@ import { Terminal, Boxes, Keyboard } from 'lucide-react';
 import keyboardnavdemo from '../assets/keyboard-nav-demo.gif';
 import Footer from "../components/Footer";
 import BeforeAfterSlider from "../components/games/BATest";
-import ScrollTracker from "../components/scroller/scrollTracker";
+import ScrollTracker from '../components/ScrollTracker';
 
 // eslint-disable-next-line react/prop-types
 const Homepage = ({darkMode, setDarkMode}) => {

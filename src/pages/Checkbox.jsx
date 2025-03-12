@@ -6,7 +6,7 @@ import SideNav from '../components/SideNav';
 import { Container, Row, Col } from 'react-bootstrap';
 import CheckboxExample from '../components/checkbox/CheckboxExample';
 import CodeBlockDemo from '../components/CodeBlock';
-import ScrollTracker from '../components/scroller/scrollTracker';
+import ScrollTracker from '../components/ScrollTracker';
 
 
 // eslint-disable-next-line react/prop-types

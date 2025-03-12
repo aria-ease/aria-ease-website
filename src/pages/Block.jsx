@@ -7,7 +7,7 @@ import HomeTabExampleOne from '../components/tabs/HomeTabExampleOne'
 import TextInputBlock from '../components/tabs/TextInputBlock'
 import { makeBlockAccessible } from 'aria-ease'
 import CodeBlockDemo from '../components/CodeBlock';
-import ScrollTracker from '../components/scroller/scrollTracker'
+import ScrollTracker from '../components/ScrollTracker';
 
 
 const firstBlockCode = `import { useEffect } from 'react'

@@ -7,7 +7,7 @@ import HomeExampleMenu from '../components/menus/HomeExampleMenu';
 import HomeTabExampleOne from '../components/tabs/HomeTabExampleOne';
 import { makeBlockAccessible } from 'aria-ease';
 import CodeBlockDemo from '../components/CodeBlock';
-import ScrollTracker from '../components/scroller/scrollTracker';
+import ScrollTracker from '../components/ScrollTracker';
 
 const menuCode = `makeMenuAccessible('custom-menu', 'profile-menu-item')`
 const updateHideCode = `updateMenuTriggerAriaAttributes('display-button', 'Hide profile menu')`

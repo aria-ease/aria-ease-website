@@ -30,4 +30,4 @@ const ScrollTracker = ({page}) => {
   return null
 }
 
-export default ScrollTracker
+export default ScrollTracker;
