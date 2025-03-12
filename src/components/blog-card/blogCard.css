@@ -23,3 +23,9 @@
 .blog_card_title_heading:hover {
     color: rgb(181, 200, 255);
 }
+
+.blog_each_card_link,
+.blog_each_card_link:focus,
+.blog_each_card_link:hover {
+    text-decoration: underline !important;
+}

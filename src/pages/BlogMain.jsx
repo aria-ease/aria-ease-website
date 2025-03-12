@@ -5,18 +5,18 @@ import { Container, Row, Col } from 'react-bootstrap';
 import { makeBlockAccessible } from 'aria-ease';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-import { Link } from 'react-router-dom';
 import BlogCard from '../components/blog-card/BlogCard';
 import firebase from 'firebase/compat/app';
 import "firebase/compat/firestore";
 import SlideOutNav from '../components/SlideOutNav';
+import ScrollTracker from '../components/ScrollTracker';
 
 
 // eslint-disable-next-line react/prop-types
 const BlogMain = ({darkMode, setDarkMode}) => {
     const[blogPostsStateArray, setBlogPostsStateArray] = useState([]);
     const[showDropdownPage, setShowDropdownPage] = useState(false);
-    const page = 'blog';
+    const page = 'blog-main';
 
     const fetchBlogPosts = () => {
         firebase.firestore()
@@ -39,7 +39,6 @@ const BlogMain = ({darkMode, setDarkMode}) => {
       }
 
     useEffect(() => {
-        window.scrollTo(0, 0);
         fetchBlogPosts()
         const accessibleBlock = makeBlockAccessible('inner-body-div', 'block-interactive');
         return accessibleBlock;
@@ -47,7 +46,8 @@ const BlogMain = ({darkMode, setDarkMode}) => {
 
   return (
     <div className="home-body" id="inner-body-div">
-        <Header darkMode={darkMode} setDarkMode={setDarkMode} showDropdownPage={showDropdownPage} setShowDropdownPage={setShowDropdownPage}/>
+        <ScrollTracker page={page}/>
+        <Header page={page} darkMode={darkMode} setDarkMode={setDarkMode} showDropdownPage={showDropdownPage} setShowDropdownPage={setShowDropdownPage}/>
 
         <div className='pb-[100px] pt-[100px] pr-3 pl-3 min-h-[calc(100vh-200px)]'>
             <Container fluid>
@@ -56,14 +56,15 @@ const BlogMain = ({darkMode, setDarkMode}) => {
                         <>
                             {blogPostsStateArray.reverse().map((element, index) => (
                                 <Col key={index} xs={12} sm={12} md={6} lg={4} className='mt-[30px]'>
-                                    <Link to={`/blog/single?id=${element.docId}`} className='blog_each_card_link block-interactive' aria-label={`Navigate to '${element.blogTitle}' blog article`}>
-                                        <BlogCard 
-                                            blogTitle={element.blogTitle} 
-                                            blogImage={element.blogImage} 
-                                            blogContent={element.blogContent.replace(/<[^>]*>/g, '').replace(/\s+/g, ' ').trim().slice(0, 100)}
-                                            postDate={element.creation}
-                                        />
-                                    </Link>
+                                    <BlogCard 
+                                        blogTitle={element.blogTitle} 
+                                        blogImage={element.blogImage} 
+                                        blogContent={element.blogContent.replace(/<[^>]*>/g, '').replace(/\s+/g, ' ').trim().slice(0, 100)}
+                                        postDate={element.creation}
+                                        page={page}
+                                        docId={element.docId}
+
+                                    />
                                 </Col>
                             ))}
                         </> :
@@ -86,7 +87,7 @@ const BlogMain = ({darkMode, setDarkMode}) => {
                 </Row>
             </Container>
         </div>
-        <Footer/>
+        <Footer page={page}/>
 
         <SlideOutNav page={page} showDropdownPage={showDropdownPage}/>
     </div>

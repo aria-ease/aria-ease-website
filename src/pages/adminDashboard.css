@@ -12,10 +12,6 @@
     border: none;
     border-radius: 8px;
 }
-.blog_each_card_link:focus {
-    outline: 2px solid rgba(0, 91, 211, 1);
-    outline-offset: 1px;
-}
 .blog_each_card_col {
     margin-top: 30px;
 }

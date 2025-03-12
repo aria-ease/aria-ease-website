@@ -67,7 +67,7 @@ const Toggle = ({darkMode, setDarkMode}) => {
   return (
     <div id="inner-body-div">
         <ScrollTracker page={page}/>
-        <Header darkMode={darkMode} setDarkMode={setDarkMode} showDropdownPage={showDropdownPage} setShowDropdownPage={setShowDropdownPage}/>
+        <Header page={page} darkMode={darkMode} setDarkMode={setDarkMode} showDropdownPage={showDropdownPage} setShowDropdownPage={setShowDropdownPage}/>
         
         <div className='page-body-div'>
           <Container fluid>

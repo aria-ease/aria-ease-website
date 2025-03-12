@@ -1,10 +1,3 @@
-.blog_each_card_link {
-    text-decoration: none;
-}
-.blog_each_card_link:focus,
-.blog_each_card_link:hover {
-    text-decoration: underline !important;
-}
 .blog_each_card_col {
     margin-top: 30px;
 }

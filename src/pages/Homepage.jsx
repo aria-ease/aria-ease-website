@@ -24,7 +24,7 @@ const Homepage = ({darkMode, setDarkMode}) => {
   return (
     <div className="home-body" id="inner-body-div">
       <ScrollTracker page={page}/>
-      <Header darkMode={darkMode} setDarkMode={setDarkMode} showDropdownPage={showDropdownPage} setShowDropdownPage={setShowDropdownPage}/>
+      <Header page={page} darkMode={darkMode} setDarkMode={setDarkMode} showDropdownPage={showDropdownPage} setShowDropdownPage={setShowDropdownPage}/>
 
       <div className="page-body-div">
         <div>
@@ -38,7 +38,7 @@ const Homepage = ({darkMode, setDarkMode}) => {
                     <span className="new-badge">New</span>
                     <span className="version-text">v1.5.5 is now available</span>
                   </div>
-                  <Link to='/docs' className='block-interactive home-discover-functions-button' aria-label='Navigate to the documentation page'>Discover the core functions</Link>
+                  <Link onClick={() => {localStorage.setItem(`scroll-position-${page}`, window.scrollY)}} to='/docs' className='block-interactive home-discover-functions-button' aria-label='Navigate to the documentation page'>Discover the core functions</Link>
                 </div>
               </Col>
             </Row>
@@ -129,9 +129,9 @@ export default App
           <p className="mb-2">Get Started</p>
           <p className="get-started-ship font-semibold mb-1">Ship accessible projects faster</p>
           <p className="mb-4">Find out how Aria-Ease helps developers achieve perfect accessibility scores on their projects, including ours.</p>
-          <Link to='/docs' className='block-interactive home-discover-functions-button' aria-label='Navigate to the documentation page'>Discover the core functions</Link>
+          <Link onClick={() => {localStorage.setItem(`scroll-position-${page}`, window.scrollY)}} to='/docs' className='block-interactive home-discover-functions-button' aria-label='Navigate to the documentation page'>Discover the core functions</Link>
         </div>
-        <Footer/>
+        <Footer page={page}/>
       </div>
         
       <SlideOutNav page={page} showDropdownPage={showDropdownPage}/>
