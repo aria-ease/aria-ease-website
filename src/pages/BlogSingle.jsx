@@ -8,7 +8,6 @@ import firebase from 'firebase/compat/app';
 import "firebase/compat/auth";
 import "firebase/compat/firestore";
 import "firebase/compat/storage";
-import { Suspense } from 'react';
 import SlideOutNav from '../components/SlideOutNav';
 
 
@@ -57,10 +56,7 @@ const BlogSingle = ({darkMode, setDarkMode}) => {
         <Header darkMode={darkMode} setDarkMode={setDarkMode} showDropdownPage={showDropdownPage} setShowDropdownPage={setShowDropdownPage}/>
 
         <div className='min-h-[calc(100vh-200px)]'>
-          <Suspense fallback={<div className="min-h-[calc(100vh-200px)]">
-              <p className='hero-paragraph text-lg'>Loading blog...</p>
-            </div>}>
-            {blog.length > 0 ? 
+          {blog.length > 0 ? 
               <>
                 <div className='blog_single_div pb-[50px]'>
                   <h1 className='blog_single_article_title primary-white-500-text font-semibold'>{blog[0].blogTitle}</h1>
@@ -76,7 +72,6 @@ const BlogSingle = ({darkMode, setDarkMode}) => {
                 <div className={`mt-[50px] rounded-md ${darkMode ? 'bg-gray-50' : 'bg-gray-500'} h-[100px]`}></div>
               </div>
             }
-          </Suspense>
         </div>
       
         <Footer />
