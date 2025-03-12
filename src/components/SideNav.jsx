@@ -23,7 +23,7 @@ const SideNav = ({page}) => {
         </div>
         <div className='side-nav-links-section'>
           <p>Resources</p>
-          <Link to="/blog/main" className={`side-nav-link ${(page === 'blog') ? 'active-nav-link' : ''} ${(window.innerWidth >= 992) ? 'block-interactive' : ''}`} aria-label='Navigate to blog articles page'>Blog</Link>
+          <Link to="/blog/main" className={`side-nav-link ${(window.innerWidth >= 992) ? 'block-interactive' : ''}`} aria-label='Navigate to blog articles page'>Blog</Link>
         </div>
       </div>
     </Col>

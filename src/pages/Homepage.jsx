@@ -9,11 +9,12 @@ import { Terminal, Boxes, Keyboard } from 'lucide-react';
 import keyboardnavdemo from '../assets/keyboard-nav-demo.gif';
 import Footer from "../components/Footer";
 import BeforeAfterSlider from "../components/games/BATest";
+import ScrollTracker from "../components/scroller/scrollTracker";
 
 // eslint-disable-next-line react/prop-types
 const Homepage = ({darkMode, setDarkMode}) => {
   const[showDropdownPage, setShowDropdownPage] = useState(false);
-  const page = 'home'
+  const page = 'home';
 
   useEffect(() => {
     const accessibleBlock = makeBlockAccessible('inner-body-div', 'block-interactive');
@@ -22,6 +23,7 @@ const Homepage = ({darkMode, setDarkMode}) => {
 
   return (
     <div className="home-body" id="inner-body-div">
+      <ScrollTracker page={page}/>
       <Header darkMode={darkMode} setDarkMode={setDarkMode} showDropdownPage={showDropdownPage} setShowDropdownPage={setShowDropdownPage}/>
 
       <div className="page-body-div">

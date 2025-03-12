@@ -39,6 +39,7 @@ const BlogMain = ({darkMode, setDarkMode}) => {
       }
 
     useEffect(() => {
+        window.scrollTo(0, 0);
         fetchBlogPosts()
         const accessibleBlock = makeBlockAccessible('inner-body-div', 'block-interactive');
         return accessibleBlock;

@@ -6,6 +6,7 @@ import { useState, useEffect } from 'react'
 import { makeBlockAccessible } from 'aria-ease'
 import HomeExampleMenu from '../components/menus/HomeExampleMenu'
 import CodeBlockDemo from '../components/CodeBlock';
+import ScrollTracker from '../components/scroller/scrollTracker'
 
 
 const firstMenuCode = `import { useEffect} from 'react'
@@ -72,7 +73,9 @@ const Examples = ({darkMode, setDarkMode}) => {
 
   return (
     <div id="inner-body-div" className='menu-example-page-div'>
+        <ScrollTracker page={page}/>
         <Header darkMode={darkMode} setDarkMode={setDarkMode} showDropdownPage={showDropdownPage} setShowDropdownPage={setShowDropdownPage}/>
+        
         <div className='page-body-div'>
           <Container fluid>
             <Row>

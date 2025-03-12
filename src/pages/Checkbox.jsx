@@ -6,6 +6,7 @@ import SideNav from '../components/SideNav';
 import { Container, Row, Col } from 'react-bootstrap';
 import CheckboxExample from '../components/checkbox/CheckboxExample';
 import CodeBlockDemo from '../components/CodeBlock';
+import ScrollTracker from '../components/scroller/scrollTracker';
 
 
 // eslint-disable-next-line react/prop-types
@@ -77,6 +78,7 @@ const Checkbox = ({darkMode, setDarkMode}) => {
 
   return (
     <div id="inner-body-div">
+        <ScrollTracker page={page}/>
         <Header darkMode={darkMode} setDarkMode={setDarkMode} showDropdownPage={showDropdownPage} setShowDropdownPage={setShowDropdownPage}/>
         
         <div className='page-body-div'>

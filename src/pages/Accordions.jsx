@@ -6,6 +6,7 @@ import SlideOutNav from '../components/SlideOutNav'
 import { makeBlockAccessible } from 'aria-ease'
 import AccordionExample from '../components/accordions/AccordionExample';
 import CodeBlockDemo from '../components/CodeBlock';
+import ScrollTracker from '../components/scroller/scrollTracker'
 
 
 const firstAccordionCode = `import { useState, useEffect } from 'react';
@@ -109,6 +110,7 @@ const Accordions = ({darkMode, setDarkMode}) => {
 
   return (
     <div id="inner-body-div" className='accordion-example-page-div'>
+        <ScrollTracker page={page}/>
         <Header darkMode={darkMode} setDarkMode={setDarkMode} showDropdownPage={showDropdownPage} setShowDropdownPage={setShowDropdownPage}/>
 
         <div className='page-body-div'>

@@ -7,6 +7,7 @@ import HomeExampleMenu from '../components/menus/HomeExampleMenu';
 import HomeTabExampleOne from '../components/tabs/HomeTabExampleOne';
 import { makeBlockAccessible } from 'aria-ease';
 import CodeBlockDemo from '../components/CodeBlock';
+import ScrollTracker from '../components/scroller/scrollTracker';
 
 const menuCode = `makeMenuAccessible('custom-menu', 'profile-menu-item')`
 const updateHideCode = `updateMenuTriggerAriaAttributes('display-button', 'Hide profile menu')`
@@ -47,7 +48,9 @@ const Documentation = ({darkMode, setDarkMode}) => {
 
   return (
     <div id="inner-body-div">
+        <ScrollTracker page={page}/>
         <Header darkMode={darkMode} setDarkMode={setDarkMode} showDropdownPage={showDropdownPage} setShowDropdownPage={setShowDropdownPage}/>
+        
         <div className='page-body-div documentation-page'>
           <Container fluid>
             <Row>

@@ -7,6 +7,7 @@ import HomeTabExampleOne from '../components/tabs/HomeTabExampleOne'
 import TextInputBlock from '../components/tabs/TextInputBlock'
 import { makeBlockAccessible } from 'aria-ease'
 import CodeBlockDemo from '../components/CodeBlock';
+import ScrollTracker from '../components/scroller/scrollTracker'
 
 
 const firstBlockCode = `import { useEffect } from 'react'
@@ -71,7 +72,9 @@ const Block = ({darkMode, setDarkMode}) => {
 
   return (
     <div className='block-example-page-div' id="inner-body-div">
+        <ScrollTracker page={page}/>
         <Header darkMode={darkMode} setDarkMode={setDarkMode} showDropdownPage={showDropdownPage} setShowDropdownPage={setShowDropdownPage}/>
+        
         <div className='page-body-div'>
           <Container fluid>
             <Row>

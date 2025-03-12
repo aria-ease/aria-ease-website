@@ -11,6 +11,7 @@ import "firebase/compat/storage";
 import SlideOutNav from '../components/SlideOutNav';
 
 
+
 // eslint-disable-next-line react/prop-types
 const BlogSingle = ({darkMode, setDarkMode}) => {
   const location = useLocation();
@@ -18,7 +19,7 @@ const BlogSingle = ({darkMode, setDarkMode}) => {
   const idPassed = dataPassedParams.get('id');
   const[blog, setBlog] = useState([]);
   const[showDropdownPage, setShowDropdownPage] = useState(false);
-  const page = 'blog'
+  const page = 'blog-single'
 
   useEffect(() => {
     if(idPassed) {
@@ -47,6 +48,7 @@ const BlogSingle = ({darkMode, setDarkMode}) => {
   },[idPassed])
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     const accessibleBlock = makeBlockAccessible('inner-body-div', 'block-interactive');
     return accessibleBlock;
   }, []);

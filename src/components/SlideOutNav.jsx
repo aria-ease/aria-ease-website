@@ -52,7 +52,7 @@ const SlideOutNav = ({page, showDropdownPage}) => {
       </div>
       <div className='slide-nav-links-section'>
         <p>Resources</p>
-        <Link to="/blog/main" className={`side-nav-link ${(page === 'blog') ? 'active-nav-link' : ''}`} aria-label='Navigate to blog articles page' style={{marginTop: '12px'}}>Blog</Link>
+        <Link to="/blog/main" className={`side-nav-link ${(page === 'blog-single' || page === 'blog-main') ? 'active-nav-link' : ''}`} aria-label='Navigate to blog articles page' style={{marginTop: '12px'}}>Blog</Link>
       </div>
             </motion.div>
           </motion.div>
