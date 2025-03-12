@@ -11,7 +11,7 @@ const BlogCard = ({page, docId, blogTitle, blogImage, blogContent, postDate}) =>
 
       </div>
       <div className='blog_card_text_div pt-[30px] pl-5 pr-5 pb-[30px]'>
-        <Link onClick={() => {localStorage.setItem(`scroll-position-${page}`, window.scrollY.toString())}} to={`/blog/single?id=${docId}`} className='blog_card_title_heading text-[20px] primary-white-500-text blog_each_card_link' aria-label={`Navigate to '${blogTitle}' blog article`}>{blogTitle}</Link>
+        <Link onClick={() => {sessionStorage.setItem(`scroll-position-${page}`, window.scrollY.toString())}} to={`/blog/single?id=${docId}`} className='blog_card_title_heading text-[20px] primary-white-500-text blog_each_card_link' aria-label={`Navigate to '${blogTitle}' blog article`}>{blogTitle}</Link>
         <p className='blog_card_text primary-white-500-text mt-1'>{blogContent}...</p>
         <p className='blog_card_date mb-0 mt-1'>{postDate}</p>
       </div>

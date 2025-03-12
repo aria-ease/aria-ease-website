@@ -38,7 +38,7 @@ const Homepage = ({darkMode, setDarkMode}) => {
                     <span className="new-badge">New</span>
                     <span className="version-text">v1.5.5 is now available</span>
                   </div>
-                  <Link onClick={() => {localStorage.setItem(`scroll-position-${page}`, window.scrollY)}} to='/docs' className='block-interactive home-discover-functions-button' aria-label='Navigate to the documentation page'>Discover the core functions</Link>
+                  <Link onClick={() => {sessionStorage.setItem(`scroll-position-${page}`, window.scrollY)}} to='/docs' className='block-interactive home-discover-functions-button' aria-label='Navigate to the documentation page'>Discover the core functions</Link>
                 </div>
               </Col>
             </Row>
@@ -129,7 +129,7 @@ export default App
           <p className="mb-2">Get Started</p>
           <p className="get-started-ship font-semibold mb-1">Ship accessible projects faster</p>
           <p className="mb-4">Find out how Aria-Ease helps developers achieve perfect accessibility scores on their projects, including ours.</p>
-          <Link onClick={() => {localStorage.setItem(`scroll-position-${page}`, window.scrollY)}} to='/docs' className='block-interactive home-discover-functions-button' aria-label='Navigate to the documentation page'>Discover the core functions</Link>
+          <Link onClick={() => {sessionStorage.setItem(`scroll-position-${page}`, window.scrollY)}} to='/docs' className='block-interactive home-discover-functions-button' aria-label='Navigate to the documentation page'>Discover the core functions</Link>
         </div>
         <Footer page={page}/>
       </div>
