@@ -63,7 +63,8 @@ const Admin = () => {
           blogContent,
           posterName: '',
           imageAlt,
-          creation: getCurrentDate()
+          creation: getCurrentDate(),
+          date: firebase.firestore.Timestamp.now()
         })
         .then(() => {
           console.log('Blog posted')
@@ -143,8 +144,38 @@ const Admin = () => {
     fetchBlogPosts()
   },[])
 
+  /* const updateAllPostsWithTimestamp = async () => {
+    try {
+      const querySnapshot = await firebase.firestore()
+        .collection('blogPosts')
+        .get();
+  
+      const batch = firebase.firestore().batch();
+  
+      querySnapshot.forEach((doc) => {
+        // If no date field exists, add it
+        if (!doc.data().date) {
+          const docRef = firebase.firestore().collection('blogPosts').doc(doc.id);
+          const creationDate = doc.data().creation;
+          const cleanDate = creationDate.replace(/(st|nd|rd|th),/, ',');
+          const timestamp = new Date(cleanDate).getTime();
+          batch.update(docRef, {
+            date: firebase.firestore.Timestamp.fromMillis(timestamp)
+          });
+        }
+      });
+  
+      await batch.commit();
+      console.log('All posts updated with timestamps');
+      fetchBlogPosts();
+    } catch (error) {
+      console.error('Error updating posts:', error);
+    }
+  }; */
+
   return (
     <div style={{backgroundColor: 'white'}}>
+      {/* <button onClick={updateAllPostsWithTimestamp}>Update All Posts with Timestamp</button> */}
         <form className='blog_post_modal_form'>
               <input type='text' placeholder='Blog Title' value={blogTitle} onChange={(event) => setBlogTitle(event.target.value)}></input>
               <div className='blog_post_modal_image_input_div'>

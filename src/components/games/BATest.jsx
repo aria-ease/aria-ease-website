@@ -63,7 +63,7 @@ const BATest = ({ darkMode }) => {
             type="checkbox"
             checked={isChecked}
             onChange={() => setIsChecked(!isChecked)}
-            aria-label={showAriaLabel ? "Toggle demo switch" : undefined}
+            aria-label='Toggle demo switch'
             aria-checked={showAriaChecked ? isChecked : undefined}
           />
           <motion.span 

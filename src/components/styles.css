@@ -42,7 +42,7 @@
 .header-search-div {
     max-width: 480px;
     display: grid;
-    grid-template-columns: auto 1fr;
+    grid-template-columns: auto 1fr auto;
     gap: 6px;
     align-items: center;
     height: 32px;
@@ -59,9 +59,9 @@
     background-color: transparent;
     border: none;
     color: rgba(181, 181, 181, 1);
-    font-size: 13px;
+    font-size: 16px;
     font-style: normal;
-    font-weight: 500;
+    font-weight: 300;
     line-height: 140%;
 }
 @media(min-width: 768px) {
@@ -73,6 +73,9 @@
     }
     .header-menu-button {
         display: none;
+    }
+    .search-result-container {
+        width: 520px;
     }
 }
 @media(max-width: 767px) {
@@ -86,6 +89,9 @@
     }
     .hero-heading {
         font-size: 2.25rem;
+    }
+    .search-result-container {
+        width: 98%;
     }
 }
 @media(max-width: 991px) {
@@ -394,4 +400,10 @@ select:-moz-autofill {
   }
 .footer {
     border-top: 0.1px solid rgb(85, 85, 85);
+}
+.search-result-container ul {
+    list-style: none;
+}
+.search-result-container ul li:not(:last-child) {
+    margin-bottom: 10px;
 }

@@ -21,6 +21,7 @@ const BlogMain = ({darkMode, setDarkMode}) => {
     const fetchBlogPosts = () => {
         firebase.firestore()
         .collection('blogPosts')
+        .orderBy('date', 'desc')
         .get()
         .then(function(querySnapshot) {
           const blogPostsData = [];
@@ -54,7 +55,7 @@ const BlogMain = ({darkMode, setDarkMode}) => {
                 <Row>
                     {blogPostsStateArray.length > 0 ? 
                         <>
-                            {blogPostsStateArray.reverse().map((element, index) => (
+                            {blogPostsStateArray.map((element, index) => (
                                 <Col key={index} xs={12} sm={12} md={6} lg={4} className='mt-[30px]'>
                                     <BlogCard 
                                         blogTitle={element.blogTitle} 

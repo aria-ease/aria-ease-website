@@ -111,7 +111,7 @@ const Toggle = ({darkMode, setDarkMode}) => {
                       <p className='mb-2 mt-6'>And then we create a function to handle checking/unchecking of the toggle button</p>
                       <CodeBlockDemo code={toggleSingleButton}/>
 
-                      <p className='mb-2 mt-6'>Lastly we create our radio component</p>
+                      <p className='mb-2 mt-6'>Lastly we create our toggle switch component</p>
                       <CodeBlockDemo code={singleToggle}/>
                     </div>
                   </div>
