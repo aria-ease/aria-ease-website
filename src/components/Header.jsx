@@ -62,30 +62,50 @@ const Header = ({page, darkMode, setDarkMode, showDropdownPage, setShowDropdownP
                 event.preventDefault();
                 searchInputRef.current?.focus();
             }
+            if(resultsVisible) {
+                if (event.key === 'Escape') {
+                    event.preventDefault();
+                    setResultsVisible(false);
+                    return;
+                }
+                if (event.key === 'Tab') {
+                    const focusedElement = document.activeElement;
+                    if(focusedElement?.classList.contains('search-container-items')) {
+                        event.preventDefault();
+                        const searchItems = document.querySelectorAll('.search-container-items');
+                        const currentIndex = Array.from(searchItems).indexOf(document.activeElement);
+                        if (event.shiftKey) {
+                            // Tab backwards
+                            if (currentIndex <= 0 || currentIndex === -1) {
+                                searchItems[searchItems.length - 1]?.focus();
+                            } else {
+                                searchItems[currentIndex - 1]?.focus();
+                            }
+                        } else {
+                            // Tab forwards
+                            if (currentIndex === searchItems.length - 1 || currentIndex === -1) {
+                                searchItems[0]?.focus();
+                            } else {
+                                searchItems[currentIndex + 1]?.focus();
+                            }
+                        }
+                    }
+                }
+            }
         };
         window.addEventListener('keydown', handleGlobalKeyDown);
         return () => window.removeEventListener('keydown', handleGlobalKeyDown);
-    }, []);
+    }, [resultsVisible]);
 
     const handleKeyDown = (event) => {
-        if (event.key === 'Escape') {
-            event.preventDefault();
-            setResultsVisible(false)
-            return;
-        } 
         if (resultsVisible) {
-            if (event.key === 'Tab') {
-                event.preventDefault();
-                if(document.activeElement === searchInputRef.current) {
-                    searchContainerFocusRef.current?.focus();
-                }
-            }
             setTimeout(() => {
                 const focusedElement = document.activeElement;
-                if (focusedElement?.classList.contains('search-container-items')) {
+                if(focusedElement?.classList.contains('search-container-items')) {
                     focusedElement.scrollIntoView({ block: 'center', behavior: 'smooth' });
                 }
             }, 10);
+            return event;
         }
     }
 
@@ -128,7 +148,7 @@ const Header = ({page, darkMode, setDarkMode, showDropdownPage, setShowDropdownP
         </div>
         <div className="header-search-div">
             <svg fill="rgba(181, 181, 181, 1)" height="18" viewBox="0 0 13 14" width="18" xmlns="http://www.w3.org/2000/svg"><path clipRule="evenodd" d="m8.82264 10.3833c-.92307.7008-2.07429 1.1167-3.32264 1.1167-3.03757 0-5.5-2.46243-5.5-5.5s2.46243-5.5 5.5-5.5 5.5 2.46243 5.5 5.5c0 1.24835-.4159 2.39957-1.1167 3.32264l2.897 2.89706c.2929.2929.2929.7677 0 1.0606s-.7677.2929-1.0606 0zm.67736-4.3833c0 2.20914-1.79086 4-4 4s-4-1.79086-4-4 1.79086-4 4-4 4 1.79086 4 4z" fillRule="evenodd"/></svg>
-            <input ref={searchInputRef} type="text" placeholder="Search documentation" className='block-interactive' aria-label='Search documentation' value={query} onChange={(event) => setQuery(event.target.value)} onKeyDown={handleKeyDown}/>
+            <input ref={searchInputRef} type="text" placeholder="Search documentation" className='block-interactive search-container-items' aria-label='Search documentation' value={query} onChange={(event) => setQuery(event.target.value)}/>
             <div className='flex items-center'>
                 <span className="text-xs search-text">⌘</span>
                 <span className="text-xs search-text">k</span>
@@ -145,7 +165,7 @@ const Header = ({page, darkMode, setDarkMode, showDropdownPage, setShowDropdownP
             <div aria-live='polite' className='search-result-container-overlay fixed top-[56px] left-0 right-0 bottom-0 animate-fadeIn'>
                 <div id='search-container' className='search-result-container fixed max-h-[350px] rounded-md z-[999] m-auto left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 slideDown' tabIndex="0" role="dialog" aria-modal="true" aria-label="Search results">
                     <div className='flex justify-end bg-transparent p-2 search-close-button-div'>
-                        <button className='search-close-button search-container-items rounded-md p-1' onClick={() => {setResultsVisible(false)}} ref={searchContainerFocusRef} onKeyDown={handleKeyDown} aria-label='Close search result modal'>
+                        <button className='search-close-button search-container-items rounded-md p-1' onClick={() => {setResultsVisible(false)}} ref={searchContainerFocusRef} aria-label='Close search result modal'>
                             <X className={`h-4 w-4 ${darkMode ? 'text-white' : 'text-black'}`}/>
                         </button>
                     </div>
@@ -176,13 +196,6 @@ const Header = ({page, darkMode, setDarkMode, showDropdownPage, setShowDropdownP
                                     </ul>
                                 </>
                             )}
-                            {/* <ul>
-                                {results.map((doc, index) => (
-                                    <li key={index}>
-                                        <a href={doc.url} className='search-result-link search-container-items text-sm px-3 py-2 rounded-md w-full block' onKeyDown={handleKeyDown} aria-label={`Navigate to ${doc.title} page`}>{doc.title}</a>
-                                    </li>
-                                ))}
-                            </ul> */} 
                         </div> :
                         <div className='py-4 px-2'>
                             <p className={`text-center text-sm mb-1 mt-1 ${darkMode ? 'text-gray-300' : 'text-gray-700'}`}>No results found for &#34;{query}&#34;</p>
