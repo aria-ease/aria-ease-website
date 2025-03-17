@@ -95,7 +95,7 @@ const Header = ({page, darkMode, setDarkMode, showDropdownPage, setShowDropdownP
         };
         window.addEventListener('keydown', handleGlobalKeyDown);
         return () => window.removeEventListener('keydown', handleGlobalKeyDown);
-    }, [resultsVisible]);
+    }, [resultsVisible, results]);
 
     const handleKeyDown = (event) => {
         if (resultsVisible) {
