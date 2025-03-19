@@ -82,16 +82,16 @@ const Block = ({darkMode, setDarkMode}) => {
               <Col xs={12} sm={12} md={9} lg={9}>
                   <div className='side-body-div'>
                       <h1 className='component-example-heading'>Block</h1>
-                      <span>A statically displayed component that has a list of related interractive children items e.g tabs, interactive sliders, carousels, and entire web page body.</span>
+                      <p className='mt-2'>A statically displayed component that has a list of related interractive children items e.g tabs, interactive sliders, carousels, and entire web page body.</p>
 
-                      <div className='example-each-ui-code-block-div'>
+                      <div className='example-each-ui-code-block-div mt-6'>
                         <h5>Buttons Block</h5>
                         <p>This creates a focus trap within the buttons tab block. The Arrow keys navigates the focus within the trap in a cycle. The Space and Enter keys &#34;clicks&#34; the interactive element. The Tab key exits the trap.</p>
                         <HomeTabExampleOne/>
                         <CodeBlockDemo code={firstBlockCode}/>
                       </div>
 
-                      <div className='example-each-ui-code-block-div'>
+                      <div className='example-each-ui-code-block-div mt-6'>
                         <h5>Text Input Block</h5>
                         <p>This creates a focus trap within the text input block. The Arrow keys navigates the focus within the trap in a cycle. The Tab key exits the trap.</p>
                         <TextInputBlock/>

@@ -276,9 +276,7 @@ a {
 #inner-body-div .code-div {
     padding: 10px !important;
 }
-.example-each-ui-code-block-div {
-    margin-top: 24px;
-}
+
 .example-each-ui-code-block-div pre {
     margin-top: 5px;
 }
@@ -407,3 +405,15 @@ select:-moz-autofill {
 .search-result-container ul li:not(:last-child) {
     margin-bottom: 10px;
 }
+
+  
+  .course-checkbox {
+    cursor: pointer;
+    accent-color: #2563eb;
+  }
+  
+  .checkbox-label {
+    font-size: 1rem;
+    color: inherit;
+    cursor: pointer;
+  }

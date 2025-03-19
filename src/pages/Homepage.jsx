@@ -36,7 +36,7 @@ const Homepage = ({darkMode, setDarkMode}) => {
                   <p className="hero-paragraph mb-5 mt-8">Out-of-the-box accessibility utility package that you can integrate into your web components with simple function calls. Automate menu and block focus management, keyboard interactions and navigations, aria attributes update, and more.</p>
                   <div className="badge-container mb-[50px]">
                     <span className="new-badge">New</span>
-                    <span className="version-text">v1.5.5 is now available</span>
+                    <span className="version-text">v1.6.0 is now available</span>
                   </div>
                   <Link onClick={() => {sessionStorage.setItem(`scroll-position-${page}`, window.scrollY)}} to='/docs' className='block-interactive home-discover-functions-button' aria-label='Navigate to the documentation page'>Discover the core functions</Link>
                 </div>

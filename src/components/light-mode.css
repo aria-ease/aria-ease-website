@@ -100,3 +100,8 @@
 .light-body .search-close-button-div {
     border-bottom: 0.5px solid rgb(191, 191, 191);
 }
+.light-body .single-toggle-button,
+.light-body .group-toggle-button {
+    background-color: black;
+    color: white;
+}

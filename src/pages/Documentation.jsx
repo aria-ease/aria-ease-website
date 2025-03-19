@@ -127,7 +127,7 @@ const Documentation = ({darkMode, setDarkMode}) => {
                     <>
                       <p style={{marginTop: '80px'}}>
                         <b className='features-function'>updateAccordionTriggerAriaAttributes:</b>
-                        This function enables screen reader support for accordions.
+                        This function enables assistive technology support for accordions.
                       </p>
                       <p>This feature helps visually impaired users to navigate interacting with the accordions, by informing the users about the current state, and purpose, of each of the accordion. The states are either expanded or not expanded.</p>
                       <p>The function updates the aria-expanded and aria-label attributes of the accordion toggle button.</p>
