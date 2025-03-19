@@ -71,7 +71,16 @@ const Toggle = ({darkMode, setDarkMode}) => {
                   <p className='mt-2'>Toggle buttons are components that require a full press-and-release cycle to toggle a value. It is similar but not identical to a checkbox. <Link className='underline block-interactive' to='/examples/checkbox' aria-label='Navigate to checkbox component page'>Learn about checkbox component here</Link></p>
 
                   <div className='mt-10'>
-                    <h4 className='mt-5'>aria-pressed</h4>
+                    <h4>Required ARIA Attributes</h4>
+                    <p className='mt-2'>Toggle buttons require specific ARIA attributes to ensure proper accessibility:</p>
+                    <ul className='list-disc ml-6 mt-2'>
+                      <li><code>aria-pressed</code>: Indicates the selection state (&#39;true&#39; or &#39;false&#39;)</li>
+                      <li><code>aria-label</code>: Provides a descriptive label for screen readers</li>
+                    </ul>
+                  </div>
+
+                  <div className='mt-4'>
+                    <h4>aria-pressed</h4>
                     <p>The <code>aria-pressed</code> attribute indicates the presence of a toggle button. It describes the current &#34;pressed&#34;--or &#34;not pressed&#34;--state of a toggle button. If the aria-pressed attribute is not present, the button is not a toggle button.</p>
 
                     <h4 className='mt-5'>updateGroupTogglesAriaAttributes</h4>
