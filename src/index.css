@@ -2,10 +2,21 @@
 @tailwind components;
 @tailwind utilities;
 
-
+* {
+  scrollbar-width: thin;
+  scrollbar-color: silver transparent;
+}
+*::-webkit-scrollbar {
+  width: 8px;
+}
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
 }
+
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   margin: 0px;
 }

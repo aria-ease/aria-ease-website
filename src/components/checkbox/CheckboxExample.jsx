@@ -4,9 +4,9 @@ import '../styles.css';
 
 const CheckboxExample = () => {
     const[checkboxState, setCheckboxState] = useState([
-      {checked: false, uncheckedAriaLabel: 'Add Math to list of courses', checkedAriaLabel: 'Remove Math from list of courses'},
-      {checked: false, uncheckedAriaLabel: 'Add Biology to list of courses', checkedAriaLabel: 'Remove Biology from list of courses'},
-      {checked: false, uncheckedAriaLabel: 'Add Philosophy to list of courses', checkedAriaLabel: 'Remove Philosophy from list of courses'}
+      {checked: false, uncheckedAriaLabel: 'Select math course', checkedAriaLabel: 'Deselect math course'},
+      {checked: false, uncheckedAriaLabel: 'Select biology course', checkedAriaLabel: 'Deselect biology course'},
+      {checked: false, uncheckedAriaLabel: 'Select philosophy course', checkedAriaLabel: 'Deselect philosophy course'}
     ])
 
     const handleCheck = (event, index) => {
@@ -32,22 +32,49 @@ const CheckboxExample = () => {
     };
 
     return (
-        <div id='checkbox-div'>
-            <div>
-              <label htmlFor='math'>Math:</label>
-              <input type='checkbox' name='math' id='math' className='course-checkbox block-interactive' onChange={(event) => handleCheck(event, 0)} onKeyDown={(event) => handleCheck(event, 0)} aria-checked={false} aria-label='Add Math to list of courses'></input>
-            </div>
+      <div id='checkbox-div' className='checkbox-container flex flex-col gap-[1rem] p-[1rem]'>
+      <div className='checkbox-item flex items-center gap-[0.75rem]'>
+        <label htmlFor='math' className='checkbox-label'>Math</label>
+        <input 
+          type='checkbox' 
+          name='math' 
+          id='math' 
+          className='course-checkbox w-[1.25rem] h-[1.25rem] block-interactive'
+          onChange={(event) => handleCheck(event, 0)} 
+          onKeyDown={(event) => handleCheck(event, 0)} 
+          aria-checked={false} 
+          aria-label='Select math course'
+        />
+      </div>
 
-            <div>
-              <label htmlFor='biology'>Biology:</label>
-              <input type='checkbox' name='biology' id='biology' className='course-checkbox block-interactive' onChange={(event) => handleCheck(event, 1)} onKeyDown={(event) => handleCheck(event, 1)} aria-checked={false} aria-label='Add Biology to list of courses'></input>
-            </div>
+      <div className='checkbox-item flex items-center gap-[0.75rem]'>
+        <label htmlFor='biology' className='checkbox-label'>Biology</label>
+        <input 
+          type='checkbox' 
+          name='biology' 
+          id='biology' 
+          className='course-checkbox w-[1.25rem] h-[1.25rem] block-interactive'
+          onChange={(event) => handleCheck(event, 1)} 
+          onKeyDown={(event) => handleCheck(event, 1)} 
+          aria-checked={false} 
+          aria-label='Select biology course'
+        />
+      </div>
 
-            <div>
-              <label htmlFor='philosophy'>Philosophy:</label>
-              <input type='checkbox' name='philosophy' id='philosophy' className='course-checkbox block-interactive' onChange={(event) => handleCheck(event, 2)} onKeyDown={(event) => handleCheck(event, 2)} aria-checked={false} aria-label='Add Philosophy to list of courses'></input>
-            </div>
-        </div>
+      <div className='checkbox-item flex items-center gap-[0.75rem]'>
+        <label htmlFor='philosophy' className='checkbox-label'>Philosophy</label>
+        <input 
+          type='checkbox' 
+          name='philosophy' 
+          id='philosophy' 
+          className='course-checkbox w-[1.25rem] h-[1.25rem] block-interactive'
+          onChange={(event) => handleCheck(event, 2)} 
+          onKeyDown={(event) => handleCheck(event, 2)} 
+          aria-checked={false} 
+          aria-label='Select philosophy course'
+        />
+      </div>
+  </div>
     )
 }
 
