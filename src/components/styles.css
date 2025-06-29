@@ -84,7 +84,8 @@
     }
     .header-logo-link,
     .header-nav-link-div,
-    .side-nav-div {
+    .side-nav-div,
+    .cmd-k {
         display: none !important;
     }
     .hero-heading {

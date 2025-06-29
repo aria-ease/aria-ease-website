@@ -127,17 +127,38 @@ const singleBox = `<input type='checkbox' name='math' id='math' className='singl
                     <h4>aria-checked</h4>
                     <p>The <code>aria-checked</code> attribute indicates to assistive technologies the presence of a checkable item. It indicates the current &#34;checked&#34;--or &#34;unchecked&#34;--state of the item. If the aria-checked attribute is not present, a user will not be able to correctly identify the item as checkable.</p>
 
-                    <h4 className='mt-2'>aria-label</h4>
-                    <p>The <code>aria-label</code> attribute provides a description of a checkbox for screen reader users. It typically contains a detailed purpose of the checkbox, and the action that will happen when interacted with.</p>
+                    <h4 className='mt-4'>aria-label</h4>
+                    <p>The <code>aria-label</code> attribute provides a description of a checkbox for screen reader users. It typically contains a detailed purpose of the checkbox, and the action that will take place when interacted with.</p>
 
-                    <h4 className='mt-5'>updateGroupCheckboxesAriaAttributes</h4>
+                    <div className='mt-5'>
+                    <h4>Checkbox Groups</h4>
+                    <p className='mt-2'>When grouping multiple checkboxes:</p>
+                    <ul className='list-disc ml-6 mt-2'>
+                      <li>Use <code>role=&#34;group&#34;</code> on the container element</li>
+                      <li>Add <code>aria-labelledby</code> to reference the group&#39;s heading</li>
+                      <li>Maintain consistent spacing between checkboxes (minimum 8px)</li>
+                      <li>Consider using fieldset and legend for form groups</li>
+                    </ul>
+                  </div>
+
+                  <div className='mt-4'>
+                    <h4>Visual Design Best Practices</h4>
+                    <ul className='list-disc ml-6 mt-2'>
+                      <li>Minimum touch target size: 44x44 pixels</li>
+                      <li>Clear focus indicators with high contrast</li>
+                      <li>Visible state changes beyond just the checkmark</li>
+                      <li>Support for mixed/indeterminate states when parent-child relationships exist</li>
+                    </ul>
+                  </div>
+
+                    <h4 className='mt-10'>updateGroupCheckboxesAriaAttributes</h4>
                     <p className='mt-2'>The <code>updateGroupCheckboxesAriaAttributes</code> function allows to systematically manage multiple checkboxes with dynamic accessibility attributes.</p>
                     <p className='mt-2'>The function enables assistive technology support for the checkboxes. This feature helps visually impaired users to navigate interacting with the checkboxes, by informing the users about the current state, and the action, of each of the checkboxes. The states are either checked or not checked. The function updates the aria-checked and aria-label attributes of the checkboxes.</p>
                     <p className='mt-2'>The function accepts 3 arguments; an array of objects with information about each checkbox in the collection, a shared class of all the checkboxes, and the index position of the currently clicked checkbox relative to the main checkboxes container and other checkboxes.</p>
 
                     <div><CheckboxExample/></div>
                     <div>
-                      <p className='mb-2'>Let&#39;s begin by importing the fuction</p>
+                      <p className='mb-2 mt-2'>Let&#39;s begin by importing the fuction</p>
                       <CodeBlockDemo code={importGroupCheckboxes}/>
                       
 
@@ -156,8 +177,8 @@ const singleBox = `<input type='checkbox' name='math' id='math' className='singl
                   <div className='mt-10 pt-3'>
                     <h4>updateSingleCheckboxAriaAttribute</h4>
                     <p className='mt-2'>The <code>updateSingleCheckboxAriaAttribute</code> function allows to systematically update the aria attributes of a single checkbox.</p>
-                    <p>The function enables assistive technology support for the checkbox. This feature helps visually impaired users to navigate interacting with the checkbox, by informing the users about the current state, and purpose, of each of the checkbox. The states are either checked or not checked. The function updates the aria-checked and aria-label attributes of the checkbox.</p>
-                    <p>The function accepts 2 arguments; the class of the checkbox, and the aria label to be updated.</p>
+                    <p className='mt-2'>The function enables assistive technology support for the checkbox. This feature helps visually impaired users to navigate interacting with the checkbox, by informing the users about the current state, and action, of the checkbox. The states are either checked or not checked. The function updates the aria-checked and aria-label attributes of the checkbox.</p>
+                    <p className='mt-2'>The function accepts 2 arguments; the class of the checkbox, and the aria label to be updated.</p>
 
                     <div className='mt-6'>
                       <div className='flex items-center'>
@@ -167,7 +188,7 @@ const singleBox = `<input type='checkbox' name='math' id='math' className='singl
                     </div>
 
                     <div className='mt-6'>
-                      <p className='mb-2'>Let&#39;s begin by importing the fuction</p>
+                      <p className='mb-2 mt-2'>Let&#39;s begin by importing the fuction</p>
                       <CodeBlockDemo code={singleImport}/>
 
                       <p className='mb-2 mt-6'>And then we create a function to handle checking/unchecking of the checkbox</p>
@@ -175,6 +196,28 @@ const singleBox = `<input type='checkbox' name='math' id='math' className='singl
 
                       <p className='mb-2 mt-6'>Lastly we create our checkbox component</p>
                       <CodeBlockDemo code={singleBox}/>
+
+
+                      <div className='mt-10'>
+                    <h4>Common Use Cases</h4>
+                    <ul className='list-disc ml-6 mt-2'>
+                      <li>Terms and conditions acceptance</li>
+                      <li>Multiple item selection in lists</li>
+                      <li>Feature toggles in settings</li>
+                      <li>Parent-child selection patterns (e.g., &#34;Select All&#34;)</li>
+                    </ul>
+                  </div>
+
+                  <div className='mt-4'>
+                    <h4>Label and Input Relationship</h4>
+                    <p className='mt-2'>Proper labeling is crucial for accessibility:</p>
+                    <ul className='list-disc ml-6 mt-2'>
+                      <li>Always use <code>htmlFor</code> attribute matching input&#39;s <code>id</code></li>
+                      <li>Place labels before checkboxes for left-to-right languages</li>
+                      <li>Ensure labels are clickable to toggle checkbox state</li>
+                      <li>Use descriptive label text that clearly indicates the purpose</li>
+                    </ul>
+                  </div>
                     </div>
                   </div>
                 </div>

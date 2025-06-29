@@ -89,19 +89,19 @@ const Radio = ({darkMode, setDarkMode}) => {
                   </div>
 
                   <div className='mt-4'>
-                  <h4>aria-checked</h4>
+                    <h4>aria-checked</h4>
                     <p>The <code>aria-checked</code> attribute indicates to assistive technologies the presence of a checkable item. It indicates the current &#34;checked&#34;--or &#34;unchecked&#34;--state of the item. If the aria-checked attribute is not present, a user will not be able to correctly identify the item as checkable.</p>
 
-                    <h4 className='mt-2'>aria-label</h4>
+                    <h4 className='mt-4'>aria-label</h4>
                     <p>The <code>aria-label</code> attribute provides a description of the radio for screen reader users. It typically contains a detailed purpose of the radio. Unlike the checkbox, the aria-label does not define action.</p>
 
                     <h4 className='mt-5'>updateGroupRadiosAriaAttributes</h4>
                     <p className='mt-2'>The <code>updateGroupRadiosAriaAttributes</code> function allows to systematically update the aria attributes of a group of radios.</p>
-                    <p>The function enables assistive technology support for the radios. This feature helps visually impaired users to navigate interacting with the radios, by informing the users about the current state, and purpose, of each of the radios. The states are either checked or not checked. The function updates the aria-checked and aria-label attributes of the radios.</p>
-                    <p>The function accepts 3 arguments; an array of objects with information about each radio in the collection, a shared class of all the radios, and the index position of the currently clicked radio relative to the main radios container and other radios.</p>
+                    <p className='mt-2'>The function enables assistive technology support for the radios. This feature helps visually impaired users to navigate interacting with the radios, by informing the users about the current state, and purpose, of each of the radios. The states are either checked or not checked. The function updates the aria-checked attribute of the radios.</p>
+                    <p className='mt-2'>The function accepts 3 arguments; an array of objects with information about each radio in the collection, a shared class of all the radios, and the index position of the currently clicked radio relative to the main radios container and other radios.</p>
 
                     <div>
-                      <p className='mb-2'>Let&#39;s begin by importing the function</p>
+                      <p className='mb-2 mt-2'>Let&#39;s begin by importing the function</p>
                       <CodeBlockDemo code={importGroupRadios}/>
 
                       <p className='mb-2 mt-6'>Then we define the states for each radio in the collection sequentially (according to the order in which the radios elements are defined) in a states array</p>
@@ -120,8 +120,8 @@ const Radio = ({darkMode, setDarkMode}) => {
                   <div className='mt-10 pt-3'>
                     <h4>updateSingleRadioAriaAttribute</h4>
                     <p className='mt-2'>The <code>updateSingleRadioAriaAttribute</code> function allows to systematically update the aria attributes of a single radio.</p>
-                    <p>The function enables assistive technology support for the radio. This feature helps visually impaired users to navigate interacting with the radio, by informing the users about the current state, and purpose, of each of the radio. The states are either checked or not checked. The function updates the aria-checked and aria-label attributes of the radio.</p>
-                    <p>The function accepts 1 argument; the class of the radio.</p>
+                    <p className='mt-2'>The function enables assistive technology support for the radio. This feature helps visually impaired users to navigate interacting with the radio, by informing the users about the current state, and purpose, of the radio. The states are either checked or not checked. The function updates the aria-checked attribute of the radio.</p>
+                    <p className='mt-2'>The function accepts 1 argument; the class of the radio.</p>
 
                     <div className='mt-6'>
                       <p className='mb-2'>Let&#39;s begin by importing the fuction</p>

@@ -83,13 +83,16 @@ const Toggle = ({darkMode, setDarkMode}) => {
                     <h4>aria-pressed</h4>
                     <p>The <code>aria-pressed</code> attribute indicates the presence of a toggle button. It describes the current &#34;pressed&#34;--or &#34;not pressed&#34;--state of a toggle button. If the aria-pressed attribute is not present, the button is not a toggle button.</p>
 
+                    <h4 className='mt-4'>aria-label</h4>
+                    <p>The <code>aria-label</code> attribute provides a description of the toggle button&#39;s feature, and should not be updated when the toggle button&#39;s state changes.</p>
+
                     <h4 className='mt-5'>updateGroupTogglesAriaAttributes</h4>
                     <p className='mt-2'>The <code>updateGroupTogglesAriaAttributes</code> function allows to systematically update the aria-pressed attribute of a group of toggle buttons.</p>
-                    <p>The function enables assistive technology support for the toggle buttons. This feature helps visually impaired users to navigate interacting with the toggle buttons, by informing the users about the current state, and purpose, of each of the toggle buttons. The states are either pressed or unpressed.</p>
-                    <p>The function accepts 3 arguments; an array of objects with information about each button in the collection, a shared class of all the toggle buttons, and the index position of the currently pressed/unpressed button relative to the toggle buttons container and other toggle buttons.</p>
+                    <p className='mt-2'>The function enables assistive technology support for the toggle buttons. This feature helps visually impaired users to navigate interacting with the toggle buttons, by informing the users about the current state, and purpose, of each of the toggle buttons. The states are either pressed or unpressed.</p>
+                    <p className='mt-2'>The function accepts 3 arguments; an array of objects with information about each button in the collection, a shared class of all the toggle buttons, and the index position of the currently pressed/unpressed button relative to the toggle buttons container and other toggle buttons.</p>
 
                     <div>
-                      <p className='mb-2'>Let&#39;s begin by importing the fuction</p>
+                      <p className='mb-2 mt-2'>Let&#39;s begin by importing the fuction</p>
                       <CodeBlockDemo code={importGroupToggles}/>
 
                       <p className='mb-2 mt-6'>Then we define the states for each toggle button in the collection sequentially (according to the order in which the toggle buttons elements are defined) in a states array.</p>
@@ -108,8 +111,8 @@ const Toggle = ({darkMode, setDarkMode}) => {
                   <div className='mt-10 pt-3'>
                     <h4>updateSingleToggleAriaAttribute</h4>
                     <p className='mt-2'>The <code>updateSingleToggleAriaAttribute</code> function allows to systematically update the aria attributes of a single toggle button.</p>
-                    <p>The function enables assistive technology support for the toggle button. This feature helps visually impaired users to navigate interacting with the toggle button, by informing the users about the current state, and purpose, of each of the toggle button. The states are either pressed or unpressed. The function updates the aria-pressed and aria-label attributes of the toggle button.</p>
-                    <p>The function accepts 2 arguments; the class of the toggle button, and the aria label to be updated.</p>
+                    <p className='mt-2'>The function enables assistive technology support for the toggle button. This feature helps visually impaired users to navigate interacting with the toggle button, by informing the users about the current state, and purpose, of the toggle button. The states are either pressed or unpressed. The function updates the aria-pressed attribute of the toggle button.</p>
+                    <p className='mt-2'>The function accepts 1 argument; the class of the toggle button.</p>
 
                     <div className='mt-6'>
                       <p className='mb-2'>Let&#39;s begin by importing the fuction</p>
@@ -122,6 +125,26 @@ const Toggle = ({darkMode, setDarkMode}) => {
                       <CodeBlockDemo code={singleToggle}/>
 
                       <SingleToggleButton/>
+
+                      <div className='mt-10'>
+                    <h4>Common Pitfalls to Avoid</h4>
+                    <ul className='list-disc ml-6 mt-2'>
+                      <li>Don&#39;t change the aria-label based on toggle state</li>
+                      <li>Don&#39;t use role=&#34;button&#34; with button elements as it&#39;s redundant</li>
+                      <li>Don&#39;t rely solely on color to indicate toggle state</li>
+                      <li>Don&#39;t disable keyboard navigation between toggle buttons in a group</li>
+                    </ul>
+                  </div>
+
+                  <div className='mt-4'>
+                    <h4>Use Cases</h4>
+                    <ul className='list-disc ml-6 mt-2'>
+                      <li>Feature toggles (enable/disable functionality)</li>
+                      <li>Preference settings (dark mode, notifications)</li>
+                      <li>State controls (mute/unmute, show/hide)</li>
+                      <li>Mode switches (edit/view, private/public)</li>
+                    </ul>
+                  </div>
                     </div>
                   </div>
                 </div>
