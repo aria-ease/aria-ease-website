@@ -1,0 +1,27 @@
+.blog_single_article_title {
+    font-size: calc(1.375rem + 1.5vw) !important;
+}
+@media (min-width: 1200px) {
+    .blog_single_article_title  {
+        font-size: 2.5rem !important;
+    }
+}
+.blog_image {
+    width: 100%;
+    min-height: 200px;
+    margin-bottom: 50px;
+    border-radius: 8px;
+    object-fit: cover;
+    max-height: 300px;
+}
+.blog_single_div {
+    padding: 0px 20px;
+    margin-top: 100px;
+}
+.blog_article_date {
+    margin: 50px 0px;
+}
+.blog_single_div code, .blog_single_div pre  {
+    margin-top: 20px !important;
+    color: #d63384 !important;
+}

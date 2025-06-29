@@ -5,7 +5,9 @@ import SlideOutNav from '../components/SlideOutNav';
 import SideNav from '../components/SideNav';
 import { Container, Row, Col } from 'react-bootstrap';
 import CheckboxExample from '../components/checkbox/CheckboxExample';
-import { CopyBlock, atomOneDark, atomOneLight } from 'react-code-blocks';
+import CodeBlockDemo from '../components/CodeBlock';
+import ScrollTracker from '../components/ScrollTracker';
+import { updateSingleCheckboxAriaAttribute } from "aria-ease";
 
 
 // eslint-disable-next-line react/prop-types
@@ -13,14 +15,22 @@ const Checkbox = ({darkMode, setDarkMode}) => {
     const page = 'checkbox';
     const[showDropdownPage, setShowDropdownPage] = useState(false);
 
-  useEffect(() => {
-    if(showDropdownPage) {
-      document.querySelector('body').classList.add('no-scroll')
-    } else {
-      document.querySelector('body').classList.remove('no-scroll')
+    const checkSingleCheckbox = (event) => {
+      const checkboxElement = event.target;
+      const ariaChecked = checkboxElement.getAttribute('aria-checked');
+      if(event.type === 'keydown' && (event.key === 'Enter' || event.key === ' ')) {
+        checkboxElement.checked = !checkboxElement.checked;
+      }
+
+      if(event.type === 'change' || (event.type === 'keydown' && (event.key === 'Enter' || event.key === ' '))) {
+        if(ariaChecked === 'true') {
+          updateSingleCheckboxAriaAttribute('single-checkbox', 'Select math course')
+        } else if(ariaChecked === 'false') {
+          updateSingleCheckboxAriaAttribute('single-checkbox', 'Deselect math course')
+        }
+      }
     }
-  },[showDropdownPage])
-    
+  
   useEffect(() => {
     const accessibleBlock = makeBlockAccessible('inner-body-div', 'block-interactive');
     return accessibleBlock;
@@ -28,31 +38,31 @@ const Checkbox = ({darkMode, setDarkMode}) => {
 
   const importGroupCheckboxes = 'import { updateGroupCheckboxesAriaAttributes } from "aria-ease";';
   const groupStates = `const[checkboxState, setCheckboxState] = useState([
-    {checked: false, uncheckedAriaLabel: 'Add Math to list of courses', checkedAriaLabel: 'Remove Math from list of courses'},
-    {checked: false, uncheckedAriaLabel: 'Add Biology to list of courses', checkedAriaLabel: 'Remove Biology from list of courses'},
-    {checked: false, uncheckedAriaLabel: 'Add Philosophy to list of courses', checkedAriaLabel: 'Remove Philosophy from list of courses'}
-  ])`;
+  {checked: false, uncheckedAriaLabel: 'Select math course', checkedAriaLabel: 'Deselect math course'},
+  {checked: false, uncheckedAriaLabel: 'Select biology course', checkedAriaLabel: 'Deselect biology course'},
+  {checked: false, uncheckedAriaLabel: 'Select philosophy course', checkedAriaLabel: 'Deselect philosophy course'}
+])`;
   const handleCheckFunction = `const handleCheck = (event, index) => {
-    const checkboxElement = event.target;
+  const checkboxElement = event.target;
   
-    const updateState = () => {
-      setCheckboxState((prevStates) => {
-        const newStates = prevStates.map((state, i) => ({
-          ...state,
-          checked: i === index ? !state.checked : state.checked,
-        }));
-        updateGroupCheckboxesAriaAttributes(newStates, 'course-checkboxes', index);
-        return newStates;
-      });
-    };
+  const updateState = () => {
+    setCheckboxState((prevStates) => {
+      const newStates = prevStates.map((state, i) => ({
+        ...state,
+        checked: i === index ? !state.checked : state.checked,
+      }));
+      updateGroupCheckboxesAriaAttributes(newStates, 'course-checkboxes', index);
+      return newStates;
+    });
+  };
 
-    if(event.type === 'keydown' && (event.key === 'Enter' || event.key === ' ')) {
-      checkboxElement.checked = !checkboxElement.checked;
-    }
-    if(event.type === 'change' || (event.type === 'keydown' && (event.key === 'Enter' || event.key === ' '))) {
-      updateState();
-    }
-  };`;
+  if(event.type === 'keydown' && (event.key === 'Enter' || event.key === ' ')) {
+    checkboxElement.checked = !checkboxElement.checked;
+  }
+  if(event.type === 'change' || (event.type === 'keydown' && (event.key === 'Enter' || event.key === ' '))) {
+    updateState();
+  }
+};`;
   const checkboxesComponent = `<div id='checkbox-div'>
     <div>
       <label htmlFor='math'>Math:</label>
@@ -68,23 +78,31 @@ const Checkbox = ({darkMode, setDarkMode}) => {
       <label htmlFor='philosophy'>Philosophy:</label>
       <input type='checkbox' name='philosophy' id='philosophy' className='course-checkboxes block-interactive' onChange={(event) => handleCheck(event, 2)} onKeyDown={(event) => handleCheck(event, 2)} aria-checked={false} aria-label='Add Philosophy to list of courses'></input>
     </div>
-  </div>`;
+</div>`;
 
-  const singleImport = `import { updateSingleCheckboxAriaAttribute } from aria-ease`;
+  const singleImport = `import { updateSingleCheckboxAriaAttribute } from "aria-ease";`;
   const checkSingleBox = `const checkSingleCheckbox = (event) => {
-    const ariaChecked = event.target.getAttribute('aria-checked')
-    if(ariaChecked === 'true') {
-      updateSingleCheckboxAriaAttribute('single-checkbox', 'Check financial type')
-    } else if(ariaChecked === 'false') {
-      updateSingleCheckboxAriaAttribute('single-checkbox', 'Uncheck financial type')
-    }
+  const checkboxElement = event.target;
+  const ariaChecked = checkboxElement.getAttribute('aria-checked');
+  if(event.type === 'keydown' && (event.key === 'Enter' || event.key === ' ')) {
+    checkboxElement.checked = !checkboxElement.checked;
+  }
 
-  }`;
-  const singleBox = `<input className='single-checkbox' type='checkbox' aria-checked='false' aria-label='Check financial type' onChange={(event) => checkSingleCheckbox(event)}></input>`
+  if(event.type === 'change' || (event.type === 'keydown' && (event.key === 'Enter' || event.key === ' '))) {
+    if(ariaChecked === 'true') {
+      updateSingleCheckboxAriaAttribute('single-checkbox', 'Select math course')
+    } else if(ariaChecked === 'false') {
+      updateSingleCheckboxAriaAttribute('single-checkbox', 'Deselect math course')
+    }
+  }
+}`;
+  
+const singleBox = `<input type='checkbox' name='math' id='math' className='single-checkbox' aria-checked={false} aria-label='Add Math to list of courses' onChange={(event) => checkSingleCheckbox(event)} onKeyDown={(event) => checkSingleCheckbox(event)}></input>`
 
   return (
     <div id="inner-body-div">
-        <Header darkMode={darkMode} setDarkMode={setDarkMode} showDropdownPage={showDropdownPage} setShowDropdownPage={setShowDropdownPage}/>
+        <ScrollTracker page={page}/>
+        <Header page={page} darkMode={darkMode} setDarkMode={setDarkMode} showDropdownPage={showDropdownPage} setShowDropdownPage={setShowDropdownPage}/>
         
         <div className='page-body-div'>
           <Container fluid>
@@ -94,92 +112,112 @@ const Checkbox = ({darkMode, setDarkMode}) => {
                 <div className='side-body-div'>
                   <h1 className='component-example-heading'>Checkbox</h1>
 
+                  <p className='mt-2'>A checkbox is an interactive form control that allows users to make binary choices (checked or not checked) by clicking or tapping a square box. When checked, the box typically displays a checkmark or tick symbol, providing a visual indication of the user&#39;s choice while maintaining accessibility through ARIA attributes for assistive technology users.</p>
+
                   <div className='mt-10'>
-                    <h4>updateGroupCheckboxesAriaAttributes</h4>
-                    <p className='mt-2'>The <code>updateGroupCheckboxesAriaAttributes</code> function allows to systematically update the aria attributes of a group of checkboxes.</p>
-                    <p>The function enables screen reader support for the checkboxes. This feature helps visually impaired users to navigate interacting with the checkboxes, by informing the users about the current state, and purpose, of each of the checkboxes. The states are either checked or not checked. The function updates the aria-checked and aria-label attributes of the checkboxes.</p>
-                    <p>The function accepts 3 arguments; an array of objects with information about each checkbox in the collection, a shared class of all the checkboxes, and the index position of the currently clicked checkbox relative to the main checkboxes container and other checkboxes.</p>
+                    <h4>Required ARIA Attributes</h4>
+                    <p className='mt-2'>Checkboxes require specific ARIA attributes to ensure proper accessibility:</p>
+                    <ul className='list-disc ml-6 mt-2'>
+                      <li><code>aria-checked</code>: Indicates the selection state (&#39;true&#39; or &#39;false&#39;)</li>
+                      <li><code>aria-label</code>: Provides a descriptive label for screen readers</li>
+                    </ul>
+                  </div>
+
+                  <div className='mt-4'>
+                    <h4>aria-checked</h4>
+                    <p>The <code>aria-checked</code> attribute indicates to assistive technologies the presence of a checkable item. It indicates the current &#34;checked&#34;--or &#34;unchecked&#34;--state of the item. If the aria-checked attribute is not present, a user will not be able to correctly identify the item as checkable.</p>
+
+                    <h4 className='mt-4'>aria-label</h4>
+                    <p>The <code>aria-label</code> attribute provides a description of a checkbox for screen reader users. It typically contains a detailed purpose of the checkbox, and the action that will take place when interacted with.</p>
+
+                    <div className='mt-5'>
+                    <h4>Checkbox Groups</h4>
+                    <p className='mt-2'>When grouping multiple checkboxes:</p>
+                    <ul className='list-disc ml-6 mt-2'>
+                      <li>Use <code>role=&#34;group&#34;</code> on the container element</li>
+                      <li>Add <code>aria-labelledby</code> to reference the group&#39;s heading</li>
+                      <li>Maintain consistent spacing between checkboxes (minimum 8px)</li>
+                      <li>Consider using fieldset and legend for form groups</li>
+                    </ul>
+                  </div>
+
+                  <div className='mt-4'>
+                    <h4>Visual Design Best Practices</h4>
+                    <ul className='list-disc ml-6 mt-2'>
+                      <li>Minimum touch target size: 44x44 pixels</li>
+                      <li>Clear focus indicators with high contrast</li>
+                      <li>Visible state changes beyond just the checkmark</li>
+                      <li>Support for mixed/indeterminate states when parent-child relationships exist</li>
+                    </ul>
+                  </div>
+
+                    <h4 className='mt-10'>updateGroupCheckboxesAriaAttributes</h4>
+                    <p className='mt-2'>The <code>updateGroupCheckboxesAriaAttributes</code> function allows to systematically manage multiple checkboxes with dynamic accessibility attributes.</p>
+                    <p className='mt-2'>The function enables assistive technology support for the checkboxes. This feature helps visually impaired users to navigate interacting with the checkboxes, by informing the users about the current state, and the action, of each of the checkboxes. The states are either checked or not checked. The function updates the aria-checked and aria-label attributes of the checkboxes.</p>
+                    <p className='mt-2'>The function accepts 3 arguments; an array of objects with information about each checkbox in the collection, a shared class of all the checkboxes, and the index position of the currently clicked checkbox relative to the main checkboxes container and other checkboxes.</p>
 
                     <div><CheckboxExample/></div>
                     <div>
-                      <p className='mb-2'>Let&#39;s begin by importing the fuction</p>
-                      <CopyBlock
-                        text={importGroupCheckboxes}
-                        language={'javascript'}
-                        showLineNumbers={false}
-                        theme={darkMode ? atomOneDark : atomOneLight}
-                        codeBlock={true}
-                      />
+                      <p className='mb-2 mt-2'>Let&#39;s begin by importing the fuction</p>
+                      <CodeBlockDemo code={importGroupCheckboxes}/>
+                      
 
                       <p className='mb-2 mt-6'>Then we define the states for each checkbox in the collection sequentially (according to the order in which the checkboxes elements are defined) in a states array</p>
-                      <CopyBlock
-                        text={groupStates}
-                        language={'javascript'}
-                        showLineNumbers={false}
-                        theme={darkMode ? atomOneDark : atomOneLight}
-                        codeBlock={true}
-                      />
+                      <CodeBlockDemo code={groupStates}/>
+                      <p>In the code snippet above, when the first checkbox is in it&#39;s default unchecked state, the aria-label indicates the action that will occur when it gets checked, which is &#34;Select math course&#34;. After the checkbox has been checked, the aria-label, and hence action, then changes to &#34;Deselect math course&#34;.</p>
 
                       <p className='mb-2 mt-6'>And then we create a function to handle checking/unchecking of the checkboxes. The function uses the index position of the current checked/unchecked checkbox to update the checkbox state in the states array. Hence checkbox elements and states have to be defined sequentially.</p>
-                      <CopyBlock
-                        text={handleCheckFunction}
-                        language={'javascript'}
-                        showLineNumbers={false}
-                        theme={darkMode ? atomOneDark : atomOneLight}
-                        codeBlock={true}
-                      />
+                      <CodeBlockDemo code={handleCheckFunction}/>
 
                       <p className='mb-2 mt-6'>Lastly we create our checkboxes components</p>
-                      <CopyBlock
-                        text={checkboxesComponent}
-                        language={'javascript'}
-                        showLineNumbers={false}
-                        theme={darkMode ? atomOneDark : atomOneLight}
-                        codeBlock={true}
-                      />
+                      <CodeBlockDemo code={checkboxesComponent}/>
                     </div>
                   </div>
                   
                   <div className='mt-10 pt-3'>
                     <h4>updateSingleCheckboxAriaAttribute</h4>
                     <p className='mt-2'>The <code>updateSingleCheckboxAriaAttribute</code> function allows to systematically update the aria attributes of a single checkbox.</p>
-                    <p>The function enables screen reader support for the checkbox. This feature helps visually impaired users to navigate interacting with the checkbox, by informing the users about the current state, and purpose, of each of the checkbox. The states are either checked or not checked. The function updates the aria-checked and aria-label attributes of the checkbox.</p>
-                    <p>The function accepts 2 arguments; the class of the checkbox, and the aria label to be updated.</p>
+                    <p className='mt-2'>The function enables assistive technology support for the checkbox. This feature helps visually impaired users to navigate interacting with the checkbox, by informing the users about the current state, and action, of the checkbox. The states are either checked or not checked. The function updates the aria-checked and aria-label attributes of the checkbox.</p>
+                    <p className='mt-2'>The function accepts 2 arguments; the class of the checkbox, and the aria label to be updated.</p>
 
                     <div className='mt-6'>
-                      <div>
-                        <label htmlFor='math'>Math:</label>
-                        <input type='checkbox' name='math' id='math' className='single-checkbox ml-4' aria-checked={false} aria-label='Add Math to list of courses'></input>
+                      <div className='flex items-center'>
+                        <label htmlFor='math'>Math</label>
+                        <input type='checkbox' name='math' id='math' className='single-checkbox ml-4 course-checkbox w-[1.25rem] h-[1.25rem] block-interactive' aria-checked={false} aria-label='Select math course' onChange={(event) => checkSingleCheckbox(event)} onKeyDown={(event) => checkSingleCheckbox(event)}></input>
                       </div>
                     </div>
 
                     <div className='mt-6'>
-                      <p className='mb-2'>Let&#39;s begin by importing the fuction</p>
-                      <CopyBlock
-                        text={singleImport}
-                        language={'javascript'}
-                        showLineNumbers={false}
-                        theme={darkMode ? atomOneDark : atomOneLight}
-                        codeBlock={true}
-                      />
+                      <p className='mb-2 mt-2'>Let&#39;s begin by importing the fuction</p>
+                      <CodeBlockDemo code={singleImport}/>
 
                       <p className='mb-2 mt-6'>And then we create a function to handle checking/unchecking of the checkbox</p>
-                      <CopyBlock
-                        text={checkSingleBox}
-                        language={'javascript'}
-                        showLineNumbers={false}
-                        theme={darkMode ? atomOneDark : atomOneLight}
-                        codeBlock={true}
-                      />
+                      <CodeBlockDemo code={checkSingleBox}/>
 
                       <p className='mb-2 mt-6'>Lastly we create our checkbox component</p>
-                      <CopyBlock
-                        text={singleBox}
-                        language={'javascript'}
-                        showLineNumbers={false}
-                        theme={darkMode ? atomOneDark : atomOneLight}
-                        codeBlock={true}
-                      />
+                      <CodeBlockDemo code={singleBox}/>
+
+
+                      <div className='mt-10'>
+                    <h4>Common Use Cases</h4>
+                    <ul className='list-disc ml-6 mt-2'>
+                      <li>Terms and conditions acceptance</li>
+                      <li>Multiple item selection in lists</li>
+                      <li>Feature toggles in settings</li>
+                      <li>Parent-child selection patterns (e.g., &#34;Select All&#34;)</li>
+                    </ul>
+                  </div>
+
+                  <div className='mt-4'>
+                    <h4>Label and Input Relationship</h4>
+                    <p className='mt-2'>Proper labeling is crucial for accessibility:</p>
+                    <ul className='list-disc ml-6 mt-2'>
+                      <li>Always use <code>htmlFor</code> attribute matching input&#39;s <code>id</code></li>
+                      <li>Place labels before checkboxes for left-to-right languages</li>
+                      <li>Ensure labels are clickable to toggle checkbox state</li>
+                      <li>Use descriptive label text that clearly indicates the purpose</li>
+                    </ul>
+                  </div>
                     </div>
                   </div>
                 </div>
@@ -188,11 +226,7 @@ const Checkbox = ({darkMode, setDarkMode}) => {
           </Container>
         </div>
 
-        <div className={`slide-out-side-nav-outer-div ${showDropdownPage ? 'visible' : 'hidden'}`}>
-          <div className={`slide-out-side-nav-div ${showDropdownPage ? 'slide-in' : ''}`}>
-            <SlideOutNav page={page}/>
-          </div>
-        </div>
+        <SlideOutNav page={page} showDropdownPage={showDropdownPage}/>
     </div>
   )
 }

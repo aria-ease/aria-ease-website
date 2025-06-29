@@ -1,6 +1,6 @@
 .body-div,
 .header {
-    transition: all 500ms ease-in-out;
+    transition: all 500ms ease;
 }
 .dark-body,
 .light-body {
@@ -16,9 +16,6 @@
     position: sticky;
     top: 0;
     z-index: 1000000000;
-}
-.header-button-icon {
-    color: rgba(128, 128, 128);
 }
 .header-button-icon,
 #Sun, #Moon {
@@ -45,7 +42,7 @@
 .header-search-div {
     max-width: 480px;
     display: grid;
-    grid-template-columns: auto 1fr;
+    grid-template-columns: auto 1fr auto;
     gap: 6px;
     align-items: center;
     height: 32px;
@@ -62,9 +59,9 @@
     background-color: transparent;
     border: none;
     color: rgba(181, 181, 181, 1);
-    font-size: 13px;
+    font-size: 16px;
     font-style: normal;
-    font-weight: 500;
+    font-weight: 300;
     line-height: 140%;
 }
 @media(min-width: 768px) {
@@ -77,6 +74,9 @@
     .header-menu-button {
         display: none;
     }
+    .search-result-container {
+        width: 520px;
+    }
 }
 @media(max-width: 767px) {
     .header-search-div {
@@ -84,11 +84,15 @@
     }
     .header-logo-link,
     .header-nav-link-div,
-    .side-nav-div {
+    .side-nav-div,
+    .cmd-k {
         display: none !important;
     }
     .hero-heading {
-        font-size: 1.85rem;
+        font-size: 2.25rem;
+    }
+    .search-result-container {
+        width: 98%;
     }
 }
 @media(max-width: 991px) {
@@ -206,23 +210,9 @@ a:focus {
 }
 .header-menu-button {
     border-radius: 8px;
-    border: none;
-    background-color: rgba(242, 246, 249);
-    height: 32px;
-    width: 32px;
-}
-.slide-out-side-nav-div {
-    position: fixed;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    transition: left 0.5s ease-in-out;
-    z-index: 999;
-    top: 56px;
-    padding: 12px;
-}
-.slide-out-side-nav-div.slide-in {
-    left: 0;
+    background-color: transparent;
+    height: 40px;
+    width: 40px;
 }
 .slide-out-nav-div {
     display: flex;
@@ -241,14 +231,6 @@ a {
 .slide-nav-links-section p,
 .side-nav-div div p {
     margin-bottom: 12px;
-}
-.no-scroll {
-    position: fixed !important;
-    overflow: hidden !important;
-    top: 0px;
-    left: 0px; 
-    right: 0px;
-    bottom: 0px;
 }
 .slide-out-nav-outer-div {
     overflow: auto;
@@ -272,7 +254,6 @@ a {
     padding: 2px 6px;
     display: inline-block;
     max-width: 100%;
-    background-color: rgba(222, 222, 222, 0.506);
     margin-top: 8px;
     overflow: auto;
 }
@@ -286,14 +267,6 @@ a {
 .documentation-page .home-example-tab-one-item {
     border: 0.2px solid rgba(27, 27, 27, 0.226);
 }
-
-.slide-out-side-nav-outer-div {
-    visibility: visible;
-    transition: visibility 500ms ease-out;
-}
-.slide-out-side-nav-outer-div.hidden {
-    visibility: hidden;
-}
 .component-example-heading {
     font-weight: 700;
     letter-spacing: -.025em;
@@ -304,9 +277,7 @@ a {
 #inner-body-div .code-div {
     padding: 10px !important;
 }
-.example-each-ui-code-block-div {
-    margin-top: 24px;
-}
+
 .example-each-ui-code-block-div pre {
     margin-top: 5px;
 }
@@ -397,11 +368,53 @@ select:-moz-autofill {
 #checkbox-div .course-checkbox {
     margin-left: 20px;
 }
-.homepage-above-fold-div,
-.home-get-started-div {
-    border-bottom: 0.1px solid rgb(85, 85, 85);
-}
+
 .home-discover-functions-button {
     padding: 8px 14px 8px 14px;
     border-radius: 8px;
 }
+.slide-out-side-nav-outer-div {
+    position: fixed;
+    top: 56px;
+    right: 0;
+    width: 100%;
+    height: 100vh;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 999;
+  }
+  @media(min-width: 768px) {
+    .slide-out-side-nav-outer-div {
+        display: none;
+    }
+  }
+  
+  .slide-out-side-nav-div {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--background-color);
+    padding: 20px;
+  }
+.footer {
+    border-top: 0.1px solid rgb(85, 85, 85);
+}
+.search-result-container ul {
+    list-style: none;
+}
+.search-result-container ul li:not(:last-child) {
+    margin-bottom: 10px;
+}
+
+  
+  .course-checkbox {
+    cursor: pointer;
+    accent-color: #2563eb;
+  }
+  
+  .checkbox-label {
+    font-size: 1rem;
+    color: inherit;
+    cursor: pointer;
+  }

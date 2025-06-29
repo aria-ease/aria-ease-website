@@ -2,7 +2,19 @@
     background-color: transparent;
     border: 0.2px solid rgba(27, 27, 27, 0.226);
 }
-.light-body .header-button:hover {
+.light-body .search-close-button {
+    border: 0.2px solid transparent;
+    background: rgb(223, 223, 223);
+}
+.light-body .search-close-button:hover {
+    border: 0.2px solid rgba(27, 27, 27, 0.226);
+    background: rgb(211, 211, 211);
+}
+.light-body .search-result-link {
+    background: rgb(228, 227, 227);
+}
+.light-body .header-button:hover,
+.light-body .search-result-link:hover {
     background: rgb(211, 211, 211);
 }
 .light-body .header-search-div,
@@ -21,29 +33,35 @@
 .light-body #text-input-block-div input {
     color: rgb(73, 73, 73);
 }
-.light-body .hero-paragraph {
+.light-body .hero-paragraph,
+.light-body .version-text,
+.light-body .search-text {
     color: black;
 }
 .light-body .hero-examples-div {
     background-color: rgba(110, 110, 110, 0.185);
 }
 .light-body .header-nav-link,
-.light-body .side-nav-link {
-    color: rgb(95, 95, 103);
+.light-body .side-nav-link,
+.light-body .footer-nav-link,
+.light-body .search-result-link {
+    color: rgb(77, 77, 79);
 }
 .light-body .header-nav-link:hover,
-.light-body .active-nav-link {
-    color: rgb(79, 79, 79);
+.light-body .active-nav-link, 
+.light-body .side-nav-link:hover,
+.light-body .footer-nav-link:hover {
+    color: rgb(0, 0, 0);
 }
 .light-body .slide-out-side-nav-div {
     background: #F2F6F9;
 }
 .light-body .header-menu-button {
-    background-color: transparent;
     border: 0.2px solid rgba(27, 27, 27, 0.226);
 }
-.light-body code {
-    color: rgb(30, 30, 30);
+
+.light-body .code-div {
+    background-color: rgba(222, 222, 222, 0.506);
 }
 .light-body .header,
 .light-body {
@@ -64,4 +82,26 @@
     border: 0.2px solid rgba(27, 27, 27, 0.226);
     padding: 8px 14px 8px 14px;
     border-radius: 8px;
+}
+.light-body .header-button-icon {
+    color: rgb(77, 77, 79);
+}
+.light-body .search-result-container {
+    background: white;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    border: 1px solid #e5e7eb;
+}
+.light-body .search-result-container-overlay {
+    background-color: rgba(0, 0, 0, 0.772);
+}
+.light-body .header-search-div {
+    border: 1px solid rgb(191, 191, 191);
+}
+.light-body .search-close-button-div {
+    border-bottom: 0.5px solid rgb(191, 191, 191);
+}
+.light-body .single-toggle-button,
+.light-body .group-toggle-button {
+    background-color: black;
+    color: white;
 }
