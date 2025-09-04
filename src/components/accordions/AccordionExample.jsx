@@ -1,33 +1,26 @@
 import { useState } from 'react'
 import openeddropdown from '../../assets/opened-dropdown.svg'
 import closeddropdown from '../../assets/closed-dropdown.svg'
-import { updateAccordionTriggerAriaAttributes } from 'aria-ease'
+import { Accordion } from 'aria-ease'
 
 const AccordionExample = () => {
-  const[accordionState, setAccordionState] = useState([
-    {display: false, closedAriaLabel: 'Expand information on how to make appointment accordion', openedAriaLabel: 'Collapse information on how to make appointment accordion'},
-    {display: false, closedAriaLabel: 'Expand information on how to get copy of records accordion', openedAriaLabel: 'Collapse information on how to get copy of records accordion'},
-    {display: false, closedAriaLabel: 'Expand information on extra charge for copy of records accordion', openedAriaLabel: 'Collapse information on extra charge for copy of records accordion'}
-  ])
+  const[accordionState, setAccordionState] = useState([ {display: false}, {display: false}, {display: false} ]);
 
-  const handleAccordionClick = (event, index) => {
-    if (event.type === 'mousedown' || (event.type === 'keydown' && (event.key === 'Enter' || event.key === ' '))) {
-      event.preventDefault();
-      setAccordionState((prevStates) => {
+  const handleAccordionClick = (index) => {
+    setAccordionState((prevStates) => {
         const newStates = prevStates.map((state, i) => ({
           ...state,
           display: i === index ? !state.display : false,
         }));
-        updateAccordionTriggerAriaAttributes(newStates, 'dropdown-button', index);
+        Accordion.updateAccordionTriggerAriaAttributes('faq-div', 'dropdown-button', newStates, index);
         return newStates;
-      });
-    }
+    });
   };
       
   return (
-    <div className='faq-div'>
+    <div className='faq-div' id='faq-div'>
             <div className='faq-each-div'>
-                <button id='make-an-appointment' className='dropdown-button block-interactive' onKeyDown={(event) => handleAccordionClick(event, 0)} onMouseDown={(event) => handleAccordionClick(event, 0)} aria-expanded={false} aria-label='Expand information on how to make appointment accordion' type="button" role='button' aria-controls='makeAnAppointmentAccordion'>
+                <button id='make-an-appointment' className='dropdown-button block-interactive' onClick={() => handleAccordionClick(0)} aria-expanded={accordionState[0].display}  aria-controls='makeAnAppointmentAccordion'>
                     <span className='dropdown-heading-text'>How do I make an appointment?</span>
                     {accordionState[0].display ? 
                         <img src={openeddropdown} alt='Dropdown Icon' className='dropdown-icon-image'></img> :
@@ -43,7 +36,7 @@ const AccordionExample = () => {
             </div>
 
             <div className='faq-each-div'>
-                <button id='copy-of-record' className='dropdown-button block-interactive' onKeyDown={(event) => handleAccordionClick(event, 1)} onMouseDown={(event) => handleAccordionClick(event, 1)} aria-expanded={false} aria-label='Expand information on how to get copy of records accordion' type="button" role="button" aria-controls='copyOfRecordsAccordion'>
+                <button id='copy-of-record' className='dropdown-button block-interactive' onClick={() => handleAccordionClick(1)} aria-expanded={accordionState[1].display} aria-controls='copyOfRecordsAccordion'>
                     <span className='dropdown-heading-text'>How do I get a copy of my record?</span>
                     {accordionState[1].display ? 
                         <img src={openeddropdown} alt='Dropdown Icon' className='dropdown-icon-image'></img> :
@@ -59,7 +52,7 @@ const AccordionExample = () => {
             </div>
 
             <div className='faq-each-div'>
-                <button id='extra-charge' className='dropdown-button block-interactive' onKeyDown={(event) => handleAccordionClick(event, 2)} onMouseDown={(event) => handleAccordionClick(event, 2)} aria-expanded={false} aria-label='Expand information on extra charge for copy of record accordion' type="button" role='button' aria-controls='extraCopyChargeAccordion'>
+                <button id='extra-charge' className='dropdown-button block-interactive' onClick={() => handleAccordionClick(2)} aria-expanded={accordionState[2].display} aria-controls='extraCopyChargeAccordion'>
                     <span className='dropdown-heading-text'>Is there a charge for extra copies?</span>
                     {accordionState[2].display ? 
                         <img src={openeddropdown} alt='Dropdown Icon' className='dropdown-icon-image'></img> :

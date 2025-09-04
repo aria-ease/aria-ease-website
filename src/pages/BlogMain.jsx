@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import './blogMain.css'
 import 'bootstrap/dist/css/bootstrap.css';
 import { Container, Row, Col } from 'react-bootstrap';
-import { makeBlockAccessible } from 'aria-ease';
+import { Block } from 'aria-ease';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import BlogCard from '../components/blog-card/BlogCard';
@@ -41,8 +41,11 @@ const BlogMain = ({darkMode, setDarkMode}) => {
 
     useEffect(() => {
         fetchBlogPosts()
-        const accessibleBlock = makeBlockAccessible('inner-body-div', 'block-interactive');
-        return accessibleBlock;
+        function initializeBlock() {
+            Block.makeBlockAccessible('inner-body-div', 'block-interactive');
+        }
+        
+        initializeBlock();
     },[])
 
   return (

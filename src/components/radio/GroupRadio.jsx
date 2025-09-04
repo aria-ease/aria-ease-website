@@ -1,40 +1,36 @@
 import { useState } from 'react';
-import { updateGroupRadiosAriaAttributes } from "aria-ease";
+import { Radio } from 'aria-ease';
 
 const GroupRadio = () => {
-    const[radioState, setRadioState] = useState([
-      {checked: false, ariaLabel: 'Financial type'},
-      {checked: false, ariaLabel: 'Non-financial type'},
-      {checked: false, ariaLabel: 'Partly financial type'}
-    ]);
+    const[radioState, setRadioState] = useState([ {checked: false}, {checked: false}, {checked: false} ]);
 
     const handleRadioCheck = (event, index) => {
-      setRadioState((prevStates) => {
-        const newStates = prevStates.map((state, i) => ({
-          ...state,
-          checked: i === index ? true : false,
-        }));
-        updateGroupRadiosAriaAttributes(newStates, 'radio', index);
-        return newStates;
-      });     
+        setRadioState((prevStates) => {
+            const newStates = prevStates.map((state, i) => ({
+            ...state,
+            checked: i === index ? true : false,
+            }));
+            Radio.updateRadioAriaAttributes('radio-div', 'radio', newStates, index);
+            return newStates;
+        });     
     }
-
-  return ( 
+    
+  return (
     <div id='radio-div'>
-        <form className='mt-3'>
-            <div className='flex items-center gap-4'>
-              <label htmlFor='financial'>Financial</label>
-              <input type='radio' id='financial' value='financial' name='radio-group' className='radio w-[1rem] h-[1rem]' aria-label='Financial type' onChange={(event) => handleRadioCheck(event, 0)} aria-checked={false}></input>
+        <form>
+            <div>
+                <label htmlFor='financial'>Financial</label>
+                <input type='radio' className='radio block-interactive' id='financial' value='financial' name='radio-group' aria-label='Financial type' onChange={(event) => handleRadioCheck(event, 0)} aria-checked={radioState[0].checked}></input>
             </div>
-            
-            <div className='flex items-center gap-4'>
-              <label htmlFor='non-financial'>Non-financial</label>
-              <input type='radio' id='non-financial' value='non-financial' name='radio-group' className='radio w-[1rem] h-[1rem]' aria-label='Non-financial type' onChange={(event) => handleRadioCheck(event, 1)} aria-checked={false}></input>
+                    
+            <div>
+                <label htmlFor='non-financial'>Non-financial</label>
+                <input type='radio' className='radio block-interactive' id='non-financial' value='non-financial' name='radio-group' aria-label='Non-financial type' onChange={(event) => handleRadioCheck(event, 1)} aria-checked={radioState[1].checked}></input>
             </div>
-            
-            <div className='flex items-center gap-4'>
-              <label htmlFor='partly-financial'>Partly financial</label>
-              <input type='radio' id='partly-financial' value='partly-financial' name='radio-group' className='radio w-[1rem] h-[1rem]' aria-label='Partly financial type' onChange={(event) => handleRadioCheck(event, 2)} aria-checked={false}></input>  
+                    
+            <div>
+                <label htmlFor='partly-financial'>Partly financial</label>
+                <input type='radio' className='radio block-interactive' id='partly-financial' value='partly-financial' name='radio-group' aria-label='Partly financial type' onChange={(event) => handleRadioCheck(event, 2)} aria-checked={radioState[2].checked}></input>  
             </div>
         </form>
     </div>

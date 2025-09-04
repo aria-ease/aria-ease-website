@@ -103,7 +103,7 @@
 }
 button:focus,
 a:focus {
-    outline: 2px solid rgba(0, 91, 211, 1);
+    outline: 2px solid rgba(0, 91, 211, 1) !important;
     outline-offset: 1px;
     border-radius: 8px;
 }

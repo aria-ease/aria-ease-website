@@ -2,7 +2,7 @@ import Header from "../components/Header";
 import { Container, Row, Col } from "react-bootstrap";
 import SlideOutNav from "../components/SlideOutNav";
 import { useState, useEffect } from "react";
-import { makeBlockAccessible } from "aria-ease";
+import { Block } from "aria-ease";
 import { Link } from "react-router-dom";
 import './homepage.css';
 import { Terminal, Boxes, Keyboard } from 'lucide-react';
@@ -17,8 +17,11 @@ const Homepage = ({darkMode, setDarkMode}) => {
   const page = 'home';
 
   useEffect(() => {
-    const accessibleBlock = makeBlockAccessible('inner-body-div', 'block-interactive');
-    return accessibleBlock;
+    function initializeBlock() {
+      Block.makeBlockAccessible('inner-body-div', 'block-interactive');
+    }
+    
+    initializeBlock();
   },[]);
 
   return (
@@ -36,7 +39,7 @@ const Homepage = ({darkMode, setDarkMode}) => {
                   <p className="hero-paragraph mb-5 mt-8">Out-of-the-box accessibility utility package that you can integrate into your web components with simple function calls. Automate menu and block focus management, keyboard interactions and navigations, aria attributes update, and more.</p>
                   <div className="badge-container mb-[50px]">
                     <span className="new-badge">New</span>
-                    <span className="version-text">v1.6.1 is now available</span>
+                    <span className="version-text">v2.0.2 is now available</span>
                   </div>
                   <Link onClick={() => {sessionStorage.setItem(`scroll-position-${page}`, window.scrollY)}} to='/docs' className='block-interactive home-discover-functions-button' aria-label='Navigate to the documentation page'>Discover the core functions</Link>
                 </div>
@@ -97,8 +100,11 @@ import { makeBlockAccessible } from "aria-ease";
 
 const App = () => {
   useEffect(() => {
-    const accessibleBlock = makeBlockAccessible('text-input-block-div', 'block-interactive-items');
-    return accessibleBlock;
+    function initializeBlock() {
+      Block.makeBlockAccessible('text-input-block-div', 'block-interactive-items');
+    }
+    
+    initializeBlock();
   },[])
 
   return (

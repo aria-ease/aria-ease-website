@@ -7,7 +7,7 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
 import Homepage from "./pages/Homepage"
 import Documentation from './pages/Documentation'
 import Menu from './pages/Menu'
-import Block from './pages/Block'
+import BlockExample from './pages/Block'
 import Accordions from './pages/Accordions'
 import Checkbox from './pages/Checkbox'
 import Radio from './pages/Radio'
@@ -45,7 +45,7 @@ const App = () => {
           <Route path="/" element={<Homepage darkMode={darkMode} setDarkMode={setDarkMode}/>}/>
           <Route path="/docs" element={<Documentation darkMode={darkMode} setDarkMode={setDarkMode}/>}/>
           <Route path="/examples/menu" element={<Menu darkMode={darkMode} setDarkMode={setDarkMode}/>}/>
-          <Route path="/examples/block" element={<Block darkMode={darkMode} setDarkMode={setDarkMode}/>}/>
+          <Route path="/examples/block" element={<BlockExample darkMode={darkMode} setDarkMode={setDarkMode}/>}/>
           <Route path="/examples/accordion" element={<Accordions darkMode={darkMode} setDarkMode={setDarkMode}/>}/>
           <Route path="/examples/checkbox" element={<Checkbox darkMode={darkMode} setDarkMode={setDarkMode}/>}/>
           <Route path="/examples/radio" element={<Radio darkMode={darkMode} setDarkMode={setDarkMode}/>}/>

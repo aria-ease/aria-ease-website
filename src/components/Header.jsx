@@ -7,7 +7,7 @@ import blacklogo from '../assets/black-logo.png';
 import whitelogo from '../assets/white-logo.png';
 import Fuse from 'fuse.js';
 import { X } from 'lucide-react';
-import { makeBlockAccessible } from 'aria-ease';
+import { Block } from 'aria-ease';
 
 
 // eslint-disable-next-line react/prop-types
@@ -111,12 +111,10 @@ const Header = ({page, darkMode, setDarkMode, showDropdownPage, setShowDropdownP
 
     useEffect(() => {
         if(query !== '' && query.length > 0 && results.length > 0 && resultsVisible) {
-            const accessibleBlock = makeBlockAccessible('search-container', 'search-container-items');
-            return accessibleBlock;
+            Block.makeBlockAccessible('search-container', 'search-container-items');
         }
         if(query !== '' && query.length > 0 && resultsVisible) {
-            const accessibleBlock = makeBlockAccessible('search-container', 'search-container-items');
-            return accessibleBlock;
+            Block.makeBlockAccessible('search-container', 'search-container-items');
         }
     }, [results, resultsVisible, query]);
     

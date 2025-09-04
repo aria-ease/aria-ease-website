@@ -1,13 +1,9 @@
 import { useState } from 'react';
-import { updateGroupCheckboxesAriaAttributes } from "aria-ease";
+import { Checkbox } from "aria-ease";
 import '../styles.css';
 
 const CheckboxExample = () => {
-    const[checkboxState, setCheckboxState] = useState([
-      {checked: false, uncheckedAriaLabel: 'Select math course', checkedAriaLabel: 'Deselect math course'},
-      {checked: false, uncheckedAriaLabel: 'Select biology course', checkedAriaLabel: 'Deselect biology course'},
-      {checked: false, uncheckedAriaLabel: 'Select philosophy course', checkedAriaLabel: 'Deselect philosophy course'}
-    ])
+    const[checkboxState, setCheckboxState] = useState([ {checked: false}, {checked: false}, {checked: false} ])
 
     const handleCheck = (event, index) => {
         const checkboxElement = event.target;
@@ -18,7 +14,7 @@ const CheckboxExample = () => {
               ...state,
               checked: i === index ? !state.checked : state.checked,
             }));
-            updateGroupCheckboxesAriaAttributes(newStates, 'course-checkbox', index);
+            Checkbox.updateCheckboxAriaAttributes('checkbox-div', 'course-checkbox', newStates, index);
             return newStates;
           });
         };
@@ -42,8 +38,8 @@ const CheckboxExample = () => {
           className='course-checkbox w-[1.25rem] h-[1.25rem] block-interactive'
           onChange={(event) => handleCheck(event, 0)} 
           onKeyDown={(event) => handleCheck(event, 0)} 
-          aria-checked={false} 
-          aria-label='Select math course'
+          aria-checked={checkboxState[0].checked} 
+          aria-label='Math course'
         />
       </div>
 
@@ -56,8 +52,8 @@ const CheckboxExample = () => {
           className='course-checkbox w-[1.25rem] h-[1.25rem] block-interactive'
           onChange={(event) => handleCheck(event, 1)} 
           onKeyDown={(event) => handleCheck(event, 1)} 
-          aria-checked={false} 
-          aria-label='Select biology course'
+          aria-checked={checkboxState[1].checked} 
+          aria-label='Biology course'
         />
       </div>
 
@@ -70,8 +66,8 @@ const CheckboxExample = () => {
           className='course-checkbox w-[1.25rem] h-[1.25rem] block-interactive'
           onChange={(event) => handleCheck(event, 2)} 
           onKeyDown={(event) => handleCheck(event, 2)} 
-          aria-checked={false} 
-          aria-label='Select philosophy course'
+          aria-checked={checkboxState[2].checked} 
+          aria-label='Philosophy course'
         />
       </div>
   </div>

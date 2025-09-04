@@ -1,6 +1,6 @@
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-import { makeBlockAccessible } from 'aria-ease';
+import { Block } from 'aria-ease';
 import { useEffect, useState } from 'react';
 import './blogSingle.css';
 import { useLocation } from 'react-router-dom';
@@ -49,8 +49,11 @@ const BlogSingle = ({darkMode, setDarkMode}) => {
 
   useEffect(() => {
     window.scrollTo(0, 0);
-    const accessibleBlock = makeBlockAccessible('inner-body-div', 'block-interactive');
-    return accessibleBlock;
+    function initializeBlock() {
+      Block.makeBlockAccessible('inner-body-div', 'block-interactive');
+    }
+    
+    initializeBlock();
   }, []);
 
   return (
