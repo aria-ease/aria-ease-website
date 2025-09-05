@@ -15,7 +15,7 @@ import { Accordion } from "aria-ease";
 
 
 const AccordionExample = () => {
-  const[accordionState, setAccordionState] = useState([ {display: false}, {display: false}, {display: false} ]);
+  const[accordionState, setAccordionState] = useState([{display: false}, {display: false}, {display: false}]);
 
   
   const handleAccordionClick = (index) => {
