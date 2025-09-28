@@ -1,5 +1,6 @@
 {
   "hosting": {
+    "site": "ariaease",
     "public": "dist",
     "ignore": [
       "firebase.json",

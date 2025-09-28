@@ -35,7 +35,9 @@
 }
 .light-body .hero-paragraph,
 .light-body .version-text,
-.light-body .search-text {
+.light-body .search-text,
+.light-body .changes-list-text,
+.light-body .changelog-entry-date {
     color: black;
 }
 .light-body .hero-examples-div {

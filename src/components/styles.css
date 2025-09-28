@@ -50,11 +50,11 @@
     transition: all 200ms ease-in;
     border-radius: 8px;
 }
-.header-search-div input:focus,
+.header-search-div textarea:focus,
 #text-input-block-div input:focus {
     outline: none;
 }
-.header-search-div input,
+.header-search-div textarea,
 #text-input-block-div input {
     background-color: transparent;
     border: none;
@@ -103,7 +103,7 @@
 }
 button:focus,
 a:focus {
-    outline: 2px solid rgba(0, 91, 211, 1);
+    outline: 2px solid rgba(0, 91, 211, 1) !important;
     outline-offset: 1px;
     border-radius: 8px;
 }
@@ -327,9 +327,6 @@ select:-moz-autofill {
 .text-input-block-interactive {
     width: 100%;
 }
-.accordion-example-page-div .side-body-div p {
-    margin-top: 20px;
-}
 .faq-each-div {
     margin: 20px 0px 0px 0px;
 }
@@ -418,3 +415,6 @@ select:-moz-autofill {
     color: inherit;
     cursor: pointer;
   }
+.changelog-entry {
+    border: 1px solid gray;
+}

@@ -2,21 +2,23 @@ import Header from '../components/Header'
 import { Container, Row, Col } from 'react-bootstrap'
 import SideNav from '../components/SideNav'
 import SlideOutNav from '../components/SlideOutNav'
-import { useState, useEffect } from 'react'
-import HomeTabExampleOne from '../components/tabs/HomeTabExampleOne'
+import { useState, useEffect, useRef } from 'react'
 import TextInputBlock from '../components/tabs/TextInputBlock'
-import { makeBlockAccessible } from 'aria-ease'
+import * as Block from 'aria-ease/block'
 import CodeBlockDemo from '../components/CodeBlock';
 import ScrollTracker from '../components/ScrollTracker';
 
 
-const firstBlockCode = `import { useEffect } from 'react'
-import { makeBlockAccessible } from "aria-ease"
+const firstBlockCode = `import { useEffect } from "react";
+import * as Block from "aria-ease/block";
 
 const App = () => {
   useEffect(() => {
-    const accessibleBlock = makeBlockAccessible('block-div', 'block-interactive-items');
-    return accessibleBlock;
+    function initializeBlock() {
+      Block.makeBlockAccessible("block-div", "block-interactive-items");
+    }
+
+    initializeBlock();
   },[])
 
   return (
@@ -33,25 +35,28 @@ const App = () => {
 
 export default App`
 
-const secondBlockCode = `import { makeBlockAccessible } from 'aria-ease'
-import { useEffect } from 'react'
+const secondBlockCode = `import { useEffect } from "react";
+import * as Block from "aria-ease/block";
 
 const TextInputBlock = () => {
   useEffect(() => {
-    const accessibleBlock = makeBlockAccessible('text-input-block-div', 'text-input-block-items');
-    return accessibleBlock;
+    function initializeBlock() {
+      Block.makeBlockAccessible("text-input-block-div", "text-input-block-items");
+    }
+
+    initializeBlock();
   })
 
   return (
     <div id="text-input-block-div">
-        <div className='each-text-input-block-div'>
-          <input type="text" placeholder='Name' className='text-input-block-items'></input>
+        <div className="each-text-input-block-div">
+          <input type="text" placeholder="Name" className="text-input-block-items"></input>
         </div>
-        <div className='each-text-input-block-div'>
-          <input type="text" placeholder='Email' className='text-input-block-items'></input>
+        <div className="each-text-input-block-div">
+          <input type="text" placeholder="Email" className="text-input-block-items"></input>
         </div>
-        <div className='each-text-input-block-div'>
-          <input type="text" placeholder='Phone' className='text-input-block-items'></input>
+        <div className="each-text-input-block-div">
+          <input type="text" placeholder="Phone" className="text-input-block-items"></input>
         </div>
     </div>
   )
@@ -59,21 +64,72 @@ const TextInputBlock = () => {
 
 export default TextInputBlock`
 
+const dynamicBlockCode = `import { useEffect, useRef } from "react";
+import * as Block from "aria-ease/block";
+
+const mainBlockCleanupRef = useRef(null);
+
+useEffect(() => {
+  mainBlockCleanupRef.current = Block.makeBlockAccessible('inner-body-div', 'block-interactive');
+  return () => {
+    if (mainBlockCleanupRef.current) {
+      mainBlockCleanupRef.current();
+      mainBlockCleanupRef.current = null;
+    }
+  };
+}, []);
+
+useEffect(() => {
+  if (dynamicState) {
+    if (mainBlockCleanupRef.current) {
+      mainBlockCleanupRef.current();
+      mainBlockCleanupRef.current = null;
+    }
+  } else {
+    if (!mainBlockCleanupRef.current) {
+      mainBlockCleanupRef.current = Block.makeBlockAccessible('inner-body-div', 'block-interactive');
+    }
+  }
+}, [dynamicState]);`
 
 // eslint-disable-next-line react/prop-types
-const Block = ({darkMode, setDarkMode}) => {
+const BlockExample = ({darkMode, setDarkMode}) => {
   const[showDropdownPage, setShowDropdownPage] = useState(false);
-  const page = 'tab'
+  const page = 'tab';
 
+  const [resultsVisible, setResultsVisible] = useState(false);
+    
+    const mainBlockCleanupRef = useRef(null);
+  
+    // Initialize main block on mount
     useEffect(() => {
-      const accessibleBlock = makeBlockAccessible('inner-body-div', 'block-interactive');
-      return accessibleBlock;
-    },[])
+      mainBlockCleanupRef.current = Block.makeBlockAccessible('inner-body-div', 'block-interactive');
+      return () => {
+        if (mainBlockCleanupRef.current) {
+          mainBlockCleanupRef.current();
+          mainBlockCleanupRef.current = null;
+        }
+      };
+    }, []);
+  
+    // Clean up main block listeners when search is visible, re-enable when hidden
+    useEffect(() => {
+      if (resultsVisible) {
+        if (mainBlockCleanupRef.current) {
+          mainBlockCleanupRef.current();
+          mainBlockCleanupRef.current = null;
+        }
+      } else {
+        if (!mainBlockCleanupRef.current) {
+          mainBlockCleanupRef.current = Block.makeBlockAccessible('inner-body-div', 'block-interactive');
+        }
+      }
+    }, [resultsVisible]);
 
   return (
     <div className='block-example-page-div' id="inner-body-div">
         <ScrollTracker page={page}/>
-        <Header page={page} darkMode={darkMode} setDarkMode={setDarkMode} showDropdownPage={showDropdownPage} setShowDropdownPage={setShowDropdownPage}/>
+        <Header page={page} darkMode={darkMode} setDarkMode={setDarkMode} showDropdownPage={showDropdownPage} setShowDropdownPage={setShowDropdownPage} resultsVisible={resultsVisible} setResultsVisible={setResultsVisible}/>
         
         <div className='page-body-div'>
           <Container fluid>
@@ -82,7 +138,7 @@ const Block = ({darkMode, setDarkMode}) => {
               <Col xs={12} sm={12} md={9} lg={9}>
                   <div className='side-body-div'>
                       <h1 className='component-example-heading'>Block</h1>
-                      <p className='mt-2'>A statically displayed component that has a list of related interractive children items e.g tabs, interactive sliders, carousels, and entire web page body.</p>
+                      <p className='mt-2'>A statically displayed component that has a list of related interractive children items e.g tabs, interactive sliders, carousels, and entire web pages.</p>
 
                       <div className='mt-4'>
                         <h4>Block Component Overview</h4>
@@ -130,7 +186,6 @@ const Block = ({darkMode, setDarkMode}) => {
                       <div className='example-each-ui-code-block-div mt-6'>
                         <h5>Buttons Block</h5>
                         <p className='mt-2'>This creates a focus trap within the buttons tab block. The Arrow keys navigates the focus within the trap in a cycle. The Space and Enter keys &#34;clicks&#34; the interactive element. The Tab key exits the trap.</p>
-                        <HomeTabExampleOne/>
                         <CodeBlockDemo code={firstBlockCode}/>
                       </div>
 
@@ -142,6 +197,17 @@ const Block = ({darkMode, setDarkMode}) => {
                           <CodeBlockDemo code={secondBlockCode}/>
                         </div>
 
+                        <div className='mt-5'>
+                          <h5>Dynamic Block</h5>
+                          <p>Sometimes, you need to change which part of your UI contains an accessible block based on user interaction. For example, when a search overlay or modal appears, if there&#39;s a main page block, you should remove the main page block and create a new block for the overlay. This ensures keyboard navigation and focus are always trapped in the correct context, improving accessibility and user experience.</p>
+                          <p className='mt-2'>The Block utility makes it easy to manage these dynamic blocks. You can create and destroy blocks as needed, making it a powerful tool for managing complex UI interactions, and ensuring that your UI remains accessible at all times.</p>
+                          <p className='mt-2'>The Block utility returns a cleanup function that you can call to remove the block when it is not needed.</p>
+                          <p className='mt-2'>Use a ref object to store the cleanup function returned by the <code>Block.makeBlockAccessible</code> method. The ref can then be used to call the cleanup function that was returned by the method. This function removes the event listeners that were added to make the block accessible for keyboard navigation.</p>
+                          <CodeBlockDemo code={dynamicBlockCode}/>
+                          <p className='mt-2'>After the cleanup function has been called on the previous block, and the event listeners removed, a new block can then be created with new event listeners.</p>
+                          <p className='mt-2'>In the code snippet above, &#34;dynamicState&#34; is a state variable that determines when the dynamic block, e.g a modal, or search overlay, is currently active.</p>
+                        </div>
+
                         <div className='mt-10'>
                         <h4>Common Use Cases</h4>
                         <ul className='list-disc ml-6 mt-2'>
@@ -149,6 +215,7 @@ const Block = ({darkMode, setDarkMode}) => {
                           <li>Interactive widgets (carousels, tabs)</li>
                           <li>Modal dialogs</li>
                           <li>Grid-based interfaces</li>
+                          <li>Entire web pages</li>
                         </ul>
                       </div>
 
@@ -174,4 +241,4 @@ const Block = ({darkMode, setDarkMode}) => {
   )
 }
 
-export default Block
+export default BlockExample
