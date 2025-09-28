@@ -47,7 +47,9 @@
 .dark-body .home-get-started-div p,
 .dark-body .home-get-started-div h3,
 .dark-body .version-text, 
-.dark-body .blog_article_date {
+.dark-body .blog_article_date,
+.dark-body .changes-list-text,
+.dark-body .changelog-entry-date {
     color: rgb(171, 171, 176);
 }
 .dark-body .hero-examples-div {

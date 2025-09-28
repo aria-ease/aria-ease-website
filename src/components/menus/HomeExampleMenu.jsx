@@ -1,19 +1,23 @@
-import { makeMenuAccessible, updateMenuTriggerAriaAttributes, cleanUpMenuEventListeners } from 'aria-ease'
+import { useRef, useEffect } from 'react';
+import * as Menu from 'aria-ease/menu';
 
 const HomeExampleMenu = () => {
-  const toggleMenuDisplay = (event) => {
-    if (event.type === 'mousedown' || (event.type === 'keydown' && (event.key === 'Enter' || event.key === ' '))) {
-      event.preventDefault();
-      const menu = document.querySelector('#custom-menu');
-      if (getComputedStyle(menu).display === 'none') {
-        menu.style.display = 'block';
-        makeMenuAccessible('custom-menu', 'profile-menu-item');
-        updateMenuTriggerAriaAttributes('display-button', 'Close profile menu');
-      } else {
-        cleanUpMenuEventListeners('custom-menu', 'profile-menu-item');
-        menu.style.display = 'none';
-        updateMenuTriggerAriaAttributes('display-button', 'Open profile menu');
-      }
+  const menuRef = useRef();
+
+  useEffect(() => {
+    menuRef.current = Menu.makeMenuAccessible({
+      menuId: "custom-menu",
+      menuElementsClass: "profile-menu-item",
+      triggerId: "display-button"
+    });
+  }, [])
+
+  const toggleMenuDisplay = () => {
+    const menuDiv = document.querySelector("#custom-menu");
+    if (getComputedStyle(menuDiv).display === "none") {
+      menuRef.current.openMenu();
+    } else {
+      menuRef.current.closeMenu();
     }
   };
 
@@ -21,21 +25,19 @@ const HomeExampleMenu = () => {
     <div className='mt-2 mb-3'>
       <button
         id="display-button"
-        onMouseDown={toggleMenuDisplay}
+        onClick={toggleMenuDisplay}
         aria-haspopup={true}
-        role="button"
         aria-expanded={false}
         aria-controls="custom-menu"
-        aria-label="Open profile menu"
+        aria-label="Profile menu"
         className='home-menu-example-trigger-button block-interactive'
-        onKeyDown={toggleMenuDisplay}
       >
         Display Example Menu
       </button>
       <div id="custom-menu" role="menu" aria-labelledby="display-button" style={{display: 'none', marginTop: '5px'}}>
-        <button role="menuitem" className="profile-menu-item" onClick={() => alert('Button clicked')} aria-label='Go to page one'>One</button>
-        <button role="menuitem" className="profile-menu-item" onClick={() => alert('Button clicked')} aria-label='Go to page two'>Two</button>
-        <button role="menuitem" className="profile-menu-item" onClick={() => alert('Button clicked')} aria-label='Go to page three'>Three</button>
+        <button role="menuitem" className="profile-menu-item" onClick={() => alert('Button clicked')}>One</button>
+        <button role="menuitem" className="profile-menu-item" onClick={() => alert('Button clicked')}>Two</button>
+        <button role="menuitem" className="profile-menu-item" onClick={() => alert('Button clicked')}>Three</button>
       </div>
     </div>
   )

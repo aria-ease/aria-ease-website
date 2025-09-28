@@ -1,15 +1,14 @@
+.badge-container {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
   
-  .badge-container {
-    display: flex;
-    align-items: center;
-    gap: 0.75rem;
-  }
-  
-  .new-badge {
-    background: linear-gradient(135deg, #646cff 0%, #4c54e8 100%);
-    color: white;
-    padding: 0.25rem 0.75rem;
-    border-radius: 1rem;
-    font-size: 0.875rem;
-    font-weight: 500;
-  }
+.new-badge {
+  background: linear-gradient(135deg, #646cff 0%, #4c54e8 100%);
+  color: white;
+  padding: 0.25rem 0.75rem;
+  border-radius: 1rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+}

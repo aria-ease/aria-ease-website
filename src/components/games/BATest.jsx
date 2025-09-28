@@ -80,7 +80,7 @@ const BATest = ({ darkMode }) => {
         </label>
       </div>
 
-      <div className="bg-gray-900 rounded-xl p-4 font-mono text-sm">
+      <div className="bg-gray-900 rounded-xl p-4 font-mono text-sm" aria-hidden="true">
         <div className="flex items-center gap-2 mb-4">
           <div className="w-3 h-3 rounded-full bg-red-500"></div>
           <div className="w-3 h-3 rounded-full bg-yellow-500"></div>

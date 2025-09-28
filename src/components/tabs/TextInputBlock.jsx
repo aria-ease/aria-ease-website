@@ -1,9 +1,9 @@
-import { makeBlockAccessible } from 'aria-ease'
-import { useEffect } from 'react'
+import * as Block from 'aria-ease/block';
+import { useEffect } from 'react';
 
 const TextInputBlock = () => {
   useEffect(() => {
-    makeBlockAccessible('text-input-block-div', 'text-input-block-interactive')
+    Block.makeBlockAccessible('text-input-block-div', 'text-input-block-interactive')
   })
 
   return (

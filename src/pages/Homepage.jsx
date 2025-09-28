@@ -1,8 +1,8 @@
 import Header from "../components/Header";
 import { Container, Row, Col } from "react-bootstrap";
 import SlideOutNav from "../components/SlideOutNav";
-import { useState, useEffect } from "react";
-import { makeBlockAccessible } from "aria-ease";
+import { useState, useEffect, useRef } from "react";
+import * as Block from "aria-ease/block";
 import { Link } from "react-router-dom";
 import './homepage.css';
 import { Terminal, Boxes, Keyboard } from 'lucide-react';
@@ -15,16 +15,45 @@ import ScrollTracker from '../components/ScrollTracker';
 const Homepage = ({darkMode, setDarkMode}) => {
   const[showDropdownPage, setShowDropdownPage] = useState(false);
   const page = 'home';
+  const[resultsVisible, setResultsVisible] = useState(false);
+  
+  const mainBlockCleanupRef = useRef(null);
 
   useEffect(() => {
-    const accessibleBlock = makeBlockAccessible('inner-body-div', 'block-interactive');
-    return accessibleBlock;
-  },[]);
+    mainBlockCleanupRef.current = Block.makeBlockAccessible('inner-body-div', 'block-interactive');
+    return () => {
+      if (mainBlockCleanupRef.current) {
+        mainBlockCleanupRef.current();
+        mainBlockCleanupRef.current = null;
+      }
+    };
+  }, []);
+
+  useEffect(() => {
+    if (resultsVisible) {
+      if (mainBlockCleanupRef.current) {
+        mainBlockCleanupRef.current();
+        mainBlockCleanupRef.current = null;
+      }
+    } else {
+      if (!mainBlockCleanupRef.current) {
+        mainBlockCleanupRef.current = Block.makeBlockAccessible('inner-body-div', 'block-interactive');
+      }
+    }
+  }, [resultsVisible]);
 
   return (
     <div className="home-body" id="inner-body-div">
       <ScrollTracker page={page}/>
-      <Header page={page} darkMode={darkMode} setDarkMode={setDarkMode} showDropdownPage={showDropdownPage} setShowDropdownPage={setShowDropdownPage}/>
+      <Header 
+        page={page}
+        darkMode={darkMode}
+        setDarkMode={setDarkMode}
+        showDropdownPage={showDropdownPage}
+        setShowDropdownPage={setShowDropdownPage}
+        resultsVisible={resultsVisible}
+        setResultsVisible={setResultsVisible}
+      />
 
       <div className="page-body-div">
         <div>
@@ -36,7 +65,7 @@ const Homepage = ({darkMode, setDarkMode}) => {
                   <p className="hero-paragraph mb-5 mt-8">Out-of-the-box accessibility utility package that you can integrate into your web components with simple function calls. Automate menu and block focus management, keyboard interactions and navigations, aria attributes update, and more.</p>
                   <div className="badge-container mb-[50px]">
                     <span className="new-badge">New</span>
-                    <span className="version-text">v1.6.1 is now available</span>
+                    <span className="version-text">v2.0.3 is now available</span>
                   </div>
                   <Link onClick={() => {sessionStorage.setItem(`scroll-position-${page}`, window.scrollY)}} to='/docs' className='block-interactive home-discover-functions-button' aria-label='Navigate to the documentation page'>Discover the core functions</Link>
                 </div>
@@ -51,21 +80,21 @@ const Homepage = ({darkMode, setDarkMode}) => {
                 <h2 className="text-3xl font-bold mb-6">Built for a more accessible web</h2>
                 <div className="space-y-6">
                   <div className="flex items-start gap-4">
-                    <Terminal className={`${darkMode ? 'text-gray-400' : 'text-gray-800'} h-6 w-6 mt-1`} />
+                    <Terminal className={`${darkMode ? 'text-gray-400' : 'text-gray-800'} h-6 w-6 mt-1`} aria-hidden="true"/>
                     <div>
                       <h3 className="font-semibold mb-2">Seamless Integration</h3>
                       <p className={`${darkMode ? 'text-gray-400' : 'text-gray-800'}`}>Integrate accessibility into components with ease with simple function calls</p>
                   </div>
                   </div>
                   <div className="flex items-start gap-4">
-                    <Boxes className={`${darkMode ? 'text-gray-400' : 'text-gray-800'} h-6 w-6 mt-1`} />
+                    <Boxes className={`${darkMode ? 'text-gray-400' : 'text-gray-800'} h-6 w-6 mt-1`} aria-hidden="true"/>
                     <div>
                       <h3 className="font-semibold mb-2">Utility Functions</h3>
                       <p className={`${darkMode ? 'text-gray-400' : 'text-gray-800'}`}>Audit your components to discover where accessibilty can be improved</p>
                     </div>
                   </div>
                   <div className="flex items-start gap-4">
-                    <Keyboard className={`${darkMode ? 'text-gray-400' : 'text-gray-800'} h-16 w-16 mt-1`} />
+                    <Keyboard className={`${darkMode ? 'text-gray-400' : 'text-gray-800'} h-16 w-16 mt-1`} aria-hidden="true"/>
                     <div>
                       <h3 className="font-semibold mb-2">Intuitive Navigation</h3>
                       <div>
@@ -84,7 +113,7 @@ const Homepage = ({darkMode, setDarkMode}) => {
               </div>
             </Col>
             <Col lg={6} md={6} sm={12} xs={12}>
-              <div className="bg-gray-900 rounded-xl p-6 font-mono text-sm mt-[50px]">
+              <div className="bg-gray-900 rounded-xl p-6 font-mono text-sm mt-[50px]" aria-hidden='true'>
                 <div className="flex items-center gap-2 mb-4">
                   <div className="w-3 h-3 rounded-full bg-red-500"></div>
                   <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
@@ -93,12 +122,15 @@ const Homepage = ({darkMode, setDarkMode}) => {
                 <pre className="text-green-400">
                   <code style={{color: 'rgb(74 222 128)'}}>
                     {`import { useEffect } from "react";
-import { makeBlockAccessible } from "aria-ease";
+import * as Block from "aria-ease/block";
 
 const App = () => {
   useEffect(() => {
-    const accessibleBlock = makeBlockAccessible('text-input-block-div', 'block-interactive-items');
-    return accessibleBlock;
+    function initializeBlock() {
+      Block.makeBlockAccessible('text-input-block-div', 'block-interactive-items');
+    }
+    
+    initializeBlock();
   },[])
 
   return (
