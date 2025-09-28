@@ -1,13 +1,12 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Header from '../components/Header';
-import { Block } from 'aria-ease';
+import * as Block from 'aria-ease/block';
 import SlideOutNav from '../components/SlideOutNav';
 import SideNav from '../components/SideNav';
 import { Container, Row, Col } from 'react-bootstrap';
 import CodeBlockDemo from '../components/CodeBlock';
 import ScrollTracker from '../components/ScrollTracker';
 import { Link } from 'react-router-dom';
-import GroupToggleButton from '../components/toggle-button/GroupToggleButton';
 
 
 // eslint-disable-next-line react/prop-types
@@ -15,16 +14,37 @@ const Toggle = ({darkMode, setDarkMode}) => {
     const page = 'toggle-button';
     const[showDropdownPage, setShowDropdownPage] = useState(false);
     
-  useEffect(() => {
-    function initializeBlock() {
-      Block.makeBlockAccessible('inner-body-div', 'block-interactive');
-    }
+  const [resultsVisible, setResultsVisible] = useState(false);
+        
+        const mainBlockCleanupRef = useRef(null);
+      
+        // Initialize main block on mount
+        useEffect(() => {
+          mainBlockCleanupRef.current = Block.makeBlockAccessible('inner-body-div', 'block-interactive');
+          return () => {
+            if (mainBlockCleanupRef.current) {
+              mainBlockCleanupRef.current();
+              mainBlockCleanupRef.current = null;
+            }
+          };
+        }, []);
+      
+        // Clean up main block listeners when search is visible, re-enable when hidden
+        useEffect(() => {
+          if (resultsVisible) {
+            if (mainBlockCleanupRef.current) {
+              mainBlockCleanupRef.current();
+              mainBlockCleanupRef.current = null;
+            }
+          } else {
+            if (!mainBlockCleanupRef.current) {
+              mainBlockCleanupRef.current = Block.makeBlockAccessible('inner-body-div', 'block-interactive');
+            }
+          }
+        }, [resultsVisible]);
 
-    initializeBlock();
-  },[])
-
-  const importGroupToggles = 'import { Toggle } from "aria-ease";';
-  const groupStates = `const[toggleButtonsState, setToggleButtonsState] = useState([{pressed: false}, {pressed: false}, {pressed: false}]);`;
+  const importGroupToggles = 'import * as Toggle from "aria-ease/toggle";';
+  const groupStates = `const[toggleButtonsState, setToggleButtonsState] = useState(() => Array.from({ length: 3 }, () => ({ pressed: false })));`;
 const handleTogglePressFunction = `const handlePress = (index) => {  
   setToggleButtonsState((prevStates) => {
     const newStates = prevStates.map((state, i) => ({
@@ -46,7 +66,7 @@ const togglesComponent = `<div id='toggle-div'>
   return (
     <div id="inner-body-div">
         <ScrollTracker page={page}/>
-        <Header page={page} darkMode={darkMode} setDarkMode={setDarkMode} showDropdownPage={showDropdownPage} setShowDropdownPage={setShowDropdownPage}/>
+        <Header page={page} darkMode={darkMode} setDarkMode={setDarkMode} showDropdownPage={showDropdownPage} setShowDropdownPage={setShowDropdownPage} resultsVisible={resultsVisible} setResultsVisible={setResultsVisible}/>
         
         <div className='page-body-div'>
           <Container fluid>
@@ -69,7 +89,7 @@ const togglesComponent = `<div id='toggle-div'>
                     <h4>Optional ARIA Attributes</h4>
                     <p className='mt-2'>These are optional aria attributes:</p>
                     <ul className='list-disc ml-6 mt-2'>
-                      <li><code>aria-label</code>: Provides a descriptive label for assistive technologies. Use only for non-text buttons</li>
+                      <li><code>aria-label</code>: Provides a descriptive label for assistive technologies. Use for non-text toggle buttons.</li>
                     </ul>
                   </div>
 
@@ -79,6 +99,7 @@ const togglesComponent = `<div id='toggle-div'>
 
                     <h4 className='mt-4'>aria-label</h4>
                     <p>The <code>aria-label</code> attribute provides a description of the toggle button&#39;s feature, and should not be updated when the toggle button&#39;s state changes.</p>
+                    <p className='mt-2'>Do not change a &#34;Mute notification&#34; label to &#34;Unmute notification&#34; simply because the button state changed. So a screen reader will simply say something like &#34;Mute notifaction, pressed&#34; and &#34;Mute notification, not pressed&#34;, which is intuitive enough for a user relying on it.</p>
 
                     <h4 className='mt-5'>Toggle.updateToggleAriaAttribute</h4>
                     <p className='mt-2'>The <code>Toggle.updateToggleAriaAttribute</code> method allows to systematically update the aria-pressed attribute of a group of toggle buttons.</p>
@@ -86,19 +107,17 @@ const togglesComponent = `<div id='toggle-div'>
                     <p className='mt-2'>The method accepts 4 arguments; the id of the toggle button(s) container, a shared class of all the toggle buttons, an array of objects with information about each button in the collection, and the index position of the currently pressed/unpressed button relative to the toggle buttons container and other toggle buttons.</p>
 
                     <div>
-                      <p className='mb-2 mt-2'>Let&#39;s begin by importing the fuction</p>
+                      <p className='mb-2 mt-2'>Let&#39;s begin by importing the Toggle utility class.</p>
                       <CodeBlockDemo code={importGroupToggles}/>
 
-                      <p className='mb-2 mt-6'>Then we define the states for each toggle button in the collection sequentially (according to the order in which the toggle buttons elements are defined) in a states array.</p>
+                      <p className='mb-2 mt-6'>Then we define the states for each toggle button in the collection in a states array.</p>
                       <CodeBlockDemo code={groupStates}/>
-                      <p>NOTE: The ariaLabel property in the states object above is simply to keep track of the sequential order of the toggle button in the array and relative to the toggle buttons container. The content of a toggle button&#39;s aria-label must not be changed when the state changes. Do not change a &#34;Mute notification&#34; label to &#34;Unmute notification&#34; simply because the button state changed. So a screen reader will simply say something like &#34;Mute notifaction pressed&#34; and &#34;Mute notification not pressed&#34;, which is intuitive enough for a user relying on it.</p>
 
-                      <p className='mb-2 mt-6'>And then we create a function to handle pressing/unpressing of the toggle buttons. The function uses the index position of the current pressed/unpressed toggle button to update the toggle button state in the states array. Hence toggle button elements and states have to be defined sequentially.</p>
+                      <p className='mb-2 mt-6'>And then we create a function to handle pressing/unpressing of the toggle buttons. The function uses the index position of the current pressed/unpressed toggle button to update the toggle button state in the states array.</p>
                       <CodeBlockDemo code={handleTogglePressFunction}/>
 
-                      <p className='mb-2 mt-6'>Lastly we create our toggle buttons components</p>
+                      <p className='mb-2 mt-6'>Lastly we create our toggle buttons component.</p>
                       <CodeBlockDemo code={togglesComponent}/>
-                      <GroupToggleButton/>
                     </div>
                   </div>
                   

@@ -1,9 +1,9 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import Header from '../components/Header'
 import { Container, Row, Col } from 'react-bootstrap'
 import SideNav from '../components/SideNav'
 import SlideOutNav from '../components/SlideOutNav'
-import { Block } from 'aria-ease'
+import * as Block from 'aria-ease/block'
 import AccordionExample from '../components/accordions/AccordionExample';
 import CodeBlockDemo from '../components/CodeBlock';
 import ScrollTracker from '../components/ScrollTracker';
@@ -11,11 +11,11 @@ import { Link } from 'react-router-dom'
 
 
 const firstAccordionCode = `import { useState, useEffect } from 'react';
-import { Accordion } from "aria-ease";
+import * as Accordion from "aria-ease/accordion";
 
 
 const AccordionExample = () => {
-  const[accordionState, setAccordionState] = useState([{display: false}, {display: false}, {display: false}]);
+  const[accordionState, setAccordionState] = useState(() => Array.from({ length: 3 }, () => ({ display: false })));
 
   
   const handleAccordionClick = (index) => {
@@ -74,20 +74,40 @@ export default AccordionExample`
 const Accordions = ({darkMode, setDarkMode}) => {
   const page = 'accordions'
   const[showDropdownPage, setShowDropdownPage] = useState(false);
+  const [resultsVisible, setResultsVisible] = useState(false);
     
-  useEffect(() => {
-    function initializeBlock() {
-      Block.makeBlockAccessible('inner-body-div', 'block-interactive');
-    }
-    
-    initializeBlock();
-  },[])
+    const mainBlockCleanupRef = useRef(null);
+  
+    // Initialize main block on mount
+    useEffect(() => {
+      mainBlockCleanupRef.current = Block.makeBlockAccessible('inner-body-div', 'block-interactive');
+      return () => {
+        if (mainBlockCleanupRef.current) {
+          mainBlockCleanupRef.current();
+          mainBlockCleanupRef.current = null;
+        }
+      };
+    }, []);
+  
+    // Clean up main block listeners when search is visible, re-enable when hidden
+    useEffect(() => {
+      if (resultsVisible) {
+        if (mainBlockCleanupRef.current) {
+          mainBlockCleanupRef.current();
+          mainBlockCleanupRef.current = null;
+        }
+      } else {
+        if (!mainBlockCleanupRef.current) {
+          mainBlockCleanupRef.current = Block.makeBlockAccessible('inner-body-div', 'block-interactive');
+        }
+      }
+    }, [resultsVisible]);
 
 
   return (
-    <div id="inner-body-div" className='accordion-example-page-div'>
+    <div id="inner-body-div">
         <ScrollTracker page={page}/>
-        <Header page={page} darkMode={darkMode} setDarkMode={setDarkMode} showDropdownPage={showDropdownPage} setShowDropdownPage={setShowDropdownPage}/>
+        <Header page={page} darkMode={darkMode} setDarkMode={setDarkMode} showDropdownPage={showDropdownPage} setShowDropdownPage={setShowDropdownPage} resultsVisible={resultsVisible} setResultsVisible={setResultsVisible}/>
 
         <div className='page-body-div'>
           <Container fluid>
@@ -126,10 +146,9 @@ const Accordions = ({darkMode, setDarkMode}) => {
                     <p className='mt-0'>The <code>aria-label</code> attribute provides a description of the expandable item control for screen reader users. It typically contains a detailed purpose of the button. It should only be used with non-text triggers and text triggers are descriptive enough for assistive technologies.</p>
 
                     <h4 className='mt-4'>aria-labelledby</h4>
-                    <p className='mt-0'>The <code>aria-labelledby</code> attribute identifies the element (or elements) that labels the element it is applied to.</p>
+                    <p className='mt-0 mb-10'>The <code>aria-labelledby</code> attribute identifies the element (or elements) that labels the element it is applied to.</p>
 
-                    <h4 className='mt-5'>Accordion.updateAccordionTriggerAriaAttributes</h4>
-                  <p className='mt-2'>The <code>Accordion.updateAccordionTriggerAriaAttributes</code> method enables assistive technology support for the accordions. This feature helps visually impaired users to navigate interacting with the accordions, by informing the users about the current state, and purpose, of each of the accordion. The states are either expanded or not expanded. The method updates the aria-expanded and aria-label attributes of the accordion toggle button.</p>
+                  <p>The <code>Accordion.updateAccordionTriggerAriaAttributes</code> method enables assistive technology support for the accordions. This feature helps visually impaired users to navigate interacting with the accordions, by informing the users about the current state, and purpose, of each of the accordion. The states are either expanded or not expanded. The method updates the aria-expanded and aria-label attributes of the accordion toggle button.</p>
                   <p className='mt-2'>The method accepts 4 arguments; id of the accordion triggers parent container, the shared class of all the accordion triggers, an array of objects with information about each accordion in the collection, and the index position of the currently clicked trigger relative to the main accordion container and other trigger buttons.</p>
                   <p className='mt-2'>The trigger buttons have keyboard interaction support using the Block.makeBlockAccessible(params) method.</p>
                   <AccordionExample/>

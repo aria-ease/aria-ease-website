@@ -1,8 +1,8 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import './blogMain.css'
 import 'bootstrap/dist/css/bootstrap.css';
 import { Container, Row, Col } from 'react-bootstrap';
-import { Block } from 'aria-ease';
+import * as Block from 'aria-ease/block';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import BlogCard from '../components/blog-card/BlogCard';
@@ -39,19 +39,40 @@ const BlogMain = ({darkMode, setDarkMode}) => {
         });
       }
 
-    useEffect(() => {
-        fetchBlogPosts()
-        function initializeBlock() {
-            Block.makeBlockAccessible('inner-body-div', 'block-interactive');
+    const [resultsVisible, setResultsVisible] = useState(false);
+      
+      const mainBlockCleanupRef = useRef(null);
+    
+      // Initialize main block on mount
+      useEffect(() => {
+        fetchBlogPosts();
+        mainBlockCleanupRef.current = Block.makeBlockAccessible('inner-body-div', 'block-interactive');
+        return () => {
+          if (mainBlockCleanupRef.current) {
+            mainBlockCleanupRef.current();
+            mainBlockCleanupRef.current = null;
+          }
+        };
+      }, []);
+    
+      // Clean up main block listeners when search is visible, re-enable when hidden
+      useEffect(() => {
+        if (resultsVisible) {
+          if (mainBlockCleanupRef.current) {
+            mainBlockCleanupRef.current();
+            mainBlockCleanupRef.current = null;
+          }
+        } else {
+          if (!mainBlockCleanupRef.current) {
+            mainBlockCleanupRef.current = Block.makeBlockAccessible('inner-body-div', 'block-interactive');
+          }
         }
-        
-        initializeBlock();
-    },[])
+      }, [resultsVisible]);
 
   return (
     <div className="home-body" id="inner-body-div">
         <ScrollTracker page={page}/>
-        <Header page={page} darkMode={darkMode} setDarkMode={setDarkMode} showDropdownPage={showDropdownPage} setShowDropdownPage={setShowDropdownPage}/>
+        <Header page={page} darkMode={darkMode} setDarkMode={setDarkMode} showDropdownPage={showDropdownPage} setShowDropdownPage={setShowDropdownPage} resultsVisible={resultsVisible} setResultsVisible={setResultsVisible}/>
 
         <div className='pb-[100px] pt-[100px] pr-3 pl-3 min-h-[calc(100vh-200px)]'>
             <Container fluid>

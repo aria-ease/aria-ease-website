@@ -10,9 +10,9 @@ const Footer = ({page}) => {
               <Col md={4}>
                 <h4 className="text-[16px] font-bold footer-heading-text mb-3 mt-6">Getting Started</h4>
                 <ul>
-                  <li className="mb-3"><Link onClick={() => {sessionStorage.setItem(`scroll-position-${page}`, window.scrollY)}} to="/docs" className="footer-nav-link block-interactive text-[16px]" aria-label='Navigate to the documentation page'>Documentation</Link></li>
-                  {/* <li className="mb-3"><Link to="/docs/api" className="footer-nav-link block-interactive text-[16px]">API Reference</Link></li> */}
+                  <li className="mb-3"><Link onClick={() => {sessionStorage.setItem(`scroll-position-${page}`, window.scrollY)}} to="/docs" className="footer-nav-link block-interactive text-[16px]" aria-label='Navigate to the documentation page'>Documentation</Link></li> 
                   <li className="mb-3"><Link onClick={() => {sessionStorage.setItem(`scroll-position-${page}`, window.scrollY)}} to="/examples/accordion" className="footer-nav-link block-interactive text-[16px]" aria-label="View examples of package implementation">Examples</Link></li>
+                  <li className="mb-3"><Link onClick={() => {sessionStorage.setItem(`scroll-position-${page}`, window.scrollY)}} to="/changelog" className="footer-nav-link block-interactive text-[16px]" aria-label='Navigate to changelog page'>Changelog</Link></li>
                 </ul>
               </Col>
               <Col md={4}>

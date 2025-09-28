@@ -1,4 +1,4 @@
-import { Block } from 'aria-ease';
+import * as Block from 'aria-ease/block';
 import { useEffect } from 'react';
 
 const TextInputBlock = () => {

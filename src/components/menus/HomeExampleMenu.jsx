@@ -1,5 +1,5 @@
 import { useRef, useEffect } from 'react';
-import { Menu } from 'aria-ease';
+import * as Menu from 'aria-ease/menu';
 
 const HomeExampleMenu = () => {
   const menuRef = useRef();

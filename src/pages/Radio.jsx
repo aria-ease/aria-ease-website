@@ -1,12 +1,11 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Header from '../components/Header';
-import { Block } from 'aria-ease';
+import * as Block from 'aria-ease/block';
 import SlideOutNav from '../components/SlideOutNav';
 import SideNav from '../components/SideNav';
 import { Container, Row, Col } from 'react-bootstrap';
 import CodeBlockDemo from '../components/CodeBlock';
 import ScrollTracker from '../components/ScrollTracker';
-import GroupRadio from '../components/radio/GroupRadio';
 
 
 // eslint-disable-next-line react/prop-types
@@ -14,16 +13,37 @@ const Radio = ({darkMode, setDarkMode}) => {
     const page = 'radio';
     const[showDropdownPage, setShowDropdownPage] = useState(false);
     
-  useEffect(() => {
-    function initializeBlock() {
-      Block.makeBlockAccessible('inner-body-div', 'block-interactive');
-    }
-    
-    initializeBlock();
-  },[])
+  const [resultsVisible, setResultsVisible] = useState(false);
+        
+        const mainBlockCleanupRef = useRef(null);
+      
+        // Initialize main block on mount
+        useEffect(() => {
+          mainBlockCleanupRef.current = Block.makeBlockAccessible('inner-body-div', 'block-interactive');
+          return () => {
+            if (mainBlockCleanupRef.current) {
+              mainBlockCleanupRef.current();
+              mainBlockCleanupRef.current = null;
+            }
+          };
+        }, []);
+      
+        // Clean up main block listeners when search is visible, re-enable when hidden
+        useEffect(() => {
+          if (resultsVisible) {
+            if (mainBlockCleanupRef.current) {
+              mainBlockCleanupRef.current();
+              mainBlockCleanupRef.current = null;
+            }
+          } else {
+            if (!mainBlockCleanupRef.current) {
+              mainBlockCleanupRef.current = Block.makeBlockAccessible('inner-body-div', 'block-interactive');
+            }
+          }
+        }, [resultsVisible]);
 
-  const importGroupRadios = 'import { Radio } from "aria-ease";';
-  const groupStates = `const[radioState, setRadioState] = useState([{checked: false}, {checked: false}, {checked: false}]);`;
+  const importGroupRadios = 'import * as Radio from "aria-ease/radio";';
+  const groupStates = `const[radioState, setRadioState] = useState(() => Array.from({ length: 3 }, () => ({ checked: false })));`;
   const handleRadioCheckFunction = `const handleRadioCheck = (event, index) => {
     setRadioState((prevStates) => {
       const newStates = prevStates.map((state, i) => ({
@@ -57,7 +77,7 @@ const radiosComponent = `<div id='radio-div'>
   return (
     <div id="inner-body-div">
         <ScrollTracker page={page}/>
-        <Header page={page} darkMode={darkMode} setDarkMode={setDarkMode} showDropdownPage={showDropdownPage} setShowDropdownPage={setShowDropdownPage}/>
+        <Header page={page} darkMode={darkMode} setDarkMode={setDarkMode} showDropdownPage={showDropdownPage} setShowDropdownPage={setShowDropdownPage} resultsVisible={resultsVisible} setResultsVisible={setResultsVisible}/>
         
         <div className='page-body-div'>
           <Container fluid>
@@ -90,21 +110,18 @@ const radiosComponent = `<div id='radio-div'>
                     <p className='mt-2'>The method accepts 3 arguments; an array of objects with information about each radio in the collection, a shared class of all the radios, and the index position of the currently clicked radio relative to the main radios container and other radios.</p>
 
                     <div>
-                      <p className='mb-2 mt-2'>Let&#39;s begin by importing the function</p>
+                      <p className='mb-2 mt-2'>Let&#39;s begin by importing the Radio utility class.</p>
                       <CodeBlockDemo code={importGroupRadios}/>
 
-                      <p className='mb-2 mt-6'>Then we define the states for each radio in the collection sequentially (according to the order in which the radios elements are defined) in a states array</p>
+                      <p className='mb-2 mt-6'>Then we define the states for each radio in the collection in a states array.</p>
                       <CodeBlockDemo code={groupStates}/>
                       <p>NOTE: The aria label of a radio button is simply to keep track of the sequential order of the radio in the array and relative to the radio group container. The content of a radio&#39;s aria-label must not be changed when the state changes. So a screen reader will simply say something like &#34;Financial type, selected, radio button&#34;, which is intuitive enough for a user relying on it.</p>
 
-                      <p className='mb-2 mt-6'>And then we create a function to handle checking/unchecking of the radios. The function uses the index position of the current checked/unchecked radio to update the radio state in the states array. Hence radio elements and states have to be defined sequentially.</p>
+                      <p className='mb-2 mt-6'>And then we create a function to handle checking/unchecking of the radios. The function uses the index position of the current checked/unchecked radio to update the radio state in the states array.</p>
                       <CodeBlockDemo code={handleRadioCheckFunction}/>
 
-                      <p className='mb-2 mt-6'>Lastly we create our radios components</p>
+                      <p className='mb-2 mt-6'>Lastly we create our radio components.</p>
                       <CodeBlockDemo code={radiosComponent}/>
-                      <div className='mt-3'>
-                        <GroupRadio/>
-                      </div>
                     </div>
                   </div>
                 </div>

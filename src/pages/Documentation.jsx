@@ -1,10 +1,10 @@
 import Header from '../components/Header';
 import { Container, Row, Col } from 'react-bootstrap';
 import SideNav from '../components/SideNav';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import SlideOutNav from '../components/SlideOutNav'
 import HomeExampleMenu from '../components/menus/HomeExampleMenu';
-import { Block } from 'aria-ease';
+import * as Block from 'aria-ease/block';
 import CodeBlockDemo from '../components/CodeBlock';
 import ScrollTracker from '../components/ScrollTracker';
 
@@ -13,9 +13,9 @@ const menuCode = `Menu.makeMenuAccessible({
   menuElementsClass: "profile-menu-item",
   triggerId: "display-button"
 })`
-const tabCode = `Block.makeBlockAccessible('custom-tab', 'custom-tab-item')`
+const tabCode = `Block.makeBlockAccessible('custom-tab', 'custom-tab-item');`
 
-const accordionCode = `const[accordionState, setAccordionState] = useState([{display: false}, {display: false}, {display: false}])
+const accordionCode = `const[accordionState, setAccordionState] = useState(() => Array.from({ length: 3 }, () => ({ display: false })))
 
 const handleAccordionClick = (index) => {
   setAccordionState((prevStates) => {
@@ -34,18 +34,39 @@ const Documentation = ({darkMode, setDarkMode}) => {
   const[showDropdownPage, setShowDropdownPage] = useState(false);
   const page = 'documentation'
 
-  useEffect(() => {
-    function initializeBlock() {
-      Block.makeBlockAccessible('inner-body-div', 'block-interactive');
-    }
-
-    initializeBlock();
-  },[])
+  const [resultsVisible, setResultsVisible] = useState(false);
+          
+          const mainBlockCleanupRef = useRef(null);
+        
+          // Initialize main block on mount
+          useEffect(() => {
+            mainBlockCleanupRef.current = Block.makeBlockAccessible('inner-body-div', 'block-interactive');
+            return () => {
+              if (mainBlockCleanupRef.current) {
+                mainBlockCleanupRef.current();
+                mainBlockCleanupRef.current = null;
+              }
+            };
+          }, []);
+        
+          // Clean up main block listeners when search is visible, re-enable when hidden
+          useEffect(() => {
+            if (resultsVisible) {
+              if (mainBlockCleanupRef.current) {
+                mainBlockCleanupRef.current();
+                mainBlockCleanupRef.current = null;
+              }
+            } else {
+              if (!mainBlockCleanupRef.current) {
+                mainBlockCleanupRef.current = Block.makeBlockAccessible('inner-body-div', 'block-interactive');
+              }
+            }
+          }, [resultsVisible]);
 
   return (
     <div id="inner-body-div">
         <ScrollTracker page={page}/>
-        <Header page={page} darkMode={darkMode} setDarkMode={setDarkMode} showDropdownPage={showDropdownPage} setShowDropdownPage={setShowDropdownPage}/>
+        <Header page={page} darkMode={darkMode} setDarkMode={setDarkMode} showDropdownPage={showDropdownPage} setShowDropdownPage={setShowDropdownPage} resultsVisible={resultsVisible} setResultsVisible={setResultsVisible}/>
         
         <div className='page-body-div documentation-page'>
           <Container fluid>
@@ -56,7 +77,7 @@ const Documentation = ({darkMode, setDarkMode}) => {
                   <div className='side-body-sections-div'>
                     <h1 className='introduction-heading'>Introduction</h1>
                     <p className='mt-2'>Utility package to add accessibility functionalities to your components.</p>
-                    <p className='mt-2'>This is NOT a component library. The package simply provides you functions that take the components&#39; identifiers (ids, and class names of interactive elements), and implements accessibility features like focus trapping, keyboard interactions, aria attributes update.</p>
+                    <p className='mt-2'>This is NOT a component library. The package simply provides utility functions that help to implements accessibility features.</p>
                   </div>
                   <div className='side-body-sections-div'>
                     <h1 className='introduction-heading'>Installation</h1>
@@ -89,7 +110,7 @@ const Documentation = ({darkMode, setDarkMode}) => {
                         This method updates the aria attributes of the menu trigger button. The aria-expanded attribute of the trigger button is updated based on the current visibility of the menu. 
                       </p>
                       <p className='mb-2 mt-6'>Call this method to open a menu. It displays the menu and updates the aria-expanded of the menu trigger button to indicate that the menu is open.</p>
-                      <CodeBlockDemo code={'Menu.openMenu()'}/>
+                      <CodeBlockDemo code={'Menu.openMenu();'}/>
                     </>
 
                     <>
@@ -98,7 +119,7 @@ const Documentation = ({darkMode, setDarkMode}) => {
                         This method updates the aria attributes of the menu trigger button. The aria-expanded attribute of the trigger button is updated based on the current visibility of the menu. 
                       </p>
                       <p className='mb-2'>Call this method to close a menu. It hides the menu and updates the aria-expanded of the menu trigger button to indicate that the menu is closed.</p>
-                      <CodeBlockDemo code={'Menu.closeMenu()'}/>
+                      <CodeBlockDemo code={'Menu.closeMenu();'}/>
                     </>
 
                     <>
@@ -112,19 +133,18 @@ const Documentation = ({darkMode, setDarkMode}) => {
                       <CodeBlockDemo code={tabCode}/>
                       <p style={{marginTop: '24px'}}>Call the method on page render, in order for the event listeners to be added as soon as the page loads.</p>
                       <p className='mb-2'>The method can be used to add keyboard interactions functionalities to all the interactive elements on a web page (check out the implementation example on this website) by calling the method like below:</p>
-                      <CodeBlockDemo code={`Block.makeBlockAccessible(id-of-page-div, class-name-given-to-all-the-interactive-elements-of-the-page)`}/>
+                      <CodeBlockDemo code={`Block.makeBlockAccessible(id-of-page-div, class-name-given-to-all-the-interactive-elements-of-the-page);`}/>
                     </>
 
                     <>
                       <p style={{marginTop: '80px'}}>
-                        <b className='features-function'>Accordion.updateAccordionTriggerAriaAttributes:</b>
-                        This method enables assistive technology support for accordions.
+                        The <code>Accordion.updateAccordionTriggerAriaAttributes</code> method enables assistive technology support for accordions.
                       </p>
                       <p className='mt-2'>This feature helps visually impaired users to navigate interacting with the accordions, by informing the users about the current state, and purpose, of each of the accordion. The states are either expanded or not expanded.</p>
                       <p className='mt-2'>The method updates the aria-expanded attribute of the accordion toggle button.</p>
-                      <p className='mt-2'>The method accepts 4 arguments; id of the accordion triggers parent container, the shared class of all the accordion triggers, an array of objects with information about each accordion in the collection, and the index position of the currently clicked trigger relative to the main accordion container and other trigger buttons.</p>
+                      <p className='mt-2 mb-3'>The method accepts 4 arguments; id of the accordion triggers parent container, the shared class of all the accordion triggers, an array of objects with information about each accordion in the collection, and the index position of the currently clicked trigger relative to the main accordion container and other trigger buttons.</p>
                       <CodeBlockDemo code={accordionCode}/>
-                      <p>The method should be called with the new state after the display state for the corresponding accordion has been updated to true/false and the accordion content has become added to/removed from the DOM.</p>
+                      <p className='mt-3'>The method should be called with the new state after the display state for the corresponding accordion has been updated to true/false and the accordion content has become added to/removed from the DOM.</p>
                     </>
                   </div>
                 </div>

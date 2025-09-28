@@ -2,15 +2,15 @@ import Header from '../components/Header'
 import { Container, Row, Col } from 'react-bootstrap'
 import SideNav from '../components/SideNav'
 import SlideOutNav from '../components/SlideOutNav'
-import { useState, useEffect } from 'react'
-import { Block } from 'aria-ease'
+import { useState, useEffect, useRef } from 'react'
+import * as Block from 'aria-ease/block'
 import HomeExampleMenu from '../components/menus/HomeExampleMenu'
 import CodeBlockDemo from '../components/CodeBlock';
 import ScrollTracker from '../components/ScrollTracker';
 
 
 const firstMenuCode = `import { useRef, useEffect } from "react";
-import { Menu } from "aria-ease";
+import * as Menu from "aria-ease/menu";
 
 const HomeExampleMenu = () => {
   const menuRef = useRef();
@@ -61,18 +61,39 @@ const Examples = ({darkMode, setDarkMode}) => {
   const[showDropdownPage, setShowDropdownPage] = useState(false);
   const page = 'menu'
 
-  useEffect(() => {
-    function initializeBlock() {
-      Block.makeBlockAccessible('inner-body-div', 'block-interactive');
-    }
-
-    initializeBlock();
-  },[])
+  const [resultsVisible, setResultsVisible] = useState(false);
+          
+          const mainBlockCleanupRef = useRef(null);
+        
+          // Initialize main block on mount
+          useEffect(() => {
+            mainBlockCleanupRef.current = Block.makeBlockAccessible('inner-body-div', 'block-interactive');
+            return () => {
+              if (mainBlockCleanupRef.current) {
+                mainBlockCleanupRef.current();
+                mainBlockCleanupRef.current = null;
+              }
+            };
+          }, []);
+        
+          // Clean up main block listeners when search is visible, re-enable when hidden
+          useEffect(() => {
+            if (resultsVisible) {
+              if (mainBlockCleanupRef.current) {
+                mainBlockCleanupRef.current();
+                mainBlockCleanupRef.current = null;
+              }
+            } else {
+              if (!mainBlockCleanupRef.current) {
+                mainBlockCleanupRef.current = Block.makeBlockAccessible('inner-body-div', 'block-interactive');
+              }
+            }
+          }, [resultsVisible]);
 
   return (
     <div id="inner-body-div" className='menu-example-page-div'>
         <ScrollTracker page={page}/>
-        <Header page={page} darkMode={darkMode} setDarkMode={setDarkMode} showDropdownPage={showDropdownPage} setShowDropdownPage={setShowDropdownPage}/>
+        <Header page={page} darkMode={darkMode} setDarkMode={setDarkMode} showDropdownPage={showDropdownPage} setShowDropdownPage={setShowDropdownPage} resultsVisible={resultsVisible} setResultsVisible={setResultsVisible}/>
         
         <div className='page-body-div'>
           <Container fluid>

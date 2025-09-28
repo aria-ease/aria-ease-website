@@ -6,32 +6,32 @@
     },
     {
         "title": "Checkbox",
-        "content": "Accessible Checkbox component. Uses aria-checked, aria-label. Form Input. screen reader",
+        "content": "Accessible Checkbox utility. Uses aria-checked, aria-label. Form Input. screen reader",
         "url": "/examples/checkbox"
     },
     {
         "title": "Accordion",
-        "content": "Accessible Accordion component. Uses aria-expanded, aria-label. Ideal for FAQs. screen reader",
+        "content": "Accessible Accordion utility. Uses aria-expanded, aria-label. Ideal for FAQs. screen reader",
         "url": "/examples/accordion"
     },
     {
         "title": "Menu",
-        "content": "Accessible Menu component. Uses aria-label, aria-labelledby, role='menu', role='button', aria-controls, aria-haspopup. Focus trap. Intuitive Keyboard navigation, interaction. Escape key closes menu. screen reader",
+        "content": "Accessible Menu utility. Uses aria-label, aria-labelledby, role='menu', role='button', aria-controls, aria-haspopup. Focus trap. Intuitive Keyboard navigation, interaction. Escape key closes menu. screen reader",
         "url": "/examples/menu"
     },
     {
         "title": "Radio",
-        "content": "Accessible Radio component. Ideal for selecting one option from many. screen reader",
+        "content": "Accessible Radio utility. Ideal for selecting one option from many. screen reader",
         "url": "/examples/radio"
     },
     {
         "title": "Block",
-        "content": "Accessible Block component. Focus trap. Intuitive Keyboard navigation, interaction",
+        "content": "Accessible Block utility. Focus trap. Intuitive Keyboard navigation, interaction",
         "url": "/examples/block"
     },
     {
         "title": "Toggle",
-        "content": "Accessible Toggle switch component. Uses aria-pressed, aria-label. Ideal for dark mode, settings, and preferences. screen reader",
+        "content": "Accessible Toggle switch utility. Uses aria-pressed, aria-label. Ideal for dark mode, settings, and preferences. screen reader",
         "url": "/examples/toggle-button"
     }
 ]

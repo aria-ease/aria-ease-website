@@ -1,10 +1,10 @@
 import { useState } from 'react'
 import openeddropdown from '../../assets/opened-dropdown.svg'
 import closeddropdown from '../../assets/closed-dropdown.svg'
-import { Accordion } from 'aria-ease'
+import * as Accordion from 'aria-ease/accordion'
 
 const AccordionExample = () => {
-  const[accordionState, setAccordionState] = useState([ {display: false}, {display: false}, {display: false} ]);
+  const[accordionState, setAccordionState] = useState(() => Array.from({ length: 3 }, () => ({ display: false })));
 
   const handleAccordionClick = (index) => {
     setAccordionState((prevStates) => {

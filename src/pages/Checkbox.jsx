@@ -1,10 +1,9 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import Header from '../components/Header';
-import { Block } from 'aria-ease';
+import * as Block from 'aria-ease/block';
 import SlideOutNav from '../components/SlideOutNav';
 import SideNav from '../components/SideNav';
 import { Container, Row, Col } from 'react-bootstrap';
-import CheckboxExample from '../components/checkbox/CheckboxExample';
 import CodeBlockDemo from '../components/CodeBlock';
 import ScrollTracker from '../components/ScrollTracker';
 
@@ -16,16 +15,37 @@ const Checkbox = ({darkMode, setDarkMode}) => {
     const[showDropdownPage, setShowDropdownPage] = useState(false);
 
   
-  useEffect(() => {
-    function initializeBlock() {
-      Block.makeBlockAccessible('inner-body-div', 'block-interactive');
-    }
+  const [resultsVisible, setResultsVisible] = useState(false);
         
-    initializeBlock();
-  },[])
+        const mainBlockCleanupRef = useRef(null);
+      
+        // Initialize main block on mount
+        useEffect(() => {
+          mainBlockCleanupRef.current = Block.makeBlockAccessible('inner-body-div', 'block-interactive');
+          return () => {
+            if (mainBlockCleanupRef.current) {
+              mainBlockCleanupRef.current();
+              mainBlockCleanupRef.current = null;
+            }
+          };
+        }, []);
+      
+        // Clean up main block listeners when search is visible, re-enable when hidden
+        useEffect(() => {
+          if (resultsVisible) {
+            if (mainBlockCleanupRef.current) {
+              mainBlockCleanupRef.current();
+              mainBlockCleanupRef.current = null;
+            }
+          } else {
+            if (!mainBlockCleanupRef.current) {
+              mainBlockCleanupRef.current = Block.makeBlockAccessible('inner-body-div', 'block-interactive');
+            }
+          }
+        }, [resultsVisible]);
 
-  const importGroupCheckboxes = 'import { Checkbox } from "aria-ease";';
-  const groupStates = `const[checkboxState, setCheckboxState] = useState([{checked: false}, {checked: false}, {checked: false}]);`;
+  const importGroupCheckboxes = 'import * as Checkbox from "aria-ease/checkbox";';
+  const groupStates = `const[checkboxState, setCheckboxState] = useState(() => Array.from({ length: 3 }, () => ({ checked: false })));`;
   const handleCheckFunction = `const handleCheck = (event, index) => {
   const checkboxElement = event.target;
   
@@ -67,7 +87,7 @@ const Checkbox = ({darkMode, setDarkMode}) => {
   return (
     <div id="inner-body-div">
         <ScrollTracker page={page}/>
-        <Header page={page} darkMode={darkMode} setDarkMode={setDarkMode} showDropdownPage={showDropdownPage} setShowDropdownPage={setShowDropdownPage}/>
+        <Header page={page} darkMode={darkMode} setDarkMode={setDarkMode} showDropdownPage={showDropdownPage} setShowDropdownPage={setShowDropdownPage} resultsVisible={resultsVisible} setResultsVisible={setResultsVisible}/>
         
         <div className='page-body-div'>
           <Container fluid>
@@ -121,19 +141,18 @@ const Checkbox = ({darkMode, setDarkMode}) => {
                     <p className='mt-2'>The method enables assistive technology support for the checkboxes. This feature helps visually impaired users to navigate interacting with the checkboxes, by informing the users about the current state, of each of the checkboxes. The states are either checked or not checked. The method updates the aria-checked attribute of the checkboxes.</p>
                     <p className='mt-2'>The method accepts 4 arguments; the id of the checkbox parent container, a shared class of all the checkboxes, an array of objects with information about each checkbox in the collection, and the index position of the currently clicked checkbox relative to the main checkboxes container and other checkboxes.</p>
 
-                    <div><CheckboxExample/></div>
                     <div>
                       <p className='mb-2 mt-2'>Let&#39;s begin by importing the Checkbox utility class</p>
                       <CodeBlockDemo code={importGroupCheckboxes}/>
                       
 
-                      <p className='mb-2 mt-6'>Then we define the states for each checkbox in the collection sequentially (according to the order in which the checkboxes elements are defined) in a states array</p>
+                      <p className='mb-2 mt-6'>Then we define the states for each checkbox in the collection in a states array.</p>
                       <CodeBlockDemo code={groupStates}/>
 
-                      <p className='mb-2 mt-6'>And then we create a function to handle checking/unchecking of the checkboxes. The function uses the index position of the current checked/unchecked checkbox to update the checkbox state in the states array. Hence checkbox elements and states have to be defined sequentially.</p>
+                      <p className='mb-2 mt-6'>And then we create a function to handle checking/unchecking of the checkboxes. The function uses the index position of the current checked/unchecked checkbox to update the checkbox state in the states array.</p>
                       <CodeBlockDemo code={handleCheckFunction}/>
 
-                      <p className='mb-2 mt-6'>Lastly we create our checkboxes components</p>
+                      <p className='mb-2 mt-6'>Lastly we create our checkboxes components.</p>
                       <CodeBlockDemo code={checkboxesComponent}/>
                     </div>
                   </div>

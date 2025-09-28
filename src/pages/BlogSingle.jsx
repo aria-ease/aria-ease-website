@@ -1,7 +1,7 @@
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-import { Block } from 'aria-ease';
-import { useEffect, useState } from 'react';
+import * as Block from 'aria-ease/block';
+import { useEffect, useState, useRef } from 'react';
 import './blogSingle.css';
 import { useLocation } from 'react-router-dom';
 import firebase from 'firebase/compat/app';
@@ -47,18 +47,40 @@ const BlogSingle = ({darkMode, setDarkMode}) => {
     }
   },[idPassed])
 
-  useEffect(() => {
-    window.scrollTo(0, 0);
-    function initializeBlock() {
-      Block.makeBlockAccessible('inner-body-div', 'block-interactive');
-    }
+
+  const [resultsVisible, setResultsVisible] = useState(false);
+      
+      const mainBlockCleanupRef = useRef(null);
     
-    initializeBlock();
-  }, []);
+      // Initialize main block on mount
+      useEffect(() => {
+        window.scrollTo(0, 0);
+        mainBlockCleanupRef.current = Block.makeBlockAccessible('inner-body-div', 'block-interactive');
+        return () => {
+          if (mainBlockCleanupRef.current) {
+            mainBlockCleanupRef.current();
+            mainBlockCleanupRef.current = null;
+          }
+        };
+      }, []);
+    
+      // Clean up main block listeners when search is visible, re-enable when hidden
+      useEffect(() => {
+        if (resultsVisible) {
+          if (mainBlockCleanupRef.current) {
+            mainBlockCleanupRef.current();
+            mainBlockCleanupRef.current = null;
+          }
+        } else {
+          if (!mainBlockCleanupRef.current) {
+            mainBlockCleanupRef.current = Block.makeBlockAccessible('inner-body-div', 'block-interactive');
+          }
+        }
+      }, [resultsVisible]);
 
   return (
     <div className="home-body" id="inner-body-div">
-        <Header page={page} darkMode={darkMode} setDarkMode={setDarkMode} showDropdownPage={showDropdownPage} setShowDropdownPage={setShowDropdownPage}/>
+        <Header page={page} darkMode={darkMode} setDarkMode={setDarkMode} showDropdownPage={showDropdownPage} setShowDropdownPage={setShowDropdownPage} resultsVisible={resultsVisible} setResultsVisible={setResultsVisible}/>
 
         <div className='min-h-[calc(100vh-200px)]'>
           {blog.length > 0 ? 
