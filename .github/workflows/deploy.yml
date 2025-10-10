@@ -10,8 +10,10 @@ jobs:
     steps:
       - uses: actions/checkout@v4
 
-      - name: Install deps
-        run: npm ci
+      - name: Clean install
+        run: |
+          rm -rf node_modules package-lock.json
+          npm install
 
       - name: Build docs
         run: npm run build
