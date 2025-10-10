@@ -1,0 +1,16 @@
+.changelog-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 2rem;
+  line-height: 1.6;
+}
+
+.changelog-container h2 {
+  margin-top: 2rem;
+  color: #1a1a1a;
+}
+
+.changelog-container ul {
+  list-style: disc;
+  margin-left: 1.5rem;
+}

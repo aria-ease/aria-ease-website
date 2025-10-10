@@ -6,47 +6,24 @@ import ScrollTracker from '../components/ScrollTracker';
 import './homepage.css';
 import * as Block from 'aria-ease/block';
 import SideNav from "../components/SideNav";
+import './changelog.css';
+import ReactMarkdown from 'react-markdown';
 
-const changelogData = [
-  {
-    version: "2.0.3",
-    date: "Sep 23, 2025",
-    changes: [
-      "Improved tree-shaking for unused utilities.",
-      "Added per-utility and central builds/imports for granularity."
-    ]
-  },
-  {
-    version: "2.0.2",
-    date: "Sep 4, 2025",
-    changes: [
-      "Added tree-shaking for unused utilities.",
-    ]
-  },
-  {
-    version: "2.0.1",
-    date: "Sep 4, 2025",
-    changes: [
-      "Removed aria-label update functionality for menu, checkbox, radio, toggle, and accordion.",
-      "Refactored makeMenuAccessible usage: Removed updateMenuTriggerAriaAttributes, cleanUpMenuEventListeners functions. Added openMenu, closeMenu, and cleanup functions."
-    ]
-  },
-  {
-    version: "2.0.0",
-    date: "Sep 4, 2025",
-    changes: [
-      "Major refactor: deprecated v1.x.x.",
-      "Initiated v2.x.x.",
-      "Added namespace imports."
-    ]
-  }
-];
 
 // eslint-disable-next-line react/prop-types
 const Changelog = ({ darkMode, setDarkMode }) => {
-  const [showDropdownPage, setShowDropdownPage] = useState(false);
+  const[showDropdownPage, setShowDropdownPage] = useState(false);
   const page = 'changelog';
   const[resultsVisible, setResultsVisible] = useState(false);
+  const[content, setContent] = useState("");
+
+  useEffect(() => {
+    // Fetch the markdown file directly from the built assets
+    fetch("/CHANGELOG.md")
+    .then((res) => res.text())
+    .then((text) => {setContent(text); console.log(text)})
+    .catch((err) => console.error("Error loading changelog:", err));
+  }, [])
 
   const mainBlockCleanupRef = useRef(null);
   
@@ -100,27 +77,9 @@ const Changelog = ({ darkMode, setDarkMode }) => {
                         </Col>
                     </Row>
                 </Container>
-                <Container fluid className="mb-[50px]">
-                    <Row>
-                        <Col xs={12} sm={12} md={12} lg={12}>
-                            <div className="changelog-list mt-8">
-                                {changelogData.map((entry) => (
-                                <div key={entry.version} className="changelog-entry mb-8 p-6 rounded-lg shadow-sm">
-                                    <div className="flex items-center gap-4 mb-2">
-                                    <span className="text-lg font-bold text-blue-700">v{entry.version}</span>
-                                    <span className="text-sm changelog-entry-date font-semibold">{entry.date}</span>
-                                    </div>
-                                    <ul className="list-disc ml-6 mt-2">
-                                    {entry.changes.map((change, i) => (
-                                        <li key={i} className="mb-1 changes-list-text">{change}</li>
-                                    ))}
-                                    </ul>
-                                </div>
-                                ))}
-                            </div>
-                        </Col>
-                    </Row>
-                </Container>
+                <main className="changelog-container">
+                  <ReactMarkdown>{content}</ReactMarkdown>
+                </main>
               </Col>
             </Row>
         </Container>
