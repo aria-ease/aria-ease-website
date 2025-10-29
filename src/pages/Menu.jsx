@@ -95,17 +95,17 @@ const Examples = ({darkMode, setDarkMode}) => {
         <ScrollTracker page={page}/>
         <Header page={page} darkMode={darkMode} setDarkMode={setDarkMode} showDropdownPage={showDropdownPage} setShowDropdownPage={setShowDropdownPage} resultsVisible={resultsVisible} setResultsVisible={setResultsVisible}/>
         
-        <div className='page-body-div'>
+        <main className='page-body-div'>
           <Container fluid>
             <Row>
               <SideNav page={page}/>
-              <Col xs={12} sm={12} md={9} lg={9}>
+              <Col xs={12} sm={12} md={12} lg={9}>
                 <div className='side-body-div'>
                   <h1 className='component-example-heading'>Menu</h1>
                   <p className='mt-2'>A component that toggles display and has a list of interactive children items e.g dropdowns, combo boxes, slide out menu navigations.</p>
 
                   <div className='mt-10'>
-                    <h4>Required ARIA Attributes</h4>
+                    <h2>Required ARIA Attributes</h2>
                     <p className='mt-2'>Menu trigger button require specific ARIA attributes to ensure proper accessibility:</p>
                     <ul className='list-disc ml-6 mt-2'>
                       <li><code>aria-haspopup</code>: Indicates that the trigger controls a menu popup.</li>
@@ -116,24 +116,39 @@ const Examples = ({darkMode, setDarkMode}) => {
                   </div>
 
                   <div className='mt-10'>
-                    <h4>Optional ARIA Attributes</h4>
+                    <h2>Optional ARIA Attributes</h2>
                     <ul className='list-disc ml-6 mt-2'>
                       <li><code>aria-label</code>: Provides a descriptive label for screen readers. Use only for non-text menu trigger.</li>
                     </ul>
                   </div>
 
                   <div className='example-each-ui-code-block-div mt-6'>
-                    <h5 className='mb-1'>Buttons Menu</h5>
+                    <h3 className='mb-1'>Buttons Menu</h3>
                     <p>This creates a focus trap within the displayed menu. The Arrow keys navigates the focus within the trap in a cycle. The Space and Enter keys &#34;clicks&#34; the interactive element. The Escape key closes the menu, and returns the focus back to the button that toggles the menu. The Tab key exits the trap.</p>
 
                     <HomeExampleMenu/>
-                    <CodeBlockDemo code={firstMenuCode}/>
+                    <CodeBlockDemo code={firstMenuCode} isLineNumber={true}/>
                   </div>
+
+                  <div className='flex justify-between items-center mt-[100px]'>
+                      <a href='/examples/checkbox' className='block-interactive next-link rounded-lg'>
+                        <div className='flex flex-col px-4 py-3'>
+                          <span className='text-sm black-white-text'>Prev</span>
+                          <span className='text-blue-500 text-lg'>Checkbox</span>
+                        </div>
+                      </a>
+                      <a href='/examples/radio' className='block-interactive next-link rounded-lg'>
+                        <div className='flex flex-col px-4 py-3'>
+                          <span className='text-sm black-white-text'>Next</span>
+                          <span className='text-blue-500 text-lg'>Radio</span>
+                        </div>
+                      </a>
+                    </div>
                 </div>
               </Col>
             </Row>
           </Container>
-        </div>
+        </main>
         
         <SlideOutNav page={page} showDropdownPage={showDropdownPage}/>
     </div>

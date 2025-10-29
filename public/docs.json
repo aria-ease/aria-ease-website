@@ -33,5 +33,15 @@
         "title": "Toggle",
         "content": "Accessible Toggle switch utility. Uses aria-pressed, aria-label. Ideal for dark mode, settings, and preferences. screen reader",
         "url": "/examples/toggle-button"
+    },
+    {
+        "title": "Changelog",
+        "content": "What's new, improved, and fixed in each release of Aria-Ease. Versions. Bug fixes. Features",
+        "url": "/changelog"
+    },
+    {
+        "title": "Runtime Audit CLI",
+        "content": "Automated Accessibility Audit. Automated Accessibility Testing. Identify and fix accessibility issues. Development and Deployment workflow. CI/CD. utility",
+        "url": "/audit"
     }
 ]

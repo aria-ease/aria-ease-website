@@ -21,7 +21,7 @@ const AccordionExample = () => {
     <div className='faq-div' id='faq-div'>
             <div className='faq-each-div'>
                 <button id='make-an-appointment' className='dropdown-button block-interactive' onClick={() => handleAccordionClick(0)} aria-expanded={accordionState[0].display}  aria-controls='makeAnAppointmentAccordion'>
-                    <span className='dropdown-heading-text'>How do I make an appointment?</span>
+                    <span className='dropdown-heading-text text-black'>How do I make an appointment?</span>
                     {accordionState[0].display ? 
                         <img src={openeddropdown} alt='Dropdown Icon' className='dropdown-icon-image'></img> :
                         <img src={closeddropdown} alt='Dropdown Icon' className='dropdown-icon-image'></img>
@@ -37,7 +37,7 @@ const AccordionExample = () => {
 
             <div className='faq-each-div'>
                 <button id='copy-of-record' className='dropdown-button block-interactive' onClick={() => handleAccordionClick(1)} aria-expanded={accordionState[1].display} aria-controls='copyOfRecordsAccordion'>
-                    <span className='dropdown-heading-text'>How do I get a copy of my record?</span>
+                    <span className='dropdown-heading-text text-black'>How do I get a copy of my record?</span>
                     {accordionState[1].display ? 
                         <img src={openeddropdown} alt='Dropdown Icon' className='dropdown-icon-image'></img> :
                         <img src={closeddropdown} alt='Dropdown Icon' className='dropdown-icon-image'></img>
@@ -53,7 +53,7 @@ const AccordionExample = () => {
 
             <div className='faq-each-div'>
                 <button id='extra-charge' className='dropdown-button block-interactive' onClick={() => handleAccordionClick(2)} aria-expanded={accordionState[2].display} aria-controls='extraCopyChargeAccordion'>
-                    <span className='dropdown-heading-text'>Is there a charge for extra copies?</span>
+                    <span className='dropdown-heading-text text-black'>Is there a charge for extra copies?</span>
                     {accordionState[2].display ? 
                         <img src={openeddropdown} alt='Dropdown Icon' className='dropdown-icon-image'></img> :
                         <img src={closeddropdown} alt='Dropdown Icon' className='dropdown-icon-image'></img>

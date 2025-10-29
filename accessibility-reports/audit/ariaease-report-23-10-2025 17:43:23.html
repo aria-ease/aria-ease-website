@@ -1,0 +1,1022 @@
+<!DOCTYPE html>
+    <html lang="en">
+      <head>
+        <meta charset="utf-8"/>
+        <title>Aria-Ease Accessibility Audit Report</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <style>
+          :root{
+            --bg:#ffffff; --muted:#6b7280; --border:#e6e9ee;
+            --impact-critical: red; --impact-moderate:#fff4dd; --impact-serious:rgb(255, 123, 0);
+          }
+          body{font-family:Inter,ui-sans-serif,system-ui,Segoe UI,Roboto,Helvetica,Arial; background:var(--bg); color:#111827; padding:24px; line-height:1.4}
+          h1{margin:0 0 8px}
+          .summary{background:#f8fafc;border:1px solid var(--border);padding:12px 16px;border-radius:8px;margin-bottom:18px}
+          .summary ul{margin:6px 0 0 0;padding:0 18px}
+          .impact-summary h3{margin:12px 0 6px}
+          table{width:100%; border-collapse:collapse; margin-top:12px}
+          th,td{border:1px solid var(--border); padding:10px; text-align:left; vertical-align:top}
+          th{background:#f3f4f6; font-weight:600; position:sticky; top:0; z-index:1}
+          .nowrap{white-space:nowrap}
+          .target code{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, "Roboto Mono", "Courier New", monospace; white-space:pre-wrap}
+          .desc{max-width:380px}
+          tr:nth-child(even){background:#fbfbfb}
+          td.fail{color:#7b1e1e}
+          .impact.critical{background:var(--impact-critical); font-weight:600}
+          .impact.moderate{background:var(--impact-moderate); font-weight:600}
+          .impact.serious{background:var(--impact-serious); font-weight:600}
+          @media (max-width:900px){
+            .desc{max-width:200px}
+            table, thead, tbody, th, td, tr{display:block}
+            thead{display:none}
+            tr{margin-bottom:10px; border: 1px solid var(--border);}
+            td{border:1px solid var(--border); padding:6px}
+            td::before{font-weight:600; display:inline-block; width:120px}
+          }
+          .summary-list strong,
+          .summary-list li {
+            padding: 2px 4px;
+          }
+        </style>
+      </head>
+      <body>
+        <h1>Aria-Ease Accessibility Audit Report</h1>
+        <section class="summary">
+      <h2>Report summary</h2>
+      <ul>
+        <li><strong>Date:</strong> 23-10-2025 17:43:23</li>
+        <li><strong>Pages audited:</strong> 1</li>
+        <li><strong>Pages with violations:</strong> 1</li>
+        <li><strong>Total violations:</strong> 95</li>
+        <li><strong>Distinct rules:</strong> 5</li>
+      </ul>
+      <div class="impact-summary">
+        <h3>By impact</h3>
+        <ul class="summary-list">
+          <li><strong class="impact critical">critical</strong>: 78</li>
+<li><strong class="impact serious">serious</strong>: 6</li>
+<li><strong class="impact moderate">moderate</strong>: 11</li>
+        </ul>
+      </div>
+    </section>
+        <table>
+          <thead>
+            <tr>
+              <th>URL</th><th>Rule</th><th>Impact</th><th>Description</th><th>Target</th><th>FailureSummary</th>
+            </tr>
+          </thead>
+          <tbody>
+            
+          <tr>
+            <td class="nowrap">https://bpohomes.com/</td>
+            <td class="nowrap">button-name</td>
+            <td class="impact critical">critical</td>
+            <td class="desc">Ensure buttons have discernible text</td>
+            <td class="target"><code>#\:r4\:</code></td>
+            <td class="fail">Fix any of the following:<br/>  Element does not have inner text that is visible to screen readers<br/>  aria-label attribute does not exist or is empty<br/>  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty<br/>  Element has no title attribute<br/>  Element does not have an implicit (wrapped) &lt;label&gt;<br/>  Element does not have an explicit &lt;label&gt;<br/>  Element&#39;s default semantics were not overridden with role=&quot;none&quot; or role=&quot;presentation&quot;</td>
+          </tr>
+        
+
+          <tr>
+            <td class="nowrap">https://bpohomes.com/</td>
+            <td class="nowrap">button-name</td>
+            <td class="impact critical">critical</td>
+            <td class="desc">Ensure buttons have discernible text</td>
+            <td class="target"><code>.swiper-slide-active.swiper-slide[data-swiper-slide-index=&quot;0&quot;] &gt; div &gt; .css-79elbk.MuiBox-root &gt; .css-w42cy8.MuiPaper-root.MuiPaper-elevation &gt; .css-13zioz.MuiCardContent-root &gt; .css-1hdbc19.MuiStack-root &gt; .css-69i1ev.MuiBox-root &gt; .css-ct9q29.MuiStack-root &gt; .css-rblt6i.MuiIconButton-root.MuiIconButton-sizeMedium:nth-child(1)</code></td>
+            <td class="fail">Fix any of the following:<br/>  Element does not have inner text that is visible to screen readers<br/>  aria-label attribute does not exist or is empty<br/>  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty<br/>  Element has no title attribute<br/>  Element does not have an implicit (wrapped) &lt;label&gt;<br/>  Element does not have an explicit &lt;label&gt;<br/>  Element&#39;s default semantics were not overridden with role=&quot;none&quot; or role=&quot;presentation&quot;</td>
+          </tr>
+        
+
+          <tr>
+            <td class="nowrap">https://bpohomes.com/</td>
+            <td class="nowrap">button-name</td>
+            <td class="impact critical">critical</td>
+            <td class="desc">Ensure buttons have discernible text</td>
+            <td class="target"><code>.swiper-slide-active.swiper-slide[data-swiper-slide-index=&quot;0&quot;] &gt; div &gt; .css-79elbk.MuiBox-root &gt; .css-w42cy8.MuiPaper-root.MuiPaper-elevation &gt; .css-13zioz.MuiCardContent-root &gt; .css-1hdbc19.MuiStack-root &gt; .css-69i1ev.MuiBox-root &gt; .css-ct9q29.MuiStack-root &gt; .css-rblt6i.MuiIconButton-root.MuiIconButton-sizeMedium:nth-child(2)</code></td>
+            <td class="fail">Fix any of the following:<br/>  Element does not have inner text that is visible to screen readers<br/>  aria-label attribute does not exist or is empty<br/>  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty<br/>  Element has no title attribute<br/>  Element does not have an implicit (wrapped) &lt;label&gt;<br/>  Element does not have an explicit &lt;label&gt;<br/>  Element&#39;s default semantics were not overridden with role=&quot;none&quot; or role=&quot;presentation&quot;</td>
+          </tr>
+        
+
+          <tr>
+            <td class="nowrap">https://bpohomes.com/</td>
+            <td class="nowrap">button-name</td>
+            <td class="impact critical">critical</td>
+            <td class="desc">Ensure buttons have discernible text</td>
+            <td class="target"><code>.swiper-slide-next.swiper-slide[data-swiper-slide-index=&quot;1&quot;] &gt; div &gt; .css-79elbk.MuiBox-root &gt; .css-w42cy8.MuiPaper-root.MuiPaper-elevation &gt; .css-13zioz.MuiCardContent-root &gt; .css-1hdbc19.MuiStack-root &gt; .css-69i1ev.MuiBox-root &gt; .css-ct9q29.MuiStack-root &gt; .css-rblt6i.MuiIconButton-root.MuiIconButton-sizeMedium:nth-child(1)</code></td>
+            <td class="fail">Fix any of the following:<br/>  Element does not have inner text that is visible to screen readers<br/>  aria-label attribute does not exist or is empty<br/>  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty<br/>  Element has no title attribute<br/>  Element does not have an implicit (wrapped) &lt;label&gt;<br/>  Element does not have an explicit &lt;label&gt;<br/>  Element&#39;s default semantics were not overridden with role=&quot;none&quot; or role=&quot;presentation&quot;</td>
+          </tr>
+        
+
+          <tr>
+            <td class="nowrap">https://bpohomes.com/</td>
+            <td class="nowrap">button-name</td>
+            <td class="impact critical">critical</td>
+            <td class="desc">Ensure buttons have discernible text</td>
+            <td class="target"><code>.swiper-slide-next.swiper-slide[data-swiper-slide-index=&quot;1&quot;] &gt; div &gt; .css-79elbk.MuiBox-root &gt; .css-w42cy8.MuiPaper-root.MuiPaper-elevation &gt; .css-13zioz.MuiCardContent-root &gt; .css-1hdbc19.MuiStack-root &gt; .css-69i1ev.MuiBox-root &gt; .css-ct9q29.MuiStack-root &gt; .css-rblt6i.MuiIconButton-root.MuiIconButton-sizeMedium:nth-child(2)</code></td>
+            <td class="fail">Fix any of the following:<br/>  Element does not have inner text that is visible to screen readers<br/>  aria-label attribute does not exist or is empty<br/>  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty<br/>  Element has no title attribute<br/>  Element does not have an implicit (wrapped) &lt;label&gt;<br/>  Element does not have an explicit &lt;label&gt;<br/>  Element&#39;s default semantics were not overridden with role=&quot;none&quot; or role=&quot;presentation&quot;</td>
+          </tr>
+        
+
+          <tr>
+            <td class="nowrap">https://bpohomes.com/</td>
+            <td class="nowrap">button-name</td>
+            <td class="impact critical">critical</td>
+            <td class="desc">Ensure buttons have discernible text</td>
+            <td class="target"><code>.swiper-slide[data-swiper-slide-index=&quot;2&quot;] &gt; div &gt; .css-79elbk.MuiBox-root &gt; .css-w42cy8.MuiPaper-root.MuiPaper-elevation &gt; .css-13zioz.MuiCardContent-root &gt; .css-1hdbc19.MuiStack-root &gt; .css-69i1ev.MuiBox-root &gt; .css-ct9q29.MuiStack-root &gt; .css-rblt6i.MuiIconButton-root.MuiIconButton-sizeMedium:nth-child(1)</code></td>
+            <td class="fail">Fix any of the following:<br/>  Element does not have inner text that is visible to screen readers<br/>  aria-label attribute does not exist or is empty<br/>  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty<br/>  Element has no title attribute<br/>  Element does not have an implicit (wrapped) &lt;label&gt;<br/>  Element does not have an explicit &lt;label&gt;<br/>  Element&#39;s default semantics were not overridden with role=&quot;none&quot; or role=&quot;presentation&quot;</td>
+          </tr>
+        
+
+          <tr>
+            <td class="nowrap">https://bpohomes.com/</td>
+            <td class="nowrap">button-name</td>
+            <td class="impact critical">critical</td>
+            <td class="desc">Ensure buttons have discernible text</td>
+            <td class="target"><code>.swiper-slide[data-swiper-slide-index=&quot;2&quot;] &gt; div &gt; .css-79elbk.MuiBox-root &gt; .css-w42cy8.MuiPaper-root.MuiPaper-elevation &gt; .css-13zioz.MuiCardContent-root &gt; .css-1hdbc19.MuiStack-root &gt; .css-69i1ev.MuiBox-root &gt; .css-ct9q29.MuiStack-root &gt; .css-rblt6i.MuiIconButton-root.MuiIconButton-sizeMedium:nth-child(2)</code></td>
+            <td class="fail">Fix any of the following:<br/>  Element does not have inner text that is visible to screen readers<br/>  aria-label attribute does not exist or is empty<br/>  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty<br/>  Element has no title attribute<br/>  Element does not have an implicit (wrapped) &lt;label&gt;<br/>  Element does not have an explicit &lt;label&gt;<br/>  Element&#39;s default semantics were not overridden with role=&quot;none&quot; or role=&quot;presentation&quot;</td>
+          </tr>
+        
+
+          <tr>
+            <td class="nowrap">https://bpohomes.com/</td>
+            <td class="nowrap">button-name</td>
+            <td class="impact critical">critical</td>
+            <td class="desc">Ensure buttons have discernible text</td>
+            <td class="target"><code>.swiper-slide[data-swiper-slide-index=&quot;3&quot;] &gt; div &gt; .css-79elbk.MuiBox-root &gt; .css-w42cy8.MuiPaper-root.MuiPaper-elevation &gt; .css-13zioz.MuiCardContent-root &gt; .css-1hdbc19.MuiStack-root &gt; .css-69i1ev.MuiBox-root &gt; .css-ct9q29.MuiStack-root &gt; .css-rblt6i.MuiIconButton-root.MuiIconButton-sizeMedium:nth-child(1)</code></td>
+            <td class="fail">Fix any of the following:<br/>  Element does not have inner text that is visible to screen readers<br/>  aria-label attribute does not exist or is empty<br/>  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty<br/>  Element has no title attribute<br/>  Element does not have an implicit (wrapped) &lt;label&gt;<br/>  Element does not have an explicit &lt;label&gt;<br/>  Element&#39;s default semantics were not overridden with role=&quot;none&quot; or role=&quot;presentation&quot;</td>
+          </tr>
+        
+
+          <tr>
+            <td class="nowrap">https://bpohomes.com/</td>
+            <td class="nowrap">button-name</td>
+            <td class="impact critical">critical</td>
+            <td class="desc">Ensure buttons have discernible text</td>
+            <td class="target"><code>.swiper-slide[data-swiper-slide-index=&quot;3&quot;] &gt; div &gt; .css-79elbk.MuiBox-root &gt; .css-w42cy8.MuiPaper-root.MuiPaper-elevation &gt; .css-13zioz.MuiCardContent-root &gt; .css-1hdbc19.MuiStack-root &gt; .css-69i1ev.MuiBox-root &gt; .css-ct9q29.MuiStack-root &gt; .css-rblt6i.MuiIconButton-root.MuiIconButton-sizeMedium:nth-child(2)</code></td>
+            <td class="fail">Fix any of the following:<br/>  Element does not have inner text that is visible to screen readers<br/>  aria-label attribute does not exist or is empty<br/>  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty<br/>  Element has no title attribute<br/>  Element does not have an implicit (wrapped) &lt;label&gt;<br/>  Element does not have an explicit &lt;label&gt;<br/>  Element&#39;s default semantics were not overridden with role=&quot;none&quot; or role=&quot;presentation&quot;</td>
+          </tr>
+        
+
+          <tr>
+            <td class="nowrap">https://bpohomes.com/</td>
+            <td class="nowrap">button-name</td>
+            <td class="impact critical">critical</td>
+            <td class="desc">Ensure buttons have discernible text</td>
+            <td class="target"><code>.swiper-slide[data-swiper-slide-index=&quot;4&quot;] &gt; div &gt; .css-79elbk.MuiBox-root &gt; .css-w42cy8.MuiPaper-root.MuiPaper-elevation &gt; .css-13zioz.MuiCardContent-root &gt; .css-1hdbc19.MuiStack-root &gt; .css-69i1ev.MuiBox-root &gt; .css-ct9q29.MuiStack-root &gt; .css-rblt6i.MuiIconButton-root.MuiIconButton-sizeMedium:nth-child(1)</code></td>
+            <td class="fail">Fix any of the following:<br/>  Element does not have inner text that is visible to screen readers<br/>  aria-label attribute does not exist or is empty<br/>  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty<br/>  Element has no title attribute<br/>  Element does not have an implicit (wrapped) &lt;label&gt;<br/>  Element does not have an explicit &lt;label&gt;<br/>  Element&#39;s default semantics were not overridden with role=&quot;none&quot; or role=&quot;presentation&quot;</td>
+          </tr>
+        
+
+          <tr>
+            <td class="nowrap">https://bpohomes.com/</td>
+            <td class="nowrap">button-name</td>
+            <td class="impact critical">critical</td>
+            <td class="desc">Ensure buttons have discernible text</td>
+            <td class="target"><code>.swiper-slide[data-swiper-slide-index=&quot;4&quot;] &gt; div &gt; .css-79elbk.MuiBox-root &gt; .css-w42cy8.MuiPaper-root.MuiPaper-elevation &gt; .css-13zioz.MuiCardContent-root &gt; .css-1hdbc19.MuiStack-root &gt; .css-69i1ev.MuiBox-root &gt; .css-ct9q29.MuiStack-root &gt; .css-rblt6i.MuiIconButton-root.MuiIconButton-sizeMedium:nth-child(2)</code></td>
+            <td class="fail">Fix any of the following:<br/>  Element does not have inner text that is visible to screen readers<br/>  aria-label attribute does not exist or is empty<br/>  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty<br/>  Element has no title attribute<br/>  Element does not have an implicit (wrapped) &lt;label&gt;<br/>  Element does not have an explicit &lt;label&gt;<br/>  Element&#39;s default semantics were not overridden with role=&quot;none&quot; or role=&quot;presentation&quot;</td>
+          </tr>
+        
+
+          <tr>
+            <td class="nowrap">https://bpohomes.com/</td>
+            <td class="nowrap">button-name</td>
+            <td class="impact critical">critical</td>
+            <td class="desc">Ensure buttons have discernible text</td>
+            <td class="target"><code>.swiper-slide[data-swiper-slide-index=&quot;5&quot;] &gt; div &gt; .css-79elbk.MuiBox-root &gt; .css-w42cy8.MuiPaper-root.MuiPaper-elevation &gt; .css-13zioz.MuiCardContent-root &gt; .css-1hdbc19.MuiStack-root &gt; .css-69i1ev.MuiBox-root &gt; .css-ct9q29.MuiStack-root &gt; .css-rblt6i.MuiIconButton-root.MuiIconButton-sizeMedium:nth-child(1)</code></td>
+            <td class="fail">Fix any of the following:<br/>  Element does not have inner text that is visible to screen readers<br/>  aria-label attribute does not exist or is empty<br/>  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty<br/>  Element has no title attribute<br/>  Element does not have an implicit (wrapped) &lt;label&gt;<br/>  Element does not have an explicit &lt;label&gt;<br/>  Element&#39;s default semantics were not overridden with role=&quot;none&quot; or role=&quot;presentation&quot;</td>
+          </tr>
+        
+
+          <tr>
+            <td class="nowrap">https://bpohomes.com/</td>
+            <td class="nowrap">button-name</td>
+            <td class="impact critical">critical</td>
+            <td class="desc">Ensure buttons have discernible text</td>
+            <td class="target"><code>.swiper-slide[data-swiper-slide-index=&quot;5&quot;] &gt; div &gt; .css-79elbk.MuiBox-root &gt; .css-w42cy8.MuiPaper-root.MuiPaper-elevation &gt; .css-13zioz.MuiCardContent-root &gt; .css-1hdbc19.MuiStack-root &gt; .css-69i1ev.MuiBox-root &gt; .css-ct9q29.MuiStack-root &gt; .css-rblt6i.MuiIconButton-root.MuiIconButton-sizeMedium:nth-child(2)</code></td>
+            <td class="fail">Fix any of the following:<br/>  Element does not have inner text that is visible to screen readers<br/>  aria-label attribute does not exist or is empty<br/>  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty<br/>  Element has no title attribute<br/>  Element does not have an implicit (wrapped) &lt;label&gt;<br/>  Element does not have an explicit &lt;label&gt;<br/>  Element&#39;s default semantics were not overridden with role=&quot;none&quot; or role=&quot;presentation&quot;</td>
+          </tr>
+        
+
+          <tr>
+            <td class="nowrap">https://bpohomes.com/</td>
+            <td class="nowrap">button-name</td>
+            <td class="impact critical">critical</td>
+            <td class="desc">Ensure buttons have discernible text</td>
+            <td class="target"><code>.swiper-slide[data-swiper-slide-index=&quot;6&quot;] &gt; div &gt; .css-79elbk.MuiBox-root &gt; .css-w42cy8.MuiPaper-root.MuiPaper-elevation &gt; .css-13zioz.MuiCardContent-root &gt; .css-1hdbc19.MuiStack-root &gt; .css-69i1ev.MuiBox-root &gt; .css-ct9q29.MuiStack-root &gt; .css-rblt6i.MuiIconButton-root.MuiIconButton-sizeMedium:nth-child(1)</code></td>
+            <td class="fail">Fix any of the following:<br/>  Element does not have inner text that is visible to screen readers<br/>  aria-label attribute does not exist or is empty<br/>  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty<br/>  Element has no title attribute<br/>  Element does not have an implicit (wrapped) &lt;label&gt;<br/>  Element does not have an explicit &lt;label&gt;<br/>  Element&#39;s default semantics were not overridden with role=&quot;none&quot; or role=&quot;presentation&quot;</td>
+          </tr>
+        
+
+          <tr>
+            <td class="nowrap">https://bpohomes.com/</td>
+            <td class="nowrap">button-name</td>
+            <td class="impact critical">critical</td>
+            <td class="desc">Ensure buttons have discernible text</td>
+            <td class="target"><code>.swiper-slide[data-swiper-slide-index=&quot;6&quot;] &gt; div &gt; .css-79elbk.MuiBox-root &gt; .css-w42cy8.MuiPaper-root.MuiPaper-elevation &gt; .css-13zioz.MuiCardContent-root &gt; .css-1hdbc19.MuiStack-root &gt; .css-69i1ev.MuiBox-root &gt; .css-ct9q29.MuiStack-root &gt; .css-rblt6i.MuiIconButton-root.MuiIconButton-sizeMedium:nth-child(2)</code></td>
+            <td class="fail">Fix any of the following:<br/>  Element does not have inner text that is visible to screen readers<br/>  aria-label attribute does not exist or is empty<br/>  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty<br/>  Element has no title attribute<br/>  Element does not have an implicit (wrapped) &lt;label&gt;<br/>  Element does not have an explicit &lt;label&gt;<br/>  Element&#39;s default semantics were not overridden with role=&quot;none&quot; or role=&quot;presentation&quot;</td>
+          </tr>
+        
+
+          <tr>
+            <td class="nowrap">https://bpohomes.com/</td>
+            <td class="nowrap">button-name</td>
+            <td class="impact critical">critical</td>
+            <td class="desc">Ensure buttons have discernible text</td>
+            <td class="target"><code>.swiper-slide[data-swiper-slide-index=&quot;7&quot;] &gt; div &gt; .css-79elbk.MuiBox-root &gt; .css-w42cy8.MuiPaper-root.MuiPaper-elevation &gt; .css-13zioz.MuiCardContent-root &gt; .css-1hdbc19.MuiStack-root &gt; .css-69i1ev.MuiBox-root &gt; .css-ct9q29.MuiStack-root &gt; .css-rblt6i.MuiIconButton-root.MuiIconButton-sizeMedium:nth-child(1)</code></td>
+            <td class="fail">Fix any of the following:<br/>  Element does not have inner text that is visible to screen readers<br/>  aria-label attribute does not exist or is empty<br/>  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty<br/>  Element has no title attribute<br/>  Element does not have an implicit (wrapped) &lt;label&gt;<br/>  Element does not have an explicit &lt;label&gt;<br/>  Element&#39;s default semantics were not overridden with role=&quot;none&quot; or role=&quot;presentation&quot;</td>
+          </tr>
+        
+
+          <tr>
+            <td class="nowrap">https://bpohomes.com/</td>
+            <td class="nowrap">button-name</td>
+            <td class="impact critical">critical</td>
+            <td class="desc">Ensure buttons have discernible text</td>
+            <td class="target"><code>.swiper-slide[data-swiper-slide-index=&quot;7&quot;] &gt; div &gt; .css-79elbk.MuiBox-root &gt; .css-w42cy8.MuiPaper-root.MuiPaper-elevation &gt; .css-13zioz.MuiCardContent-root &gt; .css-1hdbc19.MuiStack-root &gt; .css-69i1ev.MuiBox-root &gt; .css-ct9q29.MuiStack-root &gt; .css-rblt6i.MuiIconButton-root.MuiIconButton-sizeMedium:nth-child(2)</code></td>
+            <td class="fail">Fix any of the following:<br/>  Element does not have inner text that is visible to screen readers<br/>  aria-label attribute does not exist or is empty<br/>  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty<br/>  Element has no title attribute<br/>  Element does not have an implicit (wrapped) &lt;label&gt;<br/>  Element does not have an explicit &lt;label&gt;<br/>  Element&#39;s default semantics were not overridden with role=&quot;none&quot; or role=&quot;presentation&quot;</td>
+          </tr>
+        
+
+          <tr>
+            <td class="nowrap">https://bpohomes.com/</td>
+            <td class="nowrap">button-name</td>
+            <td class="impact critical">critical</td>
+            <td class="desc">Ensure buttons have discernible text</td>
+            <td class="target"><code>.swiper-slide[data-swiper-slide-index=&quot;8&quot;] &gt; div &gt; .css-79elbk.MuiBox-root &gt; .css-w42cy8.MuiPaper-root.MuiPaper-elevation &gt; .css-13zioz.MuiCardContent-root &gt; .css-1hdbc19.MuiStack-root &gt; .css-69i1ev.MuiBox-root &gt; .css-ct9q29.MuiStack-root &gt; .css-rblt6i.MuiIconButton-root.MuiIconButton-sizeMedium:nth-child(1)</code></td>
+            <td class="fail">Fix any of the following:<br/>  Element does not have inner text that is visible to screen readers<br/>  aria-label attribute does not exist or is empty<br/>  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty<br/>  Element has no title attribute<br/>  Element does not have an implicit (wrapped) &lt;label&gt;<br/>  Element does not have an explicit &lt;label&gt;<br/>  Element&#39;s default semantics were not overridden with role=&quot;none&quot; or role=&quot;presentation&quot;</td>
+          </tr>
+        
+
+          <tr>
+            <td class="nowrap">https://bpohomes.com/</td>
+            <td class="nowrap">button-name</td>
+            <td class="impact critical">critical</td>
+            <td class="desc">Ensure buttons have discernible text</td>
+            <td class="target"><code>.swiper-slide[data-swiper-slide-index=&quot;8&quot;] &gt; div &gt; .css-79elbk.MuiBox-root &gt; .css-w42cy8.MuiPaper-root.MuiPaper-elevation &gt; .css-13zioz.MuiCardContent-root &gt; .css-1hdbc19.MuiStack-root &gt; .css-69i1ev.MuiBox-root &gt; .css-ct9q29.MuiStack-root &gt; .css-rblt6i.MuiIconButton-root.MuiIconButton-sizeMedium:nth-child(2)</code></td>
+            <td class="fail">Fix any of the following:<br/>  Element does not have inner text that is visible to screen readers<br/>  aria-label attribute does not exist or is empty<br/>  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty<br/>  Element has no title attribute<br/>  Element does not have an implicit (wrapped) &lt;label&gt;<br/>  Element does not have an explicit &lt;label&gt;<br/>  Element&#39;s default semantics were not overridden with role=&quot;none&quot; or role=&quot;presentation&quot;</td>
+          </tr>
+        
+
+          <tr>
+            <td class="nowrap">https://bpohomes.com/</td>
+            <td class="nowrap">button-name</td>
+            <td class="impact critical">critical</td>
+            <td class="desc">Ensure buttons have discernible text</td>
+            <td class="target"><code>div[data-swiper-slide-index=&quot;9&quot;] &gt; div &gt; .css-79elbk.MuiBox-root &gt; .css-w42cy8.MuiPaper-root.MuiPaper-elevation &gt; .css-13zioz.MuiCardContent-root &gt; .css-1hdbc19.MuiStack-root &gt; .css-69i1ev.MuiBox-root &gt; .css-ct9q29.MuiStack-root &gt; .css-rblt6i.MuiIconButton-root.MuiIconButton-sizeMedium:nth-child(1)</code></td>
+            <td class="fail">Fix any of the following:<br/>  Element does not have inner text that is visible to screen readers<br/>  aria-label attribute does not exist or is empty<br/>  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty<br/>  Element has no title attribute<br/>  Element does not have an implicit (wrapped) &lt;label&gt;<br/>  Element does not have an explicit &lt;label&gt;<br/>  Element&#39;s default semantics were not overridden with role=&quot;none&quot; or role=&quot;presentation&quot;</td>
+          </tr>
+        
+
+          <tr>
+            <td class="nowrap">https://bpohomes.com/</td>
+            <td class="nowrap">button-name</td>
+            <td class="impact critical">critical</td>
+            <td class="desc">Ensure buttons have discernible text</td>
+            <td class="target"><code>div[data-swiper-slide-index=&quot;9&quot;] &gt; div &gt; .css-79elbk.MuiBox-root &gt; .css-w42cy8.MuiPaper-root.MuiPaper-elevation &gt; .css-13zioz.MuiCardContent-root &gt; .css-1hdbc19.MuiStack-root &gt; .css-69i1ev.MuiBox-root &gt; .css-ct9q29.MuiStack-root &gt; .css-rblt6i.MuiIconButton-root.MuiIconButton-sizeMedium:nth-child(2)</code></td>
+            <td class="fail">Fix any of the following:<br/>  Element does not have inner text that is visible to screen readers<br/>  aria-label attribute does not exist or is empty<br/>  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty<br/>  Element has no title attribute<br/>  Element does not have an implicit (wrapped) &lt;label&gt;<br/>  Element does not have an explicit &lt;label&gt;<br/>  Element&#39;s default semantics were not overridden with role=&quot;none&quot; or role=&quot;presentation&quot;</td>
+          </tr>
+        
+
+          <tr>
+            <td class="nowrap">https://bpohomes.com/</td>
+            <td class="nowrap">button-name</td>
+            <td class="impact critical">critical</td>
+            <td class="desc">Ensure buttons have discernible text</td>
+            <td class="target"><code>div[data-swiper-slide-index=&quot;10&quot;] &gt; div &gt; .css-79elbk.MuiBox-root &gt; .css-w42cy8.MuiPaper-root.MuiPaper-elevation &gt; .css-13zioz.MuiCardContent-root &gt; .css-1hdbc19.MuiStack-root &gt; .css-69i1ev.MuiBox-root &gt; .css-ct9q29.MuiStack-root &gt; .css-rblt6i.MuiIconButton-root.MuiIconButton-sizeMedium:nth-child(1)</code></td>
+            <td class="fail">Fix any of the following:<br/>  Element does not have inner text that is visible to screen readers<br/>  aria-label attribute does not exist or is empty<br/>  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty<br/>  Element has no title attribute<br/>  Element does not have an implicit (wrapped) &lt;label&gt;<br/>  Element does not have an explicit &lt;label&gt;<br/>  Element&#39;s default semantics were not overridden with role=&quot;none&quot; or role=&quot;presentation&quot;</td>
+          </tr>
+        
+
+          <tr>
+            <td class="nowrap">https://bpohomes.com/</td>
+            <td class="nowrap">button-name</td>
+            <td class="impact critical">critical</td>
+            <td class="desc">Ensure buttons have discernible text</td>
+            <td class="target"><code>div[data-swiper-slide-index=&quot;10&quot;] &gt; div &gt; .css-79elbk.MuiBox-root &gt; .css-w42cy8.MuiPaper-root.MuiPaper-elevation &gt; .css-13zioz.MuiCardContent-root &gt; .css-1hdbc19.MuiStack-root &gt; .css-69i1ev.MuiBox-root &gt; .css-ct9q29.MuiStack-root &gt; .css-rblt6i.MuiIconButton-root.MuiIconButton-sizeMedium:nth-child(2)</code></td>
+            <td class="fail">Fix any of the following:<br/>  Element does not have inner text that is visible to screen readers<br/>  aria-label attribute does not exist or is empty<br/>  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty<br/>  Element has no title attribute<br/>  Element does not have an implicit (wrapped) &lt;label&gt;<br/>  Element does not have an explicit &lt;label&gt;<br/>  Element&#39;s default semantics were not overridden with role=&quot;none&quot; or role=&quot;presentation&quot;</td>
+          </tr>
+        
+
+          <tr>
+            <td class="nowrap">https://bpohomes.com/</td>
+            <td class="nowrap">button-name</td>
+            <td class="impact critical">critical</td>
+            <td class="desc">Ensure buttons have discernible text</td>
+            <td class="target"><code>div[data-swiper-slide-index=&quot;11&quot;] &gt; div &gt; .css-79elbk.MuiBox-root &gt; .css-w42cy8.MuiPaper-root.MuiPaper-elevation &gt; .css-13zioz.MuiCardContent-root &gt; .css-1hdbc19.MuiStack-root &gt; .css-69i1ev.MuiBox-root &gt; .css-ct9q29.MuiStack-root &gt; .css-rblt6i.MuiIconButton-root.MuiIconButton-sizeMedium:nth-child(1)</code></td>
+            <td class="fail">Fix any of the following:<br/>  Element does not have inner text that is visible to screen readers<br/>  aria-label attribute does not exist or is empty<br/>  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty<br/>  Element has no title attribute<br/>  Element does not have an implicit (wrapped) &lt;label&gt;<br/>  Element does not have an explicit &lt;label&gt;<br/>  Element&#39;s default semantics were not overridden with role=&quot;none&quot; or role=&quot;presentation&quot;</td>
+          </tr>
+        
+
+          <tr>
+            <td class="nowrap">https://bpohomes.com/</td>
+            <td class="nowrap">button-name</td>
+            <td class="impact critical">critical</td>
+            <td class="desc">Ensure buttons have discernible text</td>
+            <td class="target"><code>div[data-swiper-slide-index=&quot;11&quot;] &gt; div &gt; .css-79elbk.MuiBox-root &gt; .css-w42cy8.MuiPaper-root.MuiPaper-elevation &gt; .css-13zioz.MuiCardContent-root &gt; .css-1hdbc19.MuiStack-root &gt; .css-69i1ev.MuiBox-root &gt; .css-ct9q29.MuiStack-root &gt; .css-rblt6i.MuiIconButton-root.MuiIconButton-sizeMedium:nth-child(2)</code></td>
+            <td class="fail">Fix any of the following:<br/>  Element does not have inner text that is visible to screen readers<br/>  aria-label attribute does not exist or is empty<br/>  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty<br/>  Element has no title attribute<br/>  Element does not have an implicit (wrapped) &lt;label&gt;<br/>  Element does not have an explicit &lt;label&gt;<br/>  Element&#39;s default semantics were not overridden with role=&quot;none&quot; or role=&quot;presentation&quot;</td>
+          </tr>
+        
+
+          <tr>
+            <td class="nowrap">https://bpohomes.com/</td>
+            <td class="nowrap">button-name</td>
+            <td class="impact critical">critical</td>
+            <td class="desc">Ensure buttons have discernible text</td>
+            <td class="target"><code>div[data-swiper-slide-index=&quot;12&quot;] &gt; div &gt; .css-79elbk.MuiBox-root &gt; .css-w42cy8.MuiPaper-root.MuiPaper-elevation &gt; .css-13zioz.MuiCardContent-root &gt; .css-1hdbc19.MuiStack-root &gt; .css-69i1ev.MuiBox-root &gt; .css-ct9q29.MuiStack-root &gt; .css-rblt6i.MuiIconButton-root.MuiIconButton-sizeMedium:nth-child(1)</code></td>
+            <td class="fail">Fix any of the following:<br/>  Element does not have inner text that is visible to screen readers<br/>  aria-label attribute does not exist or is empty<br/>  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty<br/>  Element has no title attribute<br/>  Element does not have an implicit (wrapped) &lt;label&gt;<br/>  Element does not have an explicit &lt;label&gt;<br/>  Element&#39;s default semantics were not overridden with role=&quot;none&quot; or role=&quot;presentation&quot;</td>
+          </tr>
+        
+
+          <tr>
+            <td class="nowrap">https://bpohomes.com/</td>
+            <td class="nowrap">button-name</td>
+            <td class="impact critical">critical</td>
+            <td class="desc">Ensure buttons have discernible text</td>
+            <td class="target"><code>div[data-swiper-slide-index=&quot;12&quot;] &gt; div &gt; .css-79elbk.MuiBox-root &gt; .css-w42cy8.MuiPaper-root.MuiPaper-elevation &gt; .css-13zioz.MuiCardContent-root &gt; .css-1hdbc19.MuiStack-root &gt; .css-69i1ev.MuiBox-root &gt; .css-ct9q29.MuiStack-root &gt; .css-rblt6i.MuiIconButton-root.MuiIconButton-sizeMedium:nth-child(2)</code></td>
+            <td class="fail">Fix any of the following:<br/>  Element does not have inner text that is visible to screen readers<br/>  aria-label attribute does not exist or is empty<br/>  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty<br/>  Element has no title attribute<br/>  Element does not have an implicit (wrapped) &lt;label&gt;<br/>  Element does not have an explicit &lt;label&gt;<br/>  Element&#39;s default semantics were not overridden with role=&quot;none&quot; or role=&quot;presentation&quot;</td>
+          </tr>
+        
+
+          <tr>
+            <td class="nowrap">https://bpohomes.com/</td>
+            <td class="nowrap">button-name</td>
+            <td class="impact critical">critical</td>
+            <td class="desc">Ensure buttons have discernible text</td>
+            <td class="target"><code>div[data-swiper-slide-index=&quot;13&quot;] &gt; div &gt; .css-79elbk.MuiBox-root &gt; .css-w42cy8.MuiPaper-root.MuiPaper-elevation &gt; .css-13zioz.MuiCardContent-root &gt; .css-1hdbc19.MuiStack-root &gt; .css-69i1ev.MuiBox-root &gt; .css-ct9q29.MuiStack-root &gt; .css-rblt6i.MuiIconButton-root.MuiIconButton-sizeMedium:nth-child(1)</code></td>
+            <td class="fail">Fix any of the following:<br/>  Element does not have inner text that is visible to screen readers<br/>  aria-label attribute does not exist or is empty<br/>  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty<br/>  Element has no title attribute<br/>  Element does not have an implicit (wrapped) &lt;label&gt;<br/>  Element does not have an explicit &lt;label&gt;<br/>  Element&#39;s default semantics were not overridden with role=&quot;none&quot; or role=&quot;presentation&quot;</td>
+          </tr>
+        
+
+          <tr>
+            <td class="nowrap">https://bpohomes.com/</td>
+            <td class="nowrap">button-name</td>
+            <td class="impact critical">critical</td>
+            <td class="desc">Ensure buttons have discernible text</td>
+            <td class="target"><code>div[data-swiper-slide-index=&quot;13&quot;] &gt; div &gt; .css-79elbk.MuiBox-root &gt; .css-w42cy8.MuiPaper-root.MuiPaper-elevation &gt; .css-13zioz.MuiCardContent-root &gt; .css-1hdbc19.MuiStack-root &gt; .css-69i1ev.MuiBox-root &gt; .css-ct9q29.MuiStack-root &gt; .css-rblt6i.MuiIconButton-root.MuiIconButton-sizeMedium:nth-child(2)</code></td>
+            <td class="fail">Fix any of the following:<br/>  Element does not have inner text that is visible to screen readers<br/>  aria-label attribute does not exist or is empty<br/>  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty<br/>  Element has no title attribute<br/>  Element does not have an implicit (wrapped) &lt;label&gt;<br/>  Element does not have an explicit &lt;label&gt;<br/>  Element&#39;s default semantics were not overridden with role=&quot;none&quot; or role=&quot;presentation&quot;</td>
+          </tr>
+        
+
+          <tr>
+            <td class="nowrap">https://bpohomes.com/</td>
+            <td class="nowrap">button-name</td>
+            <td class="impact critical">critical</td>
+            <td class="desc">Ensure buttons have discernible text</td>
+            <td class="target"><code>div[data-swiper-slide-index=&quot;14&quot;] &gt; div &gt; .css-79elbk.MuiBox-root &gt; .css-w42cy8.MuiPaper-root.MuiPaper-elevation &gt; .css-13zioz.MuiCardContent-root &gt; .css-1hdbc19.MuiStack-root &gt; .css-69i1ev.MuiBox-root &gt; .css-ct9q29.MuiStack-root &gt; .css-rblt6i.MuiIconButton-root.MuiIconButton-sizeMedium:nth-child(1)</code></td>
+            <td class="fail">Fix any of the following:<br/>  Element does not have inner text that is visible to screen readers<br/>  aria-label attribute does not exist or is empty<br/>  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty<br/>  Element has no title attribute<br/>  Element does not have an implicit (wrapped) &lt;label&gt;<br/>  Element does not have an explicit &lt;label&gt;<br/>  Element&#39;s default semantics were not overridden with role=&quot;none&quot; or role=&quot;presentation&quot;</td>
+          </tr>
+        
+
+          <tr>
+            <td class="nowrap">https://bpohomes.com/</td>
+            <td class="nowrap">button-name</td>
+            <td class="impact critical">critical</td>
+            <td class="desc">Ensure buttons have discernible text</td>
+            <td class="target"><code>div[data-swiper-slide-index=&quot;14&quot;] &gt; div &gt; .css-79elbk.MuiBox-root &gt; .css-w42cy8.MuiPaper-root.MuiPaper-elevation &gt; .css-13zioz.MuiCardContent-root &gt; .css-1hdbc19.MuiStack-root &gt; .css-69i1ev.MuiBox-root &gt; .css-ct9q29.MuiStack-root &gt; .css-rblt6i.MuiIconButton-root.MuiIconButton-sizeMedium:nth-child(2)</code></td>
+            <td class="fail">Fix any of the following:<br/>  Element does not have inner text that is visible to screen readers<br/>  aria-label attribute does not exist or is empty<br/>  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty<br/>  Element has no title attribute<br/>  Element does not have an implicit (wrapped) &lt;label&gt;<br/>  Element does not have an explicit &lt;label&gt;<br/>  Element&#39;s default semantics were not overridden with role=&quot;none&quot; or role=&quot;presentation&quot;</td>
+          </tr>
+        
+
+          <tr>
+            <td class="nowrap">https://bpohomes.com/</td>
+            <td class="nowrap">button-name</td>
+            <td class="impact critical">critical</td>
+            <td class="desc">Ensure buttons have discernible text</td>
+            <td class="target"><code>div[data-swiper-slide-index=&quot;15&quot;] &gt; div &gt; .css-79elbk.MuiBox-root &gt; .css-w42cy8.MuiPaper-root.MuiPaper-elevation &gt; .css-13zioz.MuiCardContent-root &gt; .css-1hdbc19.MuiStack-root &gt; .css-69i1ev.MuiBox-root &gt; .css-ct9q29.MuiStack-root &gt; .css-rblt6i.MuiIconButton-root.MuiIconButton-sizeMedium:nth-child(1)</code></td>
+            <td class="fail">Fix any of the following:<br/>  Element does not have inner text that is visible to screen readers<br/>  aria-label attribute does not exist or is empty<br/>  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty<br/>  Element has no title attribute<br/>  Element does not have an implicit (wrapped) &lt;label&gt;<br/>  Element does not have an explicit &lt;label&gt;<br/>  Element&#39;s default semantics were not overridden with role=&quot;none&quot; or role=&quot;presentation&quot;</td>
+          </tr>
+        
+
+          <tr>
+            <td class="nowrap">https://bpohomes.com/</td>
+            <td class="nowrap">button-name</td>
+            <td class="impact critical">critical</td>
+            <td class="desc">Ensure buttons have discernible text</td>
+            <td class="target"><code>div[data-swiper-slide-index=&quot;15&quot;] &gt; div &gt; .css-79elbk.MuiBox-root &gt; .css-w42cy8.MuiPaper-root.MuiPaper-elevation &gt; .css-13zioz.MuiCardContent-root &gt; .css-1hdbc19.MuiStack-root &gt; .css-69i1ev.MuiBox-root &gt; .css-ct9q29.MuiStack-root &gt; .css-rblt6i.MuiIconButton-root.MuiIconButton-sizeMedium:nth-child(2)</code></td>
+            <td class="fail">Fix any of the following:<br/>  Element does not have inner text that is visible to screen readers<br/>  aria-label attribute does not exist or is empty<br/>  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty<br/>  Element has no title attribute<br/>  Element does not have an implicit (wrapped) &lt;label&gt;<br/>  Element does not have an explicit &lt;label&gt;<br/>  Element&#39;s default semantics were not overridden with role=&quot;none&quot; or role=&quot;presentation&quot;</td>
+          </tr>
+        
+
+          <tr>
+            <td class="nowrap">https://bpohomes.com/</td>
+            <td class="nowrap">button-name</td>
+            <td class="impact critical">critical</td>
+            <td class="desc">Ensure buttons have discernible text</td>
+            <td class="target"><code>div[data-swiper-slide-index=&quot;16&quot;] &gt; div &gt; .css-79elbk.MuiBox-root &gt; .css-w42cy8.MuiPaper-root.MuiPaper-elevation &gt; .css-13zioz.MuiCardContent-root &gt; .css-1hdbc19.MuiStack-root &gt; .css-69i1ev.MuiBox-root &gt; .css-ct9q29.MuiStack-root &gt; .css-rblt6i.MuiIconButton-root.MuiIconButton-sizeMedium:nth-child(1)</code></td>
+            <td class="fail">Fix any of the following:<br/>  Element does not have inner text that is visible to screen readers<br/>  aria-label attribute does not exist or is empty<br/>  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty<br/>  Element has no title attribute<br/>  Element does not have an implicit (wrapped) &lt;label&gt;<br/>  Element does not have an explicit &lt;label&gt;<br/>  Element&#39;s default semantics were not overridden with role=&quot;none&quot; or role=&quot;presentation&quot;</td>
+          </tr>
+        
+
+          <tr>
+            <td class="nowrap">https://bpohomes.com/</td>
+            <td class="nowrap">button-name</td>
+            <td class="impact critical">critical</td>
+            <td class="desc">Ensure buttons have discernible text</td>
+            <td class="target"><code>div[data-swiper-slide-index=&quot;16&quot;] &gt; div &gt; .css-79elbk.MuiBox-root &gt; .css-w42cy8.MuiPaper-root.MuiPaper-elevation &gt; .css-13zioz.MuiCardContent-root &gt; .css-1hdbc19.MuiStack-root &gt; .css-69i1ev.MuiBox-root &gt; .css-ct9q29.MuiStack-root &gt; .css-rblt6i.MuiIconButton-root.MuiIconButton-sizeMedium:nth-child(2)</code></td>
+            <td class="fail">Fix any of the following:<br/>  Element does not have inner text that is visible to screen readers<br/>  aria-label attribute does not exist or is empty<br/>  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty<br/>  Element has no title attribute<br/>  Element does not have an implicit (wrapped) &lt;label&gt;<br/>  Element does not have an explicit &lt;label&gt;<br/>  Element&#39;s default semantics were not overridden with role=&quot;none&quot; or role=&quot;presentation&quot;</td>
+          </tr>
+        
+
+          <tr>
+            <td class="nowrap">https://bpohomes.com/</td>
+            <td class="nowrap">button-name</td>
+            <td class="impact critical">critical</td>
+            <td class="desc">Ensure buttons have discernible text</td>
+            <td class="target"><code>div[data-swiper-slide-index=&quot;17&quot;] &gt; div &gt; .css-79elbk.MuiBox-root &gt; .css-w42cy8.MuiPaper-root.MuiPaper-elevation &gt; .css-13zioz.MuiCardContent-root &gt; .css-1hdbc19.MuiStack-root &gt; .css-69i1ev.MuiBox-root &gt; .css-ct9q29.MuiStack-root &gt; .css-rblt6i.MuiIconButton-root.MuiIconButton-sizeMedium:nth-child(1)</code></td>
+            <td class="fail">Fix any of the following:<br/>  Element does not have inner text that is visible to screen readers<br/>  aria-label attribute does not exist or is empty<br/>  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty<br/>  Element has no title attribute<br/>  Element does not have an implicit (wrapped) &lt;label&gt;<br/>  Element does not have an explicit &lt;label&gt;<br/>  Element&#39;s default semantics were not overridden with role=&quot;none&quot; or role=&quot;presentation&quot;</td>
+          </tr>
+        
+
+          <tr>
+            <td class="nowrap">https://bpohomes.com/</td>
+            <td class="nowrap">button-name</td>
+            <td class="impact critical">critical</td>
+            <td class="desc">Ensure buttons have discernible text</td>
+            <td class="target"><code>div[data-swiper-slide-index=&quot;17&quot;] &gt; div &gt; .css-79elbk.MuiBox-root &gt; .css-w42cy8.MuiPaper-root.MuiPaper-elevation &gt; .css-13zioz.MuiCardContent-root &gt; .css-1hdbc19.MuiStack-root &gt; .css-69i1ev.MuiBox-root &gt; .css-ct9q29.MuiStack-root &gt; .css-rblt6i.MuiIconButton-root.MuiIconButton-sizeMedium:nth-child(2)</code></td>
+            <td class="fail">Fix any of the following:<br/>  Element does not have inner text that is visible to screen readers<br/>  aria-label attribute does not exist or is empty<br/>  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty<br/>  Element has no title attribute<br/>  Element does not have an implicit (wrapped) &lt;label&gt;<br/>  Element does not have an explicit &lt;label&gt;<br/>  Element&#39;s default semantics were not overridden with role=&quot;none&quot; or role=&quot;presentation&quot;</td>
+          </tr>
+        
+
+          <tr>
+            <td class="nowrap">https://bpohomes.com/</td>
+            <td class="nowrap">button-name</td>
+            <td class="impact critical">critical</td>
+            <td class="desc">Ensure buttons have discernible text</td>
+            <td class="target"><code>div[data-swiper-slide-index=&quot;18&quot;] &gt; div &gt; .css-79elbk.MuiBox-root &gt; .css-w42cy8.MuiPaper-root.MuiPaper-elevation &gt; .css-13zioz.MuiCardContent-root &gt; .css-1hdbc19.MuiStack-root &gt; .css-69i1ev.MuiBox-root &gt; .css-ct9q29.MuiStack-root &gt; .css-rblt6i.MuiIconButton-root.MuiIconButton-sizeMedium:nth-child(1)</code></td>
+            <td class="fail">Fix any of the following:<br/>  Element does not have inner text that is visible to screen readers<br/>  aria-label attribute does not exist or is empty<br/>  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty<br/>  Element has no title attribute<br/>  Element does not have an implicit (wrapped) &lt;label&gt;<br/>  Element does not have an explicit &lt;label&gt;<br/>  Element&#39;s default semantics were not overridden with role=&quot;none&quot; or role=&quot;presentation&quot;</td>
+          </tr>
+        
+
+          <tr>
+            <td class="nowrap">https://bpohomes.com/</td>
+            <td class="nowrap">button-name</td>
+            <td class="impact critical">critical</td>
+            <td class="desc">Ensure buttons have discernible text</td>
+            <td class="target"><code>div[data-swiper-slide-index=&quot;18&quot;] &gt; div &gt; .css-79elbk.MuiBox-root &gt; .css-w42cy8.MuiPaper-root.MuiPaper-elevation &gt; .css-13zioz.MuiCardContent-root &gt; .css-1hdbc19.MuiStack-root &gt; .css-69i1ev.MuiBox-root &gt; .css-ct9q29.MuiStack-root &gt; .css-rblt6i.MuiIconButton-root.MuiIconButton-sizeMedium:nth-child(2)</code></td>
+            <td class="fail">Fix any of the following:<br/>  Element does not have inner text that is visible to screen readers<br/>  aria-label attribute does not exist or is empty<br/>  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty<br/>  Element has no title attribute<br/>  Element does not have an implicit (wrapped) &lt;label&gt;<br/>  Element does not have an explicit &lt;label&gt;<br/>  Element&#39;s default semantics were not overridden with role=&quot;none&quot; or role=&quot;presentation&quot;</td>
+          </tr>
+        
+
+          <tr>
+            <td class="nowrap">https://bpohomes.com/</td>
+            <td class="nowrap">button-name</td>
+            <td class="impact critical">critical</td>
+            <td class="desc">Ensure buttons have discernible text</td>
+            <td class="target"><code>div[data-swiper-slide-index=&quot;19&quot;] &gt; div &gt; .css-79elbk.MuiBox-root &gt; .css-w42cy8.MuiPaper-root.MuiPaper-elevation &gt; .css-13zioz.MuiCardContent-root &gt; .css-1hdbc19.MuiStack-root &gt; .css-69i1ev.MuiBox-root &gt; .css-ct9q29.MuiStack-root &gt; .css-rblt6i.MuiIconButton-root.MuiIconButton-sizeMedium:nth-child(1)</code></td>
+            <td class="fail">Fix any of the following:<br/>  Element does not have inner text that is visible to screen readers<br/>  aria-label attribute does not exist or is empty<br/>  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty<br/>  Element has no title attribute<br/>  Element does not have an implicit (wrapped) &lt;label&gt;<br/>  Element does not have an explicit &lt;label&gt;<br/>  Element&#39;s default semantics were not overridden with role=&quot;none&quot; or role=&quot;presentation&quot;</td>
+          </tr>
+        
+
+          <tr>
+            <td class="nowrap">https://bpohomes.com/</td>
+            <td class="nowrap">button-name</td>
+            <td class="impact critical">critical</td>
+            <td class="desc">Ensure buttons have discernible text</td>
+            <td class="target"><code>div[data-swiper-slide-index=&quot;19&quot;] &gt; div &gt; .css-79elbk.MuiBox-root &gt; .css-w42cy8.MuiPaper-root.MuiPaper-elevation &gt; .css-13zioz.MuiCardContent-root &gt; .css-1hdbc19.MuiStack-root &gt; .css-69i1ev.MuiBox-root &gt; .css-ct9q29.MuiStack-root &gt; .css-rblt6i.MuiIconButton-root.MuiIconButton-sizeMedium:nth-child(2)</code></td>
+            <td class="fail">Fix any of the following:<br/>  Element does not have inner text that is visible to screen readers<br/>  aria-label attribute does not exist or is empty<br/>  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty<br/>  Element has no title attribute<br/>  Element does not have an implicit (wrapped) &lt;label&gt;<br/>  Element does not have an explicit &lt;label&gt;<br/>  Element&#39;s default semantics were not overridden with role=&quot;none&quot; or role=&quot;presentation&quot;</td>
+          </tr>
+        
+
+          <tr>
+            <td class="nowrap">https://bpohomes.com/</td>
+            <td class="nowrap">button-name</td>
+            <td class="impact critical">critical</td>
+            <td class="desc">Ensure buttons have discernible text</td>
+            <td class="target"><code>div[data-swiper-slide-index=&quot;20&quot;] &gt; div &gt; .css-79elbk.MuiBox-root &gt; .css-w42cy8.MuiPaper-root.MuiPaper-elevation &gt; .css-13zioz.MuiCardContent-root &gt; .css-1hdbc19.MuiStack-root &gt; .css-69i1ev.MuiBox-root &gt; .css-ct9q29.MuiStack-root &gt; .css-rblt6i.MuiIconButton-root.MuiIconButton-sizeMedium:nth-child(1)</code></td>
+            <td class="fail">Fix any of the following:<br/>  Element does not have inner text that is visible to screen readers<br/>  aria-label attribute does not exist or is empty<br/>  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty<br/>  Element has no title attribute<br/>  Element does not have an implicit (wrapped) &lt;label&gt;<br/>  Element does not have an explicit &lt;label&gt;<br/>  Element&#39;s default semantics were not overridden with role=&quot;none&quot; or role=&quot;presentation&quot;</td>
+          </tr>
+        
+
+          <tr>
+            <td class="nowrap">https://bpohomes.com/</td>
+            <td class="nowrap">button-name</td>
+            <td class="impact critical">critical</td>
+            <td class="desc">Ensure buttons have discernible text</td>
+            <td class="target"><code>div[data-swiper-slide-index=&quot;20&quot;] &gt; div &gt; .css-79elbk.MuiBox-root &gt; .css-w42cy8.MuiPaper-root.MuiPaper-elevation &gt; .css-13zioz.MuiCardContent-root &gt; .css-1hdbc19.MuiStack-root &gt; .css-69i1ev.MuiBox-root &gt; .css-ct9q29.MuiStack-root &gt; .css-rblt6i.MuiIconButton-root.MuiIconButton-sizeMedium:nth-child(2)</code></td>
+            <td class="fail">Fix any of the following:<br/>  Element does not have inner text that is visible to screen readers<br/>  aria-label attribute does not exist or is empty<br/>  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty<br/>  Element has no title attribute<br/>  Element does not have an implicit (wrapped) &lt;label&gt;<br/>  Element does not have an explicit &lt;label&gt;<br/>  Element&#39;s default semantics were not overridden with role=&quot;none&quot; or role=&quot;presentation&quot;</td>
+          </tr>
+        
+
+          <tr>
+            <td class="nowrap">https://bpohomes.com/</td>
+            <td class="nowrap">button-name</td>
+            <td class="impact critical">critical</td>
+            <td class="desc">Ensure buttons have discernible text</td>
+            <td class="target"><code>div[data-swiper-slide-index=&quot;21&quot;] &gt; div &gt; .css-79elbk.MuiBox-root &gt; .css-w42cy8.MuiPaper-root.MuiPaper-elevation &gt; .css-13zioz.MuiCardContent-root &gt; .css-1hdbc19.MuiStack-root &gt; .css-69i1ev.MuiBox-root &gt; .css-ct9q29.MuiStack-root &gt; .css-rblt6i.MuiIconButton-root.MuiIconButton-sizeMedium:nth-child(1)</code></td>
+            <td class="fail">Fix any of the following:<br/>  Element does not have inner text that is visible to screen readers<br/>  aria-label attribute does not exist or is empty<br/>  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty<br/>  Element has no title attribute<br/>  Element does not have an implicit (wrapped) &lt;label&gt;<br/>  Element does not have an explicit &lt;label&gt;<br/>  Element&#39;s default semantics were not overridden with role=&quot;none&quot; or role=&quot;presentation&quot;</td>
+          </tr>
+        
+
+          <tr>
+            <td class="nowrap">https://bpohomes.com/</td>
+            <td class="nowrap">button-name</td>
+            <td class="impact critical">critical</td>
+            <td class="desc">Ensure buttons have discernible text</td>
+            <td class="target"><code>div[data-swiper-slide-index=&quot;21&quot;] &gt; div &gt; .css-79elbk.MuiBox-root &gt; .css-w42cy8.MuiPaper-root.MuiPaper-elevation &gt; .css-13zioz.MuiCardContent-root &gt; .css-1hdbc19.MuiStack-root &gt; .css-69i1ev.MuiBox-root &gt; .css-ct9q29.MuiStack-root &gt; .css-rblt6i.MuiIconButton-root.MuiIconButton-sizeMedium:nth-child(2)</code></td>
+            <td class="fail">Fix any of the following:<br/>  Element does not have inner text that is visible to screen readers<br/>  aria-label attribute does not exist or is empty<br/>  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty<br/>  Element has no title attribute<br/>  Element does not have an implicit (wrapped) &lt;label&gt;<br/>  Element does not have an explicit &lt;label&gt;<br/>  Element&#39;s default semantics were not overridden with role=&quot;none&quot; or role=&quot;presentation&quot;</td>
+          </tr>
+        
+
+          <tr>
+            <td class="nowrap">https://bpohomes.com/</td>
+            <td class="nowrap">button-name</td>
+            <td class="impact critical">critical</td>
+            <td class="desc">Ensure buttons have discernible text</td>
+            <td class="target"><code>div[data-swiper-slide-index=&quot;22&quot;] &gt; div &gt; .css-79elbk.MuiBox-root &gt; .css-w42cy8.MuiPaper-root.MuiPaper-elevation &gt; .css-13zioz.MuiCardContent-root &gt; .css-1hdbc19.MuiStack-root &gt; .css-69i1ev.MuiBox-root &gt; .css-ct9q29.MuiStack-root &gt; .css-rblt6i.MuiIconButton-root.MuiIconButton-sizeMedium:nth-child(1)</code></td>
+            <td class="fail">Fix any of the following:<br/>  Element does not have inner text that is visible to screen readers<br/>  aria-label attribute does not exist or is empty<br/>  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty<br/>  Element has no title attribute<br/>  Element does not have an implicit (wrapped) &lt;label&gt;<br/>  Element does not have an explicit &lt;label&gt;<br/>  Element&#39;s default semantics were not overridden with role=&quot;none&quot; or role=&quot;presentation&quot;</td>
+          </tr>
+        
+
+          <tr>
+            <td class="nowrap">https://bpohomes.com/</td>
+            <td class="nowrap">button-name</td>
+            <td class="impact critical">critical</td>
+            <td class="desc">Ensure buttons have discernible text</td>
+            <td class="target"><code>div[data-swiper-slide-index=&quot;22&quot;] &gt; div &gt; .css-79elbk.MuiBox-root &gt; .css-w42cy8.MuiPaper-root.MuiPaper-elevation &gt; .css-13zioz.MuiCardContent-root &gt; .css-1hdbc19.MuiStack-root &gt; .css-69i1ev.MuiBox-root &gt; .css-ct9q29.MuiStack-root &gt; .css-rblt6i.MuiIconButton-root.MuiIconButton-sizeMedium:nth-child(2)</code></td>
+            <td class="fail">Fix any of the following:<br/>  Element does not have inner text that is visible to screen readers<br/>  aria-label attribute does not exist or is empty<br/>  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty<br/>  Element has no title attribute<br/>  Element does not have an implicit (wrapped) &lt;label&gt;<br/>  Element does not have an explicit &lt;label&gt;<br/>  Element&#39;s default semantics were not overridden with role=&quot;none&quot; or role=&quot;presentation&quot;</td>
+          </tr>
+        
+
+          <tr>
+            <td class="nowrap">https://bpohomes.com/</td>
+            <td class="nowrap">button-name</td>
+            <td class="impact critical">critical</td>
+            <td class="desc">Ensure buttons have discernible text</td>
+            <td class="target"><code>div[data-swiper-slide-index=&quot;23&quot;] &gt; div &gt; .css-79elbk.MuiBox-root &gt; .css-w42cy8.MuiPaper-root.MuiPaper-elevation &gt; .css-13zioz.MuiCardContent-root &gt; .css-1hdbc19.MuiStack-root &gt; .css-69i1ev.MuiBox-root &gt; .css-ct9q29.MuiStack-root &gt; .css-rblt6i.MuiIconButton-root.MuiIconButton-sizeMedium:nth-child(1)</code></td>
+            <td class="fail">Fix any of the following:<br/>  Element does not have inner text that is visible to screen readers<br/>  aria-label attribute does not exist or is empty<br/>  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty<br/>  Element has no title attribute<br/>  Element does not have an implicit (wrapped) &lt;label&gt;<br/>  Element does not have an explicit &lt;label&gt;<br/>  Element&#39;s default semantics were not overridden with role=&quot;none&quot; or role=&quot;presentation&quot;</td>
+          </tr>
+        
+
+          <tr>
+            <td class="nowrap">https://bpohomes.com/</td>
+            <td class="nowrap">button-name</td>
+            <td class="impact critical">critical</td>
+            <td class="desc">Ensure buttons have discernible text</td>
+            <td class="target"><code>div[data-swiper-slide-index=&quot;23&quot;] &gt; div &gt; .css-79elbk.MuiBox-root &gt; .css-w42cy8.MuiPaper-root.MuiPaper-elevation &gt; .css-13zioz.MuiCardContent-root &gt; .css-1hdbc19.MuiStack-root &gt; .css-69i1ev.MuiBox-root &gt; .css-ct9q29.MuiStack-root &gt; .css-rblt6i.MuiIconButton-root.MuiIconButton-sizeMedium:nth-child(2)</code></td>
+            <td class="fail">Fix any of the following:<br/>  Element does not have inner text that is visible to screen readers<br/>  aria-label attribute does not exist or is empty<br/>  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty<br/>  Element has no title attribute<br/>  Element does not have an implicit (wrapped) &lt;label&gt;<br/>  Element does not have an explicit &lt;label&gt;<br/>  Element&#39;s default semantics were not overridden with role=&quot;none&quot; or role=&quot;presentation&quot;</td>
+          </tr>
+        
+
+          <tr>
+            <td class="nowrap">https://bpohomes.com/</td>
+            <td class="nowrap">button-name</td>
+            <td class="impact critical">critical</td>
+            <td class="desc">Ensure buttons have discernible text</td>
+            <td class="target"><code>div[data-swiper-slide-index=&quot;24&quot;] &gt; div &gt; .css-79elbk.MuiBox-root &gt; .css-w42cy8.MuiPaper-root.MuiPaper-elevation &gt; .css-13zioz.MuiCardContent-root &gt; .css-1hdbc19.MuiStack-root &gt; .css-69i1ev.MuiBox-root &gt; .css-ct9q29.MuiStack-root &gt; .css-rblt6i.MuiIconButton-root.MuiIconButton-sizeMedium:nth-child(1)</code></td>
+            <td class="fail">Fix any of the following:<br/>  Element does not have inner text that is visible to screen readers<br/>  aria-label attribute does not exist or is empty<br/>  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty<br/>  Element has no title attribute<br/>  Element does not have an implicit (wrapped) &lt;label&gt;<br/>  Element does not have an explicit &lt;label&gt;<br/>  Element&#39;s default semantics were not overridden with role=&quot;none&quot; or role=&quot;presentation&quot;</td>
+          </tr>
+        
+
+          <tr>
+            <td class="nowrap">https://bpohomes.com/</td>
+            <td class="nowrap">button-name</td>
+            <td class="impact critical">critical</td>
+            <td class="desc">Ensure buttons have discernible text</td>
+            <td class="target"><code>div[data-swiper-slide-index=&quot;24&quot;] &gt; div &gt; .css-79elbk.MuiBox-root &gt; .css-w42cy8.MuiPaper-root.MuiPaper-elevation &gt; .css-13zioz.MuiCardContent-root &gt; .css-1hdbc19.MuiStack-root &gt; .css-69i1ev.MuiBox-root &gt; .css-ct9q29.MuiStack-root &gt; .css-rblt6i.MuiIconButton-root.MuiIconButton-sizeMedium:nth-child(2)</code></td>
+            <td class="fail">Fix any of the following:<br/>  Element does not have inner text that is visible to screen readers<br/>  aria-label attribute does not exist or is empty<br/>  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty<br/>  Element has no title attribute<br/>  Element does not have an implicit (wrapped) &lt;label&gt;<br/>  Element does not have an explicit &lt;label&gt;<br/>  Element&#39;s default semantics were not overridden with role=&quot;none&quot; or role=&quot;presentation&quot;</td>
+          </tr>
+        
+
+          <tr>
+            <td class="nowrap">https://bpohomes.com/</td>
+            <td class="nowrap">button-name</td>
+            <td class="impact critical">critical</td>
+            <td class="desc">Ensure buttons have discernible text</td>
+            <td class="target"><code>div[data-swiper-slide-index=&quot;25&quot;] &gt; div &gt; .css-79elbk.MuiBox-root &gt; .css-w42cy8.MuiPaper-root.MuiPaper-elevation &gt; .css-13zioz.MuiCardContent-root &gt; .css-1hdbc19.MuiStack-root &gt; .css-69i1ev.MuiBox-root &gt; .css-ct9q29.MuiStack-root &gt; .css-rblt6i.MuiIconButton-root.MuiIconButton-sizeMedium:nth-child(1)</code></td>
+            <td class="fail">Fix any of the following:<br/>  Element does not have inner text that is visible to screen readers<br/>  aria-label attribute does not exist or is empty<br/>  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty<br/>  Element has no title attribute<br/>  Element does not have an implicit (wrapped) &lt;label&gt;<br/>  Element does not have an explicit &lt;label&gt;<br/>  Element&#39;s default semantics were not overridden with role=&quot;none&quot; or role=&quot;presentation&quot;</td>
+          </tr>
+        
+
+          <tr>
+            <td class="nowrap">https://bpohomes.com/</td>
+            <td class="nowrap">button-name</td>
+            <td class="impact critical">critical</td>
+            <td class="desc">Ensure buttons have discernible text</td>
+            <td class="target"><code>div[data-swiper-slide-index=&quot;25&quot;] &gt; div &gt; .css-79elbk.MuiBox-root &gt; .css-w42cy8.MuiPaper-root.MuiPaper-elevation &gt; .css-13zioz.MuiCardContent-root &gt; .css-1hdbc19.MuiStack-root &gt; .css-69i1ev.MuiBox-root &gt; .css-ct9q29.MuiStack-root &gt; .css-rblt6i.MuiIconButton-root.MuiIconButton-sizeMedium:nth-child(2)</code></td>
+            <td class="fail">Fix any of the following:<br/>  Element does not have inner text that is visible to screen readers<br/>  aria-label attribute does not exist or is empty<br/>  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty<br/>  Element has no title attribute<br/>  Element does not have an implicit (wrapped) &lt;label&gt;<br/>  Element does not have an explicit &lt;label&gt;<br/>  Element&#39;s default semantics were not overridden with role=&quot;none&quot; or role=&quot;presentation&quot;</td>
+          </tr>
+        
+
+          <tr>
+            <td class="nowrap">https://bpohomes.com/</td>
+            <td class="nowrap">button-name</td>
+            <td class="impact critical">critical</td>
+            <td class="desc">Ensure buttons have discernible text</td>
+            <td class="target"><code>div[data-swiper-slide-index=&quot;26&quot;] &gt; div &gt; .css-79elbk.MuiBox-root &gt; .css-w42cy8.MuiPaper-root.MuiPaper-elevation &gt; .css-13zioz.MuiCardContent-root &gt; .css-1hdbc19.MuiStack-root &gt; .css-69i1ev.MuiBox-root &gt; .css-ct9q29.MuiStack-root &gt; .css-rblt6i.MuiIconButton-root.MuiIconButton-sizeMedium:nth-child(1)</code></td>
+            <td class="fail">Fix any of the following:<br/>  Element does not have inner text that is visible to screen readers<br/>  aria-label attribute does not exist or is empty<br/>  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty<br/>  Element has no title attribute<br/>  Element does not have an implicit (wrapped) &lt;label&gt;<br/>  Element does not have an explicit &lt;label&gt;<br/>  Element&#39;s default semantics were not overridden with role=&quot;none&quot; or role=&quot;presentation&quot;</td>
+          </tr>
+        
+
+          <tr>
+            <td class="nowrap">https://bpohomes.com/</td>
+            <td class="nowrap">button-name</td>
+            <td class="impact critical">critical</td>
+            <td class="desc">Ensure buttons have discernible text</td>
+            <td class="target"><code>div[data-swiper-slide-index=&quot;26&quot;] &gt; div &gt; .css-79elbk.MuiBox-root &gt; .css-w42cy8.MuiPaper-root.MuiPaper-elevation &gt; .css-13zioz.MuiCardContent-root &gt; .css-1hdbc19.MuiStack-root &gt; .css-69i1ev.MuiBox-root &gt; .css-ct9q29.MuiStack-root &gt; .css-rblt6i.MuiIconButton-root.MuiIconButton-sizeMedium:nth-child(2)</code></td>
+            <td class="fail">Fix any of the following:<br/>  Element does not have inner text that is visible to screen readers<br/>  aria-label attribute does not exist or is empty<br/>  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty<br/>  Element has no title attribute<br/>  Element does not have an implicit (wrapped) &lt;label&gt;<br/>  Element does not have an explicit &lt;label&gt;<br/>  Element&#39;s default semantics were not overridden with role=&quot;none&quot; or role=&quot;presentation&quot;</td>
+          </tr>
+        
+
+          <tr>
+            <td class="nowrap">https://bpohomes.com/</td>
+            <td class="nowrap">button-name</td>
+            <td class="impact critical">critical</td>
+            <td class="desc">Ensure buttons have discernible text</td>
+            <td class="target"><code>div[data-swiper-slide-index=&quot;27&quot;] &gt; div &gt; .css-79elbk.MuiBox-root &gt; .css-w42cy8.MuiPaper-root.MuiPaper-elevation &gt; .css-13zioz.MuiCardContent-root &gt; .css-1hdbc19.MuiStack-root &gt; .css-69i1ev.MuiBox-root &gt; .css-ct9q29.MuiStack-root &gt; .css-rblt6i.MuiIconButton-root.MuiIconButton-sizeMedium:nth-child(1)</code></td>
+            <td class="fail">Fix any of the following:<br/>  Element does not have inner text that is visible to screen readers<br/>  aria-label attribute does not exist or is empty<br/>  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty<br/>  Element has no title attribute<br/>  Element does not have an implicit (wrapped) &lt;label&gt;<br/>  Element does not have an explicit &lt;label&gt;<br/>  Element&#39;s default semantics were not overridden with role=&quot;none&quot; or role=&quot;presentation&quot;</td>
+          </tr>
+        
+
+          <tr>
+            <td class="nowrap">https://bpohomes.com/</td>
+            <td class="nowrap">button-name</td>
+            <td class="impact critical">critical</td>
+            <td class="desc">Ensure buttons have discernible text</td>
+            <td class="target"><code>div[data-swiper-slide-index=&quot;27&quot;] &gt; div &gt; .css-79elbk.MuiBox-root &gt; .css-w42cy8.MuiPaper-root.MuiPaper-elevation &gt; .css-13zioz.MuiCardContent-root &gt; .css-1hdbc19.MuiStack-root &gt; .css-69i1ev.MuiBox-root &gt; .css-ct9q29.MuiStack-root &gt; .css-rblt6i.MuiIconButton-root.MuiIconButton-sizeMedium:nth-child(2)</code></td>
+            <td class="fail">Fix any of the following:<br/>  Element does not have inner text that is visible to screen readers<br/>  aria-label attribute does not exist or is empty<br/>  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty<br/>  Element has no title attribute<br/>  Element does not have an implicit (wrapped) &lt;label&gt;<br/>  Element does not have an explicit &lt;label&gt;<br/>  Element&#39;s default semantics were not overridden with role=&quot;none&quot; or role=&quot;presentation&quot;</td>
+          </tr>
+        
+
+          <tr>
+            <td class="nowrap">https://bpohomes.com/</td>
+            <td class="nowrap">button-name</td>
+            <td class="impact critical">critical</td>
+            <td class="desc">Ensure buttons have discernible text</td>
+            <td class="target"><code>div[data-swiper-slide-index=&quot;28&quot;] &gt; div &gt; .css-79elbk.MuiBox-root &gt; .css-w42cy8.MuiPaper-root.MuiPaper-elevation &gt; .css-13zioz.MuiCardContent-root &gt; .css-1hdbc19.MuiStack-root &gt; .css-69i1ev.MuiBox-root &gt; .css-ct9q29.MuiStack-root &gt; .css-rblt6i.MuiIconButton-root.MuiIconButton-sizeMedium:nth-child(1)</code></td>
+            <td class="fail">Fix any of the following:<br/>  Element does not have inner text that is visible to screen readers<br/>  aria-label attribute does not exist or is empty<br/>  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty<br/>  Element has no title attribute<br/>  Element does not have an implicit (wrapped) &lt;label&gt;<br/>  Element does not have an explicit &lt;label&gt;<br/>  Element&#39;s default semantics were not overridden with role=&quot;none&quot; or role=&quot;presentation&quot;</td>
+          </tr>
+        
+
+          <tr>
+            <td class="nowrap">https://bpohomes.com/</td>
+            <td class="nowrap">button-name</td>
+            <td class="impact critical">critical</td>
+            <td class="desc">Ensure buttons have discernible text</td>
+            <td class="target"><code>div[data-swiper-slide-index=&quot;28&quot;] &gt; div &gt; .css-79elbk.MuiBox-root &gt; .css-w42cy8.MuiPaper-root.MuiPaper-elevation &gt; .css-13zioz.MuiCardContent-root &gt; .css-1hdbc19.MuiStack-root &gt; .css-69i1ev.MuiBox-root &gt; .css-ct9q29.MuiStack-root &gt; .css-rblt6i.MuiIconButton-root.MuiIconButton-sizeMedium:nth-child(2)</code></td>
+            <td class="fail">Fix any of the following:<br/>  Element does not have inner text that is visible to screen readers<br/>  aria-label attribute does not exist or is empty<br/>  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty<br/>  Element has no title attribute<br/>  Element does not have an implicit (wrapped) &lt;label&gt;<br/>  Element does not have an explicit &lt;label&gt;<br/>  Element&#39;s default semantics were not overridden with role=&quot;none&quot; or role=&quot;presentation&quot;</td>
+          </tr>
+        
+
+          <tr>
+            <td class="nowrap">https://bpohomes.com/</td>
+            <td class="nowrap">button-name</td>
+            <td class="impact critical">critical</td>
+            <td class="desc">Ensure buttons have discernible text</td>
+            <td class="target"><code>div[data-swiper-slide-index=&quot;29&quot;] &gt; div &gt; .css-79elbk.MuiBox-root &gt; .css-w42cy8.MuiPaper-root.MuiPaper-elevation &gt; .css-13zioz.MuiCardContent-root &gt; .css-1hdbc19.MuiStack-root &gt; .css-69i1ev.MuiBox-root &gt; .css-ct9q29.MuiStack-root &gt; .css-rblt6i.MuiIconButton-root.MuiIconButton-sizeMedium:nth-child(1)</code></td>
+            <td class="fail">Fix any of the following:<br/>  Element does not have inner text that is visible to screen readers<br/>  aria-label attribute does not exist or is empty<br/>  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty<br/>  Element has no title attribute<br/>  Element does not have an implicit (wrapped) &lt;label&gt;<br/>  Element does not have an explicit &lt;label&gt;<br/>  Element&#39;s default semantics were not overridden with role=&quot;none&quot; or role=&quot;presentation&quot;</td>
+          </tr>
+        
+
+          <tr>
+            <td class="nowrap">https://bpohomes.com/</td>
+            <td class="nowrap">button-name</td>
+            <td class="impact critical">critical</td>
+            <td class="desc">Ensure buttons have discernible text</td>
+            <td class="target"><code>div[data-swiper-slide-index=&quot;29&quot;] &gt; div &gt; .css-79elbk.MuiBox-root &gt; .css-w42cy8.MuiPaper-root.MuiPaper-elevation &gt; .css-13zioz.MuiCardContent-root &gt; .css-1hdbc19.MuiStack-root &gt; .css-69i1ev.MuiBox-root &gt; .css-ct9q29.MuiStack-root &gt; .css-rblt6i.MuiIconButton-root.MuiIconButton-sizeMedium:nth-child(2)</code></td>
+            <td class="fail">Fix any of the following:<br/>  Element does not have inner text that is visible to screen readers<br/>  aria-label attribute does not exist or is empty<br/>  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty<br/>  Element has no title attribute<br/>  Element does not have an implicit (wrapped) &lt;label&gt;<br/>  Element does not have an explicit &lt;label&gt;<br/>  Element&#39;s default semantics were not overridden with role=&quot;none&quot; or role=&quot;presentation&quot;</td>
+          </tr>
+        
+
+          <tr>
+            <td class="nowrap">https://bpohomes.com/</td>
+            <td class="nowrap">button-name</td>
+            <td class="impact critical">critical</td>
+            <td class="desc">Ensure buttons have discernible text</td>
+            <td class="target"><code>div[data-swiper-slide-index=&quot;30&quot;] &gt; div &gt; .css-79elbk.MuiBox-root &gt; .css-w42cy8.MuiPaper-root.MuiPaper-elevation &gt; .css-13zioz.MuiCardContent-root &gt; .css-1hdbc19.MuiStack-root &gt; .css-69i1ev.MuiBox-root &gt; .css-ct9q29.MuiStack-root &gt; .css-rblt6i.MuiIconButton-root.MuiIconButton-sizeMedium:nth-child(1)</code></td>
+            <td class="fail">Fix any of the following:<br/>  Element does not have inner text that is visible to screen readers<br/>  aria-label attribute does not exist or is empty<br/>  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty<br/>  Element has no title attribute<br/>  Element does not have an implicit (wrapped) &lt;label&gt;<br/>  Element does not have an explicit &lt;label&gt;<br/>  Element&#39;s default semantics were not overridden with role=&quot;none&quot; or role=&quot;presentation&quot;</td>
+          </tr>
+        
+
+          <tr>
+            <td class="nowrap">https://bpohomes.com/</td>
+            <td class="nowrap">button-name</td>
+            <td class="impact critical">critical</td>
+            <td class="desc">Ensure buttons have discernible text</td>
+            <td class="target"><code>div[data-swiper-slide-index=&quot;30&quot;] &gt; div &gt; .css-79elbk.MuiBox-root &gt; .css-w42cy8.MuiPaper-root.MuiPaper-elevation &gt; .css-13zioz.MuiCardContent-root &gt; .css-1hdbc19.MuiStack-root &gt; .css-69i1ev.MuiBox-root &gt; .css-ct9q29.MuiStack-root &gt; .css-rblt6i.MuiIconButton-root.MuiIconButton-sizeMedium:nth-child(2)</code></td>
+            <td class="fail">Fix any of the following:<br/>  Element does not have inner text that is visible to screen readers<br/>  aria-label attribute does not exist or is empty<br/>  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty<br/>  Element has no title attribute<br/>  Element does not have an implicit (wrapped) &lt;label&gt;<br/>  Element does not have an explicit &lt;label&gt;<br/>  Element&#39;s default semantics were not overridden with role=&quot;none&quot; or role=&quot;presentation&quot;</td>
+          </tr>
+        
+
+          <tr>
+            <td class="nowrap">https://bpohomes.com/</td>
+            <td class="nowrap">button-name</td>
+            <td class="impact critical">critical</td>
+            <td class="desc">Ensure buttons have discernible text</td>
+            <td class="target"><code>div[data-swiper-slide-index=&quot;31&quot;] &gt; div &gt; .css-79elbk.MuiBox-root &gt; .css-w42cy8.MuiPaper-root.MuiPaper-elevation &gt; .css-13zioz.MuiCardContent-root &gt; .css-1hdbc19.MuiStack-root &gt; .css-69i1ev.MuiBox-root &gt; .css-ct9q29.MuiStack-root &gt; .css-rblt6i.MuiIconButton-root.MuiIconButton-sizeMedium:nth-child(1)</code></td>
+            <td class="fail">Fix any of the following:<br/>  Element does not have inner text that is visible to screen readers<br/>  aria-label attribute does not exist or is empty<br/>  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty<br/>  Element has no title attribute<br/>  Element does not have an implicit (wrapped) &lt;label&gt;<br/>  Element does not have an explicit &lt;label&gt;<br/>  Element&#39;s default semantics were not overridden with role=&quot;none&quot; or role=&quot;presentation&quot;</td>
+          </tr>
+        
+
+          <tr>
+            <td class="nowrap">https://bpohomes.com/</td>
+            <td class="nowrap">button-name</td>
+            <td class="impact critical">critical</td>
+            <td class="desc">Ensure buttons have discernible text</td>
+            <td class="target"><code>div[data-swiper-slide-index=&quot;31&quot;] &gt; div &gt; .css-79elbk.MuiBox-root &gt; .css-w42cy8.MuiPaper-root.MuiPaper-elevation &gt; .css-13zioz.MuiCardContent-root &gt; .css-1hdbc19.MuiStack-root &gt; .css-69i1ev.MuiBox-root &gt; .css-ct9q29.MuiStack-root &gt; .css-rblt6i.MuiIconButton-root.MuiIconButton-sizeMedium:nth-child(2)</code></td>
+            <td class="fail">Fix any of the following:<br/>  Element does not have inner text that is visible to screen readers<br/>  aria-label attribute does not exist or is empty<br/>  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty<br/>  Element has no title attribute<br/>  Element does not have an implicit (wrapped) &lt;label&gt;<br/>  Element does not have an explicit &lt;label&gt;<br/>  Element&#39;s default semantics were not overridden with role=&quot;none&quot; or role=&quot;presentation&quot;</td>
+          </tr>
+        
+
+          <tr>
+            <td class="nowrap">https://bpohomes.com/</td>
+            <td class="nowrap">button-name</td>
+            <td class="impact critical">critical</td>
+            <td class="desc">Ensure buttons have discernible text</td>
+            <td class="target"><code>.css-13o7eu2.MuiBox-root &gt; .css-1qctc5a.MuiStack-root &gt; .css-1askgwl.MuiButton-textAlternate.MuiButton-text:nth-child(1)</code></td>
+            <td class="fail">Fix any of the following:<br/>  Element does not have inner text that is visible to screen readers<br/>  aria-label attribute does not exist or is empty<br/>  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty<br/>  Element has no title attribute<br/>  Element does not have an implicit (wrapped) &lt;label&gt;<br/>  Element does not have an explicit &lt;label&gt;<br/>  Element&#39;s default semantics were not overridden with role=&quot;none&quot; or role=&quot;presentation&quot;</td>
+          </tr>
+        
+
+          <tr>
+            <td class="nowrap">https://bpohomes.com/</td>
+            <td class="nowrap">button-name</td>
+            <td class="impact critical">critical</td>
+            <td class="desc">Ensure buttons have discernible text</td>
+            <td class="target"><code>.css-13o7eu2.MuiBox-root &gt; .css-1qctc5a.MuiStack-root &gt; .css-1askgwl.MuiButton-textAlternate.MuiButton-text:nth-child(2)</code></td>
+            <td class="fail">Fix any of the following:<br/>  Element does not have inner text that is visible to screen readers<br/>  aria-label attribute does not exist or is empty<br/>  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty<br/>  Element has no title attribute<br/>  Element does not have an implicit (wrapped) &lt;label&gt;<br/>  Element does not have an explicit &lt;label&gt;<br/>  Element&#39;s default semantics were not overridden with role=&quot;none&quot; or role=&quot;presentation&quot;</td>
+          </tr>
+        
+
+          <tr>
+            <td class="nowrap">https://bpohomes.com/</td>
+            <td class="nowrap">button-name</td>
+            <td class="impact critical">critical</td>
+            <td class="desc">Ensure buttons have discernible text</td>
+            <td class="target"><code>.swiper-slide-active.swiper-slide[data-swiper-slide-index=&quot;0&quot;] &gt; div &gt; .css-bxqvia.MuiPaper-root.MuiPaper-elevation &gt; .css-dtg2nl.MuiBox-root &gt; a[href=&quot;tel:+18886165270&quot;] &gt; .css-5ncxio.MuiIconButton-root[variant=&quot;outlined&quot;]</code></td>
+            <td class="fail">Fix any of the following:<br/>  Element does not have inner text that is visible to screen readers<br/>  aria-label attribute does not exist or is empty<br/>  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty<br/>  Element has no title attribute<br/>  Element does not have an implicit (wrapped) &lt;label&gt;<br/>  Element does not have an explicit &lt;label&gt;<br/>  Element&#39;s default semantics were not overridden with role=&quot;none&quot; or role=&quot;presentation&quot;</td>
+          </tr>
+        
+
+          <tr>
+            <td class="nowrap">https://bpohomes.com/</td>
+            <td class="nowrap">button-name</td>
+            <td class="impact critical">critical</td>
+            <td class="desc">Ensure buttons have discernible text</td>
+            <td class="target"><code>.swiper-slide-next.swiper-slide[data-swiper-slide-index=&quot;1&quot;] &gt; div &gt; .css-bxqvia.MuiPaper-root.MuiPaper-elevation &gt; .css-dtg2nl.MuiBox-root &gt; a[href=&quot;tel:+18886165270&quot;] &gt; .css-5ncxio.MuiIconButton-root[variant=&quot;outlined&quot;]</code></td>
+            <td class="fail">Fix any of the following:<br/>  Element does not have inner text that is visible to screen readers<br/>  aria-label attribute does not exist or is empty<br/>  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty<br/>  Element has no title attribute<br/>  Element does not have an implicit (wrapped) &lt;label&gt;<br/>  Element does not have an explicit &lt;label&gt;<br/>  Element&#39;s default semantics were not overridden with role=&quot;none&quot; or role=&quot;presentation&quot;</td>
+          </tr>
+        
+
+          <tr>
+            <td class="nowrap">https://bpohomes.com/</td>
+            <td class="nowrap">button-name</td>
+            <td class="impact critical">critical</td>
+            <td class="desc">Ensure buttons have discernible text</td>
+            <td class="target"><code>.swiper-slide[data-swiper-slide-index=&quot;2&quot;] &gt; div &gt; .css-bxqvia.MuiPaper-root.MuiPaper-elevation &gt; .css-dtg2nl.MuiBox-root &gt; a[href=&quot;tel:+18886165270&quot;] &gt; .css-5ncxio.MuiIconButton-root[variant=&quot;outlined&quot;]</code></td>
+            <td class="fail">Fix any of the following:<br/>  Element does not have inner text that is visible to screen readers<br/>  aria-label attribute does not exist or is empty<br/>  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty<br/>  Element has no title attribute<br/>  Element does not have an implicit (wrapped) &lt;label&gt;<br/>  Element does not have an explicit &lt;label&gt;<br/>  Element&#39;s default semantics were not overridden with role=&quot;none&quot; or role=&quot;presentation&quot;</td>
+          </tr>
+        
+
+          <tr>
+            <td class="nowrap">https://bpohomes.com/</td>
+            <td class="nowrap">button-name</td>
+            <td class="impact critical">critical</td>
+            <td class="desc">Ensure buttons have discernible text</td>
+            <td class="target"><code>.swiper-slide[data-swiper-slide-index=&quot;3&quot;] &gt; div &gt; .css-bxqvia.MuiPaper-root.MuiPaper-elevation &gt; .css-dtg2nl.MuiBox-root &gt; a[href=&quot;tel:+18886165270&quot;] &gt; .css-5ncxio.MuiIconButton-root[variant=&quot;outlined&quot;]</code></td>
+            <td class="fail">Fix any of the following:<br/>  Element does not have inner text that is visible to screen readers<br/>  aria-label attribute does not exist or is empty<br/>  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty<br/>  Element has no title attribute<br/>  Element does not have an implicit (wrapped) &lt;label&gt;<br/>  Element does not have an explicit &lt;label&gt;<br/>  Element&#39;s default semantics were not overridden with role=&quot;none&quot; or role=&quot;presentation&quot;</td>
+          </tr>
+        
+
+          <tr>
+            <td class="nowrap">https://bpohomes.com/</td>
+            <td class="nowrap">button-name</td>
+            <td class="impact critical">critical</td>
+            <td class="desc">Ensure buttons have discernible text</td>
+            <td class="target"><code>.swiper-slide[data-swiper-slide-index=&quot;4&quot;] &gt; div &gt; .css-bxqvia.MuiPaper-root.MuiPaper-elevation &gt; .css-dtg2nl.MuiBox-root &gt; a[href=&quot;tel:+18886165270&quot;] &gt; .css-5ncxio.MuiIconButton-root[variant=&quot;outlined&quot;]</code></td>
+            <td class="fail">Fix any of the following:<br/>  Element does not have inner text that is visible to screen readers<br/>  aria-label attribute does not exist or is empty<br/>  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty<br/>  Element has no title attribute<br/>  Element does not have an implicit (wrapped) &lt;label&gt;<br/>  Element does not have an explicit &lt;label&gt;<br/>  Element&#39;s default semantics were not overridden with role=&quot;none&quot; or role=&quot;presentation&quot;</td>
+          </tr>
+        
+
+          <tr>
+            <td class="nowrap">https://bpohomes.com/</td>
+            <td class="nowrap">button-name</td>
+            <td class="impact critical">critical</td>
+            <td class="desc">Ensure buttons have discernible text</td>
+            <td class="target"><code>.css-firqea &gt; .css-1askgwl.MuiButton-textAlternate.MuiButton-text:nth-child(1)</code></td>
+            <td class="fail">Fix any of the following:<br/>  Element does not have inner text that is visible to screen readers<br/>  aria-label attribute does not exist or is empty<br/>  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty<br/>  Element has no title attribute<br/>  Element does not have an implicit (wrapped) &lt;label&gt;<br/>  Element does not have an explicit &lt;label&gt;<br/>  Element&#39;s default semantics were not overridden with role=&quot;none&quot; or role=&quot;presentation&quot;</td>
+          </tr>
+        
+
+          <tr>
+            <td class="nowrap">https://bpohomes.com/</td>
+            <td class="nowrap">button-name</td>
+            <td class="impact critical">critical</td>
+            <td class="desc">Ensure buttons have discernible text</td>
+            <td class="target"><code>.css-firqea &gt; .css-1askgwl.MuiButton-textAlternate.MuiButton-text:nth-child(2)</code></td>
+            <td class="fail">Fix any of the following:<br/>  Element does not have inner text that is visible to screen readers<br/>  aria-label attribute does not exist or is empty<br/>  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty<br/>  Element has no title attribute<br/>  Element does not have an implicit (wrapped) &lt;label&gt;<br/>  Element does not have an explicit &lt;label&gt;<br/>  Element&#39;s default semantics were not overridden with role=&quot;none&quot; or role=&quot;presentation&quot;</td>
+          </tr>
+        
+
+          <tr>
+            <td class="nowrap">https://bpohomes.com/</td>
+            <td class="nowrap">button-name</td>
+            <td class="impact critical">critical</td>
+            <td class="desc">Ensure buttons have discernible text</td>
+            <td class="target"><code>.css-9tjyfp.MuiButton-textAlternate.MuiButton-text:nth-child(1)</code></td>
+            <td class="fail">Fix any of the following:<br/>  Element does not have inner text that is visible to screen readers<br/>  aria-label attribute does not exist or is empty<br/>  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty<br/>  Element has no title attribute<br/>  Element does not have an implicit (wrapped) &lt;label&gt;<br/>  Element does not have an explicit &lt;label&gt;<br/>  Element&#39;s default semantics were not overridden with role=&quot;none&quot; or role=&quot;presentation&quot;</td>
+          </tr>
+        
+
+          <tr>
+            <td class="nowrap">https://bpohomes.com/</td>
+            <td class="nowrap">button-name</td>
+            <td class="impact critical">critical</td>
+            <td class="desc">Ensure buttons have discernible text</td>
+            <td class="target"><code>.css-9tjyfp.MuiButton-textAlternate.MuiButton-text:nth-child(2)</code></td>
+            <td class="fail">Fix any of the following:<br/>  Element does not have inner text that is visible to screen readers<br/>  aria-label attribute does not exist or is empty<br/>  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty<br/>  Element has no title attribute<br/>  Element does not have an implicit (wrapped) &lt;label&gt;<br/>  Element does not have an explicit &lt;label&gt;<br/>  Element&#39;s default semantics were not overridden with role=&quot;none&quot; or role=&quot;presentation&quot;</td>
+          </tr>
+        
+
+          <tr>
+            <td class="nowrap">https://bpohomes.com/</td>
+            <td class="nowrap">button-name</td>
+            <td class="impact critical">critical</td>
+            <td class="desc">Ensure buttons have discernible text</td>
+            <td class="target"><code>.css-w1pvh6 &gt; .css-1qctc5a.MuiStack-root &gt; .css-1askgwl.MuiButton-textAlternate.MuiButton-text:nth-child(1)</code></td>
+            <td class="fail">Fix any of the following:<br/>  Element does not have inner text that is visible to screen readers<br/>  aria-label attribute does not exist or is empty<br/>  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty<br/>  Element has no title attribute<br/>  Element does not have an implicit (wrapped) &lt;label&gt;<br/>  Element does not have an explicit &lt;label&gt;<br/>  Element&#39;s default semantics were not overridden with role=&quot;none&quot; or role=&quot;presentation&quot;</td>
+          </tr>
+        
+
+          <tr>
+            <td class="nowrap">https://bpohomes.com/</td>
+            <td class="nowrap">button-name</td>
+            <td class="impact critical">critical</td>
+            <td class="desc">Ensure buttons have discernible text</td>
+            <td class="target"><code>.css-w1pvh6 &gt; .css-1qctc5a.MuiStack-root &gt; .css-1askgwl.MuiButton-textAlternate.MuiButton-text:nth-child(2)</code></td>
+            <td class="fail">Fix any of the following:<br/>  Element does not have inner text that is visible to screen readers<br/>  aria-label attribute does not exist or is empty<br/>  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty<br/>  Element has no title attribute<br/>  Element does not have an implicit (wrapped) &lt;label&gt;<br/>  Element does not have an explicit &lt;label&gt;<br/>  Element&#39;s default semantics were not overridden with role=&quot;none&quot; or role=&quot;presentation&quot;</td>
+          </tr>
+        
+
+          <tr>
+            <td class="nowrap">https://bpohomes.com/</td>
+            <td class="nowrap">color-contrast</td>
+            <td class="impact serious">serious</td>
+            <td class="desc">Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds</td>
+            <td class="target"><code>.css-gh0si4</code></td>
+            <td class="fail">Fix any of the following:<br/>  Element has insufficient color contrast of 3.94 (foreground color: #808080, background color: #ffffff, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1</td>
+          </tr>
+        
+
+          <tr>
+            <td class="nowrap">https://bpohomes.com/</td>
+            <td class="nowrap">heading-order</td>
+            <td class="impact moderate">moderate</td>
+            <td class="desc">Ensure the order of headings is semantically correct</td>
+            <td class="target"><code>.swiper-slide[data-swiper-slide-index=&quot;6&quot;] &gt; div &gt; .css-ygay8w.MuiBox-root &gt; .css-7gptbv.MuiBox-root &gt; .css-10mh46s</code></td>
+            <td class="fail">Fix any of the following:<br/>  Heading order invalid</td>
+          </tr>
+        
+
+          <tr>
+            <td class="nowrap">https://bpohomes.com/</td>
+            <td class="nowrap">heading-order</td>
+            <td class="impact moderate">moderate</td>
+            <td class="desc">Ensure the order of headings is semantically correct</td>
+            <td class="target"><code>h4</code></td>
+            <td class="fail">Fix any of the following:<br/>  Heading order invalid</td>
+          </tr>
+        
+
+          <tr>
+            <td class="nowrap">https://bpohomes.com/</td>
+            <td class="nowrap">heading-order</td>
+            <td class="impact moderate">moderate</td>
+            <td class="desc">Ensure the order of headings is semantically correct</td>
+            <td class="target"><code>a[href$=&quot;San Jose&quot;] &gt; .css-ygay8w.MuiBox-root &gt; .css-7gptbv.MuiBox-root &gt; .css-10mh46s</code></td>
+            <td class="fail">Fix any of the following:<br/>  Heading order invalid</td>
+          </tr>
+        
+
+          <tr>
+            <td class="nowrap">https://bpohomes.com/</td>
+            <td class="nowrap">link-name</td>
+            <td class="impact serious">serious</td>
+            <td class="desc">Ensure links have discernible text</td>
+            <td class="target"><code>.swiper-slide-active.swiper-slide[data-swiper-slide-index=&quot;0&quot;] &gt; div &gt; .css-bxqvia.MuiPaper-root.MuiPaper-elevation &gt; .css-dtg2nl.MuiBox-root &gt; a[href=&quot;tel:+18886165270&quot;]</code></td>
+            <td class="fail">Fix all of the following:<br/>  Element is in tab order and does not have accessible text<br/><br/>Fix any of the following:<br/>  Element does not have text that is visible to screen readers<br/>  aria-label attribute does not exist or is empty<br/>  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty<br/>  Element has no title attribute</td>
+          </tr>
+        
+
+          <tr>
+            <td class="nowrap">https://bpohomes.com/</td>
+            <td class="nowrap">link-name</td>
+            <td class="impact serious">serious</td>
+            <td class="desc">Ensure links have discernible text</td>
+            <td class="target"><code>.swiper-slide-next.swiper-slide[data-swiper-slide-index=&quot;1&quot;] &gt; div &gt; .css-bxqvia.MuiPaper-root.MuiPaper-elevation &gt; .css-dtg2nl.MuiBox-root &gt; a[href=&quot;tel:+18886165270&quot;]</code></td>
+            <td class="fail">Fix all of the following:<br/>  Element is in tab order and does not have accessible text<br/><br/>Fix any of the following:<br/>  Element does not have text that is visible to screen readers<br/>  aria-label attribute does not exist or is empty<br/>  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty<br/>  Element has no title attribute</td>
+          </tr>
+        
+
+          <tr>
+            <td class="nowrap">https://bpohomes.com/</td>
+            <td class="nowrap">link-name</td>
+            <td class="impact serious">serious</td>
+            <td class="desc">Ensure links have discernible text</td>
+            <td class="target"><code>.swiper-slide[data-swiper-slide-index=&quot;2&quot;] &gt; div &gt; .css-bxqvia.MuiPaper-root.MuiPaper-elevation &gt; .css-dtg2nl.MuiBox-root &gt; a[href=&quot;tel:+18886165270&quot;]</code></td>
+            <td class="fail">Fix all of the following:<br/>  Element is in tab order and does not have accessible text<br/><br/>Fix any of the following:<br/>  Element does not have text that is visible to screen readers<br/>  aria-label attribute does not exist or is empty<br/>  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty<br/>  Element has no title attribute</td>
+          </tr>
+        
+
+          <tr>
+            <td class="nowrap">https://bpohomes.com/</td>
+            <td class="nowrap">link-name</td>
+            <td class="impact serious">serious</td>
+            <td class="desc">Ensure links have discernible text</td>
+            <td class="target"><code>.swiper-slide[data-swiper-slide-index=&quot;3&quot;] &gt; div &gt; .css-bxqvia.MuiPaper-root.MuiPaper-elevation &gt; .css-dtg2nl.MuiBox-root &gt; a[href=&quot;tel:+18886165270&quot;]</code></td>
+            <td class="fail">Fix all of the following:<br/>  Element is in tab order and does not have accessible text<br/><br/>Fix any of the following:<br/>  Element does not have text that is visible to screen readers<br/>  aria-label attribute does not exist or is empty<br/>  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty<br/>  Element has no title attribute</td>
+          </tr>
+        
+
+          <tr>
+            <td class="nowrap">https://bpohomes.com/</td>
+            <td class="nowrap">link-name</td>
+            <td class="impact serious">serious</td>
+            <td class="desc">Ensure links have discernible text</td>
+            <td class="target"><code>.swiper-slide[data-swiper-slide-index=&quot;4&quot;] &gt; div &gt; .css-bxqvia.MuiPaper-root.MuiPaper-elevation &gt; .css-dtg2nl.MuiBox-root &gt; a[href=&quot;tel:+18886165270&quot;]</code></td>
+            <td class="fail">Fix all of the following:<br/>  Element is in tab order and does not have accessible text<br/><br/>Fix any of the following:<br/>  Element does not have text that is visible to screen readers<br/>  aria-label attribute does not exist or is empty<br/>  aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty<br/>  Element has no title attribute</td>
+          </tr>
+        
+
+          <tr>
+            <td class="nowrap">https://bpohomes.com/</td>
+            <td class="nowrap">region</td>
+            <td class="impact moderate">moderate</td>
+            <td class="desc">Ensure all page content is contained by landmarks</td>
+            <td class="target"><code>.css-j7qwjs</code></td>
+            <td class="fail">Fix any of the following:<br/>  Some page content is not contained by landmarks</td>
+          </tr>
+        
+
+          <tr>
+            <td class="nowrap">https://bpohomes.com/</td>
+            <td class="nowrap">region</td>
+            <td class="impact moderate">moderate</td>
+            <td class="desc">Ensure all page content is contained by landmarks</td>
+            <td class="target"><code>.css-hqvz5r</code></td>
+            <td class="fail">Fix any of the following:<br/>  Some page content is not contained by landmarks</td>
+          </tr>
+        
+
+          <tr>
+            <td class="nowrap">https://bpohomes.com/</td>
+            <td class="nowrap">region</td>
+            <td class="impact moderate">moderate</td>
+            <td class="desc">Ensure all page content is contained by landmarks</td>
+            <td class="target"><code>.css-y50yn9</code></td>
+            <td class="fail">Fix any of the following:<br/>  Some page content is not contained by landmarks</td>
+          </tr>
+        
+
+          <tr>
+            <td class="nowrap">https://bpohomes.com/</td>
+            <td class="nowrap">region</td>
+            <td class="impact moderate">moderate</td>
+            <td class="desc">Ensure all page content is contained by landmarks</td>
+            <td class="target"><code>.css-1rggf49 &gt; .css-1cdjqzf.MuiStack-root &gt; .css-1wo4hgz.MuiTypography-h6</code></td>
+            <td class="fail">Fix any of the following:<br/>  Some page content is not contained by landmarks</td>
+          </tr>
+        
+
+          <tr>
+            <td class="nowrap">https://bpohomes.com/</td>
+            <td class="nowrap">region</td>
+            <td class="impact moderate">moderate</td>
+            <td class="desc">Ensure all page content is contained by landmarks</td>
+            <td class="target"><code>.css-1q8d0o8 &gt; .css-1cdjqzf.MuiStack-root &gt; .css-1wo4hgz.MuiTypography-h6</code></td>
+            <td class="fail">Fix any of the following:<br/>  Some page content is not contained by landmarks</td>
+          </tr>
+        
+
+          <tr>
+            <td class="nowrap">https://bpohomes.com/</td>
+            <td class="nowrap">region</td>
+            <td class="impact moderate">moderate</td>
+            <td class="desc">Ensure all page content is contained by landmarks</td>
+            <td class="target"><code>.css-gh0si4</code></td>
+            <td class="fail">Fix any of the following:<br/>  Some page content is not contained by landmarks</td>
+          </tr>
+        
+
+          <tr>
+            <td class="nowrap">https://bpohomes.com/</td>
+            <td class="nowrap">region</td>
+            <td class="impact moderate">moderate</td>
+            <td class="desc">Ensure all page content is contained by landmarks</td>
+            <td class="target"><code>.css-1vujx3u</code></td>
+            <td class="fail">Fix any of the following:<br/>  Some page content is not contained by landmarks</td>
+          </tr>
+        
+
+          <tr>
+            <td class="nowrap">https://bpohomes.com/</td>
+            <td class="nowrap">region</td>
+            <td class="impact moderate">moderate</td>
+            <td class="desc">Ensure all page content is contained by landmarks</td>
+            <td class="target"><code>.css-1yoxjv9</code></td>
+            <td class="fail">Fix any of the following:<br/>  Some page content is not contained by landmarks</td>
+          </tr>
+        
+          </tbody>
+        </table>
+      </body>
+    </html>

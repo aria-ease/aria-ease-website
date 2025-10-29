@@ -1,7 +1,10 @@
 .dark-body .header-button,
-.dark-body .search-result-link {
+.dark-body .search-result-link{
     background: rgba(48, 48, 48);
     border: none;
+}
+.dark-body .hero-explore:hover {
+    background: #27292a;
 }
 .dark-body .search-close-button {
     border: 0.2px solid transparent;
@@ -40,7 +43,8 @@
 .dark-body .slide-nav-links-section p,
 .dark-body .test-text,
 .dark-body .search-result-link,
-.dark-body .search-text {
+.dark-body .search-text,
+.dark-body .black-white-text {
     color: white;
 }
 .dark-body .hero-paragraph,
@@ -48,8 +52,8 @@
 .dark-body .home-get-started-div h3,
 .dark-body .version-text, 
 .dark-body .blog_article_date,
-.dark-body .changes-list-text,
-.dark-body .changelog-entry-date {
+.dark-body .changelog-text,
+.dark-body .audit-section-paragraph {
     color: rgb(171, 171, 176);
 }
 .dark-body .hero-examples-div {
@@ -124,4 +128,11 @@
 .dark-body .group-toggle-button {
     background-color: white;
     color: #000;
+}
+.dark-body .code-div code,
+pre.code-div {
+  color: #fb6cb3;
+}
+.dark-body .next-link:hover {
+    background-color: #17364B;
 }

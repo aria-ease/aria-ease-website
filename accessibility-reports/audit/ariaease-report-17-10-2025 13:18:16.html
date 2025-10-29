@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+    <html lang="en">
+      <head>
+        <meta charset="utf-8"/>
+        <title>Aria-Ease Accessibility Audit Report</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <style>
+          :root{
+            --bg:#ffffff; --muted:#6b7280; --border:#e6e9ee;
+            --impact-critical: red; --impact-moderate:#fff4dd; --impact-serious:rgb(255, 123, 0);
+          }
+          body{font-family:Inter,ui-sans-serif,system-ui,Segoe UI,Roboto,Helvetica,Arial; background:var(--bg); color:#111827; padding:24px; line-height:1.4}
+          h1{margin:0 0 8px}
+          .summary{background:#f8fafc;border:1px solid var(--border);padding:12px 16px;border-radius:8px;margin-bottom:18px}
+          .summary ul{margin:6px 0 0 0;padding:0 18px}
+          .impact-summary h3{margin:12px 0 6px}
+          table{width:100%; border-collapse:collapse; margin-top:12px}
+          th,td{border:1px solid var(--border); padding:10px; text-align:left; vertical-align:top}
+          th{background:#f3f4f6; font-weight:600; position:sticky; top:0; z-index:1}
+          .nowrap{white-space:nowrap}
+          .target code{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, "Roboto Mono", "Courier New", monospace; white-space:pre-wrap}
+          .desc{max-width:380px}
+          tr:nth-child(even){background:#fbfbfb}
+          td.fail{color:#7b1e1e}
+          .impact.critical{background:var(--impact-critical); font-weight:600}
+          .impact.moderate{background:var(--impact-moderate); font-weight:600}
+          .impact.serious{background:var(--impact-serious); font-weight:600}
+          @media (max-width:900px){
+            .desc{max-width:200px}
+            table, thead, tbody, th, td, tr{display:block}
+            thead{display:none}
+            tr{margin-bottom:10px; border: 1px solid var(--border);}
+            td{border:1px solid var(--border); padding:6px}
+            td::before{font-weight:600; display:inline-block; width:120px}
+          }
+          .summary-list strong,
+          .summary-list li {
+            padding: 2px 4px;
+          }
+        </style>
+      </head>
+      <body>
+        <h1>Aria-Ease Accessibility Audit Report</h1>
+        <section class="summary">
+      <h2>Report summary</h2>
+      <ul>
+        <li><strong>Date:</strong> 17-10-2025 13:18:16</li>
+        <li><strong>Pages audited:</strong> 12</li>
+        <li><strong>Pages with violations:</strong> 10</li>
+        <li><strong>Total violations:</strong> 20</li>
+        <li><strong>Distinct rules:</strong> 4</li>
+      </ul>
+      <div class="impact-summary">
+        <h3>By impact</h3>
+        <ul class="summary-list">
+          <li><strong class="impact serious">serious</strong>: 16</li>
+<li><strong class="impact moderate">moderate</strong>: 4</li>
+        </ul>
+      </div>
+    </section>
+        <table>
+          <thead>
+            <tr>
+              <th>URL</th><th>Rule</th><th>Impact</th><th>Description</th><th>Target</th><th>FailureSummary</th>
+            </tr>
+          </thead>
+          <tbody>
+            
+          <tr>
+            <td class="nowrap">http://localhost:5173/docs</td>
+            <td class="nowrap">scrollable-region-focusable</td>
+            <td class="impact serious">serious</td>
+            <td class="desc">Ensure elements that have scrollable content are accessible by keyboard</td>
+            <td class="target"><code>.relative:nth-child(21) &gt; pre</code></td>
+            <td class="fail">Fix any of the following:<br/>  Element should have focusable content<br/>  Element should be focusable</td>
+          </tr>
+        
+
+          <tr>
+            <td class="nowrap">http://localhost:5173/docs</td>
+            <td class="nowrap">scrollable-region-focusable</td>
+            <td class="impact serious">serious</td>
+            <td class="desc">Ensure elements that have scrollable content are accessible by keyboard</td>
+            <td class="target"><code>.relative:nth-child(26) &gt; pre</code></td>
+            <td class="fail">Fix any of the following:<br/>  Element should have focusable content<br/>  Element should be focusable</td>
+          </tr>
+        
+
+          <tr>
+            <td class="nowrap">http://localhost:5173/examples/accordion</td>
+            <td class="nowrap">scrollable-region-focusable</td>
+            <td class="impact serious">serious</td>
+            <td class="desc">Ensure elements that have scrollable content are accessible by keyboard</td>
+            <td class="target"><code>pre</code></td>
+            <td class="fail">Fix any of the following:<br/>  Element should have focusable content<br/>  Element should be focusable</td>
+          </tr>
+        
+
+          <tr>
+            <td class="nowrap">http://localhost:5173/examples/block</td>
+            <td class="nowrap">scrollable-region-focusable</td>
+            <td class="impact serious">serious</td>
+            <td class="desc">Ensure elements that have scrollable content are accessible by keyboard</td>
+            <td class="target"><code>.mt-2:nth-child(4) &gt; .relative &gt; pre</code></td>
+            <td class="fail">Fix any of the following:<br/>  Element should have focusable content<br/>  Element should be focusable</td>
+          </tr>
+        
+
+          <tr>
+            <td class="nowrap">http://localhost:5173/examples/block</td>
+            <td class="nowrap">scrollable-region-focusable</td>
+            <td class="impact serious">serious</td>
+            <td class="desc">Ensure elements that have scrollable content are accessible by keyboard</td>
+            <td class="target"><code>.mt-5 &gt; .relative &gt; pre</code></td>
+            <td class="fail">Fix any of the following:<br/>  Element should have focusable content<br/>  Element should be focusable</td>
+          </tr>
+        
+
+          <tr>
+            <td class="nowrap">http://localhost:5173/examples/checkbox</td>
+            <td class="nowrap">scrollable-region-focusable</td>
+            <td class="impact serious">serious</td>
+            <td class="desc">Ensure elements that have scrollable content are accessible by keyboard</td>
+            <td class="target"><code>.relative:nth-child(4) &gt; pre</code></td>
+            <td class="fail">Fix any of the following:<br/>  Element should have focusable content<br/>  Element should be focusable</td>
+          </tr>
+        
+
+          <tr>
+            <td class="nowrap">http://localhost:5173/examples/checkbox</td>
+            <td class="nowrap">scrollable-region-focusable</td>
+            <td class="impact serious">serious</td>
+            <td class="desc">Ensure elements that have scrollable content are accessible by keyboard</td>
+            <td class="target"><code>.relative:nth-child(6) &gt; pre</code></td>
+            <td class="fail">Fix any of the following:<br/>  Element should have focusable content<br/>  Element should be focusable</td>
+          </tr>
+        
+
+          <tr>
+            <td class="nowrap">http://localhost:5173/examples/checkbox</td>
+            <td class="nowrap">scrollable-region-focusable</td>
+            <td class="impact serious">serious</td>
+            <td class="desc">Ensure elements that have scrollable content are accessible by keyboard</td>
+            <td class="target"><code>.relative:nth-child(8) &gt; pre</code></td>
+            <td class="fail">Fix any of the following:<br/>  Element should have focusable content<br/>  Element should be focusable</td>
+          </tr>
+        
+
+          <tr>
+            <td class="nowrap">http://localhost:5173/examples/menu</td>
+            <td class="nowrap">scrollable-region-focusable</td>
+            <td class="impact serious">serious</td>
+            <td class="desc">Ensure elements that have scrollable content are accessible by keyboard</td>
+            <td class="target"><code>pre</code></td>
+            <td class="fail">Fix any of the following:<br/>  Element should have focusable content<br/>  Element should be focusable</td>
+          </tr>
+        
+
+          <tr>
+            <td class="nowrap">http://localhost:5173/examples/radio</td>
+            <td class="nowrap">scrollable-region-focusable</td>
+            <td class="impact serious">serious</td>
+            <td class="desc">Ensure elements that have scrollable content are accessible by keyboard</td>
+            <td class="target"><code>.relative:nth-child(4) &gt; pre</code></td>
+            <td class="fail">Fix any of the following:<br/>  Element should have focusable content<br/>  Element should be focusable</td>
+          </tr>
+        
+
+          <tr>
+            <td class="nowrap">http://localhost:5173/examples/radio</td>
+            <td class="nowrap">scrollable-region-focusable</td>
+            <td class="impact serious">serious</td>
+            <td class="desc">Ensure elements that have scrollable content are accessible by keyboard</td>
+            <td class="target"><code>.relative:nth-child(9) &gt; pre</code></td>
+            <td class="fail">Fix any of the following:<br/>  Element should have focusable content<br/>  Element should be focusable</td>
+          </tr>
+        
+
+          <tr>
+            <td class="nowrap">http://localhost:5173/examples/toggle-button</td>
+            <td class="nowrap">scrollable-region-focusable</td>
+            <td class="impact serious">serious</td>
+            <td class="desc">Ensure elements that have scrollable content are accessible by keyboard</td>
+            <td class="target"><code>.relative:nth-child(4) &gt; pre</code></td>
+            <td class="fail">Fix any of the following:<br/>  Element should have focusable content<br/>  Element should be focusable</td>
+          </tr>
+        
+
+          <tr>
+            <td class="nowrap">http://localhost:5173/examples/toggle-button</td>
+            <td class="nowrap">scrollable-region-focusable</td>
+            <td class="impact serious">serious</td>
+            <td class="desc">Ensure elements that have scrollable content are accessible by keyboard</td>
+            <td class="target"><code>.relative:nth-child(6) &gt; pre</code></td>
+            <td class="fail">Fix any of the following:<br/>  Element should have focusable content<br/>  Element should be focusable</td>
+          </tr>
+        
+
+          <tr>
+            <td class="nowrap">http://localhost:5173/examples/toggle-button</td>
+            <td class="nowrap">scrollable-region-focusable</td>
+            <td class="impact serious">serious</td>
+            <td class="desc">Ensure elements that have scrollable content are accessible by keyboard</td>
+            <td class="target"><code>.relative:nth-child(8) &gt; pre</code></td>
+            <td class="fail">Fix any of the following:<br/>  Element should have focusable content<br/>  Element should be focusable</td>
+          </tr>
+        
+
+          <tr>
+            <td class="nowrap">http://localhost:5173/blog/main</td>
+            <td class="nowrap">landmark-one-main</td>
+            <td class="impact moderate">moderate</td>
+            <td class="desc">Ensure the document has a main landmark</td>
+            <td class="target"><code>html</code></td>
+            <td class="fail">Fix all of the following:<br/>  Document does not have a main landmark</td>
+          </tr>
+        
+
+          <tr>
+            <td class="nowrap">http://localhost:5173/blog/main</td>
+            <td class="nowrap">page-has-heading-one</td>
+            <td class="impact moderate">moderate</td>
+            <td class="desc">Ensure that the page, or at least one of its frames contains a level-one heading</td>
+            <td class="target"><code>html</code></td>
+            <td class="fail">Fix all of the following:<br/>  Page must have a level-one heading</td>
+          </tr>
+        
+
+          <tr>
+            <td class="nowrap">http://localhost:5173/blog/single</td>
+            <td class="nowrap">landmark-one-main</td>
+            <td class="impact moderate">moderate</td>
+            <td class="desc">Ensure the document has a main landmark</td>
+            <td class="target"><code>html</code></td>
+            <td class="fail">Fix all of the following:<br/>  Document does not have a main landmark</td>
+          </tr>
+        
+
+          <tr>
+            <td class="nowrap">http://localhost:5173/blog/single</td>
+            <td class="nowrap">page-has-heading-one</td>
+            <td class="impact moderate">moderate</td>
+            <td class="desc">Ensure that the page, or at least one of its frames contains a level-one heading</td>
+            <td class="target"><code>html</code></td>
+            <td class="fail">Fix all of the following:<br/>  Page must have a level-one heading</td>
+          </tr>
+        
+
+          <tr>
+            <td class="nowrap">http://localhost:5173/audit</td>
+            <td class="nowrap">color-contrast</td>
+            <td class="impact serious">serious</td>
+            <td class="desc">Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds</td>
+            <td class="target"><code>.px-1</code></td>
+            <td class="fail">Fix any of the following:<br/>  Element has insufficient color contrast of 4.09 (foreground color: #d63384, background color: #dcfce7, font size: 9.0pt (12px), font weight: normal). Expected contrast ratio of 4.5:1</td>
+          </tr>
+        
+
+          <tr>
+            <td class="nowrap">http://localhost:5173/audit</td>
+            <td class="nowrap">scrollable-region-focusable</td>
+            <td class="impact serious">serious</td>
+            <td class="desc">Ensure elements that have scrollable content are accessible by keyboard</td>
+            <td class="target"><code>.example-each-ui-code-block-div.mt-6:nth-child(7) &gt; .relative:nth-child(5) &gt; .bg-gray-900.\!p-6.rounded-xl</code></td>
+            <td class="fail">Fix any of the following:<br/>  Element should have focusable content<br/>  Element should be focusable</td>
+          </tr>
+        
+          </tbody>
+        </table>
+      </body>
+    </html>

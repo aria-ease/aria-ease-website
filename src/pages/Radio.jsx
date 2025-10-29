@@ -79,17 +79,17 @@ const radiosComponent = `<div id='radio-div'>
         <ScrollTracker page={page}/>
         <Header page={page} darkMode={darkMode} setDarkMode={setDarkMode} showDropdownPage={showDropdownPage} setShowDropdownPage={setShowDropdownPage} resultsVisible={resultsVisible} setResultsVisible={setResultsVisible}/>
         
-        <div className='page-body-div'>
+        <main className='page-body-div'>
           <Container fluid>
             <Row>
               <SideNav page={page}/>
-              <Col xs={12} sm={12} md={9} lg={9}>
+              <Col xs={12} sm={12} md={12} lg={9}>
                 <div className='side-body-div'>
                   <h1 className='component-example-heading'>Radio</h1>
                   <p className='mt-2'>A radio button is a form control that allows users to select exactly one option from a predefined set of mutually exclusive choices. Unlike checkboxes, when a user selects a radio button within a group, any previously selected option is automatically deselected, making radio buttons ideal for scenarios where only one choice is valid.</p>
 
                   <div className='mt-10'>
-                    <h4>Required ARIA Attributes</h4>
+                    <h2>Required ARIA Attributes</h2>
                     <p className='mt-2'>Radio buttons require specific ARIA attributes to ensure proper accessibility:</p>
                     <ul className='list-disc ml-6 mt-2'>
                       <li><code>aria-checked</code>: Indicates the selection state (&#39;true&#39; or &#39;false&#39;)</li>
@@ -98,13 +98,13 @@ const radiosComponent = `<div id='radio-div'>
                   </div>
 
                   <div className='mt-4'>
-                    <h4>aria-checked</h4>
+                    <h3>aria-checked</h3>
                     <p>The <code>aria-checked</code> attribute indicates to assistive technologies the presence of a checkable item. It indicates the current &#34;checked&#34;--or &#34;unchecked&#34;--state of the item. If the aria-checked attribute is not present, a user will not be able to correctly identify the item as checkable.</p>
 
-                    <h4 className='mt-4'>aria-label</h4>
+                    <h3 className='mt-4'>aria-label</h3>
                     <p>The <code>aria-label</code> attribute provides a description of the radio for screen reader users. It typically contains a detailed purpose of the radio.</p>
 
-                    <h4 className='mt-5'>Radio.updateRadioAriaAttributes</h4>
+                    <h3 className='mt-5'>Radio.updateRadioAriaAttributes</h3>
                     <p className='mt-2'>The <code>Radio.updateRadioAriaAttributes</code> method allows to systematically update the aria attributes of a group of radios.</p>
                     <p className='mt-2'>The method enables assistive technology support for the radios. This feature helps visually impaired users to navigate interacting with the radios, by informing the users about the current state, and purpose, of each of the radios. The states are either checked or not checked. The method updates the aria-checked attribute of the radios.</p>
                     <p className='mt-2'>The method accepts 3 arguments; an array of objects with information about each radio in the collection, a shared class of all the radios, and the index position of the currently clicked radio relative to the main radios container and other radios.</p>
@@ -118,17 +118,32 @@ const radiosComponent = `<div id='radio-div'>
                       <p>NOTE: The aria label of a radio button is simply to keep track of the sequential order of the radio in the array and relative to the radio group container. The content of a radio&#39;s aria-label must not be changed when the state changes. So a screen reader will simply say something like &#34;Financial type, selected, radio button&#34;, which is intuitive enough for a user relying on it.</p>
 
                       <p className='mb-2 mt-6'>And then we create a function to handle checking/unchecking of the radios. The function uses the index position of the current checked/unchecked radio to update the radio state in the states array.</p>
-                      <CodeBlockDemo code={handleRadioCheckFunction}/>
+                      <CodeBlockDemo code={handleRadioCheckFunction} isLineNumber={true}/>
 
                       <p className='mb-2 mt-6'>Lastly we create our radio components.</p>
-                      <CodeBlockDemo code={radiosComponent}/>
+                      <CodeBlockDemo code={radiosComponent} isLineNumber={true}/>
                     </div>
                   </div>
+
+                  <div className='flex justify-between items-center mt-[100px]'>
+                      <a href='/examples/menu' className='block-interactive next-link rounded-lg'>
+                        <div className='flex flex-col px-4 py-3'>
+                          <span className='text-sm black-white-text'>Prev</span>
+                          <span className='text-blue-500 text-lg'>Menu</span>
+                        </div>
+                      </a>
+                      <a href='/examples/toggle-button' className='block-interactive next-link rounded-lg'>
+                        <div className='flex flex-col px-4 py-3'>
+                          <span className='text-sm black-white-text'>Next</span>
+                          <span className='text-blue-500 text-lg'>Toggle Button</span>
+                        </div>
+                      </a>
+                    </div>
                 </div>
               </Col>
             </Row>
           </Container>
-        </div>
+        </main>
 
         <SlideOutNav page={page} showDropdownPage={showDropdownPage}/>
     </div>

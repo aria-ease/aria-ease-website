@@ -2,15 +2,39 @@
   max-width: 800px;
   margin: 0 auto;
   padding: 2rem;
-  line-height: 1.6;
 }
 
-.changelog-container h2 {
-  margin-top: 2rem;
-  color: #1a1a1a;
+.release {
+  border-bottom: 1px solid #e5e5e5;
+  padding-bottom: 1.5rem;
+  margin-bottom: 1.5rem;
 }
 
-.changelog-container ul {
+.release-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.release-header h2 {
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: #222;
+}
+
+.release-date {
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.release-body ul {
   list-style: disc;
-  margin-left: 1.5rem;
+  padding-left: 1.5rem;
+  margin-top: 0.5rem;
+}
+
+.release-body h3 {
+  margin-top: 1rem;
+  font-size: 1rem;
+  color: #333;
 }

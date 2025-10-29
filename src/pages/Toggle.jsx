@@ -68,17 +68,17 @@ const togglesComponent = `<div id='toggle-div'>
         <ScrollTracker page={page}/>
         <Header page={page} darkMode={darkMode} setDarkMode={setDarkMode} showDropdownPage={showDropdownPage} setShowDropdownPage={setShowDropdownPage} resultsVisible={resultsVisible} setResultsVisible={setResultsVisible}/>
         
-        <div className='page-body-div'>
+        <main className='page-body-div'>
           <Container fluid>
             <Row>
               <SideNav page={page}/>
-              <Col xs={12} sm={12} md={9} lg={9}>
+              <Col xs={12} sm={12} md={12} lg={9}>
                 <div className='side-body-div'>
                   <h1 className='component-example-heading'>Toggle</h1>
                   <p className='mt-2'>Toggle buttons are components that require a full press-and-release cycle to toggle a value. It is similar but not identical to a checkbox. <Link className='underline block-interactive' to='/examples/checkbox'>Learn about checkbox component here.</Link></p>
 
                   <div className='mt-10'>
-                    <h4>Required ARIA Attributes</h4>
+                    <h2>Required ARIA Attributes</h2>
                     <p className='mt-2'>Toggle buttons require specific ARIA attributes to ensure proper accessibility:</p>
                     <ul className='list-disc ml-6 mt-2'>
                       <li><code>aria-pressed</code>: Indicates the selection state (&#39;true&#39; or &#39;false&#39;)</li>
@@ -86,7 +86,7 @@ const togglesComponent = `<div id='toggle-div'>
                   </div>
 
                   <div className='mt-10'>
-                    <h4>Optional ARIA Attributes</h4>
+                    <h2>Optional ARIA Attributes</h2>
                     <p className='mt-2'>These are optional aria attributes:</p>
                     <ul className='list-disc ml-6 mt-2'>
                       <li><code>aria-label</code>: Provides a descriptive label for assistive technologies. Use for non-text toggle buttons.</li>
@@ -94,14 +94,14 @@ const togglesComponent = `<div id='toggle-div'>
                   </div>
 
                   <div className='mt-4'>
-                    <h4>aria-pressed</h4>
+                    <h3>aria-pressed</h3>
                     <p>The <code>aria-pressed</code> attribute indicates the presence of a toggle button. It describes the current &#34;pressed&#34;--or &#34;not pressed&#34;--state of a toggle button. If the aria-pressed attribute is not present, the button is not a toggle button.</p>
 
-                    <h4 className='mt-4'>aria-label</h4>
+                    <h3 className='mt-4'>aria-label</h3>
                     <p>The <code>aria-label</code> attribute provides a description of the toggle button&#39;s feature, and should not be updated when the toggle button&#39;s state changes.</p>
                     <p className='mt-2'>Do not change a &#34;Mute notification&#34; label to &#34;Unmute notification&#34; simply because the button state changed. So a screen reader will simply say something like &#34;Mute notifaction, pressed&#34; and &#34;Mute notification, not pressed&#34;, which is intuitive enough for a user relying on it.</p>
 
-                    <h4 className='mt-5'>Toggle.updateToggleAriaAttribute</h4>
+                    <h3 className='mt-5'>Toggle.updateToggleAriaAttribute</h3>
                     <p className='mt-2'>The <code>Toggle.updateToggleAriaAttribute</code> method allows to systematically update the aria-pressed attribute of a group of toggle buttons.</p>
                     <p className='mt-2'>The method enables assistive technology support for the toggle buttons. This feature helps visually impaired users to navigate interacting with the toggle buttons, by informing the users about the current state, of each of the toggle buttons. The states are either pressed or unpressed.</p>
                     <p className='mt-2'>The method accepts 4 arguments; the id of the toggle button(s) container, a shared class of all the toggle buttons, an array of objects with information about each button in the collection, and the index position of the currently pressed/unpressed button relative to the toggle buttons container and other toggle buttons.</p>
@@ -114,10 +114,10 @@ const togglesComponent = `<div id='toggle-div'>
                       <CodeBlockDemo code={groupStates}/>
 
                       <p className='mb-2 mt-6'>And then we create a function to handle pressing/unpressing of the toggle buttons. The function uses the index position of the current pressed/unpressed toggle button to update the toggle button state in the states array.</p>
-                      <CodeBlockDemo code={handleTogglePressFunction}/>
+                      <CodeBlockDemo code={handleTogglePressFunction} isLineNumber={true}/>
 
                       <p className='mb-2 mt-6'>Lastly we create our toggle buttons component.</p>
-                      <CodeBlockDemo code={togglesComponent}/>
+                      <CodeBlockDemo code={togglesComponent} isLineNumber={true}/>
                     </div>
                   </div>
                   
@@ -145,11 +145,26 @@ const togglesComponent = `<div id='toggle-div'>
                   </div>
                     </div>
                   </div>
+
+                  <div className='flex justify-between items-center mt-[100px]'>
+                      <a href='/examples/radio' className='block-interactive next-link rounded-lg'>
+                        <div className='flex flex-col px-4 py-3'>
+                          <span className='text-sm black-white-text'>Prev</span>
+                          <span className='text-blue-500 text-lg'>Radio</span>
+                        </div>
+                      </a>
+                      <a href='/audit' className='block-interactive next-link rounded-lg'>
+                        <div className='flex flex-col px-4 py-3'>
+                          <span className='text-sm black-white-text'>Next</span>
+                          <span className='text-blue-500 text-lg'>Audit</span>
+                        </div>
+                      </a>
+                    </div>
                 </div>
               </Col>
             </Row>
           </Container>
-        </div>
+        </main>
 
         <SlideOutNav page={page} showDropdownPage={showDropdownPage}/>
     </div>

@@ -22,24 +22,65 @@ body {
 }
 
 @media (min-width: 1200px) {
-  h4 {
-    font-size: 1.5rem;
-  }
-}
-h4 {
-  font-size: calc(1.275rem + 0.3vw);
-}
-
-@media (min-width: 1200px) {
-  h3,
   .get-started-ship {
     font-size: 1.75rem;
   }
+  h2 {
+    font-size: 1.5rem;
+  }
+  h3 {
+    font-size: 1.25rem;
+  }
+  h4 {
+    font-size: 1.0rem;
+  }
+  h5 {
+    font-size: 0.75rem;
+  }
 }
-h3,
+@media(max-width: 767px) {
+  h2 {
+  font-size: calc(1.275rem + 1.2vw);
+  }
+  h3 {
+    font-size: calc(1.075rem + 1.2vw);
+  }
+  h4 {
+    font-size: calc(0.875rem + 1.2vw);
+  }
+  h5 {
+    font-size: calc(0.675rem + 1.2vw);
+  }
+}
+@media(min-width: 768px) and (max-width: 1024px) {
+  h2 {
+  font-size: calc(1.275rem + 0.8vw);
+  }
+  h3 {
+    font-size: calc(1.075rem + 0.8vw);
+  }
+  h4 {
+    font-size: calc(0.875rem + 0.8vw);
+  }
+  h5 {
+    font-size: calc(0.675rem + 0.8vw);
+  }
+}
+@media(min-width: 1025px) and (max-width: 1199px) {
+  h2 {
+  font-size: calc(1.275rem + 0.6vw);
+  }
+  h3 {
+    font-size: calc(1.075rem + 0.6vw);
+  }
+  h4 {
+    font-size: calc(0.875rem + 0.6vw);
+  }
+  h5 {
+    font-size: calc(0.675rem + 0.6vw);
+  }
+}
+
 .get-started-ship {
   font-size: calc(1.3rem + 0.6vw);
-}
-h5 {
-  font-size: 1.25rem;
 }

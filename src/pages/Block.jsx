@@ -131,17 +131,17 @@ const BlockExample = ({darkMode, setDarkMode}) => {
         <ScrollTracker page={page}/>
         <Header page={page} darkMode={darkMode} setDarkMode={setDarkMode} showDropdownPage={showDropdownPage} setShowDropdownPage={setShowDropdownPage} resultsVisible={resultsVisible} setResultsVisible={setResultsVisible}/>
         
-        <div className='page-body-div'>
+        <main className='page-body-div'>
           <Container fluid>
             <Row>
               <SideNav page={page}/>
-              <Col xs={12} sm={12} md={9} lg={9}>
+              <Col xs={12} sm={12} md={12} lg={9}>
                   <div className='side-body-div'>
                       <h1 className='component-example-heading'>Block</h1>
                       <p className='mt-2'>A statically displayed component that has a list of related interractive children items e.g tabs, interactive sliders, carousels, and entire web pages.</p>
 
                       <div className='mt-4'>
-                        <h4>Block Component Overview</h4>
+                        <h2>Block Component Overview</h2>
                         <p className='mt-2'>The Block component creates an accessible focus management system that:</p>
                         <ul className='list-disc ml-6 mt-2'>
                           <li>Maintains focus within a designated container (entire pages even)</li>
@@ -152,7 +152,7 @@ const BlockExample = ({darkMode, setDarkMode}) => {
                       </div>
 
                       <div className='mt-4'>
-                        <h4>Keyboard Navigation</h4>
+                        <h2>Keyboard Navigation</h2>
                         <ul className='list-disc ml-6 mt-2'>
                           <li><code>↑</code> / <code>←</code>: Move focus to previous item</li>
                           <li><code>↓</code> / <code>→</code>: Move focus to next item</li>
@@ -163,7 +163,7 @@ const BlockExample = ({darkMode, setDarkMode}) => {
                       </div>
 
                       <div className='mt-4'>
-                        <h4>Implementation Requirements</h4>
+                        <h2>Implementation Requirements</h2>
                         <ul className='list-disc ml-6 mt-2'>
                           <li>Container must have a unique ID</li>
                           <li>Interactive elements must share a common class</li>
@@ -173,7 +173,7 @@ const BlockExample = ({darkMode, setDarkMode}) => {
                       </div>
 
                       <div className='mt-4'>
-                        <h4>Best Practices</h4>
+                        <h2>Best Practices</h2>
                         <ul className='list-disc ml-6 mt-2'>
                           <li>Group related interactive elements</li>
                           <li>Maintain consistent spacing between items</li>
@@ -184,26 +184,26 @@ const BlockExample = ({darkMode, setDarkMode}) => {
                       </div>
 
                       <div className='example-each-ui-code-block-div mt-6'>
-                        <h5>Buttons Block</h5>
+                        <h3>Buttons Block</h3>
                         <p className='mt-2'>This creates a focus trap within the buttons tab block. The Arrow keys navigates the focus within the trap in a cycle. The Space and Enter keys &#34;clicks&#34; the interactive element. The Tab key exits the trap.</p>
-                        <CodeBlockDemo code={firstBlockCode}/>
+                        <CodeBlockDemo code={firstBlockCode} isLineNumber={true}/>
                       </div>
 
                       <div className='example-each-ui-code-block-div mt-6'>
-                        <h5>Text Input Block</h5>
+                        <h3>Text Input Block</h3>
                         <p className='mt-2'>This creates a focus trap within the text input block. The Arrow keys navigates the focus within the trap in a cycle. The Tab key exits the trap.</p>
                         <TextInputBlock/>
                         <div className='mt-2'>
-                          <CodeBlockDemo code={secondBlockCode}/>
+                          <CodeBlockDemo code={secondBlockCode} isLineNumber={true}/>
                         </div>
 
                         <div className='mt-5'>
-                          <h5>Dynamic Block</h5>
+                          <h3>Dynamic Block</h3>
                           <p>Sometimes, you need to change which part of your UI contains an accessible block based on user interaction. For example, when a search overlay or modal appears, if there&#39;s a main page block, you should remove the main page block and create a new block for the overlay. This ensures keyboard navigation and focus are always trapped in the correct context, improving accessibility and user experience.</p>
                           <p className='mt-2'>The Block utility makes it easy to manage these dynamic blocks. You can create and destroy blocks as needed, making it a powerful tool for managing complex UI interactions, and ensuring that your UI remains accessible at all times.</p>
                           <p className='mt-2'>The Block utility returns a cleanup function that you can call to remove the block when it is not needed.</p>
                           <p className='mt-2'>Use a ref object to store the cleanup function returned by the <code>Block.makeBlockAccessible</code> method. The ref can then be used to call the cleanup function that was returned by the method. This function removes the event listeners that were added to make the block accessible for keyboard navigation.</p>
-                          <CodeBlockDemo code={dynamicBlockCode}/>
+                          <CodeBlockDemo code={dynamicBlockCode} isLineNumber={true}/>
                           <p className='mt-2'>After the cleanup function has been called on the previous block, and the event listeners removed, a new block can then be created with new event listeners.</p>
                           <p className='mt-2'>In the code snippet above, &#34;dynamicState&#34; is a state variable that determines when the dynamic block, e.g a modal, or search overlay, is currently active.</p>
                         </div>
@@ -230,11 +230,26 @@ const BlockExample = ({darkMode, setDarkMode}) => {
                         </ul>
                       </div>
                       </div>
+
+                      <div className='flex justify-between items-center mt-[100px]'>
+                      <a href='/examples/accordion' className='block-interactive next-link rounded-lg'>
+                        <div className='flex flex-col px-4 py-3'>
+                          <span className='text-sm black-white-text'>Prev</span>
+                          <span className='text-blue-500 text-lg'>Accordion</span>
+                        </div>
+                      </a>
+                      <a href='/examples/checkbox' className='block-interactive next-link rounded-lg'>
+                        <div className='flex flex-col px-4 py-3'>
+                          <span className='text-sm black-white-text'>Next</span>
+                          <span className='text-blue-500 text-lg'>Checkbox</span>
+                        </div>
+                      </a>
+                    </div>
                   </div>
               </Col>
             </Row>
           </Container>
-        </div>
+        </main>
         
         <SlideOutNav page={page} showDropdownPage={showDropdownPage}/>
     </div>

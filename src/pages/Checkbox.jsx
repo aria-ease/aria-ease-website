@@ -89,18 +89,18 @@ const Checkbox = ({darkMode, setDarkMode}) => {
         <ScrollTracker page={page}/>
         <Header page={page} darkMode={darkMode} setDarkMode={setDarkMode} showDropdownPage={showDropdownPage} setShowDropdownPage={setShowDropdownPage} resultsVisible={resultsVisible} setResultsVisible={setResultsVisible}/>
         
-        <div className='page-body-div'>
+        <main className='page-body-div'>
           <Container fluid>
             <Row>
               <SideNav page={page}/>
-              <Col xs={12} sm={12} md={9} lg={9}>
+              <Col xs={12} sm={12} md={12} lg={9}>
                 <div className='side-body-div'>
                   <h1 className='component-example-heading'>Checkbox</h1>
 
                   <p className='mt-2'>A checkbox is an interactive form control that allows users to make binary choices (checked or not checked) by clicking or tapping a square box. When checked, the box typically displays a checkmark or tick symbol, providing a visual indication of the user&#39;s choice while maintaining accessibility through ARIA attributes for assistive technology users.</p>
 
                   <div className='mt-10'>
-                    <h4>Required ARIA Attributes</h4>
+                    <h2>Required ARIA Attributes</h2>
                     <p className='mt-2'>Checkboxes require specific ARIA attributes to ensure proper accessibility:</p>
                     <ul className='list-disc ml-6 mt-2'>
                       <li><code>aria-checked</code>: Indicates the selection state (&#39;true&#39; or &#39;false&#39;)</li>
@@ -109,10 +109,10 @@ const Checkbox = ({darkMode, setDarkMode}) => {
                   </div>
 
                   <div className='mt-4'>
-                    <h4>aria-checked</h4>
+                    <h3>aria-checked</h3>
                     <p>The <code>aria-checked</code> attribute indicates to assistive technologies the presence of a checkable item. It indicates the current &#34;checked&#34;--or &#34;unchecked&#34;--state of the item. If the aria-checked attribute is not present, a user will not be able to correctly identify the item as checkable.</p>
 
-                    <h4 className='mt-4'>aria-label</h4>
+                    <h3 className='mt-4'>aria-label</h3>
                     <p>The <code>aria-label</code> attribute provides a description of a checkbox for screen reader users. It typically contains a detailed purpose of the checkbox.</p>
 
                     <div className='mt-5'>
@@ -150,10 +150,10 @@ const Checkbox = ({darkMode, setDarkMode}) => {
                       <CodeBlockDemo code={groupStates}/>
 
                       <p className='mb-2 mt-6'>And then we create a function to handle checking/unchecking of the checkboxes. The function uses the index position of the current checked/unchecked checkbox to update the checkbox state in the states array.</p>
-                      <CodeBlockDemo code={handleCheckFunction}/>
+                      <CodeBlockDemo code={handleCheckFunction} isLineNumber={true}/>
 
                       <p className='mb-2 mt-6'>Lastly we create our checkboxes components.</p>
-                      <CodeBlockDemo code={checkboxesComponent}/>
+                      <CodeBlockDemo code={checkboxesComponent} isLineNumber={true}/>
                     </div>
                   </div>
                   
@@ -181,11 +181,26 @@ const Checkbox = ({darkMode, setDarkMode}) => {
                   </div>
                     </div>
                   </div>
+
+                  <div className='flex justify-between items-center mt-[100px]'>
+                      <a href='/examples/block' className='block-interactive next-link rounded-lg'>
+                        <div className='flex flex-col px-4 py-3'>
+                          <span className='text-sm black-white-text'>Prev</span>
+                          <span className='text-blue-500 text-lg'>Block</span>
+                        </div>
+                      </a>
+                      <a href='/examples/menu' className='block-interactive next-link rounded-lg'>
+                        <div className='flex flex-col px-4 py-3'>
+                          <span className='text-sm black-white-text'>Next</span>
+                          <span className='text-blue-500 text-lg'>Menu</span>
+                        </div>
+                      </a>
+                    </div>
                 </div>
               </Col>
             </Row>
           </Container>
-        </div>
+        </main>
 
         <SlideOutNav page={page} showDropdownPage={showDropdownPage}/>
     </div>

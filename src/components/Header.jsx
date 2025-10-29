@@ -21,8 +21,8 @@ const Header = ({ page, darkMode, setDarkMode, showDropdownPage, setShowDropdown
 
     useEffect(() => {
         fetch('/docs.json')
-            .then((res) => res.json())
-            .then((data) => setDocs(data));
+        .then((res) => res.json())
+        .then((data) => setDocs(data));
 
         if (darkMode) {
             document.querySelector('.theme-mode-image').setAttribute('src', `${sunicon}`)
@@ -139,10 +139,10 @@ const Header = ({ page, darkMode, setDarkMode, showDropdownPage, setShowDropdown
             setAnnounce(`${results.length} result${results.length !== 1 ? "s" : ""} found.`);
         }, 50);
         return () => clearTimeout(timeout);
-    }, [results]);
+    }, [results, query]);
 
     return (
-        <div className="header">
+        <header className="header">
             <button className='header-menu-button center-flex' onClick={() => { setResultsVisible(false); setShowDropdownPage(!showDropdownPage); }} aria-label="Toggle slide-out side navigation">
                 {darkMode ?
                     <svg xmlns="http://www.w3.org/2000/svg" width="510" height="511" fill="none" viewBox="0 0 510 511" id="menu" className='white-hamburger h-[40px] w-[40px] ml-[-1px]'>
@@ -188,7 +188,7 @@ const Header = ({ page, darkMode, setDarkMode, showDropdownPage, setShowDropdown
                         <div className='sr-only' aria-live='polite' aria-atomic='true' role='status'>
                             {announce}
                         </div>
-                        {results && results.length > 0 ?
+                        {(results.length > 0) ?
                             <div className='h-full px-2 py-4 overflow-y-auto max-h-[305px]'>
                                 {results.some(doc => doc.title.includes('Getting Started')) && (
                                     <>
@@ -215,6 +215,19 @@ const Header = ({ page, darkMode, setDarkMode, showDropdownPage, setShowDropdown
                                         </ul>
                                     </>
                                 )}
+
+                                {results.some(doc => doc.content.includes('fixed')) && (
+                                    <>
+                                        <h1 className={`text-sm mb-2 mt-4 ${darkMode ? 'text-gray-400' : 'text-gray-600'}`}>Changelog</h1>
+                                        <ul>
+                                            {results.filter(doc => doc.content.includes('fixed')).map((doc, index) => (
+                                                <li key={index}>
+                                                    <a href={doc.url} className='search-result-link search-container-items text-sm px-3 py-2 rounded-md w-full block' onKeyDown={handleKeyDown} aria-label={`Navigate to ${doc.title} page`}>{doc.title}</a>
+                                                </li>
+                                            ))}
+                                        </ul>
+                                    </>
+                                )}
                             </div> :
                             <div className='py-4 px-2'>
                                 <p className={`text-center text-sm mb-1 mt-1 ${darkMode ? 'text-gray-300' : 'text-gray-700'}`}>No results found for &#34;{query}&#34;</p>
@@ -229,7 +242,7 @@ const Header = ({ page, darkMode, setDarkMode, showDropdownPage, setShowDropdown
                     </div>
                 </div>
             )}
-        </div>
+        </header>
     )
 }
 

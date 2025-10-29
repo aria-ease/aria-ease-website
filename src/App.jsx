@@ -19,6 +19,7 @@ import BlogSingle from './pages/BlogSingle'
 import "firebase/compat/firestore";
 import Admin from './pages/Admin';
 import Changelog from './pages/Changelog';
+import Audit from './pages/Audit'
  
 
 const firebaseConfig = {
@@ -55,6 +56,7 @@ const App = () => {
           <Route path="/blog/single" element={<BlogSingle darkMode={darkMode} setDarkMode={setDarkMode}/>}/>
           <Route path="/clandestine/admin/" element={<Admin/>}/>
           <Route path="/changelog" element={<Changelog darkMode={darkMode} setDarkMode={setDarkMode}/>}/>
+          <Route path="/audit" element={<Audit darkMode={darkMode} setDarkMode={setDarkMode}/>}/>
         </Routes>
       </Router>
     </div>

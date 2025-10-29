@@ -14,8 +14,9 @@
     background: rgb(228, 227, 227);
 }
 .light-body .header-button:hover,
-.light-body .search-result-link:hover {
-    background: rgb(211, 211, 211);
+.light-body .search-result-link:hover,
+.light-body .hero-explore:hover {
+    background: rgb(222, 222, 222);
 }
 .light-body .header-search-div,
 .light-body .each-text-input-block-div {
@@ -36,8 +37,9 @@
 .light-body .hero-paragraph,
 .light-body .version-text,
 .light-body .search-text,
-.light-body .changes-list-text,
-.light-body .changelog-entry-date {
+.light-body .changelog-text,
+.light-body .black-white-text,
+.light-body .audit-section-paragraph {
     color: black;
 }
 .light-body .hero-examples-div {
@@ -106,4 +108,7 @@
 .light-body .group-toggle-button {
     background-color: black;
     color: white;
+}
+.light-body .next-link:hover {
+    background-color: #d4eefe;
 }

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+    <html lang="en">
+      <head>
+        <meta charset="utf-8"/>
+        <title>Aria-Ease Accessibility Audit Report</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1"/>
+        <style>
+          :root{
+            --bg:#ffffff; --muted:#6b7280; --border:#e6e9ee;
+            --impact-critical: red; --impact-moderate:#fff4dd; --impact-serious:rgb(255, 123, 0);
+          }
+          body{font-family:Inter,ui-sans-serif,system-ui,Segoe UI,Roboto,Helvetica,Arial; background:var(--bg); color:#111827; padding:24px; line-height:1.4}
+          h1{margin:0 0 8px}
+          .summary{background:#f8fafc;border:1px solid var(--border);padding:12px 16px;border-radius:8px;margin-bottom:18px}
+          .summary ul{margin:6px 0 0 0;padding:0 18px}
+          .impact-summary h3{margin:12px 0 6px}
+          table{width:100%; border-collapse:collapse; margin-top:12px}
+          th,td{border:1px solid var(--border); padding:10px; text-align:left; vertical-align:top}
+          th{background:#f3f4f6; font-weight:600; position:sticky; top:0; z-index:1}
+          .nowrap{white-space:nowrap}
+          .target code{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, "Roboto Mono", "Courier New", monospace; white-space:pre-wrap}
+          .desc{max-width:380px}
+          tr:nth-child(even){background:#fbfbfb}
+          td.fail{color:#7b1e1e}
+          .impact.critical{background:var(--impact-critical); font-weight:600}
+          .impact.moderate{background:var(--impact-moderate); font-weight:600}
+          .impact.serious{background:var(--impact-serious); font-weight:600}
+          @media (max-width:900px){
+            .desc{max-width:200px}
+            table, thead, tbody, th, td, tr{display:block}
+            thead{display:none}
+            tr{margin-bottom:10px; border: 1px solid var(--border);}
+            td{border:1px solid var(--border); padding:6px}
+            td::before{font-weight:600; display:inline-block; width:120px}
+          }
+          .summary-list strong,
+          .summary-list li {
+            padding: 2px 4px;
+          }
+        </style>
+      </head>
+      <body>
+        <h1>Aria-Ease Accessibility Audit Report</h1>
+        <section class="summary">
+      <h2>Report summary</h2>
+      <ul>
+        <li><strong>Date:</strong> 22-10-2025 08:08:37</li>
+        <li><strong>Pages audited:</strong> 10</li>
+        <li><strong>Pages with violations:</strong> 1</li>
+        <li><strong>Total violations:</strong> 2</li>
+        <li><strong>Distinct rules:</strong> 1</li>
+      </ul>
+      <div class="impact-summary">
+        <h3>By impact</h3>
+        <ul class="summary-list">
+          <li><strong class="impact serious">serious</strong>: 2</li>
+        </ul>
+      </div>
+    </section>
+        <table>
+          <thead>
+            <tr>
+              <th>URL</th><th>Rule</th><th>Impact</th><th>Description</th><th>Target</th><th>FailureSummary</th>
+            </tr>
+          </thead>
+          <tbody>
+            
+          <tr>
+            <td class="nowrap">http://localhost:5173/</td>
+            <td class="nowrap">color-contrast</td>
+            <td class="impact serious">serious</td>
+            <td class="desc">Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds</td>
+            <td class="target"><code>.flex-wrap.gap-4.items-center &gt; .bg-blue-500.hover\:bg-blue-600.px-4</code></td>
+            <td class="fail">Fix any of the following:<br/>  Element has insufficient color contrast of 3.67 (foreground color: #ffffff, background color: #3b82f6, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1</td>
+          </tr>
+        
+
+          <tr>
+            <td class="nowrap">http://localhost:5173/</td>
+            <td class="nowrap">color-contrast</td>
+            <td class="impact serious">serious</td>
+            <td class="desc">Ensure the contrast between foreground and background colors meets WCAG 2 AA minimum contrast ratio thresholds</td>
+            <td class="target"><code>.home-get-started-div &gt; .bg-blue-500.hover\:bg-blue-600.px-4</code></td>
+            <td class="fail">Fix any of the following:<br/>  Element has insufficient color contrast of 3.67 (foreground color: #ffffff, background color: #3b82f6, font size: 12.0pt (16px), font weight: normal). Expected contrast ratio of 4.5:1</td>
+          </tr>
+        
+          </tbody>
+        </table>
+      </body>
+    </html>

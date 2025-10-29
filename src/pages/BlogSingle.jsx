@@ -82,7 +82,7 @@ const BlogSingle = ({darkMode, setDarkMode}) => {
     <div className="home-body" id="inner-body-div">
         <Header page={page} darkMode={darkMode} setDarkMode={setDarkMode} showDropdownPage={showDropdownPage} setShowDropdownPage={setShowDropdownPage} resultsVisible={resultsVisible} setResultsVisible={setResultsVisible}/>
 
-        <div className='min-h-[calc(100vh-200px)]'>
+        <main className='min-h-[calc(100vh-200px)]'>
           {blog.length > 0 ? 
               <>
                 <div className='blog_single_div pb-[50px]'>
@@ -99,9 +99,9 @@ const BlogSingle = ({darkMode, setDarkMode}) => {
                 <div className={`mt-[50px] rounded-md ${darkMode ? 'bg-gray-50' : 'bg-gray-500'} h-[100px]`}></div>
               </div>
             }
-        </div>
+        </main>
       
-        <Footer page={page}/>
+        <Footer page={page} darkMode={darkMode}/>
 
         <SlideOutNav page={page} showDropdownPage={showDropdownPage}/>
     </div>

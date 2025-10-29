@@ -74,7 +74,7 @@ const BlogMain = ({darkMode, setDarkMode}) => {
         <ScrollTracker page={page}/>
         <Header page={page} darkMode={darkMode} setDarkMode={setDarkMode} showDropdownPage={showDropdownPage} setShowDropdownPage={setShowDropdownPage} resultsVisible={resultsVisible} setResultsVisible={setResultsVisible}/>
 
-        <div className='pb-[100px] pt-[100px] pr-3 pl-3 min-h-[calc(100vh-200px)]'>
+        <main className='pb-[100px] pt-[100px] pr-3 pl-3 min-h-[calc(100vh-200px)]'>
             <Container fluid>
                 <Row>
                     {blogPostsStateArray.length > 0 ? 
@@ -111,8 +111,8 @@ const BlogMain = ({darkMode, setDarkMode}) => {
                     
                 </Row>
             </Container>
-        </div>
-        <Footer page={page}/>
+        </main>
+        <Footer page={page} darkMode={darkMode}/>
 
         <SlideOutNav page={page} showDropdownPage={showDropdownPage}/>
     </div>
