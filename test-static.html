@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aria-Ease Menu Example</title>
+    <style>
+        /* Ensure focus rings are always visible on menu items */
+        .menu-item:focus {
+            outline: 2px solid #0066cc;
+            outline-offset: 2px;
+        }
+
+        /* Basic menu styling */
+        #dropdown-menu {
+            border: 1px solid #ccc;
+            background: white;
+            padding: 8px 0;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.15);
+        }
+
+        .menu-item {
+            display: block;
+            padding: 8px 16px;
+            text-decoration: none;
+            color: #333;
+            border: none;
+            background: none;
+            width: 100%;
+            text-align: left;
+            cursor: pointer;
+        }
+
+        .menu-item:hover {
+            background-color: #f0f0f0;
+        }
+    </style>
+</head>
+<body>
+    <button
+        id="menu-button"
+        >
+        Menu
+    </button>
+    <div
+        id="dropdown-menu"
+        style="display: none;"
+    >
+        <a href="#" class="menu-item">Item 1</a>
+        <a href="#" class="menu-item">Item 2</a>
+        <button class="menu-item">Item 3</button>
+    </div>
+
+    <script type="module">
+        import * as Menu from "https://cdn.jsdelivr.net/npm/aria-ease@latest/dist/src/menu/index.js";
+
+        const menu = Menu.makeMenuAccessible({
+            menuId: "dropdown-menu",
+            menuItemsClass: "menu-item",
+            triggerId: "menu-button",
+        });
+    </script>
+</body>
+</html>

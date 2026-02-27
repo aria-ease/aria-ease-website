@@ -10,6 +10,7 @@ import firebase from 'firebase/compat/app';
 import "firebase/compat/firestore";
 import SlideOutNav from '../components/SlideOutNav';
 import ScrollTracker from '../components/ScrollTracker';
+import { Helmet } from 'react-helmet-async';
 
 
 // eslint-disable-next-line react/prop-types
@@ -46,73 +47,88 @@ const BlogMain = ({darkMode, setDarkMode}) => {
       // Initialize main block on mount
       useEffect(() => {
         fetchBlogPosts();
-        mainBlockCleanupRef.current = Block.makeBlockAccessible('inner-body-div', 'block-interactive');
+        mainBlockCleanupRef.current = Block.makeBlockAccessible({ blockId: 'inner-body-div', blockItemsClass: 'block-interactive' });
         return () => {
           if (mainBlockCleanupRef.current) {
-            mainBlockCleanupRef.current();
+            mainBlockCleanupRef.current.cleanup();
             mainBlockCleanupRef.current = null;
-          }
+            }
         };
-      }, []);
+        }, []);
     
-      // Clean up main block listeners when search is visible, re-enable when hidden
-      useEffect(() => {
+        // Clean up main block listeners when search is visible, re-enable when hidden
+        useEffect(() => {
         if (resultsVisible) {
-          if (mainBlockCleanupRef.current) {
-            mainBlockCleanupRef.current();
+            if (mainBlockCleanupRef.current) {
+            mainBlockCleanupRef.current.cleanup();
             mainBlockCleanupRef.current = null;
           }
         } else {
           if (!mainBlockCleanupRef.current) {
-            mainBlockCleanupRef.current = Block.makeBlockAccessible('inner-body-div', 'block-interactive');
+            mainBlockCleanupRef.current = Block.makeBlockAccessible({ blockId: 'inner-body-div', blockItemsClass: 'block-interactive' });
           }
         }
       }, [resultsVisible]);
 
   return (
-    <div className="home-body" id="inner-body-div">
+
+    
+    <div className="home-body flex flex-col h-screen" id="inner-body-div">
+        <Helmet>
+            <title>Blog Main | Aria-Ease</title>
+            <meta name="description" content="Explore the latest blog posts on Aria-Ease, covering accessibility, web development, and inclusive design." />
+          </Helmet>
+          <a
+        href="#main-content"
+        className="skip-to-content-link absolute left-2 top-2 px-4 py-2 rounded-md"
+        tabIndex={0}
+      >
+        Skip to Content
+      </a>
         <ScrollTracker page={page}/>
         <Header page={page} darkMode={darkMode} setDarkMode={setDarkMode} showDropdownPage={showDropdownPage} setShowDropdownPage={setShowDropdownPage} resultsVisible={resultsVisible} setResultsVisible={setResultsVisible}/>
 
-        <main className='pb-[100px] pt-[100px] pr-3 pl-3 min-h-[calc(100vh-200px)]'>
-            <Container fluid>
-                <Row>
-                    {blogPostsStateArray.length > 0 ? 
-                        <>
-                            {blogPostsStateArray.map((element, index) => (
-                                <Col key={index} xs={12} sm={12} md={6} lg={4} className='mt-[30px]'>
-                                    <BlogCard 
-                                        blogTitle={element.blogTitle} 
-                                        blogImage={element.blogImage} 
-                                        blogContent={element.blogContent.replace(/<[^>]*>/g, '').replace(/\s+/g, ' ').trim().slice(0, 100)}
-                                        postDate={element.creation}
-                                        page={page}
-                                        docId={element.docId}
+        <div className="flex-1 overflow-y-auto pb-[100px]">
+            <main className='pb-[100px] pt-[100px] pr-3 pl-3 min-h-[calc(100vh-200px)]' id="main-content">
+                <Container fluid>
+                    <Row>
+                        {blogPostsStateArray.length > 0 ? 
+                            <>
+                                {blogPostsStateArray.map((element, index) => (
+                                    <Col key={index} xs={12} sm={12} md={6} lg={4} className='mt-[30px]'>
+                                        <BlogCard 
+                                            blogTitle={element.blogTitle} 
+                                            blogImage={element.blogImage} 
+                                            blogContent={element.blogContent.replace(/<[^>]*>/g, '').replace(/\s+/g, ' ').trim().slice(0, 100)}
+                                            postDate={element.creation}
+                                            page={page}
+                                            docId={element.docId}
 
-                                    />
-                                </Col>
-                            ))}
-                        </> :
-                        <>
-                            {[1,2,3,4,5,6].map((element, index) => {
-                                return (
-                                    <Col xs={12} sm={12} md={6} lg={4} key={index} className='mt-[30px]'>
-                                        <div className='animate-pulse w-full min-h-[408px]'>
-                                            <div className={`h-[200px] rounded-md ${darkMode ? 'bg-gray-50' : 'bg-gray-500'}`}></div>
-                                            <div className={`h-[48px] rounded-md mt-[30px] w-4/4 ${darkMode ? 'bg-gray-50' : 'bg-gray-500'}`}></div>
-                                            <div className={`h-[60px] rounded-md mt-[10px] w-3/4 ${darkMode ? 'bg-gray-50' : 'bg-gray-500'}`}></div>
-                                            <div className={`h-6 w-1/4 rounded-md mt-[10px] ${darkMode ? 'bg-gray-50' : 'bg-gray-500'}`}></div>
-                                        </div>
+                                        />
                                     </Col>
-                                )
-                            })}
-                        </>
-                    }
-                    
-                </Row>
-            </Container>
-        </main>
-        <Footer page={page} darkMode={darkMode}/>
+                                ))}
+                            </> :
+                            <>
+                                {[1,2,3,4,5,6].map((element, index) => {
+                                    return (
+                                        <Col xs={12} sm={12} md={6} lg={4} key={index} className='mt-[30px]'>
+                                            <div className='animate-pulse w-full min-h-[408px]'>
+                                                <div className={`h-[200px] rounded-md ${darkMode ? 'bg-gray-50' : 'bg-gray-500'}`}></div>
+                                                <div className={`h-[48px] rounded-md mt-[30px] w-4/4 ${darkMode ? 'bg-gray-50' : 'bg-gray-500'}`}></div>
+                                                <div className={`h-[60px] rounded-md mt-[10px] w-3/4 ${darkMode ? 'bg-gray-50' : 'bg-gray-500'}`}></div>
+                                                <div className={`h-6 w-1/4 rounded-md mt-[10px] ${darkMode ? 'bg-gray-50' : 'bg-gray-500'}`}></div>
+                                            </div>
+                                        </Col>
+                                    )
+                                })}
+                            </>
+                        }
+                        
+                    </Row>
+                </Container>
+            </main>
+            <Footer page={page} darkMode={darkMode}/>
+        </div>
 
         <SlideOutNav page={page} showDropdownPage={showDropdownPage}/>
     </div>

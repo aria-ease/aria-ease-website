@@ -10,11 +10,11 @@
     border: 0.2px solid rgba(27, 27, 27, 0.226);
     background: rgb(211, 211, 211);
 }
-.light-body .search-result-link {
+.light-body .search-result-link.inactive {
     background: rgb(228, 227, 227);
 }
 .light-body .header-button:hover,
-.light-body .search-result-link:hover,
+.light-body .search-result-link.inactive:hover,
 .light-body .hero-explore:hover {
     background: rgb(222, 222, 222);
 }
@@ -109,6 +109,30 @@
     background-color: black;
     color: white;
 }
+.light-body .next-link {
+    background-color: #f4f4f4;
+}
 .light-body .next-link:hover {
-    background-color: #d4eefe;
+    background-color: #e4e4e4;
+}
+.light-body .next-link-text {
+    color: #2563eb; /* blue-600 */
+}
+
+.light-body .text-contrast-medium {
+    color: #374151; /* gray-700 */
+}
+.light-body .text-yellow-contrast {
+    color: #854d0e; /* yellow-800 */
+}
+.light-body .text-yellow-contrast-high {
+    color: #713f12; /* yellow-900 */
+}
+.light-body .text-link-contrast {
+    color: #1d4ed8; /* blue-700 */
+}
+
+.light-body .skip-to-content-link {
+    color: black;
+    background-color: #F2F6F9;
 }

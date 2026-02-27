@@ -1,0 +1,92 @@
+🚀 Running component accessibility tests...
+
+
+[1m[46m RUN [49m[22m [36mv4.0.16 [39m[90m/Users/macx/aria-ease/docs[39m
+
+[90mstdout[2m | tests/ariaease.test.jsx[2m > [22m[2mShopify User Menu Accessibility Test[2m > [22m[2mrenders Shopify user menu without accessibility violation(s)
+[22m[39m🎭 Running Playwright E2E tests on http://localhost:5173/test
+
+[90mstdout[2m | tests/ariaease.test.jsx[2m > [22m[2mComboBox Accessibility Test[2m > [22m[2mrenders ComboBox without accessibility violation(s)
+[22m[39m🎭 Running Playwright E2E tests on http://localhost:5173/test
+
+ [32m✓[39m tests/ariaease.test.jsx[2m > [22mShopify User Menu Accessibility Test[2m > [22mrenders Shopify user menu without accessibility violation(s)[33m 34707[2mms[22m[39m
+ [32m✓[39m tests/ariaease.test.jsx[2m > [22mComboBox Accessibility Test[2m > [22mrenders ComboBox without accessibility violation(s)[33m 21014[2mms[22m[39m
+
+[2m Test Files [22m [1m[32m1 passed[39m[22m[90m (1)[39m
+[2m      Tests [22m [1m[32m2 passed[39m[22m[90m (2)[39m
+[2m   Start at [22m 11:27:54
+[2m   Duration [22m 59.26s[2m (transform 1.33s, setup 0ms, import 1.87s, tests 55.72s, environment 1.46s)[22m
+
+
+Browserslist: caniuse-lite is outdated. Please run:
+  npx update-browserslist-db@latest
+  Why you should do it regularly: https://github.com/browserslist/update-db#readme
+
+════════════════════════════════════════════════════════════
+🔍 Testing menu Component - Playwright (Real Browser)
+════════════════════════════════════════════════════════════
+
+  ✓ Clicking the trigger opens the menu, updates ARIA state, and focuses the first interactive item in the menu.
+  ✓ Clicking the trigger again closes the menu and returns focus to trigger.
+  ✓ Pressing Enter key on trigger opens the menu and focuses first item.
+  ✓ Pressing Space key on trigger opens the menu and focuses first item.
+  ✓ Arrow Down key moves focus to next menu item.
+  ✓ Arrow Up key moves focus to previous menu item.
+  ✓ Arrow Right key moves focus to next menu item.
+  ✓ Arrow Left key moves focus to previous menu item.
+  ✓ Escape key closes the menu and returns focus to trigger.
+  ✓ Pressing Enter on trigger when menu is open closes the menu.
+  ✓ Pressing Space on trigger when menu is open closes the menu.
+  ✓ Clicking outside the menu closes it and returns focus to trigger.
+  ○ Right arrow on menuitem with submenu opens the submenu
+  ✓ Tab on a menuitem closes the menu and update aria-expanded
+  ✓ Shift+Tab on a menuitem closes the menu and update aria-expanded
+✅ Static ARIA Tests: PASS
+   4/4 required attributes present
+
+
+════════════════════════════════════════════════════════════
+📊 Summary
+
+✅ 18/18 tests passed
+○  1 tests skipped (jsdom limitation)
+   menu component works correctly
+⏱️  Duration: 32420ms
+════════════════════════════════════════════════════════════
+
+
+════════════════════════════════════════════════════════════
+🔍 Testing combobox Component - Playwright (Real Browser)
+════════════════════════════════════════════════════════════
+
+  ✓ Pressing ArrowDown on closed combobox opens the listbox without selecting first item.
+  ✓ Second ArrowDown press navigates to first listbox option.
+  ✓ ArrowDown navigates to next listbox option with wrapping.
+  ✓ ArrowUp does not open closed listbox.
+  ✓ ArrowUp navigates to previous option when listbox is open.
+  ✓ Home key navigates to first listbox option.
+  ✓ End key navigates to last listbox option.
+  ✓ Enter key selects active option and closes listbox.
+  ✓ Escape key closes open listbox.
+  ✓ Escape key clears input value when listbox is closed.
+  ✓ Tab key closes the listbox.
+  ✓ Clicking option selects it and closes listbox.
+  ✓ Mouse hover sets aria-selected on hovered listbox option.
+  ✓ Clicking outside closes the listbox.
+  ✓ Toggle button opens and closes listbox.
+  ✓ Toggle button closes open listbox when clicked again.
+  ✓ Navigation wraps from last to first listbox option on ArrowDown.
+  ✓ Navigation wraps from first to last listbox option on ArrowUp.
+✅ Static ARIA Tests: PASS
+   8/8 required attributes present
+
+
+════════════════════════════════════════════════════════════
+📊 Summary
+
+✅ All 26 tests passed!
+   combobox component meets APG and WCAG guidelines ✓
+⏱️  Duration: 20832ms
+════════════════════════════════════════════════════════════
+
+

@@ -8,7 +8,8 @@ import * as Block from 'aria-ease/block';
 import SideNav from "../components/SideNav";
 import './changelog.css';
 import { markdownParser } from '../hooks/markdownParser';
-import { AlertCircle } from "lucide-react";
+import { AlertCircle, ChevronRightCircleIcon } from "lucide-react";
+import { Helmet } from 'react-helmet-async';
 
 
 
@@ -34,10 +35,10 @@ const Changelog = ({ darkMode, setDarkMode }) => {
 
   
     useEffect(() => {
-      mainBlockCleanupRef.current = Block.makeBlockAccessible('inner-body-div', 'block-interactive');
+      mainBlockCleanupRef.current = Block.makeBlockAccessible({ blockId: 'inner-body-div', blockItemsClass: 'block-interactive' });
       return () => {
         if (mainBlockCleanupRef.current) {
-          mainBlockCleanupRef.current();
+          mainBlockCleanupRef.current.cleanup();
           mainBlockCleanupRef.current = null;
         }
       };
@@ -46,12 +47,12 @@ const Changelog = ({ darkMode, setDarkMode }) => {
     useEffect(() => {
       if (resultsVisible) {
         if (mainBlockCleanupRef.current) {
-          mainBlockCleanupRef.current();
+          mainBlockCleanupRef.current.cleanup();
           mainBlockCleanupRef.current = null;
         }
       } else {
         if (!mainBlockCleanupRef.current) {
-          mainBlockCleanupRef.current = Block.makeBlockAccessible('inner-body-div', 'block-interactive');
+          mainBlockCleanupRef.current = Block.makeBlockAccessible({ blockId: 'inner-body-div', blockItemsClass: 'block-interactive' });
         }
       }
     }, [resultsVisible]);
@@ -72,7 +73,20 @@ const Changelog = ({ darkMode, setDarkMode }) => {
   };
 
   return (
+
+    
     <div className="home-body" id="inner-body-div">
+      <Helmet>
+            <title>Changelog | Aria-Ease</title>
+            <meta name="description" content="See what's new, improved, and fixed in each release of Aria-Ease. Stay updated with the latest features, bug fixes, and performance enhancements." />
+          </Helmet>
+          <a
+        href="#main-content"
+        className="skip-to-content-link absolute left-2 top-2 px-4 py-2 rounded-md"
+        tabIndex={0}
+      >
+        Skip to Content
+      </a>
       <ScrollTracker page={page}/>
       <Header 
         page={page}
@@ -83,14 +97,21 @@ const Changelog = ({ darkMode, setDarkMode }) => {
         resultsVisible={resultsVisible}
         setResultsVisible={setResultsVisible}
       />
-      <main className="page-body-div">
+      <main className="page-body-div" id="main-content">
         <Container fluid>
             <Row>
               <SideNav page={page}/>
-              <Col xs={12} sm={12} md={12} lg={9}>
-                <div className="pt-[100px] px-[10px]">
+              <Col xs={12} sm={12} md={12} lg={9} className='px-0'>
+                <div className="side-body-div">
                             <h1 className="hero-heading">Changelog</h1>
                             <p className="hero-paragraph mb-5 mt-8">See what&#39;s new, improved, and fixed in each release of Aria-Ease.</p>
+
+                            <div className='mt-6 mb-[50px] w-full p-4 rounded-lg border-l-4 border-blue-500 bg-blue-50'>
+                              <div className='flex items-center gap-3'>
+                                <AlertCircle className="h-5 w-5 text-blue-900 mt-0.5" />
+                                <p className="text-blue-900"> Note: Earlier versions (≤2.0.x) were pre-release experimental builds without formal changelogs.</p>
+                              </div>
+                            </div>
 
                             {changelogDataa.map((release, index) => (
                               <div key={release.version + index} className="mb-20">
@@ -144,12 +165,17 @@ const Changelog = ({ darkMode, setDarkMode }) => {
                                 ))}
                               </div>
                             ))}
-                            <div className='mt-6 mb-[50px] w-full p-4 rounded-lg border-l-4 border-blue-500 bg-blue-50 dark:bg-blue-900/20'>
-                              <div className='flex items-center gap-3'>
-                                <AlertCircle className="h-5 w-5 text-blue-600 dark:text-blue-400 mt-0.5" />
-                                <p className="text-blue-800 dark:text-blue-200"> Note: Earlier versions (≤2.0.x) were pre-release experimental builds without formal changelogs.</p>
-                              </div>
-                            </div>
+                            
+
+                            <div className='flex flex-wrap gap-4 py-4 mx-auto max-w-7xl md:py-12 mt-[100px] justify-start'>
+                    <a href='/testing' className='block-interactive next-link rounded-lg md:min-w-80 md:max-w-md w-full md:w-auto flex gap-6 items-center px-4 py-6 md:px-5'>
+                    <ChevronRightCircleIcon className="rotate-180"/>
+                      <div className='flex flex-col w-full items-start'>
+                        <span className='text-sm black-white-text'>Previous</span>
+                        <span className='next-link-text text-md'>Testing Suite</span>
+                      </div>
+                    </a>
+                  </div>
                 </div>
               </Col>
             </Row>
@@ -157,6 +183,7 @@ const Changelog = ({ darkMode, setDarkMode }) => {
       </main>
       <SlideOutNav page={page} showDropdownPage={showDropdownPage}/>
     </div>
+
   );
 };
 

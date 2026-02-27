@@ -1,25 +1,33 @@
-import './components/styles.css'
-import './components/dark-mode.css'
-import './components/light-mode.css'
-import 'bootstrap/dist/css/bootstrap.css'
-import { useState } from 'react'
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom"
-import Homepage from "./pages/Homepage"
-import Documentation from './pages/Documentation'
-import Menu from './pages/Menu'
+import './theme/style/styles.css';
+import './theme/color/dark-mode.css';
+import './theme/color/light-mode.css';
+import 'bootstrap/dist/css/bootstrap.css';
+import { useState } from 'react';
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Homepage from "./pages/Homepage";
+import Documentation from './pages/Documentation';
+import ApiReference from './pages/ApiReference';
+import MigrationGuide from './pages/MigrationGuide';
+import Examples from './pages/Examples';
+import Menu from './pages/Menu';
 import BlockExample from './pages/Block'
-import Accordions from './pages/Accordions'
-import Checkbox from './pages/Checkbox'
-import Radio from './pages/Radio'
-import Toggle from './pages/Toggle'
+import Accordions from './pages/Accordions';
+import Checkbox from './pages/Checkbox';
+import Radio from './pages/Radio';
+import Toggle from './pages/Toggle';
 import firebase from "firebase/compat/app";
 import { getAnalytics } from "firebase/analytics";
 import BlogMain from './pages/BlogMain';
-import BlogSingle from './pages/BlogSingle'
+import BlogSingle from './pages/BlogSingle';
 import "firebase/compat/firestore";
 import Admin from './pages/Admin';
 import Changelog from './pages/Changelog';
-import Audit from './pages/Audit'
+import Audit from './pages/Audit';
+import Testing from './pages/Testing';
+import Combobox from './pages/Combobox';
+import Services from './pages/Services';
+import ComponentTestHarness from './pages/ComponentTestHarness';
+import { HelmetProvider } from 'react-helmet-async';
  
 
 const firebaseConfig = {
@@ -41,11 +49,23 @@ const App = () => {
   const[darkMode, setDarkMode] = useState(true);
 
   return (
+    <HelmetProvider>
+      <InnerApp darkMode={darkMode} setDarkMode={setDarkMode}/>
+    </HelmetProvider>
+  )
+}
+
+// eslint-disable-next-line react/prop-types
+const InnerApp = ({darkMode, setDarkMode}) => {
+  return (
     <div className={`body-div ${darkMode ? 'dark-body' : 'light-body'}`}>
       <Router>
         <Routes>
           <Route path="/" element={<Homepage darkMode={darkMode} setDarkMode={setDarkMode}/>}/>
           <Route path="/docs" element={<Documentation darkMode={darkMode} setDarkMode={setDarkMode}/>}/>
+          <Route path="/api" element={<ApiReference darkMode={darkMode} setDarkMode={setDarkMode}/>}/>
+          <Route path="/migration" element={<MigrationGuide darkMode={darkMode} setDarkMode={setDarkMode}/>}/>
+          <Route path="/examples" element={<Examples darkMode={darkMode} setDarkMode={setDarkMode}/>}/>
           <Route path="/examples/menu" element={<Menu darkMode={darkMode} setDarkMode={setDarkMode}/>}/>
           <Route path="/examples/block" element={<BlockExample darkMode={darkMode} setDarkMode={setDarkMode}/>}/>
           <Route path="/examples/accordion" element={<Accordions darkMode={darkMode} setDarkMode={setDarkMode}/>}/>
@@ -57,6 +77,10 @@ const App = () => {
           <Route path="/clandestine/admin/" element={<Admin/>}/>
           <Route path="/changelog" element={<Changelog darkMode={darkMode} setDarkMode={setDarkMode}/>}/>
           <Route path="/audit" element={<Audit darkMode={darkMode} setDarkMode={setDarkMode}/>}/>
+          <Route path="/testing" element={<Testing darkMode={darkMode} setDarkMode={setDarkMode}/>}/>
+          <Route path="/examples/combobox" element={<Combobox darkMode={darkMode} setDarkMode={setDarkMode}/>}/>
+          <Route path="/services" element={<Services darkMode={darkMode} setDarkMode={setDarkMode}/>}/>
+          <Route path="/test-harness" element={<ComponentTestHarness/>}/>
         </Routes>
       </Router>
     </div>

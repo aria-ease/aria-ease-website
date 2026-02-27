@@ -13,8 +13,10 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    position: sticky;
+    position: fixed;
     top: 0;
+    left: 0;
+    right: 0;
     z-index: 1000000000;
 }
 .header-button-icon,
@@ -50,19 +52,20 @@
     transition: all 200ms ease-in;
     border-radius: 8px;
 }
-.header-search-div textarea:focus,
+.header-search-div input:focus,
 #text-input-block-div input:focus {
     outline: none;
 }
-.header-search-div textarea,
+.header-search-div input,
 #text-input-block-div input {
     background-color: transparent;
     border: none;
-    color: rgba(181, 181, 181, 1);
-    font-size: 16px;
     font-style: normal;
     font-weight: 300;
     line-height: 140%;
+}
+.header-search-div input {
+    font-size: 15px;
 }
 @media(min-width: 768px) {
     .header-search-div {
@@ -192,9 +195,29 @@ a:focus {
     text-decoration: none;
     font-weight: 400;
 }
-.side-body-div,
 .side-nav-div {
-    padding: 30px 10px 70px 10px;
+    padding-bottom: 70px;
+}
+.side-nav-div {
+    padding-left: 20px;
+    padding-right: 20px;
+}
+.side-body-div {
+    overflow-y: auto;
+    max-height: calc(100vh - 56px);
+    position: sticky;
+    padding-left: 25px;
+    padding-right: 25px;
+    bottom: 0;
+    top: 56px;
+    padding-top: 30px;
+    padding-bottom: 150px;
+}
+@media(min-width: 992px) {
+    .side-body-div {
+        left: 25%;
+        
+    }
 }
 .header-logo-link,
 .slide-nav-logo-link {
@@ -269,7 +292,10 @@ a {
 #inner-body-div .code-div {
     padding: 10px !important;
 }
-
+#inner-body-div {
+    height: 100vh;
+    overflow: hidden;
+}
 .example-each-ui-code-block-div pre {
     margin-top: 5px;
 }
@@ -414,4 +440,23 @@ select:-moz-autofill {
 .audit-section {
     border-top: 0.1px solid rgb(85, 85, 85);
     border-bottom: 0.1px solid rgb(85, 85, 85);
+}
+.page-body-div {
+    margin-top: 56px;
+    height: calc(100vh - 56px);
+}
+.body-div {
+    overflow: hidden;
+    height: 100vh;
+}
+
+.skip-to-content-link {
+  z-index: 1000000000000000000000;
+  transform: translateY(-200%);
+  transition: transform 0.2s;
+  outline: none;
+}
+.skip-to-content-link:focus, .skip-to-content-link:active {
+  transform: translateY(0);
+  box-shadow: 0 0 0 2px #2563eb;
 }

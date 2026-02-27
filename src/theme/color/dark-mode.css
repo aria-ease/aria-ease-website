@@ -1,5 +1,5 @@
 .dark-body .header-button,
-.dark-body .search-result-link{
+.dark-body .search-result-link.inactive{
     background: rgba(48, 48, 48);
     border: none;
 }
@@ -15,7 +15,7 @@
     border: 0.2px solid rgb(162, 162, 162);
     background: rgb(75, 75, 75);
 }
-.dark-body .search-result-link:hover {
+.dark-body .search-result-link.inactive:hover {
     background: rgb(75, 75, 75);
 }
 .dark-body .header-search-div,
@@ -33,6 +33,9 @@
 .dark-body .header-search-div,
 .dark-body .each-text-input-block-div {
     border: 1px solid rgba(97, 97, 97, 1);
+}
+.dark-body .header-search-div input {
+    color: #d1d5db;
 }
 .dark-body .hero-heading,
 .dark-body .footer-heading-text,
@@ -53,8 +56,9 @@
 .dark-body .version-text, 
 .dark-body .blog_article_date,
 .dark-body .changelog-text,
-.dark-body .audit-section-paragraph {
-    color: rgb(171, 171, 176);
+.dark-body .audit-section-paragraph,
+.dark-body .black-grey-text {
+    color: rgb(209 213 219 / 1);
 }
 .dark-body .hero-examples-div {
     background-color: rgba(196, 196, 196, 0.118);
@@ -133,6 +137,34 @@
 pre.code-div {
   color: #fb6cb3;
 }
+.dark-body .next-link {
+    background-color: #080808;
+}
 .dark-body .next-link:hover {
-    background-color: #17364B;
+    background-color: #232323;
+}
+.dark-body .next-link-text {
+    color: #93c5fd; /* blue-300 */
+}
+.dark-body .text-contrast-medium {
+    color: #d1d5db; /* gray-300 */
+}
+.dark-body .text-yellow-contrast {
+    color: #fef08a; /* yellow-200 */
+}
+.dark-body .text-yellow-contrast-high {
+    color: #fef9c3; /* yellow-100 */
+}
+.dark-body .text-link-contrast {
+    color: #93c5fd; /* blue-300 */
+}
+
+/* Override Bootstrap's inline code color for better contrast in dark mode */
+.dark-body code {
+    color: #ff7edb /* !important */; /* Brighter pink with 4.5:1+ contrast */
+}
+
+.dark-body .skip-to-content-link {
+    color: white;
+    background-color: rgba(0, 0, 0);
 }

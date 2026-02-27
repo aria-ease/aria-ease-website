@@ -7,7 +7,8 @@ import './homepage.css';
 import * as Block from 'aria-ease/block';
 import SideNav from "../components/SideNav";
 import CodeBlockDemo from '../components/CodeBlock';
-import { Terminal, CheckCircle, AlertCircle } from 'lucide-react';
+import { CheckCircle, AlertCircle, ChevronRightCircleIcon } from 'lucide-react';
+import { Helmet } from 'react-helmet-async';
 
 const installCode = `# Install Playwright browsers (one-time setup)
 npx playwright install chromium
@@ -24,7 +25,12 @@ export default {
     output: {
       format: 'html', //'json', 'csv', or 'all'
       out: './accessibility-reports/audit'
-    }
+    },
+    // Optional: Page load timeout in ms (default: 60000)
+    timeout: 60000,
+    // Optional: Wait strategy (default: 'domcontentloaded')
+    // Options: 'load' | 'domcontentloaded' | 'networkidle'
+    waitUntil: 'domcontentloaded'
   }
 };`;
 
@@ -43,7 +49,8 @@ const packageJsonCode = `{
     "audit": "aria-ease audit -f html"
   },
   "devDependencies": {
-    "aria-ease": "^2.1.0",
+    "aria-ease": "^2.8.2",
+    "@axe-core/playwright": "^4.10.2",
     "playwright": "^1.51.1"
   }
 }`;
@@ -73,10 +80,10 @@ const Audit = ({ darkMode, setDarkMode }) => {
   const mainBlockCleanupRef = useRef(null);
 
   useEffect(() => {
-    mainBlockCleanupRef.current = Block.makeBlockAccessible('inner-body-div', 'block-interactive');
+    mainBlockCleanupRef.current = Block.makeBlockAccessible({ blockId: 'inner-body-div', blockItemsClass: 'block-interactive' });
     return () => {
       if (mainBlockCleanupRef.current) {
-        mainBlockCleanupRef.current();
+        mainBlockCleanupRef.current.cleanup();
         mainBlockCleanupRef.current = null;
       }
     };
@@ -85,18 +92,30 @@ const Audit = ({ darkMode, setDarkMode }) => {
   useEffect(() => {
     if (resultsVisible) {
       if (mainBlockCleanupRef.current) {
-        mainBlockCleanupRef.current();
+        mainBlockCleanupRef.current.cleanup();
         mainBlockCleanupRef.current = null;
       }
     } else {
       if (!mainBlockCleanupRef.current) {
-        mainBlockCleanupRef.current = Block.makeBlockAccessible('inner-body-div', 'block-interactive');
+        mainBlockCleanupRef.current = Block.makeBlockAccessible({ blockId: 'inner-body-div', blockItemsClass: 'block-interactive' });
       }
     }
   }, [resultsVisible]);
 
   return (
+
     <div className="home-body" id="inner-body-div">
+      <Helmet>
+            <title>Accessibility Audit | Aria-Ease</title>
+            <meta name="description" content="Automated accessibility testing powered by axe-core and Playwright. Generate comprehensive HTML or JSON reports to identify and fix accessibility issues in your web applications." />
+          </Helmet>
+          <a
+        href="#main-content"
+        className="skip-to-content-link absolute left-2 top-2 px-4 py-2 rounded-md"
+        tabIndex={0}
+      >
+        Skip to Content
+      </a>
       <ScrollTracker page={page}/>
       <Header 
         page={page}
@@ -107,11 +126,11 @@ const Audit = ({ darkMode, setDarkMode }) => {
         resultsVisible={resultsVisible}
         setResultsVisible={setResultsVisible}
       />
-      <main className="page-body-div">
+      <main className="page-body-div" id="main-content">
         <Container fluid>
           <Row>
             <SideNav page={page}/>
-            <Col xs={12} sm={12} md={12} lg={9}>
+            <Col xs={12} sm={12} md={12} lg={9} className='px-0'>
               <div className='side-body-div'>
                 <h1 className='component-example-heading'>Accessibility Audit</h1>
                 <p className='mt-2'>Automated accessibility testing powered by axe-core and Playwright. Generate comprehensive HTML or JSON reports to identify and fix accessibility issues in your web applications.</p>
@@ -128,12 +147,12 @@ const Audit = ({ darkMode, setDarkMode }) => {
                   </ul>
                 </div>
 
-                <div className='mt-6 p-4 rounded-lg border-l-4 border-blue-500 bg-blue-50 dark:bg-blue-900/20'>
+                <div className={`mt-6 p-4 rounded-lg border-l-4 border-blue-500 ${darkMode ? 'bg-blue-900/20' : 'bg-blue-50'}`}>
                   <div className='flex items-start gap-3'>
-                    <AlertCircle className="h-5 w-5 text-blue-600 dark:text-blue-400 mt-0.5" />
+                    <AlertCircle className={`h-5 w-5 ${darkMode ? 'text-blue-100' : 'text-blue-800'} mt-0.5`} />
                     <div>
-                      <h3 className='font-semibold text-blue-900 dark:text-blue-100'>Important: Playwright Setup Required</h3>
-                      <p className='mt-1 text-blue-800 dark:text-blue-200'>The audit CLI uses Playwright for browser automation. You&apos;ll need to install Playwright browsers before running your first audit. This is a one-time setup step.</p>
+                      <h3 className={`font-semibold ${darkMode ? 'text-blue-100' : 'text-blue-800'}`}>Important: Playwright Setup Required</h3>
+                      <p className={`mt-1 ${darkMode ? 'text-blue-100' : 'text-blue-800'}`}>The audit CLI uses Playwright for browser automation. You&apos;ll need to install Playwright browsers before running your first audit. This is a one-time setup step.</p>
                     </div>
                   </div>
                 </div>
@@ -146,11 +165,11 @@ const Audit = ({ darkMode, setDarkMode }) => {
                   <p className='mt-4'>Then install Playwright browsers (one-time setup):</p>
                   <CodeBlockDemo code={installCode} isLineNumber={true}/>
 
-                  <div className='mt-4 p-3 rounded bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800'>
+                  <div className={`mt-4 p-3 rounded ${darkMode ? 'bg-green-900/20 border-green-800' : 'bg-green-50 border-green-200'} border`}>
                     <div className='flex items-start gap-2'>
-                      <CheckCircle className="h-4 w-4 text-green-600 dark:text-green-400 mt-0.5" />
-                      <p className='text-sm text-green-800 dark:text-green-200'>
-                        <strong>Pro tip:</strong> Only install <code className='px-1 py-0.5 bg-green-100 dark:bg-green-900 rounded text-xs text-[#bc216e]'>chromium</code> to save disk space (~200MB). The audit tool only needs one browser.
+                      <CheckCircle className={`h-4 w-4 ${darkMode ? 'text-green-400' : 'text-green-600'} mt-0.5`} />
+                      <p className={`text-sm ${darkMode ? 'text-green-100' : 'text-green-800'}`}>
+                        <strong>Pro tip:</strong> Only install <code className='px-1 py-0.5 bg-green-900 text-white rounded text-xs'>chromium</code> to save disk space (~200MB). The audit tool only needs one browser.
                       </p>
                     </div>
                   </div>
@@ -158,15 +177,29 @@ const Audit = ({ darkMode, setDarkMode }) => {
 
                 <div className='example-each-ui-code-block-div mt-6'>
                   <h3>Configuration</h3>
-                  <p className='mt-2'>Create an <code>ariaease.config.js</code> file in your project root:</p>
+                  <p className='mt-2'>Create a configuration file in your project root. Aria-Ease supports multiple formats with automatic detection and validation:</p>
                   <CodeBlockDemo code={configCode} isLineNumber={true}/>
                   
                   <div className='mt-3'>
+                    <h4>Supported Configuration Formats</h4>
+                    <ul className='list-disc ml-6 mt-2'>
+                      <li><code>ariaease.config.js</code> - ES modules (recommended)</li>
+                      <li><code>ariaease.config.mjs</code> - ES modules explicit</li>
+                      <li><code>ariaease.config.cjs</code> - CommonJS</li>
+                      <li><code>ariaease.config.json</code> - JSON format</li>
+                      <li><code>ariaease.config.ts</code> - TypeScript (experimental)</li>
+                    </ul>
+                    <p className='mt-3'>The CLI automatically finds and loads your config file with validation to catch errors early.</p>
+                  </div>
+
+                  <div className='mt-3'>
                     <h4>Configuration Options</h4>
                     <ul className='list-disc ml-6 mt-2'>
-                      <li><code>urls</code>: Array of URLs to audit</li>
-                      <li><code>output[&apos;format&apos;]</code>: Output format - &apos;html&apos;, &apos;csv&apos;, &apos;json&apos;, or &apos;all&apos; (default: &apos;all&apos;)</li>
-                      <li><code>output[&apos;out&apos;]</code>: Report output directory - (default: &apos;./accessibility-reports/audit&apos;)</li>
+                      <li><code>urls</code>: Array of URLs to audit (required)</li>
+                      <li><code>output.format</code>: Output format - &apos;html&apos;, &apos;csv&apos;, &apos;json&apos;, or &apos;all&apos; (default: &apos;all&apos;)</li>
+                      <li><code>output.out</code>: Report output directory (default: &apos;./accessibility-reports/audit&apos;)</li>
+                      <li><code>timeout</code>: Page load timeout in milliseconds (default: 60000). Increase for slow-loading pages</li>
+                      <li><code>waitUntil</code>: Wait strategy - &apos;load&apos;, &apos;domcontentloaded&apos;, or &apos;networkidle&apos; (default: &apos;domcontentloaded&apos;). Use &apos;networkidle&apos; for SPAs</li>
                     </ul>
                   </div>
                 </div>
@@ -193,6 +226,19 @@ const Audit = ({ darkMode, setDarkMode }) => {
                   <h4>Troubleshooting</h4>
                   
                   <div className='mt-3'>
+                    <h5>Missing Dependencies</h5>
+                    <p className='mt-2'>If you see this error:</p>
+                    <div className='code-div'>
+                        <code>Cannot find package &apos;@axe-core/playwright&apos;</code>
+                    </div>
+                    <p className='mt-2'>Install the required peer dependencies:</p>
+                    <div className='code-div'>
+                        <code>npm install --save-dev @axe-core/playwright playwright</code>
+                    </div>
+                  </div>
+
+                  <div className='mt-3'>
+                    <h5>Playwright Browsers Not Installed</h5>
                     <p className='mt-2'>If you see this error:</p>
                     <div className='code-div'>
                         <code>browserType.launch: Executable doesn&#39;t exist at ...</code>
@@ -203,8 +249,18 @@ const Audit = ({ darkMode, setDarkMode }) => {
                     </div>
                   </div>
 
+                  <div className='mt-3'>
+                    <h5>Page Load Timeouts</h5>
+                    <p className='mt-2'>If your audits are timing out, try these solutions:</p>
+                    <ul className='list-disc ml-6 mt-2'>
+                      <li>Increase the <code>timeout</code> value in your config (default is 60 seconds)</li>
+                      <li>Change <code>waitUntil</code> from &apos;networkidle&apos; to &apos;domcontentloaded&apos; for faster page loads</li>
+                      <li>Ensure your development server is running and accessible</li>
+                    </ul>
+                  </div>
+
                   <div className='mt-8'>
-                    <h4>Server Not Running</h4>
+                    <h5>Server Not Running</h5>
                     <p className='mt-2'>Make sure your development server is running before auditing localhost URLs:</p>
                     <div className='code-div'>
                         <code>npm run dev  # or your start command</code>
@@ -231,14 +287,22 @@ const Audit = ({ darkMode, setDarkMode }) => {
                   </pre>
                 </div>
 
-                <div className='flex justify-start items-center mt-[100px]'>
-                  <a href='/examples/toggle-button' className='block-interactive next-link rounded-lg'>
-                    <div className='flex flex-col px-4 py-3 rounded-lg'>
-                      <span className='text-sm black-white-text'>Prev</span>
-                      <span className='text-blue-500 text-lg'>Toggle Button</span>
-                    </div>
-                  </a>
-                </div>
+                <div className='flex flex-wrap gap-4 py-4 mx-auto max-w-7xl md:py-12 mt-[100px] justify-between'>
+                    <a href='/examples/toggle-button' className='block-interactive next-link rounded-lg md:min-w-80 md:max-w-md w-full md:w-auto flex gap-6 items-center px-4 py-6 md:px-5'>
+                      <ChevronRightCircleIcon className='rotate-180'/>
+                      <div className='flex flex-col w-full'>
+                        <span className='text-sm black-white-text'>Prev</span>
+                        <span className='next-link-text text-md'>Toggle Button</span>
+                      </div>
+                    </a>
+                    <a href='/testing' className='block-interactive next-link rounded-lg md:min-w-80 md:max-w-md w-full md:w-auto flex gap-6 items-center px-4 py-6 md:px-5'>
+                      <div className='flex flex-col w-full items-end'>
+                        <span className='text-sm black-white-text'>Next</span>
+                        <span className='next-link-text text-md'>Testing Suite</span>
+                      </div>
+                      <ChevronRightCircleIcon/>
+                    </a>
+                  </div>
               </div>
             </Col>
           </Row>

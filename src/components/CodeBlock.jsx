@@ -16,8 +16,8 @@ function CodeBlockDemo({ code, isLineNumber }) {
 
   return (
     <CodeBlock code={code} language='js'>
-      <div className="relative">
-        <CodeBlock.Code className="bg-gray-900 !p-6 rounded-xl shadow-lg code-block-code" tabIndex={0}>
+      <div className="relative max-w-full">
+        <CodeBlock.Code className="bg-gray-900 !p-6 rounded-xl shadow-lg code-block-code overflow-x-auto" tabIndex={0}>
           <div className="table-row">
             {(isLineNumber === true)  ? 
               <CodeBlock.LineNumber className="table-cell pr-4 text-sm text-gray-400 text-right select-none" /> :

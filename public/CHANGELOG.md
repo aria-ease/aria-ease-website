@@ -2,6 +2,196 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [6.2.3](https://github.com/aria-ease/aria-ease/compare/v6.2.2...v6.2.3) (2026-02-27)
+
+### Bug Fixes
+
+- remove non-APG keyboard interactions from checkbox, radio, and toggle ([c98c5ea](https://github.com/aria-ease/aria-ease/commit/c98c5ea190137754f4bc0ca01bf81dbcc19be23f))
+
+### [6.2.2](https://github.com/aria-ease/aria-ease/compare/v6.2.1...v6.2.2) (2026-02-24)
+
+### Bug Fixes
+
+- improved contract test failure handling and timeout management ([0ff539a](https://github.com/aria-ease/aria-ease/commit/0ff539a3b09b3cd6c805b926d808a2cdac7406bc))
+
+### [6.2.1](https://github.com/aria-ease/aria-ease/compare/v6.2.0...v6.2.1) (2026-02-22)
+
+### Bug Fixes
+
+- fixed audit CLI creating Playwright browser instance for each audit URL ([e8074b0](https://github.com/aria-ease/aria-ease/commit/e8074b00819b523b8107ef935130a9673d9299e8))
+
+## [6.2.0](https://github.com/aria-ease/aria-ease/compare/v6.1.0...v6.2.0) (2026-02-16)
+
+### Features
+
+- added callback for menu utility, and refresh return for accordion utility ([14b0740](https://github.com/aria-ease/aria-ease/commit/14b0740f28c7278a6de15ecb7421267829d2c64f))
+
+## [6.1.0](https://github.com/aria-ease/aria-ease/compare/v6.0.1...v6.1.0) (2026-02-15)
+
+### Features
+
+- added onExpand and onCollapse callbacks for accordion utility ([031021c](https://github.com/aria-ease/aria-ease/commit/031021c94f24ccab47821760df6f26e67ca9d11e))
+
+### [6.0.1](https://github.com/aria-ease/aria-ease/compare/v6.0.0...v6.0.1) (2026-02-14)
+
+### Bug Fixes
+
+- fixed accordion contract test failing and/or timing out ([7a5c2fd](https://github.com/aria-ease/aria-ease/commit/7a5c2fdb1191bb8da5d98710750ef9c5639372e2))
+
+## [6.0.0](https://github.com/aria-ease/aria-ease/compare/v5.0.3...v6.0.0) (2026-02-12)
+
+### ⚠ BREAKING CHANGES
+
+- **test:** Playwright tests now require /test-harness route in app. See CONTRACT-TEST-ARCHITECTURE.md for migration guide.
+
+### Features
+
+- **test:** add test harness pattern for 15x faster Playwright tests ([472e72c](https://github.com/aria-ease/aria-ease/commit/472e72cc1f6120eb68b41594f5ea0b4fb8779724))
+
+### [5.0.3](https://github.com/aria-ease/aria-ease/compare/v5.0.2...v5.0.3) (2026-02-10)
+
+### Bug Fixes
+
+- fixed Playwright test runner flakiness by migrating Playwright from timeouts to web-first assertions ([d5d992a](https://github.com/aria-ease/aria-ease/commit/d5d992ac250f51193b570720a25c1de65f6c6c4b))
+
+### [5.0.2](https://github.com/aria-ease/aria-ease/compare/v5.0.1...v5.0.2) (2026-02-09)
+
+### Bug Fixes
+
+- fixed constract test throwing false positives in jsdom mode ([b79f7e6](https://github.com/aria-ease/aria-ease/commit/b79f7e6a76cbe36ada1c9b6bf397da876756f808))
+
+### [5.0.1](https://github.com/aria-ease/aria-ease/compare/v5.0.0...v5.0.1) (2026-02-09)
+
+### Bug Fixes
+
+- fixed menu component throwing false positives due to test setup issues (missing event handlers and timing issues) ([13a01d1](https://github.com/aria-ease/aria-ease/commit/13a01d138631b48ac7395803e9ca302e84d3614d))
+
+## [5.0.0](https://github.com/aria-ease/aria-ease/compare/v4.0.1...v5.0.0) (2026-01-29)
+
+### Features
+
+- removed update\*AriaAttributes utilities and legacy APIs (BREAKING CHANGE) ([093b72d](https://github.com/aria-ease/aria-ease/commit/093b72dd1e78aab6f7a94852b5fe3bec8ea8fad1))
+- Use make\*Accessible APIs instead
+
+### [4.0.1](https://github.com/aria-ease/aria-ease/compare/v4.0.0...v4.0.1) (2026-01-21)
+
+### Bug Fixes
+
+- **docs:** updated README with new API changes ([7e42f1a](https://github.com/aria-ease/aria-ease/commit/7e42f1a491ef15c2591079eebb73d02d96997801))
+
+## [4.0.0](https://github.com/aria-ease/aria-ease/compare/v3.0.3...v4.0.0) (2026-01-21)
+
+### Features
+
+- add comprehensive make\*Accessible APIs with consistent interface pattern ([ad476ef](https://github.com/aria-ease/aria-ease/commit/ad476efae9c12caebdf720759d4e04d9859806a0))
+- **accordion:** add makeAccordionAccessible with keyboard navigation and lifecycle management
+- **radio:** add makeRadioAccessible with arrow key navigation and automatic selection management
+- **checkbox:** add makeCheckboxAccessible with keyboard support and state queries
+- **toggle:** add makeToggleAccessible supporting single toggles and toggle groups
+- **block:** changed makeBlockAccessible to use consistent parameter pattern
+- **all:** standardize all component APIs with consistent Config interface pattern
+- **all:** add keyboard navigation (Arrow keys, Home, End, Space, Enter)
+- **all:** internal state management eliminates need for manual state tracking
+- **types:** update TypeScript definitions to include new return methods
+- **tests:** add comprehensive unit tests for all new functions (247 total tests)
+
+### Changed
+
+- All component APIs now follow consistent **make\*Accessible** pattern
+- Improved TypeScript types for better IDE autocomplete
+
+**Note:** Old APIs remain fully functional for backward compatibility.
+
+### [3.0.3](https://github.com/aria-ease/aria-ease/compare/v3.0.2...v3.0.3) (2026-01-20)
+
+### Bug Fixes
+
+- **docs:** remove test limitation warnings from README ([24476a0](https://github.com/aria-ease/aria-ease/commit/24476a02ec9deb87e3359308ac6eada40323d73e))
+
+### [3.0.2](https://github.com/aria-ease/aria-ease/compare/v3.0.1...v3.0.2) (2026-01-19)
+
+### Bug Fixes
+
+- increased timeout value in Playwright contract test runner ([f05c7f0](https://github.com/aria-ease/aria-ease/commit/f05c7f025013f676ce2c5f452b26447ca0e3956c))
+
+### [3.0.1](https://github.com/aria-ease/aria-ease/compare/v3.0.0...v3.0.1) (2026-01-17)
+
+### Bug Fixes
+
+- Menu: fixed wrong aria attribute in menu contract assertion. Changed 'aria-popup' to 'aria-haspopup' ([564ccf8](https://github.com/aria-ease/aria-ease/commit/564ccf8baac9e98b4d66c707d6ab9ac256bce308))
+
+## [3.0.0](https://github.com/aria-ease/aria-ease/compare/v2.9.0...v3.0.0) (2026-01-14)
+
+### Features
+
+- **menu:** auto-initialize ARIA attributes in makeMenuAccessible ([5c7f8d5](https://github.com/aria-ease/aria-ease/commit/5c7f8d5e342f80cb225f43457d492832c18d0f95))
+
+## [2.9.0](https://github.com/aria-ease/aria-ease/compare/v2.8.4...v2.9.0) (2026-01-13)
+
+### Features
+
+- added combobox utility and contract test ([c23481b](https://github.com/aria-ease/aria-ease/commit/c23481b1a1aebec681353e472fd6482decba7edd))
+
+### [2.8.4](https://github.com/aria-ease/aria-ease/compare/v2.8.3...v2.8.4) (2026-01-08)
+
+### Bug Fixes
+
+- fixed bin folder not publishing with rest of build ([6614b55](https://github.com/aria-ease/aria-ease/commit/6614b55836c57ed3eb6bd903266cbb4012a55349))
+
+### [2.8.3](https://github.com/aria-ease/aria-ease/compare/v2.8.2...v2.8.3) (2026-01-07)
+
+### Bug Fixes
+
+- fixed menu component contract test failing when submenu not found ([13a8cff](https://github.com/aria-ease/aria-ease/commit/13a8cffd382ab773f356dcab8359ac050404a887))
+
+### [2.8.2](https://github.com/aria-ease/aria-ease/compare/v2.8.1...v2.8.2) (2026-01-06)
+
+### Bug Fixes
+
+- reduced library size by excluding external dependencies ([5da6b8f](https://github.com/aria-ease/aria-ease/commit/5da6b8f14aa3db1cfcb9497e79906a7bb0a48f2a))
+
+### [2.8.1](https://github.com/aria-ease/aria-ease/compare/v2.8.0...v2.8.1) (2026-01-06)
+
+### Bug Fixes
+
+- added missing Tab and Shift+Tab assertions to menu contract ([dc886a1](https://github.com/aria-ease/aria-ease/commit/dc886a1c5e961a3277228100b830ed585b7c9b69))
+
+## [2.8.0](https://github.com/aria-ease/aria-ease/compare/v2.7.0...v2.8.0) (2026-01-02)
+
+### Bug Fixes
+
+- Tab/Shift+Tab not closing menu ([dc41a01](https://github.com/aria-ease/aria-ease/commit/dc41a01e35e7d25f2b746a767adb4aec2ca1a417))
+
+## [2.7.0](https://github.com/aria-ease/aria-ease/compare/v2.6.0...v2.7.0) (2026-01-01)
+
+### Bug Fixes
+
+- fixed menu utility function not detecting nested menus ([e8e912a](https://github.com/aria-ease/aria-ease/commit/e8e912a74c869639b87e80f40c73aceec1fcd35c))
+
+## [2.6.0](https://github.com/aria-ease/aria-ease/compare/v2.5.0...v2.6.0) (2025-12-30)
+
+### Bug Fixes
+
+- increased playwright load timeout for auditing pages ([13d3116](https://github.com/aria-ease/aria-ease/commit/13d31162db19ebc4d14cb35ac7ba231332a9fa89))
+
+## [2.5.0](https://github.com/aria-ease/aria-ease/compare/v2.4.0...v2.5.0) (2025-12-30)
+
+### Bug Fixes
+
+- increased playwright load timeout for auditing pages ([13d3116](https://github.com/aria-ease/aria-ease/commit/13d31162db19ebc4d14cb35ac7ba231332a9fa89))
+
+## [2.4.0](https://github.com/aria-ease/aria-ease/compare/v2.3.0...v2.4.0) (2025-12-29)
+
+### Bug Fixes
+
+- updated makeBlockAccessible API ([8a6a25c](https://github.com/aria-ease/aria-ease/commit/8a6a25c01f7eb0b0665147603b00e9478be35706))
+
+## [2.3.0](https://github.com/aria-ease/aria-ease/compare/v2.2.3...v2.3.0) (2025-12-28)
+
+### Features
+
+- add contract testing suite and test utilities ([85b74e6](https://github.com/aria-ease/aria-ease/commit/85b74e636a5f7914d4403e753cb7332024fe98eb))
+
 ### [2.2.3](https://github.com/aria-ease/aria-ease/compare/v2.2.2...v2.2.3) (2025-10-17)
 
 ### Bug Fixes

@@ -2,6 +2,23 @@
 @tailwind components;
 @tailwind utilities;
 
+/* Code block overflow fix */
+.code-block-code {
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+.code-block-code pre {
+  max-width: 100%;
+  overflow-x: auto;
+  white-space: pre;
+}
+
+.code-block-code code {
+  display: block;
+  max-width: 100%;
+}
+
 * {
   scrollbar-width: thin;
   scrollbar-color: silver transparent;
@@ -19,6 +36,7 @@ html {
 
 body {
   margin: 0px;
+  height: 100vh;
 }
 
 @media (min-width: 1200px) {
@@ -83,4 +101,9 @@ body {
 
 .get-started-ship {
   font-size: calc(1.3rem + 0.6vw);
+}
+
+/* Fix syntax highlighting contrast in code blocks */
+.constant > span {
+  color: #8b8fd4 !important;
 }

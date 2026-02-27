@@ -8,7 +8,9 @@
     "build": "vite build",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
-    "audit": "aria-ease audit -f html"
+    "audit": "npx aria-ease audit -f html",
+    "test": "npx aria-ease test",
+    "prepublish": "npm run audit && npm run test"
   },
   "dependencies": {
     "@tiptap/extension-link": "^2.11.5",
@@ -18,7 +20,7 @@
     "@tiptap/react": "^2.11.5",
     "@tiptap/starter-kit": "^2.11.5",
     "@vercel/analytics": "^1.2.2",
-    "aria-ease": "^2.2.3",
+    "aria-ease": "^5.0.3",
     "bootstrap": "^5.3.2",
     "firebase": "^10.12.2",
     "framer-motion": "^12.4.7",
@@ -29,6 +31,7 @@
     "react-bootstrap": "^2.9.1",
     "react-code-block": "^1.1.3",
     "react-dom": "^18.2.0",
+    "react-helmet-async": "^2.0.5",
     "react-icons": "^4.12.0",
     "react-router": "^6.20.1",
     "react-router-dom": "^6.20.1",
@@ -39,6 +42,9 @@
     "unist-util-visit": "^5.0.0"
   },
   "devDependencies": {
+    "@axe-core/playwright": "^4.11.0",
+    "@playwright/test": "^1.58.2",
+    "@testing-library/react": "^16.3.1",
     "@types/react": "^18.2.37",
     "@types/react-dom": "^18.2.15",
     "@vitejs/plugin-react": "^4.2.0",
@@ -47,8 +53,12 @@
     "eslint-plugin-react": "^7.33.2",
     "eslint-plugin-react-hooks": "^4.6.0",
     "eslint-plugin-react-refresh": "^0.4.4",
+    "jest-axe": "^10.0.0",
+    "jsdom": "^27.4.0",
+    "playwright": "^1.57.0",
     "postcss": "^8.4.38",
     "tailwindcss": "^3.4.3",
-    "vite": "^5.0.0"
+    "vite": "^5.0.0",
+    "vitest": "^4.0.16"
   }
 }
