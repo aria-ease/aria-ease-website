@@ -1,7 +1,7 @@
 # Aria-Ease Documentation Website
 
-[![Audited by aria-ease](https://raw.githubusercontent.com/aria-ease/aria-ease/main/badges/audited-by-aria-ease.svg)](https://github.com/aria-ease/aria-ease)
-[![Components tested: aria-ease](https://raw.githubusercontent.com/aria-ease/aria-ease/main/badges/components-tested-aria-ease.svg)](https://github.com/aria-ease/aria-ease)
+[![Audited by aria-ease](https://cdn.jsdelivr.net/gh/aria-ease/aria-ease@main/badges/audited-by-aria-ease.svg)](https://github.com/aria-ease/aria-ease)
+[![Components tested: aria-ease](https://cdn.jsdelivr.net/gh/aria-ease/aria-ease@main/badges/components-tested-aria-ease.svg)](https://github.com/aria-ease/aria-ease)
 This is the official documentation website for [Aria-Ease NPM Package](https://www.npmjs.com/package/aria-ease)
 
 ## The [open source package repo](https://github.com/aria-ease/aria-ease)
