@@ -1,10 +1,12 @@
 # Aria-Ease Documentation Website
 
+[![Audited by aria-ease](https://raw.githubusercontent.com/aria-ease/aria-ease/main/package/badges/audited-by-aria-ease.svg)](https://github.com/aria-ease/aria-ease)
+[![Components tested: aria-ease](https://raw.githubusercontent.com/aria-ease/aria-ease/main/package/badges/components-tested-aria-ease.svg)](https://github.com/aria-ease/aria-ease)
 This is the official documentation website for [Aria-Ease NPM Package](https://www.npmjs.com/package/aria-ease)
 
 ## The [open source package repo](https://github.com/aria-ease/aria-ease)
 
-## 🎉 Recent Major Updates (January 2026)
+## 🎉 Recent Major Updates (March 2026)
 
 The documentation has been significantly enhanced to better showcase aria-ease's value:
 

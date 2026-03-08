@@ -3,7 +3,7 @@ import { Container, Row, Col } from 'react-bootstrap'
 import SideNav from '../components/SideNav'
 import SlideOutNav from '../components/SlideOutNav'
 import { useState, useEffect, useRef } from 'react'
-import TextInputBlock from '../components/tabs/TextInputBlock'
+import TextInputBlock from '../components/block/TextInputBlock'
 import * as Block from 'aria-ease/block'
 import CodeBlockDemo from '../components/CodeBlock';
 import ScrollTracker from '../components/ScrollTracker';
@@ -163,7 +163,7 @@ const BlockExample = ({darkMode, setDarkMode}) => {
                       <h1 className='component-example-heading'>Block</h1>
                       <p className='mt-2'>A statically displayed component that has a list of related interactive children items e.g tabs, interactive sliders, carousels, and entire web pages.</p>
 
-                      <div className={`mt-6 p-4 rounded-lg border-l-4 border-blue-500 ${darkMode ? 'bg-blue-900/20' : 'bg-blue-50'}`}>
+                      <section className={`mt-6 p-4 rounded-lg border-l-4 border-blue-500 ${darkMode ? 'bg-blue-900/20' : 'bg-blue-50'}`}>
                         <h2 className={`font-semibold ${darkMode ? 'text-blue-100' : 'text-blue-900'}`}>Bundle Size</h2>
                         <p className={`mt-2 ${darkMode ? 'text-blue-100' : 'text-blue-900'}`}>The block component is tree-shakable and weighs approximately <strong>1.7KB</strong> when imported individually.</p>
                         <code className={`block mt-2 p-2 ${darkMode ? 'bg-blue-900/20' : 'bg-blue-100'} rounded text-sm`}>
@@ -171,10 +171,10 @@ const BlockExample = ({darkMode, setDarkMode}) => {
                           <p className='my-4'>or</p>
                           <p>import &#123; makeBlockAccessible &#125; from &quot;aria-ease/block&quot;;</p>
                         </code>
-                      </div>
+                      </section>
 
-                      <div className='mt-10'>
-                          <h3>Common Use Cases</h3>
+                      <section className='mt-10'>
+                          <h2>Common Use Cases</h2>
                           <ul className='list-disc ml-6 mt-2'>
                             <li>Form field groups</li>
                             <li>Interactive widgets (carousels, tabs)</li>
@@ -182,9 +182,9 @@ const BlockExample = ({darkMode, setDarkMode}) => {
                             <li>Grid-based interfaces</li>
                             <li>Entire web pages</li>
                           </ul>
-                        </div>
+                        </section>
 
-                      <div className='mt-4'>
+                      <section className='mt-10'>
                         <h2>Block Component Overview</h2>
                         <p className='mt-2'>The Block component creates an accessible focus management system that:</p>
                         <ul className='list-disc ml-6 mt-2'>
@@ -193,22 +193,26 @@ const BlockExample = ({darkMode, setDarkMode}) => {
                           <li>Supports various interactive element types</li>
                           <li>Enhances screen reader navigation</li>
                         </ul>
-                      </div>
+                      </section>
 
-                      <h3 className='mt-5'>Parameters:</h3>
+                      <section className='mt-10'>
+                        <h2 className='mt-5'>Parameters:</h2>
                       <ul className='list-disc ml-6 mt-2'>
                         <li><code>blockId</code> (string): ID of the block container</li>
                         <li><code>blockItemsClass</code> (string): Shared class for all block item</li>
                       </ul>
+                      </section>
 
-                      <h3 className='mt-5'>Returns:</h3>
+                  <section className='mt-10'>
+                    <h2 className='mt-5'>Returns:</h2>
                       <ul className='list-disc ml-6 mt-2'>
                         <li><code>cleanup()</code>: Remove event listeners</li>
                         <li><code>refresh()</code>: Re-initialize block (useful for dynamic content)</li>
                       </ul>
+                  </section>
 
-                      <div className='mt-5'>
-                        <h2>Keyboard Interaction</h2>
+                  <section className='mt-10'>
+                    <h2>Keyboard Interaction</h2>
                         <ul className='list-disc ml-6 mt-2'>
                           <li><code>↑</code> / <code>←</code>: Move focus to previous item</li>
                           <li><code>↓</code> / <code>→</code>: Move focus to next item</li>
@@ -216,19 +220,19 @@ const BlockExample = ({darkMode, setDarkMode}) => {
                           <li><code>End</code>: Move focus to last item</li>
                           <li><code>Tab</code>: Exit the focus trap</li>
                         </ul>
-                      </div>
+                  </section>
 
-                      <div className='mt-4'>
-                        <h2>Implementation Requirements</h2>
+                  <section className='mt-10'>
+                    <h2>Implementation Requirements</h2>
                         <ul className='list-disc ml-6 mt-2'>
                           <li>Container must have a unique ID</li>
                           <li>Interactive elements must share a common class</li>
                           <li>Elements should be semantically related</li>
                           <li>Container should have a logical tab order</li>
                         </ul>
-                      </div>
+                  </section>
 
-                      <div className='mt-4'>
+                      <section className='mt-10'>
                         <h2>Best Practices</h2>
                         <ul className='list-disc ml-6 mt-2'>
                           <li>Group related interactive elements</li>
@@ -238,42 +242,15 @@ const BlockExample = ({darkMode, setDarkMode}) => {
                           <li>Ensure logical content order matches visual order</li>
                           <li>Always call cleanup function when component unmounts</li>
                         </ul>
-                      </div>
+                      </section>
 
-                      <div className={`mt-6 p-4 rounded-lg border-l-4 border-yellow-500 ${darkMode ? 'bg-yellow-900/20' : 'bg-yellow-50'}`}>
-                        <h3 className={`font-semibold ${darkMode ? 'text-yellow-100' : 'text-yellow-900'}`}>⚠️ React StrictMode</h3>
+                      <section className={`mt-10 p-4 rounded-lg border-l-4 border-yellow-500 ${darkMode ? 'bg-yellow-900/20' : 'bg-yellow-50'}`}>
+                        <h2 className={`font-semibold ${darkMode ? 'text-yellow-100' : 'text-yellow-900'}`}>⚠️ React StrictMode</h2>
                         <p className={`mt-2 ${darkMode ? 'text-yellow-100' : 'text-yellow-900'}`}>If using React StrictMode, be aware it intentionally calls effects twice in development. This can cause issues with imperative DOM manipulation. Either remove <code className={`px-1 py-0.5 ${darkMode ? 'bg-yellow-900 text-red-100' : 'bg-yellow-200 text-red-900'} rounded text-sm`}>&lt;React.StrictMode&gt;</code> in development, or use proper cleanup functions as shown in the examples above to prevent double-initialization.</p>
-                      </div>
+                      </section>
 
-                      <div className='example-each-ui-code-block-div mt-6'>
-                        <h3>Buttons Block</h3>
-                        <p className='mt-2'>This creates a focus trap within the buttons tab block. The Arrow keys navigates the focus within the trap in a cycle. The Space and Enter keys &#34;clicks&#34; the interactive element. The Tab key exits the trap.</p>
-                        <CodeBlockDemo code={firstBlockCode} isLineNumber={true}/>
-                      </div>
-
-                      <div className='example-each-ui-code-block-div mt-6'>
-                        <h3>Text Input Block</h3>
-                        <p className='mt-2'>This creates a focus trap within the text input block. The Arrow keys navigates the focus within the trap in a cycle. The Tab key exits the trap.</p>
-                        <TextInputBlock/>
-                        <div className='mt-2'>
-                          <CodeBlockDemo code={secondBlockCode} isLineNumber={true}/>
-                        </div>
-
-                        <div className='mt-5'>
-                          <h3>Switching Block Context</h3>
-                          <p>Sometimes, you need to change which part of your UI contains an accessible block based on user interaction. For example, when a search overlay or modal appears, if there&#39;s a main page block, you should remove the main page block and create a new block for the overlay. This ensures keyboard interaction and focus are always trapped in the correct context, improving accessibility and user experience.</p>
-                          <p className='mt-2'>The Block utility makes it easy to manage these dynamic blocks. You can create and destroy blocks as needed, making it a powerful tool for managing complex UI interactions, and ensuring that your UI remains accessible at all times.</p>
-                          <p className='mt-2'>The Block utility returns a cleanup function that you can call to remove the block when it is not needed.</p>
-                          <p className='mt-2'>Use a ref object to store the cleanup function returned by the <code>makeBlockAccessible(...)</code> method. The ref can then be used to call the cleanup function that was returned by the method. This function removes the event listeners that were added to make the block accessible for keyboard interaction.</p>
-                          <CodeBlockDemo code={dynamicBlockCode} isLineNumber={true}/>
-                          <p className='mt-2'>After the cleanup function has been called on the previous block, and the event listeners removed, a new block can then be created with new event listeners.</p>
-                          <p className='mt-2'>In the code snippet above, &#34;dynamicState&#34; is a state variable that determines when the dynamic block, e.g a modal, or search overlay, is currently active.</p>
-                        </div>
-
-                        
-
-                      <div className='mt-4'>
-                        <h3>Troubleshooting</h3>
+                       <section className='mt-10'>
+                        <h2>Troubleshooting</h2>
                         <ul className='list-disc ml-6 mt-2'>
                           <li>Ensure unique IDs for containers</li>
                           <li>Verify all interactive elements share the specified class</li>
@@ -281,8 +258,7 @@ const BlockExample = ({darkMode, setDarkMode}) => {
                           <li>Test keyboard interaction in all directions</li>
                           <li>Verify focus trap behavior with screen readers</li>
                         </ul>
-                      </div>
-                      </div>
+                      </section>
 
                       
 

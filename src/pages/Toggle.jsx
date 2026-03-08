@@ -102,7 +102,7 @@ const togglesComponent = `<div id='toggle-div'>
                   <h1 className='component-example-heading'>Toggle</h1>
                   <p className='mt-2'>Toggle buttons are components that require a full press-and-release cycle to toggle a value. It is similar but not identical to a checkbox. <Link className='underline block-interactive' to='/examples/checkbox'>Learn about checkbox component here.</Link></p>
 
-                  <div className={`mt-6 p-4 rounded-lg border-l-4 border-blue-500 ${darkMode ? 'bg-blue-900/20' : 'bg-blue-50'}`}>
+                  <section className={`mt-6 p-4 rounded-lg border-l-4 border-blue-500 ${darkMode ? 'bg-blue-900/20' : 'bg-blue-50'}`}>
                     <h2 className={`font-semibold ${darkMode ? 'text-blue-100' : 'text-blue-900'}`}>Bundle Size</h2>
                     <p className={`mt-2 ${darkMode ? 'text-blue-100' : 'text-blue-900'}`}>The toggle component is tree-shakable and weighs approximately <strong>6.0KB</strong> when imported individually.</p>
                     <code className={`block mt-2 p-2 ${darkMode ? 'bg-blue-900/20' : 'bg-blue-100'} rounded text-sm`}>
@@ -110,9 +110,9 @@ const togglesComponent = `<div id='toggle-div'>
                       <p className='my-4'>or</p>
                       <p>import &#123; makeToggleAccessible &#125; from &quot;aria-ease/toggle&quot;;</p>
                     </code>
-                  </div>
+                  </section>
 
-                  <div className='mt-10'>
+                  <section className='mt-10'>
                     <h2>Features</h2>
                     <ul className='list-disc ml-6 mt-2'>
                       <li>✨ Automatic ARIA attribute management</li>
@@ -120,45 +120,47 @@ const togglesComponent = `<div id='toggle-div'>
                       <li>🔧 Programmatic control methods</li>
                       <li>🧹 Automatic cleanup on unmount</li>
                     </ul>
-                  </div>
+                  </section>
 
-                  <div className='mt-4'>
-                    <h3>Common Use Cases</h3>
+                  <section className='mt-10'>
+                    <h2>Common Use Cases</h2>
                     <ul className='list-disc ml-6 mt-2'>
                       <li>Feature toggles (enable/disable functionality)</li>
                       <li>Preference settings (dark mode, notifications)</li>
                       <li>State controls (mute/unmute, show/hide)</li>
                       <li>Mode switches (edit/view, private/public)</li>
                     </ul>
-                  </div>
+                  </section>
 
-                  <div className='mt-5'>
-                    <h3>WAI-ARIA Roles, States, and Properties</h3>
+                  <section className='mt-10'>
+                    <h2>WAI-ARIA Roles, States, and Properties</h2>
                     <ul className='list-disc ml-6 mt-2'>
                       <li>The button has an accessible label. By default, the accessible name is computed from any text content inside the button element. However, it can also be provided with aria-labelledby or aria-label.</li>
                       <li>If a description of the button&#39;s function is present, the button element has aria-describedby set to the ID of the element containing the description.</li>
                       <li>When the action associated with a button is unavailable, the button has aria-disabled set to true.</li>
                       <li>Toggle button has an aria-pressed state. When the button is toggled on, the value of this state is true, and when toggled off, the state is false.</li>
                     </ul>
-                  </div>
+                  </section>
 
-                  <div className='mt-10'>
-                    <h3>What the Utility Handles Automatically</h3>
+                  <section className='mt-10'>
+                    <h2>What the Utility Handles Automatically</h2>
                     <p className='mt-2'>The <code>makeToggleAccessible</code> utility automatically sets and manages all required ARIA attributes:</p>
                     <ul className='list-disc ml-6 mt-2'>
                       <li><code>aria-pressed</code> - dynamically updates when button is toggled on or off</li>
                     </ul>
                     
                     <p className='mt-2'>You only need to provide the HTML structure with IDs and class names.</p>
-                  </div>
+                  </section>
 
-                  <div className='mt-4'>
-                    <h3 className='mt-5'>makeToggleAccessible()</h3>
+
+
+                  <section className='mt-10'>
+                    <h2>makeToggleAccessible()</h2>
                     <p className='mt-2'>The <code>makeToggleAccessible()</code> function automatically manages toggle button accessibility for both single toggles and toggle groups, including ARIA attributes and keyboard interactions.</p>
                     <p className='mt-2'>This function handles all toggle button complexity including aria-pressed attributes, keyboard interaction, and focus management. It supports both individual toggle buttons and groups of toggle buttons.</p>
 
                     <div className={`mt-6 p-4 rounded-lg border-l-4 border-green-500 ${darkMode ? 'bg-green-900/20' : 'bg-green-50'}`}>
-                      <h4 className={`font-semibold ${darkMode ? 'text-green-100' : 'text-green-900'}`}>✨ Key Features</h4>
+                      <h3 className={`font-semibold ${darkMode ? 'text-green-100' : 'text-green-900'}`}>✨ Key Features</h3>
                       <ul className={`list-disc ml-6 mt-2 ${darkMode ? 'text-green-100' : 'text-green-900'}`}>
                         <li>Automatic aria-pressed management</li>
                         <li>Built-in keyboard interaction (Enter, Space, Arrow keys for groups)</li>
@@ -167,16 +169,17 @@ const togglesComponent = `<div id='toggle-div'>
                         <li>No manual state management required</li>
                       </ul>
                     </div>
+                  </section>
 
-                    <div className='mt-6'>
-                      <h3>Keyboard Interaction</h3>
+                  <section className='mt-10'>
+                    <h2>Keyboard Interaction</h2>
                       <ul className='list-disc ml-6 mt-2'>
                         <li><code>Enter</code> / <code>Space</code> - Toggle pressed state</li>
                       </ul>
-                    </div>
+                  </section>
 
-                    <div>
-                      <p className='mb-2 mt-6'>Import the function:</p>
+                  <section className='mt-10'>
+                    <p className='mb-2'>Import the function:</p>
                       <CodeBlockDemo code={importGroupToggles}/>
 
                       <p className='mb-2 mt-6'>For a group of toggle buttons:</p>
@@ -190,33 +193,24 @@ const togglesComponent = `<div id='toggle-div'>
 
                       <p className='mb-2 mt-6'>Available API methods:</p>
                       <CodeBlockDemo code={apiMethods} isLineNumber={true}/>
-                    </div>
+                  </section>
 
-                    
-                  </div>
-                  
-                  <div className='mt-10 pt-3'>
-                    <div className='mt-6'>
-                      <div className='mt-10'>
-                    <h3>Common Pitfalls to Avoid</h3>
+                  <section className='mt-10'>
+                    <h2>Common Pitfalls to Avoid</h2>
                     <ul className='list-disc ml-6 mt-2'>
                       <li>Use aria-label for only non-text toggle buttons</li>
                       <li>When used, don&#39;t change the aria-label based on toggle state</li>
                       <li>Don&#39;t rely solely on color to indicate toggle state</li>
                       <li>Don&#39;t disable keyboard interaction between toggle buttons in a group</li>
                     </ul>
-                  </div>
-
-                  
-                    </div>
-                  </div>
+                  </section>
 
                     <div className='flex flex-wrap gap-4 py-4 mx-auto max-w-7xl md:py-12 mt-[100px] justify-between'>
-                    <a href='/examples/radio' className='block-interactive next-link rounded-lg md:min-w-80 md:max-w-md w-full md:w-auto flex gap-6 items-center px-4 py-6 md:px-5'>
+                    <a href='/examples/tabs' className='block-interactive next-link rounded-lg md:min-w-80 md:max-w-md w-full md:w-auto flex gap-6 items-center px-4 py-6 md:px-5'>
                       <ChevronRightCircleIcon className='rotate-180'/>
                       <div className='flex flex-col w-full'>
                         <span className='text-sm black-white-text'>Prev</span>
-                        <span className='next-link-text text-md'>Radio</span>
+                        <span className='next-link-text text-md'>Tabs</span>
                       </div>
                     </a>
                     <a href='/audit' className='block-interactive next-link rounded-lg md:min-w-80 md:max-w-md w-full md:w-auto flex gap-6 items-center px-4 py-6 md:px-5'>

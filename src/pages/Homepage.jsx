@@ -233,7 +233,6 @@ const Homepage = ({darkMode, setDarkMode}) => {
                     <li>✓ Automatic ARIA updates</li>
                     <li>✓ Submenu support</li>
                     <li>✓ Click outside close</li>
-                    <li>✓ WCAG 2.1 AA compliant</li>
                   </ul>
                 </div>
               </Col>
@@ -245,47 +244,136 @@ const Homepage = ({darkMode, setDarkMode}) => {
         <section className="py-[80px] px-3">
           <Container fluid>
             <div className="text-center mb-12">
-              <h2 className="black-white-text text-3xl font-bold mb-4">Why aria-ease?</h2>
-              <p className="text-[1.2rem] leading-[1.5rem] black-grey-text max-w-3xl mx-auto">Choose the right tool for accessibility without sacrificing flexibility or bundle size</p>
+              <h2 className="black-white-text text-3xl font-bold mb-4">Complete Accessibility Lifecycle</h2>
+              <p className="text-[1.2rem] leading-[1.5rem] black-grey-text max-w-3xl mx-auto">From design to deployment—aria-ease covers every phase of accessibility governance</p>
             </div>
             <Row className="g-4">
               <Col lg={4} md={6}>
-                <div className={`p-6 h-full rounded-xl border-2 ${darkMode ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200'} shadow-lg`}>
-                  <h3 className="text-xl font-bold mb-4 text-red-600">❌ Building from Scratch</h3>
+                <div className={`p-6 h-full rounded-xl border-2 ${darkMode ? 'bg-gray-900 border-gray-800' : 'bg-white border-gray-200'} shadow-lg`}>
+                  <h3 className="text-xl font-bold mb-4 text-red-600">❌ Fragmented Approach</h3>
                   <ul className="space-y-2 black-grey-text">
-                    <li>• 50+ lines per component</li>
-                    <li>• Hours debugging focus logic</li>
-                    <li>• Easy to miss ARIA attributes</li>
-                    <li>• Inconsistent across team</li>
-                    <li>• 100% manual WCAG testing</li>
+                    <li>• Manual ARIA implementation</li>
+                    <li>• Separate testing tools</li>
+                    <li>• Post-launch audits only</li>
+                    <li>• No behavior validation</li>
+                    <li>• Testing disconnected from CI/CD</li>
+                    <li>• Accessibility as an afterthought</li>
                   </ul>
                 </div>
               </Col>
               <Col lg={4} md={6}>
-                <div className={`p-6 h-full rounded-xl border-2 ${darkMode ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200'} shadow-lg`}>
-                  <h3 className="text-xl font-bold mb-4 text-orange-600">⚠️ Component Libraries</h3>
+                <div className={`p-6 h-full rounded-xl border-2 ${darkMode ? 'bg-gray-900 border-gray-800' : 'bg-white border-gray-200'} shadow-lg`}>
+                  <h3 className="text-xl font-bold mb-4 text-orange-600">⚠️ Component Libraries Only</h3>
                   <ul className="space-y-2 black-grey-text">
-                    <li>• Lock you into their design</li>
-                    <li>• Heavy bundle sizes (20KB+)</li>
-                    <li>• Limited customization</li>
-                    <li>• Framework-specific</li>
-                    <li>• Learning curve</li>
+                    <li>• Pre-built components only</li>
+                    <li>• No testing infrastructure</li>
+                    <li>• No audit capabilities</li>
+                    <li>• Limited to their patterns</li>
+                    <li>• Can&apos;t verify custom components</li>
+                    <li>• No CI/CD integration</li>
                   </ul>
                 </div>
               </Col>
               <Col lg={4} md={12}>
                 <div className={`p-6 h-full rounded-xl border-2 border-green-500 ${darkMode ? 'bg-green-900/20' : 'bg-green-50'} shadow-xl`}>
-                  <h3 className="text-xl font-bold mb-4 text-green-600">✅ aria-ease</h3>
+                  <h3 className="text-xl font-bold mb-4 text-green-600">✅ aria-ease Platform</h3>
                   <ul className="space-y-2 black-grey-text">
-                    <li>• 3 lines of code</li>
-                    <li>• Works with ANY design system</li>
-                    <li>• 1.4KB - 3.7KB per component</li>
-                    <li>• Framework agnostic</li>
-                    <li>• WCAG compliant by default</li>
+                    <li>• 🎨 Design: Component utilities (1.4-3.7KB)</li>
+                    <li>• 🧪 Test: Contract testing for behavior</li>
+                    <li>• 🔍 Audit: Runtime page scanning</li>
+                    <li>• ✓ Verify: WCAG compliance validation</li>
+                    <li>• 🚀 Integrate: CI/CD pipeline ready</li>
+                    <li>• 📊 Govern: End-to-end lifecycle coverage</li>
                   </ul>
                 </div>
               </Col>
             </Row>
+            
+            {/* Accessibility Lifecycle Phases */}
+            <div className="mt-12">
+              <div>
+                <h3 className="text-2xl font-bold mb-6 black-white-text text-center">The aria-ease Accessibility Lifecycle</h3>
+                <Row className="g-4">
+                  <Col md={6} lg={4}>
+                    <div className={`p-4 rounded-lg ${darkMode ? 'bg-gray-900' : 'bg-white'} h-full`}>
+                      <div className="flex items-center gap-2 mb-3">
+                        <div className="w-8 h-8 rounded-full bg-purple-100 dark:bg-purple-900/30 flex items-center justify-center">
+                          <Code2 className="text-purple-600" size={18} />
+                        </div>
+                        <h4 className="font-bold black-white-text">Design & Build</h4>
+                      </div>
+                      <p className="text-sm black-grey-text mb-2">Component utilities with automatic ARIA management</p>
+                      <code className="text-xs text-purple-600 dark:text-purple-400">makeMenuAccessible(), makeTabsAccessible()</code>
+                    </div>
+                  </Col>
+                  
+                  <Col md={6} lg={4}>
+                    <div className={`p-4 rounded-lg ${darkMode ? 'bg-gray-900' : 'bg-white'} h-full`}>
+                      <div className="flex items-center gap-2 mb-3">
+                        <div className="w-8 h-8 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center">
+                          <ShieldCheck className="text-blue-600" size={18} />
+                        </div>
+                        <h4 className="font-bold black-white-text">Test & Verify</h4>
+                      </div>
+                      <p className="text-sm black-grey-text mb-2">Contract testing validates keyboard interaction & ARIA patterns</p>
+                      <code className="text-xs text-blue-600 dark:text-blue-400">npx aria-ease test</code>
+                    </div>
+                  </Col>
+                  
+                  <Col md={6} lg={4}>
+                    <div className={`p-4 rounded-lg ${darkMode ? 'bg-gray-900' : 'bg-white'} h-full`}>
+                      <div className="flex items-center gap-2 mb-3">
+                        <div className="w-8 h-8 rounded-full bg-orange-100 dark:bg-orange-900/30 flex items-center justify-center">
+                          <FileCheck2 className="text-orange-600" size={18} />
+                        </div>
+                        <h4 className="font-bold black-white-text">Audit</h4>
+                      </div>
+                      <p className="text-sm black-grey-text mb-2">Runtime page scanning with axe-core for WCAG violations</p>
+                      <code className="text-xs text-orange-600 dark:text-orange-400">npx aria-ease audit</code>
+                    </div>
+                  </Col>
+                  
+                  <Col md={6} lg={4}>
+                    <div className={`p-4 rounded-lg ${darkMode ? 'bg-gray-900' : 'bg-white'} h-full`}>
+                      <div className="flex items-center gap-2 mb-3">
+                        <div className="w-8 h-8 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center">
+                          <CheckCircle2 className="text-green-600" size={18} />
+                        </div>
+                        <h4 className="font-bold black-white-text">Validate</h4>
+                      </div>
+                      <p className="text-sm black-grey-text mb-2">Multi-format reports (JSON, CSV, HTML) for compliance tracking</p>
+                      <code className="text-xs text-green-600 dark:text-green-400">audit-report.html</code>
+                    </div>
+                  </Col>
+                  
+                  <Col md={6} lg={4}>
+                    <div className={`p-4 rounded-lg ${darkMode ? 'bg-gray-900' : 'bg-white'} h-full`}>
+                      <div className="flex items-center gap-2 mb-3">
+                        <div className="w-8 h-8 rounded-full bg-cyan-100 dark:bg-cyan-900/30 flex items-center justify-center">
+                          <Terminal className="text-cyan-600" size={18} />
+                        </div>
+                        <h4 className="font-bold black-white-text">Integrate CI/CD</h4>
+                      </div>
+                      <p className="text-sm black-grey-text mb-2">Automated testing in your deployment pipeline</p>
+                      <code className="text-xs text-cyan-600 dark:text-cyan-400">GitHub Actions, Jenkins, etc.</code>
+                    </div>
+                  </Col>
+                  
+                  <Col md={6} lg={4}>
+                    <div className={`p-4 rounded-lg ${darkMode ? 'bg-gray-900' : 'bg-white'} h-full`}>
+                      <div className="flex items-center gap-2 mb-3">
+                        <div className="w-8 h-8 rounded-full bg-pink-100 dark:bg-pink-900/30 flex items-center justify-center">
+                          <Boxes className="text-pink-600" size={18} />
+                        </div>
+                        <h4 className="font-bold black-white-text">Maintain & Govern</h4>
+                      </div>
+                      <p className="text-sm black-grey-text mb-2">Continuous monitoring and enforcement across your codebase</p>
+                      <code className="text-xs text-pink-600 dark:text-pink-400">Ongoing compliance</code>
+                    </div>
+                  </Col>
+                </Row>
+              </div>
+            </div>
           </Container>
         </section>
 
@@ -306,16 +394,16 @@ const Homepage = ({darkMode, setDarkMode}) => {
             </div>
             <Row className="justify-center">
               <Col lg={8}>
-                <div className={`p-8 rounded-xl ${darkMode ? 'bg-gray-800' : 'bg-white'} shadow-2xl`}>
-                  <div className="mb-6">
-                    <div className="flex items-center gap-3 mb-4">
+                <div className={`p-8 rounded-xl ${darkMode ? 'bg-none' : 'bg-white'} shadow-2xl`}>
+                  <div className="mb-8">
+                    <div className="flex items-center gap-3 mb-3">
                       <div className="w-8 h-8 rounded-full bg-blue-600 text-white flex items-center justify-center font-bold">1</div>
                       <h3 className="text-lg font-semibold black-grey-text">Install</h3>
                     </div>
                     <CodeBlockDemo code={`npm i aria-ease`}/>
                   </div>
-                  <div className="mb-6">
-                    <div className="flex items-center gap-3 mb-4">
+                  <div className="mb-8">
+                    <div className="flex items-center gap-3 mb-3">
                       <div className="w-8 h-8 rounded-full bg-blue-600 text-white flex items-center justify-center font-bold">2</div>
                       <h3 className="text-lg font-semibold black-grey-text">Add 3 lines of code</h3>
                     </div>
@@ -328,7 +416,7 @@ const menu = Menu.makeMenuAccessible({
 });`} isLineNumber={true}/>
                   </div>
                   <div>
-                    <div className="flex items-center gap-3 mb-4">
+                    <div className="flex items-center gap-3 mb-3">
                       <div className="w-8 h-8 rounded-full bg-green-600 text-white flex items-center justify-center font-bold">✓</div>
                       <h3 className="text-lg font-semibold black-grey-text">That&apos;s it!</h3>
                     </div>
@@ -359,7 +447,7 @@ const menu = Menu.makeMenuAccessible({
             </div>
             <Row className="g-4">
               <Col lg={3} md={6}>
-                <div className={`p-6 rounded-xl ${darkMode ? 'bg-gray-800' : 'bg-gray-50'} h-full text-center`}>
+                <div className={`p-6 rounded-xl ${darkMode ? 'bg-gray-900' : 'bg-gray-50'} h-full text-center`}>
                   <div className="mb-4 flex justify-center">
                     <div className="w-12 h-12 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center">
                       <Code2 className="text-blue-600" size={24} aria-hidden="true"/>
@@ -370,7 +458,7 @@ const menu = Menu.makeMenuAccessible({
                 </div>
               </Col>
               <Col lg={3} md={6}>
-                <div className={`p-6 rounded-xl ${darkMode ? 'bg-gray-800' : 'bg-gray-50'} h-full text-center`}>
+                <div className={`p-6 rounded-xl ${darkMode ? 'bg-gray-900' : 'bg-gray-50'} h-full text-center`}>
                   <div className="mb-4 flex justify-center">
                     <div className="w-12 h-12 rounded-full bg-purple-100 dark:bg-purple-900/30 flex items-center justify-center">
                       <Package className="text-purple-600" size={24} aria-hidden="true"/>
@@ -381,7 +469,7 @@ const menu = Menu.makeMenuAccessible({
                 </div>
               </Col>
               <Col lg={3} md={6}>
-                <div className={`p-6 rounded-xl ${darkMode ? 'bg-gray-800' : 'bg-gray-50'} h-full text-center`}>
+                <div className={`p-6 rounded-xl ${darkMode ? 'bg-gray-900' : 'bg-gray-50'} h-full text-center`}>
                   <div className="mb-4 flex justify-center">
                     <div className="w-12 h-12 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center">
                       <ShieldCheck className="text-green-600" size={24} aria-hidden="true"/>
@@ -392,7 +480,7 @@ const menu = Menu.makeMenuAccessible({
                 </div>
               </Col>
               <Col lg={3} md={6}>
-                <div className={`p-6 rounded-xl ${darkMode ? 'bg-gray-800' : 'bg-gray-50'} h-full text-center`}>
+                <div className={`p-6 rounded-xl ${darkMode ? 'bg-gray-900' : 'bg-gray-50'} h-full text-center`}>
                   <div className="mb-4 flex justify-center">
                     <div className="w-12 h-12 rounded-full bg-orange-100 dark:bg-orange-900/30 flex items-center justify-center">
                       <Boxes className="text-orange-600" size={24} aria-hidden="true"/>
@@ -548,7 +636,7 @@ npx aria-ease audit  # Uses ariaease.config.js`}/>
             <Row className="justify-center">
               <Col lg={8}>
                 <div className="space-y-6">
-                  <div className={`py-6 px-3 rounded-xl ${darkMode ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200'} border-2 shadow-lg`}>
+                  <div className={`py-6 px-3 rounded-xl ${darkMode ? 'bg-gray-900 border-gray-800' : 'bg-white border-gray-200'} border-2 shadow-lg`}>
                     <div className="flex items-start gap-2">
                       <div className="w-8 h-8 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center flex-shrink-0 font-bold text-blue-600">1</div>
                       <div>
@@ -558,7 +646,7 @@ npx aria-ease audit  # Uses ariaease.config.js`}/>
                     </div>
                   </div>
                   
-                  <div className={`py-6 px-3 rounded-xl ${darkMode ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200'} border-2 shadow-lg`}>
+                  <div className={`py-6 px-3 rounded-xl ${darkMode ? 'bg-gray-900 border-gray-800' : 'bg-white border-gray-200'} border-2 shadow-lg`}>
                     <div className="flex items-start gap-2">
                       <div className="w-8 h-8 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center flex-shrink-0 font-bold text-blue-600">2</div>
                       <div className="w-full overflow-hidden">
@@ -584,7 +672,7 @@ useEffect(() => {
                     </div>
                   </div>
 
-                  <div className={`py-6 px-3 rounded-xl ${darkMode ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200'} border-2 shadow-lg`}>
+                  <div className={`py-6 px-3 rounded-xl ${darkMode ? 'bg-gray-900 border-gray-800' : 'bg-white border-gray-200'} border-2 shadow-lg`}>
                     <div className="flex items-start gap-2">
                       <div className="w-8 h-8 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center flex-shrink-0 font-bold text-blue-600">3</div>
                       <div>
@@ -594,7 +682,7 @@ useEffect(() => {
                     </div>
                   </div>
 
-                  <div className={`py-6 px-3 rounded-xl ${darkMode ? 'bg-gray-800 border-gray-700' : 'bg-white border-gray-200'} border-2 shadow-lg`}>
+                  <div className={`py-6 px-3 rounded-xl ${darkMode ? 'bg-gray-900 border-gray-800' : 'bg-white border-gray-200'} border-2 shadow-lg`}>
                     <div className="flex items-start gap-2">
                       <div className="w-8 h-8 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center flex-shrink-0 font-bold text-green-600">4</div>
                       <div>
@@ -659,12 +747,6 @@ useEffect(() => {
 
         <hr className={`${darkMode ? 'border-gray-100' : 'border-gray-300'}`}></hr>
 
-        <section className="home-get-started-div flex flex-col items-center justify-center pt-[100px] pb-[100px] px-3">
-          <p className="mb-2">Get Started</p>
-          <p className="get-started-ship font-semibold mb-1">Ship accessible projects faster</p>
-          <p className="mb-4">Find out how Aria-Ease helps developers achieve perfect accessibility scores on their web projects, including ours.</p>
-          <Link onClick={() => {sessionStorage.setItem(`scroll-position-${page}`, window.scrollY)}} to='/docs' className="px-4 sm:px-8 h-12 flex items-center justify-center bg-blue-800 hover:bg-blue-900 shadow-xl rounded-lg text-white">Get Started</Link>
-        </section>
         <Footer page={page} darkMode={darkMode}/>
       </main>
         

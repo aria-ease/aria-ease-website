@@ -26,6 +26,7 @@ const Footer = ({ page }) => {
             <span className="text-[16px] font-bold footer-heading-text">Resources</span>
             <ul className="mt-3">
               <li className="mb-3"><Link onClick={() => { sessionStorage.setItem(`scroll-position-${page}`, window.scrollY) }} to="/blog/main" className="footer-nav-link block-interactive text-[16px]" aria-label='Navigate to blog articles page'>Blog</Link></li>
+              <li className="mb-3"><a onClick={() => { sessionStorage.setItem(`scroll-position-${page}`, window.scrollY) }} href='https://www.w3.org/WAI/ARIA/apg/patterns/' target='_blank' rel='noopener noreferrer' className="footer-nav-link block-interactive text-[16px]" aria-label='Navigate to WAI-ARIA APG website'>WAI-ARIA APG</a></li>
             </ul>
           </Col>
           <Col md={3} className="mt-6">

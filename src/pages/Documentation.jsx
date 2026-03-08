@@ -275,8 +275,8 @@ describe("Shopify User Menu Accessibility Test", () => {
                       <p className='mt-2'>The <code>testUiComponent(...)</code> function accepts three parameters:</p>
                       <ul className='list-disc ml-6 mt-2'>
                         <li><code>componentName</code>: The component type to test (e.g., &#34;menu&#34;, &#34;accordion&#34;, &#34;block&#34;)</li>
-                        <li><code>component</code>: The rendered component container (HTMLElement)</li>
-                        <li><code>url</code> (optional): URL for full Playwright E2E tests. Omit for jsdom-only tests</li>
+                        <li><code>component</code> (optional): The rendered component container (HTMLElement). For jsdom-only tests</li>
+                        <li><code>url</code> (recommended): URL for full Playwright E2E tests. Omit for jsdom-only tests</li>
                       </ul>
                     </div>
 

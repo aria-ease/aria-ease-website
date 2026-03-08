@@ -192,7 +192,7 @@ const handleInputChange = (event) => {
 
                   <p className='mt-2'>A combobox is an interactive form control that combines a text input with a listbox, allowing users to either type a value or select from a dropdown list. The aria-ease combobox utility provides complete keyboard interaction, focus management, and ARIA attributes out-of-the-box.</p>
 
-                  <div className={`mt-6 p-4 rounded-lg border-l-4 border-blue-500 ${darkMode ? 'bg-blue-900/20' : 'bg-blue-50'}`}>
+                  <section className={`mt-6 p-4 rounded-lg border-l-4 border-blue-500 ${darkMode ? 'bg-blue-900/20' : 'bg-blue-50'}`}>
                     <h2 className={`font-semibold ${darkMode ? 'text-blue-100' : 'text-blue-900'}`}>Bundle Size</h2>
                     <p className={`mt-2 ${darkMode ? 'text-blue-100' : 'text-blue-900'}`}>The combobox component is tree-shakable and weighs approximately <strong>32KB</strong> when imported individually.</p>
                     <code className={`block mt-2 p-2 ${darkMode ? 'bg-blue-900/20' : 'bg-blue-100'} rounded text-sm`}>
@@ -200,9 +200,9 @@ const handleInputChange = (event) => {
                       <p className='my-4'>or</p>
                       <p>import &#123; makeComboboxAccessible &#125; from &quot;aria-ease/combobox&quot;;</p>
                     </code>
-                  </div>
+                  </section>
                   
-                  <div className='mt-10'>
+                  <section className='mt-10'>
                     <h2>Features</h2>
                     <ul className='list-disc ml-6 mt-2'>
                       <li>✨ Automatic ARIA attribute management</li>
@@ -210,10 +210,10 @@ const handleInputChange = (event) => {
                       <li>🔧 Programmatic control methods</li>
                       <li>🧹 Automatic cleanup on unmount</li>
                     </ul>
-                  </div>
+                  </section>
 
-                  <div className='mt-8'>
-                      <h3>Common Use Cases</h3>
+                  <section className='mt-10'>
+                      <h2>Common Use Cases</h2>
                       <ul className='list-disc ml-6 mt-2'>
                         <li>Search with autocomplete suggestions</li>
                         <li>Country/state/city selection with type-ahead filtering</li>
@@ -221,10 +221,10 @@ const handleInputChange = (event) => {
                         <li>Command palette interfaces</li>
                         <li>Product search with suggestions</li>
                       </ul>
-                  </div>
+                  </section>
 
-                  <div className='mt-5'>
-                    <h3>WAI-ARIA Roles, States, and Properties</h3>
+                  <section className='mt-10'>
+                    <h2>WAI-ARIA Roles, States, and Properties</h2>
                     <ul className='list-disc ml-6 mt-2'>
                       <li>The element that serves as an input and displays the combobox value has role combobox.</li>
                       <li>The combobox element has aria-controls set to a value that refers to the element that serves as the popup. Note that aria-controls is only set when the popup is visible. However, it is valid to reference an element that is not visible.</li>
@@ -235,10 +235,10 @@ const handleInputChange = (event) => {
                       <li>For a combobox that controls a listbox popup, when a suggested value is visually indicated as the currently selected value, the option containing that value has aria-selected set to true.</li>
                       <li>If the combobox has a visible label and the combobox element is an HTML element that can be labelled using the HTML label element (e.g., the input element), it should be labeled using the label element. Otherwise, if it has a visible label, the combobox element has aria-labelledby set to a value that refers to the labelling element. Otherwise, the combobox element has a label provided by aria-label.</li>
                     </ul>
-                  </div>
+                  </section>
 
-                  <div className='mt-10'>
-                    <h3>What the Utility Handles Automatically</h3>
+                  <section className='mt-10'>
+                    <h2>What the Utility Handles Automatically</h2>
                     <p className='mt-2'>The <code>makeComboboxAccessible</code> utility automatically sets and manages all required ARIA attributes:</p>
                     <ul className='list-disc ml-6 mt-2'>
                       <li><code>role=&quot;combobox&quot;</code> on the input element</li>
@@ -254,12 +254,12 @@ const handleInputChange = (event) => {
                     </ul>
                     
                     <p className='mt-2'>You only need to provide the HTML structure with IDs and class names.</p>
-                  </div>
+                  </section>
 
                   
 
-                  <div className='mt-10'>
-                    <h3 className='break-words'>makeComboboxAccessible</h3>
+                  <section className='mt-10'>
+                    <h2 className='break-words'>makeComboboxAccessible</h2>
                     <p className='mt-2'>The <code>makeComboboxAccessible(...)</code> method is your one-stop solution for accessible comboboxes.</p>
                     <p className='mt-2'>This function handles all combobox complexity - you provide clean HTML with IDs and class names, and it manages ARIA attributes, keyboard interactions, mouse support, and focus behavior. You no longer need to manually set aria-expanded, aria-controls, aria-activedescendant, or manage focus.</p>
 
@@ -275,10 +275,10 @@ const handleInputChange = (event) => {
                       <li>No manual state management required</li>
                     </ul>
                   </div>
-                  </div>
+                  </section>
 
-                  <div className='mt-10 pt-3'>
-                    <h3>Configuration Options</h3>
+                  <section className='mt-10'>
+                    <h2>Configuration Options</h2>
                     <ul className='list-disc ml-6 mt-2'>
                       <li><code>comboboxInputId</code>: ID of the input element (required)</li>
                       <li><code>listBoxId</code>: ID of the dropdown container (required)</li>
@@ -289,18 +289,21 @@ const handleInputChange = (event) => {
                       <li><code>callback.onActiveDescendantChange</code>: Callback when focus moves between options</li>
                       <li><code>callback.onClear</code>: Callback when input is cleared via Escape</li>
                     </ul>
+                  </section>
 
-                    <h3 className='mt-5'>Returns:</h3>
+                  <section className='mt-10'>
+                    <h2 className='mt-5'>Returns:</h2>
                     <ul className='list-disc ml-6 mt-2'>
                       <li><code>cleanup()</code>: Remove event listeners</li>
                       <li><code>refresh()</code>: Re-initialize combobox (useful for dynamic content)</li>
                     </ul>
+                  </section>
 
-                    <div>
-                      <p className='mb-2 mt-6'>Import the utility:</p>
+                  <section className='mt-10'>
+                    <p className='mb-2'>Import the utility:</p>
                       <CodeBlockDemo code={importCombobox}/>
 
-                      <p className='mb-2 mt-6'>Basic setup (3 lines of code):</p>
+                      <p className='mb-2 mt-6'>Basic setup:</p>
                       <CodeBlockDemo code={basicSetup} isLineNumber={true}/>
 
                       <p className='mb-2 mt-6'>Filtering Logic:</p>
@@ -317,10 +320,10 @@ const handleInputChange = (event) => {
                           <strong>Notice:</strong> You don&#39;t need to add <code>role</code>, <code>aria-expanded</code>, <code>aria-controls</code>, or any other ARIA attributes manually. The utility sets everything automatically.
                         </p>
                       </div>
-                    </div>
+                  </section>
 
-                    <div className='mt-8'>
-                      <h3>Dynamic Filtering</h3>
+                  <section className='mt-10'>
+                    <h2>Dynamic Filtering</h2>
                       <p className='mt-2'>The utility works seamlessly with dynamic filtering:</p>
                       <ul className='list-disc ml-6 mt-2'>
                         <li>Filter options by hiding/showing them (<code>style.display = &#39;none&#39;</code> or <code>hidden</code> attribute)</li>
@@ -328,9 +331,9 @@ const handleInputChange = (event) => {
                         <li>Call <code>refresh()</code> if you add/remove options dynamically</li>
                         <li>Focus management updates automatically based on visible items</li>
                       </ul>
-                    </div>
+                  </section>
 
-                    <div className='mt-10'>
+                  <section className='mt-10'>
                     <h2>Keyboard Interaction (Built-in)</h2>
                     <p className='mt-2'>The utility provides complete keyboard support following W3C APG specifications:</p>
                     <ul className='list-disc ml-6 mt-2'>
@@ -342,9 +345,9 @@ const handleInputChange = (event) => {
                       <li><code>Escape</code>: Closes listbox (first press) or clears input (second press)</li>
                       <li><code>Tab</code>: Closes listbox and moves to next focusable element</li>
                     </ul>
-                  </div>
+                  </section>
 
-                  <div className='mt-10'>
+                  <section className='mt-10'>
                     <h2>Mouse Support (Built-in)</h2>
                     <p className='mt-2'>Mouse interactions are fully handled:</p>
                     <ul className='list-disc ml-6 mt-2'>
@@ -353,10 +356,11 @@ const handleInputChange = (event) => {
                       <li><strong>Click outside</strong>: Closes listbox automatically</li>
                       <li><strong>Toggle button</strong>: Optional button to open/close listbox (pass <code>comboboxButtonId</code>)</li>
                     </ul>
-                  </div>
+                  </section>
 
-                    <div className='mt-8'>
-                      <h3>What You Need to Provide</h3>
+
+                  <section className='mt-10'>
+                    <h2>What You Need to Provide</h2>
                       <ul className='list-disc ml-6 mt-2'>
                         <li><strong>HTML structure</strong>: Input, listbox container, and option elements with IDs/classes</li>
                         <li><strong>Styling</strong>: Visual appearance (colors, sizing, positioning)</li>
@@ -364,10 +368,10 @@ const handleInputChange = (event) => {
                         <li><strong>Data fetching</strong>: Loading options from API if needed</li>
                         <li><strong>Label</strong>: Accessible label for the input (<code>&lt;label&gt;</code> or <code>aria-label</code>)</li>
                       </ul>
-                    </div>
+                  </section>
 
-                    <div className='mt-8'>
-                      <h3>Accessibility Testing</h3>
+                  <section className='mt-10'>
+                    <h2>Accessibility Testing</h2>
                       <p className='mt-2'>The combobox utility includes built-in contract testing:</p>
                       <ul className='list-disc ml-6 mt-2'>
                         <li>Run <code>npx aria-ease test</code> to validate your implementation</li>
@@ -376,11 +380,10 @@ const handleInputChange = (event) => {
                         <li>Checks focus management and option selection</li>
                         <li>Runs in both jsdom and real browser (Playwright) modes</li>
                       </ul>
-                    </div>
-                  </div>
+                  </section>
 
-                  <div className='mt-5'>
-                    <h3>Visual Design Best Practices</h3>
+                  <section className='mt-10'>
+                    <h2>Visual Design Best Practices</h2>
                     <ul className='list-disc ml-6 mt-2'>
                       <li>Minimum touch target size for input: 44x44 pixels</li>
                       <li>Clear focus indicators with high contrast on both input and options</li>
@@ -389,8 +392,7 @@ const handleInputChange = (event) => {
                       <li>Consider adding a dropdown icon to indicate the listbox capability</li>
                       <li>Ensure listbox appears above other content with appropriate z-index</li>
                     </ul>
-                  </div>
-                  
+                  </section>
 
                   <div className='flex flex-wrap gap-4 py-4 mx-auto max-w-7xl md:py-12 mt-[100px] justify-between'>
                     <a href='/examples/checkbox' className='block-interactive next-link rounded-lg md:min-w-80 md:max-w-md w-full md:w-auto flex gap-6 items-center px-4 py-6 md:px-5'>

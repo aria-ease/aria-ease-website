@@ -472,7 +472,7 @@ await testUiComponent("combobox", null, "http://localhost:5173/test-harness?comp
                           <li><strong>All dynamic content visible:</strong> Conditional rendering must be complete</li>
                           <li><strong>Full interactivity:</strong> Component responds to clicks and keyboard immediately</li>
                         </ul>
-                        <p className={`mt-3 ${darkMode ? 'text-red-200' : 'text-red-900'}`}>Tests will fail if the component is still mounting, loading data, or waiting for side effects.</p>
+                        <p className={`mt-3 ${darkMode ? 'text-red-200' : 'text-red-900'}`}>Tests may fail if the component is still mounting, loading data, or waiting for side effects.</p>
                       </div>
                     </div>
                   </div>
@@ -503,7 +503,7 @@ await testUiComponent("combobox", null, "http://localhost:5173/test-harness?comp
                 {/* Supported Components */}
                 <section className='mt-[100px]'>
                   <h2 className='text-3xl font-bold mb-4'>Supported Components</h2>
-                  <p className='mb-4'>The following component types have full contract test coverage:</p>
+                  <p className='mb-4'>The following component patterns have full contract test coverage:</p>
 
                   <div className='overflow-x-auto'>
                     <table className='w-full border-collapse border border-gray-300 dark:border-gray-600'>
@@ -517,18 +517,24 @@ await testUiComponent("combobox", null, "http://localhost:5173/test-harness?comp
                       <tbody>
                         <tr>
                           <td className='border border-gray-300 dark:border-gray-600 px-4 py-2'><code>accordion</code></td>
-                          <td className='border border-gray-300 dark:border-gray-600 px-4 py-2'>Expand/collapse, ARIA attributes, keyboard interaction</td>
+                          <td className='border border-gray-300 dark:border-gray-600 px-4 py-2'>Expand/collapse, ARIA and role attributes, Enter/Space expansion/collapsing, Home/End, Up/Down Arrow</td>
                           <td className='border border-gray-300 dark:border-gray-600 px-4 py-2'><code>testUiComponent(&quot;accordion&quot;, ...)</code></td>
                         </tr>
                         <tr>
                           <td className='border border-gray-300 dark:border-gray-600 px-4 py-2'><code>combobox</code></td>
-                          <td className='border border-gray-300 dark:border-gray-600 px-4 py-2 min-w-[300px]'>Arrow key navigation, Enter/Space selection, Escape closes, Home/End keys, focus management, ARIA attributes</td>
+                          <td className='border border-gray-300 dark:border-gray-600 px-4 py-2 min-w-[300px]'>Arrow key navigation, Enter/Space selection, Escape closes, Home/End keys, focus management, ARIA and role attributes</td>
                           <td className='border border-gray-300 dark:border-gray-600 px-4 py-2'><code>testUiComponent(&quot;combobox&quot;, ...)</code></td>
                         </tr>
                         <tr>
                           <td className='border border-gray-300 dark:border-gray-600 px-4 py-2'><code>menu</code></td>
-                          <td className='border border-gray-300 dark:border-gray-600 px-4 py-2'>Arrow key navigation, Escape closes, focus management, ARIA attributes</td>
+                          <td className='border border-gray-300 dark:border-gray-600 px-4 py-2'>Arrow key navigation, Escape closes, focus management, ARIA and role attributes</td>
                           <td className='border border-gray-300 dark:border-gray-600 px-4 py-2'><code>testUiComponent(&quot;menu&quot;, ...)</code></td>
+                        </tr>
+
+                        <tr>
+                          <td className='border border-gray-300 dark:border-gray-600 px-4 py-2'><code>tabs</code></td>
+                          <td className='border border-gray-300 dark:border-gray-600 px-4 py-2'>Focus management, arrow navigation, Home/End, Enter/Space activate on focus, ARIA and role attributes</td>
+                          <td className='border border-gray-300 dark:border-gray-600 px-4 py-2'><code>testUiComponent(&quot;tabs&quot;, ...)</code></td>
                         </tr>
                         
                         {/* 
@@ -561,7 +567,7 @@ await testUiComponent("combobox", null, "http://localhost:5173/test-harness?comp
                 {/* Required Test Attributes */}
                 <section className='mt-[100px]'>
                   <h2 className='text-3xl font-bold mb-4'>Required Test Attributes</h2>
-                  <p className='mb-4'>Contract tests use <code>data-test-id</code> attributes to reliably locate elements. Add these to your components before running tests:</p>
+                  <p className='mb-4'>Some component contract tests use <code>data-test-id</code> attributes to reliably locate elements. Add these to your components before running tests:</p>
 
                   <div className={`mt-6 p-4 rounded-lg border-l-4 border-red-500 ${darkMode ? 'bg-red-900/20' : 'bg-red-50'}`}>
                     <div className='flex items-start gap-3'>

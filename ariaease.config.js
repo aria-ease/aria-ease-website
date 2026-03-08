@@ -17,6 +17,7 @@ export default {
       'http://localhost:5173/examples/combobox',
       'http://localhost:5173/examples/menu',
       'http://localhost:5173/examples/radio',
+      'http://localhost:5173/examples/tabs',
       'http://localhost:5173/examples/toggle-button',
 
       'http://localhost:5173/changelog'

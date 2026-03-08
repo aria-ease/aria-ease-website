@@ -28,6 +28,7 @@ import Combobox from './pages/Combobox';
 import Services from './pages/Services';
 import ComponentTestHarness from './pages/ComponentTestHarness';
 import { HelmetProvider } from 'react-helmet-async';
+import Tabs from './pages/Tabs';
  
 
 const firebaseConfig = {
@@ -81,6 +82,7 @@ const InnerApp = ({darkMode, setDarkMode}) => {
           <Route path="/examples/combobox" element={<Combobox darkMode={darkMode} setDarkMode={setDarkMode}/>}/>
           <Route path="/services" element={<Services darkMode={darkMode} setDarkMode={setDarkMode}/>}/>
           <Route path="/test-harness" element={<ComponentTestHarness/>}/>
+          <Route path="/examples/tabs" element={<Tabs darkMode={darkMode} setDarkMode={setDarkMode}/>}/>
         </Routes>
       </Router>
     </div>

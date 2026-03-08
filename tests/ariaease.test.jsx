@@ -22,3 +22,15 @@ describe("Menu Accessibility Test", () => {
     await testUiComponent("menu", null, "http://localhost:5173/test-harness?component=menu");
   });
 });
+
+describe("Horizontal Tabs Accessibility Test", () => {
+  test("renders horizontal tabs without accessibility violation(s)", async () => {
+    await testUiComponent("tabs", null, "http://localhost:5173/test-harness?component=tabs_horizontal");
+  });
+});
+
+describe("Vertical Tabs Accessibility Test", () => {
+  test("renders vertical tabs without accessibility violation(s)", async () => {
+    await testUiComponent("tabs", null, "http://localhost:5173/test-harness?component=tabs_vertical");
+  });
+});

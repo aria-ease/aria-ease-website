@@ -3,13 +3,17 @@ import ShopifyUserMenu from '../components/menus/ShopifyUserMenu';
 import ComboBox from '../components/combobox/ComboBox';
 import AccordionExample from '../components/accordions/AccordionExample';
 import CheckboxExample from '../components/checkbox/Checkbox';
+import HorizontalTabs from '../components/tabs/HorizontalTabs';
+import VerticalTabs from '../components/tabs/VerticalTabs';
 
 // Registry of components available for testing
 const COMPONENT_REGISTRY = {
   menu: ShopifyUserMenu,
   combobox: ComboBox,
   accordion: AccordionExample,
-  checkbox: CheckboxExample
+  checkbox: CheckboxExample,
+  tabs_horizontal: HorizontalTabs,
+  tabs_vertical: VerticalTabs,
 };
 
 /**

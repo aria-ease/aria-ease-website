@@ -567,22 +567,22 @@ const Examples = ({darkMode, setDarkMode}) => {
                 <section className={`mt-16`}>
                   <h2 className={`text-2xl font-bold mb-4 ${darkMode ? 'text-gray-100' : 'text-gray-900'}`}>More Patterns</h2>
                   <div className='grid grid-cols-1 md:grid-cols-2 gap-6'>
-                    <div className={`p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow ${darkMode ? 'bg-gray-700/50' : 'bg-white'}`}>
+                    <div className={`p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow ${darkMode ? 'bg-gray-900' : 'bg-gray-200'}`}>
                       <h3 className={`font-semibold mb-2 ${darkMode ? 'text-gray-100' : 'text-gray-900'}`}>🎨 Design Systems</h3>
                       <p className={`text-sm mb-3 ${darkMode ? 'text-gray-300' : 'text-gray-700'}`}>Build accessible component libraries</p>
                       <a href="/examples/accordion" className={`underline block-interactive ${darkMode ? 'text-blue-400 hover:text-blue-300' : 'text-blue-600 hover:text-blue-700'}`}>View Accordion →</a>
                     </div>
-                    <div className={`p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow ${darkMode ? 'bg-gray-700/50' : 'bg-white'}`}>
+                    <div className={`p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow ${darkMode ? 'bg-gray-900' : 'bg-gray-200'}`}>
                       <h3 className={`font-semibold mb-2 ${darkMode ? 'text-gray-100' : 'text-gray-900'}`}>📝 Form Controls</h3>
                       <p className={`text-sm mb-3 ${darkMode ? 'text-gray-300' : 'text-gray-700'}`}>Accessible checkboxes and radios</p>
                       <a href="/examples/checkbox" className={`underline block-interactive ${darkMode ? 'text-blue-400 hover:text-blue-300' : 'text-blue-600 hover:text-blue-700'}`}>View Checkbox →</a>
                     </div>
-                    <div className={`p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow ${darkMode ? 'bg-gray-700/50' : 'bg-white'}`}>
+                    <div className={`p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow ${darkMode ? 'bg-gray-900' : 'bg-gray-200'}`}>
                       <h3 className={`font-semibold mb-2 ${darkMode ? 'text-gray-100' : 'text-gray-900'}`}>🎯 Focus Management</h3>
                       <p className={`text-sm mb-3 ${darkMode ? 'text-gray-300' : 'text-gray-700'}`}>Control keyboard interaction</p>
                       <a href="/examples/block" className={`underline block-interactive ${darkMode ? 'text-blue-400 hover:text-blue-300' : 'text-blue-600 hover:text-blue-700'}`}>View Block →</a>
                     </div>
-                    <div className={`p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow ${darkMode ? 'bg-gray-700/50' : 'bg-white'}`}>
+                    <div className={`p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow ${darkMode ? 'bg-gray-900' : 'bg-gray-200'}`}>
                       <h3 className={`font-semibold mb-2 ${darkMode ? 'text-gray-100' : 'text-gray-900'}`}>🔘 Toggle Switches</h3>
                       <p className={`text-sm mb-3 ${darkMode ? 'text-gray-300' : 'text-gray-700'}`}>Accessible on/off controls</p>
                       <a href="/examples/toggle-button" className={`underline block-interactive ${darkMode ? 'text-blue-400 hover:text-blue-300' : 'text-blue-600 hover:text-blue-700'}`}>View Toggle →</a>

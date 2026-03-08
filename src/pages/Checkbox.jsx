@@ -109,7 +109,7 @@ checkboxInstance.cleanup()                   // Remove all listeners`;
 
                   <p className='mt-2'>A checkbox is an interactive form control that allows users to make binary choices (checked or not checked) by clicking or tapping a square box. When checked, the box typically displays a checkmark or tick symbol, providing a visual indication of the user&#39;s choice while maintaining accessibility through ARIA attributes for assistive technology users.</p>
 
-                  <div className={`mt-6 p-4 rounded-lg border-l-4 border-blue-500 ${darkMode ? 'bg-blue-900/20' : 'bg-blue-50'}`}>
+                  <section className={`mt-6 p-4 rounded-lg border-l-4 border-blue-500 ${darkMode ? 'bg-blue-900/20' : 'bg-blue-50'}`}>
                     <h2 className={`font-semibold ${darkMode ? 'text-blue-100' : 'text-blue-900'}`}>Bundle Size</h2>
                     <p className={`mt-2 ${darkMode ? 'text-blue-100' : 'text-blue-900'}`}>The checkbox component is tree-shakable and weighs approximately <strong>6.0KB</strong> when imported individually.</p>
                     <code className={`block mt-2 p-2 ${darkMode ? 'bg-blue-900/20' : 'bg-blue-100'} rounded text-sm`}>
@@ -117,9 +117,9 @@ checkboxInstance.cleanup()                   // Remove all listeners`;
                       <p className='my-4'>or</p>
                       <p>import &#123; makeCheckboxAccessible &#125; from &quot;aria-ease/checkbox&quot;;</p>
                     </code>
-                  </div>
+                  </section>
 
-                  <div className='mt-10'>
+                  <section className='mt-10'>
                     <h2>Features</h2>
                     <ul className='list-disc ml-6 mt-2'>
                       <li>✨ Automatic ARIA attribute management</li>
@@ -127,20 +127,20 @@ checkboxInstance.cleanup()                   // Remove all listeners`;
                       <li>🔧 Programmatic control methods</li>
                       <li>🧹 Automatic cleanup on unmount</li>
                     </ul>
-                  </div>
+                  </section>
 
-                  <div className='mt-10'>
-                        <h3>Common Use Cases</h3>
+                  <section className='mt-10'>
+                        <h2>Common Use Cases</h2>
                         <ul className='list-disc ml-6 mt-2'>
                           <li>Terms and conditions acceptance</li>
                           <li>Multiple item selection in lists</li>
                           <li>Feature toggles in settings</li>
                           <li>Parent-child selection patterns (e.g., &#34;Select All&#34;)</li>
                         </ul>
-                      </div>
+                  </section>
 
-                  <div className='mt-10'>
-                    <h3>WAI-ARIA Roles, States, and Properties</h3>
+                  <section className='mt-10'>
+                    <h2>WAI-ARIA Roles, States, and Properties</h2>
                     <ul className='list-disc ml-6 mt-2'>
                       <li>The checkbox has role checkbox.</li>
                       <li>The checkbox has an accessible label provided by one of the following:
@@ -155,10 +155,10 @@ checkboxInstance.cleanup()                   // Remove all listeners`;
                       <li>If a set of checkboxes is presented as a logical group with a visible label, the checkboxes are included in an element with role group that has the property aria-labelledby set to the ID of the element containing the label.</li>
                       <li>If the presentation includes additional descriptive static text relevant to a checkbox or checkbox group, the checkbox or checkbox group has the property aria-describedby set to the ID of the element containing the description.</li>
                     </ul>
-                  </div>
+                  </section>
 
-                  <div className='mt-10'>
-                    <h3>What the Utility Handles Automatically</h3>
+                  <section className='mt-10'>
+                    <h2>What the Utility Handles Automatically</h2>
                     <p className='mt-2'>The <code>makeToggleAccessible</code> utility automatically sets and manages all required ARIA attributes:</p>
                     <ul className='list-disc ml-6 mt-2'>
                       <li><code>role=&quot;group&quot;</code> on the element the checkboxes are contained in</li>
@@ -167,11 +167,10 @@ checkboxInstance.cleanup()                   // Remove all listeners`;
                     </ul>
                     
                     <p className='mt-2'>You only need to provide the HTML structure with IDs and class names.</p>
-                  </div>
+                  </section>
 
-                  <div className='mt-4'>
-                    <div className='mt-5'>
-                      <h3>Checkbox Groups</h3>
+                  <section className='mt-10'>
+                    <h2>Checkbox Groups</h2>
                       <p className='mt-2'>When grouping multiple checkboxes:</p>
                       <ul className='list-disc ml-6 mt-2'>
                         <li>Use <code>role=&#34;group&#34;</code> on the container element with the <code>checkboxGroupId</code></li>
@@ -179,11 +178,10 @@ checkboxInstance.cleanup()                   // Remove all listeners`;
                         <li>Maintain consistent spacing between checkboxes (minimum 8px)</li>
                         <li>Consider using fieldset and legend for form groups</li>
                       </ul>
-                    </div>
+                  </section>
 
-                  
-
-                    <h3 className='mt-10 break-words'>makeCheckboxAccessible()</h3>
+                  <section className='mt-10'>
+                    <h2 className='mt-10 break-words'>makeCheckboxAccessible()</h2>
                     <p className='mt-2'>The <code>makeCheckboxAccessible()</code> function automatically manages checkbox group accessibility, including ARIA attributes, keyboard interaction, and state management.</p>
                     <p className='mt-2'>This function handles all the complexity of making checkboxes accessible - it sets up proper ARIA attributes, manages focus, and provides keyboard interaction (Space). You no longer need to manually track state or update ARIA attributes.</p>
 
@@ -196,9 +194,10 @@ checkboxInstance.cleanup()                   // Remove all listeners`;
                         <li>No manual state management required</li>
                       </ul>
                     </div>
+                  </section>
 
-                    <div>
-                      <p className='mb-2 mt-6'>Import the function:</p>
+                  <section className='mt-10'>
+                    <p className='mb-2'>Import the function:</p>
                       <CodeBlockDemo code={importGroupCheckboxes}/>
                       <p>or</p>
                       <CodeBlockDemo code={importGroupCheckboxesTwo}/>
@@ -211,22 +210,18 @@ checkboxInstance.cleanup()                   // Remove all listeners`;
 
                       <p className='mb-2 mt-6'>Available API methods:</p>
                       <CodeBlockDemo code={apiMethods} isLineNumber={true}/>
-                    </div>
+                  </section>
 
-                    <div className='mt-10'>
-                      <h3>Keyboard Interaction</h3>
+
+                  <section className='mt-10'>
+                    <h2>Keyboard Interaction</h2>
                       <ul className='list-disc ml-6 mt-2'>
                         <li><code>Space</code> - Toggle checkbox</li>
                       </ul>
-                    </div>
-                  </div>
-                  
-                  <div className='mt-5'>
-                    <div>
-                      
+                  </section>
 
-                      <div className='mt-5'>
-                        <h3>Label and Input Relationship</h3>
+                  <section className='mt-10'>
+                    <h2>Label and Input Relationship</h2>
                         <p className='mt-2'>Proper labeling is crucial for accessibility:</p>
                         <ul className='list-disc ml-6 mt-2'>
                           <li>Always use <code>htmlFor</code> attribute matching input&#39;s <code>id</code></li>
@@ -234,19 +229,17 @@ checkboxInstance.cleanup()                   // Remove all listeners`;
                           <li>Ensure labels are clickable to toggle checkbox state</li>
                           <li>Use descriptive label text that clearly indicates the purpose</li>
                         </ul>
-                      </div>
-                    </div>
-                  </div>
+                  </section>
 
-                  <div className='mt-5'>
-                    <h3>Visual Design Best Practices</h3>
+                  <section className='mt-10'>
+                    <h2>Visual Design Best Practices</h2>
                     <ul className='list-disc ml-6 mt-2'>
                       <li>Minimum touch target size: 44x44 pixels</li>
                       <li>Clear focus indicators with high contrast</li>
                       <li>Visible state changes beyond just the checkmark</li>
                       <li>Support for mixed/indeterminate states when parent-child relationships exist</li>
                     </ul>
-                  </div>
+                  </section>
 
                     <div className='flex flex-wrap gap-4 py-4 mx-auto max-w-7xl md:py-12 mt-[100px] justify-between'>
                     <a href='/examples/block' className='block-interactive next-link rounded-lg md:min-w-80 md:max-w-md w-full md:w-auto flex gap-6 items-center px-4 py-6 md:px-5'>

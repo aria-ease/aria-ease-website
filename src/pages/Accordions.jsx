@@ -4,7 +4,6 @@ import { Container, Row, Col } from 'react-bootstrap'
 import SideNav from '../components/SideNav'
 import SlideOutNav from '../components/SlideOutNav'
 import * as Block from 'aria-ease/block'
-import AccordionExample from '../components/accordions/AccordionExample';
 import CodeBlockDemo from '../components/CodeBlock';
 import ScrollTracker from '../components/ScrollTracker';
 import { Link } from 'react-router-dom';
@@ -12,100 +11,79 @@ import { ChevronRightCircleIcon } from 'lucide-react';
 import { Helmet } from 'react-helmet-async';
 
 
-const firstAccordionCode = `import { useState, useEffect, useRef } from "react";
-import * as Accordion from "aria-ease/accordion";
+const accordionHTML = `<div id="faq-div" data-test-id="accordion-group">
+  <button className="dropdown-button" data-test-id="accordion-trigger">
+    <span>How do I make an appointment?</span>
+    {openStates[0] ? 
+      <img src={openeddropdown} alt='Dropdown Icon' className='dropdown-icon-image'></img> :
+      <img src={closeddropdown} alt='Dropdown Icon' className='dropdown-icon-image'></img>
+    }
+  </button>
+  <div className="accordion-panel">
+    <p>If you would like to make an appointment with any one of our practitioners, please contact our reception staff. Alternatively you can book an appointment online.</p>
+  </div>
 
-
-const AccordionExample = () => {
-  const accordionRef = useRef(null);
-
-  const [openStates, setOpenStates] = useState(Array(3).fill(false)); // Track open state for each panel
-
-  useEffect(() => {
-    // Initialize accordion with automatic state management
-    accordionRef.current = Accordion.makeAccordionAccessible({ //makeAccordionAccessible({})
-      accordionId: "faq-div",
-      triggersClass: "dropdown-button",
-      panelsClass: "accordion-panel",
-      allowMultipleOpen: false, // Only one panel open at a time
-      callback: {
-        onExpand: (index) => {
-          // Callback when a panel expands, you can use this to update state or perform side effects like changing icons
-          setOpenStates(prev => {
-            const newStates = [...prev];
-            newStates[index] = true;
-            return newStates;
-          });
-        },
-        onCollapse: (index) => {
-          // Callback when a panel collapses, you can use this to update state or perform side effects like changing icons
-          setOpenStates(prev => {
-            const newStates = [...prev];
-            newStates[index] = false;
-            return newStates;
-          });
-        }
+  <button className="dropdown-button" data-test-id="accordion-trigger">
+    <span>How do I get a copy of my record?</span>
+      {openStates[1] ? 
+        <img src={openeddropdown} alt='Dropdown Icon' className='dropdown-icon-image'></img> :
+        <img src={closeddropdown} alt='Dropdown Icon' className='dropdown-icon-image'></img>
       }
-    });
+  </button>
+  <div className="accordion-panel">
+    <p>If you would like to get a copy of your record, please contact our customer support team. Alternatively you can come into the hospital.</p>
+  </div>
 
-    // Cleanup on unmount
-    return () => {
-      if (accordionRef.current) {
-        accordionRef.current.cleanup();
+  <button className="dropdown-button" data-test-id="accordion-trigger">
+    <span>Is there a charge for extra copies?</span>
+    {openStates[2] ? 
+      <img src={openeddropdown} alt='Dropdown Icon' className='dropdown-icon-image'></img> :
+      <img src={closeddropdown} alt='Dropdown Icon' className='dropdown-icon-image'></img>
+    }
+  </button>
+  <div className="accordion-panel">
+    <p>The first copy is free and subsequent copies cost $1 per copy. This cost covers printing and mailing.</p>
+  </div>
+</div>`
+
+const basicSetup = `const accordionRef = useRef(null);
+
+const [openStates, setOpenStates] = useState(Array(3).fill(false)); // Track open state for each panel
+
+useEffect(() => {
+  // Initialize accordion with automatic state management
+  accordionRef.current = Accordion.makeAccordionAccessible({ //makeAccordionAccessible({})
+    accordionId: "faq-div",
+    triggersClass: "dropdown-button",
+    panelsClass: "accordion-panel",
+    allowMultipleOpen: false, // Only one panel open at a time
+    callback: {
+      onExpand: (index) => {
+        // Callback when a panel expands, you can use this to update state or perform side effects like changing icons
+        setOpenStates(prev => {
+          const newStates = [...prev];
+          newStates[index] = true;
+          return newStates;
+        });
+      },
+      onCollapse: (index) => {
+        // Callback when a panel collapses, you can use this to update state or perform side effects like changing icons
+        setOpenStates(prev => {
+          const newStates = [...prev];
+          newStates[index] = false;
+          return newStates;
+        });
       }
-    };
-  }, []);
+    }
+  });
 
-  // Optional: Programmatic control
-  const openFirst = () => accordionRef.current?.expandItem(0);
-  const closeAll = () => {
-    accordionRef.current?.collapseItem(0);
-    accordionRef.current?.collapseItem(1);
-    accordionRef.current?.collapseItem(2);
+  // Cleanup on unmount
+  return () => {
+    if (accordionRef.current) {
+      accordionRef.current.cleanup();
+    }
   };
-      
-  return (
-    <div id="faq-div" data-test-id="accordion-group">
-      <button className="dropdown-button" data-test-id="accordion-trigger">
-        <span>How do I make an appointment?</span>
-        {openStates[0] ? 
-          <img src={openeddropdown} alt='Dropdown Icon' className='dropdown-icon-image'></img> :
-          <img src={closeddropdown} alt='Dropdown Icon' className='dropdown-icon-image'></img>
-        }
-      </button>
-      <div className="accordion-panel" role="region">
-        <p>If you would like to make an appointment with any one of our practitioners, 
-        please contact our reception staff. Alternatively you can book an appointment online.</p>
-      </div>
-
-      <button className="dropdown-button" data-test-id="accordion-trigger">
-        <span>How do I get a copy of my record?</span>
-        {openStates[1] ? 
-          <img src={openeddropdown} alt='Dropdown Icon' className='dropdown-icon-image'></img> :
-          <img src={closeddropdown} alt='Dropdown Icon' className='dropdown-icon-image'></img>
-        }
-      </button>
-      <div className="accordion-panel" role="region">
-        <p>If you would like to get a copy of your record, please contact our customer 
-        support team. Alternatively you can come into the hospital.</p>
-      </div>
-
-      <button className="dropdown-button" data-test-id="accordion-trigger">
-        <span>Is there a charge for extra copies?</span>
-        {openStates[2] ? 
-          <img src={openeddropdown} alt='Dropdown Icon' className='dropdown-icon-image'></img> :
-          <img src={closeddropdown} alt='Dropdown Icon' className='dropdown-icon-image'></img>
-        }
-      </button>
-      <div className="accordion-panel" role="region">
-        <p>The first copy is free and subsequent copies cost $1 per copy. 
-        This cost covers printing and mailing.</p>
-      </div>
-    </div>
-  )
-}
-
-export default AccordionExample`
+}, []);`
 
 
 // eslint-disable-next-line react/prop-types
@@ -169,7 +147,7 @@ const Accordions = ({darkMode, setDarkMode}) => {
                   <h1 className='component-example-heading'>Accordion</h1>
                   <p className='mt-2'>A vertically stacked component that expands and collapses to reveal and hide section(s) of content respectively. It is used to organize content sections that expand/collapse. Typically used for FAQs, multi-step forms e.t.c. The difference between this and a menu is that a menu has a dropdown or options list of actionable interactive items, with the first item being focused when the menu is opened. <Link className='underline block-interactive' to='/examples/menu'>Learn about menu component here.</Link></p>
 
-                  <div className={`mt-6 p-4 rounded-lg border-l-4 border-blue-500 ${darkMode ? 'bg-blue-900/20' : 'bg-blue-50'}`}>
+                  <section className={`mt-6 p-4 rounded-lg border-l-4 border-blue-500 ${darkMode ? 'bg-blue-900/20' : 'bg-blue-50'}`}>
                     <h2 className={`font-semibold ${darkMode ? 'text-blue-100' : 'text-blue-900'}`}>Bundle Size</h2>
                     <p className={`mt-2 ${darkMode ? 'text-blue-100' : 'text-blue-900'}`}>The accordion component is tree-shakable and weighs approximately <strong>6.5KB</strong> when imported individually.</p>
                     <code className={`block mt-2 p-2 ${darkMode ? 'bg-blue-900/20' : 'bg-blue-100'} rounded text-sm`}>
@@ -177,9 +155,9 @@ const Accordions = ({darkMode, setDarkMode}) => {
                       <p className='my-4'>or</p>
                       <p>import &#123; makeAccordionAccessible &#125; from &quot;aria-ease/accordion&quot;;</p>  
                     </code>
-                  </div>
+                  </section>
 
-                  <div className='mt-10'>
+                  <section className='mt-10'>
                     <h2>Features</h2>
                     <ul className='list-disc ml-6 mt-2'>
                       <li>✨ Automatic ARIA attribute management</li>
@@ -188,10 +166,10 @@ const Accordions = ({darkMode, setDarkMode}) => {
                       <li>🎯 Single or multiple panel expansion support</li>
                       <li>🧹 Automatic cleanup on unmount</li>
                     </ul>
-                  </div>
+                  </section>
 
-                  <div className='mt-10'>
-                    <h3>Common Use Cases</h3>
+                  <section className='mt-10'>
+                    <h2>Common Use Cases</h2>
                     <ul className='list-disc ml-6 mt-2'>
                       <li>FAQs: Organize frequently asked questions with expandable answers.</li>
                       <li>Multi-step Forms: Break complex forms into manageable sections.</li>
@@ -199,10 +177,10 @@ const Accordions = ({darkMode, setDarkMode}) => {
                       <li>Navigation Menus: Create vertical navigation with expandable submenus.</li>
                       <li>Product Details: Show/hide additional information on product pages.</li>
                     </ul>
-                  </div>
+                  </section>
 
-                  <div className='mt-5'>
-                    <h3>WAI-ARIA Roles, States, and Properties</h3>
+                  <section className='mt-10'>
+                    <h2>WAI-ARIA Roles, States, and Properties</h2>
                     <ul className='list-disc ml-6 mt-2'>
                       <li>The title of each accordion header is contained in an element with role button.</li>
                       <li>If the accordion panel associated with an accordion header is visible, the header button element has aria-expanded set to true. If the panel is not visible, aria-expanded is set to false.</li>
@@ -215,10 +193,10 @@ const Accordions = ({darkMode, setDarkMode}) => {
                         </ul>
                       </li>
                     </ul>
-                  </div>
+                  </section>
 
-                  <div className='mt-10 mb-[50px]'>
-                    <h3>What the Utility Handles Automatically</h3>
+                  <section className='mt-10'>
+                    <h2>What the Utility Handles Automatically</h2>
                     <p className='mt-2'>The library automatically manages these ARIA attributes:</p>
                     <ul className='list-disc ml-6 mt-2'>
                       <li><code>aria-expanded</code>: Indicates the expanded state (automatically managed)</li>
@@ -226,32 +204,37 @@ const Accordions = ({darkMode, setDarkMode}) => {
                       <li><code>role=&quot;region&quot;</code>: Applied to panels (automatically set)</li>
                       <li><code>aria-labelledby</code>: Links panel to trigger (automatically set)</li>
                     </ul>
-                  </div>
+                  </section>
 
-                  <h3 className='break-words'>makeAccordionAccessible()</h3>
-                  <p className='mt-2'>The <code>makeAccordionAccessible()</code> method creates a fully accessible accordion with automatic state management, keyboard interaction, and ARIA attribute handling. No manual state tracking required!</p>
+                  <section className='mt-10'>
+                    <h2 className='break-words'>makeAccordionAccessible()</h2>
+                    <p className='mt-2'>The <code>makeAccordionAccessible()</code> method creates a fully accessible accordion with automatic state management, keyboard interaction, and ARIA attribute handling. No manual state tracking required!</p>
 
-                  <div className={`mt-6 p-4 rounded-lg border-l-4 border-green-500 ${darkMode ? 'bg-green-900/20' : 'bg-green-50'}`}>
-                    <h3 className={`font-semibold ${darkMode ? 'text-green-100' : 'text-green-900'}`}>✨ Key Features</h3>
-                    <ul className={`list-disc ml-4 mt-2 ${darkMode ? 'text-green-100' : 'text-green-900'}`}>
-                      <li>Automatic ARIA attribute management (aria-expanded, aria-controls, roles)</li>
-                      <li>Complete keyboard interaction following W3C APG specifications</li>
-                      <li>Built-in mouse support with click handling</li>
-                      <li>Focus management</li>
-                      <li>Event callbacks for expanded/collapse</li>
-                      <li>No manual state management required</li>
-                    </ul>
-                  </div>
-                  
-                  <h3 className='mt-5'>Parameters:</h3>
+                    <div className={`mt-6 p-4 rounded-lg border-l-4 border-green-500 ${darkMode ? 'bg-green-900/20' : 'bg-green-50'}`}>
+                      <h3 className={`font-semibold ${darkMode ? 'text-green-100' : 'text-green-900'}`}>✨ Key Features</h3>
+                      <ul className={`list-disc ml-4 mt-2 ${darkMode ? 'text-green-100' : 'text-green-900'}`}>
+                        <li>Automatic ARIA attribute management (aria-expanded, aria-controls, roles)</li>
+                        <li>Complete keyboard interaction following W3C APG specifications</li>
+                        <li>Built-in mouse support with click handling</li>
+                        <li>Focus management</li>
+                        <li>Event callbacks for expanded/collapse</li>
+                        <li>No manual state management required</li>
+                      </ul>
+                    </div>
+                  </section>
+
+                  <section className='mt-10'>
+                    <h2>Parameters:</h2>
                   <ul className='list-disc ml-6 mt-2'>
                     <li><code>accordionId</code> (string): ID of the accordion container</li>
                     <li><code>triggersClass</code> (string): Shared class for all trigger buttons</li>
                     <li><code>panelsClass</code> (string): Shared class for all panels</li>
                     <li><code>allowMultipleOpen</code> (boolean, optional): Allow multiple panels open (default: false)</li>
                   </ul>
+                  </section>
 
-                  <h3 className='mt-5'>Returns:</h3>
+                  <section className='mt-10'>
+                    <h2>Returns:</h2>
                   <ul className='list-disc ml-6 mt-2'>
                     <li><code>expandItem(index)</code>: Expand specific panel</li>
                     <li><code>collapseItem(index)</code>: Collapse specific panel</li>
@@ -259,12 +242,22 @@ const Accordions = ({darkMode, setDarkMode}) => {
                     <li><code>cleanup()</code>: Remove event listeners</li>
                     <li><code>refresh()</code>: Re-initialize accordion (useful for dynamic content)</li>
                   </ul>
+                  </section>
 
-                  <p className='mt-2'>The method handles all keyboard interactions and ARIA attributes automatically. Simply initialize once and let the library manage the rest!</p>
-                  <AccordionExample/>
-                  <CodeBlockDemo code={firstAccordionCode} isLineNumber={true}/>
+                  <section className='mt-10'>
+                    
+                      <p className='mb-2'>Import the utility:</p>
+                      <CodeBlockDemo code={'import * as Accordion from "aria-ease/accordion";'}/>
 
-                  <div className='mt-10'>
+                      <p className='mb-2 mt-6'>Basic setup with callbacks:</p>
+                      <CodeBlockDemo code={basicSetup} isLineNumber={true}/>
+
+                      <p className='mb-2 mt-6'>Minimal HTML structure (no ARIA attributes needed):</p>
+                      <CodeBlockDemo code={accordionHTML} isLineNumber={true}/>
+              
+                  </section>
+
+                  <section className='mt-10'>
                     <h2>Keyboard Interaction</h2>
                     <ul className='list-disc ml-6 mt-2'>
                       <li><code>Enter</code> / <code>Space</code>: Toggle accordion panel</li>
@@ -273,10 +266,10 @@ const Accordions = ({darkMode, setDarkMode}) => {
                       <li><code>Home</code>: Focus first trigger</li>
                       <li><code>End</code>: Focus last trigger</li>
                     </ul>
-                  </div>
+                  </section>
 
-                  <div className='mt-10'>
-                    <h3>Best Practices</h3>
+                  <section className='mt-10'>
+                    <h2>Best Practices</h2>
                     <ul className='list-disc ml-6 mt-2'>
                       <li>Use descriptive button text that clearly indicates the content being revealed</li>
                       <li>Ensure proper ARIA attributes are always in sync with visual state</li>
@@ -284,7 +277,7 @@ const Accordions = ({darkMode, setDarkMode}) => {
                       <li>Consider allowing multiple panels to be open simultaneously for better UX</li>
                       <li>Provide visible focus indicators for keyboard interaction</li>
                     </ul>
-                  </div>
+                  </section>
 
                   <div className='flex flex-wrap gap-4 py-4 mx-auto max-w-7xl md:py-12 mt-[100px] justify-between'>
                     <a href='/examples' className='block-interactive next-link rounded-lg md:min-w-80 md:max-w-md w-full md:w-auto flex gap-6 items-center px-4 py-6 md:px-5'>
