@@ -5,36 +5,36 @@ name: Quick Accessibility Check
 
 on:
   pull_request:
-    branches: [ main ]
+    branches: [main]
     paths:
-      - 'src/**'  # Only run when source files change
-      - 'package.json'
-      - 'ariaease.config.js'
+      - "src/**" # Only run when source files change
+      - "package.json"
+      - "ariaease.config.js"
 
 jobs:
   quick-test:
     runs-on: ubuntu-latest
-    
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-      
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
-          cache: 'npm'
-      
+          node-version: "20"
+          cache: "npm"
+
       - name: Install dependencies
-        run: npm ci
-      
+        run: npm install
+
       - name: Install Playwright
         run: npx playwright install --with-deps chromium
-      
+
       - name: Start dev server
         run: |
           npm run dev &
           npx wait-on http://localhost:5173 -t 30000
-      
+
       - name: Run aria-ease tests
         run: npm run test
