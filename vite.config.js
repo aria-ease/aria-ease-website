@@ -14,6 +14,9 @@ export default defineConfig({
   resolve: {
     alias: {
       '@': '/src',
+      'playwright': false,
+      'playwright-core': false,
+      '@playwright/test': false
     },
-  },
+  }
 })

@@ -1,7 +1,7 @@
 [
     {
         "title": "Getting Started",
-        "content": "Introduction. Installation. Features",
+        "content": "Introduction. Installation. Features. Test. Audit. Examples. Documentation",
         "url": "/docs"
     },
     {
@@ -33,5 +33,25 @@
         "title": "Toggle",
         "content": "Accessible Toggle switch utility. Uses aria-pressed, aria-label. Ideal for dark mode, settings, and preferences. screen reader",
         "url": "/examples/toggle-button"
+    },
+    {
+        "title": "Changelog",
+        "content": "What's new, improved, and fixed in each release of Aria-Ease. Versions. Bug fixes. Features",
+        "url": "/changelog"
+    },
+    {
+        "title": "Runtime Audit CLI",
+        "content": "Automated Accessibility Audit. Automated Accessibility Testing. Identify and fix accessibility issues. Development and Deployment workflow. CI/CD. utility",
+        "url": "/audit"
+    },
+    {
+        "title": "Combobox",
+        "content": "Accessible Combobox utility. Uses aria-expanded, aria-controls, aria-activedescendant, role='combobox', role='listbox', role='option'. Ideal for searchable dropdowns. screen reader",
+        "url": "/examples/combobox"
+    },
+    {
+        "title": "Testing",
+        "content": "Guides and best practices for testing accessibility of your custom components. utility.",
+        "url": "/testing"
     }
 ]

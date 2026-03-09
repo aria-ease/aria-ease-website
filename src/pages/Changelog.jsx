@@ -1,60 +1,44 @@
 import Header from "../components/Header";
 import { Container, Row, Col } from "react-bootstrap";
 import SlideOutNav from "../components/SlideOutNav";
-import { useState, useEffect, useRef } from "react";
+import { useState, useEffect, useRef, useMemo } from "react";
 import ScrollTracker from '../components/ScrollTracker';
 import './homepage.css';
 import * as Block from 'aria-ease/block';
 import SideNav from "../components/SideNav";
+import './changelog.css';
+import { markdownParser } from '../hooks/markdownParser';
+import { AlertCircle, ChevronRightCircleIcon } from "lucide-react";
+import { Helmet } from 'react-helmet-async';
 
-const changelogData = [
-  {
-    version: "2.0.3",
-    date: "Sep 23, 2025",
-    changes: [
-      "Improved tree-shaking for unused utilities.",
-      "Added per-utility and central builds/imports for granularity."
-    ]
-  },
-  {
-    version: "2.0.2",
-    date: "Sep 4, 2025",
-    changes: [
-      "Added tree-shaking for unused utilities.",
-    ]
-  },
-  {
-    version: "2.0.1",
-    date: "Sep 4, 2025",
-    changes: [
-      "Removed aria-label update functionality for menu, checkbox, radio, toggle, and accordion.",
-      "Refactored makeMenuAccessible usage: Removed updateMenuTriggerAriaAttributes, cleanUpMenuEventListeners functions. Added openMenu, closeMenu, and cleanup functions."
-    ]
-  },
-  {
-    version: "2.0.0",
-    date: "Sep 4, 2025",
-    changes: [
-      "Major refactor: deprecated v1.x.x.",
-      "Initiated v2.x.x.",
-      "Added namespace imports."
-    ]
-  }
-];
+
 
 // eslint-disable-next-line react/prop-types
 const Changelog = ({ darkMode, setDarkMode }) => {
-  const [showDropdownPage, setShowDropdownPage] = useState(false);
+  const[showDropdownPage, setShowDropdownPage] = useState(false);
   const page = 'changelog';
   const[resultsVisible, setResultsVisible] = useState(false);
+  const[changelogData, setChangelogData] = useState([]);
 
   const mainBlockCleanupRef = useRef(null);
+
+  const changelogDataa = useMemo(() => {
+    return markdownParser(changelogData);
+  }, [changelogData]);
+
+  useEffect(() => {
+    fetch('/CHANGELOG.md')
+    .then(response => response.text())
+    .then(data => setChangelogData(data))
+    .catch(error => console.error(error))
+  }, [])
+
   
     useEffect(() => {
-      mainBlockCleanupRef.current = Block.makeBlockAccessible('inner-body-div', 'block-interactive');
+      mainBlockCleanupRef.current = Block.makeBlockAccessible({ blockId: 'inner-body-div', blockItemsClass: 'block-interactive' });
       return () => {
         if (mainBlockCleanupRef.current) {
-          mainBlockCleanupRef.current();
+          mainBlockCleanupRef.current.cleanup();
           mainBlockCleanupRef.current = null;
         }
       };
@@ -63,18 +47,46 @@ const Changelog = ({ darkMode, setDarkMode }) => {
     useEffect(() => {
       if (resultsVisible) {
         if (mainBlockCleanupRef.current) {
-          mainBlockCleanupRef.current();
+          mainBlockCleanupRef.current.cleanup();
           mainBlockCleanupRef.current = null;
         }
       } else {
         if (!mainBlockCleanupRef.current) {
-          mainBlockCleanupRef.current = Block.makeBlockAccessible('inner-body-div', 'block-interactive');
+          mainBlockCleanupRef.current = Block.makeBlockAccessible({ blockId: 'inner-body-div', blockItemsClass: 'block-interactive' });
         }
       }
     }, [resultsVisible]);
 
+  const getCategoryClasses = (category) => {
+    switch (category) {
+      case 'Features':
+        return 'bg-green-100 text-green-700 border-green-300';
+      case 'Bug Fixes':
+        return 'bg-red-100 text-red-700 border-red-300';
+      case 'Performance':
+        return 'bg-blue-100 text-blue-700 border-blue-300';
+      case 'Refactor':
+        return 'bg-yellow-100 text-yellow-700 border-yellow-300';
+      default:
+        return 'bg-gray-100 text-gray-700 border-gray-300';
+    }
+  };
+
   return (
+
+    
     <div className="home-body" id="inner-body-div">
+      <Helmet>
+            <title>Changelog | Aria-Ease</title>
+            <meta name="description" content="See what's new, improved, and fixed in each release of Aria-Ease. Stay updated with the latest features, bug fixes, and performance enhancements." />
+          </Helmet>
+          <a
+        href="#main-content"
+        className="skip-to-content-link absolute left-2 top-2 px-4 py-2 rounded-md"
+        tabIndex={0}
+      >
+        Skip to Content
+      </a>
       <ScrollTracker page={page}/>
       <Header 
         page={page}
@@ -85,48 +97,93 @@ const Changelog = ({ darkMode, setDarkMode }) => {
         resultsVisible={resultsVisible}
         setResultsVisible={setResultsVisible}
       />
-      <div className="page-body-div">
+      <main className="page-body-div" id="main-content">
         <Container fluid>
             <Row>
               <SideNav page={page}/>
-              <Col xs={12} sm={12} md={9} lg={9}>
-                <Container fluid className="homepage-above-fold-div">
-                    <Row>
-                        <Col xs={12} sm={12} md={12} lg={8}>
-                        <div className="pt-[100px]">
+              <Col xs={12} sm={12} md={12} lg={9} className='px-0'>
+                <div className="side-body-div">
                             <h1 className="hero-heading">Changelog</h1>
                             <p className="hero-paragraph mb-5 mt-8">See what&#39;s new, improved, and fixed in each release of Aria-Ease.</p>
-                        </div>
-                        </Col>
-                    </Row>
-                </Container>
-                <Container fluid className="mb-[50px]">
-                    <Row>
-                        <Col xs={12} sm={12} md={12} lg={12}>
-                            <div className="changelog-list mt-8">
-                                {changelogData.map((entry) => (
-                                <div key={entry.version} className="changelog-entry mb-8 p-6 rounded-lg shadow-sm">
-                                    <div className="flex items-center gap-4 mb-2">
-                                    <span className="text-lg font-bold text-blue-700">v{entry.version}</span>
-                                    <span className="text-sm changelog-entry-date font-semibold">{entry.date}</span>
-                                    </div>
-                                    <ul className="list-disc ml-6 mt-2">
-                                    {entry.changes.map((change, i) => (
-                                        <li key={i} className="mb-1 changes-list-text">{change}</li>
-                                    ))}
-                                    </ul>
-                                </div>
-                                ))}
+
+                            <div className='mt-6 mb-[50px] w-full p-4 rounded-lg border-l-4 border-blue-500 bg-blue-50'>
+                              <div className='flex items-center gap-3'>
+                                <AlertCircle className="h-5 w-5 text-blue-900 mt-0.5" />
+                                <p className="text-blue-900"> Note: Earlier versions (≤2.0.x) were pre-release experimental builds without formal changelogs.</p>
+                              </div>
                             </div>
-                        </Col>
-                    </Row>
-                </Container>
+
+                            {changelogDataa.map((release, index) => (
+                              <div key={release.version + index} className="mb-20">
+                                <h2 className="text-2xl font-bold text-gray-800 mb-3 pt-1">
+                                  <span className="inline-block pr-2">
+                                    <a 
+                                      href={release.compareLink} 
+                                      target="_blank" 
+                                      rel="noopener noreferrer"
+                                      className="black-white-text"
+                                    >
+                                      {release.version}
+                                    </a>
+                                    <span className="text-sm font-normal changelog-text ml-2"> ({release.date})</span>
+                                  </span>
+                                </h2>
+
+                                {Object.entries(release.categories).map(([category, changes]) => (
+                                  <div key={category} className="mt-6">
+                                    <h3 
+                                      className={`inline-block text-sm font-semibold tracking-wider uppercase px-3 py-1 rounded-full border mb-4 ${getCategoryClasses(category)}`}
+                                    >
+                                      {category}
+                                    </h3>
+              
+                                    <ul className="space-y-3 pl-4">
+                                      {changes.map((change, index) => (
+                                        <li key={index} className="flex items-start text-gray-700">
+                                          <span className="h-6 w-6 flex items-center justify-center flex-shrink-0 mr-2 text-indigo-600">
+                                              •
+                                          </span>
+                                          <span className="flex-1 changelog-text">
+                                              {change.description.charAt(0).toUpperCase() + change.description.slice(1)} 
+                                        
+                                              {change.commitLink && change.commitLink !== 'N/A' && (
+                                                  <a 
+                                                      href={`https://github.com/aria-ease/aria-ease/commit/${change.commitLink}`}
+                                                      target="_blank"
+                                                      rel="noopener noreferrer"
+                                                      className="ml-3 text-xs font-mono text-gray-400 hover:text-indigo-600 transition-colors"
+                                                      title="View commit details on GitHub"
+                                                  >
+                                                      ({change.commitLink.substring(0, 7)})
+                                                  </a>
+                                              )}
+                                          </span>
+                                        </li>
+                                      ))}
+                                    </ul>
+                                  </div>
+                                ))}
+                              </div>
+                            ))}
+                            
+
+                            <div className='flex flex-wrap gap-4 py-4 mx-auto max-w-7xl md:py-12 mt-[100px] justify-start'>
+                    <a href='/testing' className='block-interactive next-link rounded-lg md:min-w-80 md:max-w-md w-full md:w-auto flex gap-6 items-center px-4 py-6 md:px-5'>
+                    <ChevronRightCircleIcon className="rotate-180"/>
+                      <div className='flex flex-col w-full items-start'>
+                        <span className='text-sm black-white-text'>Previous</span>
+                        <span className='next-link-text text-md'>Testing Suite</span>
+                      </div>
+                    </a>
+                  </div>
+                </div>
               </Col>
             </Row>
         </Container>
-      </div>
+      </main>
       <SlideOutNav page={page} showDropdownPage={showDropdownPage}/>
     </div>
+
   );
 };
 

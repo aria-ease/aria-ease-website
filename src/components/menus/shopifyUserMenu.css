@@ -1,0 +1,81 @@
+.merchant-profile-menu-button {
+    background: rgba(48, 48, 48);
+}
+.merchant-profile-menu-button:focus {
+    background: rgba(101, 98, 102, 1);
+    box-shadow: 0px 0px 0px 1px rgba(0, 0, 0, 1);
+}
+.merchant-profile-menu-button > span:nth-child(1) {
+    color: rgba(227, 227, 227, 1);
+    letter-spacing: 0em;
+}
+.merchant-profile-menu-button:focus {
+    outline-offset: 1px;
+    outline: 2px solid rgba(0, 91, 211, 1);
+}
+
+.header-merchant-profile-image-div-button,
+.merchant-dropdown-menu-merchant-profile-image-div {
+    background: rgba(54, 251, 161, 1);
+}
+.header-merchant-profile-image-div-button span {
+    letter-spacing: 0em;
+}
+.merchant-profile-menu-button:focus {
+    outline: 2px solid rgba(0, 91, 211, 1);
+}
+.merchant-profile-menu-button:focus {
+    outline-offset: 1px;
+}
+.merchant-dropdown-menu-merchant-profile-div {
+    background: rgba(241, 241, 241, 1);
+}
+.merchant-dropdown-menu-merchant-profile-grid-div {
+    grid-template-columns: 28px min-content;
+}
+.merchant-dropdown-menu-merchant-profile-grid-div .merchant-dropdown-menu-merchant-name {
+    color: rgba(48, 48, 48, 1);
+    letter-spacing: 0em;
+}
+.merchant-dropdown-menu-all-stores-link {
+    grid-template-columns: min-content min-content;
+}
+.merchant-dropdown-menu-link-text {
+    color: rgba(48, 48, 48, 1);
+    letter-spacing: 0em;
+}
+.merchant-dropdown-menu-hr {
+    background-color: rgba(225, 225, 225, 1);
+}
+.merchant-dropdown-menu-profile-name-email-link > p:nth-child(1) {
+    letter-spacing: 0em;
+    color: rgba(48, 48, 48, 1);
+}
+.merchant-dropdown-menu-profile-name-email-link > p:nth-child(2) {
+    color: rgba(97, 97, 97, 1);
+    letter-spacing: 0em;
+}
+.merchant-dropdown-menu-link-text {
+    color: rgba(48, 48, 48, 1);
+    letter-spacing: 0em;
+}
+.merchant-dropdown-menu a {
+    text-decoration: none;
+}
+.merchant-dropdown-menu a:hover {
+    background: rgba(241, 241, 241, 1);
+}
+.merchant-dropdown-menu a:active {
+    background: rgba(240, 240, 240, 1);
+}
+.merchant-dropdown-menu a:focus {
+    outline: 2px solid rgba(0, 91, 211, 1);
+}
+.merchant-dropdown-menu {
+    box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(219, 219, 219, 1);
+    display: none; /* Hidden by default, aria-ease will control visibility */
+}
+.merchant-profile-menu-button {
+    grid-template-columns: auto 28px;
+}

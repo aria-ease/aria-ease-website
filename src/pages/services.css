@@ -1,0 +1,171 @@
+.services-title {
+  font-size: 3.5rem;
+  background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.services-subtitle {
+  font-size: 1.25rem;
+  opacity: 0.8;
+}
+
+.service-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  transition: all 0.3s ease;
+}
+
+.service-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 24px rgba(99, 102, 241, 0.15);
+  border-color: #6366f1;
+}
+
+.service-icon {
+  background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+}
+
+
+.service-description {
+  opacity: 0.7;
+}
+
+.service-features {
+  list-style: none;
+}
+
+
+.feature-check {
+  color: #6366f1;
+  flex-shrink: 0;
+}
+
+.service-pricing {
+  color: #6366f1;
+  border-top: 1px solid var(--border-color);
+}
+
+
+.why-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+}
+
+.why-title {
+  color: #6366f1;
+}
+
+.why-description {
+  opacity: 0.8;
+}
+
+.step-number {
+  background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+  margin: 0 auto 20px;
+}
+
+.process-step p {
+  opacity: 0.7;
+}
+
+.cta-card {
+  background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+  padding: 60px;
+}
+
+.cta-title {
+  font-size: 2.5rem;
+}
+
+.cta-description {
+  opacity: 0.95;
+  margin: 0 auto 40px;
+}
+
+.cta-btn {
+  text-decoration: none;
+  transition: all 0.3s ease;
+  border: 2px solid white;
+}
+
+.btn-primary.cta-btn {
+  background: white;
+  color: #6366f1;
+}
+
+.btn-primary.cta-btn:hover {
+  background: #f8f9fa;
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.btn-outline.cta-btn {
+  background: transparent;
+  color: white;
+}
+
+.btn-outline.cta-btn:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateY(-2px);
+}
+
+.portfolio-card {
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+}
+
+.portfolio-icon {
+  background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+  margin: 0 auto 24px;
+}
+
+.portfolio-card p {
+  opacity: 0.8;
+  margin: 0 auto 24px;
+}
+
+.portfolio-link {
+  gap: 8px;
+  color: #6366f1;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.portfolio-link:hover {
+  gap: 12px;
+  color: #8b5cf6;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .services-title {
+    font-size: 2.25rem;
+  }
+
+  .services-subtitle {
+    font-size: 1.1rem;
+  }
+
+  .service-card {
+    padding: 30px;
+  }
+
+  .cta-card {
+    padding: 40px 24px;
+  }
+
+  .cta-title {
+    font-size: 2rem;
+  }
+
+  .cta-buttons {
+    flex-direction: column;
+  }
+
+  .cta-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
