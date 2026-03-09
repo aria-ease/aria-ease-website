@@ -1,11 +1,11 @@
 import { useEffect } from 'react';
 
 // eslint-disable-next-line react/prop-types
-const ScrollTracker = ({page}) => {
+const ScrollTracker = ({ page }) => {
     useEffect(() => {
-        const savedPosition = sessionStorage.getItem(`scroll-position-${page}`) || 0;
-        window.scrollTo(0, parseInt(savedPosition));
-    }, [])
+      const savedPosition = sessionStorage.getItem(`scroll-position-${page}`) || 0;
+       window.scrollTo(0, parseInt(savedPosition));
+    }, [page])
     
   return null
 }

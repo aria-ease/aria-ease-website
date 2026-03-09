@@ -1,3 +1,3 @@
 User-agent: *
 Allow: /
-Sitemap: https://ariaease.web.app/sitemap.xml
+Sitemap: https://ariaease.site/sitemap.xml

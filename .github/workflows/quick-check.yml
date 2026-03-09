@@ -1,0 +1,45 @@
+name: Quick Accessibility Check
+
+# Faster check that only runs aria-ease test (not full audit)
+# Good for quick feedback during development
+
+on:
+  pull_request:
+    branches: [ main ]
+    paths:
+      - 'docs/src/**'  # Only run when source files change
+      - 'docs/package.json'
+      - 'docs/ariaease.config.js'
+
+jobs:
+  quick-test:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+          cache-dependency-path: docs/package-lock.json
+      
+      - name: Install dependencies
+        working-directory: docs
+        run: npm ci
+      
+      - name: Install Playwright
+        working-directory: docs
+        run: npx playwright install --with-deps chromium
+      
+      - name: Start dev server
+        working-directory: docs
+        run: |
+          npm run dev &
+          npx wait-on http://localhost:5173 -t 30000
+      
+      - name: Run aria-ease tests
+        working-directory: docs
+        run: npm run test
