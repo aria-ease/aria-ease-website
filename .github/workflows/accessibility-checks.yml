@@ -12,45 +12,35 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      # Step 1: Get your code
       - name: Checkout code
         uses: actions/checkout@v4
 
-      # Step 2: Set up Node.js
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: "20"
           cache: "npm"
 
-      # Step 3: Install dependencies
       - name: Install dependencies
         run: npm ci
 
-      # Step 4: Install Playwright browsers (needed for aria-ease test)
-      - name: Install Playwright Browsers
         run: npx playwright install --with-deps chromium
 
-      # Step 5: Build the site
       - name: Build site
         run: npm run build
 
-      # Step 6: Start dev server in background
       - name: Start dev server
         run: |
           npm run dev &
           # Wait for server to be ready
           npx wait-on http://localhost:5173 -t 30000
 
-      # Step 7: Run aria-ease audit
       - name: Run accessibility audit
         run: npm run audit
 
-      # Step 8: Run aria-ease contract tests
       - name: Run accessibility tests
         run: npm run test
 
-      # Step 9: Upload audit report as artifact (so you can download and view it)
       - name: Upload audit report
         if: always() # Upload even if tests fail
         uses: actions/upload-artifact@v4
@@ -59,7 +49,6 @@ jobs:
           path: accessibility-reports/
           retention-days: 30
 
-      # Step 10: Comment on PR with results (optional but cool)
       - name: Comment PR with audit results
         if: github.event_name == 'pull_request' && failure()
         uses: actions/github-script@v7
