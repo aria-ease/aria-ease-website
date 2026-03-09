@@ -9,8 +9,7 @@
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
     "audit": "npx aria-ease audit -f html",
-    "test": "npx aria-ease test",
-    "prepublish": "npm run audit && npm run test"
+    "test": "npx aria-ease test"
   },
   "dependencies": {
     "@tiptap/extension-link": "^2.11.5",
