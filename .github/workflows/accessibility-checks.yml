@@ -3,7 +3,7 @@ name: Accessibility Checks
 # When to run this workflow
 on:
   push:
-    branches: [main, isaac] # Run on pushes to main and your current branch
+    branches: [main, isaac-v6.x.x] # Run on pushes to main and your current branch
   pull_request:
     branches: [main] # Run on PRs targeting main
 
