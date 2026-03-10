@@ -48,19 +48,28 @@ jobs:
 
       # Step 8: Run aria-ease contract tests
       - name: Run accessibility tests
-        run: npm run test
+        run: npm run test 2>&1 | tee component-contract-test-output.txt
 
       # Step 9: Upload audit report as artifact (so you can download and view it)
       - name: Upload audit report
-        if: always() # Upload even if tests fail
+        if: always() # Upload even if audits fail
         uses: actions/upload-artifact@v4
         with:
           name: accessibility-audit-report
           path: accessibility-reports/
           retention-days: 30
 
-      # Step 10: Comment on PR with results (optional but cool)
-      - name: Comment PR with audit results
+      # Step 10: Upload component contract test report as artifact (so you can download and view it)
+      - name: Upload component contract test report
+        if: always() # Upload even if component contract tests fail
+        uses: actions/upload-artifact@v4
+        with:
+          name: component-contract-test-output
+          path: component-contract-test-output.txt
+          retention-days: 30
+
+      # Step 11: Comment on PR with results (optional but cool)
+      - name: Comment PR with audit and component contract test results
         if: github.event_name == 'pull_request' && failure()
         uses: actions/github-script@v7
         with:
@@ -69,5 +78,5 @@ jobs:
               issue_number: context.issue.number,
               owner: context.repo.owner,
               repo: context.repo.repo,
-              body: '❌ Accessibility checks failed! Check the [workflow run](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}) for details and download the audit report.'
+              body: '❌ Accessibility checks failed! Check the [workflow run](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}) for details and download the reports.'
             })

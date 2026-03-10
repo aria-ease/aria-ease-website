@@ -35,7 +35,7 @@ export default {
 };`;
 
 const usageCode = `# Specify single url option
--u http://localhost:5173/ //url option is required if no config file
+-u http://localhost:5173/ //use url option for quick one-off audits without a config file
 
 # Specify report format options:
 -f html //'json', 'csv', or 'all' - optional (default: 'all')
@@ -336,6 +336,13 @@ const Audit = ({ darkMode, setDarkMode }) => {
 
                   <h3 className='text-xl font-semibold mb-3 mt-6'>GitHub Actions</h3>
                   <CodeBlockDemo code={workflowCode} isLineNumber={true}/>
+
+                  <h3 className='text-xl font-semibold mb-3 mt-8'>Package.json Scripts</h3>
+                  <CodeBlockDemo code={`{
+  "scripts": {
+    "audit": "npx aria-ease audit -f html"
+  }
+}`} isLineNumber={true}/>
                 </section>
 
                 <div className='flex flex-wrap gap-4 py-4 mx-auto max-w-7xl md:py-12 mt-[100px] justify-between'>
