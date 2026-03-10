@@ -57,19 +57,70 @@ const packageJsonCode = `{
 
 const workflowCode = `name: Accessibility Audit
 
-on: [push, pull_request]
+# When to run this workflow
+on:
+  push:
+    branches: [main, <branch>] # Run on pushes to main and your current branch
+  pull_request:
+    branches: [main] # Run on PRs targeting main
 
 jobs:
-  audit:
+  accessibility-audit:
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-      - run: npm install
-      - run: npx playwright install chromium
-      - run: npm run dev &
-      - run: npx aria-ease audit -f json
-      - run: cat audit-report.json`
+      # Step 1: Get your code
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # Step 2: Set up Node.js
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+
+      # Step 3: Install dependencies
+      - name: Install dependencies
+        run: npm install
+
+      # Step 4: Build the site
+      - name: Build site
+        run: npm run build
+
+      # Step 5: Start dev server in background
+      - name: Start dev server
+        run: |
+          npm run dev &
+          # Wait for server to be ready
+          npx wait-on http://localhost:5173 -t 30000
+
+      # Step 6: Run aria-ease audit
+      - name: Run accessibility audit
+        run: npm run audit
+
+      # Step 7: Upload audit report as artifact (so you can download and view it)
+      - name: Upload audit report
+        if: always() # Upload even if tests fail
+        uses: actions/upload-artifact@v4
+        with:
+          name: accessibility-audit-report
+          path: accessibility-reports/
+          retention-days: 30
+
+      # Step 8: Comment on PR with results (optional but cool)
+      - name: Comment PR with audit results
+        if: github.event_name == 'pull_request' && failure()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: '❌ Accessibility checks failed! Check the [workflow run](https://github.com/{{ github.repository }}/actions/runs/{{ github.run_id }}) for details and download the audit report.'
+            })
+`
 
 // eslint-disable-next-line react/prop-types
 const Audit = ({ darkMode, setDarkMode }) => {
@@ -136,7 +187,7 @@ const Audit = ({ darkMode, setDarkMode }) => {
                 <p className='mt-2'>Automated accessibility testing powered by axe-core and Playwright. Generate comprehensive HTML or JSON reports to identify and fix accessibility issues in your web applications.</p>
 
                 <div className='mt-6'>
-                  <h2>Features</h2>
+                  <h2 className='text-3xl font-bold mb-4'>Features</h2>
                   <ul className='list-disc ml-6 mt-2'>
                     <li>Automated accessibility testing using axe-core</li>
                     <li>Beautiful HTML reports with detailed issue breakdowns</li>
@@ -157,8 +208,8 @@ const Audit = ({ darkMode, setDarkMode }) => {
                   </div>
                 </div>
 
-                <div className='example-each-ui-code-block-div mt-6'>
-                  <h3>Installation & Setup</h3>
+                <section className='mt-10'>
+                  <h2 className='text-3xl font-bold mb-4'>Installation & Setup</h2>
                   <p className='mt-2'>First, install aria-ease and Playwright as dev dependencies:</p>
                   <CodeBlockDemo code={packageJsonCode} isLineNumber={true}/>
                   
@@ -173,15 +224,15 @@ const Audit = ({ darkMode, setDarkMode }) => {
                       </p>
                     </div>
                   </div>
-                </div>
+                </section>
 
-                <div className='example-each-ui-code-block-div mt-6'>
-                  <h3>Configuration</h3>
+                <section className='mt-10'>
+                  <h2 className='text-3xl font-bold mb-4'>Configuration</h2>
                   <p className='mt-2'>Create a configuration file in your project root. Aria-Ease supports multiple formats with automatic detection and validation:</p>
                   <CodeBlockDemo code={configCode} isLineNumber={true}/>
                   
                   <div className='mt-3'>
-                    <h4>Supported Configuration Formats</h4>
+                    <h3>Supported Configuration Formats</h3>
                     <ul className='list-disc ml-6 mt-2'>
                       <li><code>ariaease.config.js</code> - ES modules (recommended)</li>
                       <li><code>ariaease.config.mjs</code> - ES modules explicit</li>
@@ -193,7 +244,7 @@ const Audit = ({ darkMode, setDarkMode }) => {
                   </div>
 
                   <div className='mt-3'>
-                    <h4>Configuration Options</h4>
+                    <h3>Configuration Options</h3>
                     <ul className='list-disc ml-6 mt-2'>
                       <li><code>urls</code>: Array of URLs to audit (required)</li>
                       <li><code>output.format</code>: Output format - &apos;html&apos;, &apos;csv&apos;, &apos;json&apos;, or &apos;all&apos; (default: &apos;all&apos;)</li>
@@ -202,10 +253,10 @@ const Audit = ({ darkMode, setDarkMode }) => {
                       <li><code>waitUntil</code>: Wait strategy - &apos;load&apos;, &apos;domcontentloaded&apos;, or &apos;networkidle&apos; (default: &apos;domcontentloaded&apos;). Use &apos;networkidle&apos; for SPAs</li>
                     </ul>
                   </div>
-                </div>
+                </section>
 
-                <div className='example-each-ui-code-block-div mt-6'>
-                  <h4>Usage</h4>
+                <section className='mt-10'>
+                  <h2 className='text-3xl font-bold mb-4'>Usage</h2>
                   <p className='mt-2'>To run an audit with a configuration file: </p>
                   <CodeBlockDemo code={'npx aria-ease audit'}/>
 
@@ -213,20 +264,20 @@ const Audit = ({ darkMode, setDarkMode }) => {
                   <CodeBlockDemo code={usageCode} isLineNumber={true}/>
                   
                   <div className='mt-4'>
-                    <h4>Output</h4>
+                    <h3>Output</h3>
                     <ul className='list-disc ml-6 mt-2'>
                       <li><strong>HTML Report:</strong> Clean, readable report you can open in your browser with interactive issue breakdown</li>
                       <li><strong>JSON Output:</strong> Machine-readable. Perfect for CI/CD pipelines and custom processing</li>
                       <li><strong>CSV Output:</strong> Perfect for spreadsheet analysis and quick summaries</li>
                     </ul>
                   </div>
-                </div>
+                </section>
 
-                <div className='mt-6'>
-                  <h4>Troubleshooting</h4>
+                <section className='mt-10'>
+                  <h2 className='text-3xl font-bold mb-4'>Troubleshooting</h2>
                   
                   <div className='mt-3'>
-                    <h5>Missing Dependencies</h5>
+                    <h3>Missing Dependencies</h3>
                     <p className='mt-2'>If you see this error:</p>
                     <div className='code-div'>
                         <code>Cannot find package &apos;@axe-core/playwright&apos;</code>
@@ -238,7 +289,7 @@ const Audit = ({ darkMode, setDarkMode }) => {
                   </div>
 
                   <div className='mt-3'>
-                    <h5>Playwright Browsers Not Installed</h5>
+                    <h3>Playwright Browsers Not Installed</h3>
                     <p className='mt-2'>If you see this error:</p>
                     <div className='code-div'>
                         <code>browserType.launch: Executable doesn&#39;t exist at ...</code>
@@ -250,7 +301,7 @@ const Audit = ({ darkMode, setDarkMode }) => {
                   </div>
 
                   <div className='mt-3'>
-                    <h5>Page Load Timeouts</h5>
+                    <h3>Page Load Timeouts</h3>
                     <p className='mt-2'>If your audits are timing out, try these solutions:</p>
                     <ul className='list-disc ml-6 mt-2'>
                       <li>Increase the <code>timeout</code> value in your config (default is 60 seconds)</li>
@@ -260,16 +311,16 @@ const Audit = ({ darkMode, setDarkMode }) => {
                   </div>
 
                   <div className='mt-8'>
-                    <h5>Server Not Running</h5>
+                    <h3>Server Not Running</h3>
                     <p className='mt-2'>Make sure your development server is running before auditing localhost URLs:</p>
                     <div className='code-div'>
                         <code>npm run dev  # or your start command</code>
                     </div>
                   </div>
-                </div>
+                </section>
 
-                <div className='mt-6'>
-                  <h4>Best Practices</h4>
+                <section className='mt-10'>
+                  <h2 className='text-3xl font-bold mb-4'>Best Practices</h2>
                   <ul className='list-disc ml-6 mt-2'>
                     <li>Run audits regularly as part of your development workflow</li>
                     <li>Add audit command to your pre-commit or CI/CD pipeline</li>
@@ -277,15 +328,15 @@ const Audit = ({ darkMode, setDarkMode }) => {
                     <li>Fix critical and serious issues first</li>
                     <li>Use JSON output for automated testing in CI/CD</li>
                   </ul>
-                </div>
+                </section>
 
-                <div className='mt-6'>
-                  <h4>CI/CD Integration</h4>
-                  <p className='mt-2'>Example GitHub Actions workflow:</p>
-                  <pre className='code-div p-4 rounded mt-2 text-sm overflow-x-auto'>
-                    {workflowCode}
-                  </pre>
-                </div>
+                <section className='mt-[100px]'>
+                  <h2 className='text-3xl font-bold mb-4'>CI/CD Integration</h2>
+                  <p className='mb-4'>Integrate accessibility testing into your continuous integration pipeline.</p>
+
+                  <h3 className='text-xl font-semibold mb-3 mt-6'>GitHub Actions</h3>
+                  <CodeBlockDemo code={workflowCode} isLineNumber={true}/>
+                </section>
 
                 <div className='flex flex-wrap gap-4 py-4 mx-auto max-w-7xl md:py-12 mt-[100px] justify-between'>
                     <a href='/examples/toggle-button' className='block-interactive next-link rounded-lg md:min-w-80 md:max-w-md w-full md:w-auto flex gap-6 items-center px-4 py-6 md:px-5'>

@@ -1,9 +1,8 @@
 import Header from '../components/Header';
 import { Container, Row, Col } from 'react-bootstrap';
 import SideNav from '../components/SideNav';
-import { useState, useEffect, useRef } from 'react';
+import { useState } from 'react';
 import SlideOutNav from '../components/SlideOutNav';
-import * as Block from 'aria-ease/block';
 import CodeBlockDemo from '../components/CodeBlock';
 import ScrollTracker from '../components/ScrollTracker';
 import { CheckCircle, XCircle, AlertCircle, ChevronRightCircleIcon } from 'lucide-react';
@@ -14,34 +13,79 @@ const Testing = ({darkMode, setDarkMode}) => {
   const[showDropdownPage, setShowDropdownPage] = useState(false);
   const page = 'testing';
   const [resultsVisible, setResultsVisible] = useState(false);
-  const mainBlockCleanupRef = useRef(null);
 
-  useEffect(() => {
-    mainBlockCleanupRef.current = Block.makeBlockAccessible({ blockId: 'inner-body-div', blockItemsClass: 'block-interactive' });
-    return () => {
-      if (mainBlockCleanupRef.current) {
-        mainBlockCleanupRef.current.cleanup();
-        mainBlockCleanupRef.current = null;
-      }
-    };
-  }, []);
+  const workflowCode = `name: Accessibility Component Contract Test
 
-  useEffect(() => {
-    if (resultsVisible) {
-      if (mainBlockCleanupRef.current) {
-        mainBlockCleanupRef.current.cleanup();
-        mainBlockCleanupRef.current = null;
-      }
-    } else {
-      if (!mainBlockCleanupRef.current) {
-        mainBlockCleanupRef.current = Block.makeBlockAccessible({ blockId: 'inner-body-div', blockItemsClass: 'block-interactive' });
-      }
-    }
-  }, [resultsVisible]);
+# When to run this workflow
+on:
+  push:
+    branches: [main, <branch>] # Run on pushes to main and your current branch
+  pull_request:
+    branches: [main] # Run on PRs targeting main
+
+jobs:
+  accessibility-audit:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Step 1: Get your code
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # Step 2: Set up Node.js
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+
+      # Step 3: Install dependencies
+      - name: Install dependencies
+        run: npm install
+
+      # Step 4: Install Playwright browsers (needed for aria-ease test)
+      - name: Install Playwright Browsers
+        run: npx playwright install --with-deps chromium
+
+      # Step 5: Build the site
+      - name: Build site
+        run: npm run build
+
+      # Step 6: Start dev server in background
+      - name: Start dev server
+        run: |
+          npm run dev &
+          # Wait for server to be ready
+          npx wait-on http://localhost:5173 -t 30000
+
+      # Step 7: Run aria-ease contract tests
+      - name: Run accessibility tests
+        run: npm run test 2>&1 | tee component-contract-test-output.txt
+
+      # Step 8: Upload test report as artifact (so you can download and view it)
+      - name: Upload test report
+        if: always() # Upload even if tests fail
+        uses: actions/upload-artifact@v4
+        with:
+          name: component-contract-test-output
+          path: component-contract-test-output.txt
+          retention-days: 30
+
+      # Step 9: Comment on PR with results (optional but cool)
+      - name: Comment PR with test results
+        if: github.event_name == 'pull_request' && failure()
+        uses: actions/github-script@v7
+        with:
+          script: |
+            github.rest.issues.createComment({
+              issue_number: context.issue.number,
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              body: '❌ Accessibility checks failed! Check the [workflow run](https://github.com/{{ github.repository }}/actions/runs/{{ github.run_id }}) for details and download the audit report.'
+            })
+`
 
   return (
-
-    
     <div id="inner-body-div">
       <Helmet>
             <title>Testing Component | Aria-Ease</title>
@@ -703,7 +747,7 @@ test("full E2E combobox test", async () => {
                 </section>
 
                 {/* Test Results */}
-                <section className='mt-10 '>
+                <section className='mt-10'>
                   <h2 className='text-3xl font-bold mb-4'>Understanding Test Results</h2>
                   
                   <p className='mb-4'>The <code>testUiComponent(...)</code> function returns an object with the following structure:</p>
@@ -767,25 +811,7 @@ test("full E2E combobox test", async () => {
                   <p className='mb-4'>Integrate accessibility testing into your continuous integration pipeline.</p>
 
                   <h3 className='text-xl font-semibold mb-3 mt-6'>GitHub Actions</h3>
-                  <CodeBlockDemo code={`name: Accessibility Tests
-
-on: [push, pull_request]
-
-jobs:
-  test:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-        with:
-          node-version: '18'
-      - run: npm install
-      - run: npm test
-      
-      # Optional: Run E2E tests
-      - run: npm run dev &
-      - run: npx wait-on http://localhost:3000
-      - run: npm run test:e2e`} isLineNumber={true}/>
+                  <CodeBlockDemo code={workflowCode} isLineNumber={true}/>
 
                   <h3 className='text-xl font-semibold mb-3 mt-8'>Package.json Scripts</h3>
                   <CodeBlockDemo code={`{
