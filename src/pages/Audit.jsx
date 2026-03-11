@@ -340,7 +340,7 @@ const Audit = ({ darkMode, setDarkMode }) => {
                   <h3 className='text-xl font-semibold mb-3 mt-8'>Package.json Scripts</h3>
                   <CodeBlockDemo code={`{
   "scripts": {
-    "audit": "npx aria-ease audit -f html"
+    "audit": "npx aria-ease audit"
   }
 }`} isLineNumber={true}/>
                 </section>

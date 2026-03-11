@@ -34,16 +34,16 @@ jobs:
           npx wait-on http://localhost:5173 -t 30000
 
       # 🚨 GATE #1: Static accessibility audit
-      - name: Run accessibility audit
+      - name: Run static accessibility audit
         run: npm run audit
 
       # 🚨 GATE #2: Component interaction tests
-      - name: Run component contract tests
-        run: npm run test 2>&1 | tee component-contract-test-output.txt
+      - name: Run component interaction tests
+        run: npm run test 2>&1 | tee component-interaction-test-output.txt
 
-      # Upload reports (always, even on failure)
+      # Upload reports on failure (so you can download and view them)
       - name: Upload audit report
-        if: always()
+        if: failure()
         uses: actions/upload-artifact@v4
         with:
           name: accessibility-audit-report
@@ -51,7 +51,7 @@ jobs:
           retention-days: 30
 
       - name: Upload component test output
-        if: always()
+        if: failure()
         uses: actions/upload-artifact@v4
         with:
           name: component-contract-test-output
