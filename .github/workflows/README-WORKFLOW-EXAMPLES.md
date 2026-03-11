@@ -7,20 +7,24 @@ This folder contains example workflows demonstrating different approaches to imp
 Choose one of these approaches based on your needs:
 
 ### Option 0: Branch Protection Rules (✅ RECOMMENDED - Production Use)
+
 **Files:** `accessibility-checks.yml` + `deploy.yml` + GitHub branch protection  
 Checks run on feature branches and PRs. Branch protection blocks merging if checks fail. Deploy runs only on main after checks have passed.
 
 **This is what aria-ease docs uses in production!**
 
 ### Option 1: Explicit Dependency with `needs:` (Good for Demos/Teaching)
+
 **Files:** `accessibility-checks.yml` + `deploy-gated.yml`  
 Deploy job explicitly depends on accessibility-checks job using `needs:`. More visually obvious but re-runs checks.
 
 ### Option 2: Combined Workflow (Simple Projects)
+
 **File:** `combined-accessibility-deploy.yml`  
 Everything in one workflow - accessibility checks run before deploy step.
 
 ### Option 3: Matrix Strategy (Multi-Page Applications)
+
 **File:** `matrix-accessibility-deploy.yml`  
 Test multiple pages/routes in parallel.
 
@@ -51,46 +55,46 @@ name: Accessibility Checks
 
 on:
   push:
-    branches: [main, develop, isaac-v6.x.x]  # Run on feature branches
+    branches: [main, develop, isaac-v6.x.x] # Run on feature branches
   pull_request:
-    branches: [main]  # Run on PRs to main
+    branches: [main] # Run on PRs to main
 
 jobs:
   accessibility-audit:
     runs-on: ubuntu-latest
-    
+
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: '20'
-          cache: 'npm'
-      
+          node-version: "20"
+          cache: "npm"
+
       - run: npm install
       - run: npx playwright install --with-deps chromium
       - run: npm run build
-      
+
       - name: Start dev server
         run: |
           npm run dev &
           npx wait-on http://localhost:5173 -t 30000
-      
+
       # 🚨 GATE #1: Static Audit
       - name: Run accessibility audit
         run: npm run audit
-      
-      # 🚨 GATE #2: Component Contract Tests  
+
+      # 🚨 GATE #2: Component Contract Tests
       - name: Run component contract tests
         run: npm run test
-      
+
       - name: Upload reports
-        if: always()
+        if: failure()
         uses: actions/upload-artifact@v4
         with:
           name: accessibility-reports
           path: accessibility-reports/
           retention-days: 30
-      
+
       # Notify on PR if failed
       - name: Comment on PR
         if: github.event_name == 'pull_request' && failure()
@@ -112,17 +116,17 @@ name: Deploy to Production
 
 on:
   push:
-    branches: [main]  # Only runs when code reaches main
+    branches: [main] # Only runs when code reaches main
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
-    
+
     steps:
       - uses: actions/checkout@v4
       - run: npm install
       - run: npm run build
-      
+
       - name: Deploy to Firebase
         uses: w9jds/firebase-action@master
         with:
@@ -207,17 +211,17 @@ jobs:
       - run: npx wait-on http://localhost:5173 -t 30000
       - run: npm run audit
       - run: npm run test
-  
+
   # Job 2: Deploy (ONLY runs if checks pass)
   deploy:
-    needs: accessibility-checks  # 🚨 THE EXPLICIT GATEKEEPER
+    needs: accessibility-checks # 🚨 THE EXPLICIT GATEKEEPER
     runs-on: ubuntu-latest
-    
+
     steps:
       - uses: actions/checkout@v4
       - run: npm install
       - run: npm run build
-      
+
       - name: Deploy to Firebase
         uses: w9jds/firebase-action@master
         with:
@@ -244,7 +248,7 @@ GitHub Actions UI:
 
 ✅ accessibility-checks (completed - failed)
    └─ Run audit: ❌ Failed
-   
+
 ⊘ deploy (skipped)
    └─ Needs: accessibility-checks (failed)
 ```
@@ -267,50 +271,50 @@ on:
 jobs:
   accessibility-and-deploy:
     runs-on: ubuntu-latest
-    
+
     steps:
       # Setup
       - name: Checkout code
         uses: actions/checkout@v4
-      
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
-          cache: 'npm'
-      
+          node-version: "20"
+          cache: "npm"
+
       - name: Install dependencies
         run: npm install
-      
+
       - name: Install Playwright browsers
         run: npx playwright install --with-deps chromium
-      
+
       - name: Build application
         run: npm run build
-      
+
       # Start dev server for testing
       - name: Start dev server
         run: |
           npm run dev &
           npx wait-on http://localhost:5173 -t 30000
-      
+
       # 🚨 ACCESSIBILITY GATE #1: Static Audit
       - name: Run accessibility audit
         run: npm run audit
-      
+
       # 🚨 ACCESSIBILITY GATE #2: Component Contract Tests
       - name: Run component contract tests
         run: npm run test
-      
-      # Upload reports (even if checks fail - for debugging)
+
+      # Upload reports
       - name: Upload audit reports
-        if: always()
+        if: failure()
         uses: actions/upload-artifact@v4
         with:
           name: accessibility-reports
           path: accessibility-reports/
           retention-days: 30
-      
+
       # 🚀 DEPLOY: Only runs if all previous steps passed
       - name: Deploy to Firebase
         if: github.ref == 'refs/heads/main' && success()
@@ -322,9 +326,10 @@ jobs:
 ```
 
 **Key Points:**
+
 - ✅ Single workflow = easier to manage
 - ✅ `if: success()` on deploy ensures it only runs if accessibility checks passed
-- ✅ `if: always()` on reports ensures they're uploaded even on failure
+- ✅ `if: failure()` on reports ensures they're uploaded on failure
 - ✅ Deploy step only runs on `main` branch pushes
 
 ---
@@ -347,50 +352,50 @@ on:
 jobs:
   accessibility-audit:
     runs-on: ubuntu-latest
-    
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-      
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
-          cache: 'npm'
-      
+          node-version: "20"
+          cache: "npm"
+
       - name: Install dependencies
         run: npm install
-      
+
       - name: Install Playwright browsers
         run: npx playwright install --with-deps chromium
-      
+
       - name: Build site
         run: npm run build
-      
+
       - name: Start dev server
         run: |
           npm run dev &
           npx wait-on http://localhost:5173 -t 30000
-      
+
       # 🚨 GATE #1: Static Audit
       - name: Run accessibility audit
         run: npm run audit
         id: audit
-      
+
       # 🚨 GATE #2: Component Contract Tests
       - name: Run component contract tests
         run: npm run test
         id: test
-      
+
       # Upload reports
       - name: Upload audit report
-        if: always()
+        if: failure()
         uses: actions/upload-artifact@v4
         with:
           name: accessibility-audit-report
           path: accessibility-reports/
           retention-days: 30
-      
+
       # Comment on PR if failed
       - name: Comment on PR with results
         if: github.event_name == 'pull_request' && failure()
@@ -403,7 +408,7 @@ jobs:
               repo: context.repo.repo,
               body: '❌ **Accessibility checks failed!** Your deployment has been blocked.\\n\\nCheck the [workflow run](https://github.com/${{ github.repository }}/actions/runs/${{ github.run_id }}) for details and download the accessibility reports.'
             })
-      
+
       # Post success status
       - name: Post success status
         if: success()
@@ -423,36 +428,36 @@ jobs:
   # First, re-run accessibility checks (or reference the other workflow)
   accessibility-gate:
     uses: ./.github/workflows/accessibility-checks.yml
-  
+
   # Deploy only runs if accessibility-gate passes
   deploy:
-    needs: accessibility-gate  # 🚨 THIS IS THE KEY!
+    needs: accessibility-gate # 🚨 THIS IS THE KEY!
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/main'
-    
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-      
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
-          cache: 'npm'
-      
+          node-version: "20"
+          cache: "npm"
+
       - name: Install dependencies
         run: npm install
-      
+
       - name: Build for production
         run: npm run build
-      
+
       - name: Deploy to Firebase
         uses: w9jds/firebase-action@master
         with:
           args: deploy --only hosting
         env:
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
-      
+
       - name: Post deployment notification
         if: success()
         run: |
@@ -461,6 +466,7 @@ jobs:
 ```
 
 **Key Points:**
+
 - ✅ `needs: accessibility-gate` blocks deploy if accessibility checks fail
 - ✅ Clear separation: one workflow tests, one deploys
 - ✅ Reusable accessibility-checks workflow
@@ -488,49 +494,49 @@ jobs:
   # Job 1: Accessibility Checks
   accessibility-checks:
     runs-on: ubuntu-latest
-    
+
     steps:
       - uses: actions/checkout@v4
-      
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
-          cache: 'npm'
-      
+          node-version: "20"
+          cache: "npm"
+
       - run: npm install
       - run: npx playwright install --with-deps chromium
       - run: npm run build
-      
+
       - name: Start dev server
         run: |
           npm run dev &
           npx wait-on http://localhost:5173 -t 30000
-      
+
       - name: Run accessibility audit
         run: npm run audit
-      
+
       - name: Run component tests
         run: npm run test
-      
+
       - name: Upload reports
-        if: always()
+        if: failure()
         uses: actions/upload-artifact@v4
         with:
           name: accessibility-reports
           path: accessibility-reports/
-  
+
   # Job 2: Deploy (only runs if accessibility-checks passes)
   deploy:
-    needs: accessibility-checks  # 🚨 GATEKEEPER!
+    needs: accessibility-checks # 🚨 GATEKEEPER!
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/main'
-    
+
     steps:
       - uses: actions/checkout@v4
       - run: npm install
       - run: npm run build
-      
+
       - name: Deploy to Firebase
         uses: w9jds/firebase-action@master
         with:
@@ -568,74 +574,77 @@ jobs:
     strategy:
       matrix:
         page:
-          - { name: 'Homepage', url: 'http://localhost:5173' }
-          - { name: 'Docs', url: 'http://localhost:5173/docs' }
-          - { name: 'Examples', url: 'http://localhost:5173/examples/accordion' }
-          - { name: 'API', url: 'http://localhost:5173/api-reference' }
-      fail-fast: true  # Stop all tests if one fails
-    
+          - { name: "Homepage", url: "http://localhost:5173" }
+          - { name: "Docs", url: "http://localhost:5173/docs" }
+          - {
+              name: "Examples",
+              url: "http://localhost:5173/examples/accordion",
+            }
+          - { name: "API", url: "http://localhost:5173/api-reference" }
+      fail-fast: true # Stop all tests if one fails
+
     steps:
       - uses: actions/checkout@v4
-      
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
-          cache: 'npm'
-      
+          node-version: "20"
+          cache: "npm"
+
       - run: npm install
       - run: npx playwright install --with-deps chromium
       - run: npm run build
-      
+
       - name: Start dev server
         run: |
           npm run dev &
           npx wait-on http://localhost:5173 -t 30000
-      
+
       - name: Audit ${{ matrix.page.name }}
         run: npx aria-ease audit --url ${{ matrix.page.url }}
-      
+
       - name: Upload ${{ matrix.page.name }} report
-        if: always()
+        if: failure()
         uses: actions/upload-artifact@v4
         with:
           name: accessibility-report-${{ matrix.page.name }}
           path: accessibility-reports/
-  
+
   # Component contract tests (separate from page audits)
   component-tests:
     runs-on: ubuntu-latest
-    
+
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: '20'
-          cache: 'npm'
-      
+          node-version: "20"
+          cache: "npm"
+
       - run: npm install
       - run: npx playwright install --with-deps chromium
       - run: npm run build
-      
+
       - name: Start dev server
         run: |
           npm run dev &
           npx wait-on http://localhost:5173 -t 30000
-      
+
       - name: Run component contract tests
         run: npm run test
-  
+
   # Deploy only if ALL tests pass
   deploy:
-    needs: [accessibility-tests, component-tests]  # 🚨 BOTH must pass!
+    needs: [accessibility-tests, component-tests] # 🚨 BOTH must pass!
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/main'
-    
+
     steps:
       - uses: actions/checkout@v4
       - run: npm install
       - run: npm run build
-      
+
       - name: Deploy to Firebase
         uses: w9jds/firebase-action@master
         with:
@@ -645,6 +654,7 @@ jobs:
 ```
 
 **Key Points:**
+
 - ✅ Tests multiple pages in parallel (faster!)
 - ✅ `fail-fast: true` stops all tests if one fails (saves CI minutes)
 - ✅ Separate component tests from page audits
@@ -657,6 +667,7 @@ jobs:
 ### For Production: Use Option 0 (Branch Protection) ✅
 
 **Why:**
+
 - Most efficient (no redundant check runs)
 - Standard GitHub workflow pattern
 - Early feedback on feature branches
@@ -664,6 +675,7 @@ jobs:
 - This is what aria-ease docs uses in production
 
 **When it blocks deployment:**
+
 - Developer pushes to feature branch → checks run
 - Developer creates PR → checks run again
 - If checks fail → PR cannot be merged (GitHub blocks it)
@@ -674,12 +686,14 @@ jobs:
 ### For Teaching/Demos: Use Option 1 (Explicit Dependency)
 
 **Why:**
+
 - Visually obvious in GitHub Actions UI (two jobs shown)
 - Deploy job clearly shows "Skipped" status when blocked
 - Makes the gatekeeper concept explicit for learners
 - Extra safety layer (works even if branch protection bypassed)
 
 **Trade-offs:**
+
 - Re-runs checks on main (wastes CI minutes)
 - Slower deployment (waits for checks to complete)
 - Not necessary if branch protection is configured
@@ -687,6 +701,7 @@ jobs:
 ### For Simple Projects: Use Option 2 (Combined)
 
 **Why:**
+
 - Single file easier to manage
 - All logic in one place
 - Good for solo developers or small teams
@@ -694,6 +709,7 @@ jobs:
 ### For Complex Apps: Use Option 3 (Matrix)
 
 **Why:**
+
 - Test multiple pages in parallel
 - Faster overall (parallel execution)
 - Better for large applications with many routes
@@ -707,12 +723,12 @@ jobs:
 1. **First (5 min):** Show your actual production setup (Option 0)
    - Demonstrate PR being blocked by branch protection
    - Explain: "This is what I use in production"
-   
 2. **Then (2 min):** Show the explicit dependency (Option 1)
    - Demonstrate deploy job being skipped
    - Explain: "This adds extra protection and makes it more obvious"
 
 This way viewers learn:
+
 - ✅ The recommended production approach
 - ✅ An alternative that's more explicit
 - ✅ They can choose based on their needs
@@ -722,6 +738,7 @@ This way viewers learn:
 ## Testing Your Workflow Before Recording
 
 1. **Test the pass scenario:**
+
    ```bash
    git checkout main
    git push origin main
@@ -729,6 +746,7 @@ This way viewers learn:
    ```
 
 2. **Test the fail scenario:**
+
    ```bash
    git checkout -b test-failure
    # Break accessibility (remove aria-label)
@@ -750,6 +768,7 @@ This way viewers learn:
 ## Alternative Deployment Platforms
 
 ### Vercel:
+
 ```yaml
 - name: Deploy to Vercel
   if: github.ref == 'refs/heads/main'
@@ -759,12 +778,13 @@ This way viewers learn:
 ```
 
 ### Netlify:
+
 ```yaml
 - name: Deploy to Netlify
   if: github.ref == 'refs/heads/main'
   uses: nwtgck/actions-netlify@v2
   with:
-    publish-dir: './dist'
+    publish-dir: "./dist"
     production-deploy: true
   env:
     NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
@@ -772,6 +792,7 @@ This way viewers learn:
 ```
 
 ### GitHub Pages:
+
 ```yaml
 - name: Deploy to GitHub Pages
   if: github.ref == 'refs/heads/main'
@@ -786,27 +807,34 @@ This way viewers learn:
 ## Common Issues & Solutions
 
 ### Issue: Workflow runs on PR but not on push
+
 **Solution:** Check the `on:` trigger includes both `push` and `pull_request`
 
 ### Issue: Deploy runs even when tests fail
+
 **Solution:** Add `needs: accessibility-checks` to deploy job
 
 ### Issue: Tests pass locally but fail in CI
-**Solution:** 
+
+**Solution:**
+
 - Check Node version matches
 - Ensure `wait-on` timeout is long enough
 - Verify URLs in config match dev server
 
 ### Issue: Artifacts not showing up
-**Solution:** 
+
+**Solution:**
+
 - Check `path:` points to correct directory
-- Use `if: always()` to upload even on failure
+- Use `if: failure()` to upload on failure
 
 ---
 
 ## Success Metrics to Track
 
 After implementing:
+
 - ❌ Red badges on commits with accessibility failures
 - ✅ Green badges on commits with passing accessibility
 - 🚫 Deploy workflow never runs when accessibility fails

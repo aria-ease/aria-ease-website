@@ -42,14 +42,14 @@ jobs:
           npx wait-on http://localhost:5173 -t 30000
 
       # Step 7: Run aria-ease audit
-      - name: Run accessibility audit
+      - name: Run static accessibility audit
         run: npm run audit
 
       # Step 8: Run aria-ease contract tests
-      - name: Run accessibility tests
+      - name: Run component interaction tests
         run: |
           set -o pipefail
-          npm run test 2>&1 | tee component-contract-test-output.txt
+          npm run test 2>&1 | tee component-interaction-test-output.txt
 
       # Step 9: Upload audit report as artifact (so you can download and view it)
       - name: Upload audit report
