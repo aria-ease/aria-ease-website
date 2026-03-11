@@ -91,7 +91,7 @@ const MigrationGuide = ({darkMode, setDarkMode}) => {
                       <li>Update your imports to use the new component-specific paths if not already done:<br/>
                         <CodeBlockDemo code={`import { makeAccordionAccessible } from "aria-ease/accordion";\nimport { makeCheckboxAccessible } from "aria-ease/checkbox";\n// ...`} />
                       </li>
-                      <li>Review the <a href="/changelog" className="text-blue-700 underline">changelog</a> for any additional breaking changes or migration notes.</li>
+                      <li>Review the <a href="/changelog" className={`${darkMode ? 'text-blue-400' : 'text-blue-700'} underline`}>changelog</a> for any additional breaking changes or migration notes.</li>
                       <li>Run your test suite and manually verify all interactive components for correct ARIA and keyboard behavior.</li>
                     </ol>
                   </div>

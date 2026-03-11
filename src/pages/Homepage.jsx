@@ -139,7 +139,7 @@ const Homepage = ({darkMode, setDarkMode}) => {
     <div className="home-body" id="inner-body-div">
       <Helmet>
         <title>Home | Aria-Ease</title>
-        <meta name="description" content="Design, verify, and enforce accessible behavior with custom ARIA component utilities, automated audits, component interaction contract testing, and CI/CD pipelines — all in one system. Works with React, Vue, Svelte, or vanilla JavaScript." />
+        <meta name="description" content="Accessibility infrastructure for the entire frontend engineering lifecycle. Build accessible patterns, verify with automated testing, and gate deployments—block inaccessible code from production. React, Vue, Svelte, or vanilla JS." />
       </Helmet>
       <a
         href="#main-content"
@@ -165,8 +165,8 @@ const Homepage = ({darkMode, setDarkMode}) => {
             <Row>
               <Col xs={12} sm={12} md={12} lg={8}>
                 <div className="hero-text-div">
-                  <h1 className="hero-heading">Build accessible web applications with ease</h1>
-                  <p className="hero-paragraph mb-5 mt-8 text-[1.2rem] leading-[1.5rem]">Design, verify, and enforce accessible web development with ARIA component utilities, automated audits, component interaction testing, and CI/CD pipelines — all in one system. Works with React, Vue, Svelte, or vanilla JavaScript.</p>
+                  <h1 className="hero-heading">Accessibility infrastructure for your entire frontend lifecycle</h1>
+                  <p className="hero-paragraph mb-5 mt-8 text-[1.2rem] leading-[1.5rem]">Stop treating accessibility as an afterthought. Aria-Ease engineers accessibility integrity into every phase of frontend development — from reusable component utilities to CI/CD gatekeepers that block inaccessible code from production. Works with React, Vue, Svelte, or vanilla JavaScript.</p>
                   <div className="flex items-center gap-4 flex-wrap">
                     <Link onClick={() => {sessionStorage.setItem(`scroll-position-${page}`, window.scrollY)}} to='/docs' className="px-4 sm:px-8 h-12 flex items-center justify-center bg-blue-800 hover:bg-blue-900 shadow-xl rounded-lg text-white">Get Started</Link>
                     <Link className="hero-explore px-4 sm:px-8 rounded-lg" onClick={() => {sessionStorage.setItem(`scroll-position-${page}`, window.scrollY)}} to='/examples/accordion'>
