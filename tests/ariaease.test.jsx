@@ -6,7 +6,7 @@ afterAll(async () => {
 });
 
 describe("Accordion WAI-ARIA Accessibility Test", () => {
-  test("renders Accordion without accessibility violation(s)", async () => {
+  test("Accordion meets WAI-ARIA roles, states, properties, and keyboard interactions expectactions", async () => {
     await testUiComponent("accordion", null, "http://localhost:5173/test-harness?component=accordion");
   });
 });
