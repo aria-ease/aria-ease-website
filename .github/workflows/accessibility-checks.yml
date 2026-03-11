@@ -54,16 +54,16 @@ jobs:
 
       # Step 9: Upload audit report as artifact (so you can download and view it)
       - name: Upload audit report
-        if: always() # Upload even if audits fail
+        if: failure() # Upload only when audits fail
         uses: actions/upload-artifact@v4
         with:
           name: accessibility-audit-report
           path: accessibility-reports/
           retention-days: 30
 
-      # Step 10: Upload component contract test report as artifact (so you can download and view it)
-      - name: Upload component contract test report
-        if: always() # Upload even if component contract tests fail
+      # Step 10: Upload component contract tests report as artifact (so you can download and view it)
+      - name: Upload component contract tests report
+        if: failure() # Upload only when component contract tests fail
         uses: actions/upload-artifact@v4
         with:
           name: component-contract-test-output
@@ -71,7 +71,7 @@ jobs:
           retention-days: 30
 
       # Step 11: Comment on PR with results (optional but cool)
-      - name: Comment PR with audit and component contract test results
+      - name: Comment PR with audit and component contract tests results
         if: github.event_name == 'pull_request' && failure()
         uses: actions/github-script@v7
         with:

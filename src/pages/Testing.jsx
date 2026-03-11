@@ -60,11 +60,13 @@ jobs:
 
       # Step 7: Run aria-ease contract tests
       - name: Run accessibility tests
-        run: npm run test 2>&1 | tee component-contract-test-output.txt
+        run: |
+          set -o pipefail
+          npm run test 2>&1 | tee component-contract-test-output.txt
 
       # Step 8: Upload test report as artifact (so you can download and view it)
       - name: Upload test report
-        if: always() # Upload even if tests fail
+        if: failure() # Upload only when tests fail
         uses: actions/upload-artifact@v4
         with:
           name: component-contract-test-output

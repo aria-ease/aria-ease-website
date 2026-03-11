@@ -101,7 +101,7 @@ jobs:
 
       # Step 7: Upload audit report as artifact (so you can download and view it)
       - name: Upload audit report
-        if: always() # Upload even if tests fail
+        if: failure() # Upload only when audits fail
         uses: actions/upload-artifact@v4
         with:
           name: accessibility-audit-report
