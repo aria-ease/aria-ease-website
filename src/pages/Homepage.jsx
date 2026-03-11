@@ -165,7 +165,7 @@ const Homepage = ({darkMode, setDarkMode}) => {
             <Row>
               <Col xs={12} sm={12} md={12} lg={8}>
                 <div className="hero-text-div">
-                  <h1 className="hero-heading">Accessibility infrastructure for your entire frontend lifecycle</h1>
+                  <h1 className="">Accessibility infrastructure for your entire frontend lifecycle</h1>
                   <p className="hero-paragraph mb-5 mt-8 text-[1.2rem] leading-[1.5rem]">Stop treating accessibility as an afterthought. Aria-Ease engineers accessibility integrity into every phase of frontend development — from reusable component utilities to CI/CD gatekeepers that block inaccessible code from production. Works with React, Vue, Svelte, or vanilla JavaScript.</p>
                   <div className="flex items-center gap-4 flex-wrap">
                     <Link onClick={() => {sessionStorage.setItem(`scroll-position-${page}`, window.scrollY)}} to='/docs' className="px-4 sm:px-8 h-12 flex items-center justify-center bg-blue-800 hover:bg-blue-900 shadow-xl rounded-lg text-white">Get Started</Link>
