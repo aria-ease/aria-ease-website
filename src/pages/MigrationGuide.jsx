@@ -82,7 +82,7 @@ const MigrationGuide = ({darkMode, setDarkMode}) => {
                     <p className="text-red-800 mb-2">
                       The <code style={{ color: '#b91c1c', backgroundColor: '#fef2f2', padding: '0.1em 0.3em', borderRadius: '0.2em' }}>update*AriaAttributes</code> utilities have been <strong>removed</strong> in v5.0.0. You must migrate to the new <code style={{ color: '#b91c1c', backgroundColor: '#fef2f2', padding: '0.1em 0.3em', borderRadius: '0.2em' }}>make*Accessible</code> APIs for all components.
                     </p>
-                    <p className="text-red-800">See the <a href="/changelog" className={`${darkMode ? 'text-blue-400' : 'text-blue-700'} underline`}>changelog</a> for full details.</p>
+                    <p className="text-red-800">See the <a href="/changelog" className="text-blue-700 underline">changelog</a> for full details.</p>
                   </div>
                   <div className='mb-8'>
                     <h3 className='text-xl font-semibold mb-3 text-green-600 dark:text-green-400'>✅ Migration Steps</h3>
