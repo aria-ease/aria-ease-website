@@ -1,8 +1,5 @@
 name: Deploy with Accessibility Gate
 
-# This workflow demonstrates the "gatekeeper" pattern
-# Deploy ONLY runs if accessibility checks pass
-
 on:
   push:
     branches: [main]
@@ -97,12 +94,3 @@ jobs:
           echo "🚀 Successfully deployed to Firebase!"
           echo "✅ All accessibility checks passed before deployment"
           echo "Site URL: https://aria-ease-docs.web.app"
-
-# How this works:
-# 1. Push to main or isaac-v6.x.x branch
-# 2. accessibility-checks job runs
-#    - If PASS ✅: deploy job starts
-#    - If FAIL ❌: deploy job NEVER runs (deployment BLOCKED)
-# 3. Only accessible code reaches production
-#
-# No one has any excuse to ship inaccessible code anymore.
