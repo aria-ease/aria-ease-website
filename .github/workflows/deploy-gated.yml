@@ -5,45 +5,45 @@ name: Deploy with Accessibility Gate
 
 on:
   push:
-    branches: [main, isaac-v6.x.x]
+    branches: [main]
 
 jobs:
   # Job 1: Run accessibility checks
   accessibility-checks:
     runs-on: ubuntu-latest
-    
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-      
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
-          cache: 'npm'
-      
+          node-version: "20"
+          cache: "npm"
+
       - name: Install dependencies
         run: npm install
-      
+
       - name: Install Playwright browsers
         run: npx playwright install --with-deps chromium
-      
+
       - name: Build site
         run: npm run build
-      
+
       - name: Start dev server
         run: |
           npm run dev &
           npx wait-on http://localhost:5173 -t 30000
-      
+
       # 🚨 GATE #1: Static accessibility audit
       - name: Run accessibility audit
         run: npm run audit
-      
+
       # 🚨 GATE #2: Component interaction tests
       - name: Run component contract tests
         run: npm run test 2>&1 | tee component-contract-test-output.txt
-      
+
       # Upload reports (always, even on failure)
       - name: Upload audit report
         if: always()
@@ -52,7 +52,7 @@ jobs:
           name: accessibility-audit-report
           path: accessibility-reports/
           retention-days: 30
-      
+
       - name: Upload component test output
         if: always()
         uses: actions/upload-artifact@v4
@@ -60,37 +60,37 @@ jobs:
           name: component-contract-test-output
           path: component-contract-test-output.txt
           retention-days: 30
-  
+
   # Job 2: Deploy to Firebase
   # 🚨 THIS JOB ONLY RUNS IF accessibility-checks PASSES!
   deploy:
-    needs: accessibility-checks  # ⬅️ THE GATEKEEPER
+    needs: accessibility-checks # ⬅️ THE GATEKEEPER
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/main' || github.ref == 'refs/heads/isaac-v6.x.x'
-    
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
-      
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
-          cache: 'npm'
-      
+          node-version: "20"
+          cache: "npm"
+
       - name: Install dependencies
         run: npm install
-      
+
       - name: Build for production
         run: npm run build
-      
+
       - name: Deploy to Firebase
         uses: w9jds/firebase-action@master
         with:
           args: deploy --only hosting
         env:
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
-      
+
       - name: Deployment success notification
         if: success()
         run: |

@@ -29,6 +29,6 @@ VIDEO-RECORDING-CHECKLIST.md
 VIDEO-GUIDE-CI-CD-WALKTHROUGH.md
 IMPLEMENTATION-SUMMARY.md
 
-accessibility-reports/
+accessibility-reports
 
 .github/workflows/deploy-gated.yml
