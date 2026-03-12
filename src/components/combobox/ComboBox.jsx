@@ -16,7 +16,7 @@ const ComboBox = () => {
 
     useEffect(() => {
         const accessibleCombobox = Combobox.makeComboboxAccessible({
-            comboboxInputId: "fruit",
+            comboboxInputId: "",
             comboboxButtonId: "show-list-button",
             listBoxId: "fruits-listbox",
             listBoxItemsClass: "list-options",

@@ -1,46 +1,60 @@
 🚀 Running component accessibility tests...
 
 
-[1m[46m RUN [49m[22m [36mv4.0.16 [39m[90m/Users/macx/aria-ease/docs[39m
+[1m[46m RUN [49m[22m [36mv4.0.18 [39m[90m/Users/macx/aria-ease/docs[39m
 
-[90mstdout[2m | tests/ariaease.test.jsx[2m > [22m[2mShopify User Menu Accessibility Test[2m > [22m[2mrenders Shopify user menu without accessibility violation(s)
-[22m[39m🎭 Running Playwright E2E tests on http://localhost:5173/test
+[90mstdout[2m | tests/ariaease.test.jsx[2m > [22m[2mAccordion WAI-ARIA Accessibility Test[2m > [22m[2mAccordion meets WAI-ARIA roles, states, properties, and keyboard interactions expectactions
+[22m[39m🎭 Running Playwright tests on http://localhost:5173/test-harness?component=accordion
 
-[90mstdout[2m | tests/ariaease.test.jsx[2m > [22m[2mComboBox Accessibility Test[2m > [22m[2mrenders ComboBox without accessibility violation(s)
-[22m[39m🎭 Running Playwright E2E tests on http://localhost:5173/test
+ [32m✓[39m tests/ariaease.test.jsx[2m > [22mAccordion WAI-ARIA Accessibility Test[2m > [22mAccordion meets WAI-ARIA roles, states, properties, and keyboard interactions expectactions[33m 4194[2mms[22m[39m
+[90mstdout[2m | tests/ariaease.test.jsx[2m > [22m[2mCombobox WAI-ARIA Accessibility Test[2m > [22m[2mCombobox meets WAI-ARIA roles, states, properties, and keyboard interactions expectactions
+[22m[39m🎭 Running Playwright tests on http://localhost:5173/test-harness?component=combobox
 
- [32m✓[39m tests/ariaease.test.jsx[2m > [22mShopify User Menu Accessibility Test[2m > [22mrenders Shopify user menu without accessibility violation(s)[33m 34707[2mms[22m[39m
- [32m✓[39m tests/ariaease.test.jsx[2m > [22mComboBox Accessibility Test[2m > [22mrenders ComboBox without accessibility violation(s)[33m 21014[2mms[22m[39m
+[90mstdout[2m | tests/ariaease.test.jsx[2m > [22m[2mMenu WAI-ARIA Accessibility Test[2m > [22m[2mMenu meets WAI-ARIA roles, states, properties, and keyboard interactions expectactions
+[22m[39m🎭 Running Playwright tests on http://localhost:5173/test-harness?component=menu
 
-[2m Test Files [22m [1m[32m1 passed[39m[22m[90m (1)[39m
-[2m      Tests [22m [1m[32m2 passed[39m[22m[90m (2)[39m
-[2m   Start at [22m 11:27:54
-[2m   Duration [22m 59.26s[2m (transform 1.33s, setup 0ms, import 1.87s, tests 55.72s, environment 1.46s)[22m
+ [31m×[39m tests/ariaease.test.jsx[2m > [22mCombobox WAI-ARIA Accessibility Test[2m > [22mCombobox meets WAI-ARIA roles, states, properties, and keyboard interactions expectactions[33m 28746[2mms[22m[39m
+[31m   → 
+❌ CRITICAL: Component not found on page!
+The component selector could not be found within 30 seconds.
+This usually means:
+  - The component didn't render
+  - The URL is incorrect
+  - The component selector was not provided to the component utility[39m
+ [32m✓[39m tests/ariaease.test.jsx[2m > [22mMenu WAI-ARIA Accessibility Test[2m > [22mMenu meets WAI-ARIA roles, states, properties, and keyboard interactions expectactions[33m 2069[2mms[22m[39m
+[90mstdout[2m | tests/ariaease.test.jsx[2m > [22m[2mHorizontal Tabs WAI-ARIA Accessibility Test[2m > [22m[2mHorizontal tabs meets WAI-ARIA roles, states, properties, and keyboard interactions expectactions
+[22m[39m🎭 Running Playwright tests on http://localhost:5173/test-harness?component=tabs_horizontal
+
+ [32m✓[39m tests/ariaease.test.jsx[2m > [22mHorizontal Tabs WAI-ARIA Accessibility Test[2m > [22mHorizontal tabs meets WAI-ARIA roles, states, properties, and keyboard interactions expectactions[33m 1163[2mms[22m[39m
+[90mstdout[2m | tests/ariaease.test.jsx[2m > [22m[2mVertical Tabs WAI-ARIA Accessibility Test[2m > [22m[2mVertical tabs meets WAI-ARIA roles, states, properties, and keyboard interactions expectactions
+[22m[39m🎭 Running Playwright tests on http://localhost:5173/test-harness?component=tabs_vertical
+
+ [32m✓[39m tests/ariaease.test.jsx[2m > [22mVertical Tabs WAI-ARIA Accessibility Test[2m > [22mVertical tabs meets WAI-ARIA roles, states, properties, and keyboard interactions expectactions[33m 1167[2mms[22m[39m
+
+[2m Test Files [22m [1m[31m1 failed[39m[22m[90m (1)[39m
+[2m      Tests [22m [1m[31m1 failed[39m[22m[2m | [22m[1m[32m4 passed[39m[22m[90m (5)[39m
+[2m   Start at [22m 09:13:53
+[2m   Duration [22m 39.93s[2m (transform 159ms, setup 0ms, import 537ms, tests 37.39s, environment 1.77s)[22m
 
 
-Browserslist: caniuse-lite is outdated. Please run:
-  npx update-browserslist-db@latest
-  Why you should do it regularly: https://github.com/browserslist/update-db#readme
 
 ════════════════════════════════════════════════════════════
-🔍 Testing menu Component - Playwright (Real Browser)
+🔍 Testing accordion Component - Playwright (Real Browser)
 ════════════════════════════════════════════════════════════
 
-  ✓ Clicking the trigger opens the menu, updates ARIA state, and focuses the first interactive item in the menu.
-  ✓ Clicking the trigger again closes the menu and returns focus to trigger.
-  ✓ Pressing Enter key on trigger opens the menu and focuses first item.
-  ✓ Pressing Space key on trigger opens the menu and focuses first item.
-  ✓ Arrow Down key moves focus to next menu item.
-  ✓ Arrow Up key moves focus to previous menu item.
-  ✓ Arrow Right key moves focus to next menu item.
-  ✓ Arrow Left key moves focus to previous menu item.
-  ✓ Escape key closes the menu and returns focus to trigger.
-  ✓ Pressing Enter on trigger when menu is open closes the menu.
-  ✓ Pressing Space on trigger when menu is open closes the menu.
-  ✓ Clicking outside the menu closes it and returns focus to trigger.
-  ○ Right arrow on menuitem with submenu opens the submenu
-  ✓ Tab on a menuitem closes the menu and update aria-expanded
-  ✓ Shift+Tab on a menuitem closes the menu and update aria-expanded
+  ✓ Clicking the trigger expands a collapsed panel.
+  ✓ Clicking the trigger again collapses an expanded panel.
+  ✓ Pressing Enter on trigger expands a collapsed panel.
+  ✓ Pressing Space on trigger expands a collapsed panel.
+  ✓ Pressing Enter on trigger collapses an expanded panel.
+  ✓ Pressing Space on trigger collapses an expanded panel.
+  ✓ [OPTIONAL] Down Arrow moves focus to next accordion trigger.
+  ✓ [OPTIONAL] Up Arrow moves focus to previous accordion trigger.
+  ✓ [OPTIONAL] Home moves focus to first accordion trigger.
+  ✓ [OPTIONAL] End moves focus to last accordion trigger.
+  ✓ [OPTIONAL] Down Arrow wraps focus from last trigger to first trigger.
+  ✓ [OPTIONAL] Up Arrow wraps focus from first trigger to last trigger.
+
 ✅ Static ARIA Tests: PASS
    4/4 required attributes present
 
@@ -48,45 +62,119 @@ Browserslist: caniuse-lite is outdated. Please run:
 ════════════════════════════════════════════════════════════
 📊 Summary
 
-✅ 18/18 tests passed
-○  1 tests skipped (jsdom limitation)
-   menu component works correctly
-⏱️  Duration: 32420ms
+✅ All 16 tests passed!
+   accordion component meets WAI-ARIA expectations for Roles, States, Properties, and Keyboard Interactions ✓
+⏱️  Duration: 884ms
 ════════════════════════════════════════════════════════════
 
 
 ════════════════════════════════════════════════════════════
-🔍 Testing combobox Component - Playwright (Real Browser)
+🔍 Testing menu Component - Playwright (Real Browser)
 ════════════════════════════════════════════════════════════
 
-  ✓ Pressing ArrowDown on closed combobox opens the listbox without selecting first item.
-  ✓ Second ArrowDown press navigates to first listbox option.
-  ✓ ArrowDown navigates to next listbox option with wrapping.
-  ✓ ArrowUp does not open closed listbox.
-  ✓ ArrowUp navigates to previous option when listbox is open.
-  ✓ Home key navigates to first listbox option.
-  ✓ End key navigates to last listbox option.
-  ✓ Enter key selects active option and closes listbox.
-  ✓ Escape key closes open listbox.
-  ✓ Escape key clears input value when listbox is closed.
-  ✓ Tab key closes the listbox.
-  ✓ Clicking option selects it and closes listbox.
-  ✓ Mouse hover sets aria-selected on hovered listbox option.
-  ✓ Clicking outside closes the listbox.
-  ✓ Toggle button opens and closes listbox.
-  ✓ Toggle button closes open listbox when clicked again.
-  ✓ Navigation wraps from last to first listbox option on ArrowDown.
-  ✓ Navigation wraps from first to last listbox option on ArrowUp.
+  ✓ Clicking the trigger opens the menu, updates ARIA state, and focuses the first interactive item in the menu.
+  ✓ Clicking the trigger again closes the menu and returns focus to trigger.
+  ✓ Pressing Enter on trigger opens the menu and focuses first item.
+  ✓ Pressing Space on trigger opens the menu and focuses first item.
+  ✓ Down Arrow moves focus to next menu item.
+  ✓ Up Arrow moves focus to previous menu item.
+  ✓ Right Arrow moves focus to next menu item.
+  ✓ Left Arrow moves focus to previous menu item.
+  ✓ Escape closes the menu and returns focus to trigger.
+  ✓ Pressing Enter on trigger when menu is open closes the menu.
+  ✓ Pressing Space on trigger when menu is open closes the menu.
+  ✓ Clicking outside the menu closes it and returns focus to trigger.
+  ○ Right Arrow on menuitem with submenu opens the submenu
+  ✓ Tab on a menuitem closes the menu and update aria-expanded
+  ✓ Shift+Tab on a menuitem closes the menu and update aria-expanded
+
 ✅ Static ARIA Tests: PASS
-   8/8 required attributes present
+   4/4 required attributes present
 
 
 ════════════════════════════════════════════════════════════
 📊 Summary
 
-✅ All 26 tests passed!
-   combobox component meets APG and WCAG guidelines ✓
-⏱️  Duration: 20832ms
+✅ 18/18 required tests passed
+○  1 tests skipped
+   menu component meets WAI-ARIA expectations for Roles, States, Properties, and Keyboard Interactions ✓
+⏱️  Duration: 1246ms
 ════════════════════════════════════════════════════════════
+
+
+════════════════════════════════════════════════════════════
+🔍 Testing tabs Component - Playwright (Real Browser)
+════════════════════════════════════════════════════════════
+
+  ✓ Only one tab panel is visible at a time.
+  ✓ Right Arrow moves focus to next tab and activates it (automatic activation).
+  ✓ Left Arrow moves focus to previous tab and activates it (wraps to last).
+  ○ Down Arrow moves focus to next tab and activates it (vertical tabs).
+  ○ Up Arrow moves focus to previous tab and activates it (wraps to last, vertical tabs).
+  ✓ [OPTIONAL] Home moves focus to first tab and activates it.
+  ✓ [OPTIONAL] End moves focus to last tab and activates it.
+  ✓ Clicking a tab activates it and displays its panel.
+  ✓ Pressing Enter on tab element activates its associated tab panel.
+  ✓ Pressing Space on tab element activates its associated tab panel.
+
+✅ Static ARIA Tests: PASS
+   7/7 required attributes present
+
+
+════════════════════════════════════════════════════════════
+📊 Summary
+
+✅ 15/15 required tests passed
+○  2 tests skipped
+   tabs component meets WAI-ARIA expectations for Roles, States, Properties, and Keyboard Interactions ✓
+⏱️  Duration: 337ms
+════════════════════════════════════════════════════════════
+
+
+════════════════════════════════════════════════════════════
+🔍 Testing tabs Component - Playwright (Real Browser)
+════════════════════════════════════════════════════════════
+
+  ✓ Only one tab panel is visible at a time.
+  ○ Right Arrow moves focus to next tab and activates it (automatic activation).
+  ○ Left Arrow moves focus to previous tab and activates it (wraps to last).
+  ✓ Down Arrow moves focus to next tab and activates it (vertical tabs).
+  ✓ Up Arrow moves focus to previous tab and activates it (wraps to last, vertical tabs).
+  ✓ [OPTIONAL] Home moves focus to first tab and activates it.
+  ✓ [OPTIONAL] End moves focus to last tab and activates it.
+  ✓ Clicking a tab activates it and displays its panel.
+  ✓ Pressing Enter on tab element activates its associated tab panel.
+  ✓ Pressing Space on tab element activates its associated tab panel.
+
+✅ Static ARIA Tests: PASS
+   7/7 required attributes present
+
+
+════════════════════════════════════════════════════════════
+📊 Summary
+
+✅ 15/15 required tests passed
+○  2 tests skipped
+   tabs component meets WAI-ARIA expectations for Roles, States, Properties, and Keyboard Interactions ✓
+⏱️  Duration: 378ms
+════════════════════════════════════════════════════════════
+
+
+[31m⎯⎯⎯⎯⎯⎯⎯[39m[1m[41m Failed Tests 1 [49m[22m[31m⎯⎯⎯⎯⎯⎯⎯[39m
+
+[41m[1m FAIL [22m[49m tests/ariaease.test.jsx[2m > [22mCombobox WAI-ARIA Accessibility Test[2m > [22mCombobox meets WAI-ARIA roles, states, properties, and keyboard interactions expectactions
+[31m[1mError[22m: 
+❌ CRITICAL: Component not found on page!
+The component selector could not be found within 30 seconds.
+This usually means:
+  - The component didn't render
+  - The URL is incorrect
+  - The component selector was not provided to the component utility[39m
+[36m [2m❯[22m runContractTestsPlaywright ../package/dist/src/utils/test/contractTestRunnerPlaywright-V6CBC4P3.js:[2m924:15[22m[39m
+
+[90m [2m❯[22m testUiComponent ../package/dist/src/utils/test/index.js:[2m110:20[22m[39m
+[90m [2m❯[22m tests/ariaease.test.jsx:[2m16:5[22m[39m
+
+[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯[22m[39m
 
 
