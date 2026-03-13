@@ -203,14 +203,14 @@ const Homepage = ({darkMode, setDarkMode}) => {
           <Container fluid>
             <div className="text-center mb-12">
               <h2 className="black-white-text text-3xl font-bold mb-4">From 50 Lines to 3 Lines</h2>
-              <p className="text-[1.2rem] leading-[1.5rem] black-grey-text">See how aria-ease eliminates boilerplate code</p>
+              <p className="text-[1.2rem] leading-[1.5rem] black-grey-text">See how Aria-Ease eliminates boilerplate code</p>
             </div>
             <Row className="items-start">
               <Col lg={6} md={12} className="mb-6 lg:mb-0">
                 <div className="flex flex-col h-full max-h-[600px]">
                   <div className="flex items-center gap-2 mb-3">
                     <div className="w-3 h-3 rounded-full bg-red-500"></div>
-                    <h3 className="text-lg font-semibold black-grey-text">❌ Without aria-ease (~50 lines)</h3>
+                    <h3 className="text-lg font-semibold black-grey-text">❌ Without Aria-Ease (~50 lines)</h3>
                   </div>
                   <div className="flex-1 overflow-y-auto">
                     <CodeBlockDemo code={boilerplateCode} isLineNumber={true}/>
@@ -221,7 +221,7 @@ const Homepage = ({darkMode, setDarkMode}) => {
               <Col lg={6} md={12}>
                 <div className="flex items-center gap-2 mb-3">
                   <div className="w-3 h-3 rounded-full bg-green-500"></div>
-                  <h3 className="text-lg font-semibold black-grey-text">✅ With aria-ease (3 lines)</h3>
+                  <h3 className="text-lg font-semibold black-grey-text">✅ With Aria-Ease (3 lines)</h3>
                 </div>
                 <CodeBlockDemo code={ariaEaseCode} isLineNumber={true}/>
                 <div className={`mt-4 p-4 bg-green-50 dark:bg-green-900/20 rounded-lg border-l-4 border-green-500 ${darkMode ? 'text-green-100 bg-green-900/20' : 'text-green-900 bg-green-50'}`}>
@@ -245,7 +245,7 @@ const Homepage = ({darkMode, setDarkMode}) => {
           <Container fluid>
             <div className="text-center mb-12">
               <h2 className="black-white-text text-3xl font-bold mb-4">Complete Accessibility Lifecycle</h2>
-              <p className="text-[1.2rem] leading-[1.5rem] black-grey-text max-w-3xl mx-auto">From design to deployment—aria-ease covers every phase of accessibility governance</p>
+              <p className="text-[1.2rem] leading-[1.5rem] black-grey-text max-w-3xl mx-auto">From design to deployment—Aria-Ease covers every phase of accessibility governance</p>
             </div>
             <Row className="g-4">
               <Col lg={4} md={6}>
@@ -276,7 +276,7 @@ const Homepage = ({darkMode, setDarkMode}) => {
               </Col>
               <Col lg={4} md={12}>
                 <div className={`p-6 h-full rounded-xl border-2 border-green-500 ${darkMode ? 'bg-green-900/20' : 'bg-green-50'} shadow-xl`}>
-                  <h3 className="text-xl font-bold mb-4 text-green-600">✅ aria-ease Platform</h3>
+                  <h3 className="text-xl font-bold mb-4 text-green-600">✅ Aria-Ease Platform</h3>
                   <ul className="space-y-2 black-grey-text">
                     <li>• 🎨 Design: Component utilities (1.4-3.7KB)</li>
                     <li>• 🧪 Test: Contract testing for behavior</li>
@@ -292,7 +292,7 @@ const Homepage = ({darkMode, setDarkMode}) => {
             {/* Accessibility Lifecycle Phases */}
             <div className="mt-12">
               <div>
-                <h3 className="text-2xl font-bold mb-6 black-white-text text-center">The aria-ease Accessibility Lifecycle</h3>
+                <h3 className="text-2xl font-bold mb-6 black-white-text text-center">The Aria-Ease Accessibility Lifecycle</h3>
                 <Row className="g-4">
                   <Col md={6} lg={4}>
                     <div className={`p-4 rounded-lg ${darkMode ? 'bg-gray-900' : 'bg-white'} h-full`}>
@@ -650,7 +650,7 @@ npx aria-ease audit  # Uses ariaease.config.js`}/>
                     <div className="flex items-start gap-2">
                       <div className="w-8 h-8 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center flex-shrink-0 font-bold text-blue-600">2</div>
                       <div className="w-full overflow-hidden">
-                        <h3 className="font-bold text-lg mb-2 black-white-text">Add aria-ease in 5 Minutes</h3>
+                        <h3 className="font-bold text-lg mb-2 black-white-text">Add Aria-Ease in 5 Minutes</h3>
                         <p className="black-grey-text mb-3">Keep your existing HTML and CSS. Just add the accessibility layer.</p>
                         <div className='overflow-x-auto max-w-full'>
                           <CodeBlockDemo code={`// Your existing component stays the same
@@ -696,7 +696,7 @@ useEffect(() => {
                 <div className={`mt-8 p-6 rounded-xl ${darkMode ? 'bg-blue-900/20 border-blue-700' : 'bg-blue-50 border-blue-200'} border-2`}>
                   <h4 className={`font-bold mb-3 ${darkMode ? 'text-blue-100' : 'text-blue-900'}`}>💡 Pro Tip</h4>
                   <p className={`${darkMode ? 'text-blue-200' : 'text-blue-800'}`}>
-                    aria-ease works alongside your existing code. You don&apos;t need to refactor or migrate everything at once. 
+                    Aria-Ease works alongside your existing code. You don&apos;t need to refactor or migrate everything at once. 
                     Many teams start with their most-used component and see results within a sprint.
                   </p>
                 </div>
@@ -715,7 +715,7 @@ useEffect(() => {
                 <h2 className="text-4xl font-bold mb-4 black-white-text">Need Expert Help?</h2>
                 <p className="text-lg mb-4 opacity-80 black-grey-text">
                   Get professional accessibility audits and remediation services from the 
-                  creator of aria-ease. WCAG-compliant solutions for your digital products.
+                  creator of Aria-Ease. WCAG-compliant solutions for your digital products.
                 </p>
                 <ul className="services-features-list mb-4">
                   <li className="flex items-start gap-3 mb-2">
