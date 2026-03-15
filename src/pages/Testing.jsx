@@ -613,7 +613,7 @@ await testUiComponent("combobox.listbox", null, "http://localhost:5173/test-harn
                 {/* Required Test Attributes */}
                 <section className='mt-[100px]'>
                   <h2 className='text-3xl font-bold mb-4'>Required Test Attributes</h2>
-                  <p className='mb-4'>Some component contract tests use <code>data-test-id</code> and other specific data attributes (for example, <code>data-submenu-id</code>) to reliably locate elements. Add these to your components before running tests:</p>
+                  <p className='mb-4'>Some component contract tests use <code>data-*-id</code> and other specific data attributes (for example: <code>data-test-id</code>, <code>data-submenu-id</code>) to reliably locate elements. Add these to your components before running tests:</p>
 
                   <div className={`mt-6 p-4 rounded-lg border-l-4 border-red-500 ${darkMode ? 'bg-red-900/20' : 'bg-red-50'}`}>
                     <div className='flex items-start gap-3'>
