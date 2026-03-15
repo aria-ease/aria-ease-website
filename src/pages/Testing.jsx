@@ -305,7 +305,7 @@ afterAll(async () => {
 });
 
 describe("Shopify User Menu Accessibility Test", () => {
-  test("Menu meets WAI-ARIA roles, states, properties, and keyboard interactions expectactions", async () => {
+  test("Menu meets WAI-ARIA roles, states, properties, and keyboard interactions expectations", async () => {
     await testUiComponent(
       "menu", 
       null, 
@@ -315,7 +315,7 @@ describe("Shopify User Menu Accessibility Test", () => {
 });
 
 describe("Shopify User Menu Accessibility Test", () => {
-  test("Menu meets WAI-ARIA roles, states, properties, and keyboard interactions expectactions", async () => {
+  test("Menu meets WAI-ARIA roles, states, properties, and keyboard interactions expectations", async () => {
     const { container } = render(<ShopifyUserMenu/>)
     await testUiComponent(
       "menu", 
@@ -704,14 +704,14 @@ await testUiComponent("combobox.listbox", null, "http://localhost:5173/test-harn
 
                   <h3 className='text-xl font-semibold mb-3 mt-6'>Testing Multiple Components</h3>
                   <CodeBlockDemo code={`describe("Menu WAI-ARIA Accessibility Test", () => {
-  test("Menu meets WAI-ARIA roles, states, properties, and keyboard interactions expectactions", async () => {
+  test("Menu meets WAI-ARIA roles, states, properties, and keyboard interactions expectations", async () => {
     await testUiComponent("menu", null, "http://localhost:5173/test-harness?component=menu");
   });
 });
 
 
 describe("ComboBox with Listbox popup Accessibility Test", () => {
-  test("Combobox with Listbox popup meets WAI-ARIA roles, states, properties, and keyboard interactions expectactions", async () => {
+  test("Combobox with Listbox popup meets WAI-ARIA roles, states, properties, and keyboard interactions expectations", async () => {
     await testUiComponent("combobox.listbox", null, "http://localhost:5173/test-harness?component=combobox_listbox");
   });
 });
@@ -860,7 +860,7 @@ module.exports = {
                           <div className='overflow-x-auto'>
                             <CodeBlockDemo code={`// Your test file - no per-test timeout needed
 describe("ComboBox with Listbox popup Accessibility Test", () => {
-  test("Combobox with Listbox popup meets WAI-ARIA roles, states, properties, and keyboard interactions expectactions", async () => {
+  test("Combobox with Listbox popup meets WAI-ARIA roles, states, properties, and keyboard interactions expectations", async () => {
     await testUiComponent("combobox.listbox", null, "http://localhost:5173/test-harness?component=combobox_listbox");
   }); // Global timeout applies automatically
 });`} isLineNumber={true}/>

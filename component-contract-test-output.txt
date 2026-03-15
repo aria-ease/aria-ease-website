@@ -6,32 +6,32 @@
 [90mstdout[2m | tests/ariaease.test.jsx[2m > [22m[2mAccordion WAI-ARIA Accessibility Test[2m > [22m[2mAccordion meets WAI-ARIA roles, states, properties, and keyboard interactions expectactions
 [22m[39m🎭 Running Playwright tests on http://localhost:5173/test-harness?component=accordion
 
- [32m✓[39m tests/ariaease.test.jsx[2m > [22mAccordion WAI-ARIA Accessibility Test[2m > [22mAccordion meets WAI-ARIA roles, states, properties, and keyboard interactions expectactions[33m 4253[2mms[22m[39m
+ [32m✓[39m tests/ariaease.test.jsx[2m > [22mAccordion WAI-ARIA Accessibility Test[2m > [22mAccordion meets WAI-ARIA roles, states, properties, and keyboard interactions expectactions[33m 9330[2mms[22m[39m
 [90mstdout[2m | tests/ariaease.test.jsx[2m > [22m[2mCombobox with Listbox popup WAI-ARIA Accessibility Test[2m > [22m[2mCombobox with Listbox popup meets WAI-ARIA roles, states, properties, and keyboard interactions expectactions
 [22m[39m🎭 Running Playwright tests on http://localhost:5173/test-harness?component=combobox_listbox
 
- [32m✓[39m tests/ariaease.test.jsx[2m > [22mCombobox with Listbox popup WAI-ARIA Accessibility Test[2m > [22mCombobox with Listbox popup meets WAI-ARIA roles, states, properties, and keyboard interactions expectactions[33m 2101[2mms[22m[39m
+ [32m✓[39m tests/ariaease.test.jsx[2m > [22mCombobox with Listbox popup WAI-ARIA Accessibility Test[2m > [22mCombobox with Listbox popup meets WAI-ARIA roles, states, properties, and keyboard interactions expectactions[33m 4040[2mms[22m[39m
 [90mstdout[2m | tests/ariaease.test.jsx[2m > [22m[2mHorizontal Tabs WAI-ARIA Accessibility Test[2m > [22m[2mHorizontal tabs meets WAI-ARIA roles, states, properties, and keyboard interactions expectactions
 [22m[39m🎭 Running Playwright tests on http://localhost:5173/test-harness?component=tabs_horizontal
 
- [32m✓[39m tests/ariaease.test.jsx[2m > [22mHorizontal Tabs WAI-ARIA Accessibility Test[2m > [22mHorizontal tabs meets WAI-ARIA roles, states, properties, and keyboard interactions expectactions[33m 1118[2mms[22m[39m
+ [32m✓[39m tests/ariaease.test.jsx[2m > [22mHorizontal Tabs WAI-ARIA Accessibility Test[2m > [22mHorizontal tabs meets WAI-ARIA roles, states, properties, and keyboard interactions expectactions[33m 1882[2mms[22m[39m
 [90mstdout[2m | tests/ariaease.test.jsx[2m > [22m[2mVertical Tabs WAI-ARIA Accessibility Test[2m > [22m[2mVertical tabs meets WAI-ARIA roles, states, properties, and keyboard interactions expectactions
 [22m[39m🎭 Running Playwright tests on http://localhost:5173/test-harness?component=tabs_vertical
 
- [32m✓[39m tests/ariaease.test.jsx[2m > [22mVertical Tabs WAI-ARIA Accessibility Test[2m > [22mVertical tabs meets WAI-ARIA roles, states, properties, and keyboard interactions expectactions[33m 1050[2mms[22m[39m
+ [32m✓[39m tests/ariaease.test.jsx[2m > [22mVertical Tabs WAI-ARIA Accessibility Test[2m > [22mVertical tabs meets WAI-ARIA roles, states, properties, and keyboard interactions expectactions[33m 1788[2mms[22m[39m
 [90mstdout[2m | tests/ariaease.test.jsx[2m > [22m[2mMenu with submenu WAI-ARIA Accessibility Test[2m > [22m[2mMenu with submenu meets WAI-ARIA roles, states, properties, and keyboard interactions expectactions
 [22m[39m🎭 Running Playwright tests on http://localhost:5173/test-harness?component=sub_menu
 
- [32m✓[39m tests/ariaease.test.jsx[2m > [22mMenu with submenu WAI-ARIA Accessibility Test[2m > [22mMenu with submenu meets WAI-ARIA roles, states, properties, and keyboard interactions expectactions[33m 2069[2mms[22m[39m
+ [32m✓[39m tests/ariaease.test.jsx[2m > [22mMenu with submenu WAI-ARIA Accessibility Test[2m > [22mMenu with submenu meets WAI-ARIA roles, states, properties, and keyboard interactions expectactions[33m 3110[2mms[22m[39m
 [90mstdout[2m | tests/ariaease.test.jsx[2m > [22m[2mMenu WAI-ARIA Accessibility Test[2m > [22m[2mMenu meets WAI-ARIA roles, states, properties, and keyboard interactions expectactions
 [22m[39m🎭 Running Playwright tests on http://localhost:5173/test-harness?component=menu
 
- [32m✓[39m tests/ariaease.test.jsx[2m > [22mMenu WAI-ARIA Accessibility Test[2m > [22mMenu meets WAI-ARIA roles, states, properties, and keyboard interactions expectactions[33m 1965[2mms[22m[39m
+ [32m✓[39m tests/ariaease.test.jsx[2m > [22mMenu WAI-ARIA Accessibility Test[2m > [22mMenu meets WAI-ARIA roles, states, properties, and keyboard interactions expectactions[33m 2956[2mms[22m[39m
 
 [2m Test Files [22m [1m[32m1 passed[39m[22m[90m (1)[39m
 [2m      Tests [22m [1m[32m6 passed[39m[22m[90m (6)[39m
-[2m   Start at [22m 17:46:33
-[2m   Duration [22m 15.68s[2m (transform 202ms, setup 0ms, import 593ms, tests 12.62s, environment 1.89s)[22m
+[2m   Start at [22m 18:35:35
+[2m   Duration [22m 28.53s[2m (transform 92ms, setup 0ms, import 1.34s, tests 23.18s, environment 2.31s)[22m
 
 
 
@@ -67,7 +67,7 @@
 
 ✅ All 15 tests passed!
    Accordion component meets WAI-ARIA expectations for Roles, States, Properties, and Keyboard Interactions ✓
-⏱️  Duration: 799ms
+⏱️  Duration: 1472ms
 ════════════════════════════════════════════════════════════
 
 
@@ -112,7 +112,7 @@
 
 ✅ All 24 tests passed!
    Combobox.listbox component meets WAI-ARIA expectations for Roles, States, Properties, and Keyboard Interactions ✓
-⏱️  Duration: 1350ms
+⏱️  Duration: 2164ms
 ════════════════════════════════════════════════════════════
 
 
@@ -150,7 +150,7 @@
 ✅ 14/14 required tests passed
 ○  2 tests skipped
    Tabs component meets WAI-ARIA expectations for Roles, States, Properties, and Keyboard Interactions ✓
-⏱️  Duration: 316ms
+⏱️  Duration: 541ms
 ════════════════════════════════════════════════════════════
 
 
@@ -188,7 +188,7 @@
 ✅ 14/14 required tests passed
 ○  2 tests skipped
    Tabs component meets WAI-ARIA expectations for Roles, States, Properties, and Keyboard Interactions ✓
-⏱️  Duration: 298ms
+⏱️  Duration: 483ms
 ════════════════════════════════════════════════════════════
 
 
@@ -235,7 +235,7 @@
 
 ✅ All 26 tests passed!
    Menu component meets WAI-ARIA expectations for Roles, States, Properties, and Keyboard Interactions ✓
-⏱️  Duration: 1388ms
+⏱️  Duration: 1899ms
 ════════════════════════════════════════════════════════════
 
 
@@ -283,7 +283,7 @@
 ✅ 23/23 required tests passed
 ○  3 tests skipped
    Menu component meets WAI-ARIA expectations for Roles, States, Properties, and Keyboard Interactions ✓
-⏱️  Duration: 1201ms
+⏱️  Duration: 1352ms
 ════════════════════════════════════════════════════════════
 
 
