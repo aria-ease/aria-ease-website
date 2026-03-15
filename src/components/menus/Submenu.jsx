@@ -42,7 +42,7 @@ const SubMenu = () => {
         Display Example Menu
       </button>
       <div id="menu-div" style={{display: 'none', marginTop: '5px'}}>
-        <button className="profile-menu-items" onClick={() => alert('Button clicked')}>One</button>
+        <button className="profile-menu-items" onClick={() => console.log('Button clicked')}>One</button>
         <button 
           id="submenu-trigger"
           className="profile-menu-items"
@@ -55,11 +55,11 @@ const SubMenu = () => {
           id="submenu-div"   
           style={{display: 'none', marginLeft: '10px', marginTop: '2px'}}
         >
-          <button className="profile-menu-items" onClick={() => alert('Submenu A clicked')}>Submenu A</button>
-          <button className="profile-menu-items" onClick={() => alert('Submenu B clicked')}>Submenu B</button>
-          <button className="profile-menu-items" onClick={() => alert('Submenu C clicked')}>Submenu C</button>
+          <button className="profile-menu-items" onClick={() => console.log('Submenu A clicked')}>Submenu A</button>
+          <button className="profile-menu-items" onClick={() => console.log('Submenu B clicked')}>Submenu B</button>
+          <button className="profile-menu-items" onClick={() => console.log('Submenu C clicked')}>Submenu C</button>
         </div>
-        <button className="profile-menu-items" onClick={() => alert('Button clicked')}>Three</button>
+        <button className="profile-menu-items" onClick={() => console.log('Button clicked')}>Three</button>
       </div>
     </div>
   )

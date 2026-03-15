@@ -238,7 +238,7 @@ const Examples = ({darkMode, setDarkMode}) => {
 
                   <section className='mt-10'>
                     <h2>Submenu Support</h2>
-                    <p className='mt-2'>The utility automatically detects and manages submenus:</p>
+                    <p className='mt-2'>The utility automatically detects and manages submenus, including wiring and updating the appropriate ARIA attributes for submenu triggers</p>
                     <ul className='list-disc ml-6 mt-2'>
                       <li><code>→</code> on item with submenu: Opens submenu and focuses first item</li>
                       <li><code>←</code> in submenu: Closes submenu and returns focus to parent item</li>
@@ -252,6 +252,11 @@ const Examples = ({darkMode, setDarkMode}) => {
                       <li>Add <code>data-submenu-id</code> attribute to the menu item that controls the submenu</li>
                       <li>Set data-submenu-id to the value of the submenu div</li>
                       <li>Ensure the submenu menu items share a class name with the menu items of the parent menu</li>
+                      <li>
+                         You do not need to manually set <code>aria-haspopup</code> or <code>aria-controls</code> on submenu
+                         triggers; Aria-Ease uses <code>data-submenu-id</code> as the discovery hook and will set and manage
+                         those ARIA attributes automatically.
+                       </li>
                     </ul>
                     <CodeBlockDemo code={`<button className="menu-item" data-submenu-id="submenu-id">
   Item with Submenu ›
@@ -265,7 +270,7 @@ const Examples = ({darkMode, setDarkMode}) => {
                     <h2>Focus Management</h2>
                     <ul className='list-disc ml-6 mt-2'>
                       <li>First menu item automatically receives focus when menu opens</li>
-                      <li><code>tabindex=&#39;-1&#39;</code> on menu items prevents focus from cycling through menu items</li>
+                      <li>Menu items use a roving <code>tabindex</code> (toggling between <code>0</code> and <code>-1</code>) so Tab exits the menu while arrow keys move focus between items</li>
                       <li>Focus returns to trigger button when menu closes</li>
                       <li>Proper focus on submenu open/close</li>
                       <li>Keyboard and mouse interactions work seamlessly together</li>

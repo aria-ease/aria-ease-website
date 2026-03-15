@@ -567,9 +567,9 @@ await testUiComponent("combobox.listbox", null, "http://localhost:5173/test-harn
                           <td className='border border-gray-300 dark:border-gray-600 px-4 py-2'><code>testUiComponent(&quot;accordion&quot;, ...)</code></td>
                         </tr>
                         <tr>
-                          <td className='border border-gray-300 dark:border-gray-600 px-4 py-2'><code>combobox</code></td>
+                          <td className='border border-gray-300 dark:border-gray-600 px-4 py-2'><code>combobox.listbox</code></td>
                           <td className='border border-gray-300 dark:border-gray-600 px-4 py-2 min-w-[300px]'>Arrow key navigation, Enter/Space selection, Escape closes, Home/End keys, focus management, ARIA and role attributes</td>
-                          <td className='border border-gray-300 dark:border-gray-600 px-4 py-2'><code>testUiComponent(&quot;combobox&quot;, ...)</code></td>
+                          <td className='border border-gray-300 dark:border-gray-600 px-4 py-2'><code>testUiComponent(&quot;combobox.listbox&quot;, ...)</code></td>
                         </tr>
                         <tr>
                           <td className='border border-gray-300 dark:border-gray-600 px-4 py-2'><code>menu</code></td>
@@ -613,7 +613,7 @@ await testUiComponent("combobox.listbox", null, "http://localhost:5173/test-harn
                 {/* Required Test Attributes */}
                 <section className='mt-[100px]'>
                   <h2 className='text-3xl font-bold mb-4'>Required Test Attributes</h2>
-                  <p className='mb-4'>Some component contract tests use <code>data-*-id</code> attributes to reliably locate elements. Add these to your components before running tests:</p>
+                  <p className='mb-4'>Some component contract tests use <code>data-test-id</code> and other specific data attributes (for example, <code>data-submenu-id</code>) to reliably locate elements. Add these to your components before running tests:</p>
 
                   <div className={`mt-6 p-4 rounded-lg border-l-4 border-red-500 ${darkMode ? 'bg-red-900/20' : 'bg-red-50'}`}>
                     <div className='flex items-start gap-3'>
@@ -631,7 +631,7 @@ await testUiComponent("combobox.listbox", null, "http://localhost:5173/test-harn
                         <tr>
                           <th className='border border-gray-300 dark:border-gray-600 px-4 py-2 text-left text-gray-900 dark:text-white'>Component</th>
                           <th className='border border-gray-300 dark:border-gray-600 px-4 py-2 text-left text-gray-900 dark:text-white'>Element</th>
-                          <th className='border border-gray-300 dark:border-gray-600 px-4 py-2 text-left text-gray-900 dark:text-white'>Required data-test-id</th>
+                          <th className='border border-gray-300 dark:border-gray-600 px-4 py-2 text-left text-gray-900 dark:text-white'>Required test attribute</th>
                         </tr>
                       </thead>
                       <tbody>
