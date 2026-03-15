@@ -5,15 +5,17 @@ import AccordionExample from '../components/accordions/AccordionExample';
 import CheckboxExample from '../components/checkbox/Checkbox';
 import HorizontalTabs from '../components/tabs/HorizontalTabs';
 import VerticalTabs from '../components/tabs/VerticalTabs';
+import SubMenu from '../components/menus/Submenu';
 
 // Registry of components available for testing
 const COMPONENT_REGISTRY = {
   menu: ShopifyUserMenu,
-  combobox: ComboBox,
+  combobox_listbox: ComboBox,
   accordion: AccordionExample,
   checkbox: CheckboxExample,
   tabs_horizontal: HorizontalTabs,
   tabs_vertical: VerticalTabs,
+  sub_menu: SubMenu
 };
 
 /**

@@ -238,7 +238,10 @@ const Examples = ({darkMode, setDarkMode}) => {
 
                   <section className='mt-10'>
                     <h2>Submenu Support</h2>
-                    <p className='mt-2'>The utility automatically detects and manages submenus:</p>
+                    <p className='mt-2'>
+                      The utility automatically detects and manages submenus, including wiring and updating
+                      the appropriate ARIA attributes for submenu triggers:
+                    </p>
                     <ul className='list-disc ml-6 mt-2'>
                       <li><code>→</code> on item with submenu: Opens submenu and focuses first item</li>
                       <li><code>←</code> in submenu: Closes submenu and returns focus to parent item</li>
@@ -247,8 +250,23 @@ const Examples = ({darkMode, setDarkMode}) => {
                       <li>Focus isolation - each menu level only manages its direct children</li>
                     </ul>
                     
-                    <p className='mt-4 mb-1'>To create a submenu, add <code>aria-haspopup=&quot;true&quot;</code> and <code>aria-controls</code> to the parent menu item:</p>
-                    <CodeBlockDemo code={`<button className="menu-item" aria-haspopup="true" aria-controls="submenu-id">
+                    <p className='mt-4 mb-1'>To create a submenu:</p>
+                    <ul className='list-disc ml-6 mt-2 mb-1'>
+                      <li>Add <code>data-submenu-id</code> attribute to the menu item that controls the submenu</li>
+                      <li>Set <code>data-submenu-id</code> to match the <code>id</code> of the submenu container element</li>
+                      <li>Ensure the submenu menu items share a class name with the menu items of the parent menu</li>
+                      <li>
+                        You do not need to manually set <code>aria-haspopup</code> or <code>aria-controls</code> on submenu
+                        triggers; Aria-Ease uses <code>data-submenu-id</code> as the discovery hook and will set and manage
+                        those ARIA attributes automatically.
+                      </li>
+                      <li>
+                         You do not need to manually set <code>aria-haspopup</code> or <code>aria-controls</code> on submenu
+                         triggers; Aria-Ease uses <code>data-submenu-id</code> as the discovery hook and will set and manage
+                         those ARIA attributes automatically.
+                       </li>
+                    </ul>
+                    <CodeBlockDemo code={`<button className="menu-item" data-submenu-id="submenu-id">
   Item with Submenu ›
 </button>
 <div id="submenu-id" style={{display: "none"}}>
@@ -260,7 +278,7 @@ const Examples = ({darkMode, setDarkMode}) => {
                     <h2>Focus Management</h2>
                     <ul className='list-disc ml-6 mt-2'>
                       <li>First menu item automatically receives focus when menu opens</li>
-                      <li>Focus trap - <code>Tab</code> / <code>Shift+Tab</code> cycle through menu items</li>
+                      <li>Menu items use a roving <code>tabindex</code> (toggling between <code>0</code> and <code>-1</code>) so Tab exits the menu while arrow keys move focus between items</li>
                       <li>Focus returns to trigger button when menu closes</li>
                       <li>Proper focus on submenu open/close</li>
                       <li>Keyboard and mouse interactions work seamlessly together</li>
@@ -294,8 +312,10 @@ menuRef.current.refresh();`}/>
                     <h2>Keyboard Interaction</h2>
                     <p className='mt-2'>Complete keyboard support following W3C APG specifications:</p>
                     <ul className='list-disc ml-6 mt-2'>
-                      <li><code>↓</code> / <code>→</code> - Moves focus to next menu item (wraps to first)</li>
-                      <li><code>↑</code> / <code>←</code> - Moves focus to previous menu item (wraps to last)</li>
+                      <li><code>↓</code> - Moves focus to next menu item (wraps to first)</li>
+                      <li><code>↑</code> - Moves focus to previous menu item (wraps to last)</li>
+                      <li><code>→</code> - Opens submenu if focused item has submenu</li>
+                      <li><code>←</code> - Moves focus to previous menu item if not in submenu; closes submenu if in submenu, moves focus back to parent item</li>
                       <li><code>Home</code> - Moves focus to first menu item</li>
                       <li><code>End</code> - Moves focus to last menu item</li>
                       <li><code>Enter</code> / <code>Space</code> - Activates the focused menu item</li>

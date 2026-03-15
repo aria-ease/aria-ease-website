@@ -305,7 +305,7 @@ afterAll(async () => {
 });
 
 describe("Shopify User Menu Accessibility Test", () => {
-  test("renders Shopify user menu without accessibility violation(s)", async () => {
+  test("Menu meets WAI-ARIA roles, states, properties, and keyboard interactions expectations", async () => {
     await testUiComponent(
       "menu", 
       null, 
@@ -315,7 +315,7 @@ describe("Shopify User Menu Accessibility Test", () => {
 });
 
 describe("Shopify User Menu Accessibility Test", () => {
-  test("renders Shopify user menu without accessibility violation(s)", async () => {
+  test("Menu meets WAI-ARIA roles, states, properties, and keyboard interactions expectations", async () => {
     const { container } = render(<ShopifyUserMenu/>)
     await testUiComponent(
       "menu", 
@@ -364,7 +364,7 @@ npx aria-ease test 2>&1 | tee component-contract-test-output.txt`}/>
                     <h3 className='text-xl font-semibold mb-3'>jsdom Mode (Default)</h3>
                     <p className='mb-4'>Fast testing for static accessibility. Interaction and behavior tests will be skipped as they require a real browser simulated environment.</p>
                     <CodeBlockDemo code={`// Omit URL parameter for jsdom mode
-const result = await testUiComponent("combobox", container, null);`}/>
+const result = await testUiComponent("combobox.listbox", container, null);`}/>
                     
                     <div className={`mt-4 p-4 ${darkMode ? 'bg-blue-900/20' : 'bg-blue-50'} rounded-lg`}>
                       <p className={`font-semibold mb-2 ${darkMode ? 'text-blue-100' : 'text-blue-900'}`}>✅ Best For:</p>
@@ -380,7 +380,7 @@ const result = await testUiComponent("combobox", container, null);`}/>
                     <h3 className='text-xl font-semibold mb-3'>Playwright Mode (Full E2E)</h3>
                     <p className='mb-4'>Complete testing with real browser automation and keyboard events.</p>
                     <CodeBlockDemo code={`// Provide URL for Playwright mode
-const result = await testUiComponent("combobox", null, "http://localhost:5173/test-harness?component=menu");`}/>
+const result = await testUiComponent("menu", null, "http://localhost:5173/test-harness?component=menu");`}/>
                     
                     <div className='mt-4 p-4 bg-purple-50 rounded-lg'>
                       <p className='font-semibold mb-2 text-purple-900'>✅ Best For:</p>
@@ -440,7 +440,7 @@ import AccordionExample from '../components/accordions/AccordionExample';
 // Registry of components available for testing
 const COMPONENT_REGISTRY = {
   menu: ShopifyUserMenu,
-  combobox: ComboBox,
+  combobox_listbox: ComboBox,
   accordion: AccordionExample,
 };
 
@@ -497,12 +497,12 @@ function App() {
                     
                     <CodeBlockDemo code={`// Test different components using query params
 http://localhost:5173/test-harness?component=menu
-http://localhost:5173/test-harness?component=combobox
+http://localhost:5173/test-harness?component=combobox_listbox
 http://localhost:5173/test-harness?component=accordion
 
 // Tests navigate between components instantly:
 await testUiComponent("menu", null, "http://localhost:5173/test-harness?component=menu");
-await testUiComponent("combobox", null, "http://localhost:5173/test-harness?component=combobox");`}/>
+await testUiComponent("combobox.listbox", null, "http://localhost:5173/test-harness?component=combobox_listbox");`}/>
                   </div>
 
                   <div className={`mb-8 p-4 rounded-lg border-l-4 border-red-500 ${darkMode ? 'bg-red-900/20' : 'bg-red-50'}`}>
@@ -532,7 +532,7 @@ await testUiComponent("combobox", null, "http://localhost:5173/test-harness?comp
 3. React Router renders ONLY <ShopifyUserMenu />
 4. Component mounts with full interactivity
 5. Playwright runs contract tests (clicks, keyboard, ARIA)
-6. Change query param to ?component=combobox (no reload!)
+6. Change query param to ?component=combobox_listbox (no reload!)
 7. React Router switches to <ComboBox />
 8. Repeat tests for new component
 9. Cleanup browser after all tests complete`}
@@ -567,9 +567,9 @@ await testUiComponent("combobox", null, "http://localhost:5173/test-harness?comp
                           <td className='border border-gray-300 dark:border-gray-600 px-4 py-2'><code>testUiComponent(&quot;accordion&quot;, ...)</code></td>
                         </tr>
                         <tr>
-                          <td className='border border-gray-300 dark:border-gray-600 px-4 py-2'><code>combobox</code></td>
+                          <td className='border border-gray-300 dark:border-gray-600 px-4 py-2'><code>combobox.listbox</code></td>
                           <td className='border border-gray-300 dark:border-gray-600 px-4 py-2 min-w-[300px]'>Arrow key navigation, Enter/Space selection, Escape closes, Home/End keys, focus management, ARIA and role attributes</td>
-                          <td className='border border-gray-300 dark:border-gray-600 px-4 py-2'><code>testUiComponent(&quot;combobox&quot;, ...)</code></td>
+                          <td className='border border-gray-300 dark:border-gray-600 px-4 py-2'><code>testUiComponent(&quot;combobox.listbox&quot;, ...)</code></td>
                         </tr>
                         <tr>
                           <td className='border border-gray-300 dark:border-gray-600 px-4 py-2'><code>menu</code></td>
@@ -613,7 +613,7 @@ await testUiComponent("combobox", null, "http://localhost:5173/test-harness?comp
                 {/* Required Test Attributes */}
                 <section className='mt-[100px]'>
                   <h2 className='text-3xl font-bold mb-4'>Required Test Attributes</h2>
-                  <p className='mb-4'>Some component contract tests use <code>data-test-id</code> attributes to reliably locate elements. Add these to your components before running tests:</p>
+                  <p className='mb-4'>Some component contract tests use <code>data-test-id</code> and other specific data attributes (for example, <code>data-submenu-id</code>) to reliably locate elements. Add these to your components before running tests:</p>
 
                   <div className={`mt-6 p-4 rounded-lg border-l-4 border-red-500 ${darkMode ? 'bg-red-900/20' : 'bg-red-50'}`}>
                     <div className='flex items-start gap-3'>
@@ -631,7 +631,7 @@ await testUiComponent("combobox", null, "http://localhost:5173/test-harness?comp
                         <tr>
                           <th className='border border-gray-300 dark:border-gray-600 px-4 py-2 text-left text-gray-900 dark:text-white'>Component</th>
                           <th className='border border-gray-300 dark:border-gray-600 px-4 py-2 text-left text-gray-900 dark:text-white'>Element</th>
-                          <th className='border border-gray-300 dark:border-gray-600 px-4 py-2 text-left text-gray-900 dark:text-white'>Required data-test-id</th>
+                          <th className='border border-gray-300 dark:border-gray-600 px-4 py-2 text-left text-gray-900 dark:text-white'>Required test attribute</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -650,9 +650,13 @@ await testUiComponent("combobox", null, "http://localhost:5173/test-harness?comp
                           <td className='border border-gray-300 dark:border-gray-600 px-4 py-2'><code>data-test-id=&quot;combobox-button&quot;</code></td>
                         </tr>
                         <tr>
-                          <td className='border border-gray-300 dark:border-gray-600 px-4 py-2'><code>menu</code></td>
+                          <td className='border border-gray-300 dark:border-gray-600 px-4 py-2' rowSpan="2"><code>menu</code></td>
                           <td className='border border-gray-300 dark:border-gray-600 px-4 py-2'>Trigger button</td>
                           <td className='border border-gray-300 dark:border-gray-600 px-4 py-2'><code>data-test-id=&quot;menu-trigger&quot;</code></td>
+                        </tr>
+                        <tr>
+                          <td className='border border-gray-300 dark:border-gray-600 px-4 py-2'>Submenu Trigger button</td>
+                          <td className='border border-gray-300 dark:border-gray-600 px-4 py-2'><code>data-submenu-id=&quot;{`<submenu-div-id>`}&quot;</code></td>
                         </tr>
                       </tbody>
                     </table>
@@ -699,23 +703,23 @@ await testUiComponent("combobox", null, "http://localhost:5173/test-harness?comp
                   <h2 className='text-3xl font-bold mb-4'>Advanced Examples</h2>
 
                   <h3 className='text-xl font-semibold mb-3 mt-6'>Testing Multiple Components</h3>
-                  <CodeBlockDemo code={`describe("Shopify User Menu Accessibility Test", () => {
-  test("renders Shopify user menu without accessibility violation(s)", async () => {
+                  <CodeBlockDemo code={`describe("Menu WAI-ARIA Accessibility Test", () => {
+  test("Menu meets WAI-ARIA roles, states, properties, and keyboard interactions expectations", async () => {
     await testUiComponent("menu", null, "http://localhost:5173/test-harness?component=menu");
   });
 });
 
 
-describe("ComboBox Accessibility Test", () => {
-  test("renders ComboBox without accessibility violation(s)", async () => {
-    await testUiComponent("combobox", null, "http://localhost:5173/test-harness?component=combobox");
+describe("ComboBox with Listbox popup Accessibility Test", () => {
+  test("Combobox with Listbox popup meets WAI-ARIA roles, states, properties, and keyboard interactions expectations", async () => {
+    await testUiComponent("combobox.listbox", null, "http://localhost:5173/test-harness?component=combobox_listbox");
   });
 });
 `} isLineNumber={true}/>
 
                   <h3 className='text-xl font-semibold mb-3 mt-8'>Inspecting Test Results</h3>
                   <CodeBlockDemo code={`test("detailed violation inspection", async () => {
-  const result = await testUiComponent("combobox", null, "http://localhost:5173/test-harness?component=combobox");
+  const result = await testUiComponent("combobox.listbox", null, "http://localhost:5173/test-harness?component=combobox_listbox");
 
   // Log all violations
   if (result.violations.length > 0) {
@@ -737,9 +741,9 @@ describe("ComboBox Accessibility Test", () => {
 test("full E2E combobox test", async () => {
   // Let Aria-Ease handle the accessibility testing
   const result = await testUiComponent(
-    "combobox",
+    "combobox.listbox",
     null,
-    "http://localhost:5173/test-harness?component=combobox"
+    "http://localhost:5173/test-harness?component=combobox_listbox"
   );
 
   // Verify results
@@ -838,7 +842,7 @@ test("full E2E combobox test", async () => {
                         <div className='min-w-0 flex-1'>
                           <h3 className={`font-semibold text-lg mb-2 ${darkMode ? 'text-blue-100' : 'text-blue-900'}`}>Configure Global Test Timeout</h3>
                           <p className={`mb-3 ${darkMode ? 'text-blue-100' : 'text-blue-900'}`}>
-                            Set a global timeout in your test framework config. Individual tests don't need per-test timeouts:
+                            Set a global timeout in your test framework config. Individual tests don&#39;t need per-test timeouts:
                           </p>
                           <div className='overflow-x-auto mb-3'>
                             <CodeBlockDemo code={`// vitest.config.mts or vitest.config.js
@@ -855,9 +859,9 @@ module.exports = {
                           </div>
                           <div className='overflow-x-auto'>
                             <CodeBlockDemo code={`// Your test file - no per-test timeout needed
-describe("ComboBox Accessibility Test", () => {
-  test("renders ComboBox without accessibility violation(s)", async () => {
-    await testUiComponent("combobox", null, "http://localhost:5173/test-harness?component=combobox");
+describe("ComboBox with Listbox popup Accessibility Test", () => {
+  test("Combobox with Listbox popup meets WAI-ARIA roles, states, properties, and keyboard interactions expectations", async () => {
+    await testUiComponent("combobox.listbox", null, "http://localhost:5173/test-harness?component=combobox_listbox");
   }); // Global timeout applies automatically
 });`} isLineNumber={true}/>
                           </div>
