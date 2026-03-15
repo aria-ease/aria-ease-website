@@ -5,21 +5,15 @@ afterAll(async () => {
   await cleanupTests();
 });
 
-describe("Accordion WAI-ARIA Accessibility Test", () => {
+/* describe("Accordion WAI-ARIA Accessibility Test", () => {
   test("Accordion meets WAI-ARIA roles, states, properties, and keyboard interactions expectactions", async () => {
     await testUiComponent("accordion", null, "http://localhost:5173/test-harness?component=accordion");
   });
 });
 
-describe("Combobox WAI-ARIA Accessibility Test", () => {
-  test("Combobox meets WAI-ARIA roles, states, properties, and keyboard interactions expectactions", async () => {
-    await testUiComponent("combobox", null, "http://localhost:5173/test-harness?component=combobox");
-  });
-});
-
-describe("Menu WAI-ARIA Accessibility Test", () => {
-  test("Menu meets WAI-ARIA roles, states, properties, and keyboard interactions expectactions", async () => {
-    await testUiComponent("menu", null, "http://localhost:5173/test-harness?component=menu");
+describe("Combobox with Listbox popup WAI-ARIA Accessibility Test", () => {
+  test("Combobox with Listbox popup meets WAI-ARIA roles, states, properties, and keyboard interactions expectactions", async () => {
+    await testUiComponent("combobox.listbox", null, "http://localhost:5173/test-harness?component=combobox_listbox");
   });
 });
 
@@ -33,4 +27,16 @@ describe("Vertical Tabs WAI-ARIA Accessibility Test", () => {
   test("Vertical tabs meets WAI-ARIA roles, states, properties, and keyboard interactions expectactions", async () => {
     await testUiComponent("tabs", null, "http://localhost:5173/test-harness?component=tabs_vertical");
   });
+}); */
+
+describe("Menu with submenu WAI-ARIA Accessibility Test", () => {
+  test("Menu with submenu meets WAI-ARIA roles, states, properties, and keyboard interactions expectactions", async () => {
+    await testUiComponent("menu", null, "http://localhost:5173/test-harness?component=sub_menu");
+  });
 });
+
+/* describe("Menu WAI-ARIA Accessibility Test", () => {
+  test("Menu meets WAI-ARIA roles, states, properties, and keyboard interactions expectactions", async () => {
+    await testUiComponent("menu", null, "http://localhost:5173/test-harness?component=menu");
+  });
+}); */

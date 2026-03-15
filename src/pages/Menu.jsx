@@ -247,8 +247,13 @@ const Examples = ({darkMode, setDarkMode}) => {
                       <li>Focus isolation - each menu level only manages its direct children</li>
                     </ul>
                     
-                    <p className='mt-4 mb-1'>To create a submenu, add <code>aria-haspopup=&quot;true&quot;</code> and <code>aria-controls</code> to the parent menu item:</p>
-                    <CodeBlockDemo code={`<button className="menu-item" aria-haspopup="true" aria-controls="submenu-id">
+                    <p className='mt-4 mb-1'>To create a submenu:</p>
+                    <ul className='list-disc ml-6 mt-2 mb-1'>
+                      <li>Add <code>data-submenu-id</code> attribute to the menu item that controls the submenu</li>
+                      <li>Set data-submenu-id to the value of the submenu div</li>
+                      <li>Ensure the submenu menu items share a class name with the menu items of the parent menu</li>
+                    </ul>
+                    <CodeBlockDemo code={`<button className="menu-item" data-submenu-id="submenu-id">
   Item with Submenu ›
 </button>
 <div id="submenu-id" style={{display: "none"}}>
@@ -260,7 +265,7 @@ const Examples = ({darkMode, setDarkMode}) => {
                     <h2>Focus Management</h2>
                     <ul className='list-disc ml-6 mt-2'>
                       <li>First menu item automatically receives focus when menu opens</li>
-                      <li>Focus trap - <code>Tab</code> / <code>Shift+Tab</code> cycle through menu items</li>
+                      <li><code>tabindex=&#39;-1&#39;</code> on menu items prevents focus from cycling through menu items</li>
                       <li>Focus returns to trigger button when menu closes</li>
                       <li>Proper focus on submenu open/close</li>
                       <li>Keyboard and mouse interactions work seamlessly together</li>
