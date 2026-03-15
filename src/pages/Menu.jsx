@@ -238,7 +238,10 @@ const Examples = ({darkMode, setDarkMode}) => {
 
                   <section className='mt-10'>
                     <h2>Submenu Support</h2>
-                    <p className='mt-2'>The utility automatically detects and manages submenus, including wiring and updating the appropriate ARIA attributes for submenu triggers</p>
+                    <p className='mt-2'>
+                      The utility automatically detects and manages submenus, including wiring and updating
+                      the appropriate ARIA attributes for submenu triggers:
+                    </p>
                     <ul className='list-disc ml-6 mt-2'>
                       <li><code>→</code> on item with submenu: Opens submenu and focuses first item</li>
                       <li><code>←</code> in submenu: Closes submenu and returns focus to parent item</li>
@@ -250,8 +253,13 @@ const Examples = ({darkMode, setDarkMode}) => {
                     <p className='mt-4 mb-1'>To create a submenu:</p>
                     <ul className='list-disc ml-6 mt-2 mb-1'>
                       <li>Add <code>data-submenu-id</code> attribute to the menu item that controls the submenu</li>
-                      <li>Set data-submenu-id to the value of the submenu div</li>
+                      <li>Set <code>data-submenu-id</code> to match the <code>id</code> of the submenu container element</li>
                       <li>Ensure the submenu menu items share a class name with the menu items of the parent menu</li>
+                      <li>
+                        You do not need to manually set <code>aria-haspopup</code> or <code>aria-controls</code> on submenu
+                        triggers; Aria-Ease uses <code>data-submenu-id</code> as the discovery hook and will set and manage
+                        those ARIA attributes automatically.
+                      </li>
                       <li>
                          You do not need to manually set <code>aria-haspopup</code> or <code>aria-controls</code> on submenu
                          triggers; Aria-Ease uses <code>data-submenu-id</code> as the discovery hook and will set and manage
