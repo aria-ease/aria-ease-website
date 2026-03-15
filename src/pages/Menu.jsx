@@ -299,8 +299,10 @@ menuRef.current.refresh();`}/>
                     <h2>Keyboard Interaction</h2>
                     <p className='mt-2'>Complete keyboard support following W3C APG specifications:</p>
                     <ul className='list-disc ml-6 mt-2'>
-                      <li><code>↓</code> / <code>→</code> - Moves focus to next menu item (wraps to first)</li>
+                      <li><code>↓</code> - Moves focus to next menu item (wraps to first)</li>
                       <li><code>↑</code> / <code>←</code> - Moves focus to previous menu item (wraps to last)</li>
+                      <li><code>→</code> - Opens submenu if focused item has submenu</li>
+                      <li><code>←</code> - Moves focus to previous menu item if not in submenu; closes submenu if in submenu, moves focus back to parent item</li>
                       <li><code>Home</code> - Moves focus to first menu item</li>
                       <li><code>End</code> - Moves focus to last menu item</li>
                       <li><code>Enter</code> / <code>Space</code> - Activates the focused menu item</li>

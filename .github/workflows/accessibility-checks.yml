@@ -2,7 +2,7 @@ name: Accessibility Checks
 
 on:
   push:
-    branches: [isaac-v6.x.x] # Run on pushes to main and your current branch
+    branches: [isaac-v6.x.x] # Run on pushes to your current branch
   pull_request:
     branches: [main] # Run on PRs targeting main
 

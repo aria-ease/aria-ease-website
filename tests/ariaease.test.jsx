@@ -5,7 +5,7 @@ afterAll(async () => {
   await cleanupTests();
 });
 
-/* describe("Accordion WAI-ARIA Accessibility Test", () => {
+describe("Accordion WAI-ARIA Accessibility Test", () => {
   test("Accordion meets WAI-ARIA roles, states, properties, and keyboard interactions expectactions", async () => {
     await testUiComponent("accordion", null, "http://localhost:5173/test-harness?component=accordion");
   });
@@ -27,7 +27,7 @@ describe("Vertical Tabs WAI-ARIA Accessibility Test", () => {
   test("Vertical tabs meets WAI-ARIA roles, states, properties, and keyboard interactions expectactions", async () => {
     await testUiComponent("tabs", null, "http://localhost:5173/test-harness?component=tabs_vertical");
   });
-}); */
+});
 
 describe("Menu with submenu WAI-ARIA Accessibility Test", () => {
   test("Menu with submenu meets WAI-ARIA roles, states, properties, and keyboard interactions expectactions", async () => {
@@ -35,8 +35,8 @@ describe("Menu with submenu WAI-ARIA Accessibility Test", () => {
   });
 });
 
-/* describe("Menu WAI-ARIA Accessibility Test", () => {
+describe("Menu WAI-ARIA Accessibility Test", () => {
   test("Menu meets WAI-ARIA roles, states, properties, and keyboard interactions expectactions", async () => {
     await testUiComponent("menu", null, "http://localhost:5173/test-harness?component=menu");
   });
-}); */
+});
