@@ -1,37 +1,39 @@
-.light-body .header-button {
-    background-color: transparent;
-    border: 0.2px solid rgba(27, 27, 27, 0.226);
+.light-body {
+    --section-tone-a: #f2f6f9;
+    --section-tone-b: #eaf1f7;
+    --section-tone-c: #f7fafd;
+    --card-bg-base: #ffffff;
+    --card-bg-alt: #f8fbff;
+    --card-bg-emphasis: #eef5ff;
+    --card-border: #d8e1eb;
+    --card-hover-border: #9fb6d1;
+    --card-hover-shadow: 0 18px 32px -24px rgba(36, 72, 118, 0.45);
+    --nav-hover-accent: #2563eb;
 }
-.light-body .search-close-button {
-    border: 0.2px solid transparent;
-    background: rgb(223, 223, 223);
-}
-.light-body .search-close-button:hover {
-    border: 0.2px solid rgba(27, 27, 27, 0.226);
-    background: rgb(211, 211, 211);
-}
+
 .light-body .search-result-link.inactive {
-    background: rgb(228, 227, 227);
+   background-color: var(--section-tone-a);
 }
-.light-body .header-button:hover,
-.light-body .search-result-link.inactive:hover,
-.light-body .hero-explore:hover {
-    background: rgb(222, 222, 222);
-}
+
 .light-body .header-search-div,
-.light-body .each-text-input-block-div {
-    background-color: rgba(225, 225, 225);
+.light-body .header-button,
+.light-body .search-close-button {
+    background-color: var(--section-tone-a);
+    border: 1px solid var(--card-border);
 }
 .light-body .header-search-div:hover,
-.light-body .each-text-input-block-div:hover {
-    border: 1px solid rgba(48, 48, 48);
-}
 .light-body .header-search-div:focus-within,
-.light-body .each-text-input-block-div:focus-within {
-    border: 1px solid rgba(48, 48, 48);
+.light-body .header-button:hover,
+.light-body .search-close-button:hover {
+    border: 1px solid var(--card-hover-border);
+    background:  var(--section-tone-b);
 }
-.light-body .header-search-div input,
-.light-body #text-input-block-div input {
+
+.light-body .search-result-link.inactive:hover {
+    background:  var(--section-tone-b);
+}
+
+.light-body .header-search-div input {
     color: rgb(73, 73, 73);
 }
 .light-body .hero-paragraph,
@@ -42,9 +44,7 @@
 .light-body .audit-section-paragraph {
     color: black;
 }
-.light-body .hero-examples-div {
-    background-color: rgba(110, 110, 110, 0.185);
-}
+
 .light-body .header-nav-link,
 .light-body .side-nav-link,
 .light-body .footer-nav-link,
@@ -70,6 +70,10 @@
 .light-body .header,
 .light-body {
     background: #F2F6F9;
+}
+.light-body .header.scrolled {
+    background: rgba(242, 246, 249, 0.88);
+    border-bottom: 1px solid rgba(120, 136, 158, 0.28);
 }
 .light-body .home-example-tab-one-item {
     border: 0.2px solid rgba(27, 27, 27, 0.226);
@@ -135,4 +139,15 @@
 .light-body .skip-to-content-link {
     color: black;
     background-color: #F2F6F9;
+}
+
+.light-body .hero-terminal-border {
+  border: 1px solid #dee2e6;
+}
+
+.light-body .hero-terminal-header {
+  border-bottom: 1px solid #dee2e6;
+}
+.light-body .landing-hr {
+    border-color: #444444;
 }

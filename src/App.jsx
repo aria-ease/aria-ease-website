@@ -17,15 +17,15 @@ import Radio from './pages/Radio';
 import Toggle from './pages/Toggle';
 import firebase from "firebase/compat/app";
 import { getAnalytics } from "firebase/analytics";
-import BlogMain from './pages/BlogMain';
-import BlogSingle from './pages/BlogSingle';
+//import BlogMain from './pages/BlogMain';
+//import BlogSingle from './pages/BlogSingle';
 import "firebase/compat/firestore";
 import Admin from './pages/Admin';
 import Changelog from './pages/Changelog';
 import Audit from './pages/Audit';
 import Testing from './pages/Testing';
 import Combobox from './pages/Combobox';
-import Services from './pages/Services';
+//import Services from './pages/Services';
 import ComponentTestHarness from './pages/ComponentTestHarness';
 import { HelmetProvider } from 'react-helmet-async';
 import Tabs from './pages/Tabs';
@@ -73,14 +73,14 @@ const InnerApp = ({darkMode, setDarkMode}) => {
           <Route path="/examples/checkbox" element={<Checkbox darkMode={darkMode} setDarkMode={setDarkMode}/>}/>
           <Route path="/examples/radio" element={<Radio darkMode={darkMode} setDarkMode={setDarkMode}/>}/>
           <Route path="/examples/toggle-button" element={<Toggle darkMode={darkMode} setDarkMode={setDarkMode}/>}/>
-          <Route path="/blog/main" element={<BlogMain darkMode={darkMode} setDarkMode={setDarkMode}/>}/>
-          <Route path="/blog/single" element={<BlogSingle darkMode={darkMode} setDarkMode={setDarkMode}/>}/>
+          {/* <Route path="/blog/main" element={<BlogMain darkMode={darkMode} setDarkMode={setDarkMode}/>}/>
+          <Route path="/blog/single" element={<BlogSingle darkMode={darkMode} setDarkMode={setDarkMode}/>}/> */}
           <Route path="/clandestine/admin/" element={<Admin/>}/>
           <Route path="/changelog" element={<Changelog darkMode={darkMode} setDarkMode={setDarkMode}/>}/>
           <Route path="/audit" element={<Audit darkMode={darkMode} setDarkMode={setDarkMode}/>}/>
           <Route path="/testing" element={<Testing darkMode={darkMode} setDarkMode={setDarkMode}/>}/>
           <Route path="/examples/combobox" element={<Combobox darkMode={darkMode} setDarkMode={setDarkMode}/>}/>
-          <Route path="/services" element={<Services darkMode={darkMode} setDarkMode={setDarkMode}/>}/>
+          {/* <Route path="/services" element={<Services darkMode={darkMode} setDarkMode={setDarkMode}/>}/> */}
           <Route path="/test-harness" element={<ComponentTestHarness/>}/>
           <Route path="/examples/tabs" element={<Tabs darkMode={darkMode} setDarkMode={setDarkMode}/>}/>
         </Routes>

@@ -13,19 +13,22 @@ const Footer = ({ page }) => {
             <ul className="mt-3">
               <li className="mb-3"><Link onClick={() => { sessionStorage.setItem(`scroll-position-${page}`, window.scrollY) }} to="/docs" className="footer-nav-link block-interactive text-[16px]" aria-label='Navigate to the documentation page'>Documentation</Link></li>
               <li className="mb-3"><Link onClick={() => { sessionStorage.setItem(`scroll-position-${page}`, window.scrollY) }} to="/examples" className="footer-nav-link block-interactive text-[16px]" aria-label="View examples of package implementation">Examples</Link></li>
-              <li className="mb-3"><Link onClick={() => { sessionStorage.setItem(`scroll-position-${page}`, window.scrollY) }} to="/changelog" className="footer-nav-link block-interactive text-[16px]" aria-label='Navigate to changelog page'>Changelog</Link></li>
+              
             </ul>
           </Col>
           <Col md={3} className="mt-6">
-            <span className="text-[16px] font-bold footer-heading-text">Company</span>
+            <span className="text-[16px] font-bold footer-heading-text">Product</span>
             <ul className="mt-3">
-              <li className="mb-3"><Link onClick={() => { sessionStorage.setItem(`scroll-position-${page}`, window.scrollY) }} to="/services" className="footer-nav-link block-interactive text-[16px]" aria-label='Navigate to services page'>Services</Link></li>
+              {/* <li className="mb-3"><Link onClick={() => { sessionStorage.setItem(`scroll-position-${page}`, window.scrollY) }} to="/services" className="footer-nav-link block-interactive text-[16px]" aria-label='Navigate to services page'>Services</Link></li> */}
+              <li className="mb-3"><Link onClick={() => { sessionStorage.setItem(`scroll-position-${page}`, window.scrollY) }} to="/audit" className="footer-nav-link block-interactive text-[16px]" aria-label='Navigate to static audit page'>Static Audit</Link></li>
+              <li className="mb-3"><Link onClick={() => { sessionStorage.setItem(`scroll-position-${page}`, window.scrollY) }} to="/testing" className="footer-nav-link block-interactive text-[16px]" aria-label='Navigate to contract testing page'>Contract Testing</Link></li>
             </ul>
           </Col>
           <Col md={3} className="mt-6">
             <span className="text-[16px] font-bold footer-heading-text">Resources</span>
             <ul className="mt-3">
-              <li className="mb-3"><Link onClick={() => { sessionStorage.setItem(`scroll-position-${page}`, window.scrollY) }} to="/blog/main" className="footer-nav-link block-interactive text-[16px]" aria-label='Navigate to blog articles page'>Blog</Link></li>
+              {/* <li className="mb-3"><Link onClick={() => { sessionStorage.setItem(`scroll-position-${page}`, window.scrollY) }} to="/blog/main" className="footer-nav-link block-interactive text-[16px]" aria-label='Navigate to blog articles page'>Blog</Link></li> */}
+              <li className="mb-3"><Link onClick={() => { sessionStorage.setItem(`scroll-position-${page}`, window.scrollY) }} to="/changelog" className="footer-nav-link block-interactive text-[16px]" aria-label='Navigate to changelog page'>Changelog</Link></li>
               <li className="mb-3"><a onClick={() => { sessionStorage.setItem(`scroll-position-${page}`, window.scrollY) }} href='https://www.w3.org/WAI/ARIA/apg/patterns/' target='_blank' rel='noopener noreferrer' className="footer-nav-link block-interactive text-[16px]" aria-label='Navigate to WAI-ARIA APG website'>WAI-ARIA APG</a></li>
             </ul>
           </Col>
@@ -47,7 +50,7 @@ const Footer = ({ page }) => {
           </Col>
 
         </Row>
-        <p className='black-white-text text-sm font-[300] mt-[50px]'>&copy; Copyright 2023-{new Date().getFullYear()} Aria-Ease. All rights reserved.</p>
+        <p className='black-white-text text-sm font-[300] mt-[50px]'>&copy; 2023-{new Date().getFullYear()} Aria-Ease. All rights reserved.</p>
       </Container>
     </footer>
   )

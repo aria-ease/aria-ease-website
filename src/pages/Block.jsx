@@ -3,104 +3,11 @@ import { Container, Row, Col } from 'react-bootstrap'
 import SideNav from '../components/SideNav'
 import SlideOutNav from '../components/SlideOutNav'
 import { useState, useEffect, useRef } from 'react'
-import TextInputBlock from '../components/block/TextInputBlock'
 import * as Block from 'aria-ease/block'
 import CodeBlockDemo from '../components/CodeBlock';
 import ScrollTracker from '../components/ScrollTracker';
 import { ChevronRightCircleIcon } from 'lucide-react';
 import { Helmet } from 'react-helmet-async';
-
-
-const firstBlockCode = `import { useEffect } from "react";
-import * as Block from "aria-ease/block";
-
-const App = () => {
-  useEffect(() => {
-    const blockRef = Block.makeBlockAccessible({
-      blockId: "block-div", 
-      blockItemsClass: "block-interactive-items"
-    });
-
-    return () => blockRef.cleanup(); // Clean up on unmount
-  },[]);
-
-  return (
-    <div>
-      <div id="block-div">
-        <button className="block-interactive-items">One</button>
-        <button className="block-interactive-items">Two</button>
-        <button className="block-interactive-items">Three</button>
-        <button className="block-interactive-items">Four</button>
-      </div>
-    </div>
-  )
-}
-
-export default App`
-
-const secondBlockCode = `import { useEffect } from "react";
-import * as Block from "aria-ease/block";
-
-const TextInputBlock = () => {
-  useEffect(() => {
-    const blockRef = Block.makeBlockAccessible({
-      blockId: "text-input-block-div", 
-      blockItemsClass: "text-input-block-items"
-    });
-
-    return () => blockRef.cleanup(); // Clean up on unmount
-  }, []);
-
-  return (
-    <div id="text-input-block-div">
-        <div className="each-text-input-block-div">
-          <input type="text" placeholder="Name" className="text-input-block-items"></input>
-        </div>
-        <div className="each-text-input-block-div">
-          <input type="text" placeholder="Email" className="text-input-block-items"></input>
-        </div>
-        <div className="each-text-input-block-div">
-          <input type="text" placeholder="Phone" className="text-input-block-items"></input>
-        </div>
-    </div>
-  )
-}
-
-export default TextInputBlock`
-
-const dynamicBlockCode = `import { useEffect, useRef } from "react";
-import * as Block from "aria-ease/block";
-
-const mainBlockRef = useRef(null);
-
-useEffect(() => {
-  mainBlockRef.current = Block.makeBlockAccessible({
-    blockId: "inner-body-div",
-    blockItemsClass: "block-interactive"
-  });
-  
-  return () => {
-    if (mainBlockRef.current) {
-      mainBlockRef.current.cleanup();
-      mainBlockRef.current = null;
-    }
-  };
-}, []);
-
-useEffect(() => {
-  if (dynamicState) {
-    // Clean up main block when dynamic content appears
-    if (mainBlockRef.current) {
-      mainBlockRef.current.cleanup();
-      mainBlockRef.current = null;
-    }
-  } else {
-    // Re-initialize main block when dynamic content disappears
-    if (!mainBlockRef.current) {
-      mainBlockRef.current = Block.makeBlockAccessible({ blockId: 'inner-body-div', blockItemsClass: 'block-interactive' });
-    }
-  }
-}, [dynamicState]);`
 
 // eslint-disable-next-line react/prop-types
 const BlockExample = ({darkMode, setDarkMode}) => {
