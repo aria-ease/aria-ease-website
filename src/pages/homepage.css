@@ -12,3 +12,118 @@
   font-size: 0.875rem;
   font-weight: 500;
 }
+
+.section-shell {
+  padding-top: clamp(3rem, 5vw, 5rem);
+  padding-bottom: clamp(3rem, 5vw, 5rem);
+}
+
+.section-tone-a {
+  background: var(--section-tone-a);
+}
+
+.section-tone-b {
+  background: var(--section-tone-b);
+}
+
+.section-tone-c {
+  background: var(--section-tone-c);
+}
+
+.broken-word {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.01em;
+  white-space: nowrap;
+}
+
+.broken-char {
+  display: inline-block;
+  transform-origin: 50% 75%;
+}
+.broken-char-1 {
+  transform: rotate(-6deg) translateY(-1px);
+}
+
+.broken-char-2 {
+  transform: rotate(5deg) translateY(1px);
+}
+
+.broken-char-3 {
+  transform: rotate(-6deg) translateY(-1px);
+}
+
+.broken-char-4 {
+  transform: rotate(5deg) translateY(1px);
+}
+
+.broken-char-5 {
+  transform: rotate(-6deg) translateY(-1px);
+}
+
+.broken-char-6 {
+  transform: rotate(5deg) translateY(1px);
+}
+
+.text-gradient {
+  background: linear-gradient(135deg, #9db4fd 0%, #2563eb 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.button-gradient {
+  background: linear-gradient(135deg, #9db4fd 0%, #2563eb 100%);
+  color: white;
+  background-size: 140% 140%;
+  transition: transform 180ms ease, box-shadow 180ms ease, background-position 240ms ease;
+}
+
+.button-gradient:hover,
+.button-gradient:focus-visible {
+  transform: translateY(-1px);
+  background-position: 100% 0;
+  box-shadow: 0 14px 28px -18px rgba(37, 99, 235, 0.95);
+}
+
+.hero-explore {
+  height: 3rem;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--card-border);
+  background: var(--card-bg-base);
+  text-decoration: none;
+  transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease, background-color 180ms ease;
+}
+
+.hero-explore:hover,
+.hero-explore:focus-visible {
+  transform: translateY(-1px);
+  border-color: var(--card-hover-border);
+  background: var(--card-bg-alt);
+  box-shadow: var(--card-hover-shadow);
+}
+
+.tone-card {
+  border: 1px solid var(--card-border);
+  transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
+}
+
+.tone-card-base {
+  background: var(--card-bg-base);
+}
+
+.tone-card-alt {
+  background: var(--card-bg-alt);
+}
+
+.tone-card-emphasis {
+  background: var(--card-bg-emphasis);
+}
+
+.tone-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--card-hover-border);
+  box-shadow: var(--card-hover-shadow);
+}

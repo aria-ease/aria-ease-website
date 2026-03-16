@@ -5,104 +5,11 @@ import { useState, useEffect, useRef } from "react";
 import * as Block from "aria-ease/block";
 import { Link } from "react-router-dom";
 import './homepage.css';
-import { Terminal, Boxes, Keyboard, ArrowRight, FileWarning, FileCheck2, Code2, Zap, Package, ShieldCheck, CheckCircle2 } from 'lucide-react';
-import keyboardnavdemo from '../assets/keyboard-nav-demo.mp4';
 import Footer from "../components/Footer";
 import ScrollTracker from '../components/ScrollTracker';
 import CodeBlockDemo from '../components/CodeBlock';
 import { Helmet } from 'react-helmet-async';
 
-const belowTheFoldCode = `import { useEffect } from "react";
-import * as Block from "aria-ease/block";
-
-const App = () => {
-  useEffect(() => {
-    function initializeBlock() {
-      Block.makeBlockAccessible({ blockId: "text-input-block-div", blockItemsClass: "block-interactive-items" });
-    }
-    
-    initializeBlock();
-  },[])
-
-  return (
-    <div id="text-input-block-div">
-      <input placeholder="Name" className="block-interactive-items"></input>
-      <input placeholder="Email" className="block-interactive-items"></input>
-      <input placeholder="Phone" className="block-interactive-items"></input>
-    </div>
-  )
-}
-
-export default App
-                    `
-
-const boilerplateCode = `// Without aria-ease: ~50 lines of boilerplate
-const menuButton = document.getElementById("menu-button");
-const menu = document.getElementById("dropdown-menu");
-const menuItems = Array.from(document.querySelectorAll(".menu-item"));
-let currentIndex = -1;
-
-function openMenu() {
-  menu.style.display = "block";
-  menuButton.setAttribute("aria-expanded", "true");
-  if (menuItems.length > 0) {
-    currentIndex = 0;
-    menuItems[0].focus();
-  }
-}
-
-function closeMenu() {
-  menu.style.display = "none";
-  menuButton.setAttribute("aria-expanded", "false");
-  menuButton.focus();
-  currentIndex = -1;
-}
-
-function handleMenuKeydown(e) {
-  switch(e.key) {
-    case "ArrowDown":
-      e.preventDefault();
-      currentIndex = Math.min(currentIndex + 1, menuItems.length - 1);
-      menuItems[currentIndex].focus();
-      break;
-    case "ArrowUp":
-      e.preventDefault();
-      currentIndex = Math.max(currentIndex - 1, 0);
-      menuItems[currentIndex].focus();
-      break;
-    case "Escape":
-      e.preventDefault();
-      closeMenu();
-      break;
-    case "Tab":
-      closeMenu();
-      break;
-    case "Enter":
-    case " ":
-      e.preventDefault();
-      menuItems[currentIndex].click();
-      break;
-  }
-}
-
-menuButton.addEventListener("click", () => {
-  menu.style.display === "none" ? openMenu() : closeMenu();
-});
-
-menu.addEventListener("keydown", handleMenuKeydown);
-// Plus: cleanup, edge cases, focus trap, etc.`
-
-const ariaEaseCode = `// With aria-ease: 3 lines
-import * as Menu from "aria-ease/menu";
-
-const menu = Menu.makeMenuAccessible({
-  menuId: "dropdown-menu",
-  menuItemsClass: "menu-item",
-  triggerId: "menu-button"
-});
-
-// That's it! Keyboard nav, focus trap, 
-// ARIA updates, Submenu support, click outside close included.`
 
 // eslint-disable-next-line react/prop-types
 const Homepage = ({darkMode, setDarkMode}) => {
@@ -160,23 +67,23 @@ const Homepage = ({darkMode, setDarkMode}) => {
       />
 
       <main className="page-body-div overflow-y-auto pb-[100px]" id="main-content">
-        <section>
+        <section className="section-shell section-tone-a px-3">
           <Container fluid className="homepage-above-fold-div">
             <Row>
               <Col xs={12} sm={12} md={12} lg={8}>
-                <div className="hero-text-div">
-                  <h1 className="hero-heading">Accessibility infrastructure for your entire frontend lifecycle</h1>
-                  <p className="hero-paragraph mb-5 mt-8 text-[1.2rem] leading-[1.5rem]">Stop treating accessibility as an afterthought. Aria-Ease engineers accessibility integrity into every phase of frontend development — from reusable component utilities to CI/CD gatekeepers that block inaccessible code from production. Works with React, Vue, Svelte, or vanilla JavaScript.</p>
+                <div className="hero-text-div pb-[50px]">
+                  <h1 className="hero-heading">Accessibility infrastructure for your <span className="text-gradient">entire frontend lifecycle</span></h1>
+                  <p className="hero-paragraph mb-5 mt-4 text-[1.2rem] leading-[1.5rem]">Integrate accessibility integrity into every phase of your frontend development workflow — from reusable component utilities, to WAI-ARIA compliance check, to CI/CD pipelines that keeps inaccessible frontend from production. Works with React, Vue, Svelte, or vanilla JavaScript.</p>
                   <div className="flex items-center gap-4 flex-wrap">
-                    <Link onClick={() => {sessionStorage.setItem(`scroll-position-${page}`, window.scrollY)}} to='/docs' className="px-4 sm:px-8 h-12 flex items-center justify-center bg-blue-800 hover:bg-blue-900 shadow-xl rounded-lg text-white">Get Started</Link>
+                    <Link onClick={() => {sessionStorage.setItem(`scroll-position-${page}`, window.scrollY)}} to='/docs' className="px-4 sm:px-8 h-12 flex items-center justify-center button-gradient shadow-xl rounded-lg text-white">Get Started</Link>
                     <Link className="hero-explore px-4 sm:px-8 rounded-lg" onClick={() => {sessionStorage.setItem(`scroll-position-${page}`, window.scrollY)}} to='/examples/accordion'>
                       <div className="flex items-center gap-2 h-12 black-white-text">
-                        Explore Utilities <ArrowRight height={17}/>
+                        Explore Utilities <span className="material-symbols-outlined text-[17px] leading-none" aria-hidden="true">arrow_forward</span>
                       </div>
                     </Link>
                   </div>
                   {/* Stats badges */}
-                  <div className="flex items-center gap-4 mt-10 flex-wrap text-sm">
+                  {/* <div className="flex items-center gap-4 mt-10 flex-wrap text-sm">
                     <div className="flex items-center gap-2">
                       <Package size={16} className="text-blue-600" aria-hidden="true"/>
                       <span className={darkMode ? 'text-gray-300' : 'text-gray-700'}>1.4KB - 3.7KB per component</span>
@@ -189,17 +96,54 @@ const Homepage = ({darkMode, setDarkMode}) => {
                       <Code2 size={16} className="text-purple-600" aria-hidden="true"/>
                       <span className={darkMode ? 'text-gray-300' : 'text-gray-700'}>Framework Agnostic</span>
                     </div>
-                  </div>
+                  </div> */}
                 </div>
               </Col>
+              <div className="mx-auto flex w-full max-w-2xl justify-center mt-1">
+                    <div className={`w-full overflow-hidden rounded-xl hero-terminal-border shadow-2xl ${darkMode ? 'bg-gray-900/10' : 'bg-card'}`}>
+                      <div className={`flex items-center gap-2 hero-terminal-header px-4 py-3 ${darkMode ? 'bg-gray-800/20' : 'bg-gray-100'}`}>
+                        <div className="flex gap-1.5">
+                          <div className="size-2 rounded-full bg-red-500/60" />
+                          <div className="size-2 rounded-full bg-yellow-500/60" />
+                          <div className="size-2 rounded-full bg-green-500/60" />
+                        </div>
+                        <span className="ml-2 font-mono text-xs text-muted-foreground black-grey-text">npm run prepublish</span>
+                      </div>
+                      <div className="p-4 font-mono text-sm">
+                        <div className="space-y-1">
+                          <p className="text-muted-foreground black-grey-text">$ npx aria-ease audit && npx aria-ease test</p>  
+                          <p className="text-foreground">
+                            <span className="text-green-400">✓</span> <span className="black-grey-text">Running axe-core audit on 16 pages...</span>
+                          </p>
+                          <p className="text-foreground">
+                            <span className="text-green-400 ">✓</span> <span className="black-grey-text">Testing 142 components...</span>
+                          </p>
+                          <p className="text-foreground">
+                            <span className="text-green-400">✓</span> <span className="black-grey-text">Validating ARIA patterns...</span>
+                          </p>
+                          <p className="mt-2 text-foreground">
+                            <span className="text-green-400 font-medium">Passed:</span> <span className="black-grey-text">12 pages, 138 components</span>
+                          </p>
+                          <p className="text-foreground">
+                            <span className="text-yellow-400 font-medium">Warnings:</span> <span className="black-grey-text">4 pages, 4 components</span>
+                          </p>
+                          <p className="text-muted-foreground">
+                            <span className="text-red-400 font-medium">Critical:</span> <span className="black-grey-text">0 issues</span>
+                          </p>
+                          <p className="mt-2 text-muted-foreground black-grey-text">
+                            Completed in <span className="text-foreground">12.3s</span>
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
             </Row>
           </Container>
         </section>
 
-        <hr className={`${darkMode ? 'border-gray-100' : 'border-gray-900'}`}></hr>
 
         {/* Before/After Comparison Section */}
-        <section className="py-[80px] px-3">
+        {/* <section className="py-[80px] px-3">
           <Container fluid>
             <div className="text-center mb-12">
               <h2 className="black-white-text text-3xl font-bold mb-4">From 50 Lines to 3 Lines</h2>
@@ -238,82 +182,119 @@ const Homepage = ({darkMode, setDarkMode}) => {
               </Col>
             </Row>
           </Container>
-        </section>
+        </section> */}
 
-        {/* Why aria-ease Section */}
-        <section className="py-[80px] px-3">
-          <Container fluid>
-            <div className="text-center mb-12">
-              <h2 className="black-white-text text-3xl font-bold mb-4">Complete Accessibility Lifecycle</h2>
-              <p className="text-[1.2rem] leading-[1.5rem] black-grey-text max-w-3xl mx-auto">From design to deployment—Aria-Ease covers every phase of accessibility governance</p>
+        <hr className="landing-hr"></hr>
+
+        <section className="section-shell section-tone-b px-3">
+          <div className="mx-auto max-w-2xl text-center">
+            <p className="text-sm font-semibold uppercase tracking-wider black-grey-text">The Problem</p>
+            <h2 className="black-white-text text-3xl font-bold mb-4 mt-3 text-balance tracking-tight text-foreground sm:text-4xl">
+              Accessibility Testing is {" "}
+              <span className="broken-word">
+                <span className="sr-only">Broken</span>
+                <span aria-hidden="true" className="broken-char broken-char-1">B</span>
+                <span aria-hidden="true" className="broken-char broken-char-2">r</span>
+                <span aria-hidden="true" className="broken-char broken-char-3">o</span>
+                <span aria-hidden="true" className="broken-char broken-char-4">k</span>
+                <span aria-hidden="true" className="broken-char broken-char-5">e</span>
+                <span aria-hidden="true" className="broken-char broken-char-6">n</span>
+              </span>
+            </h2>
+            <p className="mt-4 text-pretty text-lg leading-relaxed text-muted-foreground black-grey-text">
+              For a lot of teams, accessibility checks happen too far into the frontend development lifecycle, often as manual QA. Critical issues are discovered late, causing costly rework, rushed fixes, missed deadline, or shipping inaccessible frontend to production.
+            </p>
+          </div>
+
+          <div className="mt-12">
+              <Container fluid>
+                <Row className="g-4">
+                  <Col md={6} lg={6}>
+                    <div className="p-4 rounded-lg tone-card tone-card-base h-full">
+                      <div className="flex items-center gap-2 mb-3">
+                        <div className="w-10 h-10 rounded-full bg-purple-100 dark:bg-purple-900/10 flex items-center justify-center">
+                          <span className="material-symbols-outlined text-2xl leading-none text-purple-600" aria-hidden="true">schedule</span>
+                        </div>
+                        <h3 className="font-bold black-white-text text-xl font-bold">Too Late in the Cycle</h3>
+                      </div>
+                      <p className="text-sm black-grey-text mb-2">Accessibility issues are often discovered during QA or right before launch, when fixes are slower, more expensive, and harder to prioritize.</p>
+                      
+                    </div>
+                  </Col>
+                  
+                  <Col md={6} lg={6}>
+                    <div className="p-4 rounded-lg tone-card tone-card-alt h-full">
+                      <div className="flex items-center gap-2 mb-3">
+                        <div className="w-10 h-10 rounded-full bg-blue-100 dark:bg-blue-900/10 flex items-center justify-center">
+                          <span className="material-symbols-outlined text-2xl leading-none text-blue-600" aria-hidden="true">warning</span>
+                        </div>
+                        <h3 className="font-bold black-white-text text-xl font-bold">Manual & Inconsistent</h3>
+                      </div>
+                      <p className="text-sm black-grey-text mb-2">Teams rely on ad hoc checklists and scattered reviews, which means accessibility coverage varies from component to component and sprint to sprint.</p>
+                      
+                    </div>
+                  </Col>
+                  
+                  <Col md={6} lg={6}>
+                    <div className="p-4 rounded-lg tone-card tone-card-alt h-full">
+                      <div className="flex items-center gap-2 mb-3">
+                        <div className="w-10 h-10 rounded-full bg-orange-100 dark:bg-orange-900/10 flex items-center justify-center">
+                          <span className="material-symbols-outlined text-2xl leading-none text-orange-600" aria-hidden="true">groups</span>
+                        </div>
+                        <h3 className="font-bold black-white-text text-xl font-bold">Knowledge Silos</h3>
+                      </div>
+                      <p className="text-sm black-grey-text mb-2">Critical accessibility knowledge often lives with a few specialists, making it hard for the whole team to build and review accessible UI with confidence.</p>
+                      
+                    </div>
+                  </Col>
+                  
+                  <Col md={6} lg={6}>
+                    <div className="p-4 rounded-lg tone-card tone-card-base h-full">
+                      <div className="flex items-center gap-2 mb-3">
+                        <div className="w-10 h-10 rounded-full bg-green-100 dark:bg-green-900/10 flex items-center justify-center">
+                          <span className="material-symbols-outlined text-2xl leading-none text-green-600" aria-hidden="true">autorenew</span>
+                        </div>
+                        <h3 className="font-bold black-white-text text-xl font-bold">Regression Prone</h3>
+                      </div>
+                      <p className="text-sm black-grey-text mb-2">Even after fixes ship, accessibility can quietly break again as components evolve and new features land without reliable guardrails.</p>
+                      
+                    </div>
+                  </Col>
+                </Row>
+              </Container>
             </div>
-            <Row className="g-4">
-              <Col lg={4} md={6}>
-                <div className={`p-6 h-full rounded-xl border-2 ${darkMode ? 'bg-gray-900 border-gray-800' : 'bg-white border-gray-200'} shadow-lg`}>
-                  <h3 className="text-xl font-bold mb-4 text-red-600">❌ Fragmented Approach</h3>
-                  <ul className="space-y-2 black-grey-text">
-                    <li>• Manual ARIA implementation</li>
-                    <li>• Separate testing tools</li>
-                    <li>• Post-launch audits only</li>
-                    <li>• No behavior validation</li>
-                    <li>• Testing disconnected from CI/CD</li>
-                    <li>• Accessibility as an afterthought</li>
-                  </ul>
-                </div>
-              </Col>
-              <Col lg={4} md={6}>
-                <div className={`p-6 h-full rounded-xl border-2 ${darkMode ? 'bg-gray-900 border-gray-800' : 'bg-white border-gray-200'} shadow-lg`}>
-                  <h3 className="text-xl font-bold mb-4 text-orange-600">⚠️ Component Libraries Only</h3>
-                  <ul className="space-y-2 black-grey-text">
-                    <li>• Pre-built components only</li>
-                    <li>• No testing infrastructure</li>
-                    <li>• No audit capabilities</li>
-                    <li>• Limited to their patterns</li>
-                    <li>• Can&apos;t verify custom components</li>
-                    <li>• No CI/CD integration</li>
-                  </ul>
-                </div>
-              </Col>
-              <Col lg={4} md={12}>
-                <div className={`p-6 h-full rounded-xl border-2 border-green-500 ${darkMode ? 'bg-green-900/20' : 'bg-green-50'} shadow-xl`}>
-                  <h3 className="text-xl font-bold mb-4 text-green-600">✅ Aria-Ease Platform</h3>
-                  <ul className="space-y-2 black-grey-text">
-                    <li>• 🎨 Design: Component utilities (1.4-3.7KB)</li>
-                    <li>• 🧪 Test: Contract testing for behavior</li>
-                    <li>• 🔍 Audit: Runtime page scanning</li>
-                    <li>• ✓ Verify: WCAG compliance validation</li>
-                    <li>• 🚀 Integrate: CI/CD pipeline ready</li>
-                    <li>• 📊 Govern: End-to-end lifecycle coverage</li>
-                  </ul>
-                </div>
-              </Col>
-            </Row>
+
+            <Container fluid className="mt-[70px]">
+            <div className="text-center mb-12">
+              <p className="text-sm font-semibold uppercase tracking-wider black-grey-text">The Solution</p>
+              <h2 className="black-white-text text-3xl font-bold mb-4 mt-3 text-balance tracking-tight text-foreground sm:text-4xl">The Aria-Ease Accessibility Lifecycle</h2>
+              <p className="text-[1.2rem] leading-[1.5rem] black-grey-text max-w-3xl mx-auto">From design to deployment—Aria-Ease covers every phase of frontend lifecycle. That means quick feedback during development, minimal runtime impact, and fewer late-release accessibility surprises.</p>
+            </div>
             
             {/* Accessibility Lifecycle Phases */}
             <div className="mt-12">
               <div>
-                <h3 className="text-2xl font-bold mb-6 black-white-text text-center">The Aria-Ease Accessibility Lifecycle</h3>
                 <Row className="g-4">
                   <Col md={6} lg={4}>
-                    <div className={`p-4 rounded-lg ${darkMode ? 'bg-gray-900' : 'bg-white'} h-full`}>
+                    <div className="p-4 rounded-lg tone-card tone-card-base h-full">
                       <div className="flex items-center gap-2 mb-3">
-                        <div className="w-8 h-8 rounded-full bg-purple-100 dark:bg-purple-900/30 flex items-center justify-center">
-                          <Code2 className="text-purple-600" size={18} />
+                        <div className="w-10 h-10 rounded-full bg-purple-100 dark:bg-purple-900/10 flex items-center justify-center">
+                          <span className="material-symbols-outlined text-2xl leading-none text-purple-600" aria-hidden="true">code</span>
                         </div>
-                        <h4 className="font-bold black-white-text">Design & Build</h4>
+                        <h3 className="font-bold black-white-text text-xl font-bold">Design & Build</h3>
                       </div>
-                      <p className="text-sm black-grey-text mb-2">Component utilities with automatic ARIA management</p>
+                      <p className="text-sm black-grey-text mb-2">Lightweight component utilities with automatic ARIA management</p>
                       <code className="text-xs text-purple-600 dark:text-purple-400">makeMenuAccessible(), makeTabsAccessible()</code>
                     </div>
                   </Col>
                   
                   <Col md={6} lg={4}>
-                    <div className={`p-4 rounded-lg ${darkMode ? 'bg-gray-900' : 'bg-white'} h-full`}>
+                    <div className="p-4 rounded-lg tone-card tone-card-alt h-full">
                       <div className="flex items-center gap-2 mb-3">
-                        <div className="w-8 h-8 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center">
-                          <ShieldCheck className="text-blue-600" size={18} />
+                        <div className="w-10 h-10 rounded-full bg-blue-100 dark:bg-blue-900/10 flex items-center justify-center">
+                          <span className="material-symbols-outlined text-2xl leading-none text-blue-600" aria-hidden="true">verified_user</span>
                         </div>
-                        <h4 className="font-bold black-white-text">Test & Verify</h4>
+                        <h3 className="font-bold black-white-text text-xl font-bold">Test & Verify</h3>
                       </div>
                       <p className="text-sm black-grey-text mb-2">Contract testing validates keyboard interaction & ARIA patterns</p>
                       <code className="text-xs text-blue-600 dark:text-blue-400">npx aria-ease test</code>
@@ -321,12 +302,12 @@ const Homepage = ({darkMode, setDarkMode}) => {
                   </Col>
                   
                   <Col md={6} lg={4}>
-                    <div className={`p-4 rounded-lg ${darkMode ? 'bg-gray-900' : 'bg-white'} h-full`}>
+                    <div className="p-4 rounded-lg tone-card tone-card-base h-full">
                       <div className="flex items-center gap-2 mb-3">
-                        <div className="w-8 h-8 rounded-full bg-orange-100 dark:bg-orange-900/30 flex items-center justify-center">
-                          <FileCheck2 className="text-orange-600" size={18} />
+                        <div className="w-10 h-10 rounded-full bg-orange-100 dark:bg-orange-900/10 flex items-center justify-center">
+                          <span className="material-symbols-outlined text-2xl leading-none text-orange-600" aria-hidden="true">fact_check</span>
                         </div>
-                        <h4 className="font-bold black-white-text">Audit</h4>
+                        <h3 className="font-bold black-white-text text-xl font-bold">Audit</h3>
                       </div>
                       <p className="text-sm black-grey-text mb-2">Runtime page scanning with axe-core for WCAG violations</p>
                       <code className="text-xs text-orange-600 dark:text-orange-400">npx aria-ease audit</code>
@@ -334,12 +315,12 @@ const Homepage = ({darkMode, setDarkMode}) => {
                   </Col>
                   
                   <Col md={6} lg={4}>
-                    <div className={`p-4 rounded-lg ${darkMode ? 'bg-gray-900' : 'bg-white'} h-full`}>
+                    <div className="p-4 rounded-lg tone-card tone-card-alt h-full">
                       <div className="flex items-center gap-2 mb-3">
-                        <div className="w-8 h-8 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center">
-                          <CheckCircle2 className="text-green-600" size={18} />
+                        <div className="w-10 h-10 rounded-full bg-green-100 dark:bg-green-900/10 flex items-center justify-center">
+                          <span className="material-symbols-outlined text-2xl leading-none text-green-600" aria-hidden="true">check_circle</span>
                         </div>
-                        <h4 className="font-bold black-white-text">Validate</h4>
+                        <h3 className="font-bold black-white-text text-xl font-bold">Validate</h3>
                       </div>
                       <p className="text-sm black-grey-text mb-2">Multi-format reports (JSON, CSV, HTML) for compliance tracking</p>
                       <code className="text-xs text-green-600 dark:text-green-400">audit-report.html</code>
@@ -347,25 +328,25 @@ const Homepage = ({darkMode, setDarkMode}) => {
                   </Col>
                   
                   <Col md={6} lg={4}>
-                    <div className={`p-4 rounded-lg ${darkMode ? 'bg-gray-900' : 'bg-white'} h-full`}>
+                    <div className="p-4 rounded-lg tone-card tone-card-base h-full">
                       <div className="flex items-center gap-2 mb-3">
-                        <div className="w-8 h-8 rounded-full bg-cyan-100 dark:bg-cyan-900/30 flex items-center justify-center">
-                          <Terminal className="text-cyan-600" size={18} />
+                        <div className="w-10 h-10 rounded-full bg-cyan-100 dark:bg-cyan-900/10 flex items-center justify-center">
+                          <span className="material-symbols-outlined text-2xl leading-none text-cyan-600" aria-hidden="true">terminal</span>
                         </div>
-                        <h4 className="font-bold black-white-text">Integrate CI/CD</h4>
+                        <h3 className="font-bold black-white-text text-xl font-bold">Integrate CI/CD</h3>
                       </div>
-                      <p className="text-sm black-grey-text mb-2">Automated testing in your deployment pipeline</p>
+                      <p className="text-sm black-grey-text mb-2">Automated testing in your deployment pipeline. Block broken releases</p>
                       <code className="text-xs text-cyan-600 dark:text-cyan-400">GitHub Actions, Jenkins, etc.</code>
                     </div>
                   </Col>
                   
                   <Col md={6} lg={4}>
-                    <div className={`p-4 rounded-lg ${darkMode ? 'bg-gray-900' : 'bg-white'} h-full`}>
+                    <div className="p-4 rounded-lg tone-card tone-card-alt h-full">
                       <div className="flex items-center gap-2 mb-3">
-                        <div className="w-8 h-8 rounded-full bg-pink-100 dark:bg-pink-900/30 flex items-center justify-center">
-                          <Boxes className="text-pink-600" size={18} />
+                        <div className="w-10 h-10 rounded-full bg-pink-100 dark:bg-pink-900/10 flex items-center justify-center">
+                          <span className="material-symbols-outlined text-2xl leading-none text-pink-600" aria-hidden="true">deployed_code</span>
                         </div>
-                        <h4 className="font-bold black-white-text">Maintain & Govern</h4>
+                        <h3 className="font-bold black-white-text text-xl font-bold">Maintain & Govern</h3>
                       </div>
                       <p className="text-sm black-grey-text mb-2">Continuous monitoring and enforcement across your codebase</p>
                       <code className="text-xs text-pink-600 dark:text-pink-400">Ongoing compliance</code>
@@ -377,14 +358,86 @@ const Homepage = ({darkMode, setDarkMode}) => {
           </Container>
         </section>
 
-        <hr className={`${darkMode ? 'border-gray-100' : 'border-gray-300'}`}></hr>
+        <hr className="landing-hr"></hr>
+
+<section className="section-shell section-tone-c px-3">
+<div className="max-w-7xl mx-auto px-3 sm:px-6">
+<div className="mb-16">
+<span className="black-grey-text font-label text-sm font-bold tracking-widest uppercase mb-4 block">Infrastructure Layers</span>
+<h2 className="text-4xl font-bold tracking-tight black-white-text">Purpose-built for speed.</h2>
+</div>
+<div className="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-4 gap-6">
+
+<div className="md:col-span-4 lg:col-span-3 p-8 rounded-2xl relative overflow-hidden group transition-all tone-card tone-card-emphasis">
+<div className="mb-6 w-10 h-10 rounded-full bg-purple-100 dark:bg-purple-900/10 flex items-center justify-center">
+  <span className="material-symbols-outlined text-2xl text-purple-600">dynamic_form</span>
+</div>
+<div className="relative z-10">
+<h3 className="text-2xl font-bold mb-4 black-white-text">Component Utilities</h3>
+<p className="mb-6 black-grey-text">High-performance component utilities for managing WAI-ARIA states, roles, properties, and keyboard interactions.</p>
+<div className="flex gap-4">
+<div className="text-center p-3 rounded">
+<p className="text-xl font-bold black-white-text">1.4KB - 3.7KB</p>
+<p className="text-[10px] uppercase black-grey-text">Per Utility</p>
+</div>
+<div className="text-center p-3 rounded">
+<p className="text-xl font-bold black-white-text">100%</p>
+<p className="text-[10px] uppercase black-grey-text">Type Safe</p>
+</div>
+</div>
+</div>
+<div className="absolute -right-4 -bottom-4 opacity-10 group-hover:opacity-20 transition-opacity">
+<span className="material-symbols-outlined text-[160px] widgets text-black dark:text-white">widgets</span>
+</div>
+</div>
+
+<div className="md:col-span-2 lg:col-span-1 p-8 rounded-2xl group transition-colors tone-card tone-card-base">
+<div className="mb-6 w-10 h-10 rounded-full bg-blue-100 dark:bg-blue-900/10 flex items-center justify-center">
+<span className="material-symbols-outlined text-2xl text-blue-600">terminal</span>
+</div>
+
+<h3 className="text-xl font-bold mb-3 black-white-text">Audit CLI</h3>
+<p className="text-sm black-grey-text">Fast, static audits for web pages. Integrate directly into your local development server for instant feedback.</p>
+<p className="text-xs mt-3 black-grey-text">CI/CD: Run audits on pull requests and fail builds on violations.</p>
+</div>
+
+<div className="md:col-span-2 lg:col-span-1 p-8 rounded-2xl group transition-colors tone-card tone-card-base">
+<div className="mb-6 w-10 h-10 rounded-full bg-purple-100 dark:bg-purple-900/10 flex items-center justify-center">
+  <span className="material-symbols-outlined text-2xl text-purple-600">handshake</span>
+</div>
+
+<h3 className="text-xl font-bold mb-3 black-white-text">Contract Testing</h3>
+<p className="text-sm black-grey-text">Verify agreements between components and WAI-ARIA specs.</p>
+<p className="text-xs mt-3 black-grey-text">CI/CD: Enforce ARIA contracts in pipelines to prevent accessibility regressions.</p>
+</div>
+
+  <div className="md:col-span-4 lg:col-span-3 p-8 rounded-2xl flex flex-col md:flex-row gap-8 items-center tone-card tone-card-alt">
+    <div className="flex-1">
+    <h3 className="text-2xl font-bold mb-2 black-white-text">Built for Performance</h3>
+    <p className="black-grey-text">Aria-Ease ensures performance by separating concerns: lightweight component utilities, CLI audits for static scans, contract tests for repeatable verification, and CI/CD enforcement for early failure.</p>
+    </div>
+    <div className="flex gap-8">
+    <div className="text-right">
+    <p className="text-4xl font-bold black-white-text">~2s</p>
+    <p className="text-sm black-grey-text">Avg. Audit Speed</p>
+    </div>
+    <div className="text-right">
+    <p className="text-4xl font-bold black-white-text">0</p>
+    <p className="text-sm black-grey-text">Rerender Penalty</p>
+    </div>
+    </div>
+  </div>
+  </div>
+</div>
+</section>
+
 
         {/* Quick Wins Section */}
-        <section className="py-[80px] px-3">
+        {/* <section className="section-shell px-3">
           <Container fluid>
             <div className="text-center mb-12">
               <div className={`inline-flex items-center gap-2 ${darkMode ? 'bg-purple-900/30' : 'bg-purple-100'} px-4 py-2 rounded-full mb-4`}>
-                <Zap size={20} className="text-purple-600" aria-hidden="true"/>
+                <span className="material-symbols-outlined text-[20px] leading-none text-purple-600" aria-hidden="true">bolt</span>
                 <span className={`${darkMode ? 'text-purple-100' : 'text-purple-600'} font-semibold`}>Quick Start</span>
               </div>
               <h2 className="black-white-text text-3xl font-bold mb-4">Get Results in 5 Minutes</h2>
@@ -434,10 +487,10 @@ const menu = Menu.makeMenuAccessible({
               </Col>
             </Row>
           </Container>
-        </section>
+        </section> */}
 
         {/* Developer Experience Section */}
-        <section className="py-[80px] px-3">
+        {/* <section className="py-[80px] px-3">
           <Container fluid>
             <div className="text-center mb-12">
               <h2 className="black-white-text text-3xl font-bold mb-4 b">Built for Developers</h2>
@@ -502,11 +555,11 @@ const Menu = require("aria-ease/menu");   // CommonJS
 </script>`}/>
             </div>
           </Container>
-        </section>
+        </section> */}
 
-        <hr className={`${darkMode ? 'border-gray-100' : 'border-gray-300'}`}></hr>
+       {/*  <hr className="landing-hr"></hr> */}
 
-        <section className="pt-[50px]">
+        {/* <section className="pt-[50px]">
           <Container fluid className="below-the-fold-container mb-[50px]">
             <Row>
               <Col lg={6} md={6} sm={12} xs={12}>
@@ -517,7 +570,7 @@ const Menu = require("aria-ease/menu");   // CommonJS
                       <Terminal className={`${darkMode ? 'text-gray-400' : 'text-gray-800'} h-6 w-6 mt-1`} aria-hidden="true"/>
                       <div>
                         <h3 className="font-semibold mb-2">Seamless Integration</h3>
-                        <p className={`${darkMode ? 'text-gray-400' : 'text-gray-800'}`}>Integrate accessibility into components with ease with simple function calls</p>
+                        <p className={`${darkMode ? 'text-gray-400' : 'text-gray-800'}`}>Integrate accessibility into components with DX friendly public APIs</p>
                     </div>
                     </div>
                     <div className="flex items-start gap-4">
@@ -558,37 +611,37 @@ const Menu = require("aria-ease/menu");   // CommonJS
               </Col>
             </Row>
           </Container>
-        </section>
+        </section> */}
 
-        <section className="px-7 pt-[100px] pb-[100px] audit-section mt-[100px] flex gap-5 flex-wrap justify-center">
+        <section className="px-3 section-shell section-tone-b audit-section flex gap-5 flex-wrap justify-center">
           <div className="flex flex-col gap-3 justify-center items-center">
             <div className="flex items-center gap-2 audit-graphic rounded-sm bg-[#cbd4dd] px-3 py-2 border ml-20">
-              <div className="bg-green-300 rounded-full p-2">
-                  <FileCheck2/>
+              <div className="bg-green-100 dark:bg-green-900/10 w-10 h-10 rounded-full flex items-center justify-center">
+                  <span className="material-symbols-outlined text-2xl leading-none text-green-600" aria-hidden="true">fact_check</span>
               </div>
               <span className="text-md font-[200]">Pages Audited</span>
               <span className="text-2xl font-bold">10</span>
             </div>
 
             <div className="flex items-center gap-2 audit-graphic rounded-sm bg-[#cbd4dd] px-3 py-2 border">
-              <div className="bg-orange-300 rounded-full p-2">
-                <FileWarning/>
+              <div className="bg-orange-100 dark:bg-orange-900/10 w-10 h-10 rounded-full flex items-center justify-center">
+                <span className="material-symbols-outlined text-2xl leading-none text-orange-600" aria-hidden="true">warning</span>
               </div>
               <span className="text-md font-[200]">Total violations</span>
               <span className="text-2xl font-bold">48</span>
             </div>
 
             <div className="flex items-center gap-2 audit-graphic rounded-sm bg-[#cbd4dd] px-3 py-2 border ml-20">
-              <div className="bg-red-300 rounded-full p-2">
-                <FileWarning/>
+              <div className="bg-pink-100 dark:bg-pink-900/10 w-10 h-10 rounded-full flex items-center justify-center">
+                <span className="material-symbols-outlined text-2xl leading-none text-pink-600" aria-hidden="true">error</span>
               </div>
               <span className="text-md font-[200]">Critical violations</span>
               <span className="text-2xl font-bold">18</span>
             </div>
           </div>
           <div className="flex flex-col items-start justify-center gap-3 max-w-full">
-            <h2 className="black-white-text text-3xl font-bold">Audit Your Web Pages. <span className="text-blue-500">Get instant accessibility insights</span></h2>
-            <p className="audit-section-paragraph max-w-[700px] text-[1.2rem] leading-[1.5rem] mb-4">Do you wonder what accessibility issues might be lurking on your web pages? Scan your web pages using the runtime audit CLI. You&#39;ll get multi-format audit reports of accessibility violations.</p>
+            <h2 className="black-white-text text-3xl font-bold">Audit Your Web Pages. <span className="text-gradient">Get instant accessibility insights</span></h2>
+            <p className="audit-section-paragraph max-w-[700px] text-[1.2rem] leading-[1.5rem] mb-4">Do you wonder what static accessibility issues might be lurking on your web pages? Scan your web pages using the axe-core powered audit CLI. Integrate into CI/CD pipeline for gated release.</p>
             <div className="overflow-x-auto w-full">
               <CodeBlockDemo code={`npx aria-ease audit --url https://yoursite.com
 
@@ -597,35 +650,34 @@ npx aria-ease audit  # Uses ariaease.config.js`}/>
             </div>
                   <div className="mt-4 space-y-3">
                     <div className="flex items-start gap-3">
-                      <FileCheck2 className="text-green-600 mt-1" size={20} aria-hidden="true"/>
+                      <span className="material-symbols-outlined text-[20px] leading-none text-green-600 mt-1" aria-hidden="true">fact_check</span>
                       <div>
                         <p className="font-semibold black-white-text">Multi-format reports</p>
                         <p className="text-sm black-grey-text">JSON, CSV, and interactive HTML</p>
                       </div>
                     </div>
                     <div className="flex items-start gap-3">
-                      <ShieldCheck className="text-blue-600 mt-1" size={20} aria-hidden="true"/>
+                      <span className="material-symbols-outlined text-[20px] leading-none text-blue-600 mt-1" aria-hidden="true">verified_user</span>
                       <div>
                         <p className="font-semibold black-white-text">Powered by axe-core</p>
                         <p className="text-sm black-grey-text">Industry-standard accessibility testing</p>
                       </div>
                     </div>
                     <div className="flex items-start gap-3">
-                      <Zap className="text-purple-600 mt-1" size={20} aria-hidden="true"/>
+                      <span className="material-symbols-outlined text-[20px] leading-none text-purple-600 mt-1" aria-hidden="true">bolt</span>
                       <div>
                         <p className="font-semibold black-white-text">CI/CD ready</p>
                         <p className="text-sm black-grey-text">Integrate into your deployment pipeline</p>
                       </div>
                     </div>
                   </div>
-            <Link onClick={() => {sessionStorage.setItem(`scroll-position-${page}`, window.scrollY)}} to='/audit' className="px-4 sm:px-8 h-12 flex items-center justify-center bg-blue-800 hover:bg-blue-900 shadow-xl rounded-lg text-white">Audit Your Webpage</Link>
+            <Link onClick={() => {sessionStorage.setItem(`scroll-position-${page}`, window.scrollY)}} to='/audit' className="px-4 sm:px-8 h-12 flex items-center justify-center button-gradient shadow-xl rounded-lg text-white">Audit Your Webpage</Link>
           </div>
         </section>
 
-        <hr className={`${darkMode ? 'border-gray-100' : 'border-gray-300'}`}></hr>
 
         {/* Migration/Adoption Section */}
-        <section className="py-[80px] px-3">
+        {/* <section className="section-shell px-3">
           <Container fluid>
             <div className="text-center mb-12">
               <h2 className="text-3xl font-bold mb-4 black-white-text">Already Have Existing Code?</h2>
@@ -703,12 +755,11 @@ useEffect(() => {
               </Col>
             </Row>
           </Container>
-        </section>
+        </section> */}
 
-        <hr className={`${darkMode ? 'border-gray-100' : 'border-gray-300'}`}></hr>
 
         {/* Services CTA Section */}
-        <section className="home-services-cta py-24 px-3">
+        {/* <section className="home-services-cta section-shell px-3">
           <Container>
             <Row className="align-items-center">
               <Col lg={6} className="mb-4 mb-lg-0">
@@ -719,15 +770,15 @@ useEffect(() => {
                 </p>
                 <ul className="services-features-list mb-4">
                   <li className="flex items-start gap-3 mb-2">
-                    <CheckCircle2 size={20} className="text-blue-500 mt-1 flex-shrink-0" />
+                    <span className="material-symbols-outlined text-[15px] leading-none text-blue-500 mt-1 flex-shrink-0" aria-hidden="true">check_circle</span>
                     <span className="black-grey-text">Comprehensive WCAG 2.1/2.2 compliance audits</span>
                   </li>
                   <li className="flex items-start gap-3 mb-2">
-                    <CheckCircle2 size={20} className="text-blue-500 mt-1 flex-shrink-0" />
+                    <span className="material-symbols-outlined text-[15px] leading-none text-blue-500 mt-1 flex-shrink-0" aria-hidden="true">check_circle</span>
                     <span className="black-grey-text">Expert code remediation and fixes</span>
                   </li>
                   <li className="flex items-start gap-3 mb-2">
-                    <CheckCircle2 size={20} className="text-blue-500 mt-1 flex-shrink-0" />
+                    <span className="material-symbols-outlined text-[15px] leading-none text-blue-500 mt-1 flex-shrink-0" aria-hidden="true">check_circle</span>
                     <span className="black-grey-text">Developer training and workshops</span>
                   </li>
                 </ul>
@@ -738,14 +789,12 @@ useEffect(() => {
                   to='/services' 
                   className="inline-flex items-center gap-2 px-8 h-14 bg-blue-800 hover:bg-blue-900 shadow-xl rounded-lg text-white text-lg font-semibold transition-all hover:-translate-y-1"
                 >
-                  View Services <ArrowRight size={20} />
+                  View Services <span className="material-symbols-outlined text-[20px] leading-none" aria-hidden="true">arrow_forward</span>
                 </Link>
               </Col>
             </Row>
           </Container>
-        </section>
-
-        <hr className={`${darkMode ? 'border-gray-100' : 'border-gray-300'}`}></hr>
+        </section> */}
 
         <Footer page={page} darkMode={darkMode}/>
       </main>

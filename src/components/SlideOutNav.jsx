@@ -56,8 +56,9 @@ const SlideOutNav = ({page, showDropdownPage}) => {
                 <div className='slide-nav-links-section'>
                   <p>Resources</p>
                   <div className="slide-out-nav-div">
-                    <Link onClick={() => {sessionStorage.setItem(`scroll-position-${page}`, window.scrollY)}} to="/blog/main" className={`side-nav-link ${(page === 'blog-single' || page === 'blog-main') ? 'active-nav-link' : ''}`} aria-label='Navigate to blog articles page'>Blog</Link>
-                    <Link onClick={() => {sessionStorage.setItem(`scroll-position-${page}`, window.scrollY)}} to="/services" className={`side-nav-link mt-3 ${(page === 'services') ? 'active-nav-link' : ''}`} aria-label='Navigate to professional services page'>Services</Link>
+                    {/* <Link onClick={() => {sessionStorage.setItem(`scroll-position-${page}`, window.scrollY)}} to="/blog/main" className={`side-nav-link ${(page === 'blog-single' || page === 'blog-main') ? 'active-nav-link' : ''}`} aria-label='Navigate to blog articles page'>Blog</Link> */}
+                    {/* <Link onClick={() => {sessionStorage.setItem(`scroll-position-${page}`, window.scrollY)}} to="/services" className={`side-nav-link mt-3 ${(page === 'services') ? 'active-nav-link' : ''}`} aria-label='Navigate to professional services page'>Services</Link> */}
+                    <Link onClick={() => { sessionStorage.setItem(`scroll-position-${page}`, window.scrollY) }} to='https://www.w3.org/WAI/ARIA/apg/patterns/' target='_blank' rel='noopener noreferrer' className="side-nav-link" aria-label='Navigate to WAI-ARIA APG website'>WAI-ARIA APG</Link>
                   </div>
                   
                 </div>
