@@ -570,22 +570,22 @@ const Examples = ({darkMode, setDarkMode}) => {
                     <div className={`p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow ${darkMode ? 'bg-gray-900' : 'bg-gray-200'}`}>
                       <h3 className={`font-semibold mb-2 ${darkMode ? 'text-gray-100' : 'text-gray-900'}`}>🎨 Design Systems</h3>
                       <p className={`text-sm mb-3 ${darkMode ? 'text-gray-300' : 'text-gray-700'}`}>Build accessible component libraries</p>
-                      <a href="/examples/accordion" className={`underline block-interactive ${darkMode ? 'text-blue-400 hover:text-blue-300' : 'text-blue-600 hover:text-blue-700'}`}>View Accordion →</a>
+                      <a href="/utilities/accordion" className={`underline block-interactive ${darkMode ? 'text-blue-400 hover:text-blue-300' : 'text-blue-600 hover:text-blue-700'}`}>View Accordion →</a>
                     </div>
                     <div className={`p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow ${darkMode ? 'bg-gray-900' : 'bg-gray-200'}`}>
                       <h3 className={`font-semibold mb-2 ${darkMode ? 'text-gray-100' : 'text-gray-900'}`}>📝 Form Controls</h3>
                       <p className={`text-sm mb-3 ${darkMode ? 'text-gray-300' : 'text-gray-700'}`}>Accessible checkboxes and radios</p>
-                      <a href="/examples/checkbox" className={`underline block-interactive ${darkMode ? 'text-blue-400 hover:text-blue-300' : 'text-blue-600 hover:text-blue-700'}`}>View Checkbox →</a>
+                      <a href="/utilities/checkbox" className={`underline block-interactive ${darkMode ? 'text-blue-400 hover:text-blue-300' : 'text-blue-600 hover:text-blue-700'}`}>View Checkbox →</a>
                     </div>
                     <div className={`p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow ${darkMode ? 'bg-gray-900' : 'bg-gray-200'}`}>
                       <h3 className={`font-semibold mb-2 ${darkMode ? 'text-gray-100' : 'text-gray-900'}`}>🎯 Focus Management</h3>
                       <p className={`text-sm mb-3 ${darkMode ? 'text-gray-300' : 'text-gray-700'}`}>Control keyboard interaction</p>
-                      <a href="/examples/block" className={`underline block-interactive ${darkMode ? 'text-blue-400 hover:text-blue-300' : 'text-blue-600 hover:text-blue-700'}`}>View Block →</a>
+                      <a href="/utilities/block" className={`underline block-interactive ${darkMode ? 'text-blue-400 hover:text-blue-300' : 'text-blue-600 hover:text-blue-700'}`}>View Block →</a>
                     </div>
                     <div className={`p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow ${darkMode ? 'bg-gray-900' : 'bg-gray-200'}`}>
                       <h3 className={`font-semibold mb-2 ${darkMode ? 'text-gray-100' : 'text-gray-900'}`}>🔘 Toggle Switches</h3>
                       <p className={`text-sm mb-3 ${darkMode ? 'text-gray-300' : 'text-gray-700'}`}>Accessible on/off controls</p>
-                      <a href="/examples/toggle-button" className={`underline block-interactive ${darkMode ? 'text-blue-400 hover:text-blue-300' : 'text-blue-600 hover:text-blue-700'}`}>View Toggle →</a>
+                      <a href="/utilities/toggle-button" className={`underline block-interactive ${darkMode ? 'text-blue-400 hover:text-blue-300' : 'text-blue-600 hover:text-blue-700'}`}>View Toggle →</a>
                     </div>
                   </div>
                 </section>
@@ -598,7 +598,7 @@ const Examples = ({darkMode, setDarkMode}) => {
                       <span className='text-link-contrast text-md'>Migration Guide</span>
                     </div>
                   </a>
-                  <a href='/examples/accordion' className='block-interactive next-link rounded-lg md:min-w-80 md:max-w-md w-full md:w-auto flex gap-6 items-center px-4 py-6 md:px-5'>
+                  <a href='/utilities/accordion' className='block-interactive next-link rounded-lg md:min-w-80 md:max-w-md w-full md:w-auto flex gap-6 items-center px-4 py-6 md:px-5'>
                     <div className='flex flex-col w-full items-end'>
                       <span className='text-sm black-white-text'>Next</span>
                       <span className='text-link-contrast text-md'>Accordion</span>

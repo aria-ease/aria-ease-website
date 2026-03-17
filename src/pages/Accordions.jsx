@@ -145,7 +145,7 @@ const Accordions = ({darkMode, setDarkMode}) => {
               <Col xs={12} sm={12} md={12} lg={9} className='px-0'>
                 <div className='side-body-div'>
                   <h1 className='component-example-heading'>Accordion</h1>
-                  <p className='mt-2'>A vertically stacked component that expands and collapses to reveal and hide section(s) of content respectively. It is used to organize content sections that expand/collapse. Typically used for FAQs, multi-step forms e.t.c. The difference between this and a menu is that a menu has a dropdown or options list of actionable interactive items, with the first item being focused when the menu is opened. <Link className='underline block-interactive' to='/examples/menu'>Learn about menu component here.</Link></p>
+                  <p className='mt-2'>A vertically stacked component that expands and collapses to reveal and hide section(s) of content respectively. It is used to organize content sections that expand/collapse. Typically used for FAQs, multi-step forms e.t.c. The difference between this and a menu is that a menu has a dropdown or options list of actionable interactive items, with the first item being focused when the menu is opened. <Link className='underline block-interactive' to='/utilities/menu'>Learn about menu component here.</Link></p>
 
                   <section className={`mt-6 p-4 rounded-lg border-l-4 border-blue-500 ${darkMode ? 'bg-blue-900/20' : 'bg-blue-50'}`}>
                     <h2 className={`font-semibold ${darkMode ? 'text-blue-100' : 'text-blue-900'}`}>Bundle Size</h2>
@@ -287,7 +287,7 @@ const Accordions = ({darkMode, setDarkMode}) => {
                         <span className='next-link-text text-md'>Examples</span>
                       </div>
                     </a>
-                    <a href='/examples/block' className='block-interactive next-link rounded-lg md:min-w-80 md:max-w-md w-full md:w-auto flex gap-6 items-center px-4 py-6 md:px-5'>
+                    <a href='/utilities/block' className='block-interactive next-link rounded-lg md:min-w-80 md:max-w-md w-full md:w-auto flex gap-6 items-center px-4 py-6 md:px-5'>
                       <div className='flex flex-col w-full items-end gap-2'>
                         <span className='text-sm black-white-text'>Next</span>
                         <span className='next-link-text text-md'>Block</span>

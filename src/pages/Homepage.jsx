@@ -10,7 +10,40 @@ import ScrollTracker from '../components/ScrollTracker';
 import CodeBlockDemo from '../components/CodeBlock';
 import { Helmet } from 'react-helmet-async';
 
-
+const jsoncontract = `
+ “meta”: {
+   “id”: “aria-ease.combobox”,
+   “version”: “1.0.0”,
+   “source”: {
+     “apg”: “https://www.w3.org/WAI/ARIA/apg/patterns/combobox/"
+   }
+ },
+ “selectors”: {
+   “input”: “[role=combobox]”,
+   “listbox”: “[role=listbox]”,
+   “options”: “[role=option]”
+ },
+ “dynamic”: [
+   {
+     “description”: “Down Arrow on closed combobox opens listbox and updates ARIA expanded”,
+     “action”: [
+       { “type”: “keypress”, “target”: “input”, “key”: “ArrowDown” }
+     ],
+     “assertions”: [
+       { 
+          “target”: “listbox”, 
+          “assertion”: “toBeVisible” 
+       },
+       {
+         “target”: “input”,
+         “assertion”: “toHaveAttribute”,
+         “attribute”: “aria-expanded”,
+         “expectedValue”: “true”
+       }
+     ]
+   }
+ ]
+}`
 // eslint-disable-next-line react/prop-types
 const Homepage = ({darkMode, setDarkMode}) => {
   const[showDropdownPage, setShowDropdownPage] = useState(false);
@@ -42,6 +75,12 @@ const Homepage = ({darkMode, setDarkMode}) => {
     }
   }, [resultsVisible]);
 
+  const saveScrollPosition = () => {
+    const scrollContainer = document.getElementById('main-content');
+    const currentPosition = scrollContainer ? scrollContainer.scrollTop : window.scrollY;
+    sessionStorage.setItem(`scroll-position-${page}`, String(currentPosition));
+  };
+
   return (
     <div className="home-body" id="inner-body-div">
       <Helmet>
@@ -66,17 +105,17 @@ const Homepage = ({darkMode, setDarkMode}) => {
         setResultsVisible={setResultsVisible}
       />
 
-      <main className="page-body-div overflow-y-auto pb-[100px]" id="main-content">
+      <main className="page-body-div overflow-y-auto" id="main-content">
         <section className="section-shell section-tone-a px-3">
           <Container fluid className="homepage-above-fold-div">
             <Row>
               <Col xs={12} sm={12} md={12} lg={8}>
                 <div className="hero-text-div pb-[50px]">
                   <h1 className="hero-heading">Accessibility infrastructure for your <span className="text-gradient">entire frontend lifecycle</span></h1>
-                  <p className="hero-paragraph mb-5 mt-4 text-[1.2rem] leading-[1.5rem]">Integrate accessibility integrity into every phase of your frontend development workflow — from reusable component utilities, to WAI-ARIA compliance check, to CI/CD pipelines that keeps inaccessible frontend from production. Works with React, Vue, Svelte, or vanilla JavaScript.</p>
+                  <p className="hero-paragraph mb-5 mt-4 text-[1.2rem] leading-[1.5rem]">Integrate accessibility integrity into every phase of your frontend development workflow — from reusable components to CI pipelines, Aria-Ease ensures accessibility behavior is built in, tested, and never regresses. Works with React, Vue, Svelte, or vanilla JavaScript.</p>
                   <div className="flex items-center gap-4 flex-wrap">
-                    <Link onClick={() => {sessionStorage.setItem(`scroll-position-${page}`, window.scrollY)}} to='/docs' className="px-4 sm:px-8 h-12 flex items-center justify-center button-gradient shadow-xl rounded-lg text-white">Get Started</Link>
-                    <Link className="hero-explore px-4 sm:px-8 rounded-lg" onClick={() => {sessionStorage.setItem(`scroll-position-${page}`, window.scrollY)}} to='/examples/accordion'>
+                    <Link onClick={saveScrollPosition} to='/docs' className="px-4 sm:px-8 h-12 flex items-center justify-center button-gradient shadow-xl rounded-lg text-white">Get Started</Link>
+                    <Link className="hero-explore px-4 sm:px-8 rounded-lg" onClick={saveScrollPosition} to='/utilities/accordion'>
                       <div className="flex items-center gap-2 h-12 black-white-text">
                         Explore Utilities <span className="material-symbols-outlined text-[17px] leading-none" aria-hidden="true">arrow_forward</span>
                       </div>
@@ -100,8 +139,8 @@ const Homepage = ({darkMode, setDarkMode}) => {
                 </div>
               </Col>
               <div className="mx-auto flex w-full max-w-2xl justify-center mt-1">
-                    <div className={`w-full overflow-hidden rounded-xl hero-terminal-border shadow-2xl ${darkMode ? 'bg-gray-900/10' : 'bg-card'}`}>
-                      <div className={`flex items-center gap-2 hero-terminal-header px-4 py-3 ${darkMode ? 'bg-gray-800/20' : 'bg-gray-100'}`}>
+                    <div className={`w-full overflow-hidden rounded-xl terminal-border shadow-2xl ${darkMode ? 'bg-gray-900/10' : 'bg-card'}`}>
+                      <div className={`flex items-center gap-2 terminal-header px-4 py-3 ${darkMode ? 'bg-gray-800/20' : 'bg-gray-100'}`}>
                         <div className="flex gap-1.5">
                           <div className="size-2 rounded-full bg-red-500/60" />
                           <div className="size-2 rounded-full bg-yellow-500/60" />
@@ -202,7 +241,7 @@ const Homepage = ({darkMode, setDarkMode}) => {
               </span>
             </h2>
             <p className="mt-4 text-pretty text-lg leading-relaxed text-muted-foreground black-grey-text">
-              For a lot of teams, accessibility checks happen too far into the frontend development lifecycle, often as manual QA. Critical issues are discovered late, causing costly rework, rushed fixes, missed deadline, or shipping inaccessible frontend to production.
+              For a lot of teams, accessibility checks happen too far into the frontend development cycle, often as manual QA. Critical issues are discovered late, causing costly rework, rushed fixes, missed deadline, or shipping inaccessible frontend to production.
             </p>
           </div>
 
@@ -260,6 +299,19 @@ const Homepage = ({darkMode, setDarkMode}) => {
                       
                     </div>
                   </Col>
+
+                  <Col md={6} lg={6}>
+                    <div className="p-4 rounded-lg tone-card tone-card-base h-full">
+                      <div className="flex items-center gap-2 mb-3">
+                        <div className="w-10 h-10 rounded-full bg-rose-100 dark:bg-rose-900/10 flex items-center justify-center">
+                          <span className="material-symbols-outlined text-2xl leading-none text-rose-600" aria-hidden="true">rule</span>
+                        </div>
+                        <h3 className="font-bold black-white-text text-xl font-bold">Can&#39;t Verify Behavior</h3>
+                      </div>
+                      <p className="text-sm black-grey-text mb-2">Current tools scan for WCAG violations but don&#39;t test if components actually work—keyboard interaction, focus management, ARIA management.</p>
+                      
+                    </div>
+                  </Col>
                 </Row>
               </Container>
             </div>
@@ -268,7 +320,7 @@ const Homepage = ({darkMode, setDarkMode}) => {
             <div className="text-center mb-12">
               <p className="text-sm font-semibold uppercase tracking-wider black-grey-text">The Solution</p>
               <h2 className="black-white-text text-3xl font-bold mb-4 mt-3 text-balance tracking-tight text-foreground sm:text-4xl">The Aria-Ease Accessibility Lifecycle</h2>
-              <p className="text-[1.2rem] leading-[1.5rem] black-grey-text max-w-3xl mx-auto">From design to deployment—Aria-Ease covers every phase of frontend lifecycle. That means quick feedback during development, minimal runtime impact, and fewer late-release accessibility surprises.</p>
+              <p className="text-[1.2rem] leading-[1.5rem] black-grey-text max-w-3xl mx-auto">From design to deployment—Aria-Ease covers every phase of the frontend lifecycle. Accessibility becomes a property your system guarantees. That means quick feedback during development, minimal runtime impact, and fewer late-release accessibility surprises.</p>
             </div>
             
             {/* Accessibility Lifecycle Phases */}
@@ -283,7 +335,7 @@ const Homepage = ({darkMode, setDarkMode}) => {
                         </div>
                         <h3 className="font-bold black-white-text text-xl font-bold">Design & Build</h3>
                       </div>
-                      <p className="text-sm black-grey-text mb-2">Lightweight component utilities with automatic ARIA management</p>
+                      <p className="text-sm black-grey-text mb-2">Lightweight component utilities with automatic roles, ARIA, and interaction management</p>
                       <code className="text-xs text-purple-600 dark:text-purple-400">makeMenuAccessible(), makeTabsAccessible()</code>
                     </div>
                   </Col>
@@ -294,9 +346,9 @@ const Homepage = ({darkMode, setDarkMode}) => {
                         <div className="w-10 h-10 rounded-full bg-blue-100 dark:bg-blue-900/10 flex items-center justify-center">
                           <span className="material-symbols-outlined text-2xl leading-none text-blue-600" aria-hidden="true">verified_user</span>
                         </div>
-                        <h3 className="font-bold black-white-text text-xl font-bold">Test & Verify</h3>
+                        <h3 className="font-bold black-white-text text-xl font-bold">Verify Behavior</h3>
                       </div>
-                      <p className="text-sm black-grey-text mb-2">Contract testing validates keyboard interaction & ARIA patterns</p>
+                      <p className="text-sm black-grey-text mb-2">Contract testing validates WAI-ARIA roles, ARIA states, and patterns </p>
                       <code className="text-xs text-blue-600 dark:text-blue-400">npx aria-ease test</code>
                     </div>
                   </Col>
@@ -307,9 +359,9 @@ const Homepage = ({darkMode, setDarkMode}) => {
                         <div className="w-10 h-10 rounded-full bg-orange-100 dark:bg-orange-900/10 flex items-center justify-center">
                           <span className="material-symbols-outlined text-2xl leading-none text-orange-600" aria-hidden="true">fact_check</span>
                         </div>
-                        <h3 className="font-bold black-white-text text-xl font-bold">Audit</h3>
+                        <h3 className="font-bold black-white-text text-xl font-bold">Static Audit</h3>
                       </div>
-                      <p className="text-sm black-grey-text mb-2">Runtime page scanning with axe-core for WCAG violations</p>
+                      <p className="text-sm black-grey-text mb-2">Runtime page scanning with axe-core for static WCAG violations</p>
                       <code className="text-xs text-orange-600 dark:text-orange-400">npx aria-ease audit</code>
                     </div>
                   </Col>
@@ -407,7 +459,7 @@ const Homepage = ({darkMode, setDarkMode}) => {
 </div>
 
 <h3 className="text-xl font-bold mb-3 black-white-text">Contract Testing</h3>
-<p className="text-sm black-grey-text">Verify agreements between components and WAI-ARIA specs.</p>
+<p className="text-sm black-grey-text">Aria-Ease defines accessibility behavior as JSON contracts. Contracts drive utilities, tests, and docs—everything flows from one source of truth.</p>
 <p className="text-xs mt-3 black-grey-text">CI/CD: Enforce ARIA contracts in pipelines to prevent accessibility regressions.</p>
 </div>
 
@@ -430,6 +482,99 @@ const Homepage = ({darkMode, setDarkMode}) => {
   </div>
 </div>
 </section>
+
+        <hr className="landing-hr"></hr>
+
+        <section className="section-shell section-tone-b px-3">
+          <Container fluid>
+            <div className="mx-auto max-w-3xl text-center mb-12">
+              <p className="text-sm font-semibold uppercase tracking-wider black-grey-text">Contract-First Workflow</p>
+              <h2 className="black-white-text text-3xl font-bold mb-4 mt-3 text-balance tracking-tight text-foreground sm:text-4xl">Define Accessibility Behavior as Code</h2>
+              <p className="text-[1.1rem] leading-[1.6rem] black-grey-text">Aria-Ease authors and maintains accessibility contracts, then uses them to generate utilities, validate behavior, and keep documentation and team knowledge aligned. These contracts are public in the repo, so teams can use the same source of truth directly.</p>
+            </div>
+
+            <Row className="g-4 items-stretch mb-8">
+              <Col lg={6} md={12}>
+                <div className="p-6 rounded-xl h-full tone-card tone-card-base">
+                  <h3 className="text-2xl font-bold mb-4 black-white-text">One Contract, Multiple Outputs</h3>
+                  <p className="black-grey-text mb-5">Instead of scattering accessibility intent across files, Aria-Ease defines it once in a contract DSL and uses it to drive implementation and verification across the lifecycle.</p>
+                  <div className="space-y-4">
+                    <div className="flex items-start gap-3">
+                      <span className="material-symbols-outlined text-[20px] leading-none text-purple-600 mt-1" aria-hidden="true">construction</span>
+                      <div>
+                        <p className="font-semibold black-white-text">Scaffold utilities</p>
+                        <p className="text-sm black-grey-text">Generate accessible utilities from a shared behavior contract.</p>
+                      </div>
+                    </div>
+                    <div className="flex items-start gap-3">
+                      <span className="material-symbols-outlined text-[20px] leading-none text-blue-600 mt-1" aria-hidden="true">library_books</span>
+                      <div>
+                        <p className="font-semibold black-white-text">Keep docs synced</p>
+                        <p className="text-sm black-grey-text">Use the same contract rules to power onboarding and documentation.</p>
+                      </div>
+                    </div>
+                    <div className="flex items-start gap-3">
+                      <span className="material-symbols-outlined text-[20px] leading-none text-green-600 mt-1" aria-hidden="true">monitoring</span>
+                      <div>
+                        <p className="font-semibold black-white-text">Catch regressions early</p>
+                        <p className="text-sm black-grey-text">Diff contract behavior in CI before changes reach production.</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </Col>
+
+              <Col lg={6} md={12}>
+                <div className={`w-full overflow-hidden rounded-xl terminal-border shadow-2xl ${darkMode ? 'bg-gray-900/10' : 'bg-card'}`}>
+                      <div className={`flex items-center gap-2 terminal-header px-4 py-3 ${darkMode ? 'bg-gray-800/20' : 'bg-gray-100'}`}>
+                        <div className="flex gap-1.5">
+                          <div className="size-2 rounded-full bg-red-500/60" />
+                          <div className="size-2 rounded-full bg-yellow-500/60" />
+                          <div className="size-2 rounded-full bg-green-500/60" />
+                        </div>
+                        <span className="ml-2 font-mono text-xs text-muted-foreground black-grey-text">Combobox JSON Contract</span>
+                      </div>
+                      <div className="px-4 pb-4 font-mono text-sm">
+                        <div className="space-y-1">
+                          <pre className="text-green-400" tabIndex={0} aria-label="Combobox JSON contract code example">
+                      <code style={{color: 'rgb(74 222 128)'}}>
+                        {jsoncontract}
+                      </code>
+                    </pre>
+                        </div>
+                      </div>
+                    </div>
+              </Col>
+            </Row>
+
+            <Row className="g-4">
+              <Col md={6} lg={3}>
+                <div className="p-4 rounded-lg h-full tone-card tone-card-base">
+                  <h4 className="font-bold black-white-text mb-2">Smarter Linting</h4>
+                  <p className="text-sm black-grey-text">Enforce behavior rules from contracts, not generic lint heuristics.</p>
+                </div>
+              </Col>
+              <Col md={6} lg={3}>
+                <div className="p-4 rounded-lg h-full tone-card tone-card-alt">
+                  <h4 className="font-bold black-white-text mb-2">Regression Diffing</h4>
+                  <p className="text-sm black-grey-text">Track exactly what interaction behavior changed between versions.</p>
+                </div>
+              </Col>
+              <Col md={6} lg={3}>
+                <div className="p-4 rounded-lg h-full tone-card tone-card-base">
+                  <h4 className="font-bold black-white-text mb-2">Knowledge Transfer</h4>
+                  <p className="text-sm black-grey-text">Contracts encode intent so new contributors can build correctly faster.</p>
+                </div>
+              </Col>
+              <Col md={6} lg={3}>
+                <div className="p-4 rounded-lg h-full tone-card tone-card-alt">
+                  <h4 className="font-bold black-white-text mb-2">Behavior Analytics</h4>
+                  <p className="text-sm black-grey-text">See which patterns pass, fail, and regress across your system.</p>
+                </div>
+              </Col>
+            </Row>
+          </Container>
+        </section>
 
 
         {/* Quick Wins Section */}
@@ -613,7 +758,7 @@ const Menu = require("aria-ease/menu");   // CommonJS
           </Container>
         </section> */}
 
-        <section className="px-3 section-shell section-tone-b audit-section flex gap-5 flex-wrap justify-center">
+        <section className="px-3 section-shell section-tone-c audit-section flex gap-5 flex-wrap justify-center">
           <div className="flex flex-col gap-3 justify-center items-center">
             <div className="flex items-center gap-2 audit-graphic rounded-sm bg-[#cbd4dd] px-3 py-2 border ml-20">
               <div className="bg-green-100 dark:bg-green-900/10 w-10 h-10 rounded-full flex items-center justify-center">
@@ -641,12 +786,12 @@ const Menu = require("aria-ease/menu");   // CommonJS
           </div>
           <div className="flex flex-col items-start justify-center gap-3 max-w-full">
             <h2 className="black-white-text text-3xl font-bold">Audit Your Web Pages. <span className="text-gradient">Get instant accessibility insights</span></h2>
-            <p className="audit-section-paragraph max-w-[700px] text-[1.2rem] leading-[1.5rem] mb-4">Do you wonder what static accessibility issues might be lurking on your web pages? Scan your web pages using the axe-core powered audit CLI. Integrate into CI/CD pipeline for gated release.</p>
+            <p className="audit-section-paragraph max-w-[700px] text-[1.2rem] leading-[1.5rem] mb-4">Do you wonder what static accessibility issues might be lurking on your web pages? After contracts validate behavior and utilities ensure implementation, audit catches any remaining static WCAG gaps.</p>
             <div className="overflow-x-auto w-full">
               <CodeBlockDemo code={`npx aria-ease audit --url https://yoursite.com
 
-# Or audit multiple pages
-npx aria-ease audit  # Uses ariaease.config.js`}/>
+// Or audit multiple pages
+npx aria-ease audit  // Uses ariaease.config.js`}/>
             </div>
                   <div className="mt-4 space-y-3">
                     <div className="flex items-start gap-3">
@@ -660,7 +805,7 @@ npx aria-ease audit  # Uses ariaease.config.js`}/>
                       <span className="material-symbols-outlined text-[20px] leading-none text-blue-600 mt-1" aria-hidden="true">verified_user</span>
                       <div>
                         <p className="font-semibold black-white-text">Powered by axe-core</p>
-                        <p className="text-sm black-grey-text">Industry-standard accessibility testing</p>
+                        <p className="text-sm black-grey-text">Industry-standard accessibility auditing</p>
                       </div>
                     </div>
                     <div className="flex items-start gap-3">
@@ -671,7 +816,7 @@ npx aria-ease audit  # Uses ariaease.config.js`}/>
                       </div>
                     </div>
                   </div>
-            <Link onClick={() => {sessionStorage.setItem(`scroll-position-${page}`, window.scrollY)}} to='/audit' className="px-4 sm:px-8 h-12 flex items-center justify-center button-gradient shadow-xl rounded-lg text-white">Audit Your Webpage</Link>
+            <Link onClick={saveScrollPosition} to='/audit' className="px-4 sm:px-8 h-12 flex items-center justify-center button-gradient shadow-xl rounded-lg text-white">Audit Your Webpage</Link>
           </div>
         </section>
 
@@ -785,7 +930,7 @@ useEffect(() => {
               </Col>
               <Col lg={6} className="text-center text-lg-end">
                 <Link 
-                  onClick={() => {sessionStorage.setItem(`scroll-position-${page}`, window.scrollY)}} 
+                  onClick={saveScrollPosition} 
                   to='/services' 
                   className="inline-flex items-center gap-2 px-8 h-14 bg-blue-800 hover:bg-blue-900 shadow-xl rounded-lg text-white text-lg font-semibold transition-all hover:-translate-y-1"
                 >

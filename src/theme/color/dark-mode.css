@@ -176,14 +176,19 @@ pre.code-div {
     background-color: rgba(0, 0, 0);
 }
 
-.dark-body .hero-terminal-border {
+.dark-body .terminal-border {
   border: 1px solid rgba(97, 97, 97, 1);
 }
 
-.dark-body .hero-terminal-header {
+.dark-body .terminal-header {
   border-bottom: 1px solid rgba(97, 97, 97, 1);
 }
 
+
 .dark-body .landing-hr {
     border-color: rgb(141, 141, 141);
+}
+
+.dark-body .footer {
+  background: var(--section-tone-a);
 }
