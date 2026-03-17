@@ -67,22 +67,22 @@ const InnerApp = ({darkMode, setDarkMode}) => {
           <Route path="/api" element={<ApiReference darkMode={darkMode} setDarkMode={setDarkMode}/>}/>
           <Route path="/migration" element={<MigrationGuide darkMode={darkMode} setDarkMode={setDarkMode}/>}/>
           <Route path="/examples" element={<Examples darkMode={darkMode} setDarkMode={setDarkMode}/>}/>
-          <Route path="/examples/menu" element={<Menu darkMode={darkMode} setDarkMode={setDarkMode}/>}/>
-          <Route path="/examples/block" element={<BlockExample darkMode={darkMode} setDarkMode={setDarkMode}/>}/>
-          <Route path="/examples/accordion" element={<Accordions darkMode={darkMode} setDarkMode={setDarkMode}/>}/>
-          <Route path="/examples/checkbox" element={<Checkbox darkMode={darkMode} setDarkMode={setDarkMode}/>}/>
-          <Route path="/examples/radio" element={<Radio darkMode={darkMode} setDarkMode={setDarkMode}/>}/>
-          <Route path="/examples/toggle-button" element={<Toggle darkMode={darkMode} setDarkMode={setDarkMode}/>}/>
+          <Route path="/utilities/menu" element={<Menu darkMode={darkMode} setDarkMode={setDarkMode}/>}/>
+          <Route path="/utilities/block" element={<BlockExample darkMode={darkMode} setDarkMode={setDarkMode}/>}/>
+          <Route path="/utilities/accordion" element={<Accordions darkMode={darkMode} setDarkMode={setDarkMode}/>}/>
+          <Route path="/utilities/checkbox" element={<Checkbox darkMode={darkMode} setDarkMode={setDarkMode}/>}/>
+          <Route path="/utilities/radio" element={<Radio darkMode={darkMode} setDarkMode={setDarkMode}/>}/>
+          <Route path="/utilities/toggle-button" element={<Toggle darkMode={darkMode} setDarkMode={setDarkMode}/>}/>
           {/* <Route path="/blog/main" element={<BlogMain darkMode={darkMode} setDarkMode={setDarkMode}/>}/>
           <Route path="/blog/single" element={<BlogSingle darkMode={darkMode} setDarkMode={setDarkMode}/>}/> */}
           <Route path="/clandestine/admin/" element={<Admin/>}/>
           <Route path="/changelog" element={<Changelog darkMode={darkMode} setDarkMode={setDarkMode}/>}/>
           <Route path="/audit" element={<Audit darkMode={darkMode} setDarkMode={setDarkMode}/>}/>
           <Route path="/testing" element={<Testing darkMode={darkMode} setDarkMode={setDarkMode}/>}/>
-          <Route path="/examples/combobox" element={<Combobox darkMode={darkMode} setDarkMode={setDarkMode}/>}/>
+          <Route path="/utilities/combobox" element={<Combobox darkMode={darkMode} setDarkMode={setDarkMode}/>}/>
           {/* <Route path="/services" element={<Services darkMode={darkMode} setDarkMode={setDarkMode}/>}/> */}
           <Route path="/test-harness" element={<ComponentTestHarness/>}/>
-          <Route path="/examples/tabs" element={<Tabs darkMode={darkMode} setDarkMode={setDarkMode}/>}/>
+          <Route path="/utilities/tabs" element={<Tabs darkMode={darkMode} setDarkMode={setDarkMode}/>}/>
         </Routes>
       </Router>
     </div>

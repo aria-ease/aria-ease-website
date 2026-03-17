@@ -19,19 +19,8 @@
     right: 0;
     z-index: 1000000000;
 }
-.header::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    z-index: -1;
-    pointer-events: none;
-    backdrop-filter: saturate(110%) blur(0px);
-    transition: backdrop-filter 240ms ease;
-}
-.header.scrolled::before {
-    backdrop-filter: saturate(140%) blur(10px);
-}
-.header.scrolled {
+
+.header {
     box-shadow: 0 10px 26px -20px rgba(0, 0, 0, 0.4);
 }
 .header-button-icon,

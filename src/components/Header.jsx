@@ -7,6 +7,7 @@ import blacklogo from '../assets/black-logo.webp';
 import whitelogo from '../assets/white-logo.webp';
 import Fuse from 'fuse.js';
 import { X } from 'lucide-react';
+import { getActiveScrollPosition } from '../utils/scrollPosition';
 
 // eslint-disable-next-line react/prop-types
 const Header = ({ page, darkMode, setDarkMode, showDropdownPage, setShowDropdownPage, resultsVisible, setResultsVisible }) => {
@@ -21,15 +22,10 @@ const Header = ({ page, darkMode, setDarkMode, showDropdownPage, setShowDropdown
     const[resultsFound, setResultsFound] = useState(false);
 
     const[themeImage, setThemeImage] = useState(sunicon);
-    const [isScrolled, setIsScrolled] = useState(false);
 
-
-    useEffect(() => {
-        const onScroll = () => setIsScrolled(window.scrollY > 8);
-        onScroll();
-        window.addEventListener('scroll', onScroll, { passive: true });
-        return () => window.removeEventListener('scroll', onScroll);
-    }, []);
+    const saveScrollPosition = () => {
+        sessionStorage.setItem(`scroll-position-${page}`, String(getActiveScrollPosition()));
+    };
 
     useEffect(() => {
         document.body.style.overflow = 'hidden';
@@ -203,7 +199,7 @@ const Header = ({ page, darkMode, setDarkMode, showDropdownPage, setShowDropdown
     };
 
     return (
-        <header className={`header ${isScrolled ? 'scrolled' : ''}`}>
+        <header className="header">
             <button className='header-menu-button center-flex' onClick={() => { setResultsVisible(false); setShowDropdownPage(!showDropdownPage); }} aria-label="Toggle slide-out side navigation">
                 {darkMode ?
                     <svg xmlns="http://www.w3.org/2000/svg" width="510" height="511" fill="none" viewBox="0 0 510 511" id="menu" className='white-hamburger h-[40px] w-[40px] ml-[-1px]'>
@@ -215,13 +211,13 @@ const Header = ({ page, darkMode, setDarkMode, showDropdownPage, setShowDropdown
                 }
 
             </button>
-            <Link onClick={() => { sessionStorage.setItem(`scroll-position-${page}`, window.scrollY) }} to='/' className='header-logo-link block-interactive' aria-label="Navigate to home page"><img src={whitelogo} className="logo-img h-[30px] w-[30px]" alt="Aria Ease Logo"></img></Link>
+            <Link onClick={saveScrollPosition} to='/' className='header-logo-link block-interactive' aria-label="Navigate to home page"><img src={whitelogo} className="logo-img h-[30px] w-[30px]" alt="Aria Ease Logo"></img></Link>
             <div className='header-nav-link-div' id="header-nav-link-div">
-                <Link onClick={() => { sessionStorage.setItem(`scroll-position-${page}`, window.scrollY) }} to='/docs' className='header-nav-link block-interactive' aria-label='Navigate to the documentation page'>Documentation</Link>
-                {/* <Link onClick={() => { sessionStorage.setItem(`scroll-position-${page}`, window.scrollY) }} to='/examples' aria-label="View examples of package implementation" className='header-nav-link block-interactive'>Examples</Link> */}
-                {/* <Link onClick={() => { sessionStorage.setItem(`scroll-position-${page}`, window.scrollY) }} to='/services' className='header-nav-link block-interactive' aria-label='Navigate to professional services page'>Services</Link> */}
-                <Link onClick={() => { sessionStorage.setItem(`scroll-position-${page}`, window.scrollY) }} to="/changelog" className='header-nav-link block-interactive' aria-label='Navigate to changelog page'>Changelog</Link>
-                {/* <Link onClick={() => { sessionStorage.setItem(`scroll-position-${page}`, window.scrollY) }} to='/blog/main' className='header-nav-link block-interactive' aria-label='Navigate to blog articles page'>Blog</Link> */}
+                <Link onClick={saveScrollPosition} to='/docs' className='header-nav-link block-interactive' aria-label='Navigate to the documentation page'>Documentation</Link>
+                {/* <Link onClick={saveScrollPosition} to='/examples' aria-label="View examples of package implementation" className='header-nav-link block-interactive'>Examples</Link> */}
+                {/* <Link onClick={saveScrollPosition} to='/services' className='header-nav-link block-interactive' aria-label='Navigate to professional services page'>Services</Link> */}
+                <Link onClick={saveScrollPosition} to="/changelog" className='header-nav-link block-interactive' aria-label='Navigate to changelog page'>Changelog</Link>
+                {/* <Link onClick={saveScrollPosition} to='/blog/main' className='header-nav-link block-interactive' aria-label='Navigate to blog articles page'>Blog</Link> */}
             </div>
             <form className="header-search-div" role='search'>
                 <svg fill="rgba(181, 181, 181, 1)" height="18" viewBox="0 0 13 14" width="18" xmlns="http://www.w3.org/2000/svg"><path clipRule="evenodd" d="m8.82264 10.3833c-.92307.7008-2.07429 1.1167-3.32264 1.1167-3.03757 0-5.5-2.46243-5.5-5.5s2.46243-5.5 5.5-5.5 5.5 2.46243 5.5 5.5c0 1.24835-.4159 2.39957-1.1167 3.32264l2.897 2.89706c.2929.2929.2929.7677 0 1.0606s-.7677.2929-1.0606 0zm.67736-4.3833c0 2.20914-1.79086 4-4 4s-4-1.79086-4-4 1.79086-4 4-4 4 1.79086 4 4z" fillRule="evenodd" /></svg>
@@ -247,7 +243,7 @@ const Header = ({ page, darkMode, setDarkMode, showDropdownPage, setShowDropdown
                 </div>
             </form>
             <div className='header-buttons-grid-div' id="header-buttons-grid-div">
-                <a onClick={() => { sessionStorage.setItem(`scroll-position-${page}`, window.scrollY) }} href="https://github.com/aria-ease/aria-ease" aria-label="Navigate to project's GitHub repository" className='header-button block-interactive center-flex'><FaGithub className='header-button-icon' /></a>
+                <a onClick={saveScrollPosition} href="https://github.com/aria-ease/aria-ease" aria-label="Navigate to project's GitHub repository" className='header-button block-interactive center-flex'><FaGithub className='header-button-icon' /></a>
                 <button className='header-button block-interactive center-flex' onMouseDown={() => { setDarkMode((prevDarkMode) => !prevDarkMode) }} onKeyDown={(event) => { if (event.key === 'Enter' || event.key === " ") { event.preventDefault(); event.stopPropagation(); setDarkMode((prevDarkMode) => !prevDarkMode) } }} aria-label='Toggle dark mode'>
                     <img src={sunicon} alt='Sun Icon' id='Sun' className='theme-mode-image' aria-hidden="true" srcSet={`${themeImage} 35w, ${themeImage} 70w, ${themeImage} 140w`} sizes="35px" width={35} height={35}></img>
                 </button>

@@ -577,8 +577,8 @@ jobs:
           - { name: "Homepage", url: "http://localhost:5173" }
           - { name: "Docs", url: "http://localhost:5173/docs" }
           - {
-              name: "Examples",
-              url: "http://localhost:5173/examples/accordion",
+              name: "Utilities",
+              url: "http://localhost:5173/utilities/accordion",
             }
           - { name: "API", url: "http://localhost:5173/api-reference" }
       fail-fast: true # Stop all tests if one fails

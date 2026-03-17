@@ -170,14 +170,14 @@ const BlockExample = ({darkMode, setDarkMode}) => {
                       
 
                     <div className='flex flex-wrap gap-4 py-4 mx-auto max-w-7xl md:py-12 mt-[100px] justify-between'>
-                    <a href='/examples/accordion' className='block-interactive next-link rounded-lg md:min-w-80 md:max-w-md w-full md:w-auto flex gap-6 items-center px-4 py-6 md:px-5'>
+                    <a href='/utilities/accordion' className='block-interactive next-link rounded-lg md:min-w-80 md:max-w-md w-full md:w-auto flex gap-6 items-center px-4 py-6 md:px-5'>
                       <ChevronRightCircleIcon className='rotate-180'/>
                       <div className='flex flex-col w-full'>
                         <span className='text-sm black-white-text'>Prev</span>
                         <span className='next-link-text text-md'>Accordion</span>
                       </div>
                     </a>
-                    <a href='/examples/checkbox' className='block-interactive next-link rounded-lg md:min-w-80 md:max-w-md w-full md:w-auto flex gap-6 items-center px-4 py-6 md:px-5'>
+                    <a href='/utilities/checkbox' className='block-interactive next-link rounded-lg md:min-w-80 md:max-w-md w-full md:w-auto flex gap-6 items-center px-4 py-6 md:px-5'>
                       <div className='flex flex-col w-full items-end'>
                         <span className='text-sm black-white-text'>Next</span>
                         <span className='next-link-text text-md'>Checkbox</span>

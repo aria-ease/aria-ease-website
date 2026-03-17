@@ -7,32 +7,32 @@
     {
         "title": "Checkbox",
         "content": "Accessible Checkbox utility. Uses aria-checked, aria-label. Form Input. screen reader",
-        "url": "/examples/checkbox"
+        "url": "/utilities/checkbox"
     },
     {
         "title": "Accordion",
         "content": "Accessible Accordion utility. Uses aria-expanded, aria-label. Ideal for FAQs. screen reader",
-        "url": "/examples/accordion"
+        "url": "/utilities/accordion"
     },
     {
         "title": "Menu",
         "content": "Accessible Menu utility. Uses aria-label, aria-labelledby, role='menu', role='button', aria-controls, aria-haspopup. Focus trap. Intuitive Keyboard navigation, interaction. Escape key closes menu. screen reader",
-        "url": "/examples/menu"
+        "url": "/utilities/menu"
     },
     {
         "title": "Radio",
         "content": "Accessible Radio utility. Ideal for selecting one option from many. screen reader",
-        "url": "/examples/radio"
+        "url": "/utilities/radio"
     },
     {
         "title": "Block",
         "content": "Accessible Block utility. Focus trap. Intuitive Keyboard navigation, interaction",
-        "url": "/examples/block"
+        "url": "/utilities/block"
     },
     {
         "title": "Toggle",
         "content": "Accessible Toggle switch utility. Uses aria-pressed, aria-label. Ideal for dark mode, settings, and preferences. screen reader",
-        "url": "/examples/toggle-button"
+        "url": "/utilities/toggle-button"
     },
     {
         "title": "Changelog",
@@ -47,7 +47,7 @@
     {
         "title": "Combobox",
         "content": "Accessible Combobox utility. Uses aria-expanded, aria-controls, aria-activedescendant, role='combobox', role='listbox', role='option'. Ideal for searchable dropdowns. screen reader",
-        "url": "/examples/combobox"
+        "url": "/utilities/combobox"
     },
     {
         "title": "Testing",

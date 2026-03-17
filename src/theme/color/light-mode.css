@@ -141,11 +141,11 @@
     background-color: #F2F6F9;
 }
 
-.light-body .hero-terminal-border {
+.light-body .terminal-border {
   border: 1px solid #dee2e6;
 }
 
-.light-body .hero-terminal-header {
+.light-body .terminal-header {
   border-bottom: 1px solid #dee2e6;
 }
 .light-body .landing-hr {
