@@ -11,14 +11,14 @@ export default {
       'http://localhost:5173/migration',
       'http://localhost:5173/examples',
 
-      'http://localhost:5173/examples/accordion',
-      'http://localhost:5173/examples/block',
-      'http://localhost:5173/examples/checkbox',
-      'http://localhost:5173/examples/combobox',
-      'http://localhost:5173/examples/menu',
-      'http://localhost:5173/examples/radio',
-      'http://localhost:5173/examples/tabs',
-      'http://localhost:5173/examples/toggle-button',
+      'http://localhost:5173/utilities/accordion',
+      'http://localhost:5173/utilities/block',
+      'http://localhost:5173/utilities/checkbox',
+      'http://localhost:5173/utilities/combobox',
+      'http://localhost:5173/utilities/menu',
+      'http://localhost:5173/utilities/radio',
+      'http://localhost:5173/utilities/tabs',
+      'http://localhost:5173/utilities/toggle-button',
 
       'http://localhost:5173/changelog'
     ],
