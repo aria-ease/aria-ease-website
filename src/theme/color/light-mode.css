@@ -151,3 +151,7 @@
 .light-body .landing-hr {
     border-color: #444444;
 }
+
+.light-body .side-body-div code {
+  color: #9f1a5f;
+}

@@ -1,0 +1,59 @@
+.terminal-caret {
+  display: inline-block;
+  width: 7px;
+  border-right: 2px solid currentColor;
+  margin-left: 2px;
+  animation: terminalBlink 1s steps(2, start) infinite;
+}
+
+.terminal-line-enter {
+  animation: terminalLineFade 260ms ease-out;
+}
+
+.terminal-output-window {
+  --terminal-lines: 4;
+  --terminal-line-height: 1.45rem;
+  --terminal-min-rows: 4;
+  --terminal-max-rows: 8;
+  height: clamp(
+    calc(var(--terminal-min-rows) * var(--terminal-line-height)),
+    calc(var(--terminal-lines) * var(--terminal-line-height)),
+    calc(var(--terminal-max-rows) * var(--terminal-line-height))
+  );
+  overflow-y: auto;
+  scrollbar-gutter: stable;
+}
+
+@media (max-width: 640px) {
+  .terminal-output-window.contract {
+    --terminal-min-rows: 15;
+    --terminal-max-rows: 18;
+  }
+
+  .terminal-output-window.audit {
+    --terminal-min-rows: 8;
+    --terminal-max-rows: 12;
+  }
+}
+
+@keyframes terminalBlink {
+  0%,
+  40% {
+    opacity: 1;
+  }
+  50%,
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes terminalLineFade {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

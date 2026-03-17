@@ -7,41 +7,74 @@ import { Link } from "react-router-dom";
 import './homepage.css';
 import Footer from "../components/Footer";
 import ScrollTracker from '../components/ScrollTracker';
-import CodeBlockDemo from '../components/CodeBlock';
+import AnimatedTerminalDemo from '../components/animated-terminal-demo/AnimatedTerminalDemo';
 import { Helmet } from 'react-helmet-async';
 
 const jsoncontract = `
- “meta”: {
-   “id”: “aria-ease.combobox”,
-   “version”: “1.0.0”,
-   “source”: {
-     “apg”: “https://www.w3.org/WAI/ARIA/apg/patterns/combobox/"
-   }
- },
- “selectors”: {
-   “input”: “[role=combobox]”,
-   “listbox”: “[role=listbox]”,
-   “options”: “[role=option]”
- },
- “dynamic”: [
-   {
-     “description”: “Down Arrow on closed combobox opens listbox and updates ARIA expanded”,
-     “action”: [
-       { “type”: “keypress”, “target”: “input”, “key”: “ArrowDown” }
-     ],
-     “assertions”: [
-       { 
-          “target”: “listbox”, 
-          “assertion”: “toBeVisible” 
-       },
-       {
-         “target”: “input”,
-         “assertion”: “toHaveAttribute”,
-         “attribute”: “aria-expanded”,
-         “expectedValue”: “true”
-       }
-     ]
-   }
+"meta": {
+  "id": "aria-ease.contract.combobox.listbox",
+  "description": "ARIA Combobox with Listbox popup interaction contract. Validates the ARIA and interaction contract for a custom combobox with listbox component following the ARIA Authoring Practices Guide combobox with listbox popup pattern.",
+  "lastUpdated": "15-03-2026",
+  "version": "1.0.0",
+  "source": {
+    "apg": "https://www.w3.org/WAI/ARIA/apg/patterns/combobox/"
+  }
+},
+"selectors": {
+  "input": "[role=combobox]",
+  "listbox": "[role=listbox]",
+  "options": "[role=option]"
+},
+"observables": {
+  "observable": "focus | visible | attribute | role",
+  "target": "input | button | listbox | options | relative",
+  "relative": "first | last | next | previous"
+},
+"relationships": [
+  {
+    "type": "aria-reference",
+    "from": "input",
+    "attribute": "aria-controls",
+    "to": "listbox"
+  },
+  {
+    "type": "contains",
+    "parent": "listbox",
+    "child": "options"
+  }
+],
+"static": [
+  {
+    "assertions": [
+      {
+        "target": "input",
+        "assertion": "toHaveAttribute",
+        "attribute": "role",
+        "expectedValue": "combobox",
+        "failureMessage": "Combobox input doesn't conform to the ARIA Combobox pattern as specified in APG 1.2. Input element should have 'role=combobox' attribute."
+      }
+    ]
+  }
+],
+"dynamic": [
+  {
+    "description": "Down Arrow on closed combobox opens listbox and updates ARIA expanded",
+    "action": [
+       { "type": "keypress", "target": "input", "key": "ArrowDown" }
+    ],
+    "assertions": [
+      { 
+        "target": "listbox", 
+        "assertion": "toBeVisible" 
+      },
+      {
+        "target": "input",
+        "assertion": "toHaveAttribute",
+        "attribute": "aria-expanded",
+        "expectedValue": "true"
+      }
+    ]
+  }
  ]
 }`
 // eslint-disable-next-line react/prop-types
@@ -152,22 +185,22 @@ const Homepage = ({darkMode, setDarkMode}) => {
                         <div className="space-y-1">
                           <p className="text-muted-foreground black-grey-text">$ npx aria-ease audit && npx aria-ease test</p>  
                           <p className="text-foreground">
-                            <span className="text-green-400">✓</span> <span className="black-grey-text">Running axe-core audit on 16 pages...</span>
+                            <span className={darkMode ? 'text-green-400' : 'text-green-700'}>✓</span> <span className="black-grey-text">Running axe-core audit on 16 pages...</span>
                           </p>
                           <p className="text-foreground">
-                            <span className="text-green-400 ">✓</span> <span className="black-grey-text">Testing 142 components...</span>
+                            <span className={darkMode ? 'text-green-400' : 'text-green-700'}>✓</span> <span className="black-grey-text">Testing 142 components...</span>
                           </p>
                           <p className="text-foreground">
-                            <span className="text-green-400">✓</span> <span className="black-grey-text">Validating ARIA patterns...</span>
+                            <span className={darkMode ? 'text-green-400' : 'text-green-700'}>✓</span> <span className="black-grey-text">Validating ARIA patterns...</span>
                           </p>
                           <p className="mt-2 text-foreground">
-                            <span className="text-green-400 font-medium">Passed:</span> <span className="black-grey-text">12 pages, 138 components</span>
+                            <span className={`font-medium ${darkMode ? 'text-green-400' : 'text-green-700'}`}>Passed:</span> <span className="black-grey-text">12 pages, 138 components</span>
                           </p>
                           <p className="text-foreground">
-                            <span className="text-yellow-400 font-medium">Warnings:</span> <span className="black-grey-text">4 pages, 4 components</span>
+                            <span className={`font-medium ${darkMode ? 'text-yellow-400' : 'text-amber-700'}`}>Warnings:</span> <span className="black-grey-text">4 pages, 4 components</span>
                           </p>
                           <p className="text-muted-foreground">
-                            <span className="text-red-400 font-medium">Critical:</span> <span className="black-grey-text">0 issues</span>
+                            <span className={`font-medium ${darkMode ? 'text-red-400' : 'text-red-700'}`}>Critical:</span> <span className="black-grey-text">0 issues</span>
                           </p>
                           <p className="mt-2 text-muted-foreground black-grey-text">
                             Completed in <span className="text-foreground">12.3s</span>
@@ -495,9 +528,28 @@ const Homepage = ({darkMode, setDarkMode}) => {
 
             <Row className="g-4 items-stretch mb-8">
               <Col lg={6} md={12}>
-                <div className="p-6 rounded-xl h-full tone-card tone-card-base">
+                <div className="p-6 rounded-xl h-full tone-card tone-card-base flex flex-col">
                   <h3 className="text-2xl font-bold mb-4 black-white-text">One Contract, Multiple Outputs</h3>
-                  <p className="black-grey-text mb-5">Instead of scattering accessibility intent across files, Aria-Ease defines it once in a contract DSL and uses it to drive implementation and verification across the lifecycle.</p>
+                  <p className="black-grey-text mb-5">Aria-Ease treats accessibility behavior like product logic, not checklist debt. The team writes one contract per component pattern, then reuses it to power implementation, testing, and governance.</p>
+
+                  <div className="p-4 rounded-lg tone-card tone-card-alt mb-5">
+                    <p className="text-sm font-semibold uppercase tracking-wide black-white-text mb-3">How It Works</p>
+                    <div className="space-y-3">
+                      <div className="flex items-start gap-3">
+                        <span className="w-6 h-6 rounded-full bg-purple-100 dark:bg-purple-900/10 text-purple-600 text-xs font-bold flex items-center justify-center mt-0.5">1</span>
+                        <p className="text-sm black-grey-text"><span className="font-semibold black-white-text">Encode behavior once:</span> APG expectations are captured in a public JSON contract.</p>
+                      </div>
+                      <div className="flex items-start gap-3">
+                        <span className="w-6 h-6 rounded-full bg-blue-100 dark:bg-blue-900/10 text-blue-600 text-xs font-bold flex items-center justify-center mt-0.5">2</span>
+                        <p className="text-sm black-grey-text"><span className="font-semibold black-white-text">Execute behavior tests:</span> Aria-Ease runs the contract against real keyboard and focus interactions.</p>
+                      </div>
+                      <div className="flex items-start gap-3">
+                        <span className="w-6 h-6 rounded-full bg-green-100 dark:bg-green-900/10 text-green-600 text-xs font-bold flex items-center justify-center mt-0.5">3</span>
+                        <p className="text-sm black-grey-text"><span className="font-semibold black-white-text">Gate regressions in CI:</span> diffs surface behavior drift before merge, not after release.</p>
+                      </div>
+                    </div>
+                  </div>
+
                   <div className="space-y-4">
                     <div className="flex items-start gap-3">
                       <span className="material-symbols-outlined text-[20px] leading-none text-purple-600 mt-1" aria-hidden="true">construction</span>
@@ -521,6 +573,39 @@ const Homepage = ({darkMode, setDarkMode}) => {
                       </div>
                     </div>
                   </div>
+
+                  <div className="mt-5 p-4 rounded-lg border border-black/10 dark:border-white/10 bg-white/40 dark:bg-black/10">
+                    <p className="font-semibold black-white-text mb-2">Why This Is a Gamechanger</p>
+                    <p className="text-sm black-grey-text">Most teams only validate static WCAG issues. Aria-Ease validates runtime behavior contracts, including key presses, focus movement, and ARIA state transitions. That shifts accessibility from late QA rework to predictable engineering signals during development.</p>
+                  </div>
+
+                  <div className="mt-10">
+                    <AnimatedTerminalDemo
+                      section="contract"
+                      title="Contract Test Run"
+                      ariaLabel="Animated contract testing terminal demo"
+                      darkMode={darkMode}
+                      command="npx aria-ease test"
+                      lines={[
+                        { tone: 'info', prefix: '>', text: 'Initializing Playwright Runner' },
+                        { tone: 'info', prefix: '>', text: 'Loading contract: combobox.listbox.contract.json' },
+                        { tone: 'success', prefix: '✓', text: 'Static Attributes: 7/7 passed' },
+                        { tone: 'success', prefix: '✓', text: 'Keyboard interactions: 12/12 passed' },
+                        { tone: 'success', prefix: '✓', text: 'ARIA state transitions: 9/9 passed' },
+                        { tone: 'success', prefix: '✓', text: 'Focus movement assertions: 6/6 passed' },
+                        { tone: 'success', prefix: '✓', text: 'Semantic Relationships: 4/4 passed' },
+                        { tone: 'neutral', prefix: '', text: 'Result: 0 regressions detected' },
+                      ]}
+                    />
+                  </div>
+
+                  <div className="mt-auto pt-6">
+                    <p className="text-sm font-semibold black-white-text">Try The Workflow</p>
+                    <p className="text-sm black-grey-text mt-1">Start with Aria-Ease&#39;s contract-powered behavior testing that&#39;s as fast as unit testing.</p>
+                    <div className="flex flex-wrap gap-3 mt-4">
+                      <Link onClick={saveScrollPosition} to='/testing' className="px-4 sm:px-6 h-11 flex items-center justify-center button-gradient shadow-xl rounded-lg text-white">Try Contract Testing Suite</Link>
+                    </div>
+                  </div>
                 </div>
               </Col>
 
@@ -536,8 +621,8 @@ const Homepage = ({darkMode, setDarkMode}) => {
                       </div>
                       <div className="px-4 pb-4 font-mono text-sm">
                         <div className="space-y-1">
-                          <pre className="text-green-400" tabIndex={0} aria-label="Combobox JSON contract code example">
-                      <code style={{color: 'rgb(74 222 128)'}}>
+                          <pre className={darkMode ? 'text-green-400' : 'text-green-700'} tabIndex={0} aria-label="Combobox JSON contract code example">
+                      <code style={{color: darkMode ? 'rgb(74 222 128)' : 'rgb(21 128 61)'}} className="text-foreground">
                         {jsoncontract}
                       </code>
                     </pre>
@@ -788,10 +873,21 @@ const Menu = require("aria-ease/menu");   // CommonJS
             <h2 className="black-white-text text-3xl font-bold">Audit Your Web Pages. <span className="text-gradient">Get instant accessibility insights</span></h2>
             <p className="audit-section-paragraph max-w-[700px] text-[1.2rem] leading-[1.5rem] mb-4">Do you wonder what static accessibility issues might be lurking on your web pages? After contracts validate behavior and utilities ensure implementation, audit catches any remaining static WCAG gaps.</p>
             <div className="overflow-x-auto w-full">
-              <CodeBlockDemo code={`npx aria-ease audit --url https://yoursite.com
-
-// Or audit multiple pages
-npx aria-ease audit  // Uses ariaease.config.js`}/>
+            </div>
+            <div className="w-full">
+              <AnimatedTerminalDemo
+                section="audit"
+                title="Audit CLI Run"
+                ariaLabel="Animated audit CLI terminal demo"
+                darkMode={darkMode}
+                command="npx aria-ease audit -f html"
+                lines={[
+                  { tone: 'info', prefix: '>', text: 'Scanning 10 URLs with axe-core + Playwright' },
+                  { tone: 'warning', prefix: '!', text: '4 pages with warnings (manual review suggested)' },
+                  { tone: 'error', prefix: 'x', text: '2 critical findings blocked for release' },
+                  { tone: 'neutral', prefix: '', text: 'Report written: accessibility-reports/audit/index.html' },
+                ]}
+              />
             </div>
                   <div className="mt-4 space-y-3">
                     <div className="flex items-start gap-3">

@@ -151,7 +151,7 @@ const Changelog = ({ darkMode, setDarkMode }) => {
                                                       href={`https://github.com/aria-ease/aria-ease/commit/${change.commitLink}`}
                                                       target="_blank"
                                                       rel="noopener noreferrer"
-                                                      className="ml-3 text-xs font-mono text-gray-400 hover:text-indigo-600 transition-colors"
+                                                      className={`ml-3 text-xs font-mono ${darkMode ? 'text-gray-300' : 'text-gray-600'} hover:text-indigo-600 transition-colors`}
                                                       title="View commit details on GitHub"
                                                   >
                                                       ({change.commitLink.substring(0, 7)})
