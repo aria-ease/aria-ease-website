@@ -85,7 +85,7 @@ const MigrationGuide = ({darkMode, setDarkMode}) => {
                     <p className="text-red-800">See the <a href="/changelog" className="text-blue-700 underline">changelog</a> for full details.</p>
                   </div>
                   <div className='mb-8'>
-                    <h3 className='text-xl font-semibold mb-3 text-green-600 dark:text-green-400'>✅ Migration Steps</h3>
+                    <h3 className={`text-xl font-semibold mb-3 ${darkMode ? 'text-green-300' : 'text-green-800'}`}>✅ Migration Steps</h3>
                     <ol className='list-decimal ml-6 space-y-2'>
                       <li>Replace all <code>update*AriaAttributes</code> calls with the corresponding <code>make*Accessible</code> API for each component (accordion, menu, checkbox, radio, toggle, etc).</li>
                       <li>Update your imports to use the new component-specific paths if not already done:<br/>

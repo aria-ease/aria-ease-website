@@ -23,7 +23,7 @@ export default {
       'http://localhost:5173/changelog'
     ],
     output: {
-      format: 'html',
+      format: 'all',
       out: './accessibility-reports/audit'
     }
   }
