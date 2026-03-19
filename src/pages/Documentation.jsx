@@ -8,6 +8,7 @@ import CodeBlockDemo from '../components/CodeBlock';
 import ScrollTracker from '../components/ScrollTracker';
 import { ChevronRightCircleIcon } from 'lucide-react';
 import { Helmet } from 'react-helmet-async';
+import CalloutPanel from '../components/CalloutPanel';
 
 const menuCode = `import * as Menu from "aria-ease/menu";
 
@@ -85,19 +86,20 @@ const Documentation = ({darkMode, setDarkMode}) => {
         <ScrollTracker page={page}/>
         <Header page={page} darkMode={darkMode} setDarkMode={setDarkMode} showDropdownPage={showDropdownPage} setShowDropdownPage={setShowDropdownPage} resultsVisible={resultsVisible} setResultsVisible={setResultsVisible}/>
         
-        <main className='page-body-div documentation-page' id="main-content">
+        <main className='page-body-div documentation-page section-tone-a' id="main-content">
           <Container fluid>
             <Row>
               <SideNav page={page}/>
               <Col xs={12} sm={12} md={12} lg={9} className='px-0'>
-                <div className='side-body-div'>
-                  <div className='side-body-sections-div'>
-                    <h1 className='introduction-heading'>Getting Started</h1>
-                    <p className='mt-2'>Aria-Ease is an open-source utility library that provides utility functions for building production-ready accessible web applications, custom ARIA components and design systems.</p>
+                <div className='side-body-div docs-flow'>
+                  <div className='side-body-sections-div tone-card tone-card-emphasis docs-hero-card'>
+                    <span className='docs-kicker black-grey-text'>Documentation</span>
+                    <h1 className='introduction-heading black-white-text'>Getting Started with <span className='text-gradient'>Aria-Ease</span></h1>
+                    <p className='mt-2 docs-intro-copy'>Aria-Ease is an open-source utility library that provides utility functions for building production-ready accessible web applications, custom ARIA components and design systems.</p>
                     <p className='mt-2'>This is NOT a component library. The library simply provides utility functions that help to implements accessibility features.</p>
                   </div>
-                  <section className='side-body-sections-div'>
-                    <h2 className='black-white-text mt-20'>Installation</h2>
+                  <section className='side-body-sections-div tone-card tone-card-base docs-section-card'>
+                    <h2 className='black-white-text'>Installation</h2>
                     <p className='my-3'>Run the installation command in your project&#39;s root terminal using your package manager of choice:</p>
                     <div className='flex flex-col gap-3'>
                       <CodeBlockDemo code={'npm i aria-ease'}/>
@@ -105,7 +107,7 @@ const Documentation = ({darkMode, setDarkMode}) => {
                     </div>
                     <p className='mt-4'>The use of the library as a module with NPM ensures UXProbe loads asynchroniously, by not blocking DOM rendering during <a href="https://developer.mozilla.org/en-US/docs/Learn/JavaScript/First_steps/What_is_JavaScript#script_loading_strategies" target="_blank" rel="noreferrer" className="text-link-contrast block-interactive underline">script loading</a>. This ensures a smooth user experience for end-users of the monitored application. <a className="text-link-contrast block-interactive underline" href="https://npmjs.com/package/aria-ease" target="_blank" rel="noreferrer">Check out the library in the NPM registry.</a></p>
 
-                    <h2 className='black-white-text mt-20'>CDN</h2>
+                    <h2 className='black-white-text mt-5'>CDN</h2>
                     <p className='my-2'>You can use Aria-Ease in vanilla HTML via CDN using ES module imports. This allows you to import only the components you need.</p>
                     <p className='mb-3'>Use a <code>{`<script type="module">`}</code> tag to import components. Place it in the <code>{`<head>`}</code> or before the closing <code>{`</body>`}</code> tag.</p>
                     
@@ -143,8 +145,8 @@ import * as Toggle from 'https://cdn.jsdelivr.net/npm/aria-ease@latest/dist/src/
                       />
                     </div>
                   </section>
-                  <section className='side-body-sections-div'>
-                    <h2 className='black-white-text mt-20'>Usage</h2>
+                  <section className='side-body-sections-div tone-card tone-card-alt docs-section-card'>
+                    <h2 className='black-white-text'>Usage</h2>
                     <>
                       <p className='mt-2'>
                         <b className='features-function'>Menu.makeMenuAccessible:</b>
@@ -220,9 +222,9 @@ cleanup();`} isLineNumber={true}/>
                     </>
                   </section>
 
-                  <section className='side-body-sections-div'>
-                    <h2 className='black-white-text mt-20'>Testing Your Components</h2>
-                    <p className='my-3'>Aria-Ease includes a built-in testing framework for automated accessibility validation. The <code>testUiComponent(...)</code> function runs both axe-core static tests and contract tests to ensure your custom ARIA components meet WCAG guidelines.</p>
+                  <section className='side-body-sections-div tone-card tone-card-base docs-section-card'>
+                    <h2 className='black-white-text'>Testing Your Components</h2>
+                    <p className='my-3'>Aria-Ease includes a built-in testing framework for deterministic component behavior validation. The <code>testUiComponent(...)</code> function runs both axe-core static tests and contract tests to ensure your custom ARIA components meet WCAG guidelines.</p>
 
                     <div className='mt-6'>
                       <h3 className='text-lg font-semibold'>Contract Testing</h3>
@@ -290,13 +292,15 @@ describe("Shopify User Menu Accessibility Test", () => {
                       </ul>
                     </div>
 
-                    <div className='mt-6 p-4 rounded-lg border-l-4 border-yellow-500 bg-yellow-50'>
-                      <p className='text-yellow-900'><strong>Note:</strong> For Playwright tests, ensure your development server is running before executing tests.</p>
-                    </div>
+                    <CalloutPanel tone='yellow' className='mt-6'>
+                      <p><strong>Note:</strong> For Playwright tests, ensure your development server is running before executing tests.</p>
+                    </CalloutPanel>
+
+                    
                   </section>
 
-                  <section className='side-body-sections-div'>
-                    <h2 className='black-white-text mt-20'>Bundle Size & Tree-Shaking</h2>
+                  <section className='side-body-sections-div tone-card tone-card-alt docs-section-card'>
+                    <h2 className='black-white-text'>Bundle Size & Tree-Shaking</h2>
                     <p className='my-3'>Aria-Ease is designed to be lightweight and tree-shakable. Always import individual component utility for optimal bundle size:</p>
 
                     <div className='mt-4'>
@@ -316,8 +320,8 @@ describe("Shopify User Menu Accessibility Test", () => {
                     </div>
                   </section>
 
-                  <div className='flex flex-wrap gap-4 py-4 mx-auto max-w-7xl md:py-12 mt-[100px] justify-end'>
-                    <a href='/api' className='block-interactive next-link rounded-lg md:min-w-80 md:max-w-md w-full md:w-auto flex gap-6 items-center px-4 py-6 md:px-5'>
+                  <div className='flex flex-wrap gap-2 py-4 max-w-7xl md:py-12 mt-[100px] justify-end'>
+                    <a href='/api' className='block-interactive next-link docs-next-link rounded-lg md:min-w-80 md:max-w-md w-full md:w-auto flex gap-6 items-center px-4 py-6 md:px-5'>
                       <div className='flex flex-col w-full items-end'>
                         <span className='text-sm black-white-text'>Next</span>
                         <span className='next-link-text text-md'>API Reference</span>

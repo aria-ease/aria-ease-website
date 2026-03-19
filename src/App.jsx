@@ -1,4 +1,5 @@
 import './theme/style/styles.css';
+import './theme/style/design-system.css';
 import './theme/color/dark-mode.css';
 import './theme/color/light-mode.css';
 import 'bootstrap/dist/css/bootstrap.css';

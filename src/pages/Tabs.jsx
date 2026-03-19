@@ -11,6 +11,7 @@ import { Container, Row, Col } from 'react-bootstrap';
 import { Helmet } from 'react-helmet-async';
 import { ChevronRightCircleIcon } from 'lucide-react';
 import CodeBlockDemo from '../components/CodeBlock.jsx';
+import CalloutPanel from '../components/CalloutPanel';
 
 
 // eslint-disable-next-line react/prop-types
@@ -202,27 +203,28 @@ function goToReviews() {
         <ScrollTracker page={page}/>
         <Header page={page} darkMode={darkMode} setDarkMode={setDarkMode} showDropdownPage={showDropdownPage} setShowDropdownPage={setShowDropdownPage} resultsVisible={resultsVisible} setResultsVisible={setResultsVisible}/>
 
-        <main className="page-body-div" id="main-content">
+        <main className="page-body-div documentation-page section-tone-a" id="main-content">
           <Container fluid>
             <Row>
               <SideNav page={page}/>
               <Col xs={12} sm={12} md={12} lg={9} className='px-0'>
-                <div className='side-body-div'>
-                  <h1 className='component-example-heading'>Tabs</h1>
+                <div className='side-body-div docs-flow'>
+                  <div className='side-body-sections-div tone-card tone-card-emphasis docs-hero-card'>
+                    <span className='docs-kicker black-grey-text'>Documentation</span>
+                    <h1 className='introduction-heading black-white-text'>Tabs <span className='text-gradient'>Utility</span></h1>
+                    <p className='mt-2 docs-intro-copy'>Tabs are a set of layered sections of content, known as tab panels, that display one panel of content at a time. Each tab panel has an associated tab element, that when activated, displays the panel. The list of tab elements is arranged along one edge of the currently displayed panel, most commonly the top edge.</p>
+                  </div>
 
-                  <p className='mt-2'>Tabs are a set of layered sections of content, known as tab panels, that display one panel of content at a time. Each tab panel has an associated tab element, that when activated, displays the panel. The list of tab elements is arranged along one edge of the currently displayed panel, most commonly the top edge.</p>
-
-                  <section className={`mt-6 p-4 rounded-lg border-l-4 border-blue-500 ${darkMode ? 'bg-blue-900/20' : 'bg-blue-50'}`}>
-                    <h2 className={`font-semibold ${darkMode ? 'text-blue-100' : 'text-blue-900'}`}>Bundle Size</h2>
-                    <p className={`mt-2 ${darkMode ? 'text-blue-100' : 'text-blue-900'}`}>The tabs component is tree-shakable and weighs approximately <strong>32KB</strong> when imported individually.</p>
-                    <code className={`block mt-2 p-2 ${darkMode ? 'bg-blue-900/20' : 'bg-blue-100'} rounded text-sm`}>
+                  <CalloutPanel title='Bundle Size' tone='info'>
+                    <p className='mt-2'>The tabs component is tree-shakable and weighs approximately <strong>32KB</strong> when imported individually.</p>
+                    <code className='block mt-2 p-2 text-sm'>
                       <p>import * as Tabs from &quot;aria-ease/tabs&quot;;</p>
                       <p className='my-4'>or</p>
                       <p>import &#123; makeTabsAccessible &#125; from &quot;aria-ease/tabs&quot;;</p>
                     </code>
-                  </section>
+                  </CalloutPanel>
                   
-                  <section className='mt-10'>
+                  <section>
                     <h2>Features</h2>
                     <ul className='list-disc ml-6 mt-2'>
                       <li>✨ Automatic ARIA attribute management</li>
@@ -233,7 +235,7 @@ function goToReviews() {
                     </ul>
                   </section>
 
-                  <section className='mt-10'>
+                  <section>
                       <h2>Common Use Cases</h2>
                       <ul className='list-disc ml-6 mt-2'>
                         <li>Content organization: Group related content into separate panels for better readability.</li>
@@ -244,7 +246,7 @@ function goToReviews() {
                       </ul>
                   </section>
 
-                  <section className='mt-10'>
+                  <section>
                     <h2>WAI-ARIA Roles, States, and Properties</h2>
                     <ul className='list-disc ml-6 mt-2'>
                       <li>The element that serves as the container for the set of tabs has role tablist.</li>
@@ -259,7 +261,7 @@ function goToReviews() {
                     </ul>
                   </section>
 
-                  <section className='mt-10'>
+                  <section>
                     <h2>What the Utility Handles Automatically</h2>
                     <p className='mt-2'>The <code>makeTabsAccessible</code> utility automatically sets and manages all required ARIA attributes:</p>
                     <ul className='list-disc ml-6 mt-2'>
@@ -276,14 +278,13 @@ function goToReviews() {
 
                   
 
-                  <section className='mt-10'>
+                  <section>
                     <h2 className='break-words'>makeTabsAccessible</h2>
                     <p className='mt-2'>The <code>makeTabsAccessible(...)</code> method is your one-stop solution for accessible tabs.</p>
                     <p className='mt-2'>This function handles all tab complexity - you provide clean HTML with IDs and class names, and it manages ARIA attributes, keyboard interactions, mouse support, and focus behavior. You no longer need to manually set aria-selected, aria-controls, aria-labelledby, or manage focus.</p>
 
-                    <div className={`mt-6 p-4 rounded-lg border-l-4 border-green-500 ${darkMode ? 'bg-green-900/20' : 'bg-green-50'}`}>
-                        <h3 className={`font-semibold ${darkMode ? 'text-green-100' : 'text-green-900'}`}>✨ Key Features</h3>
-                        <ul className={`list-disc ml-4 mt-2 ${darkMode ? 'text-green-100' : 'text-green-900'}`}>
+                    <CalloutPanel title='Key Features' tone='success' className='mt-6' titleAs='h3'>
+                      <ul className='list-disc ml-4 mt-2'>
                         <li>Automatic ARIA attribute management (aria-selected, aria-controls, roles)</li>
                         <li>Complete keyboard interaction following W3C APG specifications</li>
                         <li>Built-in mouse support with hover and click handling</li>
@@ -291,10 +292,10 @@ function goToReviews() {
                         <li>Event callbacks for tab changes and context menu</li>
                         <li>No manual state management required</li>
                         </ul>
-                    </div>
+                      </CalloutPanel>
                   </section>
 
-                  <section className='mt-10'>
+                  <section>
                     <h2>Configuration Options</h2>
                     <ul className='list-disc ml-6 mt-2'>
                         <li><code>tabListId</code>: ID of the tab list element (required)</li>
@@ -306,7 +307,7 @@ function goToReviews() {
                     </ul>
                   </section>
 
-                  <section className='mt-10'>
+                  <section>
                     <h2>Returns:</h2>
                     <ul className='list-disc ml-6 mt-2'>
                       <li><code>cleanup()</code>: Remove event listeners</li>
@@ -315,7 +316,7 @@ function goToReviews() {
                     </ul>
                   </section>
 
-                  <section className='mt-10'>
+                  <section>
                     <p className='mb-2'>Import the utility:</p>
                       <CodeBlockDemo code={importTabs}/>
 
@@ -326,14 +327,14 @@ function goToReviews() {
                       <p className='mb-2 mt-6'>Minimal HTML structure (no ARIA attributes needed):</p>
                       <CodeBlockDemo code={horizontalHTML} isLineNumber={true}/>
                       
-                      <div className={`mt-4 p-4 rounded-lg border-l-4 border-green-500 ${darkMode ? 'bg-green-900/20' : 'bg-green-50'}`}>
-                        <p className={`${darkMode ? 'text-green-100' : 'text-green-900'}`}>
+                      <CalloutPanel tone='success' className='mt-4'>
+                        <p>
                           <strong>Notice:</strong> You don&#39;t need to add <code>role</code>, <code>aria-selected</code>, <code>aria-controls</code>, or any other ARIA attributes manually. The utility sets everything automatically.
                         </p>
-                      </div>
+                      </CalloutPanel>
                   </section>
 
-                  <section className='mt-10'>
+                  <section>
                         <h2>Manual Activation Mode</h2>
                         <p className='mb-2'>
                             By default, tabs activate automatically when focused (activateOnFocus: true). For tabs with
@@ -343,7 +344,7 @@ function goToReviews() {
                     </section>
 
                     {/* Programmatic Control */}
-                    <section className='mt-10'>
+                    <section>
                         <h2 className='mb-1'>Programmatic Control</h2>
                         <p className='mb-2'>
                             Use the returned instance methods to control tabs programmatically.
@@ -352,7 +353,7 @@ function goToReviews() {
                         </section>
 
                         {/* Dynamic Tabs */}
-                        <section className='mt-10'>
+                        <section>
                         <h2 className='mb-1'>Dynamic Tabs</h2>
                         <p className='mb-2'>
                             If you add or remove tabs dynamically, call refresh() to update the library&#39;s internal state.
@@ -360,7 +361,7 @@ function goToReviews() {
                         <CodeBlock code={refreshExample} language='javascript' />
                     </section>
 
-                  <section className='mt-10'>
+                  <section>
                     <h2>Keyboard Interaction (Built-in)</h2>
                     <p className='mt-2'>The utility provides complete keyboard support following W3C APG specifications:</p>
                     <ul className='list-disc ml-6 mt-2'>
@@ -375,7 +376,7 @@ function goToReviews() {
                     </ul>
                   </section>
 
-                  <section className='mt-10'>
+                  <section>
                     <h2>What You Need to Provide</h2>
                       <ul className='list-disc ml-6 mt-2'>
                         <li><strong>HTML structure</strong>: Input, listbox container, and option elements with IDs/classes</li>
@@ -387,7 +388,7 @@ function goToReviews() {
                   </section>
                   
                         {/* Best Practices */}
-                        <section className='mt-10'>
+                        <section>
                         <h2 className='mb-3'>Best Practices</h2>
                         <ul className='list-disc ml-6 space-y-2'>
                             <li>
@@ -428,7 +429,7 @@ function goToReviews() {
                         </section>
 
                         {/* Common Issues */}
-                        <section className='mt-10'>
+                        <section>
                             <h2 className='mb-2'>Common Issues</h2>
                             <div className='space-y-4'>
                                 <div>
@@ -463,7 +464,7 @@ function goToReviews() {
                         </section>
 
                         {/* Resources */}
-                        <section className='mt-10'>
+                        <section>
                         <h2 className='mb-2'>Resources</h2>
                         <ul className='list-disc ml-6 space-y-2'>
                             <li>
@@ -499,7 +500,7 @@ function goToReviews() {
                         </ul>
                         </section>
 
-                    <section className='mt-10'>
+                    <section>
                       <h2>Accessibility Testing</h2>
                       <p className='mt-2'>The tabs utility includes built-in contract testing:</p>
                       <ul className='list-disc ml-6 mt-2'>
@@ -512,7 +513,7 @@ function goToReviews() {
                     </section>
      
 
-                  <section className='mt-10'>
+                  <section>
                     <h2>Visual Design Best Practices</h2>
                     <ul className='list-disc ml-6 mt-2'>
                       <li>Minimum touch target size for tabs: 44x44 pixels</li>
@@ -523,15 +524,15 @@ function goToReviews() {
                   </section>
                   
 
-                  <div className='flex flex-wrap gap-4 py-4 mx-auto max-w-7xl md:py-12 mt-[100px] justify-between'>
-                    <a href='/utilities/radio' className='block-interactive next-link rounded-lg md:min-w-80 md:max-w-md w-full md:w-auto flex gap-6 items-center px-4 py-6 md:px-5'>
+                  <div className='flex flex-wrap gap-2 py-4 max-w-7xl md:py-12 mt-[100px] justify-between'>
+                    <a href='/utilities/radio' className='block-interactive next-link docs-next-link rounded-lg md:min-w-80 md:max-w-md w-full md:w-auto flex gap-6 items-center px-4 py-6 md:px-5'>
                       <ChevronRightCircleIcon className='rotate-180'/>
                       <div className='flex flex-col w-full'>
                         <span className='text-sm black-white-text'>Prev</span>
                         <span className='next-link-text text-md'>Radio</span>
                       </div>
                     </a>
-                    <a href='/utilities/toggle-button' className='block-interactive next-link rounded-lg md:min-w-80 md:max-w-md w-full md:w-auto flex gap-6 items-center px-4 py-6 md:px-5'>
+                    <a href='/utilities/toggle-button' className='block-interactive next-link docs-next-link rounded-lg md:min-w-80 md:max-w-md w-full md:w-auto flex gap-6 items-center px-4 py-6 md:px-5'>
                       <div className='flex flex-col w-full items-end'>
                         <span className='text-sm black-white-text'>Next</span>
                         <span className='next-link-text text-md'>Toggle Button</span>

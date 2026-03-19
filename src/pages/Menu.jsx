@@ -5,6 +5,7 @@ import SlideOutNav from '../components/SlideOutNav'
 import { useState, useEffect, useRef } from 'react'
 import * as Block from 'aria-ease/block'
 import CodeBlockDemo from '../components/CodeBlock';
+import CalloutPanel from '../components/CalloutPanel';
 import ScrollTracker from '../components/ScrollTracker';
 import { ChevronRightCircleIcon } from 'lucide-react';
 import { Helmet } from 'react-helmet-async';
@@ -38,11 +39,10 @@ const HomeExampleMenu = () => {
         id="display-button"
         className="home-menu-example-trigger-button"
         aria-label="Home example menu"
-        data-test-id="menu-trigger"
       >
         Display Example Menu
       </button>
-      <div id="custom-menu" data-test-id="menu">
+      <div id="custom-menu">
         <button className="profile-menu-item">One</button>
         <button className="profile-menu-item">Two</button>
         <button className="profile-menu-item">Three</button>
@@ -118,26 +118,28 @@ const Examples = ({darkMode, setDarkMode}) => {
         <ScrollTracker page={page}/>
         <Header page={page} darkMode={darkMode} setDarkMode={setDarkMode} showDropdownPage={showDropdownPage} setShowDropdownPage={setShowDropdownPage} resultsVisible={resultsVisible} setResultsVisible={setResultsVisible}/>
         
-        <main className='page-body-div' id="main-content">
+        <main className='page-body-div documentation-page section-tone-a' id="main-content">
           <Container fluid>
             <Row>
               <SideNav page={page}/>
               <Col xs={12} sm={12} md={12} lg={9} className='px-0'>
-                <div className='side-body-div'>
-                  <h1 className='component-example-heading'>Menu</h1>
-                  <p className='mt-2'>A menu is a widget that offers a list of choices or actions to the user, typically appearing when a user clicks a button or trigger. Menus provide keyboard interaction, focus management, and can support nested submenus. Unlike navigation landmarks that help users move between pages, menus present application commands or contextual actions that execute immediately when selected.</p>
+                <div className='side-body-div docs-flow'>
+                  <div className='side-body-sections-div tone-card tone-card-emphasis docs-hero-card'>
+                    <span className='docs-kicker black-grey-text'>Documentation</span>
+                    <h1 className='introduction-heading black-white-text'>Menu <span className='text-gradient'>Utility</span></h1>
+                    <p className='mt-2 docs-intro-copy'>A menu is a widget that offers a list of choices or actions to the user, typically appearing when a user clicks a button or trigger. Menus provide keyboard interaction, focus management, and can support nested submenus. Unlike navigation landmarks that help users move between pages, menus present application commands or contextual actions that execute immediately when selected.</p>
+                  </div>
 
-                  <section className={`mt-6 p-4 rounded-lg border-l-4 border-blue-500 ${darkMode ? 'bg-blue-900/20' : 'bg-blue-50'}`}>
-                    <h2 className={`font-semibold ${darkMode ? 'text-blue-100' : 'text-blue-900'}`}>Bundle Size</h2>
-                    <p className={`mt-2 ${darkMode ? 'text-blue-100' : 'text-blue-900'}`}>The menu component is tree-shakable and weighs approximately <strong>28KB</strong> when imported individually.</p>
-                    <code className={`block mt-2 p-2 ${darkMode ? 'bg-blue-900/20' : 'bg-blue-100'} rounded text-sm`}>
+                  <CalloutPanel title='Bundle Size' tone='info'>
+                    <p className='mt-2'>The menu component is tree-shakable and weighs approximately <strong>28KB</strong> when imported individually.</p>
+                    <code className='block mt-2 p-2 text-sm'>
                       <p>import * as Menu from &quot;aria-ease/menu&quot;;</p>
                       <p className='my-4'>or</p>
                       <p>import &#123; makeMenuAccessible &#125; from &quot;aria-ease/menu&quot;;</p>
                     </code>
-                  </section>
+                  </CalloutPanel>
 
-                  <section className='mt-10'>
+                  <section>
                     <h2>Features</h2>
                     <ul className='list-disc ml-6 mt-2'>
                       <li>✨ Automatic ARIA attribute management</li>
@@ -147,7 +149,7 @@ const Examples = ({darkMode, setDarkMode}) => {
                     </ul>
                   </section>
 
-                  <section className='mt-10'>
+                  <section>
                     <h2>Common Use Cases</h2>
                         <ul className='list-disc ml-6 mt-2'>
                           <li>Application commands (File, Edit, View menus)</li>
@@ -157,7 +159,7 @@ const Examples = ({darkMode, setDarkMode}) => {
                           <li>Multi-level navigation with submenus</li>
                         </ul>
                   </section>
-                  <section className='mt-10'>
+                  <section>
                     <h2>Menu vs. Navigation</h2>
                         <p className='mt-2'>Important distinction for proper ARIA usage:</p>
                         <ul className='list-disc ml-6 mt-2'>
@@ -168,7 +170,7 @@ const Examples = ({darkMode, setDarkMode}) => {
                         </ul>
                   </section>
 
-                  <section className='mt-10'>
+                  <section>
                     <h2>WAI-ARIA Roles, States, and Properties</h2>
                     <ul className='list-disc ml-6 mt-2'>
                       <li>The menu container has role menu.</li>
@@ -182,7 +184,7 @@ const Examples = ({darkMode, setDarkMode}) => {
                     </ul>
                   </section>
 
-                  <section className='mt-10'>
+                  <section>
                     <h2>What the Utility Handles Automatically</h2>
                     <p className='mt-2'>The <code>makeMenuAccessible</code> utility automatically sets and manages all required ARIA attributes:</p>
                     <ul className='list-disc ml-6 mt-2'>
@@ -197,14 +199,13 @@ const Examples = ({darkMode, setDarkMode}) => {
                     <p className='mt-1'>You only need to provide the HTML structure with IDs and class names - the utility handles all ARIA attributes.</p>
                   </section>
 
-                  <section className='mt-10'>
+                  <section>
                     <h2 className='mt-10 break-words'>makeMenuAccessible()</h2>
                   <p className='mt-2'>The <code>makeMenuAccessible()</code> function automatically manages all aspects of menu accessibility, including ARIA attributes, keyboard interaction, focus management, and submenu support.</p>
                   <p className='mt-2'>This function handles all menu complexity - you provide clean HTML with IDs and class names, and it manages all the ARIA attributes, keyboard interactions, and focus behavior. You no longer need to manually set aria-expanded, aria-controls, or manage focus.</p>
 
-                  <div className={`mt-6 p-4 rounded-lg border-l-4 border-green-500 ${darkMode ? 'bg-green-900/20' : 'bg-green-50'}`}>
-                    <h3 className={`font-semibold ${darkMode ? 'text-green-100' : 'text-green-900'}`}>✨ Key Features</h3>
-                    <ul className={`list-disc ml-6 mt-2 ${darkMode ? 'text-green-100' : 'text-green-900'}`}>
+                  <CalloutPanel title='Key Features' tone='success' className='mt-6' titleAs='h3'>
+                    <ul className='list-disc ml-6 mt-2'>
                       <li>Automatic ARIA attribute management (aria-expanded, aria-controls, roles)</li>
                       <li>Complete keyboard interaction following W3C APG specifications</li>
                       <li>Built-in submenu support with automatic detection</li>
@@ -212,10 +213,10 @@ const Examples = ({darkMode, setDarkMode}) => {
                       <li>Click outside detection support via callbacks</li>
                       <li>No manual state management required</li>
                     </ul>
-                  </div>
+                  </CalloutPanel>
                   </section>
 
-                  <section className='mt-10'>
+                  <section>
                     <h2>Configuration Options</h2>
                     <ul className='list-disc ml-6 mt-2'>
                       <li><code>menuId</code>: ID of the menu container element (required)</li>
@@ -224,7 +225,7 @@ const Examples = ({darkMode, setDarkMode}) => {
                     </ul>
                   </section>
 
-                  <section className='mt-10'>
+                  <section>
                     <h2>Programmatic Control</h2>
                     <p className='mt-2'>The utility returns methods for programmatic control:</p>
                     <ul className='list-disc ml-6 mt-2'>
@@ -236,7 +237,7 @@ const Examples = ({darkMode, setDarkMode}) => {
                   </section>
 
 
-                  <section className='mt-10'>
+                  <section>
                     <h2>Submenu Support</h2>
                     <p className='mt-2'>
                       The utility automatically detects and manages submenus, including wiring and updating
@@ -274,7 +275,7 @@ const Examples = ({darkMode, setDarkMode}) => {
   <button className="menu-item">Submenu Item 2</button>
 </div>`} isLineNumber={true}/>
                   </section>
-                  <section className='mt-10'>
+                  <section>
                     <h2>Focus Management</h2>
                     <ul className='list-disc ml-6 mt-2'>
                       <li>First menu item automatically receives focus when menu opens</li>
@@ -285,7 +286,7 @@ const Examples = ({darkMode, setDarkMode}) => {
                     </ul>
                   </section>
 
-                  <section className='mt-10'>
+                  <section>
                     <h2 className='mb-1'>Basic Menu Example</h2>
                     <p className='mb-2'>Notice the clean HTML - no ARIA attributes needed on menu items or container. Just IDs and class names:</p>
                     <CodeBlockDemo code={firstMenuCode} isLineNumber={true}/>
@@ -293,14 +294,14 @@ const Examples = ({darkMode, setDarkMode}) => {
                     <p className='mb-2 mt-6'>Add event callbacks to respond to user actions:</p>
                     <CodeBlockDemo code={withCallback} isLineNumber={true}/>
                     
-                    <div className={`mt-4 p-4 rounded-lg border-l-4 border-green-500 ${darkMode ? 'bg-green-900/20' : 'bg-green-50'}`}>
-                      <p className={`${darkMode ? 'text-green-100' : 'text-green-900'}`}>
+                    <CalloutPanel tone='success' className='mt-4'>
+                      <p>
                         <strong>Notice:</strong> The HTML doesn&#39;t include <code>role</code>, <code>aria-haspopup</code>, <code>aria-expanded</code>, or <code>aria-controls</code>. The utility adds them automatically.
                       </p>
-                    </div>
+                    </CalloutPanel>
                   </section>
 
-                  <section className='mt-10'>
+                  <section>
                     <h2>Dynamic Menu Items</h2>
                     <p className='my-2'>If you need to dynamically add or remove menu items after initialization, use the <code>refresh()</code> method:</p>
                     <CodeBlockDemo code={`// After adding/removing menu items
@@ -308,7 +309,7 @@ menuRef.current.refresh();`}/>
                     <p className='mt-2'>This refreshes the internal cache and ensures keyboard interaction works correctly with the updated menu structure.</p>
                   </section>
 
-                  <section className='mt-10'>
+                  <section>
                     <h2>Keyboard Interaction</h2>
                     <p className='mt-2'>Complete keyboard support following W3C APG specifications:</p>
                     <ul className='list-disc ml-6 mt-2'>
@@ -324,7 +325,7 @@ menuRef.current.refresh();`}/>
                     </ul>
                   </section>
 
-                  <section className='mt-10'>
+                  <section>
                     <h2>What You Need to Provide</h2>
                     <ul className='list-disc ml-6 mt-2'>
                       <li><strong>HTML structure</strong>: Trigger button, menu container, and menu items with IDs/classes</li>
@@ -334,16 +335,15 @@ menuRef.current.refresh();`}/>
                     </ul>
                   </section>
 
-                  <section className='mt-10'>
-                    <h2>⚠️ Important: React StrictMode</h2>
-                    <p className='mt-2'>If using React StrictMode, be aware it intentionally calls effects twice in development. To prevent double-initialization:</p>
-                    <ul className='list-disc ml-6 mt-2'>
-                      <li>Either remove <code>&lt;React.StrictMode&gt;</code> in development</li>
-                      <li>Or use proper cleanup functions as shown in the example above</li>
-                    </ul>
-                  </section>
+                  <CalloutPanel tone="yellow" title="⚠️ Important: React StrictMode">
+                      <p className='mt-2'>If using React StrictMode, be aware it intentionally calls effects twice in development. To prevent double-initialization:</p>
+                      <ul className='list-disc ml-6 mt-2'>
+                        <li>Either remove <code>&lt;React.StrictMode&gt;</code> in development</li>
+                        <li>Or use proper cleanup functions as shown in the example above</li>
+                      </ul>
+                  </CalloutPanel>
 
-                  <section className='mt-10'>
+                  <section>
                     <h2>Supported Menu Item Types</h2>
                     <p className='mt-2'>The utility supports all three menu item roles defined by W3C APG:</p>
                     <ul className='list-disc ml-6 mt-2'>
@@ -356,7 +356,7 @@ menuRef.current.refresh();`}/>
 
                   
 
-                  <section className='mt-10'>
+                  <section>
                     <h2>Accessibility Testing</h2>
                     <p className='mt-2'>The menu utility includes built-in contract testing:</p>
                     <ul className='list-disc ml-6 mt-2'>
@@ -368,7 +368,7 @@ menuRef.current.refresh();`}/>
                     </ul>
                   </section>
 
-                  <section className='mt-10'>
+                  <section>
                     <h2>Visual Design Best Practices</h2>
                     <ul className='list-disc ml-6 mt-2'>
                       <li>Minimum touch target size for menu items: 44x44 pixels</li>
@@ -380,15 +380,15 @@ menuRef.current.refresh();`}/>
                     </ul>
                   </section>
 
-                    <div className='flex flex-wrap gap-4 py-4 mx-auto max-w-7xl md:py-12 mt-[100px] justify-between'>
-                    <a href='/utilities/combobox' className='block-interactive next-link rounded-lg md:min-w-80 md:max-w-md w-full md:w-auto flex gap-6 items-center px-4 py-6 md:px-5'>
+                    <div className='flex flex-wrap gap-2 py-4 max-w-7xl md:py-12 mt-[100px] justify-between'>
+                    <a href='/utilities/combobox' className='block-interactive next-link docs-next-link rounded-lg md:min-w-80 md:max-w-md w-full md:w-auto flex gap-6 items-center px-4 py-6 md:px-5'>
                       <ChevronRightCircleIcon className='rotate-180'/>
                       <div className='flex flex-col w-full'>
                         <span className='text-sm black-white-text'>Prev</span>
                         <span className='next-link-text text-md'>Combobox</span>
                       </div>
                     </a>
-                    <a href='/utilities/radio' className='block-interactive next-link rounded-lg md:min-w-80 md:max-w-md w-full md:w-auto flex gap-6 items-center px-4 py-6 md:px-5'>
+                    <a href='/utilities/radio' className='block-interactive next-link docs-next-link rounded-lg md:min-w-80 md:max-w-md w-full md:w-auto flex gap-6 items-center px-4 py-6 md:px-5'>
                       <div className='flex flex-col w-full items-end'>
                         <span className='text-sm black-white-text'>Next</span>
                         <span className='next-link-text text-md'>Radio</span>

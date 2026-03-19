@@ -108,9 +108,7 @@ const ComboBox = () => {
                         className="flex-1 px-3 py-2 bg-transparent outline-none rounded-l-lg text-sm"
                     />
                     <button 
-                        id="show-list-button" 
-                        data-test-id="combobox-button" 
-                        tabIndex={-1} 
+                        id="show-list-button"  
                         aria-label="Open fruits list"
                         className="px-3 py-2 text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-700 rounded-r-lg transition-colors"
                     >

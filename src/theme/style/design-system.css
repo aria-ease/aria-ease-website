@@ -1,0 +1,252 @@
+/* Shared design system primitives used by homepage and docs pages */
+
+:root {
+  --ds-radius-sm: 0.5rem;
+  --ds-radius-md: 0.75rem;
+  --ds-radius-lg: 1rem;
+  --ds-shadow-soft: 0 14px 26px -22px rgba(37, 99, 235, 0.7);
+}
+
+.section-shell {
+  padding-top: clamp(2.75rem, 4.5vw, 5rem);
+  padding-bottom: clamp(2.75rem, 4.5vw, 5rem);
+}
+
+.section-tone-a {
+  background: var(--section-tone-a);
+}
+
+.section-tone-b {
+  background: var(--section-tone-b);
+}
+
+.section-tone-c {
+  background: var(--section-tone-c);
+}
+
+.text-gradient {
+  background: linear-gradient(135deg, #9db4fd 0%, #2563eb 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.button-gradient {
+  background: linear-gradient(135deg, #9db4fd 0%, #2563eb 100%);
+  color: white;
+  background-size: 140% 140%;
+  transition: transform 180ms ease, box-shadow 180ms ease, background-position 240ms ease;
+}
+
+.button-gradient:hover,
+.button-gradient:focus-visible {
+  transform: translateY(-1px);
+  background-position: 100% 0;
+  box-shadow: var(--ds-shadow-soft);
+}
+
+.tone-card {
+  border: 1px solid var(--card-border);
+  border-radius: var(--ds-radius-lg);
+  transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
+}
+
+.tone-card-base {
+  background: var(--card-bg-base);
+}
+
+.tone-card-alt {
+  background: var(--card-bg-alt);
+}
+
+.tone-card-emphasis {
+  background: var(--card-bg-emphasis);
+}
+
+.tone-card:hover {
+  transform: translateY(-2px);
+  border-color: var(--card-hover-border);
+  box-shadow: var(--card-hover-shadow);
+}
+
+.docs-flow {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.docs-hero-card {
+  padding: clamp(1.25rem, 2.2vw, 2rem);
+}
+
+.docs-kicker {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.docs-intro-copy {
+  max-width: 72ch;
+}
+
+.docs-section-card {
+  padding: clamp(1rem, 2vw, 1.75rem);
+}
+
+.docs-section-card h2 {
+  margin-top: 0;
+}
+
+.docs-flow > .side-body-sections-div:not(:nth-child(1)) {
+  margin-top: 0;
+}
+
+/* Apply card rhythm to legacy docs pages that use top-level <section> blocks. */
+.documentation-page .docs-flow > section {
+  border: 1px solid var(--card-border);
+  border-radius: var(--ds-radius-lg);
+  padding: clamp(1rem, 2vw, 1.75rem);
+  transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
+}
+
+.documentation-page .docs-flow > section:nth-of-type(odd) {
+  background: var(--card-bg-base);
+}
+
+.documentation-page .docs-flow > section:nth-of-type(even) {
+  background: var(--card-bg-alt);
+}
+
+.documentation-page .docs-flow > section:hover {
+  transform: translateY(-2px);
+  border-color: var(--card-hover-border);
+  box-shadow: var(--card-hover-shadow);
+}
+
+.documentation-page .docs-flow > section h2:first-child,
+.documentation-page .docs-flow > section h3:first-child {
+  margin-top: 0;
+}
+
+.docs-next-link {
+  border: 1px solid var(--card-border);
+  border-radius: var(--ds-radius-lg);
+  background: var(--card-bg-base);
+  transition: transform 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+}
+
+.docs-next-link:hover,
+.docs-next-link:focus-visible {
+  transform: translateY(-1px);
+  border-color: var(--card-hover-border);
+  box-shadow: var(--card-hover-shadow);
+  background-color: var(--section-tone-b);
+}
+
+.docs-table-wrap {
+  overflow-x: auto;
+  border: 1px solid var(--card-border);
+  border-radius: 0;
+  background: var(--card-bg-base);
+}
+
+.docs-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+.docs-table-nowrap {
+  white-space: nowrap;
+}
+
+.docs-thead {
+  background: var(--section-tone-b);
+}
+
+.docs-th,
+.docs-td {
+  padding: 0.7rem 0.9rem;
+  border-right: 1px solid var(--card-border);
+  border-bottom: 1px solid var(--card-border);
+  vertical-align: top;
+}
+
+.docs-th {
+  text-align: left;
+  font-weight: 600;
+  color: inherit;
+}
+
+.docs-th:last-child,
+.docs-td:last-child {
+  border-right: none;
+}
+
+.docs-table tbody tr:nth-child(even) {
+  background: var(--card-bg-alt);
+}
+
+.docs-table tbody tr:hover {
+  background: var(--section-tone-c);
+}
+
+.docs-table code {
+  color: inherit;
+}
+
+.callout-panel {
+  border-left: 3px solid #6b7280;
+  border-radius: 0;
+  
+  padding: 1rem 1rem 1rem 0.875rem;
+}
+
+.callout-title {
+  margin: 0 0 0.5rem;
+  font-size: 1.1rem;
+  font-weight: 700;
+  line-height: 1.35;
+}
+
+.callout-content > :last-child {
+  margin-bottom: 0;
+}
+
+.callout-info {
+  border-left-color: #4b89c8;
+}
+
+.callout-success {
+  border-left-color: #4f9d73;
+}
+
+.callout-danger {
+  border-left-color: #c76d6d;
+}
+
+.callout-purple {
+  border-left-color: #b36dc7;
+}
+
+.callout-neutral {
+  border-left-color: #6b7280;
+}
+
+.callout-yellow {
+    border-left-color: #f59e0b;
+}
+
+@media (max-width: 991px) {
+  .docs-flow {
+    gap: 1rem;
+  }
+
+  .docs-hero-card,
+  .docs-section-card {
+    border-radius: var(--ds-radius-md);
+  }
+}

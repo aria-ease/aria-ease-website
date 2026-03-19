@@ -41,9 +41,9 @@ const AccordionExample = () => {
   }, []);
       
   return (
-    <div className='faq-div' id='faq-div' data-test-id='accordion-group'>
+    <div className='faq-div' id='faq-div'>
             <div className='faq-each-div'>
-                <button id='make-an-appointment' className='dropdown-button'  aria-controls='makeAnAppointmentAccordion' data-test-id='accordion-trigger'>
+                <button id='make-an-appointment' className='dropdown-button'  aria-controls='makeAnAppointmentAccordion'>
                     <span className='dropdown-heading-text text-black'>How do I make an appointment?</span>
                     {openStates[0] ? 
                         <img src={openeddropdown} alt='Dropdown Icon' className='dropdown-icon-image'></img> :
@@ -56,7 +56,7 @@ const AccordionExample = () => {
             </div>
 
             <div className='faq-each-div'>
-                <button id='copy-of-record' className='dropdown-button' aria-controls='copyOfRecordsAccordion' data-test-id='accordion-trigger'>
+                <button id='copy-of-record' className='dropdown-button' aria-controls='copyOfRecordsAccordion'>
                     <span className='dropdown-heading-text text-black'>How do I get a copy of my record?</span>
                     {openStates[1] ? 
                         <img src={openeddropdown} alt='Dropdown Icon' className='dropdown-icon-image'></img> :
@@ -69,7 +69,7 @@ const AccordionExample = () => {
             </div>
 
             <div className='faq-each-div'>
-                <button id='extra-charge' className='dropdown-button' aria-controls='extraCopyChargeAccordion' data-test-id='accordion-trigger'>
+                <button id='extra-charge' className='dropdown-button' aria-controls='extraCopyChargeAccordion'>
                     <span className='dropdown-heading-text text-black'>Is there a charge for extra copies?</span>
                     {openStates[2] ? 
                         <img src={openeddropdown} alt='Dropdown Icon' className='dropdown-icon-image'></img> :

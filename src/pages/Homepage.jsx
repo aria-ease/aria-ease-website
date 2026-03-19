@@ -11,71 +11,47 @@ import AnimatedTerminalDemo from '../components/animated-terminal-demo/AnimatedT
 import { Helmet } from 'react-helmet-async';
 
 const jsoncontract = `
-"meta": {
-  "id": "aria-ease.contract.combobox.listbox",
-  "description": "ARIA Combobox with Listbox popup interaction contract. Validates the ARIA and interaction contract for a custom combobox with listbox component following the ARIA Authoring Practices Guide combobox with listbox popup pattern.",
-  "lastUpdated": "15-03-2026",
-  "version": "1.0.0",
-  "source": {
-    "apg": "https://www.w3.org/WAI/ARIA/apg/patterns/combobox/"
-  }
-},
-"selectors": {
-  "input": "[role=combobox]",
-  "listbox": "[role=listbox]",
-  "options": "[role=option]"
-},
-"observables": {
-  "observable": "focus | visible | attribute | role",
-  "target": "input | button | listbox | options | relative",
-  "relative": "first | last | next | previous"
-},
-"relationships": [
-  {
-    "type": "aria-reference",
-    "from": "input",
-    "attribute": "aria-controls",
-    "to": "listbox"
+{
+  "meta": {
+    "source": {
+      "apg": "https://www.w3.org/WAI/ARIA/apg/patterns/combobox/"
+    }
   },
-  {
-    "type": "contains",
-    "parent": "listbox",
-    "child": "options"
-  }
-],
-"static": [
-  {
-    "assertions": [
-      {
-        "target": "input",
-        "assertion": "toHaveAttribute",
-        "attribute": "role",
-        "expectedValue": "combobox",
-        "failureMessage": "Combobox input doesn't conform to the ARIA Combobox pattern as specified in APG 1.2. Input element should have 'role=combobox' attribute."
-      }
-    ]
-  }
-],
-"dynamic": [
-  {
-    "description": "Down Arrow on closed combobox opens listbox and updates ARIA expanded",
-    "action": [
-       { "type": "keypress", "target": "input", "key": "ArrowDown" }
-    ],
-    "assertions": [
-      { 
-        "target": "listbox", 
-        "assertion": "toBeVisible" 
-      },
-      {
-        "target": "input",
-        "assertion": "toHaveAttribute",
-        "attribute": "aria-expanded",
-        "expectedValue": "true"
-      }
-    ]
-  }
- ]
+  "selectors": {
+    "input": "[role=combobox]",
+    "listbox": "[role=listbox]",
+    "options": "[role=option]"
+  },
+  "observables": {...},
+  "relationships": [
+    {
+      "type": "aria-reference",
+      "from": "input",
+      "attribute": "aria-controls",
+      "to": "listbox"
+    }
+  ],
+  "static": [...],
+  "dynamic": [
+    {
+      "description": "Down Arrow on closed combobox opens listbox and updates ARIA expanded",
+      "action": [
+        { "type": "keypress", "target": "input", "key": "ArrowDown" }
+      ],
+      "assertions": [
+        { 
+          "target": "listbox", 
+          "assertion": "toBeVisible" 
+        },
+        {
+          "target": "input",
+          "assertion": "toHaveAttribute",
+          "attribute": "aria-expanded",
+          "expectedValue": "true"
+        }
+      ]
+    }
+  ]
 }`
 // eslint-disable-next-line react/prop-types
 const Homepage = ({darkMode, setDarkMode}) => {
@@ -140,12 +116,12 @@ const Homepage = ({darkMode, setDarkMode}) => {
 
       <main className="page-body-div overflow-y-auto" id="main-content">
         <section className="section-shell section-tone-a px-3">
-          <Container fluid className="homepage-above-fold-div">
+          <Container fluid className="homepage-above-fold-div px-0">
             <Row>
               <Col xs={12} sm={12} md={12} lg={8}>
                 <div className="hero-text-div pb-[50px]">
                   <h1 className="hero-heading">Accessibility infrastructure for your <span className="text-gradient">entire frontend lifecycle</span></h1>
-                  <p className="hero-paragraph mb-5 mt-4 text-[1.2rem] leading-[1.5rem]">Integrate accessibility integrity into every phase of your frontend development workflow — from reusable components to CI pipelines, Aria-Ease ensures accessibility behavior is built in, tested, and never regresses. Works with React, Vue, Svelte, or vanilla JavaScript.</p>
+                  <p className="hero-paragraph mb-5 mt-4 text-[1.2rem] leading-[1.5rem]">Integrate accessibility integrity into every phase of your frontend development workflow — from reusable component utilities to CI pipelines, Aria-Ease ensures accessibility behavior is built in, tested, and never regresses. Works with React, Vue, Svelte, or vanilla JavaScript.</p>
                   <div className="flex items-center gap-4 flex-wrap">
                     <Link onClick={saveScrollPosition} to='/docs' className="px-4 sm:px-8 h-12 flex items-center justify-center button-gradient shadow-xl rounded-lg text-white">Get Started</Link>
                     <Link className="hero-explore px-4 sm:px-8 rounded-lg" onClick={saveScrollPosition} to='/utilities/accordion'>
@@ -279,7 +255,7 @@ const Homepage = ({darkMode, setDarkMode}) => {
           </div>
 
           <div className="mt-12">
-              <Container fluid>
+              <Container fluid className="px-0">
                 <Row className="g-4">
                   <Col md={6} lg={6}>
                     <div className="p-4 rounded-lg tone-card tone-card-base h-full">
@@ -293,20 +269,7 @@ const Homepage = ({darkMode, setDarkMode}) => {
                       
                     </div>
                   </Col>
-                  
-                  <Col md={6} lg={6}>
-                    <div className="p-4 rounded-lg tone-card tone-card-alt h-full">
-                      <div className="flex items-center gap-2 mb-3">
-                        <div className="w-10 h-10 rounded-full bg-blue-100 dark:bg-blue-900/10 flex items-center justify-center">
-                          <span className="material-symbols-outlined text-2xl leading-none text-blue-600" aria-hidden="true">warning</span>
-                        </div>
-                        <h3 className="font-bold black-white-text text-xl font-bold">Manual & Inconsistent</h3>
-                      </div>
-                      <p className="text-sm black-grey-text mb-2">Teams rely on ad hoc checklists and scattered reviews, which means accessibility coverage varies from component to component and sprint to sprint.</p>
-                      
-                    </div>
-                  </Col>
-                  
+                                  
                   <Col md={6} lg={6}>
                     <div className="p-4 rounded-lg tone-card tone-card-alt h-full">
                       <div className="flex items-center gap-2 mb-3">
@@ -321,7 +284,7 @@ const Homepage = ({darkMode, setDarkMode}) => {
                   </Col>
                   
                   <Col md={6} lg={6}>
-                    <div className="p-4 rounded-lg tone-card tone-card-base h-full">
+                    <div className="p-4 rounded-lg tone-card tone-card-alt h-full">
                       <div className="flex items-center gap-2 mb-3">
                         <div className="w-10 h-10 rounded-full bg-green-100 dark:bg-green-900/10 flex items-center justify-center">
                           <span className="material-symbols-outlined text-2xl leading-none text-green-600" aria-hidden="true">autorenew</span>
@@ -349,7 +312,7 @@ const Homepage = ({darkMode, setDarkMode}) => {
               </Container>
             </div>
 
-            <Container fluid className="mt-[70px]">
+            <Container fluid className="mt-[70px] px-0">
             <div className="text-center mb-12">
               <p className="text-sm font-semibold uppercase tracking-wider black-grey-text">The Solution</p>
               <h2 className="black-white-text text-3xl font-bold mb-4 mt-3 text-balance tracking-tight text-foreground sm:text-4xl">The Aria-Ease Accessibility Lifecycle</h2>
@@ -369,7 +332,7 @@ const Homepage = ({darkMode, setDarkMode}) => {
                         <h3 className="font-bold black-white-text text-xl font-bold">Design & Build</h3>
                       </div>
                       <p className="text-sm black-grey-text mb-2">Lightweight component utilities with automatic roles, ARIA, and interaction management</p>
-                      <code className="text-xs text-purple-600 dark:text-purple-400">makeMenuAccessible(), makeTabsAccessible()</code>
+                      <code className="text-xs text-purple-600 dark:text-purple-400">make*Accessible()</code>
                     </div>
                   </Col>
                   
@@ -381,7 +344,7 @@ const Homepage = ({darkMode, setDarkMode}) => {
                         </div>
                         <h3 className="font-bold black-white-text text-xl font-bold">Verify Behavior</h3>
                       </div>
-                      <p className="text-sm black-grey-text mb-2">Contract testing validates WAI-ARIA roles, ARIA states, and patterns </p>
+                      <p className="text-sm black-grey-text mb-2">Contract testing validates deterministic ARIA component behaviors and interaction patterns </p>
                       <code className="text-xs text-blue-600 dark:text-blue-400">npx aria-ease test</code>
                     </div>
                   </Col>
@@ -446,9 +409,9 @@ const Homepage = ({darkMode, setDarkMode}) => {
         <hr className="landing-hr"></hr>
 
 <section className="section-shell section-tone-c px-3">
-<div className="max-w-7xl mx-auto px-3 sm:px-6">
+<div className="max-w-7xl mx-auto">
 <div className="mb-16">
-<span className="black-grey-text font-label text-sm font-bold tracking-widest uppercase mb-4 block">Infrastructure Layers</span>
+<span className="black-grey-text font-label text-sm font-bold tracking-widest uppercase mb-3 block">Infrastructure Layers</span>
 <h2 className="text-4xl font-bold tracking-tight black-white-text">Purpose-built for speed.</h2>
 </div>
 <div className="grid grid-cols-1 md:grid-cols-4 lg:grid-cols-4 gap-6">
@@ -492,14 +455,14 @@ const Homepage = ({darkMode, setDarkMode}) => {
 </div>
 
 <h3 className="text-xl font-bold mb-3 black-white-text">Contract Testing</h3>
-<p className="text-sm black-grey-text">Aria-Ease defines accessibility behavior as JSON contracts. Contracts drive utilities, tests, and docs—everything flows from one source of truth.</p>
+<p className="text-sm black-grey-text">Aria-Ease defines deterministic ARIA component behaviors as JSON contracts. Contracts drive utilities, tests, and docs—everything flows from one source of truth.</p>
 <p className="text-xs mt-3 black-grey-text">CI/CD: Enforce ARIA contracts in pipelines to prevent accessibility regressions.</p>
 </div>
 
   <div className="md:col-span-4 lg:col-span-3 p-8 rounded-2xl flex flex-col md:flex-row gap-8 items-center tone-card tone-card-alt">
     <div className="flex-1">
     <h3 className="text-2xl font-bold mb-2 black-white-text">Built for Performance</h3>
-    <p className="black-grey-text">Aria-Ease ensures performance by separating concerns: lightweight component utilities, CLI audits for static scans, contract tests for repeatable verification, and CI/CD enforcement for early failure.</p>
+    <p className="black-grey-text">Aria-Ease ensures performance by separating concerns: lightweight component utilities, CLI audits for static scans, contract tests with isolated component architecture for repeatable verification, and CI/CD enforcement for early failure.</p>
     </div>
     <div className="flex gap-8">
     <div className="text-right">
@@ -519,7 +482,7 @@ const Homepage = ({darkMode, setDarkMode}) => {
         <hr className="landing-hr"></hr>
 
         <section className="section-shell section-tone-b px-3">
-          <Container fluid>
+          <Container fluid className="px-0">
             <div className="mx-auto max-w-3xl text-center mb-12">
               <p className="text-sm font-semibold uppercase tracking-wider black-grey-text">Contract-First Workflow</p>
               <h2 className="black-white-text text-3xl font-bold mb-4 mt-3 text-balance tracking-tight text-foreground sm:text-4xl">Define Accessibility Behavior as Code</h2>
@@ -530,26 +493,8 @@ const Homepage = ({darkMode, setDarkMode}) => {
               <Col lg={6} md={12}>
                 <div className="p-6 rounded-xl h-full tone-card tone-card-base flex flex-col">
                   <h3 className="text-2xl font-bold mb-4 black-white-text">One Contract, Multiple Outputs</h3>
-                  <p className="black-grey-text mb-5">Aria-Ease treats accessibility behavior like product logic, not checklist debt. The team writes one contract per component pattern, then reuses it to power implementation, testing, and governance.</p>
-
-                  <div className="p-4 rounded-lg tone-card tone-card-alt mb-5">
-                    <p className="text-sm font-semibold uppercase tracking-wide black-white-text mb-3">How It Works</p>
-                    <div className="space-y-3">
-                      <div className="flex items-start gap-3">
-                        <span className="w-6 h-6 rounded-full bg-purple-100 dark:bg-purple-900/10 text-purple-600 text-xs font-bold flex items-center justify-center mt-0.5">1</span>
-                        <p className="text-sm black-grey-text"><span className="font-semibold black-white-text">Encode behavior once:</span> APG expectations are captured in a public JSON contract.</p>
-                      </div>
-                      <div className="flex items-start gap-3">
-                        <span className="w-6 h-6 rounded-full bg-blue-100 dark:bg-blue-900/10 text-blue-600 text-xs font-bold flex items-center justify-center mt-0.5">2</span>
-                        <p className="text-sm black-grey-text"><span className="font-semibold black-white-text">Execute behavior tests:</span> Aria-Ease runs the contract against real keyboard and focus interactions.</p>
-                      </div>
-                      <div className="flex items-start gap-3">
-                        <span className="w-6 h-6 rounded-full bg-green-100 dark:bg-green-900/10 text-green-600 text-xs font-bold flex items-center justify-center mt-0.5">3</span>
-                        <p className="text-sm black-grey-text"><span className="font-semibold black-white-text">Gate regressions in CI:</span> diffs surface behavior drift before merge, not after release.</p>
-                      </div>
-                    </div>
-                  </div>
-
+                  <p className="black-grey-text mb-5">Aria-Ease treats accessibility behavior like product logic, not checklist debt. The team writes one contract per component pattern, then reuses it to power utility implementation, component testing, and governance.</p>
+                
                   <div className="space-y-4">
                     <div className="flex items-start gap-3">
                       <span className="material-symbols-outlined text-[20px] leading-none text-purple-600 mt-1" aria-hidden="true">construction</span>
@@ -574,10 +519,6 @@ const Homepage = ({darkMode, setDarkMode}) => {
                     </div>
                   </div>
 
-                  <div className="mt-5 p-4 rounded-lg border border-black/10 dark:border-white/10 bg-white/40 dark:bg-black/10">
-                    <p className="font-semibold black-white-text mb-2">Why This Is a Gamechanger</p>
-                    <p className="text-sm black-grey-text">Most teams only validate static WCAG issues. Aria-Ease validates runtime behavior contracts, including key presses, focus movement, and ARIA state transitions. That shifts accessibility from late QA rework to predictable engineering signals during development.</p>
-                  </div>
 
                   <div className="mt-10">
                     <AnimatedTerminalDemo
@@ -600,10 +541,10 @@ const Homepage = ({darkMode, setDarkMode}) => {
                   </div>
 
                   <div className="mt-auto pt-6">
-                    <p className="text-sm font-semibold black-white-text">Try The Workflow</p>
-                    <p className="text-sm black-grey-text mt-1">Start with Aria-Ease&#39;s contract-powered behavior testing that&#39;s as fast as unit testing.</p>
+                    <p className="text-sm font-semibold black-white-text">Test Your ARIA Components</p>
+                    <p className="text-sm black-grey-text mt-1">Start with Aria-Ease&#39;s contract-powered deterministic ARIA component behavior testing.</p>
                     <div className="flex flex-wrap gap-3 mt-4">
-                      <Link onClick={saveScrollPosition} to='/testing' className="px-4 sm:px-6 h-11 flex items-center justify-center button-gradient shadow-xl rounded-lg text-white">Try Contract Testing Suite</Link>
+                      <Link onClick={saveScrollPosition} to='/testing' className="px-4 sm:px-6 h-11 flex items-center justify-center button-gradient shadow-xl rounded-lg text-white">Test Your Components</Link>
                     </div>
                   </div>
                 </div>

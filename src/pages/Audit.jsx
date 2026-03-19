@@ -7,6 +7,7 @@ import './homepage.css';
 import * as Block from 'aria-ease/block';
 import SideNav from "../components/SideNav";
 import CodeBlockDemo from '../components/CodeBlock';
+import CalloutPanel from '../components/CalloutPanel';
 import { CheckCircle, AlertCircle, ChevronRightCircleIcon } from 'lucide-react';
 import { Helmet } from 'react-helmet-async';
 
@@ -158,7 +159,7 @@ const Audit = ({ darkMode, setDarkMode }) => {
     <div className="home-body" id="inner-body-div">
       <Helmet>
             <title>Accessibility Audit | Aria-Ease</title>
-            <meta name="description" content="Automated accessibility testing powered by axe-core and Playwright. Generate comprehensive HTML or JSON reports to identify and fix accessibility issues in your web applications." />
+            <meta name="description" content="Automated static accessibility testing powered by axe-core and Playwright. Generate comprehensive HTML, CSV, or JSON reports to identify and fix accessibility issues in your frontend applications." />
           </Helmet>
           <a
         href="#main-content"
@@ -177,20 +178,23 @@ const Audit = ({ darkMode, setDarkMode }) => {
         resultsVisible={resultsVisible}
         setResultsVisible={setResultsVisible}
       />
-      <main className="page-body-div" id="main-content">
+      <main className="page-body-div documentation-page section-tone-a" id="main-content">
         <Container fluid>
           <Row>
             <SideNav page={page}/>
             <Col xs={12} sm={12} md={12} lg={9} className='px-0'>
-              <div className='side-body-div'>
-                <h1 className='component-example-heading'>Accessibility Audit</h1>
-                <p className='mt-2'>Automated accessibility testing powered by axe-core and Playwright. Generate comprehensive HTML or JSON reports to identify and fix accessibility issues in your web applications.</p>
+              <div className='side-body-div docs-flow'>
+                <div className='side-body-sections-div tone-card tone-card-emphasis docs-hero-card'>
+                  <span className='docs-kicker black-grey-text'>Documentation</span>
+                  <h1 className='introduction-heading black-white-text'>Accessibility <span className='text-gradient'>Audit</span></h1>
+                  <p className='mt-2 docs-intro-copy'>Automated static accessibility testing powered by axe-core and Playwright. Generate comprehensive HTML, CSV, or JSON reports to identify and fix accessibility issues in your frontend applications.</p>
+                </div>
 
                 <div className='mt-6'>
                   <h2 className='text-3xl font-bold mb-4'>Features</h2>
                   <ul className='list-disc ml-6 mt-2'>
                     <li>Automated accessibility testing using axe-core</li>
-                    <li>Beautiful HTML reports with detailed issue breakdowns</li>
+                    <li>HTML reports with detailed issue breakdowns</li>
                     <li>JSON output for CI/CD integration</li>
                     <li>CSV output for spreadsheet analysis and quick summaries</li>
                     <li>Multi-page testing support</li>
@@ -198,17 +202,14 @@ const Audit = ({ darkMode, setDarkMode }) => {
                   </ul>
                 </div>
 
-                <div className={`mt-6 p-4 rounded-lg border-l-4 border-blue-500 ${darkMode ? 'bg-blue-900/20' : 'bg-blue-50'}`}>
+                <CalloutPanel title='Important: Playwright Setup Required' tone='info'>
                   <div className='flex items-start gap-3'>
-                    <AlertCircle className={`h-5 w-5 ${darkMode ? 'text-blue-100' : 'text-blue-800'} mt-0.5`} />
-                    <div>
-                      <h3 className={`font-semibold ${darkMode ? 'text-blue-100' : 'text-blue-800'}`}>Important: Playwright Setup Required</h3>
-                      <p className={`mt-1 ${darkMode ? 'text-blue-100' : 'text-blue-800'}`}>The audit CLI uses Playwright for browser automation. You&apos;ll need to install Playwright browsers before running your first audit. This is a one-time setup step.</p>
-                    </div>
+                    <AlertCircle className='h-5 w-5 mt-0.5' />
+                    <p className='mt-1'>The audit CLI uses Playwright for browser automation. You&apos;ll need to install Playwright browsers before running your first audit. This is a one-time setup step.</p>
                   </div>
-                </div>
+                </CalloutPanel>
 
-                <section className='mt-10'>
+                <section>
                   <h2 className='text-3xl font-bold mb-4'>Installation & Setup</h2>
                   <p className='mt-2'>First, install aria-ease and Playwright as dev dependencies:</p>
                   <CodeBlockDemo code={packageJsonCode} isLineNumber={true}/>
@@ -216,17 +217,17 @@ const Audit = ({ darkMode, setDarkMode }) => {
                   <p className='mt-4'>Then install Playwright browsers (one-time setup):</p>
                   <CodeBlockDemo code={installCode} isLineNumber={true}/>
 
-                  <div className={`mt-4 p-3 rounded ${darkMode ? 'bg-green-900/20 border-green-800' : 'bg-green-50 border-green-200'} border`}>
+                  <CalloutPanel tone='success' className='mt-4'>
                     <div className='flex items-start gap-2'>
-                      <CheckCircle className={`h-4 w-4 ${darkMode ? 'text-green-400' : 'text-green-600'} mt-0.5`} />
-                      <p className={`text-sm ${darkMode ? 'text-green-100' : 'text-green-800'}`}>
-                        <strong>Pro tip:</strong> Only install <code className='px-1 py-0.5 bg-green-900 text-white rounded text-xs'>chromium</code> to save disk space (~200MB). The audit tool only needs one browser.
+                      <CheckCircle className='h-4 w-4 mt-0.5' />
+                      <p className='text-sm'>
+                        <strong>Pro tip:</strong> Only install <code className='px-1 py-0.5 text-xs'>chromium</code> to save disk space (~200MB). The audit tool only needs one browser.
                       </p>
                     </div>
-                  </div>
+                  </CalloutPanel>
                 </section>
 
-                <section className='mt-10'>
+                <section>
                   <h2 className='text-3xl font-bold mb-4'>Configuration</h2>
                   <p className='mt-2'>Create a configuration file in your project root. Aria-Ease supports multiple formats with automatic detection and validation:</p>
                   <CodeBlockDemo code={configCode} isLineNumber={true}/>
@@ -255,7 +256,7 @@ const Audit = ({ darkMode, setDarkMode }) => {
                   </div>
                 </section>
 
-                <section className='mt-10'>
+                <section>
                   <h2 className='text-3xl font-bold mb-4'>Usage</h2>
                   <p className='mt-2'>To run an audit with a configuration file: </p>
                   <CodeBlockDemo code={'npx aria-ease audit'}/>
@@ -273,7 +274,7 @@ const Audit = ({ darkMode, setDarkMode }) => {
                   </div>
                 </section>
 
-                <section className='mt-10'>
+                <section>
                   <h2 className='text-3xl font-bold mb-4'>Troubleshooting</h2>
                   
                   <div className='mt-3'>
@@ -319,7 +320,7 @@ const Audit = ({ darkMode, setDarkMode }) => {
                   </div>
                 </section>
 
-                <section className='mt-10'>
+                <section>
                   <h2 className='text-3xl font-bold mb-4'>Best Practices</h2>
                   <ul className='list-disc ml-6 mt-2'>
                     <li>Run audits regularly as part of your development workflow</li>
@@ -330,7 +331,7 @@ const Audit = ({ darkMode, setDarkMode }) => {
                   </ul>
                 </section>
 
-                <section className='mt-[100px]'>
+                <section>
                   <h2 className='text-3xl font-bold mb-4'>CI/CD Integration</h2>
                   <p className='mb-4'>Integrate accessibility testing into your continuous integration pipeline.</p>
 
@@ -345,18 +346,18 @@ const Audit = ({ darkMode, setDarkMode }) => {
 }`} isLineNumber={true}/>
                 </section>
 
-                <div className='flex flex-wrap gap-4 py-4 mx-auto max-w-7xl md:py-12 mt-[100px] justify-between'>
-                    <a href='/utilities/toggle-button' className='block-interactive next-link rounded-lg md:min-w-80 md:max-w-md w-full md:w-auto flex gap-6 items-center px-4 py-6 md:px-5'>
+                <div className='flex flex-wrap gap-2 py-4 max-w-7xl md:py-12 mt-[100px] justify-between'>
+                    <a href='/utilities/toggle-button' className='block-interactive next-link docs-next-link rounded-lg md:min-w-80 md:max-w-md w-full md:w-auto flex gap-6 items-center px-4 py-6 md:px-5'>
                       <ChevronRightCircleIcon className='rotate-180'/>
                       <div className='flex flex-col w-full'>
                         <span className='text-sm black-white-text'>Prev</span>
                         <span className='next-link-text text-md'>Toggle Button</span>
                       </div>
                     </a>
-                    <a href='/testing' className='block-interactive next-link rounded-lg md:min-w-80 md:max-w-md w-full md:w-auto flex gap-6 items-center px-4 py-6 md:px-5'>
+                    <a href='/testing' className='block-interactive next-link docs-next-link rounded-lg md:min-w-80 md:max-w-md w-full md:w-auto flex gap-6 items-center px-4 py-6 md:px-5'>
                       <div className='flex flex-col w-full items-end'>
                         <span className='text-sm black-white-text'>Next</span>
-                        <span className='next-link-text text-md'>Testing Suite</span>
+                        <span className='next-link-text text-md'>Component Testing</span>
                       </div>
                       <ChevronRightCircleIcon/>
                     </a>
