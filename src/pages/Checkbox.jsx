@@ -5,6 +5,7 @@ import SlideOutNav from '../components/SlideOutNav';
 import SideNav from '../components/SideNav';
 import { Container, Row, Col } from 'react-bootstrap';
 import CodeBlockDemo from '../components/CodeBlock';
+import CalloutPanel from '../components/CalloutPanel';
 import ScrollTracker from '../components/ScrollTracker';
 import { ChevronRightCircleIcon } from 'lucide-react';
 import { Helmet } from 'react-helmet-async';
@@ -99,27 +100,28 @@ checkboxInstance.cleanup()                   // Remove all listeners`;
         <ScrollTracker page={page}/>
         <Header page={page} darkMode={darkMode} setDarkMode={setDarkMode} showDropdownPage={showDropdownPage} setShowDropdownPage={setShowDropdownPage} resultsVisible={resultsVisible} setResultsVisible={setResultsVisible}/>
         
-        <main className='page-body-div' id="main-content">
+        <main className='page-body-div documentation-page section-tone-a' id="main-content">
           <Container fluid>
             <Row>
               <SideNav page={page}/>
               <Col xs={12} sm={12} md={12} lg={9} className='px-0'>
-                <div className='side-body-div'>
-                  <h1 className='component-example-heading'>Checkbox</h1>
+                <div className='side-body-div docs-flow'>
+                  <div className='side-body-sections-div tone-card tone-card-emphasis docs-hero-card'>
+                    <span className='docs-kicker black-grey-text'>Documentation</span>
+                    <h1 className='introduction-heading black-white-text'>Checkbox <span className='text-gradient'>Utility</span></h1>
+                    <p className='mt-2 docs-intro-copy'>A checkbox is an interactive form control that allows users to make binary choices (checked or not checked) by clicking or tapping a square box. When checked, the box typically displays a checkmark or tick symbol, providing a visual indication of the user&#39;s choice while maintaining accessibility through ARIA attributes for assistive technology users.</p>
+                  </div>
 
-                  <p className='mt-2'>A checkbox is an interactive form control that allows users to make binary choices (checked or not checked) by clicking or tapping a square box. When checked, the box typically displays a checkmark or tick symbol, providing a visual indication of the user&#39;s choice while maintaining accessibility through ARIA attributes for assistive technology users.</p>
-
-                  <section className={`mt-6 p-4 rounded-lg border-l-4 border-blue-500 ${darkMode ? 'bg-blue-900/20' : 'bg-blue-50'}`}>
-                    <h2 className={`font-semibold ${darkMode ? 'text-blue-100' : 'text-blue-900'}`}>Bundle Size</h2>
-                    <p className={`mt-2 ${darkMode ? 'text-blue-100' : 'text-blue-900'}`}>The checkbox component is tree-shakable and weighs approximately <strong>6.0KB</strong> when imported individually.</p>
-                    <code className={`block mt-2 p-2 ${darkMode ? 'bg-blue-900/20' : 'bg-blue-100'} rounded text-sm`}>
+                  <CalloutPanel title='Bundle Size' tone='info'>
+                    <p className='mt-2'>The checkbox component is tree-shakable and weighs approximately <strong>6.0KB</strong> when imported individually.</p>
+                    <code className='block mt-2 p-2 text-sm'>
                       <p>import * as Checkbox from &quot;aria-ease/checkbox&quot;;</p>
                       <p className='my-4'>or</p>
                       <p>import &#123; makeCheckboxAccessible &#125; from &quot;aria-ease/checkbox&quot;;</p>
                     </code>
-                  </section>
+                  </CalloutPanel>
 
-                  <section className='mt-10'>
+                  <section>
                     <h2>Features</h2>
                     <ul className='list-disc ml-6 mt-2'>
                       <li>✨ Automatic ARIA attribute management</li>
@@ -129,7 +131,7 @@ checkboxInstance.cleanup()                   // Remove all listeners`;
                     </ul>
                   </section>
 
-                  <section className='mt-10'>
+                  <section>
                         <h2>Common Use Cases</h2>
                         <ul className='list-disc ml-6 mt-2'>
                           <li>Terms and conditions acceptance</li>
@@ -139,7 +141,7 @@ checkboxInstance.cleanup()                   // Remove all listeners`;
                         </ul>
                   </section>
 
-                  <section className='mt-10'>
+                  <section>
                     <h2>WAI-ARIA Roles, States, and Properties</h2>
                     <ul className='list-disc ml-6 mt-2'>
                       <li>The checkbox has role checkbox.</li>
@@ -157,7 +159,7 @@ checkboxInstance.cleanup()                   // Remove all listeners`;
                     </ul>
                   </section>
 
-                  <section className='mt-10'>
+                  <section>
                     <h2>What the Utility Handles Automatically</h2>
                     <p className='mt-2'>The <code>makeToggleAccessible</code> utility automatically sets and manages all required ARIA attributes:</p>
                     <ul className='list-disc ml-6 mt-2'>
@@ -169,7 +171,7 @@ checkboxInstance.cleanup()                   // Remove all listeners`;
                     <p className='mt-2'>You only need to provide the HTML structure with IDs and class names.</p>
                   </section>
 
-                  <section className='mt-10'>
+                  <section>
                     <h2>Checkbox Groups</h2>
                       <p className='mt-2'>When grouping multiple checkboxes:</p>
                       <ul className='list-disc ml-6 mt-2'>
@@ -180,23 +182,22 @@ checkboxInstance.cleanup()                   // Remove all listeners`;
                       </ul>
                   </section>
 
-                  <section className='mt-10'>
+                  <section>
                     <h2 className='mt-10 break-words'>makeCheckboxAccessible()</h2>
                     <p className='mt-2'>The <code>makeCheckboxAccessible()</code> function automatically manages checkbox group accessibility, including ARIA attributes, keyboard interaction, and state management.</p>
                     <p className='mt-2'>This function handles all the complexity of making checkboxes accessible - it sets up proper ARIA attributes, manages focus, and provides keyboard interaction (Space). You no longer need to manually track state or update ARIA attributes.</p>
 
-                    <div className={`mt-6 p-4 rounded-lg border-l-4 border-green-500 ${darkMode ? 'bg-green-900/20' : 'bg-green-50'}`}>
-                      <h3 className={`font-semibold ${darkMode ? 'text-green-100' : 'text-green-900'}`}>✨ Key Features</h3>
-                      <ul className={`list-disc ml-6 mt-2 ${darkMode ? 'text-green-100' : 'text-green-900'}`}>
+                    <CalloutPanel title='Key Features' tone='success' className='mt-6' titleAs='h3'>
+                      <ul className='list-disc ml-6 mt-2'>
                         <li>Automatic ARIA attribute management</li>
                         <li>State query methods (getCheckedStates, getCheckedIndices)</li>
                         <li>Automatic cleanup on unmount</li>
                         <li>No manual state management required</li>
                       </ul>
-                    </div>
+                    </CalloutPanel>
                   </section>
 
-                  <section className='mt-10'>
+                  <section>
                     <p className='mb-2'>Import the function:</p>
                       <CodeBlockDemo code={importGroupCheckboxes}/>
                       <p>or</p>
@@ -213,14 +214,14 @@ checkboxInstance.cleanup()                   // Remove all listeners`;
                   </section>
 
 
-                  <section className='mt-10'>
+                  <section>
                     <h2>Keyboard Interaction</h2>
                       <ul className='list-disc ml-6 mt-2'>
                         <li><code>Space</code> - Toggle checkbox</li>
                       </ul>
                   </section>
 
-                  <section className='mt-10'>
+                  <section>
                     <h2>Label and Input Relationship</h2>
                         <p className='mt-2'>Proper labeling is crucial for accessibility:</p>
                         <ul className='list-disc ml-6 mt-2'>
@@ -231,7 +232,7 @@ checkboxInstance.cleanup()                   // Remove all listeners`;
                         </ul>
                   </section>
 
-                  <section className='mt-10'>
+                  <section>
                     <h2>Visual Design Best Practices</h2>
                     <ul className='list-disc ml-6 mt-2'>
                       <li>Minimum touch target size: 44x44 pixels</li>
@@ -241,15 +242,15 @@ checkboxInstance.cleanup()                   // Remove all listeners`;
                     </ul>
                   </section>
 
-                    <div className='flex flex-wrap gap-4 py-4 mx-auto max-w-7xl md:py-12 mt-[100px] justify-between'>
-                    <a href='/utilities/block' className='block-interactive next-link rounded-lg md:min-w-80 md:max-w-md w-full md:w-auto flex gap-6 items-center px-4 py-6 md:px-5'>
+                    <div className='flex flex-wrap gap-2 py-4 max-w-7xl md:py-12 mt-[100px] justify-between'>
+                    <a href='/utilities/block' className='block-interactive next-link docs-next-link rounded-lg md:min-w-80 md:max-w-md w-full md:w-auto flex gap-6 items-center px-4 py-6 md:px-5'>
                       <ChevronRightCircleIcon className='rotate-180'/>
                       <div className='flex flex-col w-full'>
                         <span className='text-sm black-white-text'>Prev</span>
                         <span className='next-link-text text-md'>Block</span>
                       </div>
                     </a>
-                    <a href='/utilities/combobox' className='block-interactive next-link rounded-lg md:min-w-80 md:max-w-md w-full md:w-auto flex gap-6 items-center px-4 py-6 md:px-5'>
+                    <a href='/utilities/combobox' className='block-interactive next-link docs-next-link rounded-lg md:min-w-80 md:max-w-md w-full md:w-auto flex gap-6 items-center px-4 py-6 md:px-5'>
                       <div className='flex flex-col w-full items-end'>
                         <span className='text-sm black-white-text'>Next</span>
                         <span className='next-link-text text-md'>Combobox</span>

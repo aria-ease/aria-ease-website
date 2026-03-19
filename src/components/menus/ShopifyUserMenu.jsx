@@ -38,7 +38,6 @@ const ShopifyUserMenu = () => {
         <button 
             className="merchant-profile-menu-button rounded-[8px] w-[150px] pt-[2px] pr-[2px] pb-[2px] pl-2 gap-2 grid items-center" 
             id="merchant-profile-menu-button" 
-            data-test-id="menu-trigger" 
             aria-label="Merchant profile menu, Davii Collections"
         >
             <span className='whitespace-nowrap font-[500] text-[13px] leading-[18px]'>Davii Collections</span>
@@ -50,7 +49,6 @@ const ShopifyUserMenu = () => {
         <div 
             className="merchant-dropdown-menu rounded-[14px] w-[308px] bg-white z-[1] mt-2 py-[6px] px-0 top-[38px] left-0 absolute" 
             id="merchant-dropdown-menu" 
-            data-test-id="menu"
             aria-labelledby="merchant-profile-menu-button"
         >
             <div className="py-0 px-[6px]">

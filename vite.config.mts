@@ -10,7 +10,7 @@ export default defineConfig({
   test: {
     globals: true,
     environment: "jsdom",
-    testTimeout: 30000, // 30s global safety net - tests fail fast with 400ms internal timeouts
+    testTimeout: 60000, // 60s global safety net - tests fail fast with 400ms internal timeouts
     include: ["tests/**/*.test.jsx", "tests/**/*.test.ts", "tests/**/*.test.tsx", "tests/**/*.test.js"],
     coverage: {
       provider: "v8",

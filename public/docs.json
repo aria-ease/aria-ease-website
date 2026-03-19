@@ -40,7 +40,7 @@
         "url": "/changelog"
     },
     {
-        "title": "Runtime Audit CLI",
+        "title": "Static Audit",
         "content": "Automated Accessibility Audit. Automated Accessibility Testing. Identify and fix accessibility issues. Development and Deployment workflow. CI/CD. utility",
         "url": "/audit"
     },

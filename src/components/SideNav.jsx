@@ -38,8 +38,8 @@ const SideNav = ({page}) => {
         </div>
         <div className='side-nav-links-section'>
           <p>Tools & Quality</p>
-          <Link onClick={saveScrollPosition} to='/audit' aria-label="Navigate to audit page" className={`side-nav-link ${(page === 'audit') ? 'active-nav-link' : ''} ${(window.innerWidth >= 992) ? 'block-interactive' : ''}`}>Runtime Audit CLI</Link>
-          <Link onClick={saveScrollPosition} to='/testing' aria-label="Navigate to component testing page" className={`side-nav-link ${(page === 'testing') ? 'active-nav-link' : ''} ${(window.innerWidth >= 992) ? 'block-interactive' : ''}`} style={{marginTop: '12px'}}>Testing Suite</Link>
+          <Link onClick={saveScrollPosition} to='/audit' aria-label="Navigate to audit page" className={`side-nav-link ${(page === 'audit') ? 'active-nav-link' : ''} ${(window.innerWidth >= 992) ? 'block-interactive' : ''}`}>Static Audit</Link>
+          <Link onClick={saveScrollPosition} to='/testing' aria-label="Navigate to component testing page" className={`side-nav-link ${(page === 'testing') ? 'active-nav-link' : ''} ${(window.innerWidth >= 992) ? 'block-interactive' : ''}`} style={{marginTop: '12px'}}>Component Testing</Link>
         </div>
         <div className='side-nav-links-section'>
           <p>Project</p>

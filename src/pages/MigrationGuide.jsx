@@ -6,6 +6,7 @@ import SlideOutNav from '../components/SlideOutNav';
 import * as Block from 'aria-ease/block';
 import CodeBlockDemo from '../components/CodeBlock';
 import ScrollTracker from '../components/ScrollTracker';
+import CalloutPanel from '../components/CalloutPanel';
 import { CheckCircleIcon, ChevronRightCircleIcon } from 'lucide-react';
 import { Helmet } from 'react-helmet-async';
 
@@ -65,25 +66,27 @@ const MigrationGuide = ({darkMode, setDarkMode}) => {
         setResultsVisible={setResultsVisible}
       />
       
-      <main className='page-body-div' id="main-content">
+      <main className='page-body-div documentation-page section-tone-a' id="main-content">
         <Container fluid>
           <Row>
             <SideNav page={page}/>
             <Col xs={12} sm={12} md={12} lg={9} className='px-0'>
-              <div className='side-body-div'>
-                <h1 className='introduction-heading'>Migration Guide</h1>
-                <p className='mt-2'>Upgrade your Aria-Ease implementation to the latest version with confidence.</p>
+              <div className='side-body-div docs-flow'>
+                <div className='side-body-sections-div tone-card tone-card-emphasis docs-hero-card'>
+                  <span className='docs-kicker black-grey-text'>Upgrade Path</span>
+                  <h1 className='introduction-heading black-white-text'>Migration <span className='text-gradient'>Guide</span></h1>
+                  <p className='mt-2 docs-intro-copy'>Upgrade your Aria-Ease implementation to the latest version with confidence.</p>
+                </div>
 
                 {/* v5.0.0 Migration */}
-                <section className='mt-10'>
+                <section className='side-body-sections-div tone-card tone-card-base docs-section-card'>
                   <h2 className='text-3xl font-bold mb-4'>Migrating to v5.0.0</h2>
-                  <div className='mb-8 p-4 rounded-lg border-l-4 border-red-500 bg-red-50'>
-                    <h3 className={`text-xl font-semibold mb-3 text-red-900`}>⚠️ Breaking Changes</h3>
-                    <p className="text-red-800 mb-2">
-                      The <code style={{ color: '#b91c1c', backgroundColor: '#fef2f2', padding: '0.1em 0.3em', borderRadius: '0.2em' }}>update*AriaAttributes</code> utilities have been <strong>removed</strong> in v5.0.0. You must migrate to the new <code style={{ color: '#b91c1c', backgroundColor: '#fef2f2', padding: '0.1em 0.3em', borderRadius: '0.2em' }}>make*Accessible</code> APIs for all components.
+                  <CalloutPanel tone='danger' title='Breaking Changes' className='mb-8' titleAs='h3'>
+                    <p className='mb-2'>
+                      The <code>update*AriaAttributes</code> utilities have been <strong>removed</strong> in v5.0.0. You must migrate to the new <code>make*Accessible</code> APIs for all components.
                     </p>
-                    <p className="text-red-800">See the <a href="/changelog" className="text-blue-700 underline">changelog</a> for full details.</p>
-                  </div>
+                    <p>See the <a href="/changelog" className="text-link-contrast underline">changelog</a> for full details.</p>
+                  </CalloutPanel>
                   <div className='mb-8'>
                     <h3 className={`text-xl font-semibold mb-3 ${darkMode ? 'text-green-300' : 'text-green-800'}`}>✅ Migration Steps</h3>
                     <ol className='list-decimal ml-6 space-y-2'>
@@ -115,7 +118,7 @@ const MigrationGuide = ({darkMode, setDarkMode}) => {
                 
 
                 {/* v1.x to v2.x */}
-                <section className='mt-[100px]'>
+                <section className='side-body-sections-div tone-card tone-card-alt docs-section-card'>
                   <h2 className='text-3xl font-bold mb-4'>Migrating to v5.x</h2>
                   <p className='mb-6'>Version 5.0.0 introduces new features and API improvements. API changes are breaking and require code updates.</p>
 
@@ -223,7 +226,7 @@ echo "✅  menuElementsClass → menuItemsClass replacements complete"`}/>
                 </section>
 
                 {/* Best Practices */}
-                <section className='mt-[100px] dark:border-gray-700'>
+                <section className='side-body-sections-div tone-card tone-card-base docs-section-card'>
                   <h2 className='text-3xl font-bold mb-4'>Best Practices for Upgrades</h2>
                   
                   <div className='space-y-6'>
@@ -262,25 +265,25 @@ echo "✅  menuElementsClass → menuItemsClass replacements complete"`}/>
                 </section>
 
                 {/* Getting Help */}
-                <section className='mt-[100px] p-6 rounded-lg bg-blue-50'>
-                  <h2 className='text-2xl font-bold mb-4 text-blue-900'>Need Help?</h2>
-                  <p className='mb-4 text-blue-900'>If you encounter issues during migration:</p>
-                  <ul className='list-disc ml-6 space-y-2 text-blue-900'>
-                    <li><a href="https://github.com/aria-ease/aria-ease/issues" target="_blank" rel="noreferrer" className="text-blue-900 underline">Open an issue on GitHub</a></li>
-                    <li><a href="https://github.com/aria-ease/aria-ease/discussions" target="_blank" rel="noreferrer" className="text-blue-900 underline">Ask questions in Discussions</a></li>
-                    <li>Review the <a href="/api" className="text-blue-900 underline block-interactive">API Reference</a> for detailed documentation</li>
+                <section className='side-body-sections-div tone-card tone-card-alt docs-section-card'>
+                  <h2 className='text-2xl font-bold mb-4 black-white-text'>Need Help?</h2>
+                  <p className='mb-4 black-grey-text'>If you encounter issues during migration:</p>
+                  <ul className='list-disc ml-6 space-y-2 black-grey-text'>
+                    <li><a href="https://github.com/aria-ease/aria-ease/issues" target="_blank" rel="noreferrer" className="text-link-contrast underline">Open an issue on GitHub</a></li>
+                    <li><a href="https://github.com/aria-ease/aria-ease/discussions" target="_blank" rel="noreferrer" className="text-link-contrast underline">Ask questions in Discussions</a></li>
+                    <li>Review the <a href="/api" className="text-link-contrast underline block-interactive">API Reference</a> for detailed documentation</li>
                   </ul>
                 </section>
 
-                <div className='flex flex-wrap gap-4 py-4 mx-auto max-w-7xl md:py-12 mt-[100px] justify-between'>
-                    <a href='/api' className='block-interactive next-link rounded-lg md:min-w-80 md:max-w-md w-full md:w-auto flex gap-6 items-center px-4 py-6 md:px-5'>
+                <div className='flex flex-wrap gap-2 py-4 max-w-7xl md:py-12 justify-between mt-[100px]'>
+                  <a href='/api' className='block-interactive next-link docs-next-link rounded-lg md:min-w-80 md:max-w-md w-full md:w-auto flex gap-6 items-center px-4 py-6 md:px-5'>
                       <ChevronRightCircleIcon className='rotate-180'/>
                       <div className='flex flex-col w-full'>
                         <span className='text-sm black-white-text'>Prev</span>
                         <span className='next-link-text text-md'>API Reference</span>
                       </div>
                     </a>
-                    <a href='/examples' className='block-interactive next-link rounded-lg md:min-w-80 md:max-w-md w-full md:w-auto flex gap-6 items-center px-4 py-6 md:px-5'>
+                    <a href='/examples' className='block-interactive next-link docs-next-link rounded-lg md:min-w-80 md:max-w-md w-full md:w-auto flex gap-6 items-center px-4 py-6 md:px-5'>
                       <div className='flex flex-col w-full items-end'>
                         <span className='text-sm black-white-text'>Next</span>
                         <span className='next-link-text text-md'>Examples</span>

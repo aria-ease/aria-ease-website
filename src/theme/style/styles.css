@@ -1,5 +1,4 @@
-.body-div,
-.header {
+.body-div {
     transition: background-color 240ms ease, border-color 240ms ease, box-shadow 240ms ease;
 }
 .dark-body,
@@ -7,7 +6,6 @@
     min-height: 100vh;
 }
 .header {
-    border-bottom: 0.1px solid rgb(85, 85, 85);
     padding: 0px 16px;
     height: 56px;
     display: flex;
@@ -212,12 +210,12 @@ a:focus-visible {
     overflow-y: auto;
     max-height: calc(100vh - 56px);
     position: sticky;
-    padding-left: 25px;
-    padding-right: 25px;
+    padding-left: 12px;
+    padding-right: 12px;
     bottom: 0;
     top: 56px;
     padding-top: 30px;
-    padding-bottom: 150px;
+    padding-bottom: 110px;
 }
 @media(min-width: 992px) {
     .side-body-div {
@@ -231,7 +229,6 @@ a:focus-visible {
 }
 .header-menu-button {
     border-radius: 8px;
-    background-color: transparent;
     height: 40px;
     width: 40px;
 }

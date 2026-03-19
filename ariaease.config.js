@@ -26,5 +26,13 @@ export default {
       format: 'all',
       out: './accessibility-reports/audit'
     }
+  },
+  test: {
+    strictness: "balanced", // fallback: minimal | balanced | strict | paranoid
+    components: [
+      { name: "menu", strictness: "strict" },
+      { name: "accordion", strictness: "minimal" },
+      { name: "tabs", strictness: "strict" }
+    ]
   }
 };

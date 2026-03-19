@@ -54,8 +54,8 @@ const SlideOutNav = ({page, showDropdownPage}) => {
                 <div className='slide-nav-links-section'>
                   <p>Tools & Quality</p>
                   <div className="slide-out-nav-div">
-                    <Link onClick={saveScrollPosition} to="/audit" className={`side-nav-link ${(page === 'audit') ? 'active-nav-link' : ''}`} aria-label='Navigate to audit page'>Runtime Audit CLI</Link>
-                    <Link onClick={saveScrollPosition} to="/testing" className={`side-nav-link mt-3 ${(page === 'testing') ? 'active-nav-link' : ''}`} aria-label='Navigate to component testing page'>Testing Suite</Link>
+                    <Link onClick={saveScrollPosition} to="/audit" className={`side-nav-link ${(page === 'audit') ? 'active-nav-link' : ''}`} aria-label='Navigate to audit page'>Static Audit</Link>
+                    <Link onClick={saveScrollPosition} to="/testing" className={`side-nav-link mt-3 ${(page === 'testing') ? 'active-nav-link' : ''}`} aria-label='Navigate to component testing page'>Component Testing</Link>
                   </div>
                 </div>
                 <div className='slide-nav-links-section'>

@@ -12,6 +12,7 @@ import ShopifyUserMenu from '../components/menus/ShopifyUserMenu';
 import InteractivePlayground from '../components/InteractivePlayground';
 import { ChevronRightCircleIcon } from 'lucide-react';
 import ComboBox from '../components/combobox/ComboBox';
+import CalloutPanel from '../components/CalloutPanel';
 import { Helmet } from 'react-helmet-async';
 
 
@@ -64,52 +65,7 @@ const DashboardSettings = () => {
   );
 };
 
-// Example 3: Multi-step Form Wizard
-const FormWizard = () => {
-  const blockRef = useRef(null);
-  const [currentStep, setCurrentStep] = useState(0);
 
-  useEffect(() => {
-    blockRef.current = Block.makeBlockAccessible({
-      blockId: "wizard-steps",
-      blockItemsClass: "wizard-step"
-    });
-    return () => {
-      if (blockRef.current) {
-        blockRef.current.cleanup();
-      }
-    };
-  }, []);
-
-  const steps = ['Personal Info', 'Address', 'Payment', 'Review'];
-
-  return (
-    <div className="p-6 bg-gray-100 dark:bg-gray-800 rounded-lg">
-      <div id="wizard-steps" className="flex justify-between mb-6 flex-wrap gap-3">
-        {steps.map((step, index) => (
-          <button
-            key={index}
-            className={`wizard-step px-4 py-2 rounded-lg flex-grow ${
-              index === currentStep
-                ? 'bg-blue-600 text-white'
-                : index < currentStep
-                ? 'bg-green-500 text-white'
-                : 'bg-gray-300 text-black'
-            }`}
-            onClick={() => setCurrentStep(index)}
-            aria-current={index === currentStep ? 'step' : undefined}
-          >
-            {index + 1}. {step}
-          </button>
-        ))}
-      </div>
-      <div className="p-4 bg-white dark:bg-gray-700 rounded-lg">
-        <h3 className="text-lg font-semibold mb-2 text-gray-600">Step {currentStep + 1}: {steps[currentStep]}</h3>
-        <p className="text-gray-600">Use arrow keys to navigate between steps</p>
-      </div>
-    </div>
-  );
-};
 
 const ecommerceCode = `import { useEffect, useRef } from "react";
 import * as Menu from "aria-ease/menu";
@@ -321,7 +277,6 @@ const ComboBox = () => {
                     />
                     <button 
                         id="show-list-button" 
-                        data-test-id="combobox-button" 
                         tabIndex={-1} 
                         aria-label="Open fruits list"
                         className="px-3 py-2 text-gray-500 dark:text-gray-400 hover:text-gray-700 dark:hover:text-gray-200 hover:bg-gray-50 dark:hover:bg-gray-700 rounded-r-lg transition-colors"
@@ -398,9 +353,9 @@ const Examples = ({darkMode, setDarkMode}) => {
 
     <div id="inner-body-div">
       <Helmet>
-+            <title>Examples | Aria-Ease</title>
-+            <meta name="description" content="Explore practical examples demonstrating how to use Aria-Ease components and utilities for building accessible web applications." />
-+          </Helmet>
+            <title>Examples | Aria-Ease</title>
+            <meta name="description" content="Explore practical examples demonstrating how to use Aria-Ease components and utilities for building accessible web applications." />
+          </Helmet>
 <a
         href="#main-content"
         className="skip-to-content-link absolute left-2 top-2 px-4 py-2 rounded-md"
@@ -419,32 +374,34 @@ const Examples = ({darkMode, setDarkMode}) => {
         setResultsVisible={setResultsVisible}
       />
       
-      <main className='page-body-div' id="main-content">
+      <main className='page-body-div documentation-page section-tone-a' id="main-content">
         <Container fluid>
           <Row>
             <SideNav page={page}/>
             <Col xs={12} sm={12} md={12} lg={9} className='px-0'>
-              <div className='side-body-div'>
-                <h1 className='introduction-heading'>Real-World Examples</h1>
-                <p className='mt-2 mb-6'>
+              <div className='side-body-div docs-flow'>
+                <div className='side-body-sections-div tone-card tone-card-emphasis docs-hero-card'>
+                  <span className='docs-kicker black-grey-text'>In Practice</span>
+                  <h1 className='introduction-heading black-white-text'>Real-World <span className='text-gradient'>Examples</span></h1>
+                  <p className='mt-2 docs-intro-copy'>
                   See how aria-ease solves common accessibility challenges in production applications. 
                   Each example shows a complete, working implementation you can use in your projects.
-                </p>
+                  </p>
+                </div>
 
                 {/* E-commerce Example */}
-                <section className='mt-10'>
-                  <div className={`p-4 rounded-lg ${darkMode ? 'bg-blue-900/20 border-blue-700' : 'bg-blue-50 border-blue-200'} border-2 mb-6`}>
-                    <h2 className='text-3xl font-bold mb-3'>🛒 Shopify-Style Merchant Menu</h2>
-                    <p className={`${darkMode ? 'text-blue-100' : 'text-blue-900'} mb-2`}>
+                <section className='side-body-sections-div tone-card tone-card-base docs-section-card'>
+                  <CalloutPanel tone='info' className='mb-6' title='Shopify-Style Merchant Menu' titleAs='h2'>
+                    <p className='mb-2'>
                       <strong>Use Case:</strong> Building an admin dashboard or e-commerce platform where merchants need quick access to their stores, settings, and help resources.
                     </p>
-                    <p className={`${darkMode ? 'text-blue-100' : 'text-blue-900'} mb-2`}>
+                    <p className='mb-2'>
                       <strong>Challenge:</strong> Complex nested menu structure with multiple sections that must be keyboard-navigable and screen reader accessible.
                     </p>
-                    <p className={`${darkMode ? 'text-blue-100' : 'text-blue-900'}`}>
+                    <p>
                       <strong>Solution:</strong> aria-ease handles the keyboard interaction, focus management, and ARIA attributes automatically—even for nested menus.
                     </p>
-                  </div>
+                  </CalloutPanel>
                   
                   <div className='mb-6'>
                     <h3 className='text-xl font-semibold mb-3'>Live Demo</h3>
@@ -456,19 +413,18 @@ const Examples = ({darkMode, setDarkMode}) => {
                     <CodeBlockDemo code={ecommerceCode} isLineNumber={true} />
                   </div>
 
-                  <div className={`p-4 rounded-lg ${darkMode ? 'bg-blue-900/20' : 'bg-blue-50'}`}>
-                    <h4 className={`font-semibold mb-2 ${darkMode ? 'text-blue-300' : 'text-blue-900'}`}>Key Features:</h4>
-                    <ul className={`list-disc ml-6 ${darkMode ? 'text-blue-300' : 'text-blue-900'}`}>
+                  <CalloutPanel tone='info' title='Key Features:'>
+                    <ul className='list-disc ml-6'>
                       <li>Keyboard navigation with arrow keys</li>
                       <li>Automatic focus management</li>
                       <li>Escape key closes menu</li>
                       <li>Screen reader announcements</li>
                     </ul>
-                  </div>
+                  </CalloutPanel>
                 </section>
 
                 {/* Dashboard Example */}
-                <section className='mt-16'>
+                <section className='side-body-sections-div tone-card tone-card-alt docs-section-card'>
                   <h2 className='text-3xl font-bold mb-4'>Dashboard Settings Menu</h2>
                   <p className='mb-6'>Rich settings menu with descriptions for each option, perfect for admin dashboards.</p>
                   
@@ -477,31 +433,29 @@ const Examples = ({darkMode, setDarkMode}) => {
                     <DashboardSettings />
                   </div>
 
-                  <div className='p-4 rounded-lg bg-green-50'>
-                    <h4 className='font-semibold mb-2 text-green-900'>Use Cases:</h4>
-                    <ul className='list-disc ml-6 text-green-900'>
+                  <CalloutPanel tone='success' title='Use Cases:'>
+                    <ul className='list-disc ml-6'>
                       <li>Admin dashboards</li>
                       <li>User preferences</li>
                       <li>App configuration</li>
                       <li>Context menus</li>
                     </ul>
-                  </div>
+                  </CalloutPanel>
                 </section>
 
                 {/* Combobox Example */}
-                <section className='mt-16'>
-                  <div className={`p-4 rounded-lg ${darkMode ? 'bg-purple-900/20 border-purple-700' : 'bg-purple-50 border-purple-200'} border-2 mb-6`}>
-                    <h2 className='text-3xl font-bold mb-3'>🔍 Searchable Combobox</h2>
-                    <p className={`${darkMode ? 'text-purple-100' : 'text-purple-900'} mb-2`}>
+                <section className='side-body-sections-div tone-card tone-card-base docs-section-card'>
+                  <CalloutPanel tone='info' className='mb-6' title='Searchable Combobox' titleAs='h2'>
+                    <p className='mb-2'>
                       <strong>Use Case:</strong> Building search interfaces, autocomplete inputs, or filterable dropdowns where users can type to narrow down options (e.g., country selectors, product searches, tag inputs).
                     </p>
-                    <p className={`${darkMode ? 'text-purple-100' : 'text-purple-900'} mb-2`}>
+                    <p className='mb-2'>
                       <strong>Challenge:</strong> Comboboxes require complex ARIA attributes, keyboard interactions (7+ keys), focus management with aria-activedescendant, and seamless mouse interaction.
                     </p>
-                    <p className={`${darkMode ? 'text-purple-100' : 'text-purple-900'}`}>
+                    <p>
                       <strong>Solution:</strong> aria-ease handles all ARIA attributes, keyboard interactions (arrows, home, end, enter, escape, tab), focus management, and mouse interactions automatically.
                     </p>
-                  </div>
+                  </CalloutPanel>
                   
                   <div className='mb-6'>
                     <h3 className='text-xl font-semibold mb-3'>Live Demo</h3>
@@ -513,92 +467,63 @@ const Examples = ({darkMode, setDarkMode}) => {
                     <CodeBlockDemo code={comboboxCode} isLineNumber={true} />
                   </div>
 
-                  <div className={`p-4 rounded-lg ${darkMode ? 'bg-purple-900/20' : 'bg-purple-50'}`}>
-                    <h4 className={`font-semibold mb-2 ${darkMode ? 'text-purple-300' : 'text-purple-900'}`}>What&#39;s Automatic:</h4>
-                    <ul className={`list-disc ml-6 ${darkMode ? 'text-purple-300' : 'text-purple-900'}`}>
+                  <CalloutPanel tone='purple' title='What&#39;s Automatic:'>
+                    <ul className='list-disc ml-6'>
                       <li>All ARIA attributes (role, aria-expanded, aria-controls, aria-activedescendant, aria-selected)</li>
                       <li>Complete keyboard interaction (ArrowDown, ArrowUp, Home, End, Enter, Escape, Tab)</li>
                       <li>Focus management with aria-activedescendant pattern</li>
                       <li>Mouse interactions (hover, click, click-outside)</li>
                       <li>Option selection and listbox visibility</li>
                     </ul>
-                  </div>
+                  </CalloutPanel>
 
-                  <div className={`p-4 rounded-lg mt-4 ${darkMode ? 'bg-gray-700/50' : 'bg-gray-100'}`}>
-                    <h4 className={`font-semibold mb-2 ${darkMode ? 'text-gray-200' : 'text-gray-800'}`}>You Only Provide:</h4>
-                    <ul className={`list-disc ml-6 ${darkMode ? 'text-gray-300' : 'text-gray-700'}`}>
+                  <CalloutPanel tone='neutral' title='You Only Provide:' className='mt-4'>
+                    <ul className='list-disc ml-6'>
                       <li>HTML structure with IDs and class names</li>
                       <li>Filtering logic to show/hide options based on input</li>
                       <li>Visual styling (CSS)</li>
                       <li>Optional: data fetching from APIs</li>
                     </ul>
-                  </div>
+                  </CalloutPanel>
                 </section>
 
-                {/* Form Wizard Example */}
-                <section className='mt-16'>
-                  <h2 className='text-3xl font-bold mb-4'>Multi-Step Form Wizard</h2>
-                  <p className='mb-6'>Accessible step navigation for complex forms like checkout or onboarding flows.</p>
-                  
-                  <div className='mb-6'>
-                    <h3 className='text-xl font-semibold mb-3'>Live Demo</h3>
-                    <FormWizard />
-                  </div>
-
-                  <div className='mb-6'>
-                    <h3 className='text-xl font-semibold mb-3'>Implementation</h3>
-                    <CodeBlockDemo code={wizardCode} isLineNumber={true} />
-                  </div>
-
-                  <div className='p-4 rounded-lg bg-purple-50'>
-                    <h4 className='font-semibold mb-2 text-purple-900'>Perfect For:</h4>
-                    <ul className='list-disc ml-6 text-purple-900'>
-                      <li>Checkout processes</li>
-                      <li>User onboarding</li>
-                      <li>Survey forms</li>
-                      <li>Configuration wizards</li>
-                    </ul>
-                  </div>
-
-                  {/* <InteractivePlayground darkMode={darkMode} exampleType="form-wizard" /> */}
-                </section>
 
                 {/* More Patterns */}
-                <section className={`mt-16`}>
-                  <h2 className={`text-2xl font-bold mb-4 ${darkMode ? 'text-gray-100' : 'text-gray-900'}`}>More Patterns</h2>
+                <section className='side-body-sections-div tone-card tone-card-base docs-section-card'>
+                  <h2 className={`text-2xl font-bold mb-4 black-white-text`}>More Patterns</h2>
                   <div className='grid grid-cols-1 md:grid-cols-2 gap-6'>
-                    <div className={`p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow ${darkMode ? 'bg-gray-900' : 'bg-gray-200'}`}>
-                      <h3 className={`font-semibold mb-2 ${darkMode ? 'text-gray-100' : 'text-gray-900'}`}>🎨 Design Systems</h3>
-                      <p className={`text-sm mb-3 ${darkMode ? 'text-gray-300' : 'text-gray-700'}`}>Build accessible component libraries</p>
+                    <div className={`p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow tone-card tone-card-alt`}>
+                      <h3 className={`font-semibold mb-2 black-white-text`}>🎨 Design Systems</h3>
+                      <p className={`text-sm mb-3 black-grey-text`}>Build accessible component libraries</p>
                       <a href="/utilities/accordion" className={`underline block-interactive ${darkMode ? 'text-blue-400 hover:text-blue-300' : 'text-blue-600 hover:text-blue-700'}`}>View Accordion →</a>
                     </div>
-                    <div className={`p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow ${darkMode ? 'bg-gray-900' : 'bg-gray-200'}`}>
-                      <h3 className={`font-semibold mb-2 ${darkMode ? 'text-gray-100' : 'text-gray-900'}`}>📝 Form Controls</h3>
-                      <p className={`text-sm mb-3 ${darkMode ? 'text-gray-300' : 'text-gray-700'}`}>Accessible checkboxes and radios</p>
+                    <div className={`p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow tone-card tone-card-alt`}>
+                      <h3 className={`font-semibold mb-2 black-white-text`}>📝 Form Controls</h3>
+                      <p className={`text-sm mb-3 black-grey-text`}>Accessible checkboxes and radios</p>
                       <a href="/utilities/checkbox" className={`underline block-interactive ${darkMode ? 'text-blue-400 hover:text-blue-300' : 'text-blue-600 hover:text-blue-700'}`}>View Checkbox →</a>
                     </div>
-                    <div className={`p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow ${darkMode ? 'bg-gray-900' : 'bg-gray-200'}`}>
-                      <h3 className={`font-semibold mb-2 ${darkMode ? 'text-gray-100' : 'text-gray-900'}`}>🎯 Focus Management</h3>
-                      <p className={`text-sm mb-3 ${darkMode ? 'text-gray-300' : 'text-gray-700'}`}>Control keyboard interaction</p>
+                    <div className={`p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow tone-card tone-card-alt`}>
+                      <h3 className={`font-semibold mb-2 black-white-text`}>🎯 Focus Management</h3>
+                      <p className={`text-sm mb-3 black-grey-text`}>Control keyboard interaction</p>
                       <a href="/utilities/block" className={`underline block-interactive ${darkMode ? 'text-blue-400 hover:text-blue-300' : 'text-blue-600 hover:text-blue-700'}`}>View Block →</a>
                     </div>
-                    <div className={`p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow ${darkMode ? 'bg-gray-900' : 'bg-gray-200'}`}>
-                      <h3 className={`font-semibold mb-2 ${darkMode ? 'text-gray-100' : 'text-gray-900'}`}>🔘 Toggle Switches</h3>
-                      <p className={`text-sm mb-3 ${darkMode ? 'text-gray-300' : 'text-gray-700'}`}>Accessible on/off controls</p>
+                    <div className={`p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow tone-card tone-card-alt`}>
+                      <h3 className={`font-semibold mb-2 black-white-text`}>🔘 Toggle Switches</h3>
+                      <p className={`text-sm mb-3 black-grey-text`}>Accessible on/off controls</p>
                       <a href="/utilities/toggle-button" className={`underline block-interactive ${darkMode ? 'text-blue-400 hover:text-blue-300' : 'text-blue-600 hover:text-blue-700'}`}>View Toggle →</a>
                     </div>
                   </div>
                 </section>
 
-                <div className='flex flex-wrap gap-4 py-4 mx-auto max-w-7xl md:py-12 mt-[100px] justify-between'>
-                  <a href='/migration' className='block-interactive next-link rounded-lg md:min-w-80 md:max-w-md w-full md:w-auto flex gap-6 items-center px-4 py-6 md:px-5'>
+                <div className='flex flex-wrap gap-2 py-4 max-w-7xl md:py-12 justify-between mt-[100px]'>
+                  <a href='/migration' className='block-interactive next-link docs-next-link rounded-lg md:min-w-80 md:max-w-md w-full md:w-auto flex gap-6 items-center px-4 py-6 md:px-5'>
                     <ChevronRightCircleIcon className='rotate-180'/>
                     <div className='flex flex-col w-full'>
                       <span className='text-sm black-white-text'>Prev</span>
                       <span className='text-link-contrast text-md'>Migration Guide</span>
                     </div>
                   </a>
-                  <a href='/utilities/accordion' className='block-interactive next-link rounded-lg md:min-w-80 md:max-w-md w-full md:w-auto flex gap-6 items-center px-4 py-6 md:px-5'>
+                  <a href='/utilities/accordion' className='block-interactive next-link docs-next-link rounded-lg md:min-w-80 md:max-w-md w-full md:w-auto flex gap-6 items-center px-4 py-6 md:px-5'>
                     <div className='flex flex-col w-full items-end'>
                       <span className='text-sm black-white-text'>Next</span>
                       <span className='text-link-contrast text-md'>Accordion</span>

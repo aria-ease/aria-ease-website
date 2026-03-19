@@ -8,6 +8,7 @@ import * as Block from 'aria-ease/block';
 import SideNav from "../components/SideNav";
 import './changelog.css';
 import { markdownParser } from '../hooks/markdownParser';
+import CalloutPanel from '../components/CalloutPanel';
 import { AlertCircle, ChevronRightCircleIcon } from "lucide-react";
 import { Helmet } from 'react-helmet-async';
 
@@ -97,21 +98,24 @@ const Changelog = ({ darkMode, setDarkMode }) => {
         resultsVisible={resultsVisible}
         setResultsVisible={setResultsVisible}
       />
-      <main className="page-body-div" id="main-content">
+      <main className="page-body-div documentation-page section-tone-a" id="main-content">
         <Container fluid>
             <Row>
               <SideNav page={page}/>
               <Col xs={12} sm={12} md={12} lg={9} className='px-0'>
-                <div className="side-body-div">
-                            <h1 className="hero-heading">Changelog</h1>
-                            <p className="hero-paragraph mb-5 mt-8">See what&#39;s new, improved, and fixed in each release of Aria-Ease.</p>
-
-                            <div className='mt-6 mb-[50px] w-full p-4 rounded-lg border-l-4 border-blue-500 bg-blue-50'>
-                              <div className='flex items-center gap-3'>
-                                <AlertCircle className="h-5 w-5 text-blue-900 mt-0.5" />
-                                <p className="text-blue-900"> Note: Earlier versions (≤2.0.x) were pre-release experimental builds without formal changelogs.</p>
-                              </div>
+                <div className="side-body-div docs-flow">
+                            <div className='side-body-sections-div tone-card tone-card-emphasis docs-hero-card'>
+                              <span className='docs-kicker black-grey-text'>Documentation</span>
+                              <h1 className='introduction-heading black-white-text'>Release <span className='text-gradient'>Changelog</span></h1>
+                              <p className='mt-2 docs-intro-copy'>See what&#39;s new, improved, and fixed in each release of Aria-Ease.</p>
                             </div>
+
+                            <CalloutPanel tone='info' className='mt-6 mb-[50px] w-full'>
+                              <div className='flex items-center gap-3'>
+                                <AlertCircle className='h-5 w-5 mt-0.5' />
+                                <p>Note: Earlier versions (≤2.0.x) were pre-release experimental builds without formal changelogs.</p>
+                              </div>
+                            </CalloutPanel>
 
                             {changelogDataa.map((release, index) => (
                               <div key={release.version + index} className="mb-20">
@@ -167,8 +171,8 @@ const Changelog = ({ darkMode, setDarkMode }) => {
                             ))}
                             
 
-                            <div className='flex flex-wrap gap-4 py-4 mx-auto max-w-7xl md:py-12 mt-[100px] justify-start'>
-                    <a href='/testing' className='block-interactive next-link rounded-lg md:min-w-80 md:max-w-md w-full md:w-auto flex gap-6 items-center px-4 py-6 md:px-5'>
+                            <div className='flex flex-wrap gap-2 py-4 max-w-7xl md:py-12 mt-[100px] justify-start'>
+                    <a href='/testing' className='block-interactive next-link docs-next-link rounded-lg md:min-w-80 md:max-w-md w-full md:w-auto flex gap-6 items-center px-4 py-6 md:px-5'>
                     <ChevronRightCircleIcon className="rotate-180"/>
                       <div className='flex flex-col w-full items-start'>
                         <span className='text-sm black-white-text'>Previous</span>

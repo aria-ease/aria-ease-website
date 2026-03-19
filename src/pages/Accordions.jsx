@@ -5,14 +5,15 @@ import SideNav from '../components/SideNav'
 import SlideOutNav from '../components/SlideOutNav'
 import * as Block from 'aria-ease/block'
 import CodeBlockDemo from '../components/CodeBlock';
+import CalloutPanel from '../components/CalloutPanel';
 import ScrollTracker from '../components/ScrollTracker';
 import { Link } from 'react-router-dom';
 import { ChevronRightCircleIcon } from 'lucide-react';
 import { Helmet } from 'react-helmet-async';
 
 
-const accordionHTML = `<div id="faq-div" data-test-id="accordion-group">
-  <button className="dropdown-button" data-test-id="accordion-trigger">
+const accordionHTML = `<div id="faq-div">
+  <button className="dropdown-button">
     <span>How do I make an appointment?</span>
     {openStates[0] ? 
       <img src={openeddropdown} alt='Dropdown Icon' className='dropdown-icon-image'></img> :
@@ -23,7 +24,7 @@ const accordionHTML = `<div id="faq-div" data-test-id="accordion-group">
     <p>If you would like to make an appointment with any one of our practitioners, please contact our reception staff. Alternatively you can book an appointment online.</p>
   </div>
 
-  <button className="dropdown-button" data-test-id="accordion-trigger">
+  <button className="dropdown-button">
     <span>How do I get a copy of my record?</span>
       {openStates[1] ? 
         <img src={openeddropdown} alt='Dropdown Icon' className='dropdown-icon-image'></img> :
@@ -34,7 +35,7 @@ const accordionHTML = `<div id="faq-div" data-test-id="accordion-group">
     <p>If you would like to get a copy of your record, please contact our customer support team. Alternatively you can come into the hospital.</p>
   </div>
 
-  <button className="dropdown-button" data-test-id="accordion-trigger">
+  <button className="dropdown-button">
     <span>Is there a charge for extra copies?</span>
     {openStates[2] ? 
       <img src={openeddropdown} alt='Dropdown Icon' className='dropdown-icon-image'></img> :
@@ -138,26 +139,28 @@ const Accordions = ({darkMode, setDarkMode}) => {
       <ScrollTracker page={page}/>
       <Header page={page} darkMode={darkMode} setDarkMode={setDarkMode} showDropdownPage={showDropdownPage} setShowDropdownPage={setShowDropdownPage} resultsVisible={resultsVisible} setResultsVisible={setResultsVisible}/>
 
-        <main className='page-body-div' id="main-content">
+        <main className='page-body-div documentation-page section-tone-a' id="main-content">
           <Container fluid>
             <Row>
               <SideNav page={page}/>
               <Col xs={12} sm={12} md={12} lg={9} className='px-0'>
-                <div className='side-body-div'>
-                  <h1 className='component-example-heading'>Accordion</h1>
-                  <p className='mt-2'>A vertically stacked component that expands and collapses to reveal and hide section(s) of content respectively. It is used to organize content sections that expand/collapse. Typically used for FAQs, multi-step forms e.t.c. The difference between this and a menu is that a menu has a dropdown or options list of actionable interactive items, with the first item being focused when the menu is opened. <Link className='underline block-interactive' to='/utilities/menu'>Learn about menu component here.</Link></p>
+                <div className='side-body-div docs-flow'>
+                  <div className='side-body-sections-div tone-card tone-card-emphasis docs-hero-card'>
+                    <span className='docs-kicker black-grey-text'>Documentation</span>
+                    <h1 className='introduction-heading black-white-text'>Accordion <span className='text-gradient'>Utility</span></h1>
+                    <p className='mt-2 docs-intro-copy'>A vertically stacked component that expands and collapses to reveal and hide section(s) of content respectively. It is used to organize content sections that expand/collapse. Typically used for FAQs, multi-step forms e.t.c. The difference between this and a menu is that a menu has a dropdown or options list of actionable interactive items, with the first item being focused when the menu is opened. <Link className='underline block-interactive' to='/utilities/menu'>Learn about menu component here.</Link></p>
+                  </div>
 
-                  <section className={`mt-6 p-4 rounded-lg border-l-4 border-blue-500 ${darkMode ? 'bg-blue-900/20' : 'bg-blue-50'}`}>
-                    <h2 className={`font-semibold ${darkMode ? 'text-blue-100' : 'text-blue-900'}`}>Bundle Size</h2>
-                    <p className={`mt-2 ${darkMode ? 'text-blue-100' : 'text-blue-900'}`}>The accordion component is tree-shakable and weighs approximately <strong>6.5KB</strong> when imported individually.</p>
-                    <code className={`block mt-2 p-2 ${darkMode ? 'bg-blue-900/20' : 'bg-blue-100'} rounded text-sm`}>
+                  <CalloutPanel title='Bundle Size' tone='info'>
+                    <p className='mt-2'>The accordion component is tree-shakable and weighs approximately <strong>6.5KB</strong> when imported individually.</p>
+                    <code className='block mt-2 p-2 text-sm'>
                       <p>import * as Accordion from &quot;aria-ease/accordion&quot;;</p>
                       <p className='my-4'>or</p>
-                      <p>import &#123; makeAccordionAccessible &#125; from &quot;aria-ease/accordion&quot;;</p>  
+                      <p>import &#123; makeAccordionAccessible &#125; from &quot;aria-ease/accordion&quot;;</p>
                     </code>
-                  </section>
+                  </CalloutPanel>
 
-                  <section className='mt-10'>
+                  <section>
                     <h2>Features</h2>
                     <ul className='list-disc ml-6 mt-2'>
                       <li>✨ Automatic ARIA attribute management</li>
@@ -168,7 +171,7 @@ const Accordions = ({darkMode, setDarkMode}) => {
                     </ul>
                   </section>
 
-                  <section className='mt-10'>
+                  <section>
                     <h2>Common Use Cases</h2>
                     <ul className='list-disc ml-6 mt-2'>
                       <li>FAQs: Organize frequently asked questions with expandable answers.</li>
@@ -179,7 +182,7 @@ const Accordions = ({darkMode, setDarkMode}) => {
                     </ul>
                   </section>
 
-                  <section className='mt-10'>
+                  <section>
                     <h2>WAI-ARIA Roles, States, and Properties</h2>
                     <ul className='list-disc ml-6 mt-2'>
                       <li>The title of each accordion header is contained in an element with role button.</li>
@@ -195,7 +198,7 @@ const Accordions = ({darkMode, setDarkMode}) => {
                     </ul>
                   </section>
 
-                  <section className='mt-10'>
+                  <section>
                     <h2>What the Utility Handles Automatically</h2>
                     <p className='mt-2'>The library automatically manages these ARIA attributes:</p>
                     <ul className='list-disc ml-6 mt-2'>
@@ -206,13 +209,12 @@ const Accordions = ({darkMode, setDarkMode}) => {
                     </ul>
                   </section>
 
-                  <section className='mt-10'>
+                  <section>
                     <h2 className='break-words'>makeAccordionAccessible()</h2>
                     <p className='mt-2'>The <code>makeAccordionAccessible()</code> method creates a fully accessible accordion with automatic state management, keyboard interaction, and ARIA attribute handling. No manual state tracking required!</p>
 
-                    <div className={`mt-6 p-4 rounded-lg border-l-4 border-green-500 ${darkMode ? 'bg-green-900/20' : 'bg-green-50'}`}>
-                      <h3 className={`font-semibold ${darkMode ? 'text-green-100' : 'text-green-900'}`}>✨ Key Features</h3>
-                      <ul className={`list-disc ml-4 mt-2 ${darkMode ? 'text-green-100' : 'text-green-900'}`}>
+                    <CalloutPanel title='Key Features' tone='success' className='mt-6' titleAs='h3'>
+                      <ul className='list-disc ml-4 mt-2'>
                         <li>Automatic ARIA attribute management (aria-expanded, aria-controls, roles)</li>
                         <li>Complete keyboard interaction following W3C APG specifications</li>
                         <li>Built-in mouse support with click handling</li>
@@ -220,10 +222,10 @@ const Accordions = ({darkMode, setDarkMode}) => {
                         <li>Event callbacks for expanded/collapse</li>
                         <li>No manual state management required</li>
                       </ul>
-                    </div>
+                    </CalloutPanel>
                   </section>
 
-                  <section className='mt-10'>
+                  <section>
                     <h2>Parameters:</h2>
                   <ul className='list-disc ml-6 mt-2'>
                     <li><code>accordionId</code> (string): ID of the accordion container</li>
@@ -233,7 +235,7 @@ const Accordions = ({darkMode, setDarkMode}) => {
                   </ul>
                   </section>
 
-                  <section className='mt-10'>
+                  <section>
                     <h2>Returns:</h2>
                   <ul className='list-disc ml-6 mt-2'>
                     <li><code>expandItem(index)</code>: Expand specific panel</li>
@@ -244,7 +246,7 @@ const Accordions = ({darkMode, setDarkMode}) => {
                   </ul>
                   </section>
 
-                  <section className='mt-10'>
+                  <section>
                     
                       <p className='mb-2'>Import the utility:</p>
                       <CodeBlockDemo code={'import * as Accordion from "aria-ease/accordion";'}/>
@@ -257,7 +259,7 @@ const Accordions = ({darkMode, setDarkMode}) => {
               
                   </section>
 
-                  <section className='mt-10'>
+                  <section>
                     <h2>Keyboard Interaction</h2>
                     <ul className='list-disc ml-6 mt-2'>
                       <li><code>Enter</code> / <code>Space</code>: Toggle accordion panel</li>
@@ -268,7 +270,7 @@ const Accordions = ({darkMode, setDarkMode}) => {
                     </ul>
                   </section>
 
-                  <section className='mt-10'>
+                  <section>
                     <h2>Best Practices</h2>
                     <ul className='list-disc ml-6 mt-2'>
                       <li>Use descriptive button text that clearly indicates the content being revealed</li>
@@ -279,15 +281,15 @@ const Accordions = ({darkMode, setDarkMode}) => {
                     </ul>
                   </section>
 
-                  <div className='flex flex-wrap gap-4 py-4 mx-auto max-w-7xl md:py-12 mt-[100px] justify-between'>
-                    <a href='/examples' className='block-interactive next-link rounded-lg md:min-w-80 md:max-w-md w-full md:w-auto flex gap-6 items-center px-4 py-6 md:px-5'>
+                  <div className='flex flex-wrap gap-2 py-4 max-w-7xl md:py-12 mt-[100px] justify-between'>
+                    <a href='/examples' className='block-interactive next-link docs-next-link rounded-lg md:min-w-80 md:max-w-md w-full md:w-auto flex gap-6 items-center px-4 py-6 md:px-5'>
                       <ChevronRightCircleIcon className='rotate-180'/>
                       <div className='flex flex-col w-full'>
                         <span className='text-sm black-white-text'>Prev</span>
                         <span className='next-link-text text-md'>Examples</span>
                       </div>
                     </a>
-                    <a href='/utilities/block' className='block-interactive next-link rounded-lg md:min-w-80 md:max-w-md w-full md:w-auto flex gap-6 items-center px-4 py-6 md:px-5'>
+                    <a href='/utilities/block' className='block-interactive next-link docs-next-link rounded-lg md:min-w-80 md:max-w-md w-full md:w-auto flex gap-6 items-center px-4 py-6 md:px-5'>
                       <div className='flex flex-col w-full items-end gap-2'>
                         <span className='text-sm black-white-text'>Next</span>
                         <span className='next-link-text text-md'>Block</span>

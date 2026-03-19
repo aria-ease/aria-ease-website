@@ -37,7 +37,6 @@ const SubMenu = () => {
       <button
         id="display-button"
         className='home-menu-example-trigger-button'
-        data-test-id="menu-trigger"
       >
         Display Example Menu
       </button>
@@ -47,7 +46,6 @@ const SubMenu = () => {
           id="submenu-trigger"
           className="profile-menu-items"
           data-submenu-id="submenu-div"
-          data-test-id="submenu-trigger"
         >
           Two (has submenu) →
         </button>
