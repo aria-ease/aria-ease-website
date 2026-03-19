@@ -1,1 +1,354 @@
-sh: aria-ease: command not found
+🚀 Running component accessibility tests...
+
+
+[1m[46m RUN [49m[22m [36mv4.0.18 [39m[90m/Users/macx/aria-ease/docs[39m
+
+[90mstdout[2m | tests/ariaease.test.jsx[2m > [22m[2mAccordion WAI-ARIA Accessibility Test[2m > [22m[2mAccordion meets WAI-ARIA roles, states, properties, and keyboard interactions expectations
+[22m[39m🎭 Running Playwright tests on http://localhost:5173/test-harness?component=accordion
+
+ [32m✓[39m tests/ariaease.test.jsx[2m > [22mAccordion WAI-ARIA Accessibility Test[2m > [22mAccordion meets WAI-ARIA roles, states, properties, and keyboard interactions expectations[33m 4164[2mms[22m[39m
+[90mstdout[2m | tests/ariaease.test.jsx[2m > [22m[2mCombobox with Listbox popup WAI-ARIA Accessibility Test[2m > [22m[2mCombobox with Listbox popup meets WAI-ARIA roles, states, properties, and keyboard interactions expectations
+[22m[39m🎭 Running Playwright tests on http://localhost:5173/test-harness?component=combobox_listbox
+
+ [32m✓[39m tests/ariaease.test.jsx[2m > [22mCombobox with Listbox popup WAI-ARIA Accessibility Test[2m > [22mCombobox with Listbox popup meets WAI-ARIA roles, states, properties, and keyboard interactions expectations[33m 2013[2mms[22m[39m
+[90mstdout[2m | tests/ariaease.test.jsx[2m > [22m[2mHorizontal Tabs WAI-ARIA Accessibility Test[2m > [22m[2mHorizontal tabs meets WAI-ARIA roles, states, properties, and keyboard interactions expectations
+[22m[39m🎭 Running Playwright tests on http://localhost:5173/test-harness?component=tabs_horizontal
+
+ [32m✓[39m tests/ariaease.test.jsx[2m > [22mHorizontal Tabs WAI-ARIA Accessibility Test[2m > [22mHorizontal tabs meets WAI-ARIA roles, states, properties, and keyboard interactions expectations[33m 1140[2mms[22m[39m
+[90mstdout[2m | tests/ariaease.test.jsx[2m > [22m[2mVertical Tabs WAI-ARIA Accessibility Test[2m > [22m[2mVertical tabs meets WAI-ARIA roles, states, properties, and keyboard interactions expectations
+[22m[39m🎭 Running Playwright tests on http://localhost:5173/test-harness?component=tabs_vertical
+
+ [32m✓[39m tests/ariaease.test.jsx[2m > [22mVertical Tabs WAI-ARIA Accessibility Test[2m > [22mVertical tabs meets WAI-ARIA roles, states, properties, and keyboard interactions expectations[33m 1256[2mms[22m[39m
+[90mstdout[2m | tests/ariaease.test.jsx[2m > [22m[2mMenu with submenu WAI-ARIA Accessibility Test[2m > [22m[2mMenu with submenu meets WAI-ARIA roles, states, properties, and keyboard interactions expectations
+[22m[39m🎭 Running Playwright tests on http://localhost:5173/test-harness?component=sub_menu
+
+ [32m✓[39m tests/ariaease.test.jsx[2m > [22mMenu with submenu WAI-ARIA Accessibility Test[2m > [22mMenu with submenu meets WAI-ARIA roles, states, properties, and keyboard interactions expectations[33m 2316[2mms[22m[39m
+[90mstdout[2m | tests/ariaease.test.jsx[2m > [22m[2mMenu WAI-ARIA Accessibility Test[2m > [22m[2mMenu meets WAI-ARIA roles, states, properties, and keyboard interactions expectations
+[22m[39m🎭 Running Playwright tests on http://localhost:5173/test-harness?component=menu
+
+ [32m✓[39m tests/ariaease.test.jsx[2m > [22mMenu WAI-ARIA Accessibility Test[2m > [22mMenu meets WAI-ARIA roles, states, properties, and keyboard interactions expectations[33m 2151[2mms[22m[39m
+
+[2m Test Files [22m [1m[32m1 passed[39m[22m[90m (1)[39m
+[2m      Tests [22m [1m[32m6 passed[39m[22m[90m (6)[39m
+[2m   Start at [22m 15:11:39
+[2m   Duration [22m 15.97s[2m (transform 41ms, setup 0ms, import 711ms, tests 13.12s, environment 1.83s)[22m
+
+
+
+════════════════════════════════════════════════════════════
+🔍 Testing Accordion Component - Playwright (Real Browser)
+════════════════════════════════════════════════════════════
+
+────────────────────────────────────────────────────────────
+🧪 Static Assertions
+────────────────────────────────────────────────────────────
+  ✓ trigger (aria-expanded)
+     ↳ level=required
+  ✓ trigger (aria-controls)
+     ↳ level=required
+  ✓ panel (aria-labelledby | aria-label)
+     ↳ level=required
+
+────────────────────────────────────────────────────────────
+⌨️ Dynamic Interaction Tests
+────────────────────────────────────────────────────────────
+  ✓ [REQUIRED] Clicking the trigger expands a collapsed panel.
+  ✓ [REQUIRED] Clicking the trigger again collapses an expanded panel.
+  ✓ [REQUIRED] Pressing Enter on trigger expands a collapsed panel.
+  ✓ [REQUIRED] Pressing Space on trigger expands a collapsed panel.
+  ✓ [REQUIRED] Pressing Enter on trigger collapses an expanded panel.
+  ✓ [REQUIRED] Pressing Space on trigger collapses an expanded panel.
+  ✓ [OPTIONAL] Down Arrow moves focus to next accordion trigger.
+  ✓ [OPTIONAL] Up Arrow moves focus to previous accordion trigger.
+  ✓ [OPTIONAL] Home moves focus to first accordion trigger.
+  ✓ [OPTIONAL] End moves focus to last accordion trigger.
+  ✓ [OPTIONAL] Down Arrow wraps focus from last trigger to first trigger.
+  ✓ [OPTIONAL] Up Arrow wraps focus from first trigger to last trigger.
+
+════════════════════════════════════════════════════════════
+📊 Summary
+
+✅ All 15 tests passed!
+   Accordion component meets WAI-ARIA expectations for Roles, States, Properties, and Keyboard Interactions ✓
+⏱️  Duration: 847ms
+════════════════════════════════════════════════════════════
+
+
+════════════════════════════════════════════════════════════
+🔍 Testing Combobox.listbox Component - Playwright (Real Browser)
+════════════════════════════════════════════════════════════
+
+────────────────────────────────────────────────────────────
+🧪 Static Assertions
+────────────────────────────────────────────────────────────
+  ✓ input (role)
+     ↳ level=required
+  ✓ input (aria-autocomplete)
+     ↳ level=required
+  ✓ input (aria-controls)
+     ↳ level=required
+  ✓ input (aria-expanded)
+     ↳ level=required
+  ✓ input (aria-haspopup)
+     ↳ level=required
+  ✓ options (aria-selected)
+     ↳ level=required
+
+────────────────────────────────────────────────────────────
+⌨️ Dynamic Interaction Tests
+────────────────────────────────────────────────────────────
+  ✓ [REQUIRED] Pressing Down Arrow on closed combobox opens the listbox without selecting first item.
+  ✓ [REQUIRED] Second Down Arrow press navigates to first listbox option.
+  ✓ [REQUIRED] Down Arrow navigates to next listbox option with wrapping.
+  ✓ [REQUIRED] Up Arrow does not open closed listbox.
+  ✓ [REQUIRED] Up Arrow navigates to previous option when listbox is open.
+  ✓ [OPTIONAL] Home navigates to first listbox option.
+  ✓ [OPTIONAL] End navigates to last listbox option.
+  ✓ [REQUIRED] Enter selects active option and closes listbox.
+  ✓ [REQUIRED] Escape closes open listbox.
+  ✓ [REQUIRED] Escape clears input value when listbox is closed.
+  ✓ [REQUIRED] Tab closes the listbox.
+  ✓ [REQUIRED] Clicking option selects it and closes listbox.
+  ✓ [REQUIRED] Mouse hover sets aria-selected on hovered listbox option.
+  ✓ [REQUIRED] Clicking outside closes the listbox.
+  ✓ [REQUIRED] Toggle button opens and closes listbox.
+  ✓ [REQUIRED] Toggle button closes open listbox when clicked again.
+  ✓ [REQUIRED] Navigation wraps from last to first listbox option on Down Arrow.
+  ✓ [REQUIRED] Navigation wraps from first to last listbox option on Up Arrow.
+
+════════════════════════════════════════════════════════════
+📊 Summary
+
+✅ All 24 tests passed!
+   Combobox.listbox component meets WAI-ARIA expectations for Roles, States, Properties, and Keyboard Interactions ✓
+⏱️  Duration: 1294ms
+════════════════════════════════════════════════════════════
+
+
+════════════════════════════════════════════════════════════
+🔍 Testing Tabs Component - Playwright (Real Browser)
+════════════════════════════════════════════════════════════
+
+────────────────────────────────────────────────────────────
+🧪 Static Assertions
+────────────────────────────────────────────────────────────
+  ✓ tablist (aria-label | aria-labelledby)
+     ↳ level=required
+  ✓ tab (aria-selected)
+     ↳ level=required
+  ✓ tab (aria-controls)
+     ↳ level=required
+  ✓ panel (aria-labelledby)
+     ↳ level=required
+  ✓ tab (tabindex)
+     ↳ level=required
+  ✓ tablist (aria-orientation)
+     ↳ level=required
+
+────────────────────────────────────────────────────────────
+⌨️ Dynamic Interaction Tests
+────────────────────────────────────────────────────────────
+  ✓ [REQUIRED] Only one tab panel is visible at a time.
+  ✓ [REQUIRED] Right Arrow moves focus to next tab and activates it (automatic activation) in horizontally oriented tabs.
+  ✓ [REQUIRED] Left Arrow moves focus to previous tab and activates it (wraps to last) in horizontally oriented tabs.
+  ○ [REQUIRED] Down Arrow moves focus to next tab and activates it in vertically oriented tabs.
+     ↳ Skipping test - component-specific conditions not met
+  ○ [REQUIRED] Up Arrow moves focus to previous tab and activates it (wraps to last) in vertically oriented tabs.
+     ↳ Skipping test - component-specific conditions not met
+  ✓ [OPTIONAL] Home moves focus to first tab and activates it.
+  ✓ [OPTIONAL] End moves focus to last tab and activates it.
+  ✓ [REQUIRED] Clicking a tab activates it and displays its panel.
+  ✓ [REQUIRED] Pressing Enter on tab element activates its associated tab panel.
+  ✓ [REQUIRED] Pressing Space on tab element activates its associated tab panel.
+
+════════════════════════════════════════════════════════════
+📊 Summary
+
+✅ 14/14 tests passed
+○  2 tests skipped
+   Tabs component meets WAI-ARIA expectations for Roles, States, Properties, and Keyboard Interactions ✓
+⏱️  Duration: 439ms
+════════════════════════════════════════════════════════════
+
+
+════════════════════════════════════════════════════════════
+🔍 Testing Tabs Component - Playwright (Real Browser)
+════════════════════════════════════════════════════════════
+
+────────────────────────────────────────────────────────────
+🧪 Static Assertions
+────────────────────────────────────────────────────────────
+  ✓ tablist (aria-label | aria-labelledby)
+     ↳ level=required
+  ✓ tab (aria-selected)
+     ↳ level=required
+  ✓ tab (aria-controls)
+     ↳ level=required
+  ✓ panel (aria-labelledby)
+     ↳ level=required
+  ✓ tab (tabindex)
+     ↳ level=required
+  ✓ tablist (aria-orientation)
+     ↳ level=required
+
+────────────────────────────────────────────────────────────
+⌨️ Dynamic Interaction Tests
+────────────────────────────────────────────────────────────
+  ✓ [REQUIRED] Only one tab panel is visible at a time.
+  ○ [REQUIRED] Right Arrow moves focus to next tab and activates it (automatic activation) in horizontally oriented tabs.
+     ↳ Skipping test - component-specific conditions not met
+  ○ [REQUIRED] Left Arrow moves focus to previous tab and activates it (wraps to last) in horizontally oriented tabs.
+     ↳ Skipping test - component-specific conditions not met
+  ✓ [REQUIRED] Down Arrow moves focus to next tab and activates it in vertically oriented tabs.
+  ✓ [REQUIRED] Up Arrow moves focus to previous tab and activates it (wraps to last) in vertically oriented tabs.
+  ✓ [OPTIONAL] Home moves focus to first tab and activates it.
+  ✓ [OPTIONAL] End moves focus to last tab and activates it.
+  ✓ [REQUIRED] Clicking a tab activates it and displays its panel.
+  ✓ [REQUIRED] Pressing Enter on tab element activates its associated tab panel.
+  ✓ [REQUIRED] Pressing Space on tab element activates its associated tab panel.
+
+════════════════════════════════════════════════════════════
+📊 Summary
+
+✅ 14/14 tests passed
+○  2 tests skipped
+   Tabs component meets WAI-ARIA expectations for Roles, States, Properties, and Keyboard Interactions ✓
+⏱️  Duration: 360ms
+════════════════════════════════════════════════════════════
+
+
+════════════════════════════════════════════════════════════
+🔍 Testing Menu Component - Playwright (Real Browser)
+════════════════════════════════════════════════════════════
+
+────────────────────────────────────────────────────────────
+🧪 Static Assertions
+────────────────────────────────────────────────────────────
+  ✓ trigger (aria-haspopup)
+     ↳ level=required
+  ✓ trigger (aria-expanded)
+     ↳ level=required
+  ✓ trigger (aria-controls)
+     ↳ level=required
+  ✓ container (aria-labelledby | aria-label)
+     ↳ level=required
+  ✓ container (role)
+     ↳ level=required
+  ✓ items (role)
+     ↳ level=required
+  ✓ items (tabindex)
+     ↳ level=required
+  ✓ submenuTrigger (aria-haspopup)
+     ↳ level=required
+
+────────────────────────────────────────────────────────────
+⌨️ Dynamic Interaction Tests
+────────────────────────────────────────────────────────────
+  ✓ [REQUIRED] Clicking the trigger opens the menu, updates ARIA expanded, and focuses the first interactive item in the menu.
+  ✓ [REQUIRED] Clicking the trigger again closes the menu, updates ARIA expanded, and returns focus to trigger.
+  ✓ [REQUIRED] Pressing Enter on trigger opens the menu, updates ARIA expanded, and focuses first item.
+  ✓ [REQUIRED] Pressing Space on trigger opens the menu, updates ARIA expanded, and focuses first item.
+  ✓ [REQUIRED] Down Arrow moves focus to next menu item.
+  ✓ [REQUIRED] Up Arrow moves focus to previous menu item.
+  ✓ [REQUIRED] Up Arrow from first item wraps to last.
+  ✓ [REQUIRED] Down Arrow from last item wraps to first item.
+  ✓ [REQUIRED] Escape closes the menu, updates ARIA expanded, and returns focus to trigger.
+  ✓ [REQUIRED] Pressing Enter on trigger when menu is open closes the menu and updates ARIA expanded.
+  ✓ [REQUIRED] Pressing Space on trigger when menu is open closes the menu and updates ARIA expanded.
+  ✓ [REQUIRED] Clicking outside the menu closes it, updates ARIA expanded, and returns focus to trigger.
+  ✓ [REQUIRED] Right Arrow from a submenu item opens the submenu, updates ARIA expanded, and focuses first item.
+  ✓ [REQUIRED] Tab on a menuitem closes the menu and update aria-expanded.
+  ✓ [REQUIRED] Shift+Tab on a menuitem closes the menu and update aria-expanded.
+  ✓ [REQUIRED] Tab from a submenu item closes submenu and updates submenu trigger expanded state.
+  ✓ [REQUIRED] Shift+Tab from a submenu item closes submenu and updates submenu trigger expanded state.
+  ✓ [REQUIRED] Enter on a menuitem without submenu activates the item and closes the menu.
+  ✓ [REQUIRED] Home moves focus to first item.
+  ✓ [REQUIRED] End moves focus to last item.
+
+════════════════════════════════════════════════════════════
+📊 Summary
+
+✅ All 28 tests passed!
+   Menu component meets WAI-ARIA expectations for Roles, States, Properties, and Keyboard Interactions ✓
+⏱️  Duration: 1643ms
+════════════════════════════════════════════════════════════
+
+
+════════════════════════════════════════════════════════════
+🔍 Testing Menu Component - Playwright (Real Browser)
+════════════════════════════════════════════════════════════
+
+────────────────────────────────────────────────────────────
+🧪 Static Assertions
+────────────────────────────────────────────────────────────
+  ✓ trigger (aria-haspopup)
+     ↳ level=required
+  ✓ trigger (aria-expanded)
+     ↳ level=required
+  ✓ trigger (aria-controls)
+     ↳ level=required
+  ✓ container (aria-labelledby | aria-label)
+     ↳ level=required
+  ✓ container (role)
+     ↳ level=required
+  ✓ items (role)
+     ↳ level=required
+  ✓ items (tabindex)
+     ↳ level=required
+  ○ submenuTrigger (aria-haspopup)
+     ↳ level=required
+     ↳ Skipping submenu static assertion for submenuTrigger: no submenu capability detected in rendered component.
+
+────────────────────────────────────────────────────────────
+⌨️ Dynamic Interaction Tests
+────────────────────────────────────────────────────────────
+  ✓ [REQUIRED] Clicking the trigger opens the menu, updates ARIA expanded, and focuses the first interactive item in the menu.
+  ✓ [REQUIRED] Clicking the trigger again closes the menu, updates ARIA expanded, and returns focus to trigger.
+  ✓ [REQUIRED] Pressing Enter on trigger opens the menu, updates ARIA expanded, and focuses first item.
+  ✓ [REQUIRED] Pressing Space on trigger opens the menu, updates ARIA expanded, and focuses first item.
+  ✓ [REQUIRED] Down Arrow moves focus to next menu item.
+  ✓ [REQUIRED] Up Arrow moves focus to previous menu item.
+  ✓ [REQUIRED] Up Arrow from first item wraps to last.
+  ✓ [REQUIRED] Down Arrow from last item wraps to first item.
+  ✓ [REQUIRED] Escape closes the menu, updates ARIA expanded, and returns focus to trigger.
+  ✓ [REQUIRED] Pressing Enter on trigger when menu is open closes the menu and updates ARIA expanded.
+  ✓ [REQUIRED] Pressing Space on trigger when menu is open closes the menu and updates ARIA expanded.
+  ✓ [REQUIRED] Clicking outside the menu closes it, updates ARIA expanded, and returns focus to trigger.
+  ○ [REQUIRED] Right Arrow from a submenu item opens the submenu, updates ARIA expanded, and focuses first item.
+     ↳ Skipping test - component-specific conditions not met
+  ✓ [REQUIRED] Tab on a menuitem closes the menu and update aria-expanded.
+  ✓ [REQUIRED] Shift+Tab on a menuitem closes the menu and update aria-expanded.
+  ○ [REQUIRED] Tab from a submenu item closes submenu and updates submenu trigger expanded state.
+     ↳ Skipping test - component-specific conditions not met
+  ○ [REQUIRED] Shift+Tab from a submenu item closes submenu and updates submenu trigger expanded state.
+     ↳ Skipping test - component-specific conditions not met
+  ✓ [REQUIRED] Enter on a menuitem without submenu activates the item and closes the menu.
+  ✓ [REQUIRED] Home moves focus to first item.
+  ✓ [REQUIRED] End moves focus to last item.
+
+════════════════════════════════════════════════════════════
+📊 Summary
+
+✅ 24/24 tests passed
+○  3 tests skipped
+   Menu component meets WAI-ARIA expectations for Roles, States, Properties, and Keyboard Interactions ✓
+⏱️  Duration: 1472ms
+════════════════════════════════════════════════════════════
+
+
+
+🏅 Show your accessibility commitment!
+   Add this badge to your README.md:
+
+   [![Components tested: aria-ease](https://cdn.jsdelivr.net/gh/aria-ease/aria-ease@main/badges/components-tested-aria-ease.svg)](https://github.com/aria-ease/aria-ease)
+
+   This helps others discover accessibility tools and shows you care!
+
+   ✓ Badge already in README.md
+
+────────────────────────────────────────────────────────────
+💙 Found aria-ease helpful?
+   • Star us on GitHub: https://github.com/aria-ease/aria-ease
+   • Share feedback: https://github.com/aria-ease/aria-ease/discussions
+────────────────────────────────────────────────────────────
+
