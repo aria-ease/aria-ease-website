@@ -171,12 +171,12 @@ const Changelog = ({ darkMode, setDarkMode }) => {
                             ))}
                             
 
-                            <div className='flex flex-wrap gap-2 py-4 max-w-7xl md:py-12 mt-[100px] justify-start'>
-                    <a href='/testing' className='block-interactive next-link docs-next-link rounded-lg md:min-w-80 md:max-w-md w-full md:w-auto flex gap-6 items-center px-4 py-6 md:px-5'>
+                  <div className='flex flex-wrap gap-2 py-4 max-w-7xl md:py-12 mt-[100px] justify-start'>
+                    <a href='/philosophy/contracts' className='block-interactive next-link docs-next-link rounded-lg md:min-w-80 md:max-w-md w-full md:w-auto flex gap-6 items-center px-4 py-6 md:px-5'>
                     <ChevronRightCircleIcon className="rotate-180"/>
                       <div className='flex flex-col w-full items-start'>
                         <span className='text-sm black-white-text'>Previous</span>
-                        <span className='next-link-text text-md'>Testing Suite</span>
+                        <span className='next-link-text text-md'>Contract Philosophy</span>
                       </div>
                     </a>
                   </div>

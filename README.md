@@ -82,6 +82,23 @@ npm run dev
 
 The site will be available at `http://localhost:5173`
 
+### Run Accessibility Contract Tests
+
+The docs app uses contract DSL files for custom component policies. Test runs automatically build DSL contracts to JSON first.
+
+```bash
+npm run test
+```
+
+Equivalent command flow:
+
+```bash
+npx aria-ease build contracts
+npx aria-ease test
+```
+
+Contract build sources are configured in `ariaease.config.js` under `contracts` as an array, so multiple contract groups can be built in one run.
+
 ### Build for Production
 
 ```bash

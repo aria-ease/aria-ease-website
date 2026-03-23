@@ -172,11 +172,11 @@ pre.code-div {
 }
 
 .dark-body .terminal-border {
-  border: 1px solid rgba(97, 97, 97, 1);
+  border: 1px solid rgba(45, 47, 72, 1);
 }
 
 .dark-body .terminal-header {
-  border-bottom: 1px solid rgba(97, 97, 97, 1);
+  border-bottom: 1px solid rgba(45, 47, 72, 1);
 }
 
 .dark-body .landing-hr {

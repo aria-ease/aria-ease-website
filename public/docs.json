@@ -42,7 +42,7 @@
     {
         "title": "Static Audit",
         "content": "Automated Accessibility Audit. Automated Accessibility Testing. Identify and fix accessibility issues. Development and Deployment workflow. CI/CD. utility",
-        "url": "/audit"
+        "url": "/static-audit"
     },
     {
         "title": "Combobox",
@@ -52,6 +52,6 @@
     {
         "title": "Testing",
         "content": "Guides and best practices for testing accessibility of your custom components. utility.",
-        "url": "/testing"
+        "url": "/component-testing"
     }
 ]

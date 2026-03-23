@@ -8,8 +8,9 @@
     "build": "vite build",
     "lint": "eslint . --ext js,jsx --report-unused-disable-directives --max-warnings 0",
     "preview": "vite preview",
-    "audit": "npx aria-ease audit -f html",
-    "test": "npx aria-ease test 2>&1 | tee component-contract-test-output.txt"
+    "audit": "npx aria-ease audit",
+    "test": "npx aria-ease build contracts && npx aria-ease test 2>&1 | tee component-contract-test-output.txt",
+    "prepublishOnly": "npm run audit && npm run test"
   },
   "dependencies": {
     "@tiptap/extension-link": "^2.11.5",
@@ -19,7 +20,7 @@
     "@tiptap/react": "^2.11.5",
     "@tiptap/starter-kit": "^2.11.5",
     "@vercel/analytics": "^1.2.2",
-    "aria-ease": "^6.8.0",
+    "aria-ease": "^6.9.0",
     "bootstrap": "^5.3.2",
     "firebase": "^12.10.0",
     "framer-motion": "^12.4.7",

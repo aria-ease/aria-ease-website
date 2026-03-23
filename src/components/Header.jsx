@@ -214,7 +214,7 @@ const Header = ({ page, darkMode, setDarkMode, showDropdownPage, setShowDropdown
             <Link onClick={saveScrollPosition} to='/' className='header-logo-link block-interactive' aria-label="Navigate to home page"><img src={whitelogo} className="logo-img h-[30px] w-[30px]" alt="Aria Ease Logo"></img></Link>
             <div className='header-nav-link-div' id="header-nav-link-div">
                 <Link onClick={saveScrollPosition} to='/docs' className='header-nav-link block-interactive' aria-label='Navigate to the documentation page'>Docs</Link>
-                <Link onClick={saveScrollPosition} to="/testing" className='header-nav-link block-interactive' aria-label='Navigate to the testing page'>Component Testing</Link>
+                <Link onClick={saveScrollPosition} to="/component-testing" className='header-nav-link block-interactive' aria-label='Navigate to the testing page'>Component Testing</Link>
                 <Link onClick={saveScrollPosition} to="/changelog" className='header-nav-link block-interactive' aria-label='Navigate to changelog page'>Changelog</Link>
             </div>
             <form className="header-search-div" role='search'>

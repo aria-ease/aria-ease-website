@@ -92,7 +92,7 @@ jobs:
     <div id="inner-body-div">
       <Helmet>
             <title>Testing Component | Aria-Ease</title>
-            <meta name="description" content="Learn how to use the yesting suite for automated custom component accessibility testing with APG encoded contract validation. Includes usage examples and guidelines." />
+        <meta name="description" content="Learn how to automate component accessibility validation with baseline APG contract testing, custom policies, and practical usage examples." />
           </Helmet>
           <a
         href="#main-content"
@@ -120,14 +120,14 @@ jobs:
               <div className='side-body-div docs-flow'>
                 <div className='side-body-sections-div tone-card tone-card-emphasis docs-hero-card'>
                   <span className='docs-kicker black-grey-text'>Documentation</span>
-                  <h1 className='introduction-heading black-white-text'>Automated <span className='text-gradient'>Testing</span></h1>
-                  <p className='mt-2 docs-intro-copy'>Ensure your custom ARIA components meet WCAG guidelines with automated accessibility testing powered by axe-core and contract validation.</p>
+                  <h1 className='introduction-heading black-white-text'>Component <span className='text-gradient'>Testing</span></h1>
+                  <p className='mt-2 docs-intro-copy'>Learn how to automate component accessibility validation with baseline APG contract testing, custom policies, and practical usage examples.</p>
                 </div>
 
                 {/* Overview */}
                 <section>
                   <h2 className='text-3xl font-bold mb-4'>Overview</h2>
-                  <p className='mb-4'>The Aria-Ease testing framework combines two powerful testing approaches:</p>
+                  <p className='mb-4'>The Aria-Ease component testing framework combines two complementary testing approaches for consistency and confidence:</p>
                   
                   <div className='grid grid-cols-1 md:grid-cols-2 gap-6 mt-6'>
                     <CalloutPanel tone='info' className='py-4 px-3'>
@@ -145,7 +145,7 @@ jobs:
                         <CheckCircle className='mt-1 flex-shrink-0' size={24} />
                         <div className='min-w-0 flex-1'>
                           <h3 className='font-semibold text-lg mb-2 black-white-text'>Contract Testing</h3>
-                          <p className='black-grey-text'>Verify deterministic ARIA component behaviors like keyboard interactions, focus management, and ARIA states update.</p>
+                          <p className='black-grey-text'>Verify consistent baseline ARIA component behaviors like keyboard interactions, focus management, and ARIA state updates.</p>
                         </div>
                       </div>
                     </CalloutPanel>
@@ -154,30 +154,31 @@ jobs:
 
                 {/* What Contract Testing Covers & Doesn't Cover */}
                 <section>
-                  <h2 className='text-3xl font-bold mb-4'>What Contract Testing Covers & Doesn&#39;t Cover</h2>
+                  <h2 className='text-3xl font-bold mb-4'>What Baseline Contract Testing Covers & Doesn&#39;t Cover</h2>
                   <p className='mb-4'>
                     Understanding what contract testing validates—and what it doesn&#39;t—is critical for building a complete accessibility testing strategy. 
                     Most testing tools tell you what they <em>can</em> do, but not what they <em>can&#39;t</em> do. This transparency gap leads to incomplete testing and accessibility issues reaching production.
                   </p>
 
+                  
                   <CalloutPanel tone='info' className='p-4 mb-6'>
                     <div className='flex items-start gap-3'>
                       <CheckCircle className='mt-1 flex-shrink-0' size={24} />
                       <div className='min-w-0 flex-1'>
                         <h3 className='font-semibold text-lg mb-3 black-white-text'>✅ What Contract Testing DOES Cover</h3>
                         <p className='mb-3 black-grey-text'>
-                          Contract testing validates that your interactive components follow the <strong>WAI-ARIA Authoring Practices Guide (APG)</strong> patterns:
+                          Contract testing validates that your interactive components follow a <strong>baseline APG interpretation</strong> for supported patterns:
                         </p>
                         <ul className='list-disc ml-4 space-y-2 black-grey-text'>
-                          <li><strong>Keyboard interaction patterns</strong> — Arrow keys, Enter, Space, Escape, Tab, Home, End behaviors per APG</li>
+                          <li><strong>Keyboard interaction patterns</strong> — Arrow keys, Enter, Space, Escape, Tab, Home, End behaviors per your active contract policy</li>
                           <li><strong>ARIA attribute updates</strong> — aria-expanded, aria-selected, aria-checked, aria-pressed, etc, update correctly on interaction</li>
                           <li><strong>Focus management</strong> — Focus moves to correct elements during keyboard navigation</li>
                           <li><strong>Role conformance</strong> — Elements have correct ARIA roles (menu, menuitem, button, etc.)</li>
-                          <li><strong>State management</strong> — Component states (open/closed, selected/unselected) match APG requirements</li>
+                          <li><strong>State management</strong> — Component states (open/closed, selected/unselected) match your contract requirements</li>
                           <li><strong>DOM structure validation</strong> — Required parent-child relationships (menu → menuitem, etc.)</li>
                         </ul>
                         <p className='mt-3 text-sm black-grey-text'>
-                          💡 <strong>Think of it as:</strong> &ldquo;Does your component behave like the textbook example from the WAI-ARIA APG?&rdquo;
+                          💡 <strong>Think of it as:</strong> &ldquo;Does your component conform to a proven, consistent baseline behavior model?&rdquo;
                         </p>
                       </div>
                     </div>
@@ -292,10 +293,66 @@ jobs:
                   </CalloutPanel>
                 </section>
 
+                {/* Contract Workflow */}
+                <section>
+                  <h2 className='text-3xl font-bold mb-4'>Contract Workflow</h2>
+                  <p className='mb-4'>Before calling <code>testUiComponent(...)</code>, it helps to understand the contract lifecycle: author policy, build artifacts, then enforce behavior.</p>
+
+                  <CalloutPanel tone='info' className='p-4 mb-6'>
+                    <div className='flex items-start gap-3'>
+                      <CheckCircle className='mt-1 flex-shrink-0' size={24} />
+                      <div className='min-w-0 flex-1'>
+                        <h3 className='font-semibold text-lg mb-3 black-white-text'>How Contracts Flow Through The System</h3>
+                        <ul className='list-disc ml-4 space-y-2 black-grey-text'>
+                          <li><strong>Author:</strong> Write readable DSL contracts (selectors, relationships, static checks, dynamic interactions).</li>
+                          <li><strong>Build:</strong> Run <code>npx aria-ease build contracts</code> to compile DSL to JSON and validate schema/references.</li>
+                          <li><strong>Map:</strong> Point each component to its generated JSON contract in <code>ariaease.config.js</code>.</li>
+                          <li><strong>Enforce:</strong> Run <code>npx aria-ease test</code> to verify behavior against your policy.</li>
+                        </ul>
+                      </div>
+                    </div>
+                  </CalloutPanel>
+
+                  <h3 className='text-xl font-semibold mb-3 mt-6'>Author + Build + Test</h3>
+                  <CodeBlockDemo code={`# 1) Author policy in *.contract.mjs files (DSL)
+
+# 2) Build DSL contracts to JSON (+ validation)
+npx aria-ease build contracts
+
+# 3) Run component contract tests
+npx aria-ease test`} />
+
+                  <h3 className='text-xl font-semibold mb-3 mt-6'>Configure Sources and Component Mapping</h3>
+                  <CodeBlockDemo code={`export default {
+  test: {
+    strictness: "balanced",
+    components: [
+      {
+        name: "combobox.listbox",
+        path: "./tests/external-contracts/combobox.listbox.contract.json",
+        strategyPath: "./tests/external-strategies/CustomComboboxStrategy.js"
+      }
+    ]
+  },
+  contracts: [
+    {
+      src: "./tests/external-contracts/**/*.contract.mjs"
+      // Optional: out: "./tests/external-contracts/generated"
+    }
+  ]
+};`} />
+
+                  <CalloutPanel tone='purple' className='p-4 mt-6'>
+                    <p className='black-grey-text'>
+                      <strong>Relationship checks are first-class:</strong> contract relationships (for example, <code>aria-reference</code> and <code>contains</code>) are validated during build and executed in contract test runs.
+                    </p>
+                  </CalloutPanel>
+                </section>
+
                 {/* Basic Usage */}
                 <section>
                   <h2 className='text-3xl font-bold mb-4'>Basic Usage</h2>
-                  <p className='mb-4'>The <code>testUiComponent(...)</code> function runs both axe-core and contract tests on your components.</p>
+                  <p className='mb-4'>Once your contracts are built and mapped in config, use <code>testUiComponent(...)</code> to run both axe-core and contract tests on your components.</p>
 
                   <h3 className='text-xl font-semibold mb-3 mt-6'>Simple Example</h3>
                   <CodeBlockDemo code={`import { describe, test, afterAll } from "vitest";
@@ -329,12 +386,36 @@ describe("Shopify User Menu Accessibility Test", () => {
   });
 });`} isLineNumber={true}/>
 
-<p className='mt-4 mb-2'>To run component contract tests:</p>
-                    <CodeBlockDemo code={`npx aria-ease test
-    
-// Output test report as text file
+<p className='mt-4 mb-2'>To run component contract tests with custom DSL contracts:</p>
+                    <CodeBlockDemo code={`# Build DSL contracts to JSON
+npx aria-ease build contracts
+
+# Run component contract tests
+npx aria-ease test
+
+# Output test report as text file
 npx aria-ease test 2>&1 | tee component-contract-test-output.txt`}/>
+<p className='mt-4 mb-2'>Configure contract sources in <code>ariaease.config.js</code>:</p>
+<CodeBlockDemo code={`export default {
+  test: {
+    strictness: "balanced",
+    components: [
+      {
+        name: "combobox.listbox",
+        path: "./tests/external-contracts/combobox.listbox.contract.json",
+        strategyPath: "./tests/external-strategies/CustomComboboxStrategy.js"
+      }
+    ]
+  },
+  contracts: [
+    {
+      src: "./tests/external-contracts/**/*.contract.mjs"
+      // Optional: out: "./tests/external-contracts/generated"
+    }
+  ]
+};`}/>
 <div className='text-sm mt-2 space-y-2'>
+  <p><span className='text-red-500'>*</span> Build contracts before test when using custom DSL sources: <code>npx aria-ease build contracts && npx aria-ease test</code>.</p>
   <p><span className='text-red-500'>*</span> The CLI command <code>npx aria-ease test</code> currently requires Vitest as the test runner.</p>
   <p className='ml-3'>However, you can use <code>testUiComponent</code> with any test framework:</p>
   <div className='ml-3 space-y-1'>
@@ -364,7 +445,7 @@ npx aria-ease test 2>&1 | tee component-contract-test-output.txt`}/>
                   <h2 className='text-3xl font-bold mb-4'>Testing Modes</h2>
                   
                   <div className='mb-8'>
-                    <h3 className='text-xl font-semibold mb-3'>jsdom Mode (Default)</h3>
+                    <h3 className='text-xl font-semibold mb-3'>jsdom Mode</h3>
                     <p className='mb-4'>Fast testing for static accessibility. Interaction and behavior tests will be skipped as they require a real browser simulated environment.</p>
                     <CodeBlockDemo code={`// Omit URL parameter for jsdom mode
 const result = await testUiComponent("combobox.listbox", container, null);`}/>
@@ -552,7 +633,7 @@ await testUiComponent("combobox.listbox", null, "http://localhost:5173/test-harn
                 {/* Supported Components */}
                 <section>
                   <h2 className='text-3xl font-bold mb-4'>Supported Components</h2>
-                  <p className='mb-4'>The following component patterns have full contract test coverage:</p>
+                  <p className='mb-4'>The following component patterns include starter contract test coverage:</p>
 
                   <div className='docs-table-wrap'>
                     <table className='docs-table'>
@@ -839,6 +920,7 @@ export default defineConfig({
 npm run dev
 
 # Terminal 2: Run tests
+npx aria-ease build contracts
 npx aria-ease test`}/>
                           </div>
                           
@@ -886,7 +968,7 @@ npx aria-ease test`}/>
 
                     <div>
                       <h3 className='font-semibold mb-2'>✅ Test All Interactive Components</h3>
-                      <p className='text-sm'>Every custom-built ARIA component that users interact with should have accessibility tests.</p>
+                      <p className='text-sm'>Every custom-built ARIA component that users interact with should have accessibility tests, starting with a baseline contract you can adapt to your policy.</p>
                     </div>
 
                     <div>
@@ -905,7 +987,7 @@ npx aria-ease test`}/>
                 <section>
                   <h2 className='text-3xl font-bold mb-4 black-white-text'>Related Tools</h2>
                   <div className='grid grid-cols-1 md:grid-cols-2 gap-4'>
-                    <a href="/audit" className='block-interactive p-4 rounded-lg tone-card tone-card-alt transition-colors'>
+                    <a href="/static-audit" className='block-interactive p-4 rounded-lg tone-card tone-card-alt transition-colors'>
                       <h3 className='font-semibold mb-2 black-white-text'>Static Audit CLI</h3>
                       <p className='text-sm black-grey-text'>Scan full web pages for static accessibility issues during runtime →</p>
                     </a>
@@ -913,24 +995,33 @@ npx aria-ease test`}/>
                       <h3 className='font-semibold mb-2 black-white-text'>API Reference</h3>
                       <p className='text-sm black-grey-text'>Complete API documentation for all testing functions →</p>
                     </a>
+                    <a href="/philosophy/utilities" className='block-interactive p-4 rounded-lg tone-card tone-card-alt transition-colors'>
+                      <h3 className='font-semibold mb-2 black-white-text'>Utility Philosophy</h3>
+                      <p className='text-sm black-grey-text'>How Aria-Ease utilities define a trusted baseline interpretation →</p>
+                    </a>
+                    <a href="/philosophy/contracts" className='block-interactive p-4 rounded-lg tone-card tone-card-alt transition-colors'>
+                      <h3 className='font-semibold mb-2 black-white-text'>Contract Philosophy</h3>
+                      <p className='text-sm black-grey-text'>How baseline contracts become enforceable and evolvable policy →</p>
+                    </a>
                   </div>
                 </section>
 
                 <div className='flex flex-wrap gap-2 py-4 max-w-7xl md:py-12 mt-[100px] justify-between'>
-                    <a href='/audit' className='block-interactive next-link docs-next-link rounded-lg md:min-w-80 md:max-w-md w-full md:w-auto flex gap-6 items-center px-4 py-6 md:px-5'>
+                    <a href='/static-audit' className='block-interactive next-link docs-next-link rounded-lg md:min-w-80 md:max-w-md w-full md:w-auto flex gap-6 items-center px-4 py-6 md:px-5'>
                       <ChevronRightCircleIcon className='rotate-180'/>
                       <div className='flex flex-col w-full'>
                         <span className='text-sm black-white-text'>Prev</span>
                         <span className='next-link-text text-md'>Static Audit</span>
                       </div>
                     </a>
-                    <a href='/changelog' className='block-interactive next-link docs-next-link rounded-lg md:min-w-80 md:max-w-md w-full md:w-auto flex gap-6 items-center px-4 py-6 md:px-5'>
-                      <div className='flex flex-col w-full items-end'>
-                        <span className='text-sm black-white-text'>Next</span>
-                        <span className='next-link-text text-md'>Changelog</span>
+
+                    <a href='/contract/dsl' className='block-interactive next-link docs-next-link rounded-lg md:min-w-80 md:max-w-md w-full md:w-auto flex gap-6 items-center px-4 py-6 md:px-5'>
+                      <ChevronRightCircleIcon className='rotate-180' />
+                      <div className='flex flex-col w-full'>
+                        <span className='text-sm black-white-text'>Prev</span>
+                        <span className='next-link-text text-md'>Contract DSL</span>
                       </div>
-                      <ChevronRightCircleIcon/>
-                    </a>
+                    </a>                    
                   </div>
               </div>
             </Col>
