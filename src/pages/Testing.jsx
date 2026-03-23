@@ -1016,11 +1016,11 @@ npx aria-ease test`}/>
                     </a>
 
                     <a href='/contract/dsl' className='block-interactive next-link docs-next-link rounded-lg md:min-w-80 md:max-w-md w-full md:w-auto flex gap-6 items-center px-4 py-6 md:px-5'>
-                      <ChevronRightCircleIcon className='rotate-180' />
-                      <div className='flex flex-col w-full'>
+                      <div className='flex flex-col w-full items-end'>
                         <span className='text-sm black-white-text'>Prev</span>
                         <span className='next-link-text text-md'>Contract DSL</span>
                       </div>
+                      <ChevronRightCircleIcon />
                     </a>                    
                   </div>
               </div>
