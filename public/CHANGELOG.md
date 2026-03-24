@@ -2,6 +2,49 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [6.11.0](https://github.com/aria-ease/aria-ease/compare/v6.10.0...v6.11.0) (2026-03-23)
+
+
+### Features
+
+* **contract:** implement capability-based interaction model for state resolution ([e02104d](https://github.com/aria-ease/aria-ease/commit/e02104d8b2452e39cfbad63553e0fbb3e1e9638e))
+
+## [6.10.0](https://github.com/aria-ease/aria-ease/compare/v6.9.1...v6.10.0) (2026-03-23)
+
+
+### Features
+
+* introduce state-driven DSL and executable interaction engine ([fa1f93d](https://github.com/aria-ease/aria-ease/commit/fa1f93d7565babf619abea7ec0608d00222a00e5))
+
+### [6.9.1](https://github.com/aria-ease/aria-ease/compare/v6.8.0...v6.9.1) (2026-03-20)
+
+
+### Features
+
+* added DSL API and JSON contract generator ([3bd4d2e](https://github.com/aria-ease/aria-ease/commit/3bd4d2e250b9b6b2c946f16962e48990c4fdc1e6))
+
+## [6.9.0](https://github.com/aria-ease/aria-ease/compare/v6.8.0...v6.9.0) (2026-03-20)
+
+
+### Features
+
+* added DSL API and JSON contract generator ([74bf30f](https://github.com/aria-ease/aria-ease/commit/74bf30fdecff06f87d19d844f1bce600e6fefe63))
+
+## [6.8.0](https://github.com/aria-ease/aria-ease/compare/v6.6.0...v6.8.0) (2026-03-19)
+
+
+### Features
+
+* added accessibility semantic selectors in contracts to discover elements automatically ([2990f3c](https://github.com/aria-ease/aria-ease/commit/2990f3cf8dc6d6b72323ce29689c4c8ff500e839))
+* added rule classification and strictness profile to contract testing ([2887623](https://github.com/aria-ease/aria-ease/commit/28876235a00bdf007b14ef9f4ee91766c88857b5))
+
+## [6.7.0](https://github.com/aria-ease/aria-ease/compare/v6.6.0...v6.7.0) (2026-03-19)
+
+
+### Features
+
+* added rule classification and strictness profile to contract testing ([8ab96e7](https://github.com/aria-ease/aria-ease/commit/8ab96e781b1a2b64f67df79f890126d0b4da1a79))
+
 ## [6.6.0](https://github.com/aria-ease/aria-ease/compare/v6.5.1...v6.6.0) (2026-03-15)
 
 
