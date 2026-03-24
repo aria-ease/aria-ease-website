@@ -159,7 +159,7 @@ const Homepage = ({darkMode, setDarkMode}) => {
                       </div>
                       <div className="p-4 font-mono text-sm">
                         <div className="space-y-1">
-                          <p className="text-muted-foreground black-grey-text">$ npx aria-ease audit && npx aria-ease test</p>  
+                          <p className="text-muted-foreground black-grey-text">$ npx aria-ease audit && npx aria-ease build contracts && npx aria-ease test</p>  
                           <p className="text-foreground">
                             <span className={darkMode ? 'text-green-400' : 'text-green-700'}>✓</span> <span className="black-grey-text">Running axe-core audit on 16 pages...</span>
                           </p>
@@ -331,7 +331,7 @@ const Homepage = ({darkMode, setDarkMode}) => {
                         </div>
                         <h3 className="font-bold black-white-text text-xl font-bold">Design & Build</h3>
                       </div>
-                      <p className="text-sm black-grey-text mb-2">Lightweight component utilities with automatic roles, ARIA, and interaction management</p>
+                      <p className="text-sm black-grey-text mb-2">Lightweight component utilities based on the Aria-Ease baseline APG interpretation for roles, ARIA, and interaction management</p>
                       <code className="text-xs text-purple-600 dark:text-purple-400">make*Accessible()</code>
                     </div>
                   </Col>
@@ -344,7 +344,7 @@ const Homepage = ({darkMode, setDarkMode}) => {
                         </div>
                         <h3 className="font-bold black-white-text text-xl font-bold">Verify Behavior</h3>
                       </div>
-                      <p className="text-sm black-grey-text mb-2">Contract testing validates deterministic ARIA component behaviors and interaction patterns </p>
+                      <p className="text-sm black-grey-text mb-2">Contract testing validates consistent baseline ARIA component behaviors and interaction patterns</p>
                       <code className="text-xs text-blue-600 dark:text-blue-400">npx aria-ease test</code>
                     </div>
                   </Col>
@@ -422,7 +422,7 @@ const Homepage = ({darkMode, setDarkMode}) => {
 </div>
 <div className="relative z-10">
 <h3 className="text-2xl font-bold mb-4 black-white-text">Component Utilities</h3>
-<p className="mb-6 black-grey-text">High-performance component utilities for managing WAI-ARIA states, roles, properties, and keyboard interactions.</p>
+<p className="mb-6 black-grey-text">High-performance component utilities for managing WAI-ARIA states, roles, properties, and keyboard interactions using a proven baseline interpretation.</p>
 <div className="flex gap-4">
 <div className="text-center p-3 rounded">
 <p className="text-xl font-bold black-white-text">1.4KB - 3.7KB</p>
@@ -455,14 +455,14 @@ const Homepage = ({darkMode, setDarkMode}) => {
 </div>
 
 <h3 className="text-xl font-bold mb-3 black-white-text">Contract Testing</h3>
-<p className="text-sm black-grey-text">Aria-Ease defines deterministic ARIA component behaviors as JSON contracts. Contracts drive utilities, tests, and docs—everything flows from one source of truth.</p>
-<p className="text-xs mt-3 black-grey-text">CI/CD: Enforce ARIA contracts in pipelines to prevent accessibility regressions.</p>
+<p className="text-sm black-grey-text">Defines deterministic component behaviors as JSON contracts. Build your reusable component contract using Aria-Ease&#39;s developer friendly DSL API.</p>
+<p className="text-xs mt-3 black-grey-text">CI/CD: Enforce baseline contracts in pipelines to prevent regressions while your standard evolves.</p>
 </div>
 
   <div className="md:col-span-4 lg:col-span-3 p-8 rounded-2xl flex flex-col md:flex-row gap-8 items-center tone-card tone-card-alt">
     <div className="flex-1">
     <h3 className="text-2xl font-bold mb-2 black-white-text">Built for Performance</h3>
-    <p className="black-grey-text">Aria-Ease ensures performance by separating concerns: lightweight component utilities, CLI audits for static scans, contract tests with isolated component architecture for repeatable verification, and CI/CD enforcement for early failure.</p>
+    <p className="black-grey-text">Aria-Ease ensures performance by separating concerns: lightweight baseline utilities, CLI audits for static scans, contract tests with isolated component architecture for repeatable verification, and CI/CD enforcement for early failure.</p>
     </div>
     <div className="flex gap-8">
     <div className="text-right">
@@ -486,14 +486,14 @@ const Homepage = ({darkMode, setDarkMode}) => {
             <div className="mx-auto max-w-3xl text-center mb-12">
               <p className="text-sm font-semibold uppercase tracking-wider black-grey-text">Contract-First Workflow</p>
               <h2 className="black-white-text text-3xl font-bold mb-4 mt-3 text-balance tracking-tight text-foreground sm:text-4xl">Define Accessibility Behavior as Code</h2>
-              <p className="text-[1.1rem] leading-[1.6rem] black-grey-text">Aria-Ease authors and maintains accessibility contracts, then uses them to generate utilities, validate behavior, and keep documentation and team knowledge aligned. These contracts are public in the repo, so teams can use the same source of truth directly.</p>
+              <p className="text-[1.1rem] leading-[1.6rem] black-grey-text">Your team defines accessibility contracts as readable policy using Aria-Ease&#39;s developer friendly DSL API, then uses them to build test artifacts, validate behavior, and keep documentation and team knowledge aligned.</p>
             </div>
 
             <Row className="g-4 items-stretch mb-8">
               <Col lg={6} md={12}>
                 <div className="p-6 rounded-xl h-full tone-card tone-card-base flex flex-col">
                   <h3 className="text-2xl font-bold mb-4 black-white-text">One Contract, Multiple Outputs</h3>
-                  <p className="black-grey-text mb-5">Aria-Ease treats accessibility behavior like product logic, not checklist debt. The team writes one contract per component pattern, then reuses it to power utility implementation, component testing, and governance.</p>
+                  <p className="black-grey-text mb-5">Treat accessibility behavior like product logic, not checklist debt. Write one contract per component pattern, then reuse it to power implementation, component testing, and governance.</p>
                 
                   <div className="space-y-4">
                     <div className="flex items-start gap-3">
@@ -523,7 +523,7 @@ const Homepage = ({darkMode, setDarkMode}) => {
                   <div className="mt-10">
                     <AnimatedTerminalDemo
                       section="contract"
-                      title="Contract Test Run"
+                      title="Component Test Run"
                       ariaLabel="Animated contract testing terminal demo"
                       darkMode={darkMode}
                       command="npx aria-ease test"
@@ -544,7 +544,7 @@ const Homepage = ({darkMode, setDarkMode}) => {
                     <p className="text-sm font-semibold black-white-text">Test Your ARIA Components</p>
                     <p className="text-sm black-grey-text mt-1">Start with Aria-Ease&#39;s contract-powered deterministic ARIA component behavior testing.</p>
                     <div className="flex flex-wrap gap-3 mt-4">
-                      <Link onClick={saveScrollPosition} to='/testing' className="px-4 sm:px-6 h-11 flex items-center justify-center button-gradient shadow-xl rounded-lg text-white">Test Your Components</Link>
+                      <Link onClick={saveScrollPosition} to='/component-testing' className="px-4 sm:px-6 h-11 flex items-center justify-center button-gradient shadow-xl rounded-lg text-white">Test Your Components</Link>
                     </div>
                   </div>
                 </div>
@@ -818,7 +818,7 @@ const Menu = require("aria-ease/menu");   // CommonJS
             <div className="w-full">
               <AnimatedTerminalDemo
                 section="audit"
-                title="Audit CLI Run"
+                title="Static Audit Run"
                 ariaLabel="Animated audit CLI terminal demo"
                 darkMode={darkMode}
                 command="npx aria-ease audit -f html"
@@ -853,7 +853,7 @@ const Menu = require("aria-ease/menu");   // CommonJS
                       </div>
                     </div>
                   </div>
-            <Link onClick={saveScrollPosition} to='/audit' className="px-4 sm:px-8 h-12 flex items-center justify-center button-gradient shadow-xl rounded-lg text-white">Audit Your Webpage</Link>
+            <Link onClick={saveScrollPosition} to='/static-audit' className="px-4 sm:px-8 h-12 flex items-center justify-center button-gradient shadow-xl rounded-lg text-white">Audit Your Webpage</Link>
           </div>
         </section>
 

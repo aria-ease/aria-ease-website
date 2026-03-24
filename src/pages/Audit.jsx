@@ -47,10 +47,10 @@ const usageCode = `# Specify single url option
 const packageJsonCode = `{
   "name": "your-project",
   "scripts": {
-    "audit": "aria-ease audit -f html"
+    "audit": "npx aria-ease audit"
   },
   "devDependencies": {
-    "aria-ease": "^2.8.2",
+    "aria-ease": "^6.8.0",
     "@axe-core/playwright": "^4.10.2",
     "playwright": "^1.51.1"
   }
@@ -354,7 +354,7 @@ const Audit = ({ darkMode, setDarkMode }) => {
                         <span className='next-link-text text-md'>Toggle Button</span>
                       </div>
                     </a>
-                    <a href='/testing' className='block-interactive next-link docs-next-link rounded-lg md:min-w-80 md:max-w-md w-full md:w-auto flex gap-6 items-center px-4 py-6 md:px-5'>
+                    <a href='/component-testing' className='block-interactive next-link docs-next-link rounded-lg md:min-w-80 md:max-w-md w-full md:w-auto flex gap-6 items-center px-4 py-6 md:px-5'>
                       <div className='flex flex-col w-full items-end'>
                         <span className='text-sm black-white-text'>Next</span>
                         <span className='next-link-text text-md'>Component Testing</span>

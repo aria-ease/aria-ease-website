@@ -18,7 +18,7 @@ const Footer = ({ page }) => {
             <ul className="mt-3">
               <li className="mb-3"><Link onClick={saveScrollPosition} to="/docs" className="footer-nav-link block-interactive text-[16px]" aria-label='Navigate to the introduction page'>Introduction</Link></li>
               <li className="mb-3"><Link onClick={saveScrollPosition} to="/utilities/accordion" className="footer-nav-link block-interactive text-[16px]" aria-label="View accordion utility page">Utilities</Link></li>
-              <li className="mb-3"><Link onClick={saveScrollPosition} to="/testing" className="footer-nav-link block-interactive text-[16px]" aria-label='Navigate to contract testing page'>Component Testing</Link></li>
+              <li className="mb-3"><Link onClick={saveScrollPosition} to="/component-testing" className="footer-nav-link block-interactive text-[16px]" aria-label='Navigate to contract testing page'>Component Testing</Link></li>
               
             </ul>
           </Col>

@@ -1,0 +1,249 @@
+{
+  "meta": {
+    "id": "docs.custom.contract.combobox.listbox",
+    "version": "1.0.0",
+    "created": "11-02-2026",
+    "lastUpdated": "19-03-2026",
+    "description": "Simple fluent DSL example for combobox listbox custom policy",
+    "source": {
+      "apg": "https://www.w3.org/WAI/ARIA/apg/patterns/combobox/",
+      "wcag": [
+        "2.2 AA"
+      ]
+    },
+    "W3CName": "Combobox Listbox Popup"
+  },
+  "selectors": {
+    "input": "[role=combobox]",
+    "button": "button[tabindex='-1']",
+    "listbox": "[role=listbox]",
+    "options": "[role=option]",
+    "focusable": "[role=combobox]",
+    "relative": "[role=option]",
+    "popup": "[role=listbox]"
+  },
+  "relationships": [
+    {
+      "type": "aria-reference",
+      "from": "input",
+      "attribute": "aria-controls",
+      "to": "listbox",
+      "level": "required"
+    },
+    {
+      "type": "contains",
+      "parent": "listbox",
+      "child": "options",
+      "level": "required"
+    }
+  ],
+  "static": [
+    {
+      "assertions": [
+        {
+          "target": "input",
+          "attribute": "role",
+          "expectedValue": "combobox",
+          "failureMessage": "",
+          "level": "required"
+        },
+        {
+          "target": "input",
+          "attribute": "aria-expanded",
+          "expectedValue": "true | false",
+          "failureMessage": "",
+          "level": "required"
+        },
+        {
+          "target": "input",
+          "attribute": "aria-controls",
+          "expectedValue": "!empty",
+          "failureMessage": "",
+          "level": "required"
+        }
+      ]
+    }
+  ],
+  "dynamic": [
+    {
+      "description": "Escape closes an open listbox.",
+      "level": "required",
+      "action": [
+        {
+          "type": "keypress",
+          "target": "input",
+          "key": "Escape"
+        }
+      ],
+      "assertions": [
+        {
+          "target": "listbox",
+          "assertion": "notToBeVisible",
+          "failureMessage": "Expected listbox to be closed"
+        },
+        {
+          "target": "input",
+          "assertion": "toHaveAttribute",
+          "attribute": "aria-expanded",
+          "expectedValue": "false",
+          "failureMessage": "Expect combobox input to have aria-expanded='false'"
+        }
+      ],
+      "setup": [
+        {
+          "type": "keypress",
+          "target": "input",
+          "key": "ArrowDown"
+        }
+      ]
+    },
+    {
+      "description": "Down Arrow on closed combobox opens the listbox.",
+      "level": "required",
+      "action": [
+        {
+          "type": "keypress",
+          "target": "input",
+          "key": "ArrowDown"
+        }
+      ],
+      "assertions": [
+        {
+          "target": "listbox",
+          "assertion": "toBeVisible",
+          "failureMessage": "Expected listbox to be visible"
+        },
+        {
+          "target": "input",
+          "assertion": "toHaveAttribute",
+          "attribute": "aria-expanded",
+          "expectedValue": "true",
+          "failureMessage": "Expect combobox input to have aria-expanded='true'"
+        }
+      ]
+    },
+    {
+      "description": "Second Down Arrow on open combobox makes the first option active.",
+      "level": "required",
+      "action": [
+        {
+          "type": "keypress",
+          "target": "input",
+          "key": "ArrowDown"
+        }
+      ],
+      "assertions": [
+        {
+          "target": "input",
+          "assertion": "toHaveAttribute",
+          "attribute": "aria-activedescendant",
+          "expectedValue": "!empty",
+          "failureMessage": "Expected aria-activedescendant to not be empty"
+        },
+        {
+          "target": "input",
+          "assertion": "toHaveFocus",
+          "failureMessage": "Expected input to be focused"
+        }
+      ],
+      "setup": [
+        {
+          "type": "keypress",
+          "target": "input",
+          "key": "ArrowDown"
+        }
+      ]
+    },
+    {
+      "description": "Home on last option moves active option from last to first while maintaining input focus.",
+      "level": "optional",
+      "action": [
+        {
+          "type": "keypress",
+          "target": "input",
+          "key": "Home"
+        }
+      ],
+      "assertions": [
+        {
+          "target": "input",
+          "assertion": "toHaveAttribute",
+          "attribute": "aria-activedescendant",
+          "expectedValue": "!empty",
+          "failureMessage": "Expected aria-activedescendant to not be empty"
+        }
+      ],
+      "setup": [
+        {
+          "type": "keypress",
+          "target": "input",
+          "key": "ArrowDown"
+        },
+        {
+          "type": "keypress",
+          "target": "input",
+          "key": "ArrowDown"
+        },
+        {
+          "type": "keypress",
+          "target": "input",
+          "key": "ArrowUp"
+        }
+      ]
+    },
+    {
+      "description": "Click on the button opens the listbox.",
+      "level": "required",
+      "action": [
+        {
+          "type": "click",
+          "target": "button"
+        }
+      ],
+      "assertions": [
+        {
+          "target": "listbox",
+          "assertion": "toBeVisible",
+          "failureMessage": "Expected listbox to be visible"
+        },
+        {
+          "target": "input",
+          "assertion": "toHaveAttribute",
+          "attribute": "aria-expanded",
+          "expectedValue": "true",
+          "failureMessage": "Expect combobox input to have aria-expanded='true'"
+        }
+      ]
+    },
+    {
+      "description": "Click on the button closes the listbox.",
+      "level": "required",
+      "action": [
+        {
+          "type": "click",
+          "target": "button"
+        }
+      ],
+      "assertions": [
+        {
+          "target": "listbox",
+          "assertion": "notToBeVisible",
+          "failureMessage": "Expected listbox to be closed"
+        },
+        {
+          "target": "input",
+          "assertion": "toHaveAttribute",
+          "attribute": "aria-expanded",
+          "expectedValue": "false",
+          "failureMessage": "Expect combobox input to have aria-expanded='false'"
+        }
+      ],
+      "setup": [
+        {
+          "type": "click",
+          "target": "button"
+        }
+      ]
+    }
+  ]
+}

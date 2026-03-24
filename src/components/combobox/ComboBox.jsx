@@ -14,6 +14,8 @@ const ComboBox = () => {
 
     const comboboxInstanceRef = useRef(null);
 
+    const [activeDescendantId, setActiveDescendantId] = useState(null);
+
     useEffect(() => {
         const accessibleCombobox = Combobox.makeComboboxAccessible({
             comboboxInputId: "fruit",
@@ -48,6 +50,7 @@ const ComboBox = () => {
                     }
                 },
                 onActiveDescendantChange: (optId, item) => {
+                    setActiveDescendantId(optId);
                     console.log("Active descendant changed to:", optId);
                     console.log("Active item element:", item);
                 },
@@ -134,7 +137,7 @@ const ComboBox = () => {
                     key={opt.id} 
                     id={opt.id} 
                     hidden={opt.hidden} 
-                    className="list-options px-3 py-2.5 text-sm cursor-pointer hover:bg-blue-50 dark:hover:bg-blue-900/30 aria-[selected=true]:bg-blue-100 dark:aria-[selected=true]:bg-blue-900/50 aria-[selected=true]:text-blue-900 dark:aria-[selected=true]:text-blue-100 transition-colors border-b border-gray-100 dark:border-gray-700 last:border-b-0"
+                    className={`list-options px-3 py-2.5 text-sm cursor-pointer hover:bg-blue-50 dark:hover:bg-blue-900/30 aria-[selected=true]:bg-blue-100 dark:aria-[selected=true]:bg-blue-900/50 aria-[selected=true]:text-blue-900 dark:aria-[selected=true]:text-blue-100 transition-colors border-b border-gray-100 dark:border-gray-700 last:border-b-0 ${activeDescendantId === opt.id ? 'bg-blue-100 dark:bg-blue-900/50 text-blue-900 dark:text-blue-100' : ''}`}
                 >
                     {opt.label}
                 </li>

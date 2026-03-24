@@ -26,10 +26,13 @@ import Changelog from './pages/Changelog';
 import Audit from './pages/Audit';
 import Testing from './pages/Testing';
 import Combobox from './pages/Combobox';
+import UtilityPhilosophy from './pages/UtilityPhilosophy';
+import ContractPhilosophy from './pages/ContractPhilosophy';
 //import Services from './pages/Services';
 import ComponentTestHarness from './pages/ComponentTestHarness';
 import { HelmetProvider } from 'react-helmet-async';
 import Tabs from './pages/Tabs';
+import ContractDSL from './pages/ContractDSL';
  
 
 const firebaseConfig = {
@@ -78,12 +81,15 @@ const InnerApp = ({darkMode, setDarkMode}) => {
           <Route path="/blog/single" element={<BlogSingle darkMode={darkMode} setDarkMode={setDarkMode}/>}/> */}
           {/* <Route path="/clandestine/admin/" element={<Admin/>}/> */}
           <Route path="/changelog" element={<Changelog darkMode={darkMode} setDarkMode={setDarkMode}/>}/>
-          <Route path="/audit" element={<Audit darkMode={darkMode} setDarkMode={setDarkMode}/>}/>
-          <Route path="/testing" element={<Testing darkMode={darkMode} setDarkMode={setDarkMode}/>}/>
+          <Route path="/static-audit" element={<Audit darkMode={darkMode} setDarkMode={setDarkMode}/>}/>
+          <Route path="/component-testing" element={<Testing darkMode={darkMode} setDarkMode={setDarkMode}/>}/>
+          <Route path="/philosophy/utilities" element={<UtilityPhilosophy darkMode={darkMode} setDarkMode={setDarkMode}/>}/>
+          <Route path="/philosophy/contracts" element={<ContractPhilosophy darkMode={darkMode} setDarkMode={setDarkMode}/>}/>
           <Route path="/utilities/combobox" element={<Combobox darkMode={darkMode} setDarkMode={setDarkMode}/>}/>
           {/* <Route path="/services" element={<Services darkMode={darkMode} setDarkMode={setDarkMode}/>}/> */}
           <Route path="/test-harness" element={<ComponentTestHarness/>}/>
           <Route path="/utilities/tabs" element={<Tabs darkMode={darkMode} setDarkMode={setDarkMode}/>}/>
+          <Route path="/contract/dsl" element={<ContractDSL darkMode={darkMode} setDarkMode={setDarkMode}/>}/>
         </Routes>
       </Router>
     </div>

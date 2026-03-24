@@ -232,10 +232,6 @@ a:focus-visible {
     height: 40px;
     width: 40px;
 }
-.slide-out-nav-div {
-    display: flex;
-    flex-direction: column;
-}
 a {
     padding: 2px;
 }

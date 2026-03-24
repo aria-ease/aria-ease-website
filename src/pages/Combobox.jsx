@@ -249,7 +249,7 @@ const handleInputChange = (event) => {
                       <li><code>aria-autocomplete=&quot;list&quot;</code> - indicates autocomplete behavior</li>
                       <li><code>aria-haspopup=&quot;listbox&quot;</code> - indicates popup capability</li>
                       <li><code>aria-activedescendant</code> - tracks focused option during navigation</li>
-                      <li><code>aria-selected</code> - marks the currently selected/focused option</li>
+                      <li><code>aria-selected</code> - marks the currently selected option</li>
                       <li><code>display</code> - toggles the display of the listbox</li>
                       <li><code>tabindex=&#34;-1&#34;</code> - on the button that toggles the display of the listbox</li>
                     </ul>
