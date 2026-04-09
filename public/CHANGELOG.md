@@ -2,8 +2,69 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [7.0.0](https://github.com/aria-ease/aria-ease/compare/v6.14.0...v7.0.0) (2026-04-03)
+
+
+### ⚠ BREAKING CHANGES
+
+### Features
+
+- **contract:** implement capability-based interaction model for state resolution ([e02104d](https://github.com/aria-ease/aria-ease/commit/e02104d8b2452e39cfbad63553e0fbb3e1e9638e))
+* JSDOM-only tests have been discontinued and removed.
+
+### Features
+
+* removed JSDOM-only tests ([4d4e9a6](https://github.com/aria-ease/aria-ease/commit/4d4e9a6737420365575d978af85ed0c2858f5d90))
+
+## [6.14.0](https://github.com/aria-ease/aria-ease/compare/v6.13.0...v6.14.0) (2026-04-02)
+
+### Features
+
+- added component setup for static and relationships tests for state-dependent invariants ([5d96674](https://github.com/aria-ease/aria-ease/commit/5d96674ef2e6fdd30e6a293b6ed82e03323df6ec))
+
+### Features
+
+- introduce state-driven DSL and executable interaction engine ([fa1f93d](https://github.com/aria-ease/aria-ease/commit/fa1f93d7565babf619abea7ec0608d00222a00e5))
+## [6.13.0](https://github.com/aria-ease/aria-ease/compare/v6.12.2...v6.13.0) (2026-04-01)
+
+### Features
+
+- added component setup for static and relationships tests for state-dependent invariants ([b0d32b3](https://github.com/aria-ease/aria-ease/commit/b0d32b3aef967db786ca711ca3db140be2553098))
+
+### [6.12.2](https://github.com/aria-ease/aria-ease/compare/v6.12.1...v6.12.2) (2026-03-31)
+
+### Bug Fixes
+
+- fixed Tab key not selecting active combobox listbox option in combobox utility ([98e43d7](https://github.com/aria-ease/aria-ease/commit/98e43d7efa1080299f10998aadb372ef73f8f0f9))
+
+### Features
+
+- added DSL API and JSON contract generator ([3bd4d2e](https://github.com/aria-ease/aria-ease/commit/3bd4d2e250b9b6b2c946f16962e48990c4fdc1e6))
+### [6.12.1](https://github.com/aria-ease/aria-ease/compare/v6.11.0...v6.12.1) (2026-03-30)
+
+### Features
+
+- added 'recommended' flag for 'has attribute' builder ([b9e36e1](https://github.com/aria-ease/aria-ease/commit/b9e36e1e6711aeb7cc1caceee96c13b4e55bb68b))
+
+### Bug Fixes
+
+- fixed static audit throwing false negatives on lazy loaded page. added wait for 'main' selector ([a1273b2](https://github.com/aria-ease/aria-ease/commit/a1273b2aec868239f091bbeb60b7abfc3b5f893e))
+
+### Features
+
+- added DSL API and JSON contract generator ([74bf30f](https://github.com/aria-ease/aria-ease/commit/74bf30fdecff06f87d19d844f1bce600e6fefe63))
+## [6.12.0](https://github.com/aria-ease/aria-ease/compare/v6.11.0...v6.12.0) (2026-03-25)
+
+### Features
+
+- added 'recommended' flag for 'has attribute' builder ([f3ff0ea](https://github.com/aria-ease/aria-ease/commit/f3ff0eae0e48f1dfc15d524e9d464bd706d9a94f))
+
 ## [6.11.0](https://github.com/aria-ease/aria-ease/compare/v6.10.0...v6.11.0) (2026-03-23)
 
+### Features
+
+- added semantic accessibility selectors in contracts to discover elements automatically ([2990f3c](https://github.com/aria-ease/aria-ease/commit/2990f3cf8dc6d6b72323ce29689c4c8ff500e839))
+- added rule classification and strictness profile to contract testing ([2887623](https://github.com/aria-ease/aria-ease/commit/28876235a00bdf007b14ef9f4ee91766c88857b5))
 ### Features
 
 - **contract:** implement capability-based interaction model for state resolution ([e02104d](https://github.com/aria-ease/aria-ease/commit/e02104d8b2452e39cfbad63553e0fbb3e1e9638e))
@@ -18,6 +79,9 @@ All notable changes to this project will be documented in this file. See [standa
 
 ### Features
 
+- added rule classification and strictness profile to contract testing ([8ab96e7](https://github.com/aria-ease/aria-ease/commit/8ab96e781b1a2b64f67df79f890126d0b4da1a79))
+### Features
+
 - added DSL API and JSON contract generator ([3bd4d2e](https://github.com/aria-ease/aria-ease/commit/3bd4d2e250b9b6b2c946f16962e48990c4fdc1e6))
 
 ## [6.9.0](https://github.com/aria-ease/aria-ease/compare/v6.8.0...v6.9.0) (2026-03-20)
@@ -28,6 +92,9 @@ All notable changes to this project will be documented in this file. See [standa
 
 ## [6.8.0](https://github.com/aria-ease/aria-ease/compare/v6.6.0...v6.8.0) (2026-03-19)
 
+### Features
+
+- added/updated contract assertions to menu.contract.json ([7798862](https://github.com/aria-ease/aria-ease/commit/7798862c151367fcf65bf6ae445b15a41003fee9))
 ### Features
 
 - added semantic accessibility selectors in contracts to discover elements automatically ([2990f3c](https://github.com/aria-ease/aria-ease/commit/2990f3cf8dc6d6b72323ce29689c4c8ff500e839))
