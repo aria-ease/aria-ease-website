@@ -51,11 +51,11 @@ const ComboBox = () => {
                 },
                 onActiveDescendantChange: (optId, item) => {
                     setActiveDescendantId(optId);
-                    console.log("Active descendant changed to:", optId);
-                    console.log("Active item element:", item);
+                    //console.log("Active descendant changed to:", optId);
+                    //console.log("Active item element:", item);
                 },
                 onClear: () => {
-                    console.log("Input was cleared via Escape key");
+                    //console.log("Input was cleared via Escape key");
                 }
             }
         });

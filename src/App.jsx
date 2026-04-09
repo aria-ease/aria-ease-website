@@ -5,34 +5,37 @@ import './theme/color/light-mode.css';
 import 'bootstrap/dist/css/bootstrap.css';
 import { useState } from 'react';
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Homepage from "./pages/Homepage";
-import Documentation from './pages/Documentation';
-import ApiReference from './pages/ApiReference';
-import MigrationGuide from './pages/MigrationGuide';
-import Examples from './pages/Examples';
-import Menu from './pages/Menu';
-import BlockExample from './pages/Block'
-import Accordions from './pages/Accordions';
-import Checkbox from './pages/Checkbox';
-import Radio from './pages/Radio';
-import Toggle from './pages/Toggle';
 import firebase from "firebase/compat/app";
 import { getAnalytics } from "firebase/analytics";
-//import BlogMain from './pages/BlogMain';
-//import BlogSingle from './pages/BlogSingle';
 import "firebase/compat/firestore";
-//import Admin from './pages/Admin';
-import Changelog from './pages/Changelog';
-import Audit from './pages/Audit';
-import Testing from './pages/Testing';
-import Combobox from './pages/Combobox';
-import UtilityPhilosophy from './pages/UtilityPhilosophy';
-import ContractPhilosophy from './pages/ContractPhilosophy';
-//import Services from './pages/Services';
-import ComponentTestHarness from './pages/ComponentTestHarness';
 import { HelmetProvider } from 'react-helmet-async';
-import Tabs from './pages/Tabs';
-import ContractDSL from './pages/ContractDSL';
+
+
+
+import Homepage from './pages/Homepage'
+import Documentation from './pages/getting-started/Documentation'
+import ApiReference from './pages/getting-started/ApiReference'
+import Menu from './pages/components/Menu'
+import BlockExample from  './pages/components/Block'
+import Accordions from './pages/components/Accordions'
+import Checkbox from './pages/components/Checkbox'
+import Radio from  './pages/components/Radio'
+import Toggle from './pages/components/Toggle'
+import Changelog from './pages/Changelog'
+import Audit from './pages/testing/Audit'
+import Testing from './pages/testing/Testing'
+import Combobox from './pages/components/Combobox'
+import ContractOverview from './pages/contracts/ContractOverview'
+import ComponentTestHarness from './pages/ComponentTestHarness'
+import Tabs from './pages/components/Tabs'
+import DslOverview from './pages/contracts/DSL'
+import UtilityOverview from './pages/components/UtilityOverview'
+import AriaEaseGlossary from './pages/getting-started/AriaEaseGlossary'
+import ComboboxContract from './pages/contracts/ComboboxContract'
+import ComboboxDsl from './pages/dsl/ComboboxDsl';
+
+import ConceptsOverview from './pages/concepts/ConceptsOverview';
+import StatePack from './pages/concepts/StatePack';
  
 
 const firebaseConfig = {
@@ -65,32 +68,41 @@ const InnerApp = ({darkMode, setDarkMode}) => {
   return (
     <div className={`body-div ${darkMode ? 'dark-body' : 'light-body'}`}>
       <Router>
-        <Routes>
-          <Route path="/" element={<Homepage darkMode={darkMode} setDarkMode={setDarkMode}/>}/>
-          <Route path="/docs" element={<Documentation darkMode={darkMode} setDarkMode={setDarkMode}/>}/>
-          <Route path="/api" element={<ApiReference darkMode={darkMode} setDarkMode={setDarkMode}/>}/>
-          <Route path="/migration" element={<MigrationGuide darkMode={darkMode} setDarkMode={setDarkMode}/>}/>
-          <Route path="/examples" element={<Examples darkMode={darkMode} setDarkMode={setDarkMode}/>}/>
-          <Route path="/utilities/menu" element={<Menu darkMode={darkMode} setDarkMode={setDarkMode}/>}/>
-          <Route path="/utilities/block" element={<BlockExample darkMode={darkMode} setDarkMode={setDarkMode}/>}/>
-          <Route path="/utilities/accordion" element={<Accordions darkMode={darkMode} setDarkMode={setDarkMode}/>}/>
-          <Route path="/utilities/checkbox" element={<Checkbox darkMode={darkMode} setDarkMode={setDarkMode}/>}/>
-          <Route path="/utilities/radio" element={<Radio darkMode={darkMode} setDarkMode={setDarkMode}/>}/>
-          <Route path="/utilities/toggle-button" element={<Toggle darkMode={darkMode} setDarkMode={setDarkMode}/>}/>
-          {/* <Route path="/blog/main" element={<BlogMain darkMode={darkMode} setDarkMode={setDarkMode}/>}/>
-          <Route path="/blog/single" element={<BlogSingle darkMode={darkMode} setDarkMode={setDarkMode}/>}/> */}
-          {/* <Route path="/clandestine/admin/" element={<Admin/>}/> */}
-          <Route path="/changelog" element={<Changelog darkMode={darkMode} setDarkMode={setDarkMode}/>}/>
-          <Route path="/static-audit" element={<Audit darkMode={darkMode} setDarkMode={setDarkMode}/>}/>
-          <Route path="/component-testing" element={<Testing darkMode={darkMode} setDarkMode={setDarkMode}/>}/>
-          <Route path="/philosophy/utilities" element={<UtilityPhilosophy darkMode={darkMode} setDarkMode={setDarkMode}/>}/>
-          <Route path="/philosophy/contracts" element={<ContractPhilosophy darkMode={darkMode} setDarkMode={setDarkMode}/>}/>
-          <Route path="/utilities/combobox" element={<Combobox darkMode={darkMode} setDarkMode={setDarkMode}/>}/>
-          {/* <Route path="/services" element={<Services darkMode={darkMode} setDarkMode={setDarkMode}/>}/> */}
-          <Route path="/test-harness" element={<ComponentTestHarness/>}/>
-          <Route path="/utilities/tabs" element={<Tabs darkMode={darkMode} setDarkMode={setDarkMode}/>}/>
-          <Route path="/contract/dsl" element={<ContractDSL darkMode={darkMode} setDarkMode={setDarkMode}/>}/>
-        </Routes>
+          <Routes>
+            <Route path="/" element={<Homepage darkMode={darkMode} setDarkMode={setDarkMode}/>}/>
+            <Route path="/getting-started" element={<Documentation darkMode={darkMode} setDarkMode={setDarkMode}/>}/>
+            <Route path="/api" element={<ApiReference darkMode={darkMode} setDarkMode={setDarkMode}/>}/>
+            <Route path="/glossary" element={<AriaEaseGlossary darkMode={darkMode} setDarkMode={setDarkMode}/>}/>
+
+            <Route path="/concepts/state-pack" element={<StatePack darkMode={darkMode} setDarkMode={setDarkMode}/>}/>
+
+            <Route path="/components/overview" element={<UtilityOverview darkMode={darkMode} setDarkMode={setDarkMode}/>}/>
+            <Route path="/components/menu" element={<Menu darkMode={darkMode} setDarkMode={setDarkMode}/>}/>
+            <Route path="/components/block" element={<BlockExample darkMode={darkMode} setDarkMode={setDarkMode}/>}/>
+            <Route path="/components/accordion" element={<Accordions darkMode={darkMode} setDarkMode={setDarkMode}/>}/>
+            <Route path="/components/checkbox" element={<Checkbox darkMode={darkMode} setDarkMode={setDarkMode}/>}/>
+            <Route path="/components/radio" element={<Radio darkMode={darkMode} setDarkMode={setDarkMode}/>}/>
+            <Route path="/components/toggle-button" element={<Toggle darkMode={darkMode} setDarkMode={setDarkMode}/>}/>
+            <Route path="/components/combobox" element={<Combobox darkMode={darkMode} setDarkMode={setDarkMode}/>}/>
+            <Route path="/components/tabs" element={<Tabs darkMode={darkMode} setDarkMode={setDarkMode}/>}/>
+
+            <Route path="/changelog" element={<Changelog darkMode={darkMode} setDarkMode={setDarkMode}/>}/>
+            
+            <Route path="/testing/static-audit" element={<Audit darkMode={darkMode} setDarkMode={setDarkMode}/>}/>
+            <Route path="/testing/component-testing" element={<Testing darkMode={darkMode} setDarkMode={setDarkMode}/>}/>
+
+            
+            <Route path="/contracts/overview" element={<ContractOverview darkMode={darkMode} setDarkMode={setDarkMode}/>}/>
+            <Route path="/contracts/combobox" element={<ComboboxContract darkMode={darkMode} setDarkMode={setDarkMode}/>}/>
+            <Route path="/contracts/dsl" element={<DslOverview darkMode={darkMode} setDarkMode={setDarkMode}/>}/> 
+
+            
+            <Route path="/test-harness" element={<ComponentTestHarness/>}/>
+            
+            <Route path="/dsl/overview" element={<DslOverview darkMode={darkMode} setDarkMode={setDarkMode}/>}/>      
+            <Route path="/dsl/combobox" element={<ComboboxDsl darkMode={darkMode} setDarkMode={setDarkMode}/>}/>
+            
+          </Routes>
       </Router>
     </div>
   )

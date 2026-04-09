@@ -1,0 +1,208 @@
+import { useState } from 'react';
+import SlideOutNav from '../../components/SlideOutNav';
+import CodeBlockDemo from '../../components/CodeBlock';
+import CalloutPanel from '../../components/CalloutPanel';
+import { Link } from 'react-router-dom';
+import { ChevronRightCircleIcon } from 'lucide-react';
+import { Helmet } from 'react-helmet-async';
+import DocsFrame from '../../components/DocsFrame'
+import Terminal from '../../components/Terminal';
+
+
+// eslint-disable-next-line react/prop-types
+const Toggle = ({darkMode, setDarkMode}) => {
+  const page = 'toggle-button';
+  const[showDropdownPage, setShowDropdownPage] = useState(false);
+  
+  const toggleSetup = `
+useEffect(() => {
+  const toggleInstance = makeToggleAccessible({
+    toggleId: 'toggle-div',
+    togglesClass: 'group-toggle-button',
+    isSingleToggle: false  // Set to true for single toggle button
+  });
+
+  // Clean up on unmount
+  return () => toggleInstance.cleanup();
+}, []);`;
+  const singleToggleSetup = `
+// For a single toggle button:
+const toggleInstance = makeToggleAccessible({
+  toggleId: 'mute-toggle',  // The button's id
+  isSingleToggle: true      // Default is true
+});`;
+  const apiMethods = `
+// Available methods:
+toggleInstance.toggleButton(index)       // Toggle button at index
+toggleInstance.setPressed(index, pressed) // Set specific state
+toggleInstance.getPressedStates()        // Returns [true, false, false]
+toggleInstance.getPressedIndices()       // Returns [0]
+toggleInstance.cleanup()                 // Remove all listeners`;
+
+const togglesComponent = `
+<div id='toggle-div'>
+  <button className='group-toggle-button block-interactive-items py-2 px-3 mt-3 text-sm rounded-md' aria-pressed={toggleButtonsState[0].pressed} onClick={() => handlePress(0)}>Mute notification</button>
+  <button className='group-toggle-button block-interactive-items py-2 px-3 mt-3 text-sm rounded-md' aria-pressed={toggleButtonsState[1].pressed} onClick={() => handlePress(1)}>Dark mode</button>
+  <button className='group-toggle-button block-interactive-items py-2 px-3 mt-3 text-sm rounded-md' aria-pressed={toggleButtonsState[2].pressed} onClick={() => handlePress(2)}>Enable 2FA</button>
+</div>`;
+
+
+  return (
+   
+    
+    <div id="inner-body-div">
+      <Helmet>
+            <title>Toggle | Aria-Ease</title>
+            <meta name="description" content="Learn how to use the Toggle component for accessible toggle buttons in user interfaces. Includes ARIA attributes and usage examples." />
+            <meta name="keywords" content="Toggle component, accessible toggle buttons, ARIA attributes, user interface controls, React accessibility" />
+            <meta name="og:title" content="Toggle | Aria-Ease" />
+            <meta name="og:description" content="Learn how to use the Toggle component for accessible toggle buttons in user interfaces. Includes ARIA attributes and usage examples." />
+            <meta name="og:url" content="https://ariaease.site/components/toggle-button" />
+            <meta name="twitter:title" content="Toggle | Aria-Ease" />
+            <meta name="twitter:description" content="Learn how to use the Toggle component for accessible toggle buttons in user interfaces. Includes ARIA attributes and usage examples." />
+            <meta name="twitter:card" content="summary_large_image" />
+      </Helmet>
+      
+
+
+  <DocsFrame
+  
+  page={page}
+        darkMode={darkMode}
+        setDarkMode={setDarkMode}
+        showDropdownPage={showDropdownPage}
+        setShowDropdownPage={setShowDropdownPage}>
+    <div className='side-body-div docs-flow'>
+                  <div className='side-body-sections-div tone-card tone-card-emphasis docs-hero-card'>
+                    <span className='docs-kicker black-grey-text'>Component</span>
+                    <h1 className='introduction-heading black-white-text'>Toggle <span className='text-gradient'>Component</span></h1>
+                    <p className='mt-2'>Toggle buttons are components that require a full press-and-release cycle to toggle a value. It is similar but not identical to a checkbox. <Link className='underline block-interactive' to='/components/checkbox'>Learn about checkbox component here.</Link></p>
+                  </div>
+
+                  <CalloutPanel title='Bundle Size' tone='info'>
+                    <p className='mt-2'>The toggle component is tree-shakable and weighs approximately <strong>6.0KB</strong> when imported individually.</p>
+                    <code className='block mt-2 p-2 text-sm'>
+                      <p>import * as Toggle from &quot;aria-ease/toggle&quot;;</p>
+                      <p className='my-4'>or</p>
+                      <p>import &#123; makeToggleAccessible &#125; from &quot;aria-ease/toggle&quot;;</p>
+                    </code>
+                  </CalloutPanel>
+
+                  <section>
+                    <h2>Features</h2>
+                    <ul className='list-disc ml-6 mt-2'>
+                      <li>✨ Automatic ARIA attribute management</li>
+                      <li>⌨️ Built-in keyboard interaction (Space, Enter)</li>
+                      <li>🔧 Programmatic control methods</li>
+                      <li>🧹 Automatic cleanup on unmount</li>
+                    </ul>
+                  </section>
+
+                  <section>
+                    <h2>Common Use Cases</h2>
+                    <ul className='list-disc ml-6 mt-2'>
+                      <li>Feature toggles (enable/disable functionality)</li>
+                      <li>Preference settings (dark mode, notifications)</li>
+                      <li>State controls (mute/unmute, show/hide)</li>
+                      <li>Mode switches (edit/view, private/public)</li>
+                    </ul>
+                  </section>
+
+                  <section>
+                    <h2>WAI-ARIA Roles, States, and Properties</h2>
+                    <ul className='list-disc ml-6 mt-2'>
+                      <li>The button has an accessible label. By default, the accessible name is computed from any text content inside the button element. However, it can also be provided with aria-labelledby or aria-label.</li>
+                      <li>If a description of the button&#39;s function is present, the button element has aria-describedby set to the ID of the element containing the description.</li>
+                      <li>When the action associated with a button is unavailable, the button has aria-disabled set to true.</li>
+                      <li>Toggle button has an aria-pressed state. When the button is toggled on, the value of this state is true, and when toggled off, the state is false.</li>
+                    </ul>
+                  </section>
+
+                  <section>
+                    <h2>What the Utility Handles Automatically</h2>
+                    <p className='mt-2'>The <code>makeToggleAccessible</code> utility automatically sets and manages all required ARIA attributes:</p>
+                    <ul className='list-disc ml-6 mt-2'>
+                      <li><code>aria-pressed</code> - dynamically updates when button is toggled on or off</li>
+                    </ul>
+                    
+                    <p className='mt-2'>You only need to provide the HTML structure with IDs and class names.</p>
+                  </section>
+
+
+
+                  <section>
+                    <h2>makeToggleAccessible()</h2>
+                    <p className='mt-2'>The <code>makeToggleAccessible()</code> function automatically manages toggle button accessibility for both single toggles and toggle groups, including ARIA attributes and keyboard interactions.</p>
+                    <p className='mt-2'>This function handles all toggle button complexity including aria-pressed attributes, keyboard interaction, and focus management. It supports both individual toggle buttons and groups of toggle buttons.</p>
+
+                    <CalloutPanel title='Key Features' tone='success' className='mt-6' titleAs='h3'>
+                      <ul className='list-disc ml-6 mt-2'>
+                        <li>Automatic aria-pressed management</li>
+                        <li>Built-in keyboard interaction (Enter, Space, Arrow keys for groups)</li>
+                        <li>Supports single toggle or toggle groups</li>
+                        <li>State query methods (getPressedStates, getPressedIndices)</li>
+                        <li>No manual state management required</li>
+                      </ul>
+                    </CalloutPanel>
+                  </section>
+
+                  <section>
+                    <h2>Keyboard Interaction</h2>
+                      <ul className='list-disc ml-6 mt-2'>
+                        <li><code>Enter</code> / <code>Space</code> - Toggle pressed state</li>
+                      </ul>
+                  </section>
+
+                  <section>
+                    <p className='mb-2'>Import the function:</p>
+                      <CodeBlockDemo code={'import { makeToggleAccessible } from "aria-ease/toggle";'}/>
+
+                      <p className='mb-2 mt-6'>For a group of toggle buttons:</p>
+                      <Terminal darkMode={darkMode} title="Group Toggle Utility" lang="js">{toggleSetup}</Terminal>
+
+                      <p className='mb-2 mt-6'>For a single toggle button:</p>
+                      <Terminal darkMode={darkMode} title="Single Toggle Utility" lang="js">{singleToggleSetup}</Terminal>
+
+                      <p className='mb-2 mt-6'>Create your toggle markup:</p>            
+                      <Terminal darkMode={darkMode} title="Toggle Button Markup" lang="html">{togglesComponent}</Terminal>
+
+                      <p className='mb-2 mt-6'>Available API methods:</p>
+                      <Terminal darkMode={darkMode} title="Toggle API Methods" lang="js">{apiMethods}</Terminal>
+                  </section>
+
+                  <section>
+                    <h2>Common Pitfalls to Avoid</h2>
+                    <ul className='list-disc ml-6 mt-2'>
+                      <li>Use aria-label for only non-text toggle buttons</li>
+                      <li>When used, don&#39;t change the aria-label based on toggle state</li>
+                      <li>Don&#39;t rely solely on color to indicate toggle state</li>
+                      <li>Don&#39;t disable keyboard interaction between toggle buttons in a group</li>
+                    </ul>
+                  </section>
+
+                    <div className='flex flex-wrap gap-2 py-4 max-w-7xl md:py-12 mt-[100px] justify-between'>
+                    <Link to='/components/tabs' className='block-interactive next-link docs-next-link rounded-lg md:min-w-80 md:max-w-md w-full md:w-auto flex gap-6 items-center px-4 py-6 md:px-5'>
+                      <ChevronRightCircleIcon className='rotate-180'/>
+                      <div className='flex flex-col w-full'>
+                        <span className='text-sm black-white-text'>Prev</span>
+                        <span className='next-link-text text-md'>Tabs Component</span>
+                      </div>
+                    </Link>
+                    <Link to='/testing/static-audit' className='block-interactive next-link docs-next-link rounded-lg md:min-w-80 md:max-w-md w-full md:w-auto flex gap-6 items-center px-4 py-6 md:px-5'>
+                      <div className='flex flex-col w-full items-end'>
+                        <span className='text-sm black-white-text'>Next</span>
+                        <span className='next-link-text text-md'>Static Audit</span>
+                      </div>
+                      <ChevronRightCircleIcon/>
+                    </Link>
+                  </div>
+                </div>
+  </DocsFrame>
+
+        <SlideOutNav page={page} showDropdownPage={showDropdownPage}/>
+    </div>
+
+  )
+}
+
+export default Toggle

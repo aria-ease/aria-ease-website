@@ -2,22 +2,6 @@
 @tailwind components;
 @tailwind utilities;
 
-/* Code block overflow fix */
-.code-block-code {
-  max-width: 100%;
-  overflow-x: auto;
-}
-
-.code-block-code pre {
-  max-width: 100%;
-  overflow-x: auto;
-  white-space: pre;
-}
-
-.code-block-code code {
-  display: block;
-  max-width: 100%;
-}
 
 * {
   scrollbar-width: thin;
@@ -26,8 +10,14 @@
 *::-webkit-scrollbar {
   width: 8px;
 }
+
+
 :root {
   font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 html {
@@ -40,9 +30,6 @@ body {
 }
 
 @media (min-width: 1200px) {
-  .get-started-ship {
-    font-size: 1.75rem;
-  }
   h2 {
     font-size: 1.5rem;
   }
@@ -99,11 +86,21 @@ body {
   }
 }
 
-.get-started-ship {
-  font-size: calc(1.3rem + 0.6vw);
+@media(max-width: 991px) {
+  .docs-large-screen-side-bar {
+    display: none;
+  }
 }
 
-/* Fix syntax highlighting contrast in code blocks */
-.constant > span {
-  color: #8b8fd4 !important;
+.docs-thead tr > th:first-child {
+  border-top-left-radius: 4px;
+}
+.docs-thead tr > th:last-child {
+  border-top-right-radius: 4px;
+}
+.docs-table tbody tr:last-child td:first-child {
+  border-bottom-left-radius: 4px;
+}
+.docs-table tbody tr:last-child td:last-child {
+  border-bottom-right-radius: 4px;
 }

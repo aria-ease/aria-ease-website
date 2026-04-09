@@ -21,7 +21,7 @@ const ShopifyUserMenu = () => {
           callback: {
             onOpenChange: (isOpen) => {
                 // Do something when 
-                console.log(isOpen);
+                //console.log(isOpen);
             }
           }
         });

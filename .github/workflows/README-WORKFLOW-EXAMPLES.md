@@ -67,7 +67,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: "20"
+          node-version: "24.x"
           cache: "npm"
 
       - run: npm install
@@ -280,7 +280,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: "20"
+          node-version: "24.x"
           cache: "npm"
 
       - name: Install dependencies
@@ -360,7 +360,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: "20"
+          node-version: "24.x"
           cache: "npm"
 
       - name: Install dependencies
@@ -442,7 +442,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: "20"
+          node-version: "24.x"
           cache: "npm"
 
       - name: Install dependencies
@@ -501,7 +501,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: "20"
+          node-version: "24.x"
           cache: "npm"
 
       - run: npm install
@@ -575,10 +575,10 @@ jobs:
       matrix:
         page:
           - { name: "Homepage", url: "http://localhost:5173" }
-          - { name: "Docs", url: "http://localhost:5173/docs" }
+          - { name: "Docs", url: "http://localhost:5173/getting-started" }
           - {
               name: "Utilities",
-              url: "http://localhost:5173/utilities/accordion",
+              url: "http://localhost:5173/components/accordion",
             }
           - { name: "API", url: "http://localhost:5173/api-reference" }
       fail-fast: true # Stop all tests if one fails
@@ -589,7 +589,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: "20"
+          node-version: "24.x"
           cache: "npm"
 
       - run: npm install
@@ -619,7 +619,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
-          node-version: "20"
+          node-version: "24.x"
           cache: "npm"
 
       - run: npm install

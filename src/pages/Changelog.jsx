@@ -1,27 +1,20 @@
-import Header from "../components/Header";
-import { Container, Row, Col } from "react-bootstrap";
 import SlideOutNav from "../components/SlideOutNav";
-import { useState, useEffect, useRef, useMemo } from "react";
-import ScrollTracker from '../components/ScrollTracker';
+import { useState, useEffect, useMemo } from "react";
 import './homepage.css';
-import * as Block from 'aria-ease/block';
-import SideNav from "../components/SideNav";
 import './changelog.css';
 import { markdownParser } from '../hooks/markdownParser';
 import CalloutPanel from '../components/CalloutPanel';
 import { AlertCircle, ChevronRightCircleIcon } from "lucide-react";
 import { Helmet } from 'react-helmet-async';
-
+import DocsFrame from "../components/DocsFrame";
+import { Link } from "react-router-dom";
 
 
 // eslint-disable-next-line react/prop-types
 const Changelog = ({ darkMode, setDarkMode }) => {
   const[showDropdownPage, setShowDropdownPage] = useState(false);
   const page = 'changelog';
-  const[resultsVisible, setResultsVisible] = useState(false);
   const[changelogData, setChangelogData] = useState([]);
-
-  const mainBlockCleanupRef = useRef(null);
 
   const changelogDataa = useMemo(() => {
     return markdownParser(changelogData);
@@ -33,30 +26,6 @@ const Changelog = ({ darkMode, setDarkMode }) => {
     .then(data => setChangelogData(data))
     .catch(error => console.error(error))
   }, [])
-
-  
-    useEffect(() => {
-      mainBlockCleanupRef.current = Block.makeBlockAccessible({ blockId: 'inner-body-div', blockItemsClass: 'block-interactive' });
-      return () => {
-        if (mainBlockCleanupRef.current) {
-          mainBlockCleanupRef.current.cleanup();
-          mainBlockCleanupRef.current = null;
-        }
-      };
-    }, []);
-  
-    useEffect(() => {
-      if (resultsVisible) {
-        if (mainBlockCleanupRef.current) {
-          mainBlockCleanupRef.current.cleanup();
-          mainBlockCleanupRef.current = null;
-        }
-      } else {
-        if (!mainBlockCleanupRef.current) {
-          mainBlockCleanupRef.current = Block.makeBlockAccessible({ blockId: 'inner-body-div', blockItemsClass: 'block-interactive' });
-        }
-      }
-    }, [resultsVisible]);
 
   const getCategoryClasses = (category) => {
     switch (category) {
@@ -76,38 +45,32 @@ const Changelog = ({ darkMode, setDarkMode }) => {
   return (
 
     
-    <div className="home-body" id="inner-body-div">
+    <div id="inner-body-div">
       <Helmet>
             <title>Changelog | Aria-Ease</title>
             <meta name="description" content="See what's new, improved, and fixed in each release of Aria-Ease. Stay updated with the latest features, bug fixes, and performance enhancements." />
+            <meta name="keywords" content="changelog, release notes, Aria-Ease updates, new features, bug fixes, performance improvements" />
+            <meta name="og:title" content="Changelog | Aria-Ease" />
+            <meta name="og:description" content="See what's new, improved, and fixed in each release of Aria-Ease. Stay updated with the latest features, bug fixes, and performance enhancements." />
+            <meta name="og:url" content="https://ariaease.site/changelog" />
+            <meta name="twitter:title" content="Changelog | Aria-Ease" />
+            <meta name="twitter:description" content="See what's new, improved, and fixed in each release of Aria-Ease. Stay updated with the latest features, bug fixes, and performance enhancements." />
+            <meta name="twitter:card" content="summary_large_image" />
           </Helmet>
-          <a
-        href="#main-content"
-        className="skip-to-content-link absolute left-2 top-2 px-4 py-2 rounded-md"
-        tabIndex={0}
-      >
-        Skip to Content
-      </a>
-      <ScrollTracker page={page}/>
-      <Header 
+      
+      <DocsFrame 
         page={page}
         darkMode={darkMode}
         setDarkMode={setDarkMode}
         showDropdownPage={showDropdownPage}
         setShowDropdownPage={setShowDropdownPage}
-        resultsVisible={resultsVisible}
-        setResultsVisible={setResultsVisible}
-      />
-      <main className="page-body-div documentation-page section-tone-a" id="main-content">
-        <Container fluid>
-            <Row>
-              <SideNav page={page}/>
-              <Col xs={12} sm={12} md={12} lg={9} className='px-0'>
-                <div className="side-body-div docs-flow">
+      >
+        
+         <div className="side-body-div docs-flow">
                             <div className='side-body-sections-div tone-card tone-card-emphasis docs-hero-card'>
-                              <span className='docs-kicker black-grey-text'>Documentation</span>
+                              <span className='docs-kicker black-grey-text'>PROJECT</span>
                               <h1 className='introduction-heading black-white-text'>Release <span className='text-gradient'>Changelog</span></h1>
-                              <p className='mt-2 docs-intro-copy'>See what&#39;s new, improved, and fixed in each release of Aria-Ease.</p>
+                              <p className='mt-2'>See what&#39;s new, improved, and fixed in each release of Aria-Ease.</p>
                             </div>
 
                             <CalloutPanel tone='info' className='mt-6 mb-[50px] w-full'>
@@ -172,19 +135,16 @@ const Changelog = ({ darkMode, setDarkMode }) => {
                             
 
                   <div className='flex flex-wrap gap-2 py-4 max-w-7xl md:py-12 mt-[100px] justify-start'>
-                    <a href='/philosophy/contracts' className='block-interactive next-link docs-next-link rounded-lg md:min-w-80 md:max-w-md w-full md:w-auto flex gap-6 items-center px-4 py-6 md:px-5'>
-                    <ChevronRightCircleIcon className="rotate-180"/>
+                    <Link to='/contracts/combobox' className='block-interactive next-link docs-next-link rounded-lg md:min-w-80 md:max-w-md w-full md:w-auto flex gap-6 items-center px-4 py-6 md:px-5'>
+                      <ChevronRightCircleIcon className="rotate-180"/>
                       <div className='flex flex-col w-full items-start'>
                         <span className='text-sm black-white-text'>Previous</span>
-                        <span className='next-link-text text-md'>Contract Philosophy</span>
+                        <span className='next-link-text text-md'>Combobox Contract</span>
                       </div>
-                    </a>
+                    </Link>
                   </div>
                 </div>
-              </Col>
-            </Row>
-        </Container>
-      </main>
+      </DocsFrame>
       <SlideOutNav page={page} showDropdownPage={showDropdownPage}/>
     </div>
 
