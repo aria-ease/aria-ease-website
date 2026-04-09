@@ -2,37 +2,37 @@
     {
         "title": "Getting Started",
         "content": "Introduction. Installation. Features. Test. Audit. Examples. Documentation",
-        "url": "/docs"
+        "url": "/getting-started"
     },
     {
         "title": "Checkbox",
-        "content": "Accessible Checkbox utility. Uses aria-checked, aria-label. Form Input. screen reader",
-        "url": "/utilities/checkbox"
+        "content": "Accessible Checkbox component utility. Uses aria-checked, aria-label. Form Input. screen reader",
+        "url": "/components/checkbox"
     },
     {
         "title": "Accordion",
-        "content": "Accessible Accordion utility. Uses aria-expanded, aria-label. Ideal for FAQs. screen reader",
-        "url": "/utilities/accordion"
+        "content": "Accessible Accordion component utility. Uses aria-expanded, aria-label. Ideal for FAQs. screen reader",
+        "url": "/components/accordion"
     },
     {
         "title": "Menu",
-        "content": "Accessible Menu utility. Uses aria-label, aria-labelledby, role='menu', role='button', aria-controls, aria-haspopup. Focus trap. Intuitive Keyboard navigation, interaction. Escape key closes menu. screen reader",
-        "url": "/utilities/menu"
+        "content": "Accessible Menu component utility. Uses aria-label, aria-labelledby, role='menu', role='button', aria-controls, aria-haspopup. Focus trap. Intuitive Keyboard navigation, interaction. Escape key closes menu. screen reader",
+        "url": "/components/menu"
     },
     {
         "title": "Radio",
-        "content": "Accessible Radio utility. Ideal for selecting one option from many. screen reader",
-        "url": "/utilities/radio"
+        "content": "Accessible Radio component utility. Ideal for selecting one option from many. screen reader",
+        "url": "/components/radio"
     },
     {
         "title": "Block",
-        "content": "Accessible Block utility. Focus trap. Intuitive Keyboard navigation, interaction",
-        "url": "/utilities/block"
+        "content": "Accessible Block component utility. Focus trap. Intuitive Keyboard navigation, interaction",
+        "url": "/components/block"
     },
     {
         "title": "Toggle",
-        "content": "Accessible Toggle switch utility. Uses aria-pressed, aria-label. Ideal for dark mode, settings, and preferences. screen reader",
-        "url": "/utilities/toggle-button"
+        "content": "Accessible Toggle switch component utility. Uses aria-pressed, aria-label. Ideal for dark mode, settings, and preferences. screen reader",
+        "url": "/components/toggle-button"
     },
     {
         "title": "Changelog",
@@ -41,17 +41,17 @@
     },
     {
         "title": "Static Audit",
-        "content": "Automated Accessibility Audit. Automated Accessibility Testing. Identify and fix accessibility issues. Development and Deployment workflow. CI/CD. utility",
-        "url": "/static-audit"
+        "content": "Automated Accessibility Audit. Automated Accessibility Testing. Identify and fix accessibility issues. Development and Deployment workflow. CI/CD. component utility",
+        "url": "/testing/static-audit"
     },
     {
         "title": "Combobox",
-        "content": "Accessible Combobox utility. Uses aria-expanded, aria-controls, aria-activedescendant, role='combobox', role='listbox', role='option'. Ideal for searchable dropdowns. screen reader",
-        "url": "/utilities/combobox"
+        "content": "Accessible Combobox component utility. Uses aria-expanded, aria-controls, aria-activedescendant, role='combobox', role='listbox', role='option'. Ideal for searchable dropdowns. screen reader",
+        "url": "/components/combobox"
     },
     {
         "title": "Testing",
-        "content": "Guides and best practices for testing accessibility of your custom components. utility.",
-        "url": "/component-testing"
+        "content": "Guides and best practices for testing accessibility of your custom components. component utility.",
+        "url": "/testing/component-testing"
     }
 ]

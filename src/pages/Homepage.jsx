@@ -1,8 +1,7 @@
 import Header from "../components/Header";
 import { Container, Row, Col } from "react-bootstrap";
 import SlideOutNav from "../components/SlideOutNav";
-import { useState, useEffect, useRef } from "react";
-import * as Block from "aria-ease/block";
+import { useState } from "react";
 import { Link } from "react-router-dom";
 import './homepage.css';
 import Footer from "../components/Footer";
@@ -22,7 +21,6 @@ const jsoncontract = `
     "listbox": "[role=listbox]",
     "options": "[role=option]"
   },
-  "observables": {...},
   "relationships": [
     {
       "type": "aria-reference",
@@ -57,33 +55,7 @@ const jsoncontract = `
 const Homepage = ({darkMode, setDarkMode}) => {
   const[showDropdownPage, setShowDropdownPage] = useState(false);
   const page = 'home';
-  const[resultsVisible, setResultsVisible] = useState(false);
   
-  const mainBlockCleanupRef = useRef(null);
-
-  useEffect(() => {
-    mainBlockCleanupRef.current = Block.makeBlockAccessible({ blockId: 'inner-body-div', blockItemsClass: 'block-interactive' });
-    return () => {
-      if (mainBlockCleanupRef.current) {
-        mainBlockCleanupRef.current.cleanup();
-        mainBlockCleanupRef.current = null;
-      }
-    };
-  }, []);
-
-  useEffect(() => {
-    if (resultsVisible) {
-      if (mainBlockCleanupRef.current) {
-        mainBlockCleanupRef.current.cleanup();
-        mainBlockCleanupRef.current = null;
-      }
-    } else {
-      if (!mainBlockCleanupRef.current) {
-        mainBlockCleanupRef.current = Block.makeBlockAccessible({ blockId: 'inner-body-div', blockItemsClass: 'block-interactive' });
-      }
-    }
-  }, [resultsVisible]);
-
   const saveScrollPosition = () => {
     const scrollContainer = document.getElementById('main-content');
     const currentPosition = scrollContainer ? scrollContainer.scrollTop : window.scrollY;
@@ -95,6 +67,13 @@ const Homepage = ({darkMode, setDarkMode}) => {
       <Helmet>
         <title>Home | Aria-Ease</title>
         <meta name="description" content="Accessibility infrastructure for the entire frontend engineering lifecycle. Build accessible patterns, verify with automated testing, and gate deployments—block inaccessible code from production. React, Vue, Svelte, or vanilla JS." />
+        <meta name="keywords" content="Aria-Ease, accessibility infrastructure, frontend engineering lifecycle, accessible patterns, automated testing, production gating, React accessibility, Vue accessibility, Svelte accessibility, vanilla JS accessibility" />
+        <meta name="og:title" content="Home | Aria-Ease" />
+        <meta name="og:description" content="Accessibility infrastructure for the entire frontend engineering lifecycle. Build accessible patterns, verify with automated testing, and gate deployments—block inaccessible code from production. React, Vue, Svelte, or vanilla JS." />
+        <meta name="og:url" content="https://ariaease.site" />
+        <meta name="twitter:title" content="Home | Aria-Ease" />
+        <meta name="twitter:description" content="Accessibility infrastructure for the entire frontend engineering lifecycle. Build accessible patterns, verify with automated testing, and gate deployments—block inaccessible code from production. React, Vue, Svelte, or vanilla JS." />
+        <meta name="twitter:card" content="summary_large_image" />
       </Helmet>
       <a
         href="#main-content"
@@ -110,41 +89,24 @@ const Homepage = ({darkMode, setDarkMode}) => {
         setDarkMode={setDarkMode}
         showDropdownPage={showDropdownPage}
         setShowDropdownPage={setShowDropdownPage}
-        resultsVisible={resultsVisible}
-        setResultsVisible={setResultsVisible}
       />
 
-      <main className="page-body-div overflow-y-auto" id="main-content">
+      <main className="page-body-div overflow-y-auto homepage" id="main-content">
         <section className="section-shell section-tone-a px-3">
           <Container fluid className="homepage-above-fold-div px-0">
             <Row>
               <Col xs={12} sm={12} md={12} lg={8}>
                 <div className="hero-text-div pb-[50px]">
                   <h1 className="hero-heading">Accessibility infrastructure for your <span className="text-gradient">entire frontend lifecycle</span></h1>
-                  <p className="hero-paragraph mb-5 mt-4 text-[1.2rem] leading-[1.5rem]">Integrate accessibility integrity into every phase of your frontend development workflow — from reusable component utilities to CI pipelines, Aria-Ease ensures accessibility behavior is built in, tested, and never regresses. Works with React, Vue, Svelte, or vanilla JavaScript.</p>
+                  <p className="hero-paragraph mb-5 mt-4 text-[1.1rem] leading-[1.5rem]">Integrate accessibility integrity into every phase of your frontend development workflow — from reusable component utilities to CI pipelines, Aria-Ease ensures accessibility behavior is built in, tested, and never regresses. Works with React, Vue, Svelte, or vanilla JavaScript.</p>
                   <div className="flex items-center gap-4 flex-wrap">
-                    <Link onClick={saveScrollPosition} to='/docs' className="px-4 sm:px-8 h-12 flex items-center justify-center button-gradient shadow-xl rounded-lg text-white">Get Started</Link>
-                    <Link className="hero-explore px-4 sm:px-8 rounded-lg" onClick={saveScrollPosition} to='/utilities/accordion'>
+                    <Link onClick={saveScrollPosition} to='/getting-started' className="px-4 sm:px-8 h-12 flex items-center justify-center button-gradient shadow-xl rounded-lg text-white">Get Started</Link>
+                    <Link className="hero-explore px-4 sm:px-8 rounded-lg" onClick={saveScrollPosition} to='/components/overview'>
                       <div className="flex items-center gap-2 h-12 black-white-text">
-                        Explore Utilities <span className="material-symbols-outlined text-[17px] leading-none" aria-hidden="true">arrow_forward</span>
+                        Explore Components <span className="material-symbols-outlined text-[17px] leading-none" aria-hidden="true">arrow_forward</span>
                       </div>
                     </Link>
                   </div>
-                  {/* Stats badges */}
-                  {/* <div className="flex items-center gap-4 mt-10 flex-wrap text-sm">
-                    <div className="flex items-center gap-2">
-                      <Package size={16} className="text-blue-600" aria-hidden="true"/>
-                      <span className={darkMode ? 'text-gray-300' : 'text-gray-700'}>1.4KB - 3.7KB per component</span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <ShieldCheck size={16} className="text-green-600" aria-hidden="true"/>
-                      <span className={darkMode ? 'text-gray-300' : 'text-gray-700'}>WCAG 2.1 AA Compliant</span>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <Code2 size={16} className="text-purple-600" aria-hidden="true"/>
-                      <span className={darkMode ? 'text-gray-300' : 'text-gray-700'}>Framework Agnostic</span>
-                    </div>
-                  </div> */}
                 </div>
               </Col>
               <div className="mx-auto flex w-full max-w-2xl justify-center mt-1">
@@ -190,50 +152,6 @@ const Homepage = ({darkMode, setDarkMode}) => {
         </section>
 
 
-        {/* Before/After Comparison Section */}
-        {/* <section className="py-[80px] px-3">
-          <Container fluid>
-            <div className="text-center mb-12">
-              <h2 className="black-white-text text-3xl font-bold mb-4">From 50 Lines to 3 Lines</h2>
-              <p className="text-[1.2rem] leading-[1.5rem] black-grey-text">See how Aria-Ease eliminates boilerplate code</p>
-            </div>
-            <Row className="items-start">
-              <Col lg={6} md={12} className="mb-6 lg:mb-0">
-                <div className="flex flex-col h-full max-h-[600px]">
-                  <div className="flex items-center gap-2 mb-3">
-                    <div className="w-3 h-3 rounded-full bg-red-500"></div>
-                    <h3 className="text-lg font-semibold black-grey-text">❌ Without Aria-Ease (~50 lines)</h3>
-                  </div>
-                  <div className="flex-1 overflow-y-auto">
-                    <CodeBlockDemo code={boilerplateCode} isLineNumber={true}/>
-                  </div>
-                  <p className="mt-3 text-sm text-gray-600 dark:text-gray-400">Plus: cleanup functions, edge cases, focus trap logic, submenu handling...</p>
-                </div>
-              </Col>
-              <Col lg={6} md={12}>
-                <div className="flex items-center gap-2 mb-3">
-                  <div className="w-3 h-3 rounded-full bg-green-500"></div>
-                  <h3 className="text-lg font-semibold black-grey-text">✅ With Aria-Ease (3 lines)</h3>
-                </div>
-                <CodeBlockDemo code={ariaEaseCode} isLineNumber={true}/>
-                <div className={`mt-4 p-4 bg-green-50 dark:bg-green-900/20 rounded-lg border-l-4 border-green-500 ${darkMode ? 'text-green-100 bg-green-900/20' : 'text-green-900 bg-green-50'}`}>
-                  <p className="font-semibold mb-2">You automatically get:</p>
-                  <ul className="space-y-1 text-sm">
-                    <li>✓ Arrow key navigation</li>
-                    <li>✓ Escape/Tab/Shift+Tab closes menu</li>
-                    <li>✓ Focus trap within menu</li>
-                    <li>✓ Automatic ARIA updates</li>
-                    <li>✓ Submenu support</li>
-                    <li>✓ Click outside close</li>
-                  </ul>
-                </div>
-              </Col>
-            </Row>
-          </Container>
-        </section> */}
-
-        <hr className="landing-hr"></hr>
-
         <section className="section-shell section-tone-b px-3">
           <div className="mx-auto max-w-2xl text-center">
             <p className="text-sm font-semibold uppercase tracking-wider black-grey-text">The Problem</p>
@@ -250,7 +168,7 @@ const Homepage = ({darkMode, setDarkMode}) => {
               </span>
             </h2>
             <p className="mt-4 text-pretty text-lg leading-relaxed text-muted-foreground black-grey-text">
-              For a lot of teams, accessibility checks happen too far into the frontend development cycle, often as manual QA. Critical issues are discovered late, causing costly rework, rushed fixes, missed deadline, or shipping inaccessible frontend to production.
+              For a lot of teams, accessibility checks happen too far into the frontend development cycle, often as last-minute QA. Critical issues are discovered late, causing costly rework, rushed fixes, missed deadline, or shipping inaccessible frontend to production.
             </p>
           </div>
 
@@ -316,7 +234,7 @@ const Homepage = ({darkMode, setDarkMode}) => {
             <div className="text-center mb-12">
               <p className="text-sm font-semibold uppercase tracking-wider black-grey-text">The Solution</p>
               <h2 className="black-white-text text-3xl font-bold mb-4 mt-3 text-balance tracking-tight text-foreground sm:text-4xl">The Aria-Ease Accessibility Lifecycle</h2>
-              <p className="text-[1.2rem] leading-[1.5rem] black-grey-text max-w-3xl mx-auto">From design to deployment—Aria-Ease covers every phase of the frontend lifecycle. Accessibility becomes a property your system guarantees. That means quick feedback during development, minimal runtime impact, and fewer late-release accessibility surprises.</p>
+              <p className="text-[1.1rem] leading-[1.5rem] black-grey-text max-w-3xl mx-auto">From design to deployment—Aria-Ease covers every phase of the frontend lifecycle. Accessibility becomes a property your system guarantees. That means quick feedback during development, minimal runtime impact, and fewer late-release accessibility surprises.</p>
             </div>
             
             {/* Accessibility Lifecycle Phases */}
@@ -406,7 +324,6 @@ const Homepage = ({darkMode, setDarkMode}) => {
           </Container>
         </section>
 
-        <hr className="landing-hr"></hr>
 
 <section className="section-shell section-tone-c px-3">
 <div className="max-w-7xl mx-auto">
@@ -426,7 +343,7 @@ const Homepage = ({darkMode, setDarkMode}) => {
 <div className="flex gap-4">
 <div className="text-center p-3 rounded">
 <p className="text-xl font-bold black-white-text">1.4KB - 3.7KB</p>
-<p className="text-[10px] uppercase black-grey-text">Per Utility</p>
+<p className="text-[10px] uppercase black-grey-text">Per Component</p>
 </div>
 <div className="text-center p-3 rounded">
 <p className="text-xl font-bold black-white-text">100%</p>
@@ -445,7 +362,7 @@ const Homepage = ({darkMode, setDarkMode}) => {
 </div>
 
 <h3 className="text-xl font-bold mb-3 black-white-text">Audit CLI</h3>
-<p className="text-sm black-grey-text">Fast, static audits for web pages. Integrate directly into your local development server for instant feedback.</p>
+<p className="text-sm black-grey-text">Fast, static audits for web pages. Integrates directly into your local development server for instant feedback.</p>
 <p className="text-xs mt-3 black-grey-text">CI/CD: Run audits on pull requests and fail builds on violations.</p>
 </div>
 
@@ -456,7 +373,7 @@ const Homepage = ({darkMode, setDarkMode}) => {
 
 <h3 className="text-xl font-bold mb-3 black-white-text">Contract Testing</h3>
 <p className="text-sm black-grey-text">Defines deterministic component behaviors as JSON contracts. Build your reusable component contract using Aria-Ease&#39;s developer friendly DSL API.</p>
-<p className="text-xs mt-3 black-grey-text">CI/CD: Enforce baseline contracts in pipelines to prevent regressions while your standard evolves.</p>
+<p className="text-xs mt-3 black-grey-text">CI/CD: Enforce contracts in pipelines to prevent regressions while your standard evolves.</p>
 </div>
 
   <div className="md:col-span-4 lg:col-span-3 p-8 rounded-2xl flex flex-col md:flex-row gap-8 items-center tone-card tone-card-alt">
@@ -479,14 +396,13 @@ const Homepage = ({darkMode, setDarkMode}) => {
 </div>
 </section>
 
-        <hr className="landing-hr"></hr>
 
         <section className="section-shell section-tone-b px-3">
           <Container fluid className="px-0">
             <div className="mx-auto max-w-3xl text-center mb-12">
               <p className="text-sm font-semibold uppercase tracking-wider black-grey-text">Contract-First Workflow</p>
               <h2 className="black-white-text text-3xl font-bold mb-4 mt-3 text-balance tracking-tight text-foreground sm:text-4xl">Define Accessibility Behavior as Code</h2>
-              <p className="text-[1.1rem] leading-[1.6rem] black-grey-text">Your team defines accessibility contracts as readable policy using Aria-Ease&#39;s developer friendly DSL API, then uses them to build test artifacts, validate behavior, and keep documentation and team knowledge aligned.</p>
+              <p className="text-[1.1rem] leading-[1.6rem] black-grey-text">Your team defines accessibility contracts as readable policy using Aria-Ease&#39;s developer friendly DSL API, then uses them to build test artifacts, validate deterministic component accessibility behaviors, and keep documentation and team knowledge aligned.</p>
             </div>
 
             <Row className="g-4 items-stretch mb-8">
@@ -529,7 +445,7 @@ const Homepage = ({darkMode, setDarkMode}) => {
                       command="npx aria-ease test"
                       lines={[
                         { tone: 'info', prefix: '>', text: 'Initializing Playwright Runner' },
-                        { tone: 'info', prefix: '>', text: 'Loading contract: combobox.listbox.contract.json' },
+                        { tone: 'info', prefix: '>', text: 'Loading contract: combobox.contract.json' },
                         { tone: 'success', prefix: '✓', text: 'Static Attributes: 7/7 passed' },
                         { tone: 'success', prefix: '✓', text: 'Keyboard interactions: 12/12 passed' },
                         { tone: 'success', prefix: '✓', text: 'ARIA state transitions: 9/9 passed' },
@@ -544,7 +460,7 @@ const Homepage = ({darkMode, setDarkMode}) => {
                     <p className="text-sm font-semibold black-white-text">Test Your ARIA Components</p>
                     <p className="text-sm black-grey-text mt-1">Start with Aria-Ease&#39;s contract-powered deterministic ARIA component behavior testing.</p>
                     <div className="flex flex-wrap gap-3 mt-4">
-                      <Link onClick={saveScrollPosition} to='/component-testing' className="px-4 sm:px-6 h-11 flex items-center justify-center button-gradient shadow-xl rounded-lg text-white">Test Your Components</Link>
+                      <Link onClick={saveScrollPosition} to='/testing/component-testing' className="px-4 sm:px-6 h-11 flex items-center justify-center button-gradient shadow-xl rounded-lg text-white">Test Your Components</Link>
                     </div>
                   </div>
                 </div>
@@ -602,188 +518,6 @@ const Homepage = ({darkMode, setDarkMode}) => {
           </Container>
         </section>
 
-
-        {/* Quick Wins Section */}
-        {/* <section className="section-shell px-3">
-          <Container fluid>
-            <div className="text-center mb-12">
-              <div className={`inline-flex items-center gap-2 ${darkMode ? 'bg-purple-900/30' : 'bg-purple-100'} px-4 py-2 rounded-full mb-4`}>
-                <span className="material-symbols-outlined text-[20px] leading-none text-purple-600" aria-hidden="true">bolt</span>
-                <span className={`${darkMode ? 'text-purple-100' : 'text-purple-600'} font-semibold`}>Quick Start</span>
-              </div>
-              <h2 className="black-white-text text-3xl font-bold mb-4">Get Results in 5 Minutes</h2>
-              <p className="text-[1.2rem] leading-[1.5rem] black-grey-text">
-                Already have a dropdown menu? Make it accessible right now.
-              </p>
-            </div>
-            <Row className="justify-center">
-              <Col lg={8}>
-                <div className={`p-8 rounded-xl ${darkMode ? 'bg-none' : 'bg-white'} shadow-2xl`}>
-                  <div className="mb-8">
-                    <div className="flex items-center gap-3 mb-3">
-                      <div className="w-8 h-8 rounded-full bg-blue-600 text-white flex items-center justify-center font-bold">1</div>
-                      <h3 className="text-lg font-semibold black-grey-text">Install</h3>
-                    </div>
-                    <CodeBlockDemo code={`npm i aria-ease`}/>
-                  </div>
-                  <div className="mb-8">
-                    <div className="flex items-center gap-3 mb-3">
-                      <div className="w-8 h-8 rounded-full bg-blue-600 text-white flex items-center justify-center font-bold">2</div>
-                      <h3 className="text-lg font-semibold black-grey-text">Add 3 lines of code</h3>
-                    </div>
-                    <CodeBlockDemo code={`import * as Menu from "aria-ease/menu";
-
-const menu = Menu.makeMenuAccessible({
-  menuId: "your-menu-id",
-  menuItemsClass: "your-menu-item-class",
-  triggerId: "your-button-id"
-});`} isLineNumber={true}/>
-                  </div>
-                  <div>
-                    <div className="flex items-center gap-3 mb-3">
-                      <div className="w-8 h-8 rounded-full bg-green-600 text-white flex items-center justify-center font-bold">✓</div>
-                      <h3 className="text-lg font-semibold black-grey-text">That&apos;s it!</h3>
-                    </div>
-                    <div className={`p-4 ${darkMode ? 'bg-green-900/20' : 'bg-green-50'} rounded-lg`}>
-                      <p className={`font-medium mb-2 ${darkMode ? 'text-green-100' : 'text-green-900'}`}>Your menu now has:</p>
-                      <div className={`grid grid-cols-1 md:grid-cols-2 gap-2 text-sm ${darkMode ? 'text-green-100' : 'text-green-900'}`}>
-                        <div>✓ Full keyboard interaction</div>
-                        <div>✓ Focus management</div>
-                        <div>✓ ARIA attributes</div>
-                        <div>✓ Screen reader support</div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </Col>
-            </Row>
-          </Container>
-        </section> */}
-
-        {/* Developer Experience Section */}
-        {/* <section className="py-[80px] px-3">
-          <Container fluid>
-            <div className="text-center mb-12">
-              <h2 className="black-white-text text-3xl font-bold mb-4 b">Built for Developers</h2>
-              <p className="text-[1.2rem] leading-[1.5rem] black-grey-text">
-                Modern DX with zero compromise on accessibility
-              </p>
-            </div>
-            <Row className="g-4">
-              <Col lg={3} md={6}>
-                <div className={`p-6 rounded-xl ${darkMode ? 'bg-gray-900' : 'bg-gray-50'} h-full text-center`}>
-                  <div className="mb-4 flex justify-center">
-                    <div className="w-12 h-12 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center">
-                      <Code2 className="text-blue-600" size={24} aria-hidden="true"/>
-                    </div>
-                  </div>
-                  <h3 className="font-bold mb-2 black-white-text">TypeScript Support</h3>
-                  <p className="text-sm black-grey-text">Full type definitions included</p>
-                </div>
-              </Col>
-              <Col lg={3} md={6}>
-                <div className={`p-6 rounded-xl ${darkMode ? 'bg-gray-900' : 'bg-gray-50'} h-full text-center`}>
-                  <div className="mb-4 flex justify-center">
-                    <div className="w-12 h-12 rounded-full bg-purple-100 dark:bg-purple-900/30 flex items-center justify-center">
-                      <Package className="text-purple-600" size={24} aria-hidden="true"/>
-                    </div>
-                  </div>
-                  <h3 className="font-bold mb-2 black-white-text">Tree-Shakeable</h3>
-                  <p className="text-sm black-grey-text">Import only what you need</p>
-                </div>
-              </Col>
-              <Col lg={3} md={6}>
-                <div className={`p-6 rounded-xl ${darkMode ? 'bg-gray-900' : 'bg-gray-50'} h-full text-center`}>
-                  <div className="mb-4 flex justify-center">
-                    <div className="w-12 h-12 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center">
-                      <ShieldCheck className="text-green-600" size={24} aria-hidden="true"/>
-                    </div>
-                  </div>
-                  <h3 className="font-bold mb-2 black-white-text">Tiny Bundle Size</h3>
-                  <p className="text-sm black-grey-text">1.4KB - 3.7KB per component</p>
-                </div>
-              </Col>
-              <Col lg={3} md={6}>
-                <div className={`p-6 rounded-xl ${darkMode ? 'bg-gray-900' : 'bg-gray-50'} h-full text-center`}>
-                  <div className="mb-4 flex justify-center">
-                    <div className="w-12 h-12 rounded-full bg-orange-100 dark:bg-orange-900/30 flex items-center justify-center">
-                      <Boxes className="text-orange-600" size={24} aria-hidden="true"/>
-                    </div>
-                  </div>
-                  <h3 className="font-bold mb-2 black-white-text">Framework Agnostic</h3>
-                  <p className="text-sm black-grey-text">React, Vue, Svelte, vanilla JS</p>
-                </div>
-              </Col>
-            </Row>
-            <div className="mt-8">
-              <CodeBlockDemo code={`// Works with any framework or vanilla JS
-import * as Menu from "aria-ease/menu";  // ESM
-// OR
-const Menu = require("aria-ease/menu");   // CommonJS
-// OR
-<script type="module">                    // CDN
-  import * as Menu from "https://cdn.jsdelivr.net/npm/aria-ease@latest/dist/src/menu/index.js";
-</script>`}/>
-            </div>
-          </Container>
-        </section> */}
-
-       {/*  <hr className="landing-hr"></hr> */}
-
-        {/* <section className="pt-[50px]">
-          <Container fluid className="below-the-fold-container mb-[50px]">
-            <Row>
-              <Col lg={6} md={6} sm={12} xs={12}>
-                <div className="mt-[50px]">
-                  <h2 className="text-3xl font-bold mb-6">Built for a more accessible web</h2>
-                  <div className="space-y-6">
-                    <div className="flex items-start gap-4">
-                      <Terminal className={`${darkMode ? 'text-gray-400' : 'text-gray-800'} h-6 w-6 mt-1`} aria-hidden="true"/>
-                      <div>
-                        <h3 className="font-semibold mb-2">Seamless Integration</h3>
-                        <p className={`${darkMode ? 'text-gray-400' : 'text-gray-800'}`}>Integrate accessibility into components with DX friendly public APIs</p>
-                    </div>
-                    </div>
-                    <div className="flex items-start gap-4">
-                      <Boxes className={`${darkMode ? 'text-gray-400' : 'text-gray-800'} h-6 w-6 mt-1`} aria-hidden="true"/>
-                      <div>
-                        <h3 className="font-semibold mb-2">Utility Functions</h3>
-                        <p className={`${darkMode ? 'text-gray-400' : 'text-gray-800'}`}>Audit your components to discover where accessibilty can be improved</p>
-                      </div>
-                    </div>
-                    <div className="flex items-start gap-4">
-                      <Keyboard className={`${darkMode ? 'text-gray-400' : 'text-gray-800'} h-16 w-16 mt-1`} aria-hidden="true"/>
-                      <div>
-                        <h3 className="font-semibold mb-2">Intuitive Navigation</h3>
-                        <div>
-                          <p className={`${darkMode ? 'text-gray-400' : 'text-gray-800'} mb-3`}>See how easy it is to navigate with keyboard controls and track focus</p>
-                          <div className="rounded-lg overflow-hidden border border-gray-200 dark:border-gray-700">
-                            <video autoPlay loop muted playsInline>
-                              <source src={keyboardnavdemo} type="video/mp4"></source>
-                            </video>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </Col>
-              <Col lg={6} md={6} sm={12} xs={12}>
-                <div className="bg-gray-900 rounded-xl p-6 font-mono text-sm mt-[50px]" aria-hidden='true'>
-                  <div className="flex items-center gap-2 mb-4">
-                    <div className="w-3 h-3 rounded-full bg-red-500"></div>
-                    <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
-                    <div className="w-3 h-3 rounded-full bg-green-500"></div>
-                  </div>
-                  <pre className="text-green-400">
-                    <code style={{color: 'rgb(74 222 128)'}}>{belowTheFoldCode}</code>
-                  </pre>
-                </div>
-              </Col>
-            </Row>
-          </Container>
-        </section> */}
-
         <section className="px-3 section-shell section-tone-c audit-section flex gap-5 flex-wrap justify-center">
           <div className="flex flex-col gap-3 justify-center items-center">
             <div className="flex items-center gap-2 audit-graphic rounded-sm bg-[#cbd4dd] px-3 py-2 border ml-20">
@@ -812,7 +546,7 @@ const Menu = require("aria-ease/menu");   // CommonJS
           </div>
           <div className="flex flex-col items-start justify-center gap-3 max-w-full">
             <h2 className="black-white-text text-3xl font-bold">Audit Your Web Pages. <span className="text-gradient">Get instant accessibility insights</span></h2>
-            <p className="audit-section-paragraph max-w-[700px] text-[1.2rem] leading-[1.5rem] mb-4">Do you wonder what static accessibility issues might be lurking on your web pages? After contracts validate behavior and utilities ensure implementation, audit catches any remaining static WCAG gaps.</p>
+            <p className="audit-section-paragraph max-w-[700px] text-[1.1rem] leading-[1.5rem] mb-4">Do you wonder what static accessibility issues might be lurking on your web pages? After contracts validate behavior and utilities ensure implementation, audit catches any remaining static WCAG gaps.</p>
             <div className="overflow-x-auto w-full">
             </div>
             <div className="w-full">
@@ -853,130 +587,9 @@ const Menu = require("aria-ease/menu");   // CommonJS
                       </div>
                     </div>
                   </div>
-            <Link onClick={saveScrollPosition} to='/static-audit' className="px-4 sm:px-8 h-12 flex items-center justify-center button-gradient shadow-xl rounded-lg text-white">Audit Your Webpage</Link>
+            <Link onClick={saveScrollPosition} to='/testing/static-audit' className="px-4 sm:px-8 h-12 flex items-center justify-center button-gradient shadow-xl rounded-lg text-white">Audit Your Webpage</Link>
           </div>
         </section>
-
-
-        {/* Migration/Adoption Section */}
-        {/* <section className="section-shell px-3">
-          <Container fluid>
-            <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold mb-4 black-white-text">Already Have Existing Code?</h2>
-              <p className="text-[1.2rem] leading-[1.5rem] black-grey-text">
-                No need to rewrite everything. Start small and gradually adopt.
-              </p>
-            </div>
-            <Row className="justify-center">
-              <Col lg={8}>
-                <div className="space-y-6">
-                  <div className={`py-6 px-3 rounded-xl ${darkMode ? 'bg-gray-900 border-gray-800' : 'bg-white border-gray-200'} border-2 shadow-lg`}>
-                    <div className="flex items-start gap-2">
-                      <div className="w-8 h-8 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center flex-shrink-0 font-bold text-blue-600">1</div>
-                      <div>
-                        <h3 className="font-bold text-lg mb-2 black-white-text">Pick One Component</h3>
-                        <p className="black-grey-text">Start with your main navigation, a dropdown menu, or any frequently-used component.</p>
-                      </div>
-                    </div>
-                  </div>
-                  
-                  <div className={`py-6 px-3 rounded-xl ${darkMode ? 'bg-gray-900 border-gray-800' : 'bg-white border-gray-200'} border-2 shadow-lg`}>
-                    <div className="flex items-start gap-2">
-                      <div className="w-8 h-8 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center flex-shrink-0 font-bold text-blue-600">2</div>
-                      <div className="w-full overflow-hidden">
-                        <h3 className="font-bold text-lg mb-2 black-white-text">Add Aria-Ease in 5 Minutes</h3>
-                        <p className="black-grey-text mb-3">Keep your existing HTML and CSS. Just add the accessibility layer.</p>
-                        <div className='overflow-x-auto max-w-full'>
-                          <CodeBlockDemo code={`// Your existing component stays the same
-// Just add this:
-import * as Menu from "aria-ease/menu";
-
-useEffect(() => {
-  const menu = Menu.makeMenuAccessible({
-    menuId: "existing-menu-id",
-    menuItemsClass: "existing-menu-item-class",
-    triggerId: "existing-button-id"
-  });
-  
-  return () => menu.cleanup();
-}, []);`}/>
-                        </div>
-                        
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className={`py-6 px-3 rounded-xl ${darkMode ? 'bg-gray-900 border-gray-800' : 'bg-white border-gray-200'} border-2 shadow-lg`}>
-                    <div className="flex items-start gap-2">
-                      <div className="w-8 h-8 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center flex-shrink-0 font-bold text-blue-600">3</div>
-                      <div>
-                        <h3 className="font-bold text-lg mb-2 black-white-text">See Immediate Improvements</h3>
-                        <p className="black-grey-text">Run an accessibility audit and watch your scores improve instantly.</p>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div className={`py-6 px-3 rounded-xl ${darkMode ? 'bg-gray-900 border-gray-800' : 'bg-white border-gray-200'} border-2 shadow-lg`}>
-                    <div className="flex items-start gap-2">
-                      <div className="w-8 h-8 rounded-full bg-green-100 dark:bg-green-900/30 flex items-center justify-center flex-shrink-0 font-bold text-green-600">4</div>
-                      <div>
-                        <h3 className="font-bold text-lg mb-2 black-white-text">Gradually Roll Out to Other Components</h3>
-                        <p className="black-grey-text">Once you see the benefits, apply the same pattern to other components at your own pace.</p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-
-                <div className={`mt-8 p-6 rounded-xl ${darkMode ? 'bg-blue-900/20 border-blue-700' : 'bg-blue-50 border-blue-200'} border-2`}>
-                  <h4 className={`font-bold mb-3 ${darkMode ? 'text-blue-100' : 'text-blue-900'}`}>💡 Pro Tip</h4>
-                  <p className={`${darkMode ? 'text-blue-200' : 'text-blue-800'}`}>
-                    Aria-Ease works alongside your existing code. You don&apos;t need to refactor or migrate everything at once. 
-                    Many teams start with their most-used component and see results within a sprint.
-                  </p>
-                </div>
-              </Col>
-            </Row>
-          </Container>
-        </section> */}
-
-
-        {/* Services CTA Section */}
-        {/* <section className="home-services-cta section-shell px-3">
-          <Container>
-            <Row className="align-items-center">
-              <Col lg={6} className="mb-4 mb-lg-0">
-                <h2 className="text-4xl font-bold mb-4 black-white-text">Need Expert Help?</h2>
-                <p className="text-lg mb-4 opacity-80 black-grey-text">
-                  Get professional accessibility audits and remediation services from the 
-                  creator of Aria-Ease. WCAG-compliant solutions for your digital products.
-                </p>
-                <ul className="services-features-list mb-4">
-                  <li className="flex items-start gap-3 mb-2">
-                    <span className="material-symbols-outlined text-[15px] leading-none text-blue-500 mt-1 flex-shrink-0" aria-hidden="true">check_circle</span>
-                    <span className="black-grey-text">Comprehensive WCAG 2.1/2.2 compliance audits</span>
-                  </li>
-                  <li className="flex items-start gap-3 mb-2">
-                    <span className="material-symbols-outlined text-[15px] leading-none text-blue-500 mt-1 flex-shrink-0" aria-hidden="true">check_circle</span>
-                    <span className="black-grey-text">Expert code remediation and fixes</span>
-                  </li>
-                  <li className="flex items-start gap-3 mb-2">
-                    <span className="material-symbols-outlined text-[15px] leading-none text-blue-500 mt-1 flex-shrink-0" aria-hidden="true">check_circle</span>
-                    <span className="black-grey-text">Developer training and workshops</span>
-                  </li>
-                </ul>
-              </Col>
-              <Col lg={6} className="text-center text-lg-end">
-                <Link 
-                  onClick={saveScrollPosition} 
-                  to='/services' 
-                  className="inline-flex items-center gap-2 px-8 h-14 bg-blue-800 hover:bg-blue-900 shadow-xl rounded-lg text-white text-lg font-semibold transition-all hover:-translate-y-1"
-                >
-                  View Services <span className="material-symbols-outlined text-[20px] leading-none" aria-hidden="true">arrow_forward</span>
-                </Link>
-              </Col>
-            </Row>
-          </Container>
-        </section> */}
 
         <Footer page={page} darkMode={darkMode}/>
       </main>

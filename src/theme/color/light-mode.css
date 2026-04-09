@@ -15,15 +15,15 @@
    background-color: var(--section-tone-a);
 }
 
-.light-body .header-search-div,
+.light-body .search-div,
 .light-body .header-button,
 .light-body .search-close-button,
 .light-body .header-menu-button {
     background-color: var(--section-tone-a);
     border: 1px solid var(--card-border);
 }
-.light-body .header-search-div:hover,
-.light-body .header-search-div:focus-within,
+.light-body .search-div:hover,
+.light-body .search-div:focus-within,
 .light-body .header-button:hover,
 .light-body .search-close-button:hover {
     border: 1px solid var(--card-hover-border);
@@ -34,7 +34,7 @@
     background:  var(--section-tone-b);
 }
 
-.light-body .header-search-div input {
+.light-body .search-div input {
     color: rgb(73, 73, 73);
 }
 .light-body .hero-paragraph,
@@ -58,9 +58,6 @@
 .light-body .footer-nav-link:hover {
     color: rgb(0, 0, 0);
 }
-.light-body .slide-out-side-nav-div {
-    background: #F2F6F9;
-}
 
 .light-body .code-div {
     background-color: rgba(222, 222, 222, 0.506);
@@ -73,22 +70,8 @@
     background: rgba(242, 246, 249, 0.88);
     border-bottom: 1px solid rgba(120, 136, 158, 0.28);
 }
-.light-body .home-example-tab-one-item {
-    border: 0.2px solid rgba(27, 27, 27, 0.226);
-}
-.light-body .home-example-tab-one-item {
-    color: rgba(0, 0, 0);
-}
-.light-body .home-menu-example-trigger-button {
-    border: 0.2px solid rgba(27, 27, 27, 0.226);
-}
-.light-body .home-discover-functions-button {
-    color: rgb(73, 73, 73);
-    background-color: rgba(225, 225, 225);
-    border: 0.2px solid rgba(27, 27, 27, 0.226);
-    padding: 8px 14px 8px 14px;
-    border-radius: 8px;
-}
+
+
 .light-body .header-button-icon {
     color: rgb(77, 77, 79);
 }
@@ -100,7 +83,7 @@
 .light-body .search-result-container-overlay {
     background-color: rgba(0, 0, 0, 0.772);
 }
-.light-body .header-search-div {
+.light-body .search-div {
     border: 1px solid rgb(191, 191, 191);
 }
 .light-body .search-close-button-div {
@@ -140,10 +123,8 @@
 .light-body .terminal-header {
   border-bottom: 1px solid #dee2e6;
 }
-.light-body .landing-hr {
-    border-color: #444444;
-}
 
-.light-body .side-body-div code {
+.light-body code,
+.light-body .code {
   color: #9f1a5f;
 }

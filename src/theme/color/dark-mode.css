@@ -37,16 +37,16 @@
     background:  var(--section-tone-b);
 }
 
-.dark-body .header-search-div {
+.dark-body .search-div {
     background-color: var(--section-tone-a);
     border: 1px solid var(--card-border);
 }
-.dark-body .header-search-div:hover,
-.dark-body .header-search-div:focus-within {
+.dark-body .search-div:hover,
+.dark-body .search-div:focus-within {
     border: 1px solid var(--card-hover-border);
 }
  
-.dark-body .header-search-div input {
+.dark-body .search-div input {
     color: #d1d5db;
 }
 .dark-body .hero-heading,
@@ -89,13 +89,13 @@
 .dark-body .side-body-div {
     color: #a1a1aa;
 }
-.dark-body .slide-out-side-nav-div {
-    background-color: rgba(0, 0, 0);
-}
+
 .dark-body .slide-out-nav-outer-div p,
+.dark-body .side-nav-div div button,
 .dark-body .side-nav-div div p,
 .dark-body .introduction-heading,
-.dark-body .features-function  {
+.dark-body .slide-nav-links-section button,
+.dark-body .slide-nav-links-section p  {
     color: white;
 }
 .dark-body .code-div {
@@ -109,19 +109,11 @@
     background: rgba(8, 11, 16, 0.82);
     border-bottom: 1px solid rgba(86, 104, 128, 0.35);
 }
-.dark-body .home-example-tab-one-item,
-.dark-body .home-menu-example-trigger-button {
-    border: 0.2px solid rgba(208, 208, 208, 0.981);
-    color: rgba(208, 208, 208, 0.981);
-}
+
 .dark-body .profile-menu-item {
     color: black;
 }
-.dark-body .home-discover-functions-button {
-    color: rgba(208, 208, 208, 0.981);
-    background: rgba(48, 48, 48);
-    border: 1px solid rgba(97, 97, 97, 1);
-}
+
 .dark-body .header-button-icon {
     color: rgb(190, 190, 191);
 }
@@ -141,10 +133,6 @@
     background-color: white;
     color: #000;
 }
-.dark-body .code-div code,
-pre.code-div {
-  color: #fb6cb3;
-}
 .dark-body .next-link-text {
     color: #93c5fd; /* blue-300 */
 }
@@ -160,10 +148,9 @@ pre.code-div {
 .dark-body .text-link-contrast {
     color: #93c5fd; /* blue-300 */
 }
-
-/* Override Bootstrap's inline code color for better contrast in dark mode */
-.dark-body code {
-    color: #ff7edb /* !important */; /* Brighter pink with 4.5:1+ contrast */
+.dark-body code, 
+.dark-body .code {
+    color: #ff7edb;
 }
 
 .dark-body .skip-to-content-link {
@@ -177,10 +164,6 @@ pre.code-div {
 
 .dark-body .terminal-header {
   border-bottom: 1px solid rgba(45, 47, 72, 1);
-}
-
-.dark-body .landing-hr {
-    border-color: rgb(141, 141, 141);
 }
 
 .dark-body .footer {

@@ -2,30 +2,32 @@ export default {
   audit: {
     urls: [
       'http://localhost:5173/',
-
-      'http://localhost:5173/component-testing',
-      'http://localhost:5173/static-audit',
-      
       'http://localhost:5173/api',
-      'http://localhost:5173/docs',
-      'http://localhost:5173/migration',
-      'http://localhost:5173/examples',
+      'http://localhost:5173/getting-started',
+      'http://localhost:5173/glossary',
 
-      'http://localhost:5173/utilities/accordion',
-      'http://localhost:5173/utilities/block',
-      'http://localhost:5173/utilities/checkbox',
-      'http://localhost:5173/utilities/combobox',
-      'http://localhost:5173/utilities/menu',
-      'http://localhost:5173/utilities/radio',
-      'http://localhost:5173/utilities/tabs',
-      'http://localhost:5173/utilities/toggle-button',
 
-      'http://localhost:5173/philosophy/utilities',
-      'http://localhost:5173/philosophy/contracts',
+      'http://localhost:5173/testing/component-testing',
+      'http://localhost:5173/testing/static-audit',
+      
+      
+      'http://localhost:5173/components/accordion',
+      'http://localhost:5173/components/block',
+      'http://localhost:5173/components/checkbox',
+      'http://localhost:5173/components/combobox',
+      'http://localhost:5173/components/menu',
+      'http://localhost:5173/components/radio',
+      'http://localhost:5173/components/tabs',
+      'http://localhost:5173/components/toggle-button',
+      'http://localhost:5173/components/overview',
+
+
+      'http://localhost:5173/contracts/overview',
+      'http://localhost:5173/contracts/combobox',
+      'http://localhost:5173/contracts/dsl',
+      
 
       'http://localhost:5173/changelog',
-
-      'http://localhost:5173/contract/dsl',
     ],
     output: {
       format: 'all',
@@ -35,13 +37,13 @@ export default {
   test: {
     strictness: "balanced", // fallback: minimal | balanced | strict | paranoid
     components: [
-      { name: "menu", strictness: "strict" },
-      { name: "accordion", strictness: "minimal" },
-      { name: "tabs", strictness: "strict" },
+      { name: "menu", strictness: "strict", contractPath: "./tests/external-contracts/menu.contract.json" },
+      { name: "accordion", strictness: "minimal", contractPath: "./tests/external-contracts/aria-contracts/accordion/accordion.contract.json" },
+      { name: "tabs", strictness: "strict", contractPath: "./tests/external-contracts/aria-contracts/tabs/tabs.contract.json" },
       {
-        name: "combobox.listbox",
+        name: "combobox",
         strictness: "strict",
-        path: "./tests/external-contracts/combobox.listbox.contract.json",
+        contractPath: "./tests/external-contracts/combobox.listbox.contract.json",
         strategyPath: "./tests/external-strategies/CustomComboboxStrategy.js"
       }
     ]

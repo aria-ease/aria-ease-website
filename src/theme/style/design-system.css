@@ -63,12 +63,6 @@
   background: var(--card-bg-emphasis);
 }
 
-.tone-card:hover {
-  transform: translateY(-2px);
-  border-color: var(--card-hover-border);
-  box-shadow: var(--card-hover-shadow);
-}
-
 .docs-flow {
   display: flex;
   flex-direction: column;
@@ -88,42 +82,16 @@
   text-transform: uppercase;
 }
 
-.docs-intro-copy {
-  max-width: 72ch;
-}
-
-.docs-section-card {
-  padding: clamp(1rem, 2vw, 1.75rem);
-}
-
 .docs-section-card h2 {
   margin-top: 0;
 }
 
-.docs-flow > .side-body-sections-div:not(:nth-child(1)) {
-  margin-top: 0;
+.docs-flow > section:not(:nth-child(1)) {
+  margin-top: 48px;
 }
 
-/* Apply card rhythm to legacy docs pages that use top-level <section> blocks. */
 .documentation-page .docs-flow > section {
-  border: 1px solid var(--card-border);
-  border-radius: var(--ds-radius-lg);
-  padding: clamp(1rem, 2vw, 1.75rem);
-  transition: transform 180ms ease, box-shadow 180ms ease, border-color 180ms ease;
-}
-
-.documentation-page .docs-flow > section:nth-of-type(odd) {
-  background: var(--card-bg-base);
-}
-
-.documentation-page .docs-flow > section:nth-of-type(even) {
-  background: var(--card-bg-alt);
-}
-
-.documentation-page .docs-flow > section:hover {
-  transform: translateY(-2px);
-  border-color: var(--card-hover-border);
-  box-shadow: var(--card-hover-shadow);
+  padding: 0px 1rem;
 }
 
 .documentation-page .docs-flow > section h2:first-child,
@@ -149,7 +117,7 @@
 .docs-table-wrap {
   overflow-x: auto;
   border: 1px solid var(--card-border);
-  border-radius: 0;
+  border-radius: 4px;
   background: var(--card-bg-base);
 }
 
@@ -237,7 +205,7 @@
 }
 
 .callout-yellow {
-    border-left-color: #f59e0b;
+  border-left-color: #f59e0b;
 }
 
 @media (max-width: 991px) {
