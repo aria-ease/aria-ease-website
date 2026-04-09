@@ -1,43 +1,22 @@
-import { CodeBlock } from 'react-code-block';
 import { useCopyToClipboard } from 'react-use';
-import { Clipboard, ClipboardCheck } from 'lucide-react';
+import { CopyIcon, CheckIcon } from 'lucide-react';
 
 
 // eslint-disable-next-line react/prop-types
-function CodeBlockDemo({ code, isLineNumber }) {
+function CodeBlockDemo({ code }) {
   const [state, copyToClipboard] = useCopyToClipboard();
 
   const copyCode = () => {
-    // Logic to copy `code`
     copyToClipboard(code);
   };
 
-  
-
   return (
-    <CodeBlock code={code} language='js'>
-      <div className="relative max-w-full">
-        <CodeBlock.Code className="bg-gray-900 !p-6 rounded-xl shadow-lg code-block-code overflow-x-auto" tabIndex={0}>
-          <div className="table-row">
-            {(isLineNumber === true)  ? 
-              <CodeBlock.LineNumber className="table-cell pr-4 text-sm text-gray-400 text-right select-none" /> :
-              null
-            }
-            <CodeBlock.LineContent className="table-cell">
-              <CodeBlock.Token />
-            </CodeBlock.LineContent>
-          </div>
-        </CodeBlock.Code>
-
-        <button
-          className="bg-white rounded-full px-3.5 py-1.5 absolute top-2 right-2 text-sm font-semibold"
-          aria-label='Copy code snippet'
-          onClick={copyCode}
-        >
-          {state.value ? <ClipboardCheck className='h-4 w-4 text-gray-800'/> : <Clipboard className='h-4 w-4 text-gray-800'/>}
-        </button>
-      </div>
-    </CodeBlock>
+    <div className="flex items-center justify-between max-w-full tone-card tone-card-base pl-4 py-3 pr-1 rounded-xl shadow-lg">
+      <div className="code-block-code overflow-x-auto font-mono code w-full overflow-x-auto whitespace-nowrap" tabIndex={0}>{code}</div>
+      <button className="rounded-full px-3.5 py-1.5 text-sm font-semibold" aria-label='Copy code snippet' onClick={copyCode}>
+        {state.value ? <CheckIcon className='h-4 w-4 black-white-text'/> : <CopyIcon className='h-4 w-4 black-white-text'/>}
+      </button>
+    </div>
   );
 }
 

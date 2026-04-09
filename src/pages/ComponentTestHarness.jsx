@@ -10,7 +10,7 @@ import SubMenu from '../components/menus/Submenu';
 // Registry of components available for testing
 const COMPONENT_REGISTRY = {
   menu: ShopifyUserMenu,
-  combobox_listbox: ComboBox,
+  combobox: ComboBox,
   accordion: AccordionExample,
   checkbox: CheckboxExample,
   tabs_horizontal: HorizontalTabs,

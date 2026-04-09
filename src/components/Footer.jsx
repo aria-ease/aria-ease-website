@@ -16,9 +16,9 @@ const Footer = ({ page }) => {
           <Col md={3} sm={6} xs={6} className="mt-8">
             <span className="text-[16px] font-bold footer-heading-text">Getting Started</span>
             <ul className="mt-3">
-              <li className="mb-3"><Link onClick={saveScrollPosition} to="/docs" className="footer-nav-link block-interactive text-[16px]" aria-label='Navigate to the introduction page'>Introduction</Link></li>
-              <li className="mb-3"><Link onClick={saveScrollPosition} to="/utilities/accordion" className="footer-nav-link block-interactive text-[16px]" aria-label="View accordion utility page">Utilities</Link></li>
-              <li className="mb-3"><Link onClick={saveScrollPosition} to="/component-testing" className="footer-nav-link block-interactive text-[16px]" aria-label='Navigate to contract testing page'>Component Testing</Link></li>
+              <li className="mb-3"><Link onClick={saveScrollPosition} to="/getting-started" className="footer-nav-link block-interactive text-[16px]" aria-label='Navigate to the getting started overview page'>Overview</Link></li>
+              <li className="mb-3"><Link onClick={saveScrollPosition} to="/components/overview" className="footer-nav-link block-interactive text-[16px]" aria-label="View component overview page">Components</Link></li>
+              <li className="mb-3"><Link onClick={saveScrollPosition} to="/testing/component-testing" className="footer-nav-link block-interactive text-[16px]" aria-label='Navigate to component testing page'>Component Testing</Link></li>
               
             </ul>
           </Col>
@@ -26,7 +26,7 @@ const Footer = ({ page }) => {
             <span className="text-[16px] font-bold footer-heading-text">Reference</span>
             <ul className="mt-3">
               <li className="mb-3"><Link onClick={saveScrollPosition} to="/api" className="footer-nav-link block-interactive text-[16px]" aria-label='Navigate to API reference page'>API</Link></li>
-              <li className="mb-3"><Link onClick={saveScrollPosition} to="/migration" className="footer-nav-link block-interactive text-[16px]" aria-label='Navigate to migration guide page'>Migration Guide</Link></li>
+              <li className="mb-3"><Link onClick={saveScrollPosition} to="/glossary" className="footer-nav-link block-interactive text-[16px]" aria-label='Navigate to glossary page'>Glossary</Link></li>
               <li className="mb-3"><Link onClick={saveScrollPosition} to="/changelog" className="footer-nav-link block-interactive text-[16px]" aria-label='Navigate to changelog page'>Changelog</Link></li>
             </ul>
           </Col>

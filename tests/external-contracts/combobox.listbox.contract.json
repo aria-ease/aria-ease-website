@@ -11,12 +11,12 @@
         "2.2 AA"
       ]
     },
-    "W3CName": "Combobox Listbox Popup"
+    "W3CName": "Combobox With Listbox Popup"
   },
   "selectors": {
+    "main": "[role=combobox]",
     "input": "[role=combobox]",
     "button": "button[tabindex='-1']",
-    "listbox": "[role=listbox]",
     "options": "[role=option]",
     "focusable": "[role=combobox]",
     "relative": "[role=option]",
@@ -25,14 +25,14 @@
   "relationships": [
     {
       "type": "aria-reference",
-      "from": "input",
+      "from": "main",
       "attribute": "aria-controls",
-      "to": "listbox",
+      "to": "popup",
       "level": "required"
     },
     {
       "type": "contains",
-      "parent": "listbox",
+      "parent": "popup",
       "child": "options",
       "level": "required"
     }
@@ -41,23 +41,44 @@
     {
       "assertions": [
         {
-          "target": "input",
+          "target": "main",
           "attribute": "role",
           "expectedValue": "combobox",
           "failureMessage": "",
           "level": "required"
         },
         {
-          "target": "input",
+          "target": "main",
           "attribute": "aria-expanded",
-          "expectedValue": "true | false",
+          "expectedValue": "false",
           "failureMessage": "",
           "level": "required"
         },
         {
-          "target": "input",
+          "target": "main",
           "attribute": "aria-controls",
           "expectedValue": "!empty",
+          "failureMessage": "",
+          "level": "required"
+        },
+        {
+          "target": "main",
+          "attribute": "aria-autocomplete",
+          "expectedValue": "list",
+          "failureMessage": "",
+          "level": "recommended"
+        },
+        {
+          "target": "main",
+          "attribute": "aria-haspopup",
+          "expectedValue": "listbox",
+          "failureMessage": "",
+          "level": "required"
+        },
+        {
+          "target": "options",
+          "attribute": "aria-selected",
+          "expectedValue": "false",
           "failureMessage": "",
           "level": "required"
         }
@@ -66,27 +87,34 @@
   ],
   "dynamic": [
     {
-      "description": "Escape closes an open listbox.",
+      "description": "Escape closes an open listbox popup.",
       "level": "required",
       "action": [
         {
           "type": "keypress",
-          "target": "input",
+          "target": "main",
           "key": "Escape"
         }
       ],
       "assertions": [
         {
-          "target": "listbox",
+          "target": "popup",
           "assertion": "notToBeVisible",
-          "failureMessage": "Expected listbox to be closed"
+          "failureMessage": "Expected popup to be closed"
         },
         {
-          "target": "input",
+          "target": "main",
           "assertion": "toHaveAttribute",
           "attribute": "aria-expanded",
           "expectedValue": "false",
-          "failureMessage": "Expect combobox input to have aria-expanded='false'"
+          "failureMessage": "Expect combobox main to have aria-expanded='false'."
+        },
+        {
+          "target": "main",
+          "assertion": "toHaveAttribute",
+          "attribute": "aria-activedescendant",
+          "expectedValue": "",
+          "failureMessage": "Expected aria-activedescendant on main to be empty."
         }
       ],
       "setup": [
@@ -98,7 +126,33 @@
       ]
     },
     {
-      "description": "Down Arrow on closed combobox opens the listbox.",
+      "description": "Escape clears input when listbox popup is closed.",
+      "level": "required",
+      "action": [
+        {
+          "type": "keypress",
+          "target": "main",
+          "key": "Escape"
+        }
+      ],
+      "assertions": [
+        {
+          "target": "input",
+          "assertion": "toHaveValue",
+          "expectedValue": "",
+          "failureMessage": "Expected input to have the value ''."
+        }
+      ],
+      "setup": [
+        {
+          "type": "type",
+          "target": "input",
+          "value": "test"
+        }
+      ]
+    },
+    {
+      "description": "Down Arrow on closed combobox opens the listbox popup.",
       "level": "required",
       "action": [
         {
@@ -109,16 +163,16 @@
       ],
       "assertions": [
         {
-          "target": "listbox",
+          "target": "popup",
           "assertion": "toBeVisible",
-          "failureMessage": "Expected listbox to be visible"
+          "failureMessage": "Expected popup to be visible"
         },
         {
-          "target": "input",
+          "target": "main",
           "assertion": "toHaveAttribute",
           "attribute": "aria-expanded",
           "expectedValue": "true",
-          "failureMessage": "Expect combobox input to have aria-expanded='true'"
+          "failureMessage": "Expect combobox main to have aria-expanded='true'."
         }
       ]
     },
@@ -134,16 +188,20 @@
       ],
       "assertions": [
         {
-          "target": "input",
-          "assertion": "toHaveAttribute",
-          "attribute": "aria-activedescendant",
-          "expectedValue": "!empty",
-          "failureMessage": "Expected aria-activedescendant to not be empty"
+          "target": "main",
+          "assertion": "toHaveFocus",
+          "failureMessage": "Expected main to be focused."
         },
         {
-          "target": "input",
-          "assertion": "toHaveFocus",
-          "failureMessage": "Expected input to be focused"
+          "target": "main",
+          "assertion": "toHaveAttribute",
+          "attribute": "aria-activedescendant",
+          "expectedValue": {
+            "ref": "relative",
+            "relativeTarget": "first",
+            "property": "id"
+          },
+          "failureMessage": "Expected aria-activedescendant on main to match the id of the first option."
         }
       ],
       "setup": [
@@ -160,17 +218,21 @@
       "action": [
         {
           "type": "keypress",
-          "target": "input",
+          "target": "main",
           "key": "Home"
         }
       ],
       "assertions": [
         {
-          "target": "input",
+          "target": "main",
           "assertion": "toHaveAttribute",
           "attribute": "aria-activedescendant",
-          "expectedValue": "!empty",
-          "failureMessage": "Expected aria-activedescendant to not be empty"
+          "expectedValue": {
+            "ref": "relative",
+            "relativeTarget": "first",
+            "property": "id"
+          },
+          "failureMessage": "Expected aria-activedescendant on main to match the id of the first option."
         }
       ],
       "setup": [
@@ -192,7 +254,7 @@
       ]
     },
     {
-      "description": "Click on the button opens the listbox.",
+      "description": "Click on the button opens the listbox popup.",
       "level": "required",
       "action": [
         {
@@ -202,21 +264,21 @@
       ],
       "assertions": [
         {
-          "target": "listbox",
+          "target": "popup",
           "assertion": "toBeVisible",
-          "failureMessage": "Expected listbox to be visible"
+          "failureMessage": "Expected popup to be visible"
         },
         {
-          "target": "input",
+          "target": "main",
           "assertion": "toHaveAttribute",
           "attribute": "aria-expanded",
           "expectedValue": "true",
-          "failureMessage": "Expect combobox input to have aria-expanded='true'"
+          "failureMessage": "Expect combobox main to have aria-expanded='true'."
         }
       ]
     },
     {
-      "description": "Click on the button closes the listbox.",
+      "description": "Click on the button closes the listbox popup.",
       "level": "required",
       "action": [
         {
@@ -226,16 +288,231 @@
       ],
       "assertions": [
         {
-          "target": "listbox",
+          "target": "popup",
           "assertion": "notToBeVisible",
-          "failureMessage": "Expected listbox to be closed"
+          "failureMessage": "Expected popup to be closed"
         },
         {
-          "target": "input",
+          "target": "main",
           "assertion": "toHaveAttribute",
           "attribute": "aria-expanded",
           "expectedValue": "false",
-          "failureMessage": "Expect combobox input to have aria-expanded='false'"
+          "failureMessage": "Expect combobox main to have aria-expanded='false'."
+        },
+        {
+          "target": "main",
+          "assertion": "toHaveAttribute",
+          "attribute": "aria-activedescendant",
+          "expectedValue": "",
+          "failureMessage": "Expected aria-activedescendant on main to be empty."
+        }
+      ],
+      "setup": [
+        {
+          "type": "click",
+          "target": "button"
+        }
+      ]
+    },
+    {
+      "description": "Click on option selects it and closes listbox popup.",
+      "level": "required",
+      "action": [
+        {
+          "type": "click",
+          "target": "options"
+        }
+      ],
+      "assertions": [
+        {
+          "target": "relative",
+          "relativeTarget": "first",
+          "assertion": "toHaveAttribute",
+          "attribute": "aria-selected",
+          "expectedValue": "true",
+          "failureMessage": "Expected first option to have aria-selected='true'."
+        }
+      ],
+      "setup": [
+        {
+          "type": "click",
+          "target": "button"
+        }
+      ]
+    },
+    {
+      "description": "Click on option selects it and closes listbox popup.",
+      "level": "required",
+      "action": [
+        {
+          "type": "click",
+          "target": "options"
+        }
+      ],
+      "assertions": [
+        {
+          "target": "relative",
+          "relativeTarget": "first",
+          "assertion": "toHaveAttribute",
+          "attribute": "aria-selected",
+          "expectedValue": "true",
+          "failureMessage": "Expected first option to have aria-selected='true'."
+        }
+      ],
+      "setup": [
+        {
+          "type": "click",
+          "target": "button"
+        }
+      ]
+    },
+    {
+      "description": "Clicking outside closes the listbox popup.",
+      "level": "required",
+      "action": [
+        {
+          "type": "click",
+          "target": "document"
+        }
+      ],
+      "assertions": [
+        {
+          "target": "popup",
+          "assertion": "notToBeVisible",
+          "failureMessage": "Expected popup to be closed"
+        },
+        {
+          "target": "main",
+          "assertion": "toHaveAttribute",
+          "attribute": "aria-expanded",
+          "expectedValue": "false",
+          "failureMessage": "Expect combobox main to have aria-expanded='false'."
+        },
+        {
+          "target": "main",
+          "assertion": "toHaveAttribute",
+          "attribute": "aria-activedescendant",
+          "expectedValue": "",
+          "failureMessage": "Expected aria-activedescendant on main to be empty."
+        }
+      ],
+      "setup": [
+        {
+          "type": "click",
+          "target": "button"
+        }
+      ]
+    },
+    {
+      "description": "Enter selects active option.",
+      "level": "required",
+      "action": [
+        {
+          "type": "keypress",
+          "target": "options",
+          "key": "Enter"
+        }
+      ],
+      "assertions": [
+        {
+          "target": "relative",
+          "relativeTarget": "first",
+          "assertion": "toHaveAttribute",
+          "attribute": "aria-selected",
+          "expectedValue": "true",
+          "failureMessage": "Expected first option to have aria-selected='true'."
+        }
+      ],
+      "setup": [
+        {
+          "type": "keypress",
+          "target": "input",
+          "key": "ArrowDown"
+        },
+        {
+          "type": "keypress",
+          "target": "input",
+          "key": "ArrowDown"
+        }
+      ]
+    },
+    {
+      "description": "Tab closes open listbox popup when no active option.",
+      "level": "required",
+      "action": [
+        {
+          "type": "keypress",
+          "target": "main",
+          "key": "Tab"
+        }
+      ],
+      "assertions": [],
+      "setup": [
+        {
+          "type": "keypress",
+          "target": "input",
+          "key": "ArrowDown"
+        }
+      ]
+    },
+    {
+      "description": "Tab selects active option, closes open listbox popup, and moves focus from main.",
+      "level": "required",
+      "action": [
+        {
+          "type": "keypress",
+          "target": "main",
+          "key": "Tab"
+        }
+      ],
+      "assertions": [
+        {
+          "target": "relative",
+          "relativeTarget": "first",
+          "assertion": "toHaveAttribute",
+          "attribute": "aria-selected",
+          "expectedValue": "true",
+          "failureMessage": "Expected first option to have aria-selected='true'."
+        },
+        {
+          "target": "main",
+          "assertion": "notToHaveFocus",
+          "failureMessage": "Expected main to not have focused."
+        }
+      ],
+      "setup": [
+        {
+          "type": "keypress",
+          "target": "input",
+          "key": "ArrowDown"
+        },
+        {
+          "type": "keypress",
+          "target": "input",
+          "key": "ArrowDown"
+        }
+      ]
+    },
+    {
+      "description": "Mouse hover sets aria-activedescendant to hovered option.",
+      "level": "required",
+      "action": [
+        {
+          "type": "hover",
+          "target": "options"
+        }
+      ],
+      "assertions": [
+        {
+          "target": "main",
+          "assertion": "toHaveAttribute",
+          "attribute": "aria-activedescendant",
+          "expectedValue": {
+            "ref": "relative",
+            "relativeTarget": "first",
+            "property": "id"
+          },
+          "failureMessage": "Expected aria-activedescendant on main to match the id of the first option."
         }
       ],
       "setup": [

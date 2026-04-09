@@ -10,7 +10,7 @@ import { X } from 'lucide-react';
 import { getActiveScrollPosition } from '../utils/scrollPosition';
 
 // eslint-disable-next-line react/prop-types
-const Header = ({ page, darkMode, setDarkMode, showDropdownPage, setShowDropdownPage, resultsVisible, setResultsVisible }) => {
+const Header = ({ page, darkMode, setDarkMode, showDropdownPage, setShowDropdownPage }) => {
     const searchInputRef = useRef(null);
     const activeIndexRef = useRef(-1);
 
@@ -20,6 +20,7 @@ const Header = ({ page, darkMode, setDarkMode, showDropdownPage, setShowDropdown
     const[announce, setAnnounce] = useState("");
     const[activeResultId, setActiveResultId] = useState("");
     const[resultsFound, setResultsFound] = useState(false);
+    const[resultsVisible, setResultsVisible] = useState(false);
 
     const[themeImage, setThemeImage] = useState(sunicon);
 
@@ -33,7 +34,9 @@ const Header = ({ page, darkMode, setDarkMode, showDropdownPage, setShowDropdown
         fetch('/docs.json')
         .then((res) => res.json())
         .then((data) => setDocs(data));
+    }, []);
 
+    useEffect(() => {
         if (darkMode) {
             document.querySelector('.theme-mode-image').setAttribute('src', `${sunicon}`)
             document.querySelector('.theme-mode-image').setAttribute('alt', 'Sun Icon')
@@ -65,11 +68,13 @@ const Header = ({ page, darkMode, setDarkMode, showDropdownPage, setShowDropdown
 
         let timeout;
 
+        if(showDropdownPage) setShowDropdownPage(false);
+        
         if(query && query !== "" && results.length === 0) {
             results = [
                 {
-                    title: "Installation",
-                    url: "/docs",
+                    title: "Getting Started",
+                    url: "/getting-started",
                     content: ""
                 },
                 {
@@ -88,7 +93,7 @@ const Header = ({ page, darkMode, setDarkMode, showDropdownPage, setShowDropdown
             timeout = setTimeout(() => {
                 setAnnounce(`0 result${results.length !== 1 ? "s" : ""} found.`);
             }, 50);
-        }else if(query && query !== "" && results.length > 0) {
+        } else if(query && query !== "" && results.length > 0) {
             setResultsFound(true);
             setAnnounce("");
             timeout = setTimeout(() => {
@@ -102,7 +107,7 @@ const Header = ({ page, darkMode, setDarkMode, showDropdownPage, setShowDropdown
         setActiveResultId("");
 
         return () => clearTimeout(timeout);
-    }, [query, docs, setResultsVisible]);
+    }, [query, docs, setResultsVisible, showDropdownPage, setShowDropdownPage]);
 
 
     useEffect(() => {
@@ -213,17 +218,17 @@ const Header = ({ page, darkMode, setDarkMode, showDropdownPage, setShowDropdown
             </button>
             <Link onClick={saveScrollPosition} to='/' className='header-logo-link block-interactive' aria-label="Navigate to home page"><img src={whitelogo} className="logo-img h-[30px] w-[30px]" alt="Aria Ease Logo"></img></Link>
             <div className='header-nav-link-div' id="header-nav-link-div">
-                <Link onClick={saveScrollPosition} to='/docs' className='header-nav-link block-interactive' aria-label='Navigate to the documentation page'>Docs</Link>
-                <Link onClick={saveScrollPosition} to="/component-testing" className='header-nav-link block-interactive' aria-label='Navigate to the testing page'>Component Testing</Link>
+                <Link onClick={saveScrollPosition} to='/getting-started' className='header-nav-link block-interactive' aria-label='Navigate to the documentation page'>Docs</Link>
+                <Link onClick={saveScrollPosition} to="/testing/component-testing" className='header-nav-link block-interactive' aria-label='Navigate to the testing page'>Component Testing</Link>
                 <Link onClick={saveScrollPosition} to="/changelog" className='header-nav-link block-interactive' aria-label='Navigate to changelog page'>Changelog</Link>
             </div>
-            <form className="header-search-div" role='search'>
-                <svg fill="rgba(181, 181, 181, 1)" height="18" viewBox="0 0 13 14" width="18" xmlns="http://www.w3.org/2000/svg"><path clipRule="evenodd" d="m8.82264 10.3833c-.92307.7008-2.07429 1.1167-3.32264 1.1167-3.03757 0-5.5-2.46243-5.5-5.5s2.46243-5.5 5.5-5.5 5.5 2.46243 5.5 5.5c0 1.24835-.4159 2.39957-1.1167 3.32264l2.897 2.89706c.2929.2929.2929.7677 0 1.0606s-.7677.2929-1.0606 0zm.67736-4.3833c0 2.20914-1.79086 4-4 4s-4-1.79086-4-4 1.79086-4 4-4 4 1.79086 4 4z" fillRule="evenodd" /></svg>
+            <form className="search-div" role='search'>
+                <svg fill="rgba(181, 181, 181, 1)" height="18" viewBox="0 0 13 14" width="18" xmlns="http://www.w3.org/2000/svg"><path clipRule="evenodd" d="m8.82264 10.3833c-.92307.7008-2.07429 1.1167-3.32264 1.1167-3.03757 0-5.5-2.46243-5.5-5.5s2.46243-5.5 5.5-5.5 5.5 2.46243 5.5 5.5c0 1.24835-.4159 2.39957-1.1167 3.32264l2.897 2.89706c.2929.2929.2929.7677 0 1.0606s-.7677.2929-1.0606 0zm.67736-4.3833c0 2.20914-1.79086 4-4 4s-4-1.79086-4-4 1.79086-4 4-4 4 1.79086 4 4z" fillRule="evenodd" aria-hidden="true" /></svg>
                 <input 
                     ref={searchInputRef} 
                     type="text" 
                     placeholder="Search" 
-                    className='block-interactive search-container-items resize-none h-6' 
+                    className='block-interactive search-container-items resize-none h-6 text-[14px]' 
                     aria-label='Search' 
                     value={query} 
                     onChange={(event) => setQuery(event.target.value)} 
@@ -266,17 +271,17 @@ const Header = ({ page, darkMode, setDarkMode, showDropdownPage, setShowDropdown
                                                 const globalIndex = results.indexOf(doc);
                                                 return (
                                                     <li key={index} role="option" aria-selected={activeResultId === `search-result-${globalIndex}`}>
-                                                        <a 
+                                                        <Link 
                                                             id={`search-result-${globalIndex}`}
                                                             tabIndex={-1} 
-                                                            href={doc.url} 
+                                                            to={doc.url} 
                                                             className={`search-result-link search-container-items text-sm px-3 py-2 rounded-md w-full block ${activeResultId === `search-result-${globalIndex}` ? (darkMode ? 'bg-blue-800' : 'bg-blue-200') : 'inactive'}`}
                                                             onMouseMove={() => handleMouseMove(globalIndex)}
                                                             onKeyDown={handleKeyDown} 
                                                             aria-label={`Navigate to ${doc.title} page`}
                                                         >
                                                             {doc.title}
-                                                        </a>
+                                                        </Link>
                                                     </li>
                                                 );
                                             })}
@@ -286,23 +291,23 @@ const Header = ({ page, darkMode, setDarkMode, showDropdownPage, setShowDropdown
 
                                 {results.some(doc => doc.content.includes('utility')) && (
                                     <>
-                                        <h1 className={`text-sm mb-2 mt-4 ${darkMode ? 'text-gray-400' : 'text-gray-600'}`}>Utilities</h1>
+                                        <h1 className={`text-sm mb-2 mt-4 ${darkMode ? 'text-gray-400' : 'text-gray-600'}`}>Components</h1>
                                         <ul>
                                             {results.filter(doc => doc.content.includes('utility')).map((doc, index) => {
                                                 const globalIndex = results.indexOf(doc)
                                                 return (
                                                     <li key={index} role="option" aria-selected={activeResultId === `search-result-${globalIndex}`}>
-                                                        <a 
+                                                        <Link 
                                                             id={`search-result-${globalIndex}`}
                                                             tabIndex={-1} 
-                                                            href={doc.url} 
+                                                            to={doc.url} 
                                                             className={`search-result-link search-container-items text-sm px-3 py-2 rounded-md w-full block ${activeResultId === `search-result-${globalIndex}` ? (darkMode ? 'bg-blue-800' : 'bg-blue-200') : 'inactive'}`}
                                                             onMouseMove={() => handleMouseMove(globalIndex)}
                                                             onKeyDown={handleKeyDown} 
                                                             aria-label={`Navigate to ${doc.title} page`}
                                                         >
                                                             {doc.title}
-                                                        </a>
+                                                        </Link>
                                                     </li>
                                                 );
                                             })}
@@ -318,17 +323,17 @@ const Header = ({ page, darkMode, setDarkMode, showDropdownPage, setShowDropdown
                                                 const globalIndex = results.indexOf(doc)
                                                 return (
                                                     <li key={index} role="option" aria-selected={activeResultId === `search-result-${globalIndex}`}>
-                                                        <a 
+                                                        <Link 
                                                             id={`search-result-${globalIndex}`}
                                                             tabIndex={-1} 
-                                                            href={doc.url} 
+                                                            to={doc.url} 
                                                             className={`search-result-link search-container-items text-sm px-3 py-2 rounded-md w-full block ${activeResultId === `search-result-${globalIndex}` ? (darkMode ? 'bg-blue-800' : 'bg-blue-200') : 'inactive'}`}
                                                             onMouseMove={() => handleMouseMove(globalIndex)}
                                                             onKeyDown={handleKeyDown} 
                                                             aria-label={`Navigate to ${doc.title} page`}
                                                         >
                                                             {doc.title}
-                                                        </a>
+                                                        </Link>
                                                     </li>
                                                 );
                                             })}
@@ -347,17 +352,17 @@ const Header = ({ page, darkMode, setDarkMode, showDropdownPage, setShowDropdown
                                                     const globalIndex = results.indexOf(doc);
                                                     return (
                                                         <li key={index} role="option" aria-selected={activeResultId === `search-result-${globalIndex}`}>
-                                                            <a 
+                                                            <Link 
                                                                 id={`search-result-${globalIndex}`}
                                                                 tabIndex={-1} 
-                                                                href={doc.url} 
+                                                                to={doc.url} 
                                                                 className={`search-result-link search-container-items text-sm px-3 py-2 rounded-md w-full block ${activeResultId === `search-result-${globalIndex}` ? (darkMode ? 'bg-blue-800' : 'bg-blue-200') : 'inactive'}`}
                                                                 onMouseMove={() => handleMouseMove(globalIndex)}
                                                                 onKeyDown={handleKeyDown} 
                                                                 aria-label={`Navigate to ${doc.title} page`}
                                                             >
                                                                 {doc.title}
-                                                            </a>
+                                                            </Link>
                                                         </li>
                                                     );
                                                 })
