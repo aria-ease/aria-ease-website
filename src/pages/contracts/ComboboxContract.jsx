@@ -60,9 +60,13 @@ const ComboboxContract = ({ darkMode, setDarkMode }) => {
                 <b>focusable</b>: <code>[role=combobox]</code><br/>
                 <span className="docs-note">The element that should receive focus when interacting with the combobox. Usually the same as <b>main</b> and <b>input</b>, but in custom implementations, may be a wrapper or proxy element.</span>
               </li>
-              <li>
+              <li className="mb-4">
                 <b>popup</b>: <code>[role=listbox]</code><br/>
                 <span className="docs-note">The container for the options. This element is shown/hidden as the user interacts with the combobox. It must have a unique <code>id</code> referenced by <code>aria-controls</code> on <b>main</b>.</span>
+              </li>
+              <li>
+                <b>relative</b>: <code>[role=option]</code><br/>
+                <span className="docs-note">A collection of sibling elements that can be interacted with. In a combobox those are options, gridcells, or treeitems.</span>
               </li>
             </ul>
             <div className="docs-callout mt-4">
@@ -90,7 +94,7 @@ const ComboboxContract = ({ darkMode, setDarkMode }) => {
             <h2 className="docs-section-heading">Relationships</h2>
             <ul className="docs-list mt-2">
               <li className="mb-4"><b>aria-controls</b>: <code>main</code> <b>must</b> reference <code>popup</code> by <code>id</code> (required).</li>
-              <li><b>popup</b> <b>must</b> contain <code>options</code> (required).</li>
+              <li><b>popup</b> <b>must</b> contain <code>option</code>, <code>treeitem</code>, or <code>gridcell</code> (required).</li>
             </ul>
           </section>
           <section className="side-body-sections-div docs-section-card mt-6">

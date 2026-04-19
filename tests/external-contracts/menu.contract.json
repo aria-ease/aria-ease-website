@@ -90,6 +90,7 @@
       "assertions": [
         {
           "target": "main",
+          "assertion": "toHaveAttribute",
           "attribute": "aria-haspopup",
           "expectedValue": "true | menu",
           "failureMessage": "",
@@ -97,6 +98,7 @@
         },
         {
           "target": "main",
+          "assertion": "toHaveAttribute",
           "attribute": "aria-expanded",
           "expectedValue": "false",
           "failureMessage": "",
@@ -104,6 +106,7 @@
         },
         {
           "target": "main",
+          "assertion": "toHaveAttribute",
           "attribute": "aria-controls",
           "expectedValue": "!empty",
           "failureMessage": "",
@@ -111,6 +114,7 @@
         },
         {
           "target": "popup",
+          "assertion": "toHaveAttribute",
           "attribute": "aria-labelledby",
           "expectedValue": "!empty",
           "failureMessage": "",
@@ -125,6 +129,7 @@
         },
         {
           "target": "popup",
+          "assertion": "toHaveRole",
           "attribute": "role",
           "expectedValue": "menu",
           "failureMessage": "",
@@ -139,6 +144,7 @@
         },
         {
           "target": "items",
+          "assertion": "toHaveRole",
           "attribute": "role",
           "expectedValue": "menuitem | menuitemcheckbox | menuitemradio",
           "failureMessage": "",
@@ -153,6 +159,7 @@
         },
         {
           "target": "items",
+          "assertion": "toHaveAttribute",
           "attribute": "tabindex",
           "expectedValue": "-1",
           "failureMessage": "",
@@ -167,6 +174,7 @@
         },
         {
           "target": "submenuTrigger",
+          "assertion": "toHaveAttribute",
           "attribute": "aria-haspopup",
           "expectedValue": "true | menu",
           "failureMessage": "",
@@ -191,6 +199,7 @@
     {
       "description": "Escape closes an open menu popup.",
       "level": "required",
+      "orientation": "horizontal",
       "action": [
         {
           "type": "keypress",
@@ -209,7 +218,7 @@
           "assertion": "toHaveAttribute",
           "attribute": "aria-expanded",
           "expectedValue": "false",
-          "failureMessage": "Expect menu main to have aria-expanded='false'."
+          "failureMessage": "Expected menu main to have aria-expanded='false'."
         }
       ],
       "setup": [
@@ -223,6 +232,7 @@
     {
       "description": "Click on a menu button when menu closed opens the menu popup.",
       "level": "required",
+      "orientation": "horizontal",
       "action": [
         {
           "type": "click",
@@ -240,13 +250,14 @@
           "assertion": "toHaveAttribute",
           "attribute": "aria-expanded",
           "expectedValue": "true",
-          "failureMessage": "Expect menu main to have aria-expanded='true'."
+          "failureMessage": "Expected menu main to have aria-expanded='true'."
         }
       ]
     },
     {
       "description": "Click on a menu button when menu open closes the menu popup.",
       "level": "required",
+      "orientation": "horizontal",
       "action": [
         {
           "type": "click",
@@ -264,7 +275,7 @@
           "assertion": "toHaveAttribute",
           "attribute": "aria-expanded",
           "expectedValue": "false",
-          "failureMessage": "Expect menu main to have aria-expanded='false'."
+          "failureMessage": "Expected menu main to have aria-expanded='false'."
         }
       ],
       "setup": [
@@ -277,6 +288,7 @@
     {
       "description": "Enter on a menu item closes an open menu popup.",
       "level": "required",
+      "orientation": "horizontal",
       "action": [
         {
           "type": "keypress",
@@ -295,7 +307,7 @@
           "assertion": "toHaveAttribute",
           "attribute": "aria-expanded",
           "expectedValue": "false",
-          "failureMessage": "Expect menu main to have aria-expanded='false'."
+          "failureMessage": "Expected menu main to have aria-expanded='false'."
         }
       ],
       "setup": [
@@ -309,6 +321,7 @@
     {
       "description": "Space on a menu item closes an open menu popup.",
       "level": "required",
+      "orientation": "horizontal",
       "action": [
         {
           "type": "keypress",
@@ -327,7 +340,7 @@
           "assertion": "toHaveAttribute",
           "attribute": "aria-expanded",
           "expectedValue": "false",
-          "failureMessage": "Expect menu main to have aria-expanded='false'."
+          "failureMessage": "Expected menu main to have aria-expanded='false'."
         }
       ],
       "setup": [
@@ -341,6 +354,7 @@
     {
       "description": "ArrowDown on a menu item moves focus to the next menu item when the menu popup is open.",
       "level": "required",
+      "orientation": "horizontal",
       "action": [
         {
           "type": "keypress",
@@ -348,7 +362,14 @@
           "key": "ArrowDown"
         }
       ],
-      "assertions": [],
+      "assertions": [
+        {
+          "target": "relative",
+          "assertion": "toHaveFocus",
+          "expectedValue": "second",
+          "failureMessage": "second menu item should have focus."
+        }
+      ],
       "setup": [
         {
           "type": "keypress",
@@ -360,6 +381,7 @@
     {
       "description": "ArrowUp on a menu item moves focus to the previous menu item when the menu popup is open.",
       "level": "required",
+      "orientation": "horizontal",
       "action": [
         {
           "type": "keypress",
@@ -372,7 +394,7 @@
           "target": "relative",
           "assertion": "toHaveFocus",
           "expectedValue": "last",
-          "failureMessage": "Last menu item should have focus."
+          "failureMessage": "last menu item should have focus."
         }
       ],
       "setup": [
@@ -386,6 +408,7 @@
     {
       "description": "Home on a menu item moves focus to the first menu item when the menu popup is open.",
       "level": "required",
+      "orientation": "horizontal",
       "action": [
         {
           "type": "keypress",
@@ -398,7 +421,7 @@
           "target": "relative",
           "assertion": "toHaveFocus",
           "expectedValue": "first",
-          "failureMessage": "First menu item should have focus."
+          "failureMessage": "first menu item should have focus."
         }
       ],
       "setup": [
@@ -412,6 +435,7 @@
     {
       "description": "End on a menu item moves focus to the last menu item when the menu popup is open.",
       "level": "required",
+      "orientation": "horizontal",
       "action": [
         {
           "type": "keypress",
@@ -424,7 +448,7 @@
           "target": "relative",
           "assertion": "toHaveFocus",
           "expectedValue": "last",
-          "failureMessage": "Last menu item should have focus."
+          "failureMessage": "last menu item should have focus."
         }
       ],
       "setup": [
@@ -438,6 +462,7 @@
     {
       "description": "Tab on a menu item closes an open menu popup and moves focus to the next focusable element in the tab order after the menu.",
       "level": "required",
+      "orientation": "horizontal",
       "action": [
         {
           "type": "keypress",
@@ -456,7 +481,7 @@
           "assertion": "toHaveAttribute",
           "attribute": "aria-expanded",
           "expectedValue": "false",
-          "failureMessage": "Expect menu main to have aria-expanded='false'."
+          "failureMessage": "Expected menu main to have aria-expanded='false'."
         },
         {
           "target": "main",
@@ -475,6 +500,7 @@
     {
       "description": "ArrowRight on a menu item with a submenu opens the submenu and moves focus to the first item when the menu popup is open.",
       "level": "required",
+      "orientation": "horizontal",
       "action": [
         {
           "type": "keypress",
@@ -484,9 +510,10 @@
       ],
       "assertions": [
         {
-          "target": "submenuItems",
+          "target": "relative",
+          "relativeTarget": "first",
           "assertion": "toHaveFocus",
-          "failureMessage": "First interactive item in the submenu should have focus after Right Arrow open the submenu."
+          "failureMessage": "Expected submenu item first to have focus."
         }
       ],
       "setup": [
@@ -500,6 +527,7 @@
     {
       "description": "ArrowLeft on a submenu item closes the submenu and moves focus to the submenu trigger.",
       "level": "required",
+      "orientation": "horizontal",
       "action": [
         {
           "type": "keypress",
@@ -518,7 +546,7 @@
           "assertion": "toHaveAttribute",
           "attribute": "aria-expanded",
           "expectedValue": "false",
-          "failureMessage": "Expect submenu trigger to have aria-expanded='false'."
+          "failureMessage": "Expected submenu trigger to have aria-expanded='false'."
         },
         {
           "target": "submenuTrigger",

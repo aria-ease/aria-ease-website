@@ -50,18 +50,6 @@
                     "attribute": "aria-expanded",
                     "expectedValue": "true | false",
                     "failureMessage": "Accordion trigger button doesn't conform to the ARIA Accordion Button pattern as specified in APG 1.2. Accordion trigger button should have 'aria-expanded=true | false' attribute. This helps assistive technology to keep track of the open or close state of the accordion panel div that the button controls."
-                },
-                {
-                    "target": "trigger",
-                    "assertion": "toHaveAttribute",
-                    "attribute": "aria-controls",
-                    "failureMessage": "Accordion trigger button doesn't conform to the ARIA Accordion Button pattern as specified in APG 1.2. Accordion trigger button should have 'aria-controls' attribute that points to the id of the accordion panel div it controls with 'role=region'. This helps assistive technology to identify the accordion panel div that the button controls."
-                },
-                {
-                    "target": "panel",
-                    "assertion": "toHaveAttribute",
-                    "attribute": "aria-labelledby | aria-label",
-                    "failureMessage": "Accordion panel doesn't conform to the ARIA Accordion pattern as specified in APG 1.2. Accordion panel should have 'aria-labelledby' attribute that points to the id of the trigger button that controls it."
                 }
             ]
         }

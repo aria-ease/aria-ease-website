@@ -6,32 +6,32 @@
 [90mstdout[2m | tests/ariaease.test.jsx[2m > [22m[2mAccordion WAI-ARIA Accessibility Test[2m > [22m[2mAccordion meets Aria-Ease's baseline for WAI-ARIA roles, states, properties, and keyboard interactions expectations
 [22m[39m🎭 Running Playwright tests on http://localhost:5173/test-harness?component=accordion
 
- [32m✓[39m tests/ariaease.test.jsx[2m > [22mAccordion WAI-ARIA Accessibility Test[2m > [22mAccordion meets Aria-Ease's baseline for WAI-ARIA roles, states, properties, and keyboard interactions expectations[33m 6094[2mms[22m[39m
+ [32m✓[39m tests/ariaease.test.jsx[2m > [22mAccordion WAI-ARIA Accessibility Test[2m > [22mAccordion meets Aria-Ease's baseline for WAI-ARIA roles, states, properties, and keyboard interactions expectations[33m 5498[2mms[22m[39m
 [90mstdout[2m | tests/ariaease.test.jsx[2m > [22m[2mCombobox with Listbox popup WAI-ARIA Accessibility Test[2m > [22m[2mCombobox with Listbox popup meets Aria-Ease's baseline for WAI-ARIA roles, states, properties, and keyboard interactions expectations
 [22m[39m🎭 Running Playwright tests on http://localhost:5173/test-harness?component=combobox
 
- [32m✓[39m tests/ariaease.test.jsx[2m > [22mCombobox with Listbox popup WAI-ARIA Accessibility Test[2m > [22mCombobox with Listbox popup meets Aria-Ease's baseline for WAI-ARIA roles, states, properties, and keyboard interactions expectations[33m 2028[2mms[22m[39m
+ [32m✓[39m tests/ariaease.test.jsx[2m > [22mCombobox with Listbox popup WAI-ARIA Accessibility Test[2m > [22mCombobox with Listbox popup meets Aria-Ease's baseline for WAI-ARIA roles, states, properties, and keyboard interactions expectations[33m 1731[2mms[22m[39m
 [90mstdout[2m | tests/ariaease.test.jsx[2m > [22m[2mMenu with submenu WAI-ARIA Accessibility Test[2m > [22m[2mMenu with submenu meets Aria-Ease's baseline for WAI-ARIA roles, states, properties, and keyboard interactions expectations
 [22m[39m🎭 Running Playwright tests on http://localhost:5173/test-harness?component=sub_menu
 
- [32m✓[39m tests/ariaease.test.jsx[2m > [22mMenu with submenu WAI-ARIA Accessibility Test[2m > [22mMenu with submenu meets Aria-Ease's baseline for WAI-ARIA roles, states, properties, and keyboard interactions expectations[33m 3009[2mms[22m[39m
+ [32m✓[39m tests/ariaease.test.jsx[2m > [22mMenu with submenu WAI-ARIA Accessibility Test[2m > [22mMenu with submenu meets Aria-Ease's baseline for WAI-ARIA roles, states, properties, and keyboard interactions expectations[33m 2459[2mms[22m[39m
 [90mstdout[2m | tests/ariaease.test.jsx[2m > [22m[2mMenu WAI-ARIA Accessibility Test[2m > [22m[2mMenu meets Aria-Ease's baseline for WAI-ARIA roles, states, properties, and keyboard interactions expectations
 [22m[39m🎭 Running Playwright tests on http://localhost:5173/test-harness?component=menu
 
- [32m✓[39m tests/ariaease.test.jsx[2m > [22mMenu WAI-ARIA Accessibility Test[2m > [22mMenu meets Aria-Ease's baseline for WAI-ARIA roles, states, properties, and keyboard interactions expectations[33m 2164[2mms[22m[39m
+ [32m✓[39m tests/ariaease.test.jsx[2m > [22mMenu WAI-ARIA Accessibility Test[2m > [22mMenu meets Aria-Ease's baseline for WAI-ARIA roles, states, properties, and keyboard interactions expectations[33m 1748[2mms[22m[39m
 [90mstdout[2m | tests/ariaease.test.jsx[2m > [22m[2mHorizontal Tabs WAI-ARIA Accessibility Test[2m > [22m[2mHorizontal tabs meets Aria-Ease's baseline for WAI-ARIA roles, states, properties, and keyboard interactions expectations
 [22m[39m🎭 Running Playwright tests on http://localhost:5173/test-harness?component=tabs_horizontal
 
- [32m✓[39m tests/ariaease.test.jsx[2m > [22mHorizontal Tabs WAI-ARIA Accessibility Test[2m > [22mHorizontal tabs meets Aria-Ease's baseline for WAI-ARIA roles, states, properties, and keyboard interactions expectations[33m 1407[2mms[22m[39m
+ [32m✓[39m tests/ariaease.test.jsx[2m > [22mHorizontal Tabs WAI-ARIA Accessibility Test[2m > [22mHorizontal tabs meets Aria-Ease's baseline for WAI-ARIA roles, states, properties, and keyboard interactions expectations[33m 768[2mms[22m[39m
 [90mstdout[2m | tests/ariaease.test.jsx[2m > [22m[2mVertical Tabs WAI-ARIA Accessibility Test[2m > [22m[2mVertical tabs meets Aria-Ease's baseline for WAI-ARIA roles, states, properties, and keyboard interactions expectations
 [22m[39m🎭 Running Playwright tests on http://localhost:5173/test-harness?component=tabs_vertical
 
- [32m✓[39m tests/ariaease.test.jsx[2m > [22mVertical Tabs WAI-ARIA Accessibility Test[2m > [22mVertical tabs meets Aria-Ease's baseline for WAI-ARIA roles, states, properties, and keyboard interactions expectations[33m 1498[2mms[22m[39m
+ [32m✓[39m tests/ariaease.test.jsx[2m > [22mVertical Tabs WAI-ARIA Accessibility Test[2m > [22mVertical tabs meets Aria-Ease's baseline for WAI-ARIA roles, states, properties, and keyboard interactions expectations[33m 729[2mms[22m[39m
 
 [2m Test Files [22m [1m[32m1 passed[39m[22m[90m (1)[39m
 [2m      Tests [22m [1m[32m6 passed[39m[22m[90m (6)[39m
-[2m   Start at [22m 21:23:55
-[2m   Duration [22m 19.89s[2m (transform 320ms, setup 0ms, import 741ms, tests 16.33s, environment 1.81s)[22m
+[2m   Start at [22m 10:04:32
+[2m   Duration [22m 16.69s[2m (transform 277ms, setup 0ms, import 878ms, tests 12.98s, environment 1.82s)[22m
 
 
 
@@ -47,10 +47,6 @@
   ✓ panel.aria-labelledby references trigger
      ↳ level=required
   ✓ trigger (aria-expanded)
-     ↳ level=required
-  ✓ trigger (aria-controls)
-     ↳ level=required
-  ✓ panel (aria-labelledby | aria-label)
      ↳ level=required
 
 ────────────────────────────────────────────────────────────
@@ -72,9 +68,9 @@
 ════════════════════════════════════════════════════════════
 📊 Summary
 
-✅ All 17 tests passed!
+✅ All 15 tests passed!
    Accordion component validates against your custom accessibility policy ✓
-⏱️  Duration: 971ms
+⏱️  Duration: 919ms
 ════════════════════════════════════════════════════════════
 
 
@@ -125,7 +121,7 @@
 
 ✅ All 22 tests passed!
    Combobox component validates against your custom accessibility policy ✓
-⏱️  Duration: 1269ms
+⏱️  Duration: 1071ms
 ════════════════════════════════════════════════════════════
 
 
@@ -183,7 +179,7 @@
 
 ✅ All 23 tests passed!
    Menu component validates against your custom accessibility policy ✓
-⏱️  Duration: 2251ms
+⏱️  Duration: 1786ms
 ════════════════════════════════════════════════════════════
 
 
@@ -245,7 +241,7 @@
 ✅ 20/20 tests passed
 ○  2 tests skipped
    Menu component validates against your custom accessibility policy ✓
-⏱️  Duration: 1300ms
+⏱️  Duration: 1099ms
 ════════════════════════════════════════════════════════════
 
 
@@ -256,48 +252,29 @@
 ────────────────────────────────────────────────────────────
 🧪 Static Assertions
 ────────────────────────────────────────────────────────────
-  ✓ tab.aria-controls references panel
-     ↳ level=required
-  ✓ panel.aria-labelledby references tab
-     ↳ level=required
   ✓ tablist contains tab
      ↳ level=required
-  ✓ tablist (aria-label | aria-labelledby)
+  ✓ tab.aria-controls references panel
      ↳ level=required
-  ✓ tab (aria-selected)
+  ✓ tablist (role)
      ↳ level=required
-  ✓ tab (aria-controls)
+  ✓ tab (role)
      ↳ level=required
-  ✓ panel (aria-labelledby)
-     ↳ level=required
-  ✓ tab (tabindex)
-     ↳ level=required
-  ✓ tablist (aria-orientation)
+  ✓ panel (role)
      ↳ level=required
 
 ────────────────────────────────────────────────────────────
 ⌨️ Dynamic Interaction Tests
 ────────────────────────────────────────────────────────────
-  ✓ [REQUIRED] Only one tab panel is visible at a time.
-  ✓ [REQUIRED] Right Arrow moves focus to next tab and activates it (automatic activation) in horizontally oriented tabs.
-  ✓ [REQUIRED] Left Arrow moves focus to previous tab and activates it (wraps to last) in horizontally oriented tabs.
-  ○ [REQUIRED] Down Arrow moves focus to next tab and activates it in vertically oriented tabs.
-     ↳ Skipping test - component-specific conditions not met
-  ○ [REQUIRED] Up Arrow moves focus to previous tab and activates it (wraps to last) in vertically oriented tabs.
-     ↳ Skipping test - component-specific conditions not met
-  ✓ [OPTIONAL] Home moves focus to first tab and activates it.
-  ✓ [OPTIONAL] End moves focus to last tab and activates it.
-  ✓ [REQUIRED] Clicking a tab activates it and displays its panel.
-  ✓ [REQUIRED] Pressing Enter on tab element activates its associated tab panel.
-  ✓ [REQUIRED] Pressing Space on tab element activates its associated tab panel.
+  ✓ [REQUIRED] Arrow Right moves focus to the second tab.
+  ✓ [REQUIRED] Arrow Left moves focus to the first tab.
 
 ════════════════════════════════════════════════════════════
 📊 Summary
 
-✅ 17/17 tests passed
-○  2 tests skipped
+✅ All 7 tests passed!
    Tabs component validates against your custom accessibility policy ✓
-⏱️  Duration: 455ms
+⏱️  Duration: 82ms
 ════════════════════════════════════════════════════════════
 
 
@@ -308,48 +285,32 @@
 ────────────────────────────────────────────────────────────
 🧪 Static Assertions
 ────────────────────────────────────────────────────────────
-  ✓ tab.aria-controls references panel
-     ↳ level=required
-  ✓ panel.aria-labelledby references tab
-     ↳ level=required
   ✓ tablist contains tab
      ↳ level=required
-  ✓ tablist (aria-label | aria-labelledby)
+  ✓ tab.aria-controls references panel
      ↳ level=required
-  ✓ tab (aria-selected)
+  ✓ tablist (role)
      ↳ level=required
-  ✓ tab (aria-controls)
+  ✓ tab (role)
      ↳ level=required
-  ✓ panel (aria-labelledby)
-     ↳ level=required
-  ✓ tab (tabindex)
-     ↳ level=required
-  ✓ tablist (aria-orientation)
+  ✓ panel (role)
      ↳ level=required
 
 ────────────────────────────────────────────────────────────
 ⌨️ Dynamic Interaction Tests
 ────────────────────────────────────────────────────────────
-  ✓ [REQUIRED] Only one tab panel is visible at a time.
-  ○ [REQUIRED] Right Arrow moves focus to next tab and activates it (automatic activation) in horizontally oriented tabs.
+  ○ [REQUIRED] Arrow Right moves focus to the second tab.
      ↳ Skipping test - component-specific conditions not met
-  ○ [REQUIRED] Left Arrow moves focus to previous tab and activates it (wraps to last) in horizontally oriented tabs.
+  ○ [REQUIRED] Arrow Left moves focus to the first tab.
      ↳ Skipping test - component-specific conditions not met
-  ✓ [REQUIRED] Down Arrow moves focus to next tab and activates it in vertically oriented tabs.
-  ✓ [REQUIRED] Up Arrow moves focus to previous tab and activates it (wraps to last) in vertically oriented tabs.
-  ✓ [OPTIONAL] Home moves focus to first tab and activates it.
-  ✓ [OPTIONAL] End moves focus to last tab and activates it.
-  ✓ [REQUIRED] Clicking a tab activates it and displays its panel.
-  ✓ [REQUIRED] Pressing Enter on tab element activates its associated tab panel.
-  ✓ [REQUIRED] Pressing Space on tab element activates its associated tab panel.
 
 ════════════════════════════════════════════════════════════
 📊 Summary
 
-✅ 17/17 tests passed
+✅ 5/5 tests passed
 ○  2 tests skipped
    Tabs component validates against your custom accessibility policy ✓
-⏱️  Duration: 709ms
+⏱️  Duration: 48ms
 ════════════════════════════════════════════════════════════
 
 

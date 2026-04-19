@@ -1,0 +1,127 @@
+{
+  "meta": {
+    "id": "docs.custom.contract.tabs",
+    "version": "1.0.0",
+    "created": "11-02-2026",
+    "lastUpdated": "19-03-2026",
+    "description": "Simple fluent DSL example for tabs custom policy",
+    "source": {
+      "apg": "https://www.w3.org/WAI/ARIA/apg/patterns/tabs/",
+      "wcag": [
+        "2.2 AA"
+      ]
+    },
+    "W3CName": "Tabs"
+  },
+  "selectors": {
+    "main": "[role=tablist]",
+    "tablist": "[role=tablist]",
+    "tab": "[role=tab]",
+    "panel": "[role=tabpanel]",
+    "focusable": "[role=tab]",
+    "relative": "[role=tab]"
+  },
+  "relationships": [
+    {
+      "type": "contains",
+      "parent": "tablist",
+      "child": "tab",
+      "level": "required"
+    },
+    {
+      "type": "aria-reference",
+      "from": "tab",
+      "attribute": "aria-controls",
+      "to": "panel",
+      "level": "required"
+    }
+  ],
+  "static": [
+    {
+      "assertions": [
+        {
+          "target": "tablist",
+          "assertion": "toHaveRole",
+          "attribute": "role",
+          "expectedValue": "tablist",
+          "failureMessage": "",
+          "level": "required"
+        },
+        {
+          "target": "tab",
+          "assertion": "toHaveRole",
+          "attribute": "role",
+          "expectedValue": "tab",
+          "failureMessage": "",
+          "level": "required"
+        },
+        {
+          "target": "panel",
+          "assertion": "toHaveRole",
+          "attribute": "role",
+          "expectedValue": "tabpanel",
+          "failureMessage": "",
+          "level": "required"
+        }
+      ]
+    }
+  ],
+  "dynamic": [
+    {
+      "description": "Arrow Right moves focus to the second tab.",
+      "level": "required",
+      "orientation": "horizontal",
+      "action": [
+        {
+          "type": "keypress",
+          "target": "relative",
+          "key": "ArrowRight",
+          "relativeTarget": 1
+        }
+      ],
+      "assertions": [
+        {
+          "target": "relative",
+          "assertion": "toHaveFocus",
+          "relativeTarget": 2,
+          "failureMessage": "Expected first tab to have focus."
+        }
+      ],
+      "setup": [
+        {
+          "type": "focus",
+          "target": "relative",
+          "relativeTarget": "first"
+        }
+      ]
+    },
+    {
+      "description": "Arrow Left moves focus to the first tab.",
+      "level": "required",
+      "orientation": "horizontal",
+      "action": [
+        {
+          "type": "keypress",
+          "target": "relative",
+          "key": "ArrowLeft",
+          "relativeTarget": "second"
+        }
+      ],
+      "assertions": [
+        {
+          "target": "relative",
+          "assertion": "toHaveFocus",
+          "relativeTarget": "first",
+          "failureMessage": "Expected first tab to have focus."
+        }
+      ],
+      "setup": [
+        {
+          "type": "focus",
+          "target": "relative",
+          "relativeTarget": "second"
+        }
+      ]
+    }
+  ]
+}

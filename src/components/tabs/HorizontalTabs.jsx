@@ -46,16 +46,16 @@ const HorizontalTabs = () => {
                 </p>
                 <div>
                     <div id='product-tabs' aria-label='Product Info' className='flex gap-2 border-b'>
-                        <button className='px-4 py-2 text-sm font-medium border-b-2 border-transparent hover:border-blue-500 product-tab' aria-haspopup="menu">
+                        <button className='px-4 py-2 text-sm font-medium border-b-2 border-transparent hover:border-blue-500 product-tab one' aria-haspopup="menu">
                             Overview
                         </button>
-                        <button className='px-4 py-2 text-sm font-medium border-b-2 border-transparent hover:border-blue-500 product-tab' aria-haspopup="menu">
+                        <button className='px-4 py-2 text-sm font-medium border-b-2 border-transparent hover:border-blue-500 product-tab two' aria-haspopup="menu">
                             Features
                         </button>
-                        <button className='px-4 py-2 text-sm font-medium border-b-2 border-transparent hover:border-blue-500 product-tab' aria-haspopup="menu">
+                        <button className='px-4 py-2 text-sm font-medium border-b-2 border-transparent hover:border-blue-500 product-tab three' aria-haspopup="menu">
                             Pricing
                         </button>
-                        <button className='px-4 py-2 text-sm font-medium border-b-2 border-transparent hover:border-blue-500 product-tab' aria-haspopup="menu">
+                        <button className='px-4 py-2 text-sm font-medium border-b-2 border-transparent hover:border-blue-500 product-tab four' aria-haspopup="menu">
                             Reviews
                         </button>
                     </div>
