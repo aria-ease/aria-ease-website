@@ -97,7 +97,7 @@ export const menuContract = createContract("menu", (c) => {
     .as("keypress")
     .on("items")
     .given("popup.open")
-    .then("activeItem.second")
+    .then({type: "activeItem", ref: "second"})
     .describe("ArrowDown on a menu item moves focus to the next menu item when the menu popup is open.")
     .required();
 
@@ -106,7 +106,7 @@ export const menuContract = createContract("menu", (c) => {
     .as("keypress")
     .on("items")
     .given("popup.open")
-    .then("activeItem.last")
+    .then({type: "activeItem", ref: "last"})
     .describe("ArrowUp on a menu item moves focus to the previous menu item when the menu popup is open.")
     .required();
 
@@ -115,7 +115,7 @@ export const menuContract = createContract("menu", (c) => {
     .as("keypress")
     .on("items")
     .given("popup.open")
-    .then("activeItem.first")
+    .then({type: "activeItem", ref: "first"})
     .describe("Home on a menu item moves focus to the first menu item when the menu popup is open.")
     .required();
 
@@ -124,7 +124,7 @@ export const menuContract = createContract("menu", (c) => {
     .as("keypress")
     .on("items")
     .given("popup.open")
-    .then("activeItem.last")
+    .then({type: "activeItem", ref: "last"})
     .describe("End on a menu item moves focus to the last menu item when the menu popup is open.")
     .required();
 
@@ -143,7 +143,7 @@ export const menuContract = createContract("menu", (c) => {
     .as("keypress")
     .on("submenuTrigger")
     .given("popup.open")
-    .then(["submenuActiveItem.first"])
+    .then({type: "activeSubmenuItem", ref: "first"})
     .describe("ArrowRight on a menu item with a submenu opens the submenu and moves focus to the first item when the menu popup is open.")
     .required();
 

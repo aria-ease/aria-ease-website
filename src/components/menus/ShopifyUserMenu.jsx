@@ -46,6 +46,8 @@ const ShopifyUserMenu = () => {
             </div>
         </button>
 
+        
+
         <div 
             className="merchant-dropdown-menu rounded-[14px] w-[308px] bg-white z-[1] mt-2 py-[6px] px-0 top-[38px] left-0 absolute" 
             id="merchant-dropdown-menu" 

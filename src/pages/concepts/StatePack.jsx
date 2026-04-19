@@ -18,13 +18,32 @@ export const COMBOBOX_STATES = {
     assertion: isComboboxOpen
   },
   "popup.closed": {
-    setup: [ ... ],
+    setup: [ ... ], // No setup necessary. Component resets after every test
     assertion: [...isComboboxClosed(), ...isActiveDescendantEmpty()]
   },
-  "activeOption.first": {
+  "activeOption": {
     requires: ["popup.open"],
-    setup: [ { when: ["keyboard"], steps: () => [ { type: "keypress", target: "input", key: "ArrowDown" } ] } ],
-    assertion: isActiveDescendantFirst
+    setup: [
+      {
+        when: ["keyboard", "pointer"],
+        steps: (arg: { relativeTarget?: string | number } = {}) => {
+          // Start at first, then ArrowDown N-1 times to reach index N
+          if (typeof arg.relativeTarget === "number") {
+            return Array.from({ length: arg.relativeTarget }, () => ({
+              type: "keypress",
+              target: "input", // or "main" for menu
+              key: "ArrowDown"
+            }));
+          }
+          // For "first", "last", etc., handle as needed
+          if (arg.relativeTarget === "first") return [];
+          if (arg.relativeTarget === "last") return [{ type: "keypress", target: "input", key: "ArrowUp" }];
+          // ...handle "next", "previous" if needed
+          return [];
+        }
+      }
+    ],
+    assertion: (arg: { relativeTarget?: string | number } = {}) => isActiveDescendant(arg.relativeTarget as string | number)
   },
   // ...
 };
@@ -68,14 +87,14 @@ const StatePack = ({ darkMode, setDarkMode }) => {
                   <ul className="list-disc ml-6 mb-4">
                     <li>Each state (e.g. <code>popup.open</code>) defines how to reach it (keyboard/pointer steps) and how to verify it (assertions).</li>
                     <li>The state pack is a JavaScript object where each key is a state name and the value describes how to set up and check that state.</li>
-                    <li>States can depend on other states (e.g. <code>activeOption.first</code> requires <code>popup.open</code>).</li>
+                    <li>States can depend on other states (e.g. <code>activeOption</code> requires <code>popup.open</code>).</li>
                     <li>Invariants. Some rules must always hold. If a combobox option is highlighted, then the combobox must be open.</li>
                     <li>The library uses the state pack to automatically construct setup steps and validate behavior, removing the need for manually defined interaction flows.</li>
                     <li>State packs make the DSL executable: they turn declarative rules into real, automated accessibility checks.</li>
-                    <li>You can extend or override the default state pack for custom widgets or advanced scenarios.</li>
+                    <li>You can extend or override the default state pack for custom components or advanced scenarios.</li>
                   </ul>
                   <h3 className="font-semibold mt-6 mb-2">How Does the Library Build a State Pack?</h3>
-                  <p className="mb-2">The library provides a default state pack for each supported widget (like combobox), mapping all required states to setup/assertion logic. When running contract tests, the library:</p>
+                  <p className="mb-2">The library provides default state packs for currently supported components (combobox, menu, tabs), mapping all required states to setup/assertion logic. When running contract tests, the library:</p>
                   <ol className="list-decimal ml-6 mb-4">
                     <li>Parses the DSL contract to extract all referenced states.</li>
                     <li>Uses the state pack to simulate user actions (e.g. keypresses, clicks) to reach each state.</li>
