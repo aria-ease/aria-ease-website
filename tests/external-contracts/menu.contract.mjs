@@ -21,7 +21,6 @@ export const menuContract = createContract("menu", (c) => {
         submenu: "[role=menu] [role=menu]",
         submenuItems: "[role=menu] [role=menu] > [role=menuitem], [role=menu] [role=menu] > [role=menuitemradio], [role=menu] [role=menu] > [role=menuitemcheckbox]",
         leafItem: "[role=menu] [role=menuitem]:not([aria-haspopup]), [role=menu] [role=menuitemradio]:not([aria-haspopup]), [role=menu] [role=menuitemcheckbox]:not([aria-haspopup])", //used to target a menuitem without a submenu
-        focusable: "[role=menuitem], [role=menuitemradio], [role=menuitemcheckbox]",
         relative: "[role=menuitem], [role=menuitemradio], [role=menuitemcheckbox]",
         popup: "[role=menu]"
     });

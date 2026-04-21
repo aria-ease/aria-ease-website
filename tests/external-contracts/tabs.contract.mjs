@@ -19,7 +19,6 @@ export const tabsContract = createContract("tabs", (c) => {
     tablist: "[role=tablist]",
     tab: "[role=tab]",
     panel: "[role=tabpanel]",
-    focusable: "[role=tab]",
     relative: "[role=tab]"
   });
 
