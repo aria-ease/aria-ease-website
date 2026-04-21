@@ -19,7 +19,6 @@ export const comboboxListboxContract = createContract("combobox", (c) => {
     input: "[role=combobox]",
     button: "button[tabindex='-1']",
     options: "[role=option]",
-    focusable: "[role=combobox]",
     relative: "[role=option]",
     popup: "[role=listbox]",
   });

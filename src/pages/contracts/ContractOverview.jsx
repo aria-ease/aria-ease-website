@@ -53,7 +53,6 @@ export const comboboxListboxContract = createContract("combobox", (c) => {
     input: "[role=combobox]",
     button: "button[tabindex='-1']",
     options: "[role=option]",
-    focusable: "[role=combobox]",
     relative: "[role=option]",
     popup: "[role=listbox]",
   });
@@ -90,15 +89,15 @@ export const comboboxListboxContract = createContract("combobox", (c) => {
   .as("keypress")
   .on("main")
   .given("popup.open")
-  .then("activeOption.first")
+  .then({type: "activeOption", ref: "first"})
   .describe("Second Down Arrow on open combobox makes the first option active.")
   .required();
 
   c.when("Home")
   .as("keypress")
   .on("main")
-  .given("activeOption.last")
-  .then("activeOption.first")
+  .given({type: "activeOption", ref: "last"})
+  .then({type: "activeOption", ref: "first"})
   .describe("Home on last option moves active option from last to first while maintaining input focus.")
   .optional();
 });

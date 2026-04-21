@@ -18,7 +18,6 @@
     "tablist": "[role=tablist]",
     "tab": "[role=tab]",
     "panel": "[role=tabpanel]",
-    "focusable": "[role=tab]",
     "relative": "[role=tab]"
   },
   "relationships": [

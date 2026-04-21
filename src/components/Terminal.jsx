@@ -30,7 +30,7 @@ const Terminal = ({ children, darkMode, title, lang }) => {
 
   return (
     <div className={`relative w-full overflow-hidden flex flex-col rounded-xl shadow-md terminal-border ${isExpanded ? "max-h-[540px]" : "max-h-[400px]"} ${darkMode ? 'bg-gray-900/10' : 'bg-card'}`}>
-      <div className={`flex items-center justify-between terminal-header px-4 py-3 ${darkMode ? 'bg-gray-800/50' : 'bg-gray-100'}`}>
+      <div className={`flex items-center justify-between terminal-header px-2 py-3 ${darkMode ? 'bg-gray-800/50' : 'bg-gray-100'}`}>
         <span className="ml-2 font-mono text-xs text-muted-foreground black-grey-text">{title}</span>
         <button
           className="rounded-full px-3.5 py-1.5 text-sm font-semibold"

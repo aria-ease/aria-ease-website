@@ -4,11 +4,194 @@ import SlideOutNav from "../../components/SlideOutNav";
 import { Link } from "react-router-dom";
 import { ChevronRightCircleIcon } from "lucide-react";
 import { Helmet } from 'react-helmet-async';
+import Terminal from '../../components/Terminal';
+
+
+const popupOpenState = `
+"popup.open": {
+  setup: [
+    {
+      when: ["keyboard", "textInput"],
+      steps: () => [
+        { type: "keypress", target: "input", key: "ArrowDown" }
+      ]
+    },
+    {
+      when: ["pointer"],
+      steps: () => [
+        { type: "click", target: "button" }
+      ]
+    }
+  ],
+  assertion: isComboboxOpen
+}`
+
+const popupClosedState = `
+"popup.closed": {
+  setup: [
+    {
+      when: ["keyboard", "pointer],
+      steps: () => []
+    }
+  ],
+  assertion: [...isComboboxClosed(), ...isActiveDescendantEmpty()]
+}`
+
+const mainFocusedState = `
+"main.focused": {
+  setup: [
+    {
+      when: ["keyboard", "pointer"],
+      steps: () => [
+        { type: "focus", target: "main" }
+      ]
+    }
+  ],
+  assertion: isMainFocused
+}`
+
+const mainNotFocusedState = `
+"main.notFocused": {
+  setup: [
+    {
+      when: ["keyboard", "pointer"],
+      steps: () => []
+    }
+  ],
+  assertion: isMainNotFocused
+}`
+
+const inputFilledState = `
+"input.filled": {
+  setup: [
+    {
+      when: ["keyboard", "textInput"],
+      steps: () => [
+        { type: "type", target: "input", value: "test" }
+      ]
+    }
+  ],
+  assertion: isInputFilled
+}`
+
+const inputNotFilledState = `
+"input.notFilled": {
+  setup: [
+    {
+      when: ["keyboard", "textInput"],
+      steps: () => [
+        { type: "type", target: "input", value: "" }
+      ]
+    }
+  ],
+  assertion: isInputNotFilled
+}`
+
+const activeOptionState = `
+"activeOption": {
+  requires: ["popup.open"],
+  setup: [
+    {
+      when: ["keyboard", "pointer"],
+      steps: (arg: { relativeTarget } = {}) => {
+        // Start at first, then ArrowDown N-1 times to reach index N
+        if (typeof arg.relativeTarget === "number") {
+          return Array.from({ length: arg.relativeTarget }, () => ({
+            type: "keypress",
+            target: "main",
+            key: "ArrowDown"
+          }));
+        }
+        // For "first", "last", etc.
+        if (arg.relativeTarget === "first") {
+          return [{ type: "keypress", target: "main", key: "ArrowDown" }];
+        }
+        if (arg.relativeTarget === "last") {
+          return [
+            { type: "keypress", target: "main", key: "ArrowDown" },
+            { type: "keypress", target: "main", key: "ArrowUp" }
+          ]
+        };
+        // handle "next", "previous"
+        return [];
+      }
+    }
+  ],
+  assertion: (arg: { relativeTarget?: string | number } = {}) => isActiveDescendant(arg.relativeTarget)
+}`
+
+const activeDescendantNotEmptyState = `
+"activeDescendant.notEmpty": {
+  requires: [],
+  setup: [
+    {
+      when: ["keyboard", "pointer"],
+      steps: () => []
+    }
+  ],
+  assertion: isActiveDescendantNotEmpty
+}
+  
+function isActiveDescendantNotEmpty() {
+  return [
+    {
+      target: "main",
+      assertion: "toHaveAttribute",
+      attribute: "aria-activedescendant",
+      expectedValue: "!empty",
+      failureMessage: "Expected aria-activedescendant on main to not be empty."
+    }
+  ]
+}`
+
+const activeDescendantEmptyState = `
+"activeDescendant.empty": {
+  requires: [],
+  setup: [
+    {
+      when: ["keyboard", "pointer"],
+      steps: () => []
+    }
+  ],
+  assertion: isActiveDescendantEmpty
+}
+  
+function isActiveDescendantEmpty() {
+  return [
+    {
+      target: "main",
+      assertion: "toHaveAttribute",
+      attribute: "aria-activedescendant",
+      expectedValue: "",
+      failureMessage: "Expected aria-activedescendant on main to be empty."
+    }
+  ]
+}`
+
+const selectedOption = `
+"selectedOption": {
+  requires: ["popup.open"],
+  setup: [
+    {
+      when: ["keyboard"],
+      steps: (arg: { relativeTarget } = {}) => [
+        { type: "keypress", target: "relative", key: "Enter", relativeTargeta: arg.relativeTarget }
+      ]
+    },
+    {
+      when: ["pointer"],
+      steps: (arg: { relativeTarget } = {}) => [
+        { type: "click", target: "relative", relativeTargeta: arg.relativeTarget }
+      ]
+    }
+  ],
+  assertion: (arg: { relativeTarget } = {}) => isAriaSelected(arg.relativeTarget)
+}`
 
 // eslint-disable-next-line react/prop-types
 const ComboboxContract = ({ darkMode, setDarkMode }) => {
-    const[showDropdownPage, setShowDropdownPage] = useState(false);
-    const page = 'combobox-contract';
+  const[showDropdownPage, setShowDropdownPage] = useState(false);
+  const page = 'combobox-contract';
 
   return (
     <div id="inner-body-div">
@@ -57,10 +240,6 @@ const ComboboxContract = ({ darkMode, setDarkMode }) => {
                 <span className="docs-note">Each selectable item in the popup. In our current example, a listbox popup. These must be direct or indirect children of the popup container (<b>popup</b>).</span>
               </li>
               <li className="mb-4">
-                <b>focusable</b>: <code>[role=combobox]</code><br/>
-                <span className="docs-note">The element that should receive focus when interacting with the combobox. Usually the same as <b>main</b> and <b>input</b>, but in custom implementations, may be a wrapper or proxy element.</span>
-              </li>
-              <li className="mb-4">
                 <b>popup</b>: <code>[role=listbox]</code><br/>
                 <span className="docs-note">The container for the options. This element is shown/hidden as the user interacts with the combobox. It must have a unique <code>id</code> referenced by <code>aria-controls</code> on <b>main</b>.</span>
               </li>
@@ -74,41 +253,60 @@ const ComboboxContract = ({ darkMode, setDarkMode }) => {
             </div>
           </section>
           <section className="side-body-sections-div docs-section-card mt-6">
-            <h2 className="docs-section-heading">ARIA Attributes</h2>
-            <ul className="docs-list mt-2">
-              <li className="mb-4"><b>role</b>: 
-                <ul className="list-disc ml-4">
-                  <li><code>combobox</code> on main/input</li>
-                  <li><code>listbox</code>, <code>tree</code>, <code>grid</code>, or <code>dialog</code> on popup</li>
-                  <li><code>option</code>, <code>treeitem</code>, <code>gridcell</code>, or <code>row</code> on each option</li>
-                </ul>
-              </li>
-              <li className="mb-4"><b>aria-expanded</b>: <code>true</code> or <code>false</code> on main, reflects popup visibility.</li>
-              <li className="mb-4"><b>aria-controls</b>: References the popup <code>id</code> from main, linking combobox to listbox.</li>
-              <li className="mb-4"><b>aria-haspopup</b>: <code>listbox</code> on main, signals the popup type. Could also be <code>tree</code>, <code>grid</code>, or <code>dialog</code>.</li>
-              <li className="mb-4"><b>aria-autocomplete</b>: <code>list</code>, <code>none</code> or <code>both</code>, on main, describes autocomplete behavior.</li>
-              <li><b>aria-selected</b>: <code>true</code> or <code>false</code> on each option, marks selection state.</li>
-            </ul>
+            <h2 className="docs-section-heading">States</h2>
+            <p>These are the collection of states that help define the expected behaviors and ARIA attributes of a combobox. Each state describes a particular UI or accessibility condition, how to set it up, and what should be asserted. Some states have an empty setup array—this is intentional, as the component is reset between tests and no additional steps are needed to reach that state. The <b>relativeTarget</b> argument is used for states that depend on a specific option or element, such as selecting or activating a particular option.</p>
+            <div className="mt-[20px]"> {/* Each section should talk about what it's state. What it is. What it does. Why some have empty setup (it's because the component resets in between tests). What is relative target */}
+              <h3><code>popup.open</code></h3>
+              <p className="my-2">This state represents the combobox popup being open and visible to the user. The setup simulates opening the popup either by keyboard (ArrowDown on the input) or by pointer (clicking the button). The assertion checks that the popup is visible and that <code>aria-expanded</code> is <code>true</code> on the main element.</p>
+              <Terminal darkMode={darkMode} title="Popup Open State" lang="javascript">{popupOpenState}</Terminal>
+            </div>
+            <div className="mt-[50px]">
+              <h3><code>popup.closed</code></h3>
+              <p className="my-2">This state represents the combobox popup being closed and not visible. The setup is empty because the default state after reset is closed. The assertion checks that the popup is not visible, <code>aria-expanded</code> is <code>false</code>, and <code>aria-activedescendant</code> is empty.</p>
+              <Terminal darkMode={darkMode} title="Popup Closed State" lang="javascript">{popupClosedState}</Terminal>
+            </div>
+            <div className="mt-[50px]">
+              <h3><code>main.focused</code></h3>
+              <p className="my-2">This state ensures that the main combobox element is focused. The setup focuses the main element using either keyboard or pointer. The assertion checks that the main element has focus.</p>
+              <Terminal darkMode={darkMode} title="Main Focused State" lang="javascript">{mainFocusedState}</Terminal>
+            </div>
+            <div className="mt-[50px]">
+              <h3><code>main.notFocused</code></h3>
+              <p className="my-2">This state ensures that the main combobox element is not focused. The setup is empty because, after reset, the main element is not focused. The assertion checks that the main element does not have focus.</p>
+              <Terminal darkMode={darkMode} title="Main Not Focused State" lang="javascript">{mainNotFocusedState}</Terminal>
+            </div>
+            <div className="mt-[50px]">
+              <h3><code>input.filled</code></h3>
+              <p className="my-2">This state represents the input being filled with text. The setup types the value <code>test</code> into the input using keyboard or text input. The assertion checks that the input value is <code>test</code>.</p>
+              <Terminal darkMode={darkMode} title="Input Filled State" lang="javascript">{inputFilledState}</Terminal>
+            </div>
+            <div className="mt-[50px]">
+              <h3><code>input.notFilled</code></h3>
+              <p className="my-2">This state represents the input being empty. The setup types an empty string into the input. The assertion checks that the input value is empty.</p>
+              <Terminal darkMode={darkMode} title="Input Not Filled State" lang="javascript">{inputNotFilledState}</Terminal>
+            </div>
+            <div className="mt-[50px]">
+              <h3><code>activeOption</code></h3> 
+              <p className="my-2">This state represents a specific option being active (highlighted) in the popup. The setup uses keyboard or pointer to move to the desired option, determined by the <b>relativeTarget</b> argument (e.g., index, &#34;first&#34;, or &#34;last&#34;). The assertion checks that <code>aria-activedescendant</code> on the main element matches the id of the active option.</p>
+              <Terminal darkMode={darkMode} title="Active Option State" lang="javascript">{activeOptionState}</Terminal>
+            </div>
+            <div className="mt-[50px]">
+              <h3><code>selectedOption</code></h3> 
+              <p className="my-2">This state represents an option being selected. The setup simulates selecting an option using keyboard (Enter) or pointer (click), targeting the option specified by <b>relativeTarget</b>. The assertion checks that the option has <code>aria-selected</code> set to <code>true</code>.</p>
+              <Terminal darkMode={darkMode} title="Selected Option State" lang="javascript">{selectedOption}</Terminal>
+            </div>
+            <div className="mt-[50px]">
+              <h3><code>activeDescendant.empty</code></h3> 
+              <p className="my-2">This state asserts that <code>aria-activedescendant</code> on the main element is empty, meaning no option is currently active. The setup is empty because this is the default state after reset.</p>
+              <Terminal darkMode={darkMode} title="Active Descendant Empty State" lang="javascript">{activeDescendantEmptyState}</Terminal>
+            </div>
+            <div className="mt-[50px]">
+              <h3><code>activeDescendant.notEmpty</code></h3>
+              <p className="my-2">This state asserts that <code>aria-activedescendant</code> on the main element is not empty, meaning some option is currently active. The setup is empty because the test context will have already activated an option. The assertion checks that <code>aria-activedescendant</code> is not empty.</p>
+              <Terminal darkMode={darkMode} title="Active Descendant Not Empty State" lang="javascript">{activeDescendantNotEmptyState}</Terminal>
+            </div>
           </section>
-          <section className="side-body-sections-div docs-section-card mt-6">
-            <h2 className="docs-section-heading">Relationships</h2>
-            <ul className="docs-list mt-2">
-              <li className="mb-4"><b>aria-controls</b>: <code>main</code> <b>must</b> reference <code>popup</code> by <code>id</code> (required).</li>
-              <li><b>popup</b> <b>must</b> contain <code>option</code>, <code>treeitem</code>, or <code>gridcell</code> (required).</li>
-            </ul>
-          </section>
-          <section className="side-body-sections-div docs-section-card mt-6">
-            <h2 className="docs-section-heading">Dynamic Behaviors</h2>
-            <ul className="docs-list mt-2">
-              <li className="mb-4"><b>Escape</b> closes the popup if open, sets <code>aria-expanded</code> to <code>false</code>, and clears <code>aria-activedescendant</code>.</li>
-              <li className="mb-4"><b>Escape</b> (when popup is closed) clears the input value.</li>
-              <li className="mb-4"><b>Down Arrow</b> (on closed) opens the popup and sets <code>aria-expanded</code> to <code>true</code>.</li>
-              <li className="mb-4"><b>Down Arrow</b> (on open) moves focus to the first option and updates <code>aria-activedescendant</code>.</li>
-              <li className="mb-4"><b>Home</b> (on last option) moves active to first option (optional, but recommended for accessibility).</li>
-              <li className="mb-4"><b>Click</b> on button toggles popup open/close and updates <code>aria-expanded</code>.</li>
-              <li><b>Enter</b> on an option selects it and sets <code>aria-selected</code> to <code>true</code>.</li>
-            </ul>
-          </section>
+          
           <section className="side-body-sections-div docs-section-card mt-6">
             <h2 className="docs-section-heading">References</h2>
             <ul className="docs-list mt-2">
