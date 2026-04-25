@@ -12,27 +12,29 @@ import { HelmetProvider } from 'react-helmet-async';
 
 
 
-import Homepage from './pages/Homepage'
-import Documentation from './pages/getting-started/Documentation'
-import ApiReference from './pages/getting-started/ApiReference'
-import Menu from './pages/components/Menu'
-import BlockExample from  './pages/components/Block'
-import Accordions from './pages/components/Accordions'
-import Checkbox from './pages/components/Checkbox'
-import Radio from  './pages/components/Radio'
-import Toggle from './pages/components/Toggle'
-import Changelog from './pages/Changelog'
-import Audit from './pages/testing/Audit'
-import Testing from './pages/testing/Testing'
-import Combobox from './pages/components/Combobox'
-import ContractOverview from './pages/contracts/ContractOverview'
-import ComponentTestHarness from './pages/ComponentTestHarness'
-import Tabs from './pages/components/Tabs'
-import DslOverview from './pages/contracts/DSL'
-import UtilityOverview from './pages/components/UtilityOverview'
-import AriaEaseGlossary from './pages/getting-started/AriaEaseGlossary'
-import ComboboxContract from './pages/contracts/ComboboxContract'
+import Homepage from './pages/Homepage';
+import Documentation from './pages/getting-started/Documentation';
+import ApiReference from './pages/getting-started/ApiReference';
+import Menu from './pages/components/Menu';
+import BlockExample from  './pages/components/Block';
+import Accordions from './pages/components/Accordions';
+import Checkbox from './pages/components/Checkbox';
+import Radio from  './pages/components/Radio';
+import Toggle from './pages/components/Toggle';
+import Changelog from './pages/Changelog';
+import Audit from './pages/testing/Audit';
+import Testing from './pages/testing/Testing';
+import Combobox from './pages/components/Combobox';
+import ContractOverview from './pages/contracts/ContractOverview';
+import ComponentTestHarness from './pages/ComponentTestHarness';
+import Tabs from './pages/components/Tabs';
+import DslOverview from './pages/contracts/DSL';
+import UtilityOverview from './pages/components/UtilityOverview';
+import AriaEaseGlossary from './pages/getting-started/AriaEaseGlossary';
+import ComboboxContract from './pages/contracts/ComboboxContract';
 import ComboboxDsl from './pages/dsl/ComboboxDsl';
+import MenuContract from './pages/contracts/MenuContract';
+import TabsContract from './pages/contracts/TabsContract';
 
 import ConceptsOverview from './pages/concepts/ConceptsOverview';
 import StatePack from './pages/concepts/StatePack';
@@ -94,6 +96,8 @@ const InnerApp = ({darkMode, setDarkMode}) => {
             
             <Route path="/contracts/overview" element={<ContractOverview darkMode={darkMode} setDarkMode={setDarkMode}/>}/>
             <Route path="/contracts/combobox" element={<ComboboxContract darkMode={darkMode} setDarkMode={setDarkMode}/>}/>
+            <Route path="/contracts/menu" element={<MenuContract darkMode={darkMode} setDarkMode={setDarkMode}/>}/>
+            <Route path="/contracts/tabs" element={<TabsContract darkMode={darkMode} setDarkMode={setDarkMode}/>}/>
             <Route path="/contracts/dsl" element={<DslOverview darkMode={darkMode} setDarkMode={setDarkMode}/>}/> 
 
             

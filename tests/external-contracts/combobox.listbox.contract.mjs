@@ -42,16 +42,16 @@ export const comboboxListboxContract = createContract("combobox", (c) => {
   c.when("Escape")
   .as("keypress")
   .on("main")
-  .given("popup.open")
-  .then("popup.closed")
+  .given("comboboxpopup.open")
+  .then("comboboxpopup.closed")
   .describe("Escape closes an open listbox popup.")
   .required();
 
   c.when("Escape")
   .as("keypress")
   .on("main")
-  .given(["popup.closed", "input.filled"])
-  .then("input.notFilled")
+  .given(["comboboxpopup.closed", "input.filled"])
+  .then("input.empty")
   .describe("Escape clears input when listbox popup is closed.")
   .required();
 
@@ -59,16 +59,16 @@ export const comboboxListboxContract = createContract("combobox", (c) => {
   c.when("ArrowDown")
   .as("keypress")
   .on("input")
-  .given("popup.closed")
-  .then("popup.open")
+  .given("comboboxpopup.closed")
+  .then("comboboxpopup.open")
   .describe("Down Arrow on closed combobox opens the listbox popup.")
   .required();
 
   c.when("ArrowDown")
   .as("keypress")
   .on("input")
-  .given("popup.open")
-  .then(["main.focused", {type: "activeOption", ref: "first"}])
+  .given("comboboxpopup.open")
+  .then(["main.focused", {type: "option.active", ref: "first"}])
   .describe("Second Down Arrow on open combobox makes the first option active.")
   .required();
 
@@ -77,8 +77,8 @@ export const comboboxListboxContract = createContract("combobox", (c) => {
   c.when("Home")
   .as("keypress")
   .on("relative", "last")
-  .given({type: "activeOption", ref: "last"})
-  .then({type: "activeOption", ref: "first"})
+  .given({type: "option.active", ref: "last"})
+  .then({type: "option.active", ref: "first"})
   .describe("Home on last option moves active option from last to first while maintaining input focus.")
   .optional();
 
@@ -87,40 +87,40 @@ export const comboboxListboxContract = createContract("combobox", (c) => {
   c.when("Click")
   .as("click")
   .on("button")
-  .given("popup.closed")
-  .then("popup.open")
+  .given("comboboxpopup.closed")
+  .then("comboboxpopup.open")
   .describe("Click on the button opens the listbox popup.")
   .required();
 
   c.when("Click")
   .as("click")
   .on("button")
-  .given("popup.open")
-  .then("popup.closed")
+  .given("comboboxpopup.open")
+  .then("comboboxpopup.closed")
   .describe("Click on the button closes the listbox popup.")
   .required();
 
   c.when("Click")
   .as("click")
   .on("options")
-  .given("popup.open")
-  .then({type: "selectedOption", ref: "first"})
+  .given("comboboxpopup.open")
+  .then({type: "option.selected", ref: "first"})
   .describe("Click on option selects it and closes listbox popup.")
   .required();
 
   c.when("Click")
   .as("click")
   .on("options")
-  .given("popup.open")
-  .then({type: "selectedOption", ref: "first"})
+  .given("comboboxpopup.open")
+  .then({type: "option.selected", ref: "first"})
   .describe("Click on option selects it and closes listbox popup.")
   .required();
 
   c.when("Click")
   .as("click")
   .on("document")
-  .given("popup.open")
-  .then("popup.closed")
+  .given("comboboxpopup.open")
+  .then("comboboxpopup.closed")
   .describe("Clicking outside closes the listbox popup.")
   .required();
 
@@ -130,8 +130,8 @@ export const comboboxListboxContract = createContract("combobox", (c) => {
   c.when("Enter")
   .as("keypress")
   .on("relative", 1)
-  .given({type: "activeOption", ref: "first"})
-  .then({type: "selectedOption", ref: "first"})
+  .given({type: "option.active", ref: "first"})
+  .then({type: "option.selected", ref: "first"})
   .describe("Enter selects active option.")
   .required(); // I missed required and it still built the contract, only omitted that test. Should that be the case
 
@@ -142,8 +142,8 @@ export const comboboxListboxContract = createContract("combobox", (c) => {
   c.when("Tab")
   .as("keypress")
   .on("main")
-  .given("popup.open")
-  .then("popup.closed")
+  .given("comboboxpopup.open")
+  .then("comboboxpopup.closed")
   .describe("Tab closes open listbox popup when no active option.") 
   .required();
 
@@ -151,8 +151,8 @@ export const comboboxListboxContract = createContract("combobox", (c) => {
   c.when("Tab")
   .as("keypress")
   .on("main")
-  .given({type: "activeOption", ref: "first"})
-  .then([{type: "selectedOption", ref: "first"}, "popup.closed", "main.notFocused"])
+  .given({type: "option.active", ref: "first"})
+  .then([{type: "option.selected", ref: "first"}, "comboboxpopup.closed", "main.blurred"])
   .describe("Tab selects active option, closes open listbox popup, and moves focus from main.") 
   .required();
 
@@ -161,8 +161,8 @@ export const comboboxListboxContract = createContract("combobox", (c) => {
   c.when("Hover")
   .as("hover")
   .on("options")
-  .given("popup.open")
-  .then({type: "activeOption", ref: "first"})
+  .given("comboboxpopup.open")
+  .then({type: "option.active", ref: "first"})
   .describe("Mouse hover sets aria-activedescendant to hovered option.")
   .required();
 

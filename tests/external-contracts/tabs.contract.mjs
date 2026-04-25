@@ -37,8 +37,8 @@ export const tabsContract = createContract("tabs", (c) => {
   c.when("ArrowRight")
   .as("keypress")
   .on("relative", 1)
-  .given({ type: "focusedTab", ref: "first" })
-  .then({ type: "focusedTab", ref: 2 })
+  .given({ type: "tab.focused", ref: "first" })
+  .then({ type: "tab.focused", ref: 2 })
   .describe("Arrow Right moves focus to the second tab.")
   .required();
 
@@ -46,8 +46,8 @@ export const tabsContract = createContract("tabs", (c) => {
   c.when("ArrowLeft")
   .as("keypress")
   .on("relative", "second")
-  .given({ type: "focusedTab", ref: "second" })
-  .then({ type: "focusedTab", ref: "first" })
+  .given({ type: "tab.focused", ref: "second" })
+  .then({ type: "tab.focused", ref: "first" })
   .describe("Arrow Left moves focus to the first tab.")
   .required();
 
