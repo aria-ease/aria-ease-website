@@ -124,7 +124,7 @@ const DocsFrame = ({ page, children, darkMode, setDarkMode, showDropdownPage, se
                         <SideNavDisclosure
                           page={page}
                           triggerTitle={'Component Contracts'}
-                          sectionPages={['combobox-contract', 'menu-contract']}
+                          sectionPages={['combobox-contract', 'menu-contract', 'tabs-contract']}
                         >
                           <div className='flex flex-col gap-2 p-[10px]'>
                             {/* Component specific contract */}
