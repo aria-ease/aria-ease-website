@@ -87,6 +87,8 @@ const SlideOutNav = ({ page, showDropdownPage }) => {
                 {contractOpen && (
                   <ul id='slideout-contract-dropdown' className='flex flex-col gap-2 p-[10px]'>
                     <Link onClick={saveScrollPosition} to='/contracts/combobox' aria-label='Navigate to the combobox contract page' className={`mb-2 side-nav-link ${(page === 'combobox-contract') ? 'active-nav-link' : ''}`}>Combobox</Link>
+                    <Link onClick={saveScrollPosition} to='/contracts/menu' aria-label='Navigate to the menu contract page' className={`mb-2 side-nav-link ${(page === 'menu-contract') ? 'active-nav-link' : ''}`}>Menu</Link>
+                    <Link onClick={saveScrollPosition} to='/contracts/tabs' aria-label='Navigate to the tabs contract page' className={`mb-2 side-nav-link ${(page === 'tabs-contract') ? 'active-nav-link' : ''}`}>Tabs</Link>
                   </ul>
                 )}
               </div>

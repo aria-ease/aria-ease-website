@@ -47,43 +47,43 @@ export const comboboxListboxContract = createContract("combobox", (c) => {
   c.when("Escape")
   .as("keypress")
   .on("main")
-  .given("popup.open")
-  .then("popup.closed")
+  .given("comboboxpopup.open")
+  .then("comboboxpopup.closed")
   .describe("Escape closes an open listbox.")
   .required();
 
   c.when("ArrowDown")
   .as("keypress")
   .on("main")
-  .given("popup.closed")
-  .then("popup.open")
+  .given("comboboxpopup.closed")
+  .then("comboboxpopup.open")
   .describe("Down Arrow on closed combobox opens the listbox.")
   .required();
 
   c.when("ArrowDown")
   .as("keypress")
   .on("main")
-  .given("popup.open")
-  .then({type: "activeOption", ref: "first"})
+  .given("comboboxpopup.open")
+  .then({type: "option.active", ref: "first"})
   .describe("Second Down Arrow on open combobox activates the first option.")
   .required();
 
   c.when("Home")
   .as("keypress")
   .on("main")
-  .given({type: "activeOption", ref: "last"})
-  .then({type: "activeOption", ref: "first"})
+  .given({type: "option.active", ref: "last"})
+  .then({type: "option.active", ref: "first"})
   .describe("Home on last option moves active option from last to first while maintaining input focus.")
   .optional();
 });`;
 
 const stateDependentExample = `
 c.static((s) => {
-  s.target("main").has("aria-activedescendant", "!empty").requires("popup.open").recommended();
+  s.target("main").has("aria-activedescendant", "!empty").requires("comboboxpopup.open").recommended();
 });
 
 c.relationships((r) => {
-  r.contains("popup", "options").requires("popup.open").required();
+  r.contains("popup", "options").requires("comboboxpopup.open").required();
 });
 `
 
@@ -97,8 +97,8 @@ const stateTransition = `
 c.when("Escape")
 .as("keypress")
 .on("main")
-.given("popup.open")
-.then("popup.closed")
+.given("comboboxpopup.open")
+.then("comboboxpopup.closed")
 .describe("Escape closes an open listbox.")
 .required();
 `
