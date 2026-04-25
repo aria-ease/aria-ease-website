@@ -10,14 +10,14 @@ const SideNavDisclosure = ({ children, triggerTitle, page, sectionPages = [] }) 
 
   const [isOpen, setIsOpen] = useState(() => {
     if (typeof window !== 'undefined') {
-      const stored = localStorage.getItem('side-nav-disclosure-open');
+      const stored = sessionStorage.getItem('side-nav-disclosure-open');
       return stored === 'true';
     }
     return false;
   });
 
   useEffect(() => {
-    localStorage.setItem(`side-nav-disclosure-open`, isOpen);
+    sessionStorage.setItem(`side-nav-disclosure-open`, isOpen);
   }, [isOpen]);
   
   return (

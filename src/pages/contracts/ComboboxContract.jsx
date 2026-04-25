@@ -8,7 +8,7 @@ import Terminal from '../../components/Terminal';
 
 
 const popupOpenState = `
-"popup.open": {
+"comboboxpopup.open": {
   setup: [
     {
       when: ["keyboard", "textInput"],
@@ -27,7 +27,7 @@ const popupOpenState = `
 }`
 
 const popupClosedState = `
-"popup.closed": {
+"comboboxpopup.closed": {
   setup: [
     {
       when: ["keyboard", "pointer],
@@ -51,7 +51,7 @@ const mainFocusedState = `
 }`
 
 const mainNotFocusedState = `
-"main.notFocused": {
+"main.blurred": {
   setup: [
     {
       when: ["keyboard", "pointer"],
@@ -75,7 +75,7 @@ const inputFilledState = `
 }`
 
 const inputNotFilledState = `
-"input.notFilled": {
+"input.empty": {
   setup: [
     {
       when: ["keyboard", "textInput"],
@@ -87,9 +87,9 @@ const inputNotFilledState = `
   assertion: isInputNotFilled
 }`
 
-const activeOptionState = `
-"activeOption": {
-  requires: ["popup.open"],
+const activeItemState = `
+"option.active": {
+  requires: ["comboboxpopup.open"],
   setup: [
     {
       when: ["keyboard", "pointer"],
@@ -102,7 +102,6 @@ const activeOptionState = `
             key: "ArrowDown"
           }));
         }
-        // For "first", "last", etc.
         if (arg.relativeTarget === "first") {
           return [{ type: "keypress", target: "main", key: "ArrowDown" }];
         }
@@ -112,7 +111,6 @@ const activeOptionState = `
             { type: "keypress", target: "main", key: "ArrowUp" }
           ]
         };
-        // handle "next", "previous"
         return [];
       }
     }
@@ -121,7 +119,7 @@ const activeOptionState = `
 }`
 
 const activeDescendantNotEmptyState = `
-"activeDescendant.notEmpty": {
+"activedescendant.set": {
   requires: [],
   setup: [
     {
@@ -145,7 +143,7 @@ function isActiveDescendantNotEmpty() {
 }`
 
 const activeDescendantEmptyState = `
-"activeDescendant.empty": {
+"activedescendant.unset": {
   requires: [],
   setup: [
     {
@@ -168,9 +166,9 @@ function isActiveDescendantEmpty() {
   ]
 }`
 
-const selectedOption = `
-"selectedOption": {
-  requires: ["popup.open"],
+const selectedItem = `
+"option.selected": {
+  requires: ["comboboxpopup.open"],
   setup: [
     {
       when: ["keyboard"],
@@ -200,7 +198,7 @@ const ComboboxContract = ({ darkMode, setDarkMode }) => {
         <meta name="description" content="Documentation for the Combobox Contract, defining required selectors, ARIA attributes, and behaviors for accessible combobox implementations." />
         <meta name="keywords" content="combobox contract, ARIA combobox, accessible combobox, WAI-ARIA patterns, web accessibility, frontend development, UI components" />
       </Helmet>
-        <DocsFrame
+      <DocsFrame
         page={page}
         darkMode={darkMode}
         setDarkMode={setDarkMode}
@@ -256,12 +254,12 @@ const ComboboxContract = ({ darkMode, setDarkMode }) => {
             <h2 className="docs-section-heading">States</h2>
             <p>These are the collection of states that help define the expected behaviors and ARIA attributes of a combobox. Each state describes a particular UI or accessibility condition, how to set it up, and what should be asserted. Some states have an empty setup array—this is intentional, as the component is reset between tests and no additional steps are needed to reach that state. The <b>relativeTarget</b> argument is used for states that depend on a specific option or element, such as selecting or activating a particular option.</p>
             <div className="mt-[20px]"> {/* Each section should talk about what it's state. What it is. What it does. Why some have empty setup (it's because the component resets in between tests). What is relative target */}
-              <h3><code>popup.open</code></h3>
+              <h3><code>comboboxpopup.open</code></h3>
               <p className="my-2">This state represents the combobox popup being open and visible to the user. The setup simulates opening the popup either by keyboard (ArrowDown on the input) or by pointer (clicking the button). The assertion checks that the popup is visible and that <code>aria-expanded</code> is <code>true</code> on the main element.</p>
               <Terminal darkMode={darkMode} title="Popup Open State" lang="javascript">{popupOpenState}</Terminal>
             </div>
             <div className="mt-[50px]">
-              <h3><code>popup.closed</code></h3>
+              <h3><code>comboboxpopup.closed</code></h3>
               <p className="my-2">This state represents the combobox popup being closed and not visible. The setup is empty because the default state after reset is closed. The assertion checks that the popup is not visible, <code>aria-expanded</code> is <code>false</code>, and <code>aria-activedescendant</code> is empty.</p>
               <Terminal darkMode={darkMode} title="Popup Closed State" lang="javascript">{popupClosedState}</Terminal>
             </div>
@@ -271,7 +269,7 @@ const ComboboxContract = ({ darkMode, setDarkMode }) => {
               <Terminal darkMode={darkMode} title="Main Focused State" lang="javascript">{mainFocusedState}</Terminal>
             </div>
             <div className="mt-[50px]">
-              <h3><code>main.notFocused</code></h3>
+              <h3><code>main.blurred</code></h3>
               <p className="my-2">This state ensures that the main combobox element is not focused. The setup is empty because, after reset, the main element is not focused. The assertion checks that the main element does not have focus.</p>
               <Terminal darkMode={darkMode} title="Main Not Focused State" lang="javascript">{mainNotFocusedState}</Terminal>
             </div>
@@ -281,27 +279,27 @@ const ComboboxContract = ({ darkMode, setDarkMode }) => {
               <Terminal darkMode={darkMode} title="Input Filled State" lang="javascript">{inputFilledState}</Terminal>
             </div>
             <div className="mt-[50px]">
-              <h3><code>input.notFilled</code></h3>
+              <h3><code>input.empty</code></h3>
               <p className="my-2">This state represents the input being empty. The setup types an empty string into the input. The assertion checks that the input value is empty.</p>
               <Terminal darkMode={darkMode} title="Input Not Filled State" lang="javascript">{inputNotFilledState}</Terminal>
             </div>
             <div className="mt-[50px]">
-              <h3><code>activeOption</code></h3> 
+              <h3><code>option.active</code></h3> 
               <p className="my-2">This state represents a specific option being active (highlighted) in the popup. The setup uses keyboard or pointer to move to the desired option, determined by the <b>relativeTarget</b> argument (e.g., index, &#34;first&#34;, or &#34;last&#34;). The assertion checks that <code>aria-activedescendant</code> on the main element matches the id of the active option.</p>
-              <Terminal darkMode={darkMode} title="Active Option State" lang="javascript">{activeOptionState}</Terminal>
+              <Terminal darkMode={darkMode} title="Active Option State" lang="javascript">{activeItemState}</Terminal>
             </div>
             <div className="mt-[50px]">
-              <h3><code>selectedOption</code></h3> 
+              <h3><code>option.selected</code></h3> 
               <p className="my-2">This state represents an option being selected. The setup simulates selecting an option using keyboard (Enter) or pointer (click), targeting the option specified by <b>relativeTarget</b>. The assertion checks that the option has <code>aria-selected</code> set to <code>true</code>.</p>
-              <Terminal darkMode={darkMode} title="Selected Option State" lang="javascript">{selectedOption}</Terminal>
+              <Terminal darkMode={darkMode} title="Selected Option State" lang="javascript">{selectedItem}</Terminal>
             </div>
             <div className="mt-[50px]">
-              <h3><code>activeDescendant.empty</code></h3> 
+              <h3><code>activedescendant.unset</code></h3> 
               <p className="my-2">This state asserts that <code>aria-activedescendant</code> on the main element is empty, meaning no option is currently active. The setup is empty because this is the default state after reset.</p>
               <Terminal darkMode={darkMode} title="Active Descendant Empty State" lang="javascript">{activeDescendantEmptyState}</Terminal>
             </div>
             <div className="mt-[50px]">
-              <h3><code>activeDescendant.notEmpty</code></h3>
+              <h3><code>activedescendant.set</code></h3>
               <p className="my-2">This state asserts that <code>aria-activedescendant</code> on the main element is not empty, meaning some option is currently active. The setup is empty because the test context will have already activated an option. The assertion checks that <code>aria-activedescendant</code> is not empty.</p>
               <Terminal darkMode={darkMode} title="Active Descendant Not Empty State" lang="javascript">{activeDescendantNotEmptyState}</Terminal>
             </div>
@@ -323,10 +321,10 @@ const ComboboxContract = ({ darkMode, setDarkMode }) => {
                         <span className='next-link-text text-md'>Contract DSL</span>
                       </div>
                     </Link>
-                    <Link to='/changelog' className='block-interactive next-link docs-next-link rounded-lg md:min-w-80 md:max-w-md w-full md:w-auto flex gap-6 items-center px-4 py-6 md:px-5'>
+                    <Link to='/contracts/menu' className='block-interactive next-link docs-next-link rounded-lg md:min-w-80 md:max-w-md w-full md:w-auto flex gap-6 items-center px-4 py-6 md:px-5'>
                       <div className='flex flex-col w-full items-end'>
                         <span className='text-sm black-white-text'>Next</span>
-                        <span className='next-link-text text-md'>Changelog</span>
+                        <span className='next-link-text text-md'>Menu Contract</span>
                       </div>
                       <ChevronRightCircleIcon/>
                     </Link>

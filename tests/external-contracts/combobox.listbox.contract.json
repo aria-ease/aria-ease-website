@@ -210,7 +210,7 @@
             "relativeTarget": "first",
             "property": "id"
           },
-          "failureMessage": "Expected aria-activedescendant on main to match the id of the first option."
+          "failureMessage": "Expected aria-activedescendant on main to match the id of the first relative item."
         }
       ],
       "setup": [
@@ -243,13 +243,18 @@
             "relativeTarget": "first",
             "property": "id"
           },
-          "failureMessage": "Expected aria-activedescendant on main to match the id of the first option."
+          "failureMessage": "Expected aria-activedescendant on main to match the id of the first relative item."
         }
       ],
       "setup": [
         {
           "type": "keypress",
-          "target": "input",
+          "target": "main",
+          "key": "ArrowDown"
+        },
+        {
+          "type": "keypress",
+          "target": "main",
           "key": "ArrowUp"
         }
       ]
@@ -312,8 +317,9 @@
       ],
       "setup": [
         {
-          "type": "click",
-          "target": "button"
+          "type": "keypress",
+          "target": "input",
+          "key": "ArrowDown"
         }
       ]
     },
@@ -334,13 +340,14 @@
           "assertion": "toHaveAttribute",
           "attribute": "aria-selected",
           "expectedValue": "true",
-          "failureMessage": "Expected first option to have aria-selected='true'."
+          "failureMessage": "Expected first item to have aria-selected='true'."
         }
       ],
       "setup": [
         {
-          "type": "click",
-          "target": "button"
+          "type": "keypress",
+          "target": "input",
+          "key": "ArrowDown"
         }
       ]
     },
@@ -361,13 +368,14 @@
           "assertion": "toHaveAttribute",
           "attribute": "aria-selected",
           "expectedValue": "true",
-          "failureMessage": "Expected first option to have aria-selected='true'."
+          "failureMessage": "Expected first item to have aria-selected='true'."
         }
       ],
       "setup": [
         {
-          "type": "click",
-          "target": "button"
+          "type": "keypress",
+          "target": "input",
+          "key": "ArrowDown"
         }
       ]
     },
@@ -404,8 +412,9 @@
       ],
       "setup": [
         {
-          "type": "click",
-          "target": "button"
+          "type": "keypress",
+          "target": "input",
+          "key": "ArrowDown"
         }
       ]
     },
@@ -428,7 +437,14 @@
           "assertion": "toHaveAttribute",
           "attribute": "aria-selected",
           "expectedValue": "true",
-          "failureMessage": "Expected first option to have aria-selected='true'."
+          "failureMessage": "Expected first item to have aria-selected='true'."
+        }
+      ],
+      "setup": [
+        {
+          "type": "keypress",
+          "target": "main",
+          "key": "ArrowDown"
         }
       ]
     },
@@ -490,7 +506,7 @@
           "assertion": "toHaveAttribute",
           "attribute": "aria-selected",
           "expectedValue": "true",
-          "failureMessage": "Expected first option to have aria-selected='true'."
+          "failureMessage": "Expected first item to have aria-selected='true'."
         },
         {
           "target": "popup",
@@ -516,6 +532,13 @@
           "assertion": "notToHaveFocus",
           "failureMessage": "Expected main to not have focused."
         }
+      ],
+      "setup": [
+        {
+          "type": "keypress",
+          "target": "main",
+          "key": "ArrowDown"
+        }
       ]
     },
     {
@@ -538,13 +561,14 @@
             "relativeTarget": "first",
             "property": "id"
           },
-          "failureMessage": "Expected aria-activedescendant on main to match the id of the first option."
+          "failureMessage": "Expected aria-activedescendant on main to match the id of the first relative item."
         }
       ],
       "setup": [
         {
-          "type": "click",
-          "target": "button"
+          "type": "keypress",
+          "target": "input",
+          "key": "ArrowDown"
         }
       ]
     }

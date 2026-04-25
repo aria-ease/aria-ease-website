@@ -10,40 +10,42 @@ import { Link } from 'react-router-dom';
 
 const comboboxStatePack = `
 export const COMBOBOX_STATES = {
-  "popup.open": {
+  "comboboxpopup.open": {
     setup: [
-      { when: ["keyboard", "textInput"], steps: () => [ { type: "keypress", target: "input", key: "ArrowDown" } ] },
-      { when: ["pointer"], steps: () => [ { type: "click", target: "button" } ] }
+      {
+        when: ["keyboard", "textInput"],
+        steps: () => [
+          { type: "keypress", target: "input", key: "ArrowDown" }
+        ]
+      },
+      {
+        when: ["pointer"],
+        steps: () => [
+          { type: "click", target: "button" }
+        ]
+      }
     ],
     assertion: isComboboxOpen
   },
-  "popup.closed": {
-    setup: [ ... ], // No setup necessary. Component resets after every test
-    assertion: [...isComboboxClosed(), ...isActiveDescendantEmpty()]
-  },
-  "activeOption": {
-    requires: ["popup.open"],
+  "comboboxpopup.closed": {
     setup: [
       {
         when: ["keyboard", "pointer"],
-        steps: (arg: { relativeTarget?: string | number } = {}) => {
-          // Start at first, then ArrowDown N-1 times to reach index N
-          if (typeof arg.relativeTarget === "number") {
-            return Array.from({ length: arg.relativeTarget }, () => ({
-              type: "keypress",
-              target: "input", // or "main" for menu
-              key: "ArrowDown"
-            }));
-          }
-          // For "first", "last", etc., handle as needed
-          if (arg.relativeTarget === "first") return [];
-          if (arg.relativeTarget === "last") return [{ type: "keypress", target: "input", key: "ArrowUp" }];
-          // ...handle "next", "previous" if needed
-          return [];
-        }
+        steps: () => []
       }
     ],
-    assertion: (arg: { relativeTarget?: string | number } = {}) => isActiveDescendant(arg.relativeTarget as string | number)
+    assertion: [...isComboboxClosed(), ...isActiveDescendantUnset()]
+  },
+  "main.focused": {
+    setup: [
+      {
+        when: ["keyboard", "pointer"],
+        steps: () => [
+          { type: "focus", target: "main" }
+        ]
+      }
+    ],
+    assertion: isMainFocused
   },
   // ...
 };
@@ -87,7 +89,7 @@ const StatePack = ({ darkMode, setDarkMode }) => {
                   <ul className="list-disc ml-6 mb-4">
                     <li>Each state (e.g. <code>popup.open</code>) defines how to reach it (keyboard/pointer steps) and how to verify it (assertions).</li>
                     <li>The state pack is a JavaScript object where each key is a state name and the value describes how to set up and check that state.</li>
-                    <li>States can depend on other states (e.g. <code>activeOption</code> requires <code>popup.open</code>).</li>
+                    <li>States can depend on other states (e.g. <code>activeItem</code> requires <code>popup.open</code>).</li>
                     <li>Invariants. Some rules must always hold. If a combobox option is highlighted, then the combobox must be open.</li>
                     <li>The library uses the state pack to automatically construct setup steps and validate behavior, removing the need for manually defined interaction flows.</li>
                     <li>State packs make the DSL executable: they turn declarative rules into real, automated accessibility checks.</li>

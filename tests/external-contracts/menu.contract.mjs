@@ -26,29 +26,29 @@ export const menuContract = createContract("menu", (c) => {
     });
 
     c.relationships((r) => {
-        r.ariaReference("main", "aria-controls", "popup").requires("popup.open").required();
-        r.ariaReference("popup", "aria-labelledby", "main").requires("popup.open").optional(); 
-        r.contains("popup", "items").requires("popup.open").required();
-        r.contains("submenu", "submenuItems").requires("submenu.open").required(); 
+        r.ariaReference("main", "aria-controls", "popup").requires("menupopup.open").required();
+        r.ariaReference("popup", "aria-labelledby", "main").requires("menupopup.open").optional(); 
+        r.contains("popup", "items").requires("menupopup.open").required();
+        r.contains("submenu", "submenuItems").requires("submenupopup.open").required(); 
     });
 
     c.static((s) => {
         s.target("main").has("aria-haspopup", "true | menu").required();
         s.target("main").has("aria-expanded", "false").required();
         s.target("main").has("aria-controls", "!empty").required(); // add support to check actual value
-        s.target("popup").has("aria-labelledby", "!empty").requires("popup.open").optional(); // add support to check actual value
-        s.target("popup").has("role", "menu").requires("popup.open").required();
-        s.target("items").has("role", "menuitem | menuitemcheckbox | menuitemradio").requires("popup.open").required();
-        s.target("items").has("tabindex", "-1").requires("popup.open").optional(); // not necessary if roving tabindex is implemented, but good to have for accessibility in general
-        s.target("submenuTrigger").has("aria-haspopup", "true | menu").requires("submenu.open").optional();
+        s.target("popup").has("aria-labelledby", "!empty").requires("menupopup.open").optional(); // add support to check actual value
+        s.target("popup").has("role", "menu").requires("menupopup.open").required();
+        s.target("items").has("role", "menuitem | menuitemcheckbox | menuitemradio").requires("menupopup.open").required();
+        s.target("items").has("tabindex", "-1").requires("menupopup.open").optional(); // not necessary if roving tabindex is implemented, but good to have for accessibility in general
+        s.target("submenuTrigger").has("aria-haspopup", "true | menu").requires("submenupopup.open").optional();
     });
 
     // Escape
     c.when("Escape")
     .as("keypress")
     .on("items")
-    .given("popup.open")
-    .then("popup.closed")
+    .given("menupopup.open")
+    .then("menupopup.closed")
     .describe("Escape closes an open menu popup.")
     .required();
 
@@ -57,16 +57,16 @@ export const menuContract = createContract("menu", (c) => {
     c.when("Click")
     .as("click")
     .on("main")
-    .given("popup.closed")
-    .then("popup.open")
+    .given("menupopup.closed")
+    .then("menupopup.open")
     .describe("Click on a menu button when menu closed opens the menu popup.")
     .required();
 
     c.when("Click")
     .as("click")
     .on("main")
-    .given("popup.open")
-    .then("popup.closed")
+    .given("menupopup.open")
+    .then("menupopup.closed")
     .describe("Click on a menu button when menu open closes the menu popup.")
     .required();
 
@@ -76,8 +76,8 @@ export const menuContract = createContract("menu", (c) => {
     c.when("Enter")
     .as("keypress")
     .on("items")
-    .given("popup.open")
-    .then("popup.closed")
+    .given("menupopup.open")
+    .then("menupopup.closed")
     .describe("Enter on a menu item closes an open menu popup.")
     .required();
 
@@ -86,8 +86,8 @@ export const menuContract = createContract("menu", (c) => {
     c.when("Space")
     .as("keypress")
     .on("items")
-    .given("popup.open")
-    .then("popup.closed")
+    .given("menupopup.open")
+    .then("menupopup.closed")
     .describe("Space on a menu item closes an open menu popup.")
     .required();
 
@@ -95,8 +95,8 @@ export const menuContract = createContract("menu", (c) => {
     c.when("ArrowDown")
     .as("keypress")
     .on("items")
-    .given("popup.open")
-    .then({type: "activeItem", ref: "second"})
+    .given("menupopup.open")
+    .then({type: "menuitem.focused", ref: "second"})
     .describe("ArrowDown on a menu item moves focus to the next menu item when the menu popup is open.")
     .required();
 
@@ -104,8 +104,8 @@ export const menuContract = createContract("menu", (c) => {
     c.when("ArrowUp")
     .as("keypress")
     .on("items")
-    .given("popup.open")
-    .then({type: "activeItem", ref: "last"})
+    .given("menupopup.open")
+    .then({type: "menuitem.focused", ref: "last"})
     .describe("ArrowUp on a menu item moves focus to the previous menu item when the menu popup is open.")
     .required();
 
@@ -113,8 +113,8 @@ export const menuContract = createContract("menu", (c) => {
     c.when("Home")
     .as("keypress")
     .on("items")
-    .given("popup.open")
-    .then({type: "activeItem", ref: "first"})
+    .given("menupopup.open")
+    .then({type: "menuitem.focused", ref: "first"})
     .describe("Home on a menu item moves focus to the first menu item when the menu popup is open.")
     .required();
 
@@ -122,8 +122,8 @@ export const menuContract = createContract("menu", (c) => {
     c.when("End")
     .as("keypress")
     .on("items")
-    .given("popup.open")
-    .then({type: "activeItem", ref: "last"})
+    .given("menupopup.open")
+    .then({type: "menuitem.focused", ref: "last"})
     .describe("End on a menu item moves focus to the last menu item when the menu popup is open.")
     .required();
 
@@ -132,8 +132,8 @@ export const menuContract = createContract("menu", (c) => {
     c.when("Tab")
     .as("keypress")
     .on("items") //maybe support array of elements
-    .given("popup.open")
-    .then(["popup.closed", "main.notFocused"])
+    .given("menupopup.open")
+    .then(["menupopup.closed", "main.blurred"])
     .describe("Tab on a menu item closes an open menu popup and moves focus to the next focusable element in the tab order after the menu.")
     .required();
 
@@ -141,8 +141,8 @@ export const menuContract = createContract("menu", (c) => {
     c.when("ArrowRight")
     .as("keypress")
     .on("submenuTrigger")
-    .given("popup.open")
-    .then({type: "activeSubmenuItem", ref: "first"})
+    .given("menupopup.open")
+    .then({type: "submenuitem.focused", ref: "first"})
     .describe("ArrowRight on a menu item with a submenu opens the submenu and moves focus to the first item when the menu popup is open.")
     .required();
 
@@ -150,8 +150,8 @@ export const menuContract = createContract("menu", (c) => {
     c.when("ArrowLeft")
     .as("keypress")
     .on("submenuItems")
-    .given("submenu.open")
-    .then(["submenu.closed", "submenuTrigger.focused"])
+    .given("submenupopup.open")
+    .then(["submenupopup.closed", "submenutrigger.focused"])
     .describe("ArrowLeft on a submenu item closes the submenu and moves focus to the submenu trigger.")
     .required();
 })

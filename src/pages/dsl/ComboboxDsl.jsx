@@ -66,16 +66,16 @@ export const comboboxListboxContract = createContract("combobox", (c) => {
   c.when("Escape").
   as("keypress")
   .on("main")
-  .given("popup.open")
-  .then("popup.closed")
+  .given("comboboxpopup.open")
+  .then("comboboxpopup.closed")
   .describe("Escape closes an open listbox popup.")
   .required();
   
   c.when("ArrowDown")
   .as("keypress")
   .on("input")
-  .given("popup.closed")
-  .then("popup.open")
+  .given("comboboxpopup.closed")
+  .then("comboboxpopup.open")
   .describe("Down Arrow opens the listbox.")
   .required();
   // ...
@@ -127,7 +127,7 @@ const ComboboxDsl = ({ darkMode, setDarkMode }) => {
 
             <h3 className="font-semibold mt-6 mb-2">About State Packs</h3>
             <p className="mb-4">
-              <b>State packs</b> define how to reach and verify component states (like <code>popup.open</code>, <code>activeOption.first</code>, etc.). For a full explanation, see the <Link to="/dsl/overview" className={`${darkMode ? 'text-blue-400 hover:text-blue-300' : 'text-blue-600 hover:text-blue-700'} underline`}>DSL Overview</Link>.
+              <b>State packs</b> define how to reach and verify component states (like <code>popup.open</code>, <code>activeItem</code>, etc.). For a full explanation, see the <Link to="/dsl/overview" className={`${darkMode ? 'text-blue-400 hover:text-blue-300' : 'text-blue-600 hover:text-blue-700'} underline`}>DSL Overview</Link>.
             </p>
 
             <h3 className="font-semibold mt-6 mb-2">Key DSL Terms & States</h3>
@@ -137,9 +137,8 @@ const ComboboxDsl = ({ darkMode, setDarkMode }) => {
               <li><b>button</b>: The button that toggles the popup/listbox.</li>
               <li><b>popup</b>: The dropdown list container (<code>[role=listbox]</code>).</li>
               <li><b>options</b>: The selectable items inside the popup (<code>[role=option]</code>).</li>
-              <li><b>activeOption.first</b>: The first option in the list is currently active (highlighted/focused via keyboard).</li>
-              <li><b>activeOption.last</b>: The last option in the list is currently active.</li>
-              <li><b>selectedOption.first</b>: The first option is selected (chosen by user).</li>
+              <li><b>activeItem</b>: The item in the combobox popup that is currently active (highlighted/focused via keyboard).</li>
+              <li><b>selectedItem</b>: The  item in the combobox popup that is currently selected (chosen by user).</li>
               <li><b>popup.open</b>: The popup/listbox is currently visible.</li>
               <li><b>popup.closed</b>: The popup/listbox is hidden.</li>
               <li><b>main.focused</b>: The combobox widget has keyboard focus.</li>
