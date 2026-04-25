@@ -65,7 +65,11 @@ const StatePack = ({ darkMode, setDarkMode }) => {
 
   return (
      <div id="inner-body-div">
-        <Helmet></Helmet>
+        <Helmet>
+          <title>State Pack | Aria-Ease</title>
+          <meta name="description" content="Learn about State Packs in Aria-Ease: structured representations of component states and transitions that enable automatic accessibility testing through the contract DSL." />
+          <meta name="keywords" content="State Pack, Aria-Ease, accessibility testing, contract DSL, component states, transitions, automated testing" />
+        </Helmet>
 
         <DocsFrame
             page={page}
