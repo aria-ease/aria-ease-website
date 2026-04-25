@@ -87,9 +87,9 @@ const StatePack = ({ darkMode, setDarkMode }) => {
                     A <b>state pack</b> is a collection of states that define how to reach and verify UI conditions through setup and assertions. It enables the contract system to automatically resolve preconditions and validate behavior without requiring manually defined interaction flows. Each state defines how to reach itself and how to verify its correctness, allowing the system to resolve preconditions and validate behavior.
                   </p>
                   <ul className="list-disc ml-6 mb-4">
-                    <li>Each state (e.g. <code>popup.open</code>) defines how to reach it (keyboard/pointer steps) and how to verify it (assertions).</li>
+                    <li>Each state (e.g. <code>comboboxpopup.open</code>) defines how to reach it (keyboard/pointer steps) and how to verify it (assertions).</li>
                     <li>The state pack is a JavaScript object where each key is a state name and the value describes how to set up and check that state.</li>
-                    <li>States can depend on other states (e.g. <code>activeItem</code> requires <code>popup.open</code>).</li>
+                    <li>States can depend on other states (e.g. <code>option.active</code> requires <code>comboboxpopup.open</code>).</li>
                     <li>Invariants. Some rules must always hold. If a combobox option is highlighted, then the combobox must be open.</li>
                     <li>The library uses the state pack to automatically construct setup steps and validate behavior, removing the need for manually defined interaction flows.</li>
                     <li>State packs make the DSL executable: they turn declarative rules into real, automated accessibility checks.</li>
