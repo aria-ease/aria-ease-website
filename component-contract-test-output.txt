@@ -6,32 +6,32 @@
 [90mstdout[2m | tests/ariaease.test.jsx[2m > [22m[2mAccordion WAI-ARIA Accessibility Test[2m > [22m[2mAccordion meets Aria-Ease's baseline for WAI-ARIA roles, states, properties, and keyboard interactions expectations
 [22m[39m🎭 Running Playwright tests on http://localhost:5173/test-harness?component=accordion
 
- [32m✓[39m tests/ariaease.test.jsx[2m > [22mAccordion WAI-ARIA Accessibility Test[2m > [22mAccordion meets Aria-Ease's baseline for WAI-ARIA roles, states, properties, and keyboard interactions expectations[33m 16639[2mms[22m[39m
+ [32m✓[39m tests/ariaease.test.jsx[2m > [22mAccordion WAI-ARIA Accessibility Test[2m > [22mAccordion meets Aria-Ease's baseline for WAI-ARIA roles, states, properties, and keyboard interactions expectations[33m 8477[2mms[22m[39m
 [90mstdout[2m | tests/ariaease.test.jsx[2m > [22m[2mCombobox with Listbox popup WAI-ARIA Accessibility Test[2m > [22m[2mCombobox with Listbox popup meets Aria-Ease's baseline for WAI-ARIA roles, states, properties, and keyboard interactions expectations
 [22m[39m🎭 Running Playwright tests on http://localhost:5173/test-harness?component=combobox
 
- [32m✓[39m tests/ariaease.test.jsx[2m > [22mCombobox with Listbox popup WAI-ARIA Accessibility Test[2m > [22mCombobox with Listbox popup meets Aria-Ease's baseline for WAI-ARIA roles, states, properties, and keyboard interactions expectations[33m 3095[2mms[22m[39m
+ [32m✓[39m tests/ariaease.test.jsx[2m > [22mCombobox with Listbox popup WAI-ARIA Accessibility Test[2m > [22mCombobox with Listbox popup meets Aria-Ease's baseline for WAI-ARIA roles, states, properties, and keyboard interactions expectations[33m 3716[2mms[22m[39m
 [90mstdout[2m | tests/ariaease.test.jsx[2m > [22m[2mMenu with submenu WAI-ARIA Accessibility Test[2m > [22m[2mMenu with submenu meets Aria-Ease's baseline for WAI-ARIA roles, states, properties, and keyboard interactions expectations
 [22m[39m🎭 Running Playwright tests on http://localhost:5173/test-harness?component=sub_menu
 
- [32m✓[39m tests/ariaease.test.jsx[2m > [22mMenu with submenu WAI-ARIA Accessibility Test[2m > [22mMenu with submenu meets Aria-Ease's baseline for WAI-ARIA roles, states, properties, and keyboard interactions expectations[33m 10141[2mms[22m[39m
+ [32m✓[39m tests/ariaease.test.jsx[2m > [22mMenu with submenu WAI-ARIA Accessibility Test[2m > [22mMenu with submenu meets Aria-Ease's baseline for WAI-ARIA roles, states, properties, and keyboard interactions expectations[33m 10172[2mms[22m[39m
 [90mstdout[2m | tests/ariaease.test.jsx[2m > [22m[2mMenu WAI-ARIA Accessibility Test[2m > [22m[2mMenu meets Aria-Ease's baseline for WAI-ARIA roles, states, properties, and keyboard interactions expectations
 [22m[39m🎭 Running Playwright tests on http://localhost:5173/test-harness?component=menu
 
- [32m✓[39m tests/ariaease.test.jsx[2m > [22mMenu WAI-ARIA Accessibility Test[2m > [22mMenu meets Aria-Ease's baseline for WAI-ARIA roles, states, properties, and keyboard interactions expectations[33m 8868[2mms[22m[39m
+ [32m✓[39m tests/ariaease.test.jsx[2m > [22mMenu WAI-ARIA Accessibility Test[2m > [22mMenu meets Aria-Ease's baseline for WAI-ARIA roles, states, properties, and keyboard interactions expectations[33m 11988[2mms[22m[39m
 [90mstdout[2m | tests/ariaease.test.jsx[2m > [22m[2mHorizontal Tabs WAI-ARIA Accessibility Test[2m > [22m[2mHorizontal tabs meets Aria-Ease's baseline for WAI-ARIA roles, states, properties, and keyboard interactions expectations
 [22m[39m🎭 Running Playwright tests on http://localhost:5173/test-harness?component=tabs_horizontal
 
- [32m✓[39m tests/ariaease.test.jsx[2m > [22mHorizontal Tabs WAI-ARIA Accessibility Test[2m > [22mHorizontal tabs meets Aria-Ease's baseline for WAI-ARIA roles, states, properties, and keyboard interactions expectations[33m 1181[2mms[22m[39m
+ [32m✓[39m tests/ariaease.test.jsx[2m > [22mHorizontal Tabs WAI-ARIA Accessibility Test[2m > [22mHorizontal tabs meets Aria-Ease's baseline for WAI-ARIA roles, states, properties, and keyboard interactions expectations[33m 1223[2mms[22m[39m
 [90mstdout[2m | tests/ariaease.test.jsx[2m > [22m[2mVertical Tabs WAI-ARIA Accessibility Test[2m > [22m[2mVertical tabs meets Aria-Ease's baseline for WAI-ARIA roles, states, properties, and keyboard interactions expectations
 [22m[39m🎭 Running Playwright tests on http://localhost:5173/test-harness?component=tabs_vertical
 
- [32m✓[39m tests/ariaease.test.jsx[2m > [22mVertical Tabs WAI-ARIA Accessibility Test[2m > [22mVertical tabs meets Aria-Ease's baseline for WAI-ARIA roles, states, properties, and keyboard interactions expectations[33m 1522[2mms[22m[39m
+ [32m✓[39m tests/ariaease.test.jsx[2m > [22mVertical Tabs WAI-ARIA Accessibility Test[2m > [22mVertical tabs meets Aria-Ease's baseline for WAI-ARIA roles, states, properties, and keyboard interactions expectations[33m 1081[2mms[22m[39m
 
 [2m Test Files [22m [1m[32m1 passed[39m[22m[90m (1)[39m
 [2m      Tests [22m [1m[32m6 passed[39m[22m[90m (6)[39m
-[2m   Start at [22m 17:15:58
-[2m   Duration [22m 46.27s[2m (transform 501ms, setup 0ms, import 1.11s, tests 41.51s, environment 2.96s)[22m
+[2m   Start at [22m 17:15:21
+[2m   Duration [22m 44.73s[2m (transform 326ms, setup 0ms, import 858ms, tests 36.73s, environment 6.45s)[22m
 
 
 
@@ -43,34 +43,28 @@
 🧪 Static Assertions
 ────────────────────────────────────────────────────────────
   ✓ trigger.aria-controls references panel
-     ↳ level=required
+     ↳ level=recommended
   ✓ panel.aria-labelledby references trigger
-     ↳ level=required
+     ↳ level=recommended
   ✓ trigger (aria-expanded)
      ↳ level=required
 
 ────────────────────────────────────────────────────────────
 ⌨️ Dynamic Interaction Tests
 ────────────────────────────────────────────────────────────
-  ✓ [REQUIRED] Clicking the trigger expands a collapsed panel.
-  ✓ [REQUIRED] Clicking the trigger again collapses an expanded panel.
-  ✓ [REQUIRED] Pressing Enter on trigger expands a collapsed panel.
-  ✓ [REQUIRED] Pressing Space on trigger expands a collapsed panel.
-  ✓ [REQUIRED] Pressing Enter on trigger collapses an expanded panel.
-  ✓ [REQUIRED] Pressing Space on trigger collapses an expanded panel.
-  ✓ [OPTIONAL] Down Arrow moves focus to next accordion trigger.
-  ✓ [OPTIONAL] Up Arrow moves focus to previous accordion trigger.
-  ✓ [OPTIONAL] Home moves focus to first accordion trigger.
-  ✓ [OPTIONAL] End moves focus to last accordion trigger.
-  ✓ [OPTIONAL] Down Arrow wraps focus from last trigger to first trigger.
-  ✓ [OPTIONAL] Up Arrow wraps focus from first trigger to last trigger.
+  ✓ [REQUIRED] Click expands a collapsed panel.
+  ✓ [REQUIRED] Click collapses an expanded panel.
+  ✓ [REQUIRED] Enter expands a collapsed panel.
+  ✓ [REQUIRED] Enter collapses an expanded panel.
+  ✓ [REQUIRED] Space expands a collapsed panel.
+  ✓ [REQUIRED] Space collapses an expanded panel.
 
 ════════════════════════════════════════════════════════════
 📊 Summary
 
-✅ All 15 tests passed!
+✅ All 9 tests passed!
    Accordion component validates against your custom accessibility policy ✓
-⏱️  Duration: 2540ms
+⏱️  Duration: 3170ms
 ════════════════════════════════════════════════════════════
 
 
@@ -121,7 +115,7 @@
 
 ✅ All 22 tests passed!
    Combobox component validates against your custom accessibility policy ✓
-⏱️  Duration: 1563ms
+⏱️  Duration: 1817ms
 ════════════════════════════════════════════════════════════
 
 
@@ -179,7 +173,7 @@
 
 ✅ All 23 tests passed!
    Menu component validates against your custom accessibility policy ✓
-⏱️  Duration: 8998ms
+⏱️  Duration: 8921ms
 ════════════════════════════════════════════════════════════
 
 
@@ -241,7 +235,7 @@
 ✅ 20/20 tests passed
 ○  2 tests skipped
    Menu component validates against your custom accessibility policy ✓
-⏱️  Duration: 7951ms
+⏱️  Duration: 10832ms
 ════════════════════════════════════════════════════════════
 
 
@@ -274,7 +268,7 @@
 
 ✅ All 7 tests passed!
    Tabs component validates against your custom accessibility policy ✓
-⏱️  Duration: 120ms
+⏱️  Duration: 201ms
 ════════════════════════════════════════════════════════════
 
 
@@ -310,7 +304,7 @@
 ✅ 5/5 tests passed
 ○  2 tests skipped
    Tabs component validates against your custom accessibility policy ✓
-⏱️  Duration: 64ms
+⏱️  Duration: 65ms
 ════════════════════════════════════════════════════════════
 
 

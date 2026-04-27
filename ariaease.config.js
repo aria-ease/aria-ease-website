@@ -40,7 +40,7 @@ export default {
     strictness: "balanced", // fallback: minimal | balanced | strict | paranoid
     components: [
       { name: "menu", strictness: "strict", contractPath: "./tests/external-contracts/menu.contract.json" },
-      { name: "accordion", strictness: "minimal", contractPath: "./tests/external-contracts/aria-contracts/accordion/accordion.contract.json" },
+      { name: "accordion", strictness: "minimal", contractPath: "./tests/external-contracts/accordion.contract.json" },
       { name: "tabs", strictness: "strict", contractPath: "./tests/external-contracts/tabs.contract.json" },
       { name: "combobox", strictness: "strict", contractPath: "./tests/external-contracts/combobox.listbox.contract.json" }
     ]

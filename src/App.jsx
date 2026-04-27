@@ -35,6 +35,7 @@ import ComboboxContract from './pages/contracts/ComboboxContract';
 import ComboboxDsl from './pages/dsl/ComboboxDsl';
 import MenuContract from './pages/contracts/MenuContract';
 import TabsContract from './pages/contracts/TabsContract';
+import AccordionContract from './pages/contracts/AccordionContract';
 
 import ConceptsOverview from './pages/concepts/ConceptsOverview';
 import StatePack from './pages/concepts/StatePack';
@@ -95,6 +96,7 @@ const InnerApp = ({darkMode, setDarkMode}) => {
 
             
             <Route path="/contracts/overview" element={<ContractOverview darkMode={darkMode} setDarkMode={setDarkMode}/>}/>
+            <Route path="/contracts/accordion" element={<AccordionContract darkMode={darkMode} setDarkMode={setDarkMode}/>}/>
             <Route path="/contracts/combobox" element={<ComboboxContract darkMode={darkMode} setDarkMode={setDarkMode}/>}/>
             <Route path="/contracts/menu" element={<MenuContract darkMode={darkMode} setDarkMode={setDarkMode}/>}/>
             <Route path="/contracts/tabs" element={<TabsContract darkMode={darkMode} setDarkMode={setDarkMode}/>}/>
