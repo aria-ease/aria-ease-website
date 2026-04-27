@@ -1,0 +1,279 @@
+{
+  "meta": {
+    "id": "aria-ease.contract.accordion",
+    "version": "1.0.0",
+    "created": "09-02-2026",
+    "lastUpdated": "19-03-2026",
+    "description": "ARIA Accordion interaction contract. Validates the ARIA and interaction contract for a custom accordion component.",
+    "source": {
+      "apg": "https://www.w3.org/WAI/ARIA/apg/patterns/accordion/",
+      "wcag": [
+        "2.2 AA"
+      ]
+    },
+    "W3CName": "Accordion"
+  },
+  "selectors": {
+    "main": "[aria-controls][aria-expanded]",
+    "trigger": "[aria-controls][aria-expanded]",
+    "relative": "[aria-controls][aria-expanded]",
+    "panel": "[role='region'][aria-labelledby]"
+  },
+  "relationships": [
+    {
+      "type": "aria-reference",
+      "from": "trigger",
+      "attribute": "aria-controls",
+      "to": "panel",
+      "level": "recommended"
+    },
+    {
+      "type": "aria-reference",
+      "from": "panel",
+      "attribute": "aria-labelledby",
+      "to": "trigger",
+      "level": "recommended"
+    }
+  ],
+  "static": [
+    {
+      "target": "trigger",
+      "assertion": "toHaveAttribute",
+      "attribute": "aria-expanded",
+      "expectedValue": "false",
+      "failureMessage": "",
+      "level": "required"
+    }
+  ],
+  "dynamic": [
+    {
+      "description": "Click expands a collapsed panel.",
+      "level": "required",
+      "orientation": "horizontal",
+      "action": [
+        {
+          "type": "click",
+          "target": "relative",
+          "relativeTarget": 1
+        }
+      ],
+      "assertions": [
+        {
+          "target": "panel",
+          "assertion": "toBeVisible",
+          "controlledBy": {
+            "target": "relative",
+            "relativeTarget": 1
+          },
+          "failureMessage": "Expected panel controlled by the 1 trigger to be visible."
+        },
+        {
+          "target": "relative",
+          "relativeTarget": 1,
+          "assertion": "toHaveAttribute",
+          "attribute": "aria-expanded",
+          "expectedValue": "true",
+          "failureMessage": "Expected trigger to have aria-expanded='true' when panel expands."
+        }
+      ]
+    },
+    {
+      "description": "Click collapses an expanded panel.",
+      "level": "required",
+      "orientation": "horizontal",
+      "action": [
+        {
+          "type": "click",
+          "target": "relative",
+          "relativeTarget": 2
+        }
+      ],
+      "assertions": [
+        {
+          "target": "panel",
+          "assertion": "notToBeVisible",
+          "controlledBy": {
+            "target": "relative",
+            "relativeTarget": 2
+          },
+          "failureMessage": "Expected panel controlled by the 2 trigger not to be visible."
+        },
+        {
+          "target": "relative",
+          "relativeTarget": 2,
+          "assertion": "toHaveAttribute",
+          "attribute": "aria-expanded",
+          "expectedValue": "false",
+          "failureMessage": "Expected trigger to have aria-expanded='false' when panel collapses."
+        }
+      ],
+      "setup": [
+        {
+          "type": "keypress",
+          "target": "relative",
+          "relativeTarget": 2,
+          "key": "Enter"
+        },
+        {
+          "type": "click",
+          "target": "relative",
+          "relativeTarget": 2
+        }
+      ]
+    },
+    {
+      "description": "Enter expands a collapsed panel.",
+      "level": "required",
+      "orientation": "horizontal",
+      "action": [
+        {
+          "type": "keypress",
+          "target": "relative",
+          "key": "Enter",
+          "relativeTarget": 3
+        }
+      ],
+      "assertions": [
+        {
+          "target": "panel",
+          "assertion": "toBeVisible",
+          "controlledBy": {
+            "target": "relative",
+            "relativeTarget": 3
+          },
+          "failureMessage": "Expected panel controlled by the 3 trigger to be visible."
+        },
+        {
+          "target": "relative",
+          "relativeTarget": 3,
+          "assertion": "toHaveAttribute",
+          "attribute": "aria-expanded",
+          "expectedValue": "true",
+          "failureMessage": "Expected trigger to have aria-expanded='true' when panel expands."
+        }
+      ]
+    },
+    {
+      "description": "Enter collapses an expanded panel.",
+      "level": "required",
+      "orientation": "horizontal",
+      "action": [
+        {
+          "type": "keypress",
+          "target": "relative",
+          "key": "Enter",
+          "relativeTarget": 1
+        }
+      ],
+      "assertions": [
+        {
+          "target": "panel",
+          "assertion": "notToBeVisible",
+          "controlledBy": {
+            "target": "relative",
+            "relativeTarget": 1
+          },
+          "failureMessage": "Expected panel controlled by the 1 trigger not to be visible."
+        },
+        {
+          "target": "relative",
+          "relativeTarget": 1,
+          "assertion": "toHaveAttribute",
+          "attribute": "aria-expanded",
+          "expectedValue": "false",
+          "failureMessage": "Expected trigger to have aria-expanded='false' when panel collapses."
+        }
+      ],
+      "setup": [
+        {
+          "type": "keypress",
+          "target": "relative",
+          "relativeTarget": 1,
+          "key": "Enter"
+        },
+        {
+          "type": "click",
+          "target": "relative",
+          "relativeTarget": 1
+        }
+      ]
+    },
+    {
+      "description": "Space expands a collapsed panel.",
+      "level": "required",
+      "orientation": "horizontal",
+      "action": [
+        {
+          "type": "keypress",
+          "target": "relative",
+          "key": "Space",
+          "relativeTarget": 2
+        }
+      ],
+      "assertions": [
+        {
+          "target": "panel",
+          "assertion": "toBeVisible",
+          "controlledBy": {
+            "target": "relative",
+            "relativeTarget": 2
+          },
+          "failureMessage": "Expected panel controlled by the 2 trigger to be visible."
+        },
+        {
+          "target": "relative",
+          "relativeTarget": 2,
+          "assertion": "toHaveAttribute",
+          "attribute": "aria-expanded",
+          "expectedValue": "true",
+          "failureMessage": "Expected trigger to have aria-expanded='true' when panel expands."
+        }
+      ]
+    },
+    {
+      "description": "Space collapses an expanded panel.",
+      "level": "required",
+      "orientation": "horizontal",
+      "action": [
+        {
+          "type": "keypress",
+          "target": "relative",
+          "key": "Space",
+          "relativeTarget": 3
+        }
+      ],
+      "assertions": [
+        {
+          "target": "panel",
+          "assertion": "notToBeVisible",
+          "controlledBy": {
+            "target": "relative",
+            "relativeTarget": 3
+          },
+          "failureMessage": "Expected panel controlled by the 3 trigger not to be visible."
+        },
+        {
+          "target": "relative",
+          "relativeTarget": 3,
+          "assertion": "toHaveAttribute",
+          "attribute": "aria-expanded",
+          "expectedValue": "false",
+          "failureMessage": "Expected trigger to have aria-expanded='false' when panel collapses."
+        }
+      ],
+      "setup": [
+        {
+          "type": "keypress",
+          "target": "relative",
+          "relativeTarget": 3,
+          "key": "Enter"
+        },
+        {
+          "type": "click",
+          "target": "relative",
+          "relativeTarget": 3
+        }
+      ]
+    }
+  ]
+}
