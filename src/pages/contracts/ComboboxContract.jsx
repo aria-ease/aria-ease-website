@@ -173,13 +173,13 @@ const selectedItem = `
     {
       when: ["keyboard"],
       steps: (arg: { relativeTarget } = {}) => [
-        { type: "keypress", target: "relative", key: "Enter", relativeTargeta: arg.relativeTarget }
+        { type: "keypress", target: "relative", key: "Enter", relativeTarget: arg.relativeTarget }
       ]
     },
     {
       when: ["pointer"],
       steps: (arg: { relativeTarget } = {}) => [
-        { type: "click", target: "relative", relativeTargeta: arg.relativeTarget }
+        { type: "click", target: "relative", relativeTarget: arg.relativeTarget }
       ]
     }
   ],
@@ -314,20 +314,20 @@ const ComboboxContract = ({ darkMode, setDarkMode }) => {
           </section>
 
           <div className='flex flex-wrap gap-2 py-4 max-w-7xl md:py-12 mt-[100px] justify-between'>
-                    <Link to='/contracts/dsl' className='block-interactive next-link docs-next-link rounded-lg md:min-w-80 md:max-w-md w-full md:w-auto flex gap-6 items-center px-4 py-6 md:px-5'>
-                      <ChevronRightCircleIcon className='rotate-180'/>
-                      <div className='flex flex-col w-full'>
-                        <span className='text-sm black-white-text'>Prev</span>
-                        <span className='next-link-text text-md'>Contract DSL</span>
-                      </div>
-                    </Link>
-                    <Link to='/contracts/menu' className='block-interactive next-link docs-next-link rounded-lg md:min-w-80 md:max-w-md w-full md:w-auto flex gap-6 items-center px-4 py-6 md:px-5'>
-                      <div className='flex flex-col w-full items-end'>
-                        <span className='text-sm black-white-text'>Next</span>
-                        <span className='next-link-text text-md'>Menu Contract</span>
-                      </div>
-                      <ChevronRightCircleIcon/>
-                    </Link>
+            <Link to='/contracts/accordion' className='block-interactive next-link docs-next-link rounded-lg md:min-w-80 md:max-w-md w-full md:w-auto flex gap-6 items-center px-4 py-6 md:px-5'>
+              <ChevronRightCircleIcon className='rotate-180'/>
+              <div className='flex flex-col w-full'>
+                <span className='text-sm black-white-text'>Prev</span>
+                <span className='next-link-text text-md'>Accordion Contract</span>
+              </div>
+            </Link>
+            <Link to='/contracts/menu' className='block-interactive next-link docs-next-link rounded-lg md:min-w-80 md:max-w-md w-full md:w-auto flex gap-6 items-center px-4 py-6 md:px-5'>
+              <div className='flex flex-col w-full items-end'>
+                <span className='text-sm black-white-text'>Next</span>
+                <span className='next-link-text text-md'>Menu Contract</span>
+              </div>
+              <ChevronRightCircleIcon/>
+            </Link>
           </div>
         </div>
       </DocsFrame>

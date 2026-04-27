@@ -37,32 +37,28 @@
   ],
   "static": [
     {
-      "assertions": [
-        {
-          "target": "tablist",
-          "assertion": "toHaveRole",
-          "attribute": "role",
-          "expectedValue": "tablist",
-          "failureMessage": "",
-          "level": "required"
-        },
-        {
-          "target": "tab",
-          "assertion": "toHaveRole",
-          "attribute": "role",
-          "expectedValue": "tab",
-          "failureMessage": "",
-          "level": "required"
-        },
-        {
-          "target": "panel",
-          "assertion": "toHaveRole",
-          "attribute": "role",
-          "expectedValue": "tabpanel",
-          "failureMessage": "",
-          "level": "required"
-        }
-      ]
+      "target": "tablist",
+      "assertion": "toHaveRole",
+      "attribute": "role",
+      "expectedValue": "tablist",
+      "failureMessage": "",
+      "level": "required"
+    },
+    {
+      "target": "tab",
+      "assertion": "toHaveRole",
+      "attribute": "role",
+      "expectedValue": "tab",
+      "failureMessage": "",
+      "level": "required"
+    },
+    {
+      "target": "panel",
+      "assertion": "toHaveRole",
+      "attribute": "role",
+      "expectedValue": "tabpanel",
+      "failureMessage": "",
+      "level": "required"
     }
   ],
   "dynamic": [
