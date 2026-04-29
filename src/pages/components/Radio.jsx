@@ -19,7 +19,12 @@ useEffect(() => {
   const radioInstance = makeRadioAccessible({
     radioGroupId: 'radio-div',
     radiosClass: 'radio',
-    defaultSelectedIndex: 0  // Optional: which radio is selected initially
+    defaultSelectedIndex: 0,  // Optional: which radio is selected initially
+    callback: {
+      onCheck: (index) => {
+        setRadioState([index === 0, index === 1]); 
+      }
+    }
   });
 
   // Clean up on unmount
