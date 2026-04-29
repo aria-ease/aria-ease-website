@@ -19,7 +19,16 @@ const Checkbox = ({darkMode, setDarkMode}) => {
 useEffect(() => {
   const checkboxInstance = makeCheckboxAccessible({ //Checkbox.makeCheckboxAccessible({})
     checkboxGroupId: 'checkbox-div',
-    checkboxesClass: 'course-checkbox'
+    checkboxesClass: 'course-checkbox',
+    callback: {
+      onCheck: (index, isChecked) => {
+        setCheckStates(prev => {
+          const newStates = [...prev];
+          newStates[index] = isChecked;
+          return newStates;
+        });  
+      } 
+    }
   });
 
   // Clean up on unmount
