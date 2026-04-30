@@ -31,13 +31,15 @@ import Tabs from './pages/components/Tabs';
 import DslOverview from './pages/contracts/DSL';
 import UtilityOverview from './pages/components/UtilityOverview';
 import AriaEaseGlossary from './pages/getting-started/AriaEaseGlossary';
+import CheckboxContract from './pages/contracts/CheckBoxContract';
 import ComboboxContract from './pages/contracts/ComboboxContract';
 import ComboboxDsl from './pages/dsl/ComboboxDsl';
 import MenuContract from './pages/contracts/MenuContract';
+import RadioContract from './pages/contracts/RadioContract';
 import TabsContract from './pages/contracts/TabsContract';
 import AccordionContract from './pages/contracts/AccordionContract';
 
-import ConceptsOverview from './pages/concepts/ConceptsOverview';
+//import ConceptsOverview from './pages/concepts/ConceptsOverview';
 import StatePack from './pages/concepts/StatePack';
  
 
@@ -97,8 +99,10 @@ const InnerApp = ({darkMode, setDarkMode}) => {
             
             <Route path="/contracts/overview" element={<ContractOverview darkMode={darkMode} setDarkMode={setDarkMode}/>}/>
             <Route path="/contracts/accordion" element={<AccordionContract darkMode={darkMode} setDarkMode={setDarkMode}/>}/>
+            <Route path="/contracts/checkbox" element={<CheckboxContract darkMode={darkMode} setDarkMode={setDarkMode}/>}/>
             <Route path="/contracts/combobox" element={<ComboboxContract darkMode={darkMode} setDarkMode={setDarkMode}/>}/>
             <Route path="/contracts/menu" element={<MenuContract darkMode={darkMode} setDarkMode={setDarkMode}/>}/>
+            <Route path="/contracts/radio" element={<RadioContract darkMode={darkMode} setDarkMode={setDarkMode}/>}/>
             <Route path="/contracts/tabs" element={<TabsContract darkMode={darkMode} setDarkMode={setDarkMode}/>}/>
             <Route path="/contracts/dsl" element={<DslOverview darkMode={darkMode} setDarkMode={setDarkMode}/>}/> 
 

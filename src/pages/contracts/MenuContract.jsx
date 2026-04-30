@@ -315,10 +315,10 @@ const MenuContract = ({ darkMode, setDarkMode }) => {
                         <span className='next-link-text text-md'>Combobox Contract</span>
                       </div>
                     </Link>
-                    <Link to='/contracts/tabs' className='block-interactive next-link docs-next-link rounded-lg md:min-w-80 md:max-w-md w-full md:w-auto flex gap-6 items-center px-4 py-6 md:px-5'>
+                    <Link to='/contracts/radio' className='block-interactive next-link docs-next-link rounded-lg md:min-w-80 md:max-w-md w-full md:w-auto flex gap-6 items-center px-4 py-6 md:px-5'>
                       <div className='flex flex-col w-full items-end'>
                         <span className='text-sm black-white-text'>Next</span>
-                        <span className='next-link-text text-md'>Tabs Contract</span>
+                        <span className='next-link-text text-md'>Radio Contract</span>
                       </div>
                       <ChevronRightCircleIcon/>
                     </Link>

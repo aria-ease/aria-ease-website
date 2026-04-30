@@ -124,13 +124,15 @@ const DocsFrame = ({ page, children, darkMode, setDarkMode, showDropdownPage, se
                         <SideNavDisclosure
                           page={page}
                           triggerTitle={'Component Contracts'}
-                          sectionPages={['combobox-contract', 'menu-contract', 'tabs-contract', 'accordion-contract']}
+                          sectionPages={['checkbox-contract', 'combobox-contract', 'menu-contract', 'tabs-contract', 'accordion-contract', 'radio-contract']}
                         >
                           <div className='flex flex-col gap-2 p-[10px]'>
                             {/* Component specific contract */}
                             <Link onClick={saveScrollPosition} to='/contracts/accordion' aria-label='Navigate to the accordion contract page' className={`mb-2 side-nav-link ${(page === 'accordion-contract') ? 'active-nav-link' : ''} ${(window.innerWidth >= 992) ? 'block-interactive' : ''}`}>Accordion</Link>
+                            <Link onClick={saveScrollPosition} to='/contracts/checkbox' aria-label='Navigate to the checkbox contract page' className={`mb-2 side-nav-link ${(page === 'checkbox-contract') ? 'active-nav-link' : ''} ${(window.innerWidth >= 992) ? 'block-interactive' : ''}`}>Checkbox</Link>
                             <Link onClick={saveScrollPosition} to='/contracts/combobox' aria-label='Navigate to the combobox contract page' className={`mb-2 side-nav-link ${(page === 'combobox-contract') ? 'active-nav-link' : ''} ${(window.innerWidth >= 992) ? 'block-interactive' : ''}`}>Combobox</Link>
                             <Link onClick={saveScrollPosition} to='/contracts/menu' aria-label='Navigate to the menu contract page' className={`mb-2 side-nav-link ${(page === 'menu-contract') ? 'active-nav-link' : ''} ${(window.innerWidth >= 992) ? 'block-interactive' : ''}`}>Menu</Link>
+                            <Link onClick={saveScrollPosition} to='/contracts/radio' aria-label='Navigate to the radio contract page' className={`mb-2 side-nav-link ${(page === 'radio-contract') ? 'active-nav-link' : ''} ${(window.innerWidth >= 992) ? 'block-interactive' : ''}`}>Radio</Link>
                             <Link onClick={saveScrollPosition} to='/contracts/tabs' aria-label='Navigate to the tabs contract page' className={`mb-2 side-nav-link ${(page === 'tabs-contract') ? 'active-nav-link' : ''} ${(window.innerWidth >= 992) ? 'block-interactive' : ''}`}>Tabs</Link>
                           </div>
                         </SideNavDisclosure>        
