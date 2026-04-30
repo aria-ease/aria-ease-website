@@ -23,8 +23,10 @@ export default {
 
 
       'http://localhost:5173/contracts/overview',
+      'http://localhost:5173/contracts/checkbox',
       'http://localhost:5173/contracts/combobox',
       'http://localhost:5173/contracts/menu',
+      'http://localhost:5173/contracts/radio',
       'http://localhost:5173/contracts/tabs',
       'http://localhost:5173/contracts/dsl',
       

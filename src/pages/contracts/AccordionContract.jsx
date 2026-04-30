@@ -159,10 +159,10 @@ const AccordionContract = ({ darkMode, setDarkMode }) => {
                 <span className='next-link-text text-md'>Contract DSL</span>
               </div>
             </Link>
-            <Link to='/contracts/combobox' className='block-interactive next-link docs-next-link rounded-lg md:min-w-80 md:max-w-md w-full md:w-auto flex gap-6 items-center px-4 py-6 md:px-5'>
+            <Link to='/contracts/checkbox' className='block-interactive next-link docs-next-link rounded-lg md:min-w-80 md:max-w-md w-full md:w-auto flex gap-6 items-center px-4 py-6 md:px-5'>
               <div className='flex flex-col w-full items-end'>
                 <span className='text-sm black-white-text'>Next</span>
-                <span className='next-link-text text-md'>Combobox Contract</span>
+                <span className='next-link-text text-md'>Checkbox Contract</span>
               </div>
               <ChevronRightCircleIcon/>
             </Link>

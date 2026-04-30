@@ -101,7 +101,7 @@ const TabsContract = ({ darkMode, setDarkMode }) => {
           </section>
           <section className="side-body-sections-div docs-section-card mt-6">
             <h2 className="docs-section-heading">States</h2>
-            <p>These are the collection of states that help define the expected behaviors and ARIA attributes of a tabs component. Each state describes a particular UI or accessibility condition, how to set it up, and what should be asserted. The <b>relativeTarget</b> argument is used for states that depend on a specific element, such as activating a particular menu item.</p>
+            <p>These are the collection of states that help define the expected behaviors and ARIA attributes of a tabs component. Each state describes a particular UI or accessibility condition, how to set it up, and what should be asserted. The <b>relativeTarget</b> argument is used for states that depend on a specific element, such as activating a particular tab.</p>
             <div className="mt-[20px]">
               <h3><code>tab.active</code></h3>
               <p className="my-2">
@@ -127,20 +127,20 @@ const TabsContract = ({ darkMode, setDarkMode }) => {
           </section>
 
           <div className='flex flex-wrap gap-2 py-4 max-w-7xl md:py-12 mt-[100px] justify-between'>
-                    <Link to='/contracts/menu' className='block-interactive next-link docs-next-link rounded-lg md:min-w-80 md:max-w-md w-full md:w-auto flex gap-6 items-center px-4 py-6 md:px-5'>
-                      <ChevronRightCircleIcon className='rotate-180'/>
-                      <div className='flex flex-col w-full'>
-                        <span className='text-sm black-white-text'>Prev</span>
-                        <span className='next-link-text text-md'>Menu Contract</span>
-                      </div>
-                    </Link>
-                    <Link to='/changelog' className='block-interactive next-link docs-next-link rounded-lg md:min-w-80 md:max-w-md w-full md:w-auto flex gap-6 items-center px-4 py-6 md:px-5'>
-                      <div className='flex flex-col w-full items-end'>
-                        <span className='text-sm black-white-text'>Next</span>
-                        <span className='next-link-text text-md'>Changelog</span>
-                      </div>
-                      <ChevronRightCircleIcon/>
-                    </Link>
+            <Link to='/contracts/radio' className='block-interactive next-link docs-next-link rounded-lg md:min-w-80 md:max-w-md w-full md:w-auto flex gap-6 items-center px-4 py-6 md:px-5'>
+              <ChevronRightCircleIcon className='rotate-180'/>
+              <div className='flex flex-col w-full'>
+                <span className='text-sm black-white-text'>Prev</span>
+                <span className='next-link-text text-md'>Radio Contract</span>
+              </div>
+            </Link>
+            <Link to='/changelog' className='block-interactive next-link docs-next-link rounded-lg md:min-w-80 md:max-w-md w-full md:w-auto flex gap-6 items-center px-4 py-6 md:px-5'>
+              <div className='flex flex-col w-full items-end'>
+                <span className='text-sm black-white-text'>Next</span>
+                <span className='next-link-text text-md'>Changelog</span>
+              </div>
+              <ChevronRightCircleIcon/>
+            </Link>
           </div>
         </div>
       </DocsFrame>
