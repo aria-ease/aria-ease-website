@@ -23,9 +23,9 @@ function UserMenu() {
       menuItemsClass: "user-menu-item",
       triggerId: "user-menu-trigger",
       callback: {
-        onOpenChange: (isOpen) => {
+        onExpandedChange: (expanded) => {
           // Do something when 
-          console.log(isOpen);
+          console.log(expanded);
         }
       }
     });

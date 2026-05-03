@@ -20,7 +20,7 @@ const ComboBox = () => {
       listBoxItemsClass: "list-options",
       callback: {
         onSelect: (option) => { ... },
-        onOpenChange: (isOpen) => { ... },
+        onExpandedChange: (expanded) => { ... },
         onActiveDescendantChange: (optId, item) => { ... },
       }
     });

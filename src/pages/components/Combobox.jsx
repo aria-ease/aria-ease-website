@@ -49,13 +49,13 @@ Combobox.makeComboboxAccessible({
         if (el) el.hidden = false;
       });
     },
-    onOpenChange: (isOpen) => {
-      console.log("Listbox is:", isOpen ? "open" : "closed");
+    onExpandedChange: (expanded) => {
+      console.log("Listbox is:", expanded ? "open" : "closed");
 
       // If opening via button (not via typing), show all options
       // This is useful if you want to reset filters when user clicks the button to open the list so all the options are displayed
       // If opening via typing, filtering logic handles showing/hiding options
-      if (isOpen && !inputValue) {
+      if (expanded && !inputValue) {
         optionsArray.forEach(opt => {
           const el = document.getElementById(opt.id);
           if (el) el.hidden = false;
@@ -256,7 +256,7 @@ const handleInputChange = (event) => {
                       <li><code>listBoxItemsClass</code>: Shared class name for all options (required)</li>
                       <li><code>comboboxButtonId</code>: Optional toggle button ID</li>
                       <li><code>callback.onSelect</code>: Callback when user selects an option</li>
-                      <li><code>callback.onOpenChange</code>: Callback when listbox opens/closes</li>
+                      <li><code>callback.onExpandedChange</code>: Callback when listbox opens/closes</li>
                       <li><code>callback.onActiveDescendantChange</code>: Callback when focus moves between options</li>
                       <li><code>callback.onClear</code>: Callback when input is cleared via Escape</li>
                     </ul>

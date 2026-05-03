@@ -1,6 +1,4 @@
 import { useState } from 'react';
-import HorizontalTabs from '../../components/tabs/HorizontalTabs';
-import VerticalTabs from '../../components/tabs/VerticalTabs';
 import SlideOutNav from '../../components/SlideOutNav.jsx';
 import { Helmet } from 'react-helmet-async';
 import { ChevronRightCircleIcon } from 'lucide-react';
@@ -28,15 +26,14 @@ useEffect(() => {
     orientation: "horizontal", // or "vertical"
     activateOnFocus: true, // automatic activation (default: true)
     callback: {
-        onTabChange: (activeIndex, previousIndex) => {
-        console.log(\`Tab changed from \${previousIndex} to \${activeIndex}\`);
-        // Use this to track tab changes, update analytics, load content, etc.
-        },
-        onContextMenu: (tabIndex) => {
+      onSelectedChange: (index, selected) => {
+        console.log('Tab at index has selected selected');
+      },
+      onContextMenu: (tabIndex) => {
         console.log(\`Context menu opened for tab \${tabIndex}\`);
         // Handle right-click (MacOS) or Shift+F10 (Windows) on tabs
         // Show custom context menu, tab options, etc.
-        }
+      }
     }
   });
 
@@ -276,7 +273,7 @@ function goToReviews() {
                         <li><code>tabPanelsClass</code>:  Shared class name for all tab panel elements (required)</li>
                         <li><code>orientation</code>: &quot;horizontal&quot; (default) or &quot;vertical&quot;</li>
                         <li><code>activateOnFocus</code>: If true, focusing a tab with keyboard will also activate it (default: false)</li>
-                        <li><code>callback.onTabChange</code>: Optional callback function that receives activeIndex and previousIndex whenever the active tab changes</li>
+                        <li><code>callback.onSelectedChange</code>: Optional callback function that returns the currently selected tab</li>
                     </ul>
                   </section>
 

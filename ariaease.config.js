@@ -28,6 +28,7 @@ export default {
       'http://localhost:5173/contracts/menu',
       'http://localhost:5173/contracts/radio',
       'http://localhost:5173/contracts/tabs',
+      'http://localhost:5173/contracts/toggle',
       'http://localhost:5173/contracts/dsl',
       
 
@@ -37,26 +38,5 @@ export default {
       format: 'all',
       out: './accessibility-reports/audit'
     }
-  },
-  test: {
-    strictness: "balanced", // fallback: minimal | balanced | strict | paranoid
-    components: [
-      { name: "menu", strictness: "strict", contractPath: "./tests/external-contracts/menu.contract.json" },
-      { name: "accordion", strictness: "minimal", contractPath: "./tests/external-contracts/accordion.contract.json" },
-      { name: "tabs", strictness: "strict", contractPath: "./tests/external-contracts/tabs.contract.json" },
-      { name: "combobox", strictness: "strict", contractPath: "./tests/external-contracts/combobox.listbox.contract.json" }
-    ]
-  },
-  contracts: [
-    {
-      src: "./tests/external-contracts/**/*.contract.mjs",
-      // Optional: out: "./tests/external-contracts/generated"
-      // If omitted, JSON files are written alongside the DSL sources
-    },
-    // Add more contract sources here
-    // {
-    //   src: "./another-path/**/*.contract.mjs",
-    //   out: "./some-output-dir"
-    // }
-  ]
+  }
 };

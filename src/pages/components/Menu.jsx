@@ -57,9 +57,9 @@ menuRef.current = Menu.makeMenuAccessible({
   menuItemsClass: "profile-menu-item",
   triggerId: "display-button",
   callback: {
-    onOpenChange: (isOpen) => {
+    onExpandedChange: (expanded) => {
       // Do something when menu opens/closes
-      console.log(isOpen);
+      console.log(expanded);
     }
   }
 });`

@@ -19,9 +19,9 @@ useEffect(() => {
     menuItemsClass: "profile-menu-item",
     triggerId: "display-button",
     callback: {
-      onOpenChange: (isOpen) => {
+      onExpandedChange: (expanded) => {
         // Do something when 
-        console.log(isOpen);
+        console.log(expanded);
       }
     }
   });
@@ -49,9 +49,9 @@ const menuCDNCode = `
     menuItemsClass: "menu-item",
     triggerId: "menu-button",
     callback: {
-      onOpenChange: (isOpen) => {
+      onExpandedChange: (expanded) => {
         // Do something when 
-        console.log(isOpen);
+        console.log(expanded);
       }
     }
   });

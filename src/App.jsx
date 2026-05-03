@@ -26,7 +26,6 @@ import Audit from './pages/testing/Audit';
 import Testing from './pages/testing/Testing';
 import Combobox from './pages/components/Combobox';
 import ContractOverview from './pages/contracts/ContractOverview';
-import ComponentTestHarness from './pages/ComponentTestHarness';
 import Tabs from './pages/components/Tabs';
 import DslOverview from './pages/contracts/DSL';
 import UtilityOverview from './pages/components/UtilityOverview';
@@ -37,6 +36,7 @@ import ComboboxDsl from './pages/dsl/ComboboxDsl';
 import MenuContract from './pages/contracts/MenuContract';
 import RadioContract from './pages/contracts/RadioContract';
 import TabsContract from './pages/contracts/TabsContract';
+import ToggleContract from './pages/contracts/ToggleContract';
 import AccordionContract from './pages/contracts/AccordionContract';
 
 //import ConceptsOverview from './pages/concepts/ConceptsOverview';
@@ -104,10 +104,8 @@ const InnerApp = ({darkMode, setDarkMode}) => {
             <Route path="/contracts/menu" element={<MenuContract darkMode={darkMode} setDarkMode={setDarkMode}/>}/>
             <Route path="/contracts/radio" element={<RadioContract darkMode={darkMode} setDarkMode={setDarkMode}/>}/>
             <Route path="/contracts/tabs" element={<TabsContract darkMode={darkMode} setDarkMode={setDarkMode}/>}/>
-            <Route path="/contracts/dsl" element={<DslOverview darkMode={darkMode} setDarkMode={setDarkMode}/>}/> 
-
-            
-            <Route path="/test-harness" element={<ComponentTestHarness/>}/>
+            <Route path="/contracts/toggle" element={<ToggleContract darkMode={darkMode} setDarkMode={setDarkMode}/>}/>
+            <Route path="/contracts/dsl" element={<DslOverview darkMode={darkMode} setDarkMode={setDarkMode}/>}/>           
             
             <Route path="/dsl/overview" element={<DslOverview darkMode={darkMode} setDarkMode={setDarkMode}/>}/>      
             <Route path="/dsl/combobox" element={<ComboboxDsl darkMode={darkMode} setDarkMode={setDarkMode}/>}/>
