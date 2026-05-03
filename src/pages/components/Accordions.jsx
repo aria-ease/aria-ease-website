@@ -58,19 +58,11 @@ useEffect(() => {
     panelsClass: "accordion-panel",
     allowMultipleOpen: false, // Only one panel open at a time
     callback: {
-      onExpand: (index) => {
-        // Callback when a panel expands, you can use this to update state or perform side effects like changing icons
+      onExpandedChange: (index, expanded) => {
+        // Callback when a panel expands or collapses, you can use this to update state or perform side effects like changing icons
         setOpenStates(prev => {
           const newStates = [...prev];
-          newStates[index] = true;
-          return newStates;
-        });
-      },
-      onCollapse: (index) => {
-        // Callback when a panel collapses, you can use this to update state or perform side effects like changing icons
-        setOpenStates(prev => {
-          const newStates = [...prev];
-          newStates[index] = false;
+          newStates[index] = expanded;
           return newStates;
         });
       }

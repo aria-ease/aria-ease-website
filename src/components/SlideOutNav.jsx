@@ -80,7 +80,7 @@ const SlideOutNav = ({ page, showDropdownPage }) => {
                 <p className="text-[0.900rem] font-bold">Contracts</p>
                 <Link onClick={saveScrollPosition} to='/contracts/overview' aria-label='Navigate to the contract overview page' className={`mb-2 side-nav-link ${(page === 'contract-overview') ? 'active-nav-link' : ''}`}>Overview</Link>
                 <Link onClick={saveScrollPosition} to='/contracts/dsl' aria-label='Navigate to the dsl overview page' className={`mb-2 side-nav-link ${(page === 'dsl-overview') ? 'active-nav-link' : ''}`}>DSL</Link>
-                <button className={`flex items-center gap-4 text-[0.900rem] ${['combobox-contract', 'menu-contract', 'tabs-contract', 'accordion-contract', 'checkbox-contract', 'radio-contract'].includes(page) ? 'active-nav-link' : ''}`} onClick={() => setContractOpen((v) => !v)} aria-expanded={contractOpen} aria-controls='slideout-contract-dropdown'>
+                <button className={`flex items-center gap-4 text-[0.900rem] ${['combobox-contract', 'menu-contract', 'tabs-contract', 'accordion-contract', 'checkbox-contract', 'radio-contract', 'toggle-contract'].includes(page) ? 'active-nav-link' : ''}`} onClick={() => setContractOpen((v) => !v)} aria-expanded={contractOpen} aria-controls='slideout-contract-dropdown'>
                   Contracts
                   {contractOpen ? <ChevronRight className='rotate-90' height={13} width={13}/> : <ChevronRight height={13} width={13}/>}
                 </button>
@@ -92,6 +92,7 @@ const SlideOutNav = ({ page, showDropdownPage }) => {
                     <Link onClick={saveScrollPosition} to='/contracts/menu' aria-label='Navigate to the menu contract page' className={`mb-2 side-nav-link ${(page === 'menu-contract') ? 'active-nav-link' : ''}`}>Menu</Link>
                     <Link onClick={saveScrollPosition} to='/contracts/radio' aria-label='Navigate to the radio contract page' className={`mb-2 side-nav-link ${(page === 'radio-contract') ? 'active-nav-link' : ''}`}>Radio</Link>
                     <Link onClick={saveScrollPosition} to='/contracts/tabs' aria-label='Navigate to the tabs contract page' className={`mb-2 side-nav-link ${(page === 'tabs-contract') ? 'active-nav-link' : ''}`}>Tabs</Link>
+                    <Link onClick={saveScrollPosition} to='/contracts/toggle' aria-label='Navigate to the toggle contract page' className={`mb-2 side-nav-link ${(page === 'toggle-contract') ? 'active-nav-link' : ''}`}>Toggle</Link>
                   </ul>
                 )}
               </div>

@@ -21,10 +21,10 @@ useEffect(() => {
     checkboxGroupId: 'checkbox-div',
     checkboxesClass: 'course-checkbox',
     callback: {
-      onCheck: (index, isChecked) => {
+      onCheckedChange: (index, checked) => {
         setCheckStates(prev => {
           const newStates = [...prev];
-          newStates[index] = isChecked;
+          newStates[index] = checked;
           return newStates;
         });  
       } 

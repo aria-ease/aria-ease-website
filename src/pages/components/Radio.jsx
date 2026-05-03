@@ -21,8 +21,8 @@ useEffect(() => {
     radiosClass: 'radio',
     defaultSelectedIndex: 0,  // Optional: which radio is selected initially
     callback: {
-      onCheck: (index) => {
-        setRadioState([index === 0, index === 1]); 
+      onValueChange: (index, value) => {
+        console.log("Radio at index with value is checked") 
       }
     }
   });

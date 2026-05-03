@@ -134,10 +134,10 @@ const TabsContract = ({ darkMode, setDarkMode }) => {
                 <span className='next-link-text text-md'>Radio Contract</span>
               </div>
             </Link>
-            <Link to='/changelog' className='block-interactive next-link docs-next-link rounded-lg md:min-w-80 md:max-w-md w-full md:w-auto flex gap-6 items-center px-4 py-6 md:px-5'>
+            <Link to='/contracts/toggle' className='block-interactive next-link docs-next-link rounded-lg md:min-w-80 md:max-w-md w-full md:w-auto flex gap-6 items-center px-4 py-6 md:px-5'>
               <div className='flex flex-col w-full items-end'>
                 <span className='text-sm black-white-text'>Next</span>
-                <span className='next-link-text text-md'>Changelog</span>
+                <span className='next-link-text text-md'>Toggle Contract</span>
               </div>
               <ChevronRightCircleIcon/>
             </Link>

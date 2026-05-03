@@ -19,7 +19,12 @@ useEffect(() => {
   const toggleInstance = makeToggleAccessible({
     toggleId: 'toggle-div',
     togglesClass: 'group-toggle-button',
-    isSingleToggle: false  // Set to true for single toggle button
+    isSingleToggle: false,  // Set to true for single toggle button
+    callback: {
+      onPressedChange: (index, pressed) => {
+        console.log("Toggle at index has pressed of value pressed") 
+      }
+    }
   });
 
   // Clean up on unmount
@@ -41,9 +46,9 @@ toggleInstance.cleanup()                 // Remove all listeners`;
 
 const togglesComponent = `
 <div id='toggle-div'>
-  <button className='group-toggle-button block-interactive-items py-2 px-3 mt-3 text-sm rounded-md' aria-pressed={toggleButtonsState[0].pressed} onClick={() => handlePress(0)}>Mute notification</button>
-  <button className='group-toggle-button block-interactive-items py-2 px-3 mt-3 text-sm rounded-md' aria-pressed={toggleButtonsState[1].pressed} onClick={() => handlePress(1)}>Dark mode</button>
-  <button className='group-toggle-button block-interactive-items py-2 px-3 mt-3 text-sm rounded-md' aria-pressed={toggleButtonsState[2].pressed} onClick={() => handlePress(2)}>Enable 2FA</button>
+  <button className='group-toggle-button block-interactive-items py-2 px-3 mt-3 text-sm rounded-md' onClick={() => handlePress(0)}>Mute notification</button>
+  <button className='group-toggle-button block-interactive-items py-2 px-3 mt-3 text-sm rounded-md' onClick={() => handlePress(1)}>Dark mode</button>
+  <button className='group-toggle-button block-interactive-items py-2 px-3 mt-3 text-sm rounded-md' onClick={() => handlePress(2)}>Enable 2FA</button>
 </div>`;
 
 

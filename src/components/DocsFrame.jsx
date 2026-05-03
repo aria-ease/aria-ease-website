@@ -124,7 +124,7 @@ const DocsFrame = ({ page, children, darkMode, setDarkMode, showDropdownPage, se
                         <SideNavDisclosure
                           page={page}
                           triggerTitle={'Component Contracts'}
-                          sectionPages={['checkbox-contract', 'combobox-contract', 'menu-contract', 'tabs-contract', 'accordion-contract', 'radio-contract']}
+                          sectionPages={['checkbox-contract', 'combobox-contract', 'menu-contract', 'tabs-contract', 'accordion-contract', 'radio-contract', 'toggle-contract']}
                         >
                           <div className='flex flex-col gap-2 p-[10px]'>
                             {/* Component specific contract */}
@@ -134,6 +134,7 @@ const DocsFrame = ({ page, children, darkMode, setDarkMode, showDropdownPage, se
                             <Link onClick={saveScrollPosition} to='/contracts/menu' aria-label='Navigate to the menu contract page' className={`mb-2 side-nav-link ${(page === 'menu-contract') ? 'active-nav-link' : ''} ${(window.innerWidth >= 992) ? 'block-interactive' : ''}`}>Menu</Link>
                             <Link onClick={saveScrollPosition} to='/contracts/radio' aria-label='Navigate to the radio contract page' className={`mb-2 side-nav-link ${(page === 'radio-contract') ? 'active-nav-link' : ''} ${(window.innerWidth >= 992) ? 'block-interactive' : ''}`}>Radio</Link>
                             <Link onClick={saveScrollPosition} to='/contracts/tabs' aria-label='Navigate to the tabs contract page' className={`mb-2 side-nav-link ${(page === 'tabs-contract') ? 'active-nav-link' : ''} ${(window.innerWidth >= 992) ? 'block-interactive' : ''}`}>Tabs</Link>
+                            <Link onClick={saveScrollPosition} to='/contracts/toggle' aria-label='Navigate to the toggle contract page' className={`mb-2 side-nav-link ${(page === 'toggle-contract') ? 'active-nav-link' : ''} ${(window.innerWidth >= 992) ? 'block-interactive' : ''}`}>Toggle</Link>
                           </div>
                         </SideNavDisclosure>        
                       </div>
