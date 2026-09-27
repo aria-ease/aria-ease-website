@@ -32,11 +32,14 @@ export default {
       'http://localhost:5173/contracts/dsl',
       
 
-      'http://localhost:5173/changelog',
+      'http://localhost:5173/changelog',    
     ],
     output: {
       format: 'all',
       out: './accessibility-reports/audit'
-    }
+    },
+    
+    timeout: 60000,
+    waitUntil: 'domcontentloaded'
   }
 };

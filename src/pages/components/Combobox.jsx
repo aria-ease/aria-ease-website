@@ -128,7 +128,7 @@ const handleInputChange = (event) => {
         
   // Open listbox if there are matches and user is typing
   if (hasMatch && query.length > 0) {
-    comboboxInstanceRef.current.openListbox();
+    comboboxInstanceRef.current.openListBox();
   }
         
   // Refresh the library's cache after hiding/showing elements

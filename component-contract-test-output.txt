@@ -3,214 +3,16 @@
 
 [1m[46m RUN [49m[22m [36mv4.0.18 [39m[90m/Users/macx/aria-ease/docs[39m
 
-[90mstdout[2m | tests/ariaease.test.jsx[2m > [22m[2mAccordion WAI-ARIA Accessibility Test[2m > [22m[2mAccordion meets Aria-Ease's baseline for WAI-ARIA roles, states, properties, and keyboard interactions expectations
-[22m[39m🎭 Running Playwright tests on http://localhost:5173/test-harness?component=accordion
-
- [32m✓[39m tests/ariaease.test.jsx[2m > [22mAccordion WAI-ARIA Accessibility Test[2m > [22mAccordion meets Aria-Ease's baseline for WAI-ARIA roles, states, properties, and keyboard interactions expectations[33m 6413[2mms[22m[39m
-[90mstdout[2m | tests/ariaease.test.jsx[2m > [22m[2mCombobox with Listbox popup WAI-ARIA Accessibility Test[2m > [22m[2mCombobox with Listbox popup meets Aria-Ease's baseline for WAI-ARIA roles, states, properties, and keyboard interactions expectations
-[22m[39m🎭 Running Playwright tests on http://localhost:5173/test-harness?component=combobox
-
- [32m✓[39m tests/ariaease.test.jsx[2m > [22mCombobox with Listbox popup WAI-ARIA Accessibility Test[2m > [22mCombobox with Listbox popup meets Aria-Ease's baseline for WAI-ARIA roles, states, properties, and keyboard interactions expectations[33m 1738[2mms[22m[39m
-[90mstdout[2m | tests/ariaease.test.jsx[2m > [22m[2mMenu with submenu WAI-ARIA Accessibility Test[2m > [22m[2mMenu with submenu meets Aria-Ease's baseline for WAI-ARIA roles, states, properties, and keyboard interactions expectations
-[22m[39m🎭 Running Playwright tests on http://localhost:5173/test-harness?component=sub_menu
-
- [32m✓[39m tests/ariaease.test.jsx[2m > [22mMenu with submenu WAI-ARIA Accessibility Test[2m > [22mMenu with submenu meets Aria-Ease's baseline for WAI-ARIA roles, states, properties, and keyboard interactions expectations[33m 9928[2mms[22m[39m
 [90mstdout[2m | tests/ariaease.test.jsx[2m > [22m[2mMenu WAI-ARIA Accessibility Test[2m > [22m[2mMenu meets Aria-Ease's baseline for WAI-ARIA roles, states, properties, and keyboard interactions expectations
 [22m[39m🎭 Running Playwright tests on http://localhost:5173/test-harness?component=menu
 
- [32m✓[39m tests/ariaease.test.jsx[2m > [22mMenu WAI-ARIA Accessibility Test[2m > [22mMenu meets Aria-Ease's baseline for WAI-ARIA roles, states, properties, and keyboard interactions expectations[33m 8215[2mms[22m[39m
-[90mstdout[2m | tests/ariaease.test.jsx[2m > [22m[2mHorizontal Tabs WAI-ARIA Accessibility Test[2m > [22m[2mHorizontal tabs meets Aria-Ease's baseline for WAI-ARIA roles, states, properties, and keyboard interactions expectations
-[22m[39m🎭 Running Playwright tests on http://localhost:5173/test-harness?component=tabs_horizontal
+ [32m✓[39m tests/ariaease.test.jsx[2m > [22mMenu WAI-ARIA Accessibility Test[2m > [22mMenu meets Aria-Ease's baseline for WAI-ARIA roles, states, properties, and keyboard interactions expectations[33m 17277[2mms[22m[39m
 
- [32m✓[39m tests/ariaease.test.jsx[2m > [22mHorizontal Tabs WAI-ARIA Accessibility Test[2m > [22mHorizontal tabs meets Aria-Ease's baseline for WAI-ARIA roles, states, properties, and keyboard interactions expectations[33m 803[2mms[22m[39m
-[90mstdout[2m | tests/ariaease.test.jsx[2m > [22m[2mVertical Tabs WAI-ARIA Accessibility Test[2m > [22m[2mVertical tabs meets Aria-Ease's baseline for WAI-ARIA roles, states, properties, and keyboard interactions expectations
-[22m[39m🎭 Running Playwright tests on http://localhost:5173/test-harness?component=tabs_vertical
+[2m Test Files [22m [1m[32m1 passed[39m[22m[90m (1)[39m
+[2m      Tests [22m [1m[32m1 passed[39m[22m[90m (1)[39m
+[2m   Start at [22m 16:12:25
+[2m   Duration [22m 21.02s[2m (transform 368ms, setup 0ms, import 748ms, tests 17.37s, environment 2.42s)[22m
 
- [32m✓[39m tests/ariaease.test.jsx[2m > [22mVertical Tabs WAI-ARIA Accessibility Test[2m > [22mVertical tabs meets Aria-Ease's baseline for WAI-ARIA roles, states, properties, and keyboard interactions expectations[33m 768[2mms[22m[39m
-[90mstdout[2m | tests/ariaease.test.jsx[2m > [22m[2mToggles WAI-ARIA Accessibility Test[2m > [22m[2mToggles meets Aria-Ease's baseline for WAI-ARIA roles, states, properties, and keyboard interactions expectations
-[22m[39m🎭 Running Playwright tests on http://localhost:5173/test-harness?component=toggle
-
-[90mstdout[2m | tests/ariaease.test.jsx[2m > [22m[2mRadio WAI-ARIA Accessibility Test[2m > [22m[2mRadio meets Aria-Ease's baseline for WAI-ARIA roles, states, properties, and keyboard interactions expectations
-[22m[39m🎭 Running Playwright tests on http://localhost:5173/test-harness?component=radio
-
- [31m×[39m tests/ariaease.test.jsx[2m > [22mToggles WAI-ARIA Accessibility Test[2m > [22mToggles meets Aria-Ease's baseline for WAI-ARIA roles, states, properties, and keyboard interactions expectations[33m 5665[2mms[22m[39m
-[31m   → 
-❌ CRITICAL: Component not found on page!
-The component selector could not be found within 5000ms.
-This usually means:
-  - The component didn't render
-  - The URL is incorrect
-  - The component selector was not provided to the component utility, or a wrong selector was used
-[39m
-[90mstdout[2m | tests/ariaease.test.jsx[2m > [22m[2mCheckbox WAI-ARIA Accessibility Test[2m > [22m[2mCheckbox meets Aria-Ease's baseline for WAI-ARIA roles, states, properties, and keyboard interactions expectations
-[22m[39m🎭 Running Playwright tests on http://localhost:5173/test-harness?component=checkbox
-
- [31m×[39m tests/ariaease.test.jsx[2m > [22mRadio WAI-ARIA Accessibility Test[2m > [22mRadio meets Aria-Ease's baseline for WAI-ARIA roles, states, properties, and keyboard interactions expectations[33m 5981[2mms[22m[39m
-[31m   → 
-❌ CRITICAL: Component not found on page!
-The component selector could not be found within 5000ms.
-This usually means:
-  - The component didn't render
-  - The URL is incorrect
-  - The component selector was not provided to the component utility, or a wrong selector was used
-[39m
- [31m×[39m tests/ariaease.test.jsx[2m > [22mCheckbox WAI-ARIA Accessibility Test[2m > [22mCheckbox meets Aria-Ease's baseline for WAI-ARIA roles, states, properties, and keyboard interactions expectations[33m 5760[2mms[22m[39m
-[31m   → 
-❌ CRITICAL: Component not found on page!
-The component selector could not be found within 5000ms.
-This usually means:
-  - The component didn't render
-  - The URL is incorrect
-  - The component selector was not provided to the component utility, or a wrong selector was used
-[39m
-
-[2m Test Files [22m [1m[31m1 failed[39m[22m[90m (1)[39m
-[2m      Tests [22m [1m[31m3 failed[39m[22m[2m | [22m[1m[32m6 passed[39m[22m[90m (9)[39m
-[2m   Start at [22m 09:00:25
-[2m   Duration [22m 47.75s[2m (transform 259ms, setup 0ms, import 396ms, tests 45.33s, environment 1.73s)[22m
-
-
-
-════════════════════════════════════════════════════════════
-🔍 Testing Accordion Component - Playwright (Real Browser)
-════════════════════════════════════════════════════════════
-
-────────────────────────────────────────────────────────────
-🧪 Static Assertions
-────────────────────────────────────────────────────────────
-  ✓ trigger.aria-controls references panel
-     ↳ level=recommended
-  ✓ panel.aria-labelledby references trigger
-     ↳ level=recommended
-  ✓ trigger (aria-expanded)
-     ↳ level=required
-
-────────────────────────────────────────────────────────────
-⌨️ Dynamic Interaction Tests
-────────────────────────────────────────────────────────────
-  ✓ [REQUIRED] Click expands a collapsed panel.
-  ✓ [REQUIRED] Click collapses an expanded panel.
-  ✓ [REQUIRED] Enter expands a collapsed panel.
-  ✓ [REQUIRED] Enter collapses an expanded panel.
-  ✓ [REQUIRED] Space expands a collapsed panel.
-  ✓ [REQUIRED] Space collapses an expanded panel.
-
-════════════════════════════════════════════════════════════
-📊 Summary
-
-✅ All 9 tests passed!
-   Accordion component validates against your custom accessibility policy ✓
-⏱️  Duration: 2369ms
-════════════════════════════════════════════════════════════
-
-
-════════════════════════════════════════════════════════════
-🔍 Testing Combobox Component - Playwright (Real Browser)
-════════════════════════════════════════════════════════════
-
-────────────────────────────────────────────────────────────
-🧪 Static Assertions
-────────────────────────────────────────────────────────────
-  ✓ main.aria-controls references popup
-     ↳ level=required
-  ✓ popup contains options
-     ↳ level=required
-  ✓ main (role)
-     ↳ level=required
-  ✓ main (aria-expanded)
-     ↳ level=required
-  ✓ main (aria-controls)
-     ↳ level=required
-  ✓ main (aria-autocomplete)
-     ↳ level=recommended
-  ✓ main (aria-haspopup)
-     ↳ level=required
-  ✓ options (aria-selected)
-     ↳ level=required
-
-────────────────────────────────────────────────────────────
-⌨️ Dynamic Interaction Tests
-────────────────────────────────────────────────────────────
-  ✓ [REQUIRED] Escape closes an open listbox popup.
-  ✓ [REQUIRED] Escape clears input when listbox popup is closed.
-  ✓ [REQUIRED] Down Arrow on closed combobox opens the listbox popup.
-  ✓ [REQUIRED] Second Down Arrow on open combobox makes the first option active.
-  ✓ [OPTIONAL] Home on last option moves active option from last to first while maintaining input focus.
-  ✓ [REQUIRED] Click on the button opens the listbox popup.
-  ✓ [REQUIRED] Click on the button closes the listbox popup.
-  ✓ [REQUIRED] Click on option selects it and closes listbox popup.
-  ✓ [REQUIRED] Click on option selects it and closes listbox popup.
-  ✓ [REQUIRED] Clicking outside closes the listbox popup.
-  ✓ [REQUIRED] Enter selects active option.
-  ✓ [REQUIRED] Tab closes open listbox popup when no active option.
-  ✓ [REQUIRED] Tab selects active option, closes open listbox popup, and moves focus from main.
-  ✓ [REQUIRED] Mouse hover sets aria-activedescendant to hovered option.
-
-════════════════════════════════════════════════════════════
-📊 Summary
-
-✅ All 22 tests passed!
-   Combobox component validates against your custom accessibility policy ✓
-⏱️  Duration: 1002ms
-════════════════════════════════════════════════════════════
-
-
-════════════════════════════════════════════════════════════
-🔍 Testing Menu Component - Playwright (Real Browser)
-════════════════════════════════════════════════════════════
-
-────────────────────────────────────────────────────────────
-🧪 Static Assertions
-────────────────────────────────────────────────────────────
-  ✓ main.aria-controls references popup
-     ↳ level=required
-  ✓ popup.aria-labelledby references main
-     ↳ level=optional
-  ✓ popup contains items
-     ↳ level=required
-  ○ submenu contains submenuItems
-     ↳ level=required
-     ↳ Skipping submenu relationship assertion in static phase: submenu descendants are not present until submenu is opened.
-  ✓ main (aria-haspopup)
-     ↳ level=required
-  ✓ main (aria-expanded)
-     ↳ level=required
-  ✓ main (aria-controls)
-     ↳ level=required
-  ✓ popup (aria-labelledby)
-     ↳ level=optional
-  ✓ popup (role)
-     ↳ level=required
-  ✓ items (role)
-     ↳ level=required
-  ✓ items (tabindex)
-     ↳ level=optional
-  ✓ submenuTrigger (aria-haspopup)
-     ↳ level=optional
-
-────────────────────────────────────────────────────────────
-⌨️ Dynamic Interaction Tests
-────────────────────────────────────────────────────────────
-  ✓ [REQUIRED] Escape closes an open menu popup.
-  ✓ [REQUIRED] Click on a menu button when menu closed opens the menu popup.
-  ✓ [REQUIRED] Click on a menu button when menu open closes the menu popup.
-  ✓ [REQUIRED] Enter on a menu item closes an open menu popup.
-  ✓ [REQUIRED] Space on a menu item closes an open menu popup.
-  ✓ [REQUIRED] ArrowDown on a menu item moves focus to the next menu item when the menu popup is open.
-  ✓ [REQUIRED] ArrowUp on a menu item moves focus to the previous menu item when the menu popup is open.
-  ✓ [REQUIRED] Home on a menu item moves focus to the first menu item when the menu popup is open.
-  ✓ [REQUIRED] End on a menu item moves focus to the last menu item when the menu popup is open.
-  ✓ [REQUIRED] Tab on a menu item closes an open menu popup and moves focus to the next focusable element in the tab order after the menu.
-  ✓ [REQUIRED] ArrowRight on a menu item with a submenu opens the submenu and moves focus to the first item when the menu popup is open.
-  ✓ [REQUIRED] ArrowLeft on a submenu item closes the submenu and moves focus to the submenu trigger.
-
-════════════════════════════════════════════════════════════
-📊 Summary
-
-✅ All 23 tests passed!
-   Menu component validates against your custom accessibility policy ✓
-⏱️  Duration: 8619ms
-════════════════════════════════════════════════════════════
 
 
 ════════════════════════════════════════════════════════════
@@ -241,8 +43,9 @@ This usually means:
      ↳ level=required
   ✓ items (role)
      ↳ level=required
-  ✓ items (tabindex)
+  ⚠ items (tabindex)
      ↳ level=optional
+     ↳  items "tabindex" should be "-1", found "null".
   ○ submenuTrigger (aria-haspopup)
      ↳ level=optional
      ↳ Skipping submenu static assertion for submenuTrigger: no submenu capability detected in rendered component.
@@ -265,148 +68,39 @@ This usually means:
   ○ [REQUIRED] ArrowLeft on a submenu item closes the submenu and moves focus to the submenu trigger.
      ↳ Skipping test - capability not present: submenuTrigger element not found.
 
+────────────────────────────────────────────────────────────
+⚠️ Warnings (1):
+
+These checks are failing but treated as warnings under the active strictness mode.
+
+
+Reference: https://www.w3.org/WAI/ARIA/apg/patterns/menubar/
+
+
 ════════════════════════════════════════════════════════════
 📊 Summary
 
-✅ 20/20 tests passed
+✅ 19/20 tests passed
 ○  2 tests skipped
+⚠️ 1 warning
    Menu component validates against your custom accessibility policy ✓
-⏱️  Duration: 7428ms
+⏱️  Duration: 13312ms
 ════════════════════════════════════════════════════════════
 
 
-════════════════════════════════════════════════════════════
-🔍 Testing Tabs Component - Playwright (Real Browser)
-════════════════════════════════════════════════════════════
+
+🏅 Show your accessibility commitment!
+   Add this badge to your README.md:
+
+   [![Components tested: aria-ease](https://cdn.jsdelivr.net/gh/aria-ease/aria-ease@main/badges/components-tested-aria-ease.svg)](https://github.com/aria-ease/aria-ease)
+
+   This helps others discover accessibility tools and shows you care!
+
+   ✓ Badge already in README.md
 
 ────────────────────────────────────────────────────────────
-🧪 Static Assertions
+💙 Found aria-ease helpful?
+   • Star us on GitHub: https://github.com/aria-ease/aria-ease
+   • Share feedback: https://github.com/aria-ease/aria-ease/discussions
 ────────────────────────────────────────────────────────────
-  ✓ tablist contains tab
-     ↳ level=required
-  ✓ tab.aria-controls references panel
-     ↳ level=required
-  ✓ tablist (role)
-     ↳ level=required
-  ✓ tab (role)
-     ↳ level=required
-  ✓ panel (role)
-     ↳ level=required
-
-────────────────────────────────────────────────────────────
-⌨️ Dynamic Interaction Tests
-────────────────────────────────────────────────────────────
-  ✓ [REQUIRED] Arrow Right moves focus to the second tab.
-  ✓ [REQUIRED] Arrow Left moves focus to the first tab.
-
-════════════════════════════════════════════════════════════
-📊 Summary
-
-✅ All 7 tests passed!
-   Tabs component validates against your custom accessibility policy ✓
-⏱️  Duration: 84ms
-════════════════════════════════════════════════════════════
-
-
-════════════════════════════════════════════════════════════
-🔍 Testing Tabs Component - Playwright (Real Browser)
-════════════════════════════════════════════════════════════
-
-────────────────────────────────────────────────────────────
-🧪 Static Assertions
-────────────────────────────────────────────────────────────
-  ✓ tablist contains tab
-     ↳ level=required
-  ✓ tab.aria-controls references panel
-     ↳ level=required
-  ✓ tablist (role)
-     ↳ level=required
-  ✓ tab (role)
-     ↳ level=required
-  ✓ panel (role)
-     ↳ level=required
-
-────────────────────────────────────────────────────────────
-⌨️ Dynamic Interaction Tests
-────────────────────────────────────────────────────────────
-  ○ [REQUIRED] Arrow Right moves focus to the second tab.
-     ↳ Skipping test - component-specific conditions not met
-  ○ [REQUIRED] Arrow Left moves focus to the first tab.
-     ↳ Skipping test - component-specific conditions not met
-
-════════════════════════════════════════════════════════════
-📊 Summary
-
-✅ 5/5 tests passed
-○  2 tests skipped
-   Tabs component validates against your custom accessibility policy ✓
-⏱️  Duration: 44ms
-════════════════════════════════════════════════════════════
-
-
-[31m⎯⎯⎯⎯⎯⎯⎯[39m[1m[41m Failed Tests 3 [49m[22m[31m⎯⎯⎯⎯⎯⎯⎯[39m
-
-[41m[1m FAIL [22m[49m tests/ariaease.test.jsx[2m > [22mToggles WAI-ARIA Accessibility Test[2m > [22mToggles meets Aria-Ease's baseline for WAI-ARIA roles, states, properties, and keyboard interactions expectations
-[31m[1mError[22m: 
-❌ CRITICAL: Component not found on page!
-The component selector could not be found within 5000ms.
-This usually means:
-  - The component didn't render
-  - The URL is incorrect
-  - The component selector was not provided to the component utility, or a wrong selector was used
-[39m
-[36m [2m❯[22m tt ../package/dist/src/utils/test/contractTestRunnerPlaywright-ZKVK7KUM.js:[2m34:109[22m[39m
-    [90m 32| [39m\u{1F4E6} Run: npx playwright install chromium`):d.message.includes("n…
-    [90m 33| [39m\u274C CRITICAL: Cannot connect to dev server!
-    [90m 34| [39mMake sure your dev server is running at ${t}`):d.message.includes("Tim…
-    [90m   | [39m                                                                                                            [31m^[39m
-    [90m 35| [39m\u274C CRITICAL: Component not found on page!
-    [90m 36| [39mThe component selector could not be found within [39m[36m${[39mle[36m}[39m[32mms.
-[90m [2m❯[22m y ../package/dist/src/utils/test/index.js:[2m1:1335[22m[39m
-[90m [2m❯[22m tests/ariaease.test.jsx:[2m46:5[22m[39m
-
-[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/3]⎯[22m[39m
-
-[41m[1m FAIL [22m[49m tests/ariaease.test.jsx[2m > [22mRadio WAI-ARIA Accessibility Test[2m > [22mRadio meets Aria-Ease's baseline for WAI-ARIA roles, states, properties, and keyboard interactions expectations
-[31m[1mError[22m: 
-❌ CRITICAL: Component not found on page!
-The component selector could not be found within 5000ms.
-This usually means:
-  - The component didn't render
-  - The URL is incorrect
-  - The component selector was not provided to the component utility, or a wrong selector was used
-[39m
-[36m [2m❯[22m tt ../package/dist/src/utils/test/contractTestRunnerPlaywright-ZKVK7KUM.js:[2m34:109[22m[39m
-    [90m 32| [39m\u{1F4E6} Run: npx playwright install chromium`):d.message.includes("n…
-    [90m 33| [39m\u274C CRITICAL: Cannot connect to dev server!
-    [90m 34| [39mMake sure your dev server is running at ${t}`):d.message.includes("Tim…
-    [90m   | [39m                                                                                                            [31m^[39m
-    [90m 35| [39m\u274C CRITICAL: Component not found on page!
-    [90m 36| [39mThe component selector could not be found within [39m[36m${[39mle[36m}[39m[32mms.
-[90m [2m❯[22m y ../package/dist/src/utils/test/index.js:[2m1:1335[22m[39m
-[90m [2m❯[22m tests/ariaease.test.jsx:[2m52:5[22m[39m
-
-[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[2/3]⎯[22m[39m
-
-[41m[1m FAIL [22m[49m tests/ariaease.test.jsx[2m > [22mCheckbox WAI-ARIA Accessibility Test[2m > [22mCheckbox meets Aria-Ease's baseline for WAI-ARIA roles, states, properties, and keyboard interactions expectations
-[31m[1mError[22m: 
-❌ CRITICAL: Component not found on page!
-The component selector could not be found within 5000ms.
-This usually means:
-  - The component didn't render
-  - The URL is incorrect
-  - The component selector was not provided to the component utility, or a wrong selector was used
-[39m
-[36m [2m❯[22m tt ../package/dist/src/utils/test/contractTestRunnerPlaywright-ZKVK7KUM.js:[2m34:109[22m[39m
-    [90m 32| [39m\u{1F4E6} Run: npx playwright install chromium`):d.message.includes("n…
-    [90m 33| [39m\u274C CRITICAL: Cannot connect to dev server!
-    [90m 34| [39mMake sure your dev server is running at ${t}`):d.message.includes("Tim…
-    [90m   | [39m                                                                                                            [31m^[39m
-    [90m 35| [39m\u274C CRITICAL: Component not found on page!
-    [90m 36| [39mThe component selector could not be found within [39m[36m${[39mle[36m}[39m[32mms.
-[90m [2m❯[22m y ../package/dist/src/utils/test/index.js:[2m1:1335[22m[39m
-[90m [2m❯[22m tests/ariaease.test.jsx:[2m58:5[22m[39m
-
-[31m[2m⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[3/3]⎯[22m[39m
-
 
