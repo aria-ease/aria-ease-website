@@ -104,7 +104,7 @@ export default {
     components: [
       {
         name: "combobox",
-        path: "./tests/external-contracts/combobox.listbox.contract.json",
+        contractPath: "./tests/external-contracts/combobox.listbox.contract.json",
         strategyPath: "./tests/external-strategies/CustomComboboxStrategy.js"
       }
     ]
@@ -112,7 +112,7 @@ export default {
   contracts: [
     {
       src: "./tests/external-contracts/**/*.contract.mjs"
-      // Optional: out: "./tests/external-contracts/generated"
+      // Optional: out: "./tests/external-contracts"
     }
   ]
 };`

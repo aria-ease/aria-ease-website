@@ -14,7 +14,7 @@ export default {
     components: [
       {
         name: 'combobox',
-        path: './tests/external-contracts/combobox.listbox.contract.json',
+        contractPath: './tests/external-contracts/combobox.listbox.contract.json',
         strategyPath: './tests/external-strategies/CustomComboboxStrategy.js'
       }
     ]
@@ -119,7 +119,7 @@ npx aria-ease test
 
 const strategyExample = `
 class ComboboxStrategy {
-  constructor(mainSelector, selectors, actionTimeoutMs = 400, assertionTimeoutMs = 400) {
+  constructor(mainSelector, selectors, actionTimeoutMs = 1000, assertionTimeoutMs = 1000) {
     this.mainSelector = mainSelector;
     this.selectors = selectors;
     this.actionTimeoutMs = actionTimeoutMs;

@@ -11,7 +11,7 @@ const panelExpandedState = `
 "panel.expanded": {
   setup: [
     {
-      when: ["keyboard", "pointer"],
+      when: ["keyboard"],
       steps: (arg: { relativeTarget?: string | number }) => [
         { type: "keypress", target: "relative", relativeTarget: arg.relativeTarget, key: "Enter" }
       ]
